@@ -1,0 +1,62 @@
+﻿using System;
+using UnityEngine;
+using UnityEngine.UI;
+
+public class PlayerBall : MonoBehaviour
+{
+    private Rigidbody rb;
+    //faka buttons
+    public Button startButton;
+
+    public Text text;
+
+    void Start()
+    {
+        rb = this.GetComponent<Rigidbody>();
+        //faka buttons
+        startButton.onClick.AddListener(StartLevel);
+
+    }
+
+    void Update()
+    {
+        //(verplaatst naar GameManager)
+        //DAN MAAR GEWOON MET Q
+        //if (Input.GetKeyDown("q"))
+        //{
+        //    rb.isKinematic = false;
+        //}
+
+        //tekst wel maar ho stop maar als je een button event wil gebruiken zoals beschreven in de unity dcumentatie dat werkt niet hoor oh nee
+        //if (Input.GetKeyDown("i"))
+        //{
+        //    text.text = "DOE DAN";
+        //}
+        //-.-
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        Vector3 goHardOrGoHome = new Vector3(0, 50, 0);
+        if (collision.collider.CompareTag("Bounce"))
+        {
+            Debug.Log("bouncersboncers");
+            rb.AddForce(goHardOrGoHome,ForceMode.Impulse);
+        }
+        if (collision.collider.CompareTag("Kill"))
+        {
+            text.text = "JE HEBT VERLOREN";
+        }
+        if (collision.collider.CompareTag("Finish"))
+        {
+            text.text = "JE HEBT GEWONNEN";
+        }
+    }
+
+    //dit werkt niet a.k.a. faka buttons
+    void StartLevel()
+    {
+        Debug.Log("shitbutton");
+        rb.isKinematic = false ;
+    }
+}
