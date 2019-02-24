@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerMouse : MonoBehaviour {
 
@@ -13,6 +14,9 @@ public class PlayerMouse : MonoBehaviour {
 
     private int platformIndex = 0;
     
+    
+    
+
     // Use this for initialization
     void Start () {
         mousepos = Input.mousePosition;
@@ -22,13 +26,15 @@ public class PlayerMouse : MonoBehaviour {
         rotation = new Vector3(0, 0, 0);
 
         platformPreview =  Instantiate(platformsPreview[0], mousepos, Quaternion.identity);
+        
+        
     }
 	
 	// Update is called once per frame
 	void Update () {
 
         mousepos = Input.mousePosition;
-        mousepos.z = 13;
+        mousepos.z = 22;
 
         mousepos = Camera.main.ScreenToWorldPoint(mousepos);
 
@@ -63,14 +69,16 @@ public class PlayerMouse : MonoBehaviour {
 
 		if (Input.GetMouseButtonUp(0))
         {
+            InstructieBehaviour.PlaceBlock();
             mousepos = Input.mousePosition;
-            mousepos.z = 13;
+            mousepos.z = 22;
 
             platforms[platformIndex].transform.position = mousepos;
             platforms[platformIndex].transform.eulerAngles = rotation;
 
             mousepos = Camera.main.ScreenToWorldPoint(mousepos);
-            Instantiate(platforms[platformIndex],mousepos,Quaternion.Euler(rotation));
+            Instantiate(platforms[platformIndex], mousepos, Quaternion.Euler(rotation));
+            
         }
         
 	}

@@ -26,7 +26,7 @@ GameObject:
   - component: {fileID: 114034866435352766}
   m_Layer: 0
   m_Name: PlayerBall
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -109,8 +109,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4b816b0bbde03c428c5dda93904105b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startButton: {fileID: 114799963547692142, guid: edde94558d030f24bb1f20ee35137c6a,
-    type: 2}
   text: {fileID: 114922825050928178, guid: 0ffcb1da8d8b3934e983f9ffa134ce21, type: 2}
 --- !u!135 &135793165451614738
 SphereCollider:
