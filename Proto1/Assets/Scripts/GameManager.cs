@@ -14,11 +14,13 @@ public class GameManager : MonoBehaviour {
     public PlayerBall playerBallClass;
 
     //text??
-    public Text Text;
+    public Text text;
 
     //usable variables voor update
     public Rigidbody playerRB;
     public Camera playerCamera;
+
+    
 
     // Use this for initialization
     void Start () {
@@ -33,11 +35,10 @@ public class GameManager : MonoBehaviour {
         //playerCamera = Instantiate(playerCameraClass,new Vector3(0,1,-13.43f),new Quaternion(0,0,0,0));
 
     }
+    
 
-    private void TaskOnClick()
-    {
+    //Dit dan 
 
-    }
 
     // Update is called once per frame
     void Update () {
@@ -45,8 +46,6 @@ public class GameManager : MonoBehaviour {
         if (Input.GetKeyDown("q"))
         {
             playerRB.isKinematic = false;
-            //wat dom
-            //StartCoroutine(followCameraPlayer());
         }
         //reset game
         if (Input.GetKeyDown("/"))
@@ -58,23 +57,16 @@ public class GameManager : MonoBehaviour {
         if (Input.GetKeyDown("["))
         {
             SceneManager.LoadScene(sceneName: "ProtoScene 1");
-            Text.text = "FREEFORM PLACEMENT $$$$$";
+            text.text = "FREEFORM PLACEMENT $$$$$";
         }
 
         //ObstakelScene
         if (Input.GetKeyDown("p"))
         {
             SceneManager.LoadScene(sceneName:"Obstakels");
-            Text.text = "Rood=Dood Groen is te doen";
+            text.text = "Rood=Dood Groen is te doen";
         }
     }
 
-    IEnumerator followCameraPlayer()
-    {
-        while (true)
-        {
-            Camera.main.transform.LookAt(playerRB.transform);
-            yield return new WaitForSeconds(1);
-        }
-    }
+    
 }

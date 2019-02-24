@@ -6,7 +6,7 @@ public class PlayerBall : MonoBehaviour
 {
     private Rigidbody rb;
     //faka buttons
-    public Button startButton;
+    //public Button startButton;
 
     public Text text;
 
@@ -14,9 +14,10 @@ public class PlayerBall : MonoBehaviour
     {
         rb = this.GetComponent<Rigidbody>();
         //faka buttons
-        startButton.onClick.AddListener(StartLevel);
+        //startButton.onClick.AddListener(StartLevel);
 
     }
+
 
     void Update()
     {
@@ -35,14 +36,18 @@ public class PlayerBall : MonoBehaviour
         //-.-
     }
 
+    
     private void OnCollisionEnter(Collision collision)
     {
+        //platform interactie
         Vector3 goHardOrGoHome = new Vector3(0, 50, 0);
         if (collision.collider.CompareTag("Bounce"))
         {
             Debug.Log("bouncersboncers");
             rb.AddForce(goHardOrGoHome,ForceMode.Impulse);
         }
+
+        //voor obstakels
         if (collision.collider.CompareTag("Kill"))
         {
             text.text = "JE HEBT VERLOREN";
@@ -59,4 +64,5 @@ public class PlayerBall : MonoBehaviour
         Debug.Log("shitbutton");
         rb.isKinematic = false ;
     }
+    
 }
