@@ -19,16 +19,20 @@ public class AbilitySceneManager : MonoBehaviour {
     public Rigidbody playerRB;
     public Camera playerCamera;
     // Use this for initialization
+    private PlayerBall playerBall;
+
     void Start () {
         Assert.IsNotNull(playerBallClass);
         
         
 
-        playerRB = playerBallClass.GetComponent<Rigidbody>();
-        playerRB.useGravity = false;
+        
         //ga in scene slepen dus instantiaten niet nodig
         //playerCamera = Instantiate(playerCamera,new Vector3(0,1,-13.43f),new Quaternion(0,0,0,0));
-        //PlayerBall playerBall = Instantiate(playerBallClass, new Vector3(-14.75f, 7.6f, 0), new Quaternion(0, 0, 0, 0));
+        //toch wel handig dit te doen als je player balls wilt killen
+        playerBall = Instantiate(playerBallClass, new Vector3(-13.6f, 9.61f, 0), new Quaternion(0, 0, 0, 0));
+        playerRB = playerBall.GetComponent<Rigidbody>();
+        playerRB.useGravity = false;
 
     }
     
@@ -39,7 +43,7 @@ public class AbilitySceneManager : MonoBehaviour {
     // Update is called once per frame
     void Update () {
         //start game
-        text.text = playerBallClass.canJump.ToString() ;
+        UITextFormattter();
         if (Input.GetKeyDown("s"))
         {
             playerRB.useGravity = true;
@@ -47,49 +51,36 @@ public class AbilitySceneManager : MonoBehaviour {
         //reset game
         if (Input.GetKeyDown("r"))
         {
-            PlayerBall playerBall = Instantiate(playerBallClass, new Vector3(-14.75f, 7.6f, 0), new Quaternion(0, 0, 0, 0));
+            playerBall = Instantiate(playerBallClass, new Vector3(-13.75f, 9.6f, 0), new Quaternion(0, 0, 0, 0));
             playerRB = playerBall.GetComponent<Rigidbody>();
         }
         //jump
         if (Input.GetKeyDown("q"))
         {
             
-            playerBallClass.Jump();
+            playerBall.Jump();
         }
         if (Input.GetKeyDown("w"))
         {
-            playerBallClass.StopMoving();
+            playerBall.StopMoving();
         }
         if (Input.GetKeyDown("e"))
         {
-
+            playerBall.IncreaseSpeed();
         }
     }
-    //geen collision in de scenemanager lol
-    private void OnCollisionEnter(Collision collision)
+    public void UITextFormattter()
     {
-        //platform interactie
-        Vector3 goHardOrGoHome = new Vector3(0, 50, 0);
+        text.text = $"Press S to start \n" +
+                    $"Jump Ready:{playerBall.canJump} \n" +
+                    $"Boost Ready:{playerBall.canBoost} \n" +
+                    $"Player is Alive:{playerBall.isAlive}(press r to restart) \n" +
+                    $"PlayerPoints:{playerBall.points} \n" +
+                    $"Player has Won{playerBall.playerHitGoal}(hit the black block) \n";
 
-        //sla platform waarmee aanraking is op
-        
 
-        if (collision.collider.CompareTag("Bounce"))
-        {
-            Debug.Log("bouncersboncers");
-            playerRB.AddForce(goHardOrGoHome, ForceMode.Impulse);
-        }
-
-        //voor obstakels
-        if (collision.collider.CompareTag("Kill"))
-        {
-            text.text = "JE HEBT VERLOREN";
-        }
-        if (collision.collider.CompareTag("Finish"))
-        {
-            text.text = "JE HEBT GEWONNEN";
-        }
     }
+   
 
 
 }

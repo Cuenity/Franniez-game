@@ -11,9 +11,14 @@ public class PlayerBall : MonoBehaviour
     public Text text;
 
     private Vector3 lastTouchedPlatform;
-    public bool canJump = true;
     private float timeSinceJump;
 
+    public bool isAlive = true;
+    public bool canJump = true;
+    public bool canBoost = true;
+    public bool playerHitGoal = false;
+
+    public int points =0;
     void Start()
     {
         rb = this.GetComponent<Rigidbody>();
@@ -25,14 +30,15 @@ public class PlayerBall : MonoBehaviour
 
     void Update()
     {
-        if (!canJump)
+        if (!canJump | !canBoost)
         {
             timeSinceJump += Time.deltaTime;  // only need to increase if canJump == flase
         }
-
+        //boost in zelfde methode
         if (timeSinceJump >= 2.5f)
         {
             canJump = true;
+            canBoost = true;
         }
         //(verplaatst naar GameManager)
         //DAN MAAR GEWOON MET Q
@@ -54,7 +60,6 @@ public class PlayerBall : MonoBehaviour
         if (canJump)
         {
             rb.AddForce(Vector3.up * 500f); 
-            Debug.Log("Jump");
             canJump = false;
             timeSinceJump = 0.0f;
         }
@@ -62,10 +67,27 @@ public class PlayerBall : MonoBehaviour
 
     public void StopMoving()
     {
+        //Killt alle velocity kan wel es rare dingen doen
         rb.velocity = new Vector3(0f,0f,0f);
     }
 
-    
+    public void IncreaseSpeed()
+    {
+        if (canBoost)
+        {
+            Vector3 newVelocity;
+            //moet uitzoeken of balletje links of rechts gaat
+            if (rb.velocity.x >= 0) {
+                newVelocity = new Vector3(rb.velocity.x + 10f, rb.velocity.y, rb.velocity.z);
+            }
+            else
+            {
+                newVelocity = new Vector3(rb.velocity.x - 10f, rb.velocity.y, rb.velocity.z);
+            }
+            rb.velocity = newVelocity;
+            canBoost = false;
+        }
+    }
 
 
     private void OnCollisionEnter(Collision collision)
@@ -87,13 +109,23 @@ public class PlayerBall : MonoBehaviour
         //voor obstakels
         if (collision.collider.CompareTag("Kill"))
         {
-            text.text = "JE HEBT VERLOREN";
+            Destroy(this.gameObject);
+            isAlive = false;
         }
         if (collision.collider.CompareTag("Finish"))
         {
             text.text = "JE HEBT GEWONNEN";
+            playerHitGoal = true;
+
+        }
+        if (collision.collider.CompareTag("Pick-Up"))
+        {
+            points++;
+            Destroy(collision.collider.gameObject);
         }
     }
+
+    
 
     //dit werkt niet a.k.a. faka buttons
     void StartLevel()
