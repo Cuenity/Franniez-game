@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Bounce
   - Kill
+  - Pick-Up
   layers:
   - Default
   - TransparentFX
