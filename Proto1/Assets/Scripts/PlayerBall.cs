@@ -10,17 +10,30 @@ public class PlayerBall : MonoBehaviour
 
     public Text text;
 
+    private Vector3 lastTouchedPlatform;
+    public bool canJump = true;
+    private float timeSinceJump;
+
     void Start()
     {
         rb = this.GetComponent<Rigidbody>();
         //faka buttons
         //startButton.onClick.AddListener(StartLevel);
-
+       
     }
 
 
     void Update()
     {
+        if (!canJump)
+        {
+            timeSinceJump += Time.deltaTime;  // only need to increase if canJump == flase
+        }
+
+        if (timeSinceJump >= 2.5f)
+        {
+            canJump = true;
+        }
         //(verplaatst naar GameManager)
         //DAN MAAR GEWOON MET Q
         //if (Input.GetKeyDown("q"))
@@ -36,11 +49,35 @@ public class PlayerBall : MonoBehaviour
         //-.-
     }
 
+    public void Jump()
+    {
+        if (canJump)
+        {
+            rb.AddForce(Vector3.up * 500f); 
+            Debug.Log("Jump");
+            canJump = false;
+            timeSinceJump = 0.0f;
+        }
+    }
+
+    public void StopMoving()
+    {
+        rb.velocity = new Vector3(0f,0f,0f);
+    }
+
     
+
+
     private void OnCollisionEnter(Collision collision)
     {
         //platform interactie
         Vector3 goHardOrGoHome = new Vector3(0, 50, 0);
+
+        //abilitiecode
+        lastTouchedPlatform = collision.collider.transform.position;
+        Debug.Log("collisontrigger");
+
+
         if (collision.collider.CompareTag("Bounce"))
         {
             Debug.Log("bouncersboncers");
