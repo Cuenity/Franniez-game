@@ -4,15 +4,22 @@ using UnityEngine;
 
 public class GameState : MonoBehaviour
 {
-    PlatformManager PlatformManager = new PlatformManager();
-    PlayerManager PlayerManager = new PlayerManager();
-    UIManager UIManager = new UIManager();
-    InputManager InputManager = new InputManager();
-    IOManager IOManager = new IOManager();
+   
+    IOManager IOManager;
+    InputManager InputManager;
+    UIManager UIManager;
+    LevelManager levelManager;
     
+    
+
     void Awake()
     {
         DontDestroyOnLoad(this);
+       
+        IOManager = gameObject.AddComponent<IOManager>();
+        InputManager = gameObject.AddComponent<InputManager>();
+        UIManager = gameObject.AddComponent<UIManager>();
+        levelManager = gameObject.AddComponent<LevelManager>();
     }
 
 
@@ -20,13 +27,14 @@ public class GameState : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        PlatformManager.spawnLevel1();
-        PlayerManager.spawnPlayer();
+        
+        //PlayerManager.spawnPlayer();
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
+   
 }
