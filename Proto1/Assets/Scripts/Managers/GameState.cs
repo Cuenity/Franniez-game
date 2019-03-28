@@ -9,8 +9,6 @@ public class GameState : MonoBehaviour
     UIManager UIManager = new UIManager();
     InputManager InputManager = new InputManager();
     IOManager IOManager = new IOManager();
-
-
     
     void Awake()
     {
@@ -22,7 +20,8 @@ public class GameState : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        PlatformManager.spawnLevel1();
+        PlayerManager.spawnPlayer();
     }
 
     // Update is called once per frame

@@ -5,11 +5,13 @@ using UnityEngine;
 
 public class PlatformManager : MonoBehaviour
 {
-    Platform platform;
+    Platform platform = new Platform();
+
+
     // Start is called before the first frame update
     void Start()
     {
-        platform = new Platform();
+
     }
 
     // Update is called once per frame
@@ -20,6 +22,6 @@ public class PlatformManager : MonoBehaviour
 
     internal void spawnLevel1()
     {
-        Instantiate(platform);
+        
     }
 }
