@@ -4,6 +4,21 @@ using UnityEngine;
 
 public class GameState : MonoBehaviour
 {
+    PlatformManager PlatformManager = new PlatformManager();
+    PlayerManager PlayerManager = new PlayerManager();
+    UIManager UIManager = new UIManager();
+    InputManager InputManager = new InputManager();
+    IOManager IOManager = new IOManager();
+
+
+    
+    void Awake()
+    {
+        DontDestroyOnLoad(this);
+    }
+
+
+
     // Start is called before the first frame update
     void Start()
     {

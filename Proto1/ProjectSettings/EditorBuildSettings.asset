@@ -6,15 +6,15 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 0
-    path: Assets/Scenes/ProtoScene 1.unity
+    path: Assets/Old Project/Scenes/ProtoScene 1.unity
     guid: 02a26239f4663d043b5393d4aad2ae28
   - enabled: 0
-    path: Assets/Scenes/Obstakels.unity
+    path: Assets/Old Project/Scenes/Obstakels.unity
     guid: adf0796108ab75e4ebbfc2bb96738c28
   - enabled: 0
-    path: Assets/Scenes/ThirdPerson.unity
+    path: Assets/Old Project/Scenes/ThirdPerson.unity
     guid: ed8b9c22871af064eadbe419a9dde579
   - enabled: 1
-    path: Assets/Scenes/Abilities.unity
+    path: Assets/Old Project/Scenes/Abilities.unity
     guid: e56ee686eefec4a4ea8214e56c2c83d8
   m_configObjects: {}
