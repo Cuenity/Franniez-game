@@ -124,7 +124,6 @@ public class PlatformManager : MonoBehaviour
                 gridStartingPoint = gridStartingPoint + moveRight;
             }
         }
-        int testbreak = 10 ;
     }
     internal void Build_Square(Vector3 startingPoint)
     {
