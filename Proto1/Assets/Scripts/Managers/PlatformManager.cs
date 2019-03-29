@@ -55,6 +55,8 @@ public class PlatformManager : MonoBehaviour
 
 
         }
+
+        //spawn level in grid
     }
     internal void Build_Grid()
     {
