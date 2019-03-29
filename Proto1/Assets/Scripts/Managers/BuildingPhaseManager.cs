@@ -17,6 +17,6 @@ public class BuildingPhaseManager : MonoBehaviour
     }
 
     public void Init() {
-
+        Debug.Log("spawn building UI");
     }
 }

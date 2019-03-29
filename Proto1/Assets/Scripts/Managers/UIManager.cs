@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class UIManager : MonoBehaviour
 {
-    // Start is called before the first frame update
+    public Canvas canvas;
+
     void Start()
     {
-        
+        Instantiate(canvas);
     }
 
     // Update is called once per frame

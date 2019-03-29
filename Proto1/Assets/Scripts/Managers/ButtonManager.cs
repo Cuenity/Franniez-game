@@ -2,15 +2,13 @@
 
 public class ButtonManager : MonoBehaviour
 {
-    public GameState gameState;
-
-    // Start is called before the first frame update
+    private GameState gameState;
+    
     void Start()
     {
-        //gameState = GameObject.Find(GameState);
+        gameState = GameObject.Find("GameState").GetComponent<GameState>();
     }
-
-    // Update is called once per frame
+    
     void Update()
     {
 
@@ -18,6 +16,8 @@ public class ButtonManager : MonoBehaviour
 
     public void StartButton()
     {
+        Debug.Log("f");
+
         gameState.RollingPhaseActive = true;
         gameState.BuildingPhaseActive = false;
     }
