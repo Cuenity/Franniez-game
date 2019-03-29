@@ -4,21 +4,28 @@ using UnityEngine;
 
 public class PlayerManager : MonoBehaviour
 {
-    public GameObject balletje;
+    public Balletje balletje;
+    public CameraManager cameraManager;
     // Start is called before the first frame update
     private void Awake()
     {
         //balletje = gameObject.AddComponent<Balletje>();
-        balletje = Instantiate(balletje, new Vector3(1,3,1), Quaternion.identity);
+
     }
     void Start()
     {
-         
+        SpawnBal();
     }
 
     // Update is called once per frame
     void Update()
     {
 
+    }
+    public void SpawnBal()
+    {
+        balletje = Instantiate(balletje);
+        balletje.transform.position = new Vector3(1, 3, 1);
+        cameraManager = gameObject.AddComponent<CameraManager>();
     }
 }

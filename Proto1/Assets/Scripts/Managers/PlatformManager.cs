@@ -34,13 +34,17 @@ public class PlatformManager : MonoBehaviour
     {
         
         Vector3 platform1 = new Vector3(1, 1, 1);
-        Vector3 platform2 = new Vector3(5, 5, 5);
+        Vector3 platform2 = new Vector3(3, 5, 1);
+     
         platformPositions.Add(platform1);
         platformPositions.Add(platform2);
         foreach (Vector3 item in platformPositions)
         {
-            platform= Instantiate(platform, item, Quaternion.identity);
-           
+            platform= Instantiate(platform);
+            platform.transform.position = item;
+            platform.transform.Rotate(new Vector3(0, 0, 2));
+
+
         }
     }
 }

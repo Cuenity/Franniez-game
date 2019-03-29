@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 928a36a2c3bcf4946a551e2533006958
+guid: 304f016a3c398e642864783dd35e5d2f
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
   defaultReferences:
-  - platform: {fileID: 741766284408628129, guid: b9468f973b2243a4f920413211ca2691,
+  - camera: {fileID: 1191019344074348885, guid: 61b591db70fb0b54b82d0d0c243f3b2f,
       type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
