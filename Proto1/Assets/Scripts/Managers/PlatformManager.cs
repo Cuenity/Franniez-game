@@ -6,7 +6,7 @@ using UnityEngine;
 public class PlatformManager : MonoBehaviour
 {
     public GameObject platform;
-
+    public GameObject ramp;
 
 
 
@@ -26,6 +26,7 @@ public class PlatformManager : MonoBehaviour
     void Start()
     {
         Build_Grid();
+        Build_level();
     }
 
     // Update is called once per frame
@@ -58,6 +59,28 @@ public class PlatformManager : MonoBehaviour
 
         //spawn level in grid
     }
+
+    internal void Build_level()
+    {
+        Vector3 blok1Spawn = gridPunten[0][0];
+
+        GameObject plankje1;
+        GameObject plankje2;
+        GameObject ramp1;
+
+
+        plankje1 = Instantiate(platform, new Vector3(0,-1,-4.5f),new Quaternion(0f,0f,0f,0f));
+        plankje1.transform.localScale = new Vector3(1, 112.5f, 100);
+        plankje1.transform.Rotate(new Vector3(-90, 0, 0));
+
+        plankje2 = Instantiate(platform, new Vector3(0, -5, -8.5f), new Quaternion(0f, 0f, 0f, 0f));
+        plankje2.transform.localScale = new Vector3(1, 112.5f, 100);
+        plankje2.transform.Rotate(new Vector3(-180, 0, 0));
+
+        ramp1 = Instantiate(ramp, new Vector3(0, 0, 0), new Quaternion(0, 0, 0, 0));
+
+    }
+
     internal void Build_Grid()
     {
         //variablen
@@ -66,12 +89,12 @@ public class PlatformManager : MonoBehaviour
         Vector3 gridStartingPoint = new Vector3(0f,0f,0f);
 
 
-        for (int i = 0; i < 10; i++)
+        for (int i = 0; i < 100; i++)
         {
             gridStartingPoint = gridStartingPoint + moveDown;
             gridStartingPoint.z = 0;
 
-            for (int i2 = 0; i2 < 5; i2++)
+            for (int i2 = 0; i2 < 100; i2++)
             {
                 Build_Square(gridStartingPoint);
                 //place 2 the left
