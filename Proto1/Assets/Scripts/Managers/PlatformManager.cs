@@ -6,6 +6,9 @@ using UnityEngine;
 public class PlatformManager : MonoBehaviour
 {
     public GameObject platform;
+    public GameObject lijn;
+
+
     
     List<Vector3> platformPositions;
 
@@ -16,7 +19,7 @@ public class PlatformManager : MonoBehaviour
     }
     void Start()
     {
-       
+        Build_Grid();
     }
 
     // Update is called once per frame
@@ -46,5 +49,55 @@ public class PlatformManager : MonoBehaviour
 
 
         }
+    }
+    internal void Build_Grid()
+    {
+        Vector3 moveRight = new Vector3(0f, 0f, -1f);
+        Vector3 moveDown = new Vector3(0f, -1f, 0f);
+        Vector3 gridStartingPoint = new Vector3(0f,0f,0f);
+        for (int i = 0; i < 10; i++)
+        {
+            gridStartingPoint = gridStartingPoint + moveDown;
+            gridStartingPoint.z = 0;
+            for (int i2 = 0; i2 < 5; i2++)
+            {
+                Build_Square(gridStartingPoint);
+                //place 2 the left
+                gridStartingPoint = gridStartingPoint + moveRight;
+            }
+        }
+    }
+    internal void Build_Square(Vector3 startingPoint)
+    {
+        GameObject lijn1 = lijn;
+        GameObject lijn2 = lijn;
+        GameObject lijn3 = lijn;
+        GameObject lijn4 = lijn;
+        //              ____________3_________
+        //              |                    |
+        //              |                    |
+        //             1|                    |2
+        //              |                    |
+        //              |                    |
+        //              |                    |
+        //              ____________4________|
+        Vector3 point1 = startingPoint;
+        Vector3 point2 = startingPoint + new Vector3(0f, 0f, -1f);
+        Vector3 point3 = startingPoint + new Vector3(0f, -0.5f, -0.5f);//new Vector3(1, 0.5f, 0.5f); 
+        Vector3 point4 = startingPoint + new Vector3(0f, 0.5f, -0.5f);//new Vector3(1, 1.5f, 0.5f);
+
+        Vector3 rotate = new Vector3(90f, 0f, 0f);
+        
+
+        //spawn lijn 1
+        lijn1 = Instantiate(lijn, point1, new Quaternion(0f, 0f, 0f, 0f));
+        //spawn lijn 2
+        lijn2 = Instantiate(lijn, point2, new Quaternion(0f, 0f, 0f, 0f));
+        //spawn lijn 3
+        lijn3 = Instantiate(lijn, point3, new Quaternion(0f, 0f, 0f, 0f));
+        lijn3.transform.Rotate(rotate);
+        //spawn lijn 4
+        lijn4 = Instantiate(lijn, point4, new Quaternion(0f, 0f, 0f, 0f));
+        lijn4.transform.Rotate(rotate);
     }
 }
