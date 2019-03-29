@@ -10,8 +10,7 @@ public class UIManager : MonoBehaviour
     {
         Instantiate(canvas);
     }
-
-    // Update is called once per frame
+    
     void Update()
     {
         
