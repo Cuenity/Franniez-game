@@ -126,7 +126,7 @@ public class PlatformManager : MonoBehaviour
         vectors[3] = startingPoint + new Vector3(0f, -0.5f  , -1f);
 
         //build dots
-        gridDot1 = Instantiate(gridDot,vectors[0], new Quaternion(0f, 0f, 0f, 0f));
+        gridDot1 = Instantiate(gridDot, vectors[0], new Quaternion(0f, 0f, 0f, 0f));
         gridDot2 = Instantiate(gridDot, vectors[1], new Quaternion(0f, 0f, 0f, 0f));
         gridDot3 = Instantiate(gridDot, vectors[2], new Quaternion(0f, 0f, 0f, 0f));
         gridDot4 = Instantiate(gridDot, vectors[3], new Quaternion(0f, 0f, 0f, 0f));
