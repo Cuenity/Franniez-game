@@ -6,6 +6,7 @@ public class LevelManager : MonoBehaviour
 {
     PlayerManager PlayerManager;
     PlatformManager platformManager;
+   
     private void Awake()
     {
         PlayerManager = gameObject.AddComponent<PlayerManager>();
@@ -16,8 +17,7 @@ public class LevelManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
-
+       
     }
 
     // Update is called once per frame
@@ -25,5 +25,6 @@ public class LevelManager : MonoBehaviour
     {
         
     }
-   
+    
+
 }

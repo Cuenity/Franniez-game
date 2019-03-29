@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class CameraManager : MonoBehaviour
 {
-    public Camera camera;
+    public CameraClass cameraclass;
     // Start is called before the first frame update
     private void Awake()
     {
-        
+
     }
     void Start()
     {
@@ -20,10 +20,13 @@ public class CameraManager : MonoBehaviour
     {
 
     }
-
     public void SpawnCamera()
     {
-        camera = Instantiate(camera);
-        
+        //camera = Instantiate(camera);
+        cameraclass = gameObject.AddComponent<CameraClass>(); 
+
     }
+
+
 }
+

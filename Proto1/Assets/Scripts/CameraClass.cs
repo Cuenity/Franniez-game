@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Camera : MonoBehaviour
+public class CameraClass : MonoBehaviour
 {
-    // Start is called before the first frame update
-    public Balletje Target;
+
+    public Balletje Target { get; set; }
 
     public Vector3 TargetMovementOffset;
     public Vector3 TargetLookAtOffset;
@@ -21,7 +21,6 @@ public class Camera : MonoBehaviour
     }
     private void LateUpdate()
     {
-
         transform.LookAt(Target.transform.position + TargetLookAtOffset);
     }
 }
