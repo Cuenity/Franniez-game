@@ -104,19 +104,40 @@ public class PlatformManager : MonoBehaviour
         snapRamp = Instantiate(ramp, new Vector3(0, 0, 0), new Quaternion(0, 0, 0, 0));
         snapRamp.transform.localScale = new Vector3(1, 50, 50);
         snapRamp.transform.Rotate(new Vector3(-90, 0, 0));
-        if (gridPunten[0][4] != snapRamp.transform.position)
+        //if (gridPunten[0][4] != snapRamp.transform.position)
+        //{
+        //    snapRamp.transform.position = gridPunten[0][4];
+        //}
+
+        //
+        //
+        //
+        //
+        //
+        //
+        //dit moet bij elke spawn
+        bool isInGrid = false;
+        for (int i = 0; i < gridPunten.Count; i++)
         {
-            snapRamp.transform.position = gridPunten[0][4];
+            //check of gridpunten[i][5] hetzelfde is als het gespawnde object
+            if (gridPunten[i][4] == snapRamp.transform.position)
+            {
+                isInGrid = true;
+            }
         }
+        if (!isInGrid)
+        {
+            //vind het dichtsbijzijnde gridpunt?
+            Vector3 difference = snapRamp.transform.position - gridPunten[0][5];
+            Vector3 closest = gridPunten[0][5];
+            for (int i = 0; i < gridPunten.Count; i++)
+            {
+                //if (difference > snapRamp.transform.position - gridPunten[i][5])
+                //{
 
-        //
-        //
-        //
-        //
-        //
-        //
-
-
+                //}
+            }
+        }
 
     }
 
