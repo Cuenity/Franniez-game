@@ -70,12 +70,9 @@ public class PlatformManager : MonoBehaviour
         GameObject ramp2;
         GameObject ramp3;
 
+        GameObject snapRamp;
+
         Vector3 rampcorrection = new Vector3(0, -0.5f, -0.5f);
-
-
-        
-
-
 
         //nu ipv hardcoded positie enzo gebruik maken van gridpoints
         ramp1 = Instantiate(ramp, gridPunten[0][0]+rampcorrection, new Quaternion(0, 0, 0, 0));
@@ -102,6 +99,25 @@ public class PlatformManager : MonoBehaviour
         //ramp1 = Instantiate(ramp, new Vector3(0, -1, -9.5f), new Quaternion(0, 0, 0, 0));
         //ramp1.transform.localScale = new Vector3(1, 50, 50);
         //ramp1.transform.Rotate(new Vector3(-90, 0, 0));
+
+        //snaptest
+        snapRamp = Instantiate(ramp, new Vector3(0, 0, 0), new Quaternion(0, 0, 0, 0));
+        snapRamp.transform.localScale = new Vector3(1, 50, 50);
+        snapRamp.transform.Rotate(new Vector3(-90, 0, 0));
+        if (gridPunten[0][4] != snapRamp.transform.position)
+        {
+            snapRamp.transform.position = gridPunten[0][4];
+        }
+
+        //
+        //
+        //
+        //
+        //
+        //
+
+
+
     }
 
     internal void Build_Grid()
@@ -127,15 +143,16 @@ public class PlatformManager : MonoBehaviour
     }
     internal void Build_Square(Vector3 startingPoint)
     {
-        GameObject lijn1 = lijn;
-        GameObject lijn2 = lijn;
-        GameObject lijn3 = lijn;
-        GameObject lijn4 = lijn;
+        GameObject lijn1;
+        GameObject lijn2;
+        GameObject lijn3;
+        GameObject lijn4;
 
-        GameObject gridDot1 = lijn;
-        GameObject gridDot2 = lijn;
-        GameObject gridDot3 = lijn;
-        GameObject gridDot4 = lijn;
+        GameObject gridDot1;
+        GameObject gridDot2;
+        GameObject gridDot3;
+        GameObject gridDot4;
+        GameObject gridDot5;
 
 
         //              ____________3_________
@@ -165,18 +182,27 @@ public class PlatformManager : MonoBehaviour
         lijn4 = Instantiate(lijn, point4, new Quaternion(0f, 0f, 0f, 0f));
         lijn4.transform.Rotate(rotate);
 
-        Vector3[] vectors = new Vector3[4];
+        //opslaan gridpunten
+        //1linksboven
+        //2rechtsboven
+        //3linksonder
+        //4rechtsonder
+        //5midden
+        Vector3[] vectors = new Vector3[5];
 
         vectors[0] = startingPoint + new Vector3(0f, 0.5f,  0f);
         vectors[1] = startingPoint + new Vector3(0f, 0.5f, -1f);
         vectors[2] = startingPoint + new Vector3(0f, -0.5f  , 0f);
         vectors[3] = startingPoint + new Vector3(0f, -0.5f  , -1f);
+        vectors[4] = startingPoint + new Vector3(0, 0, -0.5f);
 
         //build dots
         gridDot1 = Instantiate(gridDot, vectors[0], new Quaternion(0f, 0f, 0f, 0f));
         gridDot2 = Instantiate(gridDot, vectors[1], new Quaternion(0f, 0f, 0f, 0f));
         gridDot3 = Instantiate(gridDot, vectors[2], new Quaternion(0f, 0f, 0f, 0f));
         gridDot4 = Instantiate(gridDot, vectors[3], new Quaternion(0f, 0f, 0f, 0f));
+        //gridDot5 = Instantiate(gridDot, vectors[4], new Quaternion(0f, 0f, 0f, 0f));
+
 
         //toevoegen aan gridpunten
         gridPunten.Add(vectors);
