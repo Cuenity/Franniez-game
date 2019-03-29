@@ -6,10 +6,16 @@ using UnityEngine;
 public class PlatformManager : MonoBehaviour
 {
     public GameObject platform;
+
+
+
+
     public GameObject lijn;
+    public GameObject gridDot;
+    public List<Vector3[]> gridPunten = new List<Vector3[]>();
 
 
-    
+
     List<Vector3> platformPositions;
 
     // Start is called before the first frame update
@@ -52,13 +58,17 @@ public class PlatformManager : MonoBehaviour
     }
     internal void Build_Grid()
     {
+        //variablen
         Vector3 moveRight = new Vector3(0f, 0f, -1f);
         Vector3 moveDown = new Vector3(0f, -1f, 0f);
         Vector3 gridStartingPoint = new Vector3(0f,0f,0f);
+
+
         for (int i = 0; i < 10; i++)
         {
             gridStartingPoint = gridStartingPoint + moveDown;
             gridStartingPoint.z = 0;
+
             for (int i2 = 0; i2 < 5; i2++)
             {
                 Build_Square(gridStartingPoint);
@@ -66,6 +76,7 @@ public class PlatformManager : MonoBehaviour
                 gridStartingPoint = gridStartingPoint + moveRight;
             }
         }
+        int testbreak = 10 ;
     }
     internal void Build_Square(Vector3 startingPoint)
     {
@@ -73,6 +84,13 @@ public class PlatformManager : MonoBehaviour
         GameObject lijn2 = lijn;
         GameObject lijn3 = lijn;
         GameObject lijn4 = lijn;
+
+        GameObject gridDot1 = lijn;
+        GameObject gridDot2 = lijn;
+        GameObject gridDot3 = lijn;
+        GameObject gridDot4 = lijn;
+
+
         //              ____________3_________
         //              |                    |
         //              |                    |
@@ -99,5 +117,21 @@ public class PlatformManager : MonoBehaviour
         //spawn lijn 4
         lijn4 = Instantiate(lijn, point4, new Quaternion(0f, 0f, 0f, 0f));
         lijn4.transform.Rotate(rotate);
+
+        Vector3[] vectors = new Vector3[4];
+
+        vectors[0] = startingPoint + new Vector3(0f, 0.5f,  0f);
+        vectors[1] = startingPoint + new Vector3(0f, 0.5f, -1f);
+        vectors[2] = startingPoint + new Vector3(0f, -0.5f  , 0f);
+        vectors[3] = startingPoint + new Vector3(0f, -0.5f  , -1f);
+
+        //build dots
+        gridDot1 = Instantiate(gridDot,vectors[0], new Quaternion(0f, 0f, 0f, 0f));
+        gridDot2 = Instantiate(gridDot, vectors[1], new Quaternion(0f, 0f, 0f, 0f));
+        gridDot3 = Instantiate(gridDot, vectors[2], new Quaternion(0f, 0f, 0f, 0f));
+        gridDot4 = Instantiate(gridDot, vectors[3], new Quaternion(0f, 0f, 0f, 0f));
+
+        //toevoegen aan gridpunten
+        gridPunten.Add(vectors);
     }
 }
