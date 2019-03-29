@@ -17,10 +17,10 @@ public class CameraClass : MonoBehaviour
     private void Start()
     {
         this.transform.position = BehindPlayerPosition;
-        transform.LookAt(Target.transform.position + TargetLookAtOffset);
+        //transform.LookAt(Target.transform.position + TargetLookAtOffset);
     }
     private void LateUpdate()
     {
-        transform.LookAt(Target.transform.position + TargetLookAtOffset);
+        //transform.LookAt(Target.transform.position + TargetLookAtOffset);
     }
 }
