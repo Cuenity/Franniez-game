@@ -8,17 +8,19 @@ public class GameState : MonoBehaviour
     InputManager InputManager;
     UIManager UIManager;
     LevelManager levelManager;
+    private bool buildingPhaseActive;
+    private bool rollingPhaseActive;
 
     public bool BuildingPhaseActive
     {
         get
         {
-            return BuildingPhaseActive;
+            return buildingPhaseActive;
         }
         set
         {
-            BuildingPhaseActive = value;
-            if (BuildingPhaseActive)
+            buildingPhaseActive = value;
+            if (buildingPhaseActive)
             {
                 buildingPhaseManager.Init();
             }
@@ -33,12 +35,12 @@ public class GameState : MonoBehaviour
     {
         get
         {
-            return RollingPhaseActive;
+            return rollingPhaseActive;
         }
         set
         {
-            RollingPhaseActive = value;
-            if (RollingPhaseActive)
+            rollingPhaseActive = value;
+            if (rollingPhaseActive)
             {
                 rollingPhaseManager.Init();
             }

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RollingPhaseManager : MonoBehaviour
+public class Coin : MonoBehaviour
 {
     // Start is called before the first frame update
     void Start()
@@ -16,7 +16,8 @@ public class RollingPhaseManager : MonoBehaviour
         
     }
 
-    public void Init() {
-        Debug.Log("spawn rolling UI");
+    private void OnCollisionEnter(Collision collision)
+    {
+        
     }
 }
