@@ -8,6 +8,7 @@ public class GameState : MonoBehaviour
     InputManager InputManager;
     UIManager UIManager;
     LevelManager levelManager;
+    CollectableManager collectableManager;
     private bool buildingPhaseActive;
     private bool rollingPhaseActive;
 
@@ -58,6 +59,7 @@ public class GameState : MonoBehaviour
 
         buildingPhaseManager = gameObject.AddComponent<BuildingPhaseManager>();
         rollingPhaseManager = gameObject.AddComponent<RollingPhaseManager>();
+        collectableManager = gameObject.AddComponent<CollectableManager>();
 
         IOManager = gameObject.AddComponent<IOManager>();
         InputManager = gameObject.AddComponent<InputManager>();

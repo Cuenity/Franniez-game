@@ -12,6 +12,8 @@ GameObject:
   - component: {fileID: 334617591600473029}
   - component: {fileID: 334617591599341829}
   - component: {fileID: 334617591590145029}
+  - component: {fileID: 9148849811850824367}
+  - component: {fileID: 3249222499445333714}
   m_Layer: 0
   m_Name: Coin
   m_TagString: Untagged
@@ -97,3 +99,29 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &9148849811850824367
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 334617591597416389}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 49f234e5dc570f24cb3d124fca317c34, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!64 &3249222499445333714
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 334617591597416389}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 1
+  m_CookingOptions: 14
+  m_Mesh: {fileID: 4300000, guid: d46aa7a5786218949b0e5a9dd0a23560, type: 3}
