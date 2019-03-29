@@ -1,21 +1,62 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class GameState : MonoBehaviour
 {
-   
+    BuildingPhaseManager buildingPhaseManager;
+    RollingPhaseManager rollingPhaseManager;
     IOManager IOManager;
     InputManager InputManager;
     UIManager UIManager;
     LevelManager levelManager;
-    
-    
+
+    public bool BuildingPhaseActive
+    {
+        get
+        {
+            return BuildingPhaseActive;
+        }
+        set
+        {
+            BuildingPhaseActive = value;
+            if (BuildingPhaseActive)
+            {
+                buildingPhaseManager.Init();
+            }
+            else
+            {
+
+            }
+        }
+    }
+
+    public bool RollingPhaseActive
+    {
+        get
+        {
+            return RollingPhaseActive;
+        }
+        set
+        {
+            RollingPhaseActive = value;
+            if (RollingPhaseActive)
+            {
+                rollingPhaseManager.Init();
+            }
+            else
+            {
+
+            }
+        }
+    }
+
 
     void Awake()
     {
         DontDestroyOnLoad(this);
-       
+
+        buildingPhaseManager = gameObject.AddComponent<BuildingPhaseManager>();
+        rollingPhaseManager = gameObject.AddComponent<RollingPhaseManager>();
+
         IOManager = gameObject.AddComponent<IOManager>();
         InputManager = gameObject.AddComponent<InputManager>();
         UIManager = gameObject.AddComponent<UIManager>();
@@ -27,7 +68,7 @@ public class GameState : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+
         //PlayerManager.spawnPlayer();
     }
 
@@ -36,5 +77,5 @@ public class GameState : MonoBehaviour
     {
 
     }
-   
+
 }
