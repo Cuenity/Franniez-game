@@ -67,18 +67,41 @@ public class PlatformManager : MonoBehaviour
         GameObject plankje1;
         GameObject plankje2;
         GameObject ramp1;
+        GameObject ramp2;
+        GameObject ramp3;
+
+        Vector3 rampcorrection = new Vector3(0, -0.5f, -0.5f);
 
 
-        plankje1 = Instantiate(platform, new Vector3(0,-1,-4.5f),new Quaternion(0f,0f,0f,0f));
-        plankje1.transform.localScale = new Vector3(1, 112.5f, 100);
-        plankje1.transform.Rotate(new Vector3(-90, 0, 0));
+        
 
-        plankje2 = Instantiate(platform, new Vector3(0, -5, -8.5f), new Quaternion(0f, 0f, 0f, 0f));
-        plankje2.transform.localScale = new Vector3(1, 112.5f, 100);
-        plankje2.transform.Rotate(new Vector3(-180, 0, 0));
 
-        ramp1 = Instantiate(ramp, new Vector3(0, 0, 0), new Quaternion(0, 0, 0, 0));
 
+        //nu ipv hardcoded positie enzo gebruik maken van gridpoints
+        ramp1 = Instantiate(ramp, gridPunten[0][0]+rampcorrection, new Quaternion(0, 0, 0, 0));
+        ramp1.transform.localScale = new Vector3(1, 50, 50);
+        ramp1.transform.Rotate(new Vector3(-90, 0, 0));
+
+        ramp2 = Instantiate(ramp, gridPunten[101][0] + rampcorrection, new Quaternion(0, 0, 0, 0));
+        ramp2.transform.localScale = new Vector3(1, 50, 50);
+        ramp2.transform.Rotate(new Vector3(-90, 0, 0));
+
+        ramp3 = Instantiate(ramp, gridPunten[202][0] + rampcorrection, new Quaternion(0, 0, 0, 0));
+        ramp3.transform.localScale = new Vector3(1, 50, 50);
+        ramp3.transform.Rotate(new Vector3(-90, 0, 0));
+
+        //werkende code maar wel hardcoded
+        //plankje1 = Instantiate(platform, new Vector3(0,-1,-4.5f),new Quaternion(0f,0f,0f,0f));
+        //plankje1.transform.localScale = new Vector3(1, 112.5f, 100);
+        //plankje1.transform.Rotate(new Vector3(-90, 0, 0));
+
+        //plankje2 = Instantiate(platform, new Vector3(0, -5, -8.5f), new Quaternion(0f, 0f, 0f, 0f));
+        //plankje2.transform.localScale = new Vector3(1, 112.5f, 100);
+        //plankje2.transform.Rotate(new Vector3(-180, 0, 0));
+
+        //ramp1 = Instantiate(ramp, new Vector3(0, -1, -9.5f), new Quaternion(0, 0, 0, 0));
+        //ramp1.transform.localScale = new Vector3(1, 50, 50);
+        //ramp1.transform.Rotate(new Vector3(-90, 0, 0));
     }
 
     internal void Build_Grid()
