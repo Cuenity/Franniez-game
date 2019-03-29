@@ -7,6 +7,7 @@ public class ButtonManager : MonoBehaviour
     void Start()
     {
         gameState = GameObject.Find("GameState").GetComponent<GameState>();
+        PlayerManager test= gameState.GetComponent<PlayerManager>();
     }
     
     void Update()

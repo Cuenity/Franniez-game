@@ -6,6 +6,7 @@ public class PlayerManager : MonoBehaviour
 {
     public Balletje balletje;
     public CameraManager cameraManager;
+    public int collectedCoins;
     // Start is called before the first frame update
     private void Awake()
     {
