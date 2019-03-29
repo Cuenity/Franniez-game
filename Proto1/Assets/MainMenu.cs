@@ -5,7 +5,17 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
+    // Deze moeten uiteindelijk uit de player preference komen
+    public string LocalizationDutch = "localizedText_nl.json";
+    public string LocalizationEnglish = "localizedText_en.json";
+
     // Start is called before the first frame update
+
+    public void Start()
+    {
+        LocalizationManager localizationManager = new LocalizationManager();
+        localizationManager.LoadLocalizedText(LocalizationDutch);
+    }
 
     public void StartGame()
     {
