@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlatformManager : MonoBehaviour
 {
@@ -12,9 +13,10 @@ public class PlatformManager : MonoBehaviour
 
     public GameObject lijn;
     public GameObject gridDot;
+    public GameObject gridSquare;
     public List<Vector3[]> gridPunten = new List<Vector3[]>();
 
-
+    Scene currentScene;
 
     List<Vector3> platformPositions;
 
@@ -25,9 +27,55 @@ public class PlatformManager : MonoBehaviour
     }
     void Start()
     {
-        Build_Grid();
-        Build_level();
+
+        GameState gameState = GetComponent<GameState>();
+
+        currentScene = SceneManager.GetActiveScene();
+
+        if (currentScene.name == "TestAnne")
+        {
+            Build_Grid();
+            Build_level();
+        }
+
+        if (currentScene.name == "TestLevel1")
+        {
+            Build_Grid1();
+        }
+
+        
     }
+
+    private void Build_Grid1()
+    {
+        //variablen
+        Vector3 moveRight = new Vector3(0f, 0f, -1f);
+        Vector3 moveDown = new Vector3(0f, -1f, 0f);
+        Vector3 gridStartingPoint = new Vector3(0f, 0f, 0f);
+
+
+        for (int i = 0; i < 10; i++)
+        {
+            gridStartingPoint = gridStartingPoint + moveDown;
+            gridStartingPoint.z = 0;
+
+            for (int i2 = 0; i2 < 20; i2++)
+            {
+                Build_SquareBetter(gridStartingPoint);
+                //place 2 the left
+                gridStartingPoint = gridStartingPoint + moveRight;
+            }
+        }
+    }
+
+    private void Build_SquareBetter(Vector3 gridStartingPoint)
+    {
+        GameObject gridSquare1;
+
+        gridSquare1 = Instantiate(gridSquare, gridStartingPoint, new Quaternion(0, 0, 0, 0));
+        gridSquare1.transform.Rotate(new Vector3(0, -90, 0));
+    }
+
 
     // Update is called once per frame
     void Update()
@@ -42,21 +90,23 @@ public class PlatformManager : MonoBehaviour
     }
     internal void Init_Platforms()
     {
-        
-        Vector3 platform1 = new Vector3(1, 1, 1);
-        Vector3 platform2 = new Vector3(3, 5, 1);
-     
-        platformPositions.Add(platform1);
-        platformPositions.Add(platform2);
-        foreach (Vector3 item in platformPositions)
+        //wat roept dit aan?
+        if (currentScene.name == "TestAnne")
         {
-            platform= Instantiate(platform);
-            platform.transform.position = item;
-            platform.transform.Rotate(new Vector3(0, 0, 2));
+            Vector3 platform1 = new Vector3(1, 1, 1);
+            Vector3 platform2 = new Vector3(3, 5, 1);
+
+            platformPositions.Add(platform1);
+            platformPositions.Add(platform2);
+            foreach (Vector3 item in platformPositions)
+            {
+                platform = Instantiate(platform);
+                platform.transform.position = item;
+                platform.transform.Rotate(new Vector3(0, 0, 2));
 
 
+            }
         }
-
         //spawn level in grid
     }
 

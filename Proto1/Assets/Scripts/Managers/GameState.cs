@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameState : MonoBehaviour
 {
@@ -11,6 +12,7 @@ public class GameState : MonoBehaviour
     CollectableManager collectableManager;
     private bool buildingPhaseActive;
     private bool rollingPhaseActive;
+    
 
     public bool BuildingPhaseActive
     {
@@ -81,5 +83,5 @@ public class GameState : MonoBehaviour
     {
 
     }
-
+    
 }
