@@ -128,8 +128,8 @@ public class PlatformManager : MonoBehaviour
         if (!isInGrid)
         {
             //vind het dichtsbijzijnde gridpunt?
-            Vector3 difference = snapRamp.transform.position - gridPunten[0][5];
-            Vector3 closest = gridPunten[0][5];
+            Vector3 difference = snapRamp.transform.position - gridPunten[0][4];
+            Vector3 closest = gridPunten[0][4];
             for (int i = 0; i < gridPunten.Count; i++)
             {
                 //if (difference > snapRamp.transform.position - gridPunten[i][5])
