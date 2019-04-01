@@ -57,31 +57,30 @@ public class CameraClass : MonoBehaviour
                     gameState.cameraClass.transform.position = new Vector3(cameraposition.x - 1, cameraposition.y, cameraposition.z);
             }
         }
-        Transfrom_YZ();
+        //Transfrom_YZ();
 
 
     }
 
-    private void Transfrom_YZ()
-    {
-        if (Input.GetMouseButtonDown(0))
-        {
-            //dragOrigin = gameState.cameraClass.ScreenToViewportPoint(Input.mousePosition);
-            Debug.Log(Camera.main.ScreenToViewportPoint(Input.mousePosition));
-            dragOrigin = Camera.main.ScreenToViewportPoint(Input.mousePosition);
-            return;
-        }
+    //private void Transfrom_YZ()
+    //{
+    //    if (Input.GetMouseButtonDown(0))
+    //    {
+    //        Debug.Log(Camera.main.ScreenToViewportPoint(Input.mousePosition));
+    //        dragOrigin = Camera.main.ScreenToViewportPoint(Input.mousePosition);
+    //        return;
+    //    }
 
-        if (!Input.GetMouseButton(0)) return;
+    //    if (!Input.GetMouseButton(0)) return;
 
-        Vector3 dragend = Camera.main.ScreenToViewportPoint(Input.mousePosition);
-        Vector3 diffrence = new Vector3(0, dragend.y - dragOrigin.y, dragend.x - dragOrigin.x);
+    //    Vector3 dragend = Camera.main.ScreenToViewportPoint(Input.mousePosition);
+    //    Vector3 diffrence = new Vector3(0, dragend.y - dragOrigin.y, dragend.x - dragOrigin.x);
 
 
-        Vector3 move = new Vector3(diffrence.x * dragSpeed, diffrence.y * dragSpeed, 0);
+    //    Vector3 move = new Vector3(diffrence.x * dragSpeed, diffrence.y * dragSpeed,0);
 
-        transform.Translate(move, Space.World);
-    }
+    //    transform.Translate(move, Space.World);
+    //}
 
 }
 
