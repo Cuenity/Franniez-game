@@ -41,7 +41,30 @@ public class PlatformManager : MonoBehaviour
         if (currentScene.name == "TestLevel1")
         {
             Build_Grid1();
+            Build_Level1();
         }
+
+        
+    }
+
+    private void Build_Level1()
+    {
+        Vector3 blok1Spawn = gridPunten[0][0];
+
+        GameObject plankje1;
+        GameObject plankje2;
+        GameObject ramp1;
+        GameObject ramp2;
+        GameObject ramp3;
+
+        GameObject snapRamp;
+
+        Vector3 rampcorrection = new Vector3(0, -0.5f, -0.5f);
+
+        //nu ipv hardcoded positie enzo gebruik maken van gridpoints
+        ramp1 = Instantiate(ramp, gridPunten[0][0] + rampcorrection, new Quaternion(0, 0, 0, 0));
+        ramp1.transform.localScale = new Vector3(1, 50, 50);
+        ramp1.transform.Rotate(new Vector3(-90, 0, 0));
 
         
     }
@@ -49,23 +72,52 @@ public class PlatformManager : MonoBehaviour
     private void Build_Grid1()
     {
         //variablen
-        Vector3 moveRight = new Vector3(0f, 0f, -1f);
+        Vector3 moveRight = new Vector3(1f, 0f, 0f);
         Vector3 moveDown = new Vector3(0f, -1f, 0f);
-        Vector3 gridStartingPoint = new Vector3(0f, 0f, 0f);
+        Vector3 gridStartingPoint = new Vector3(-7.5f, 7f, 0f);
 
 
-        for (int i = 0; i < 10; i++)
+        for (int i = 0; i < 11; i++)
         {
+            gridStartingPoint.x = -7.5f;
             gridStartingPoint = gridStartingPoint + moveDown;
-            gridStartingPoint.z = 0;
 
-            for (int i2 = 0; i2 < 20; i2++)
+            for (int i2 = 0; i2 < 15; i2++)
             {
                 Build_SquareBetter(gridStartingPoint);
                 //place 2 the left
                 gridStartingPoint = gridStartingPoint + moveRight;
             }
         }
+    }
+
+    private void Build_GridDots(Vector3 gridStartingPoint)
+    {
+        Vector3[] vectors = new Vector3[5];
+
+
+        vectors[0] = gridStartingPoint + new Vector3(0f, 0.5f, 0f);
+        vectors[1] = gridStartingPoint + new Vector3(0f, 0.5f, -1f);
+        vectors[2] = gridStartingPoint + new Vector3(0f, -0.5f, 0f);
+        vectors[3] = gridStartingPoint + new Vector3(0f, -0.5f, -1f);
+        vectors[4] = gridStartingPoint + new Vector3(0, 0, -0.5f);
+
+        GameObject gridDot1;
+        GameObject gridDot2;
+        GameObject gridDot3;
+        GameObject gridDot4;
+        GameObject gridDot5;
+
+        //build dots
+        gridDot1 = Instantiate(gridDot, vectors[0], new Quaternion(0f, 0f, 0f, 0f));
+        gridDot2 = Instantiate(gridDot, vectors[1], new Quaternion(0f, 0f, 0f, 0f));
+        gridDot3 = Instantiate(gridDot, vectors[2], new Quaternion(0f, 0f, 0f, 0f));
+        gridDot4 = Instantiate(gridDot, vectors[3], new Quaternion(0f, 0f, 0f, 0f));
+        //gridDot5 = Instantiate(gridDot, vectors[4], new Quaternion(0f, 0f, 0f, 0f));
+
+
+        //toevoegen aan gridpunten
+        gridPunten.Add(vectors);
     }
 
     private void Build_SquareBetter(Vector3 gridStartingPoint)
