@@ -3,11 +3,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using System.Linq;
 
 public class PlatformManager : MonoBehaviour
 {
     public GameObject platform;
     public GameObject ramp;
+    public GameObject PlatformSquare;
 
 
 
@@ -16,9 +18,16 @@ public class PlatformManager : MonoBehaviour
     public GameObject gridSquare;
     public List<Vector3[]> gridPunten = new List<Vector3[]>();
 
+    public List<Vector3> gridSquares = new List<Vector3>();
+
     Scene currentScene;
 
     List<Vector3> platformPositions;
+
+    private GameObject snapRamp;
+    private GameObject snapPlatform;
+    private GameObject snapPlatformSquare;
+
 
     // Start is called before the first frame update
     private void Awake()
@@ -45,6 +54,47 @@ public class PlatformManager : MonoBehaviour
         }
 
         
+    }
+    // Update is called once per frame
+    void Update()
+    {
+        if (currentScene.name == "TestLevel1")
+        {
+            if (Input.GetKeyDown(KeyCode.Q))
+            {
+                List<float> distances = new List<float>();
+                Vector3 rampAdjustment = new Vector3(0.5f, 0f, 0f);
+                //Vector3 muisPositie = Input.mousePosition;
+                //snapRamp = Instantiate(ramp, muisPositie, new Quaternion(0, 0, 0, 0));
+
+                Vector3 position = new Vector3(UnityEngine.Random.Range(-8.0f, 8.0f), UnityEngine.Random.Range(-8.0f, 8.0f), 0);
+                snapRamp = Instantiate(ramp, position, new Quaternion(0, 0, 0, 0));
+                snapRamp.transform.localScale = new Vector3(200f, 50f, 50f);
+                snapRamp.transform.Rotate(new Vector3(-90f, -90f, 0));
+
+                for (int i = 0; i < gridPunten.Count; i++)
+                {
+                    distances.Add(Vector3.Distance(position, gridSquares[i]));
+                }
+                int minimumValueIndex = distances.IndexOf(distances.Min());
+                snapRamp.transform.position = gridSquares[minimumValueIndex] + rampAdjustment;
+            }
+            if (Input.GetKeyDown(KeyCode.W))
+            {
+                Vector3 snapPlatformSquareAdjustment = new Vector3(0.5f, 0, 0);
+                List<float> distances = new List<float>();
+                Vector3 position = new Vector3(UnityEngine.Random.Range(-8.0f, 8.0f), UnityEngine.Random.Range(-8.0f, 8.0f), 0);
+                snapPlatformSquare = Instantiate(PlatformSquare, position, new Quaternion(0, 0, 0, 0));
+                snapPlatformSquare.transform.Rotate(new Vector3(-90f, -90f, 0));
+
+                for (int i = 0; i < gridPunten.Count; i++)
+                {
+                    distances.Add(Vector3.Distance(position, gridSquares[i]));
+                }
+                int minimumValueIndex = distances.IndexOf(distances.Min());
+                snapPlatformSquare.transform.position = gridSquares[minimumValueIndex] + snapPlatformSquareAdjustment;
+            }
+        }
     }
 
     private void Build_Level1()
@@ -102,17 +152,17 @@ public class PlatformManager : MonoBehaviour
         vectors[3] = gridStartingPoint + new Vector3(0f, -0.5f, -1f);
         vectors[4] = gridStartingPoint + new Vector3(0, 0, -0.5f);
 
-        GameObject gridDot1;
-        GameObject gridDot2;
-        GameObject gridDot3;
-        GameObject gridDot4;
-        GameObject gridDot5;
+        //GameObject gridDot1;
+        //GameObject gridDot2;
+        //GameObject gridDot3;
+        //GameObject gridDot4;
+        //GameObject gridDot5;
 
         //build dots
-        gridDot1 = Instantiate(gridDot, vectors[0], new Quaternion(0f, 0f, 0f, 0f));
-        gridDot2 = Instantiate(gridDot, vectors[1], new Quaternion(0f, 0f, 0f, 0f));
-        gridDot3 = Instantiate(gridDot, vectors[2], new Quaternion(0f, 0f, 0f, 0f));
-        gridDot4 = Instantiate(gridDot, vectors[3], new Quaternion(0f, 0f, 0f, 0f));
+        //gridDot1 = Instantiate(gridDot, vectors[0], new Quaternion(0f, 0f, 0f, 0f));
+        //gridDot2 = Instantiate(gridDot, vectors[1], new Quaternion(0f, 0f, 0f, 0f));
+        //gridDot3 = Instantiate(gridDot, vectors[2], new Quaternion(0f, 0f, 0f, 0f));
+        //gridDot4 = Instantiate(gridDot, vectors[3], new Quaternion(0f, 0f, 0f, 0f));
         //gridDot5 = Instantiate(gridDot, vectors[4], new Quaternion(0f, 0f, 0f, 0f));
 
 
@@ -126,14 +176,15 @@ public class PlatformManager : MonoBehaviour
 
         gridSquare1 = Instantiate(gridSquare, gridStartingPoint, new Quaternion(0, 0, 0, 0));
         gridSquare1.transform.Rotate(new Vector3(0, -90, 0));
+
+        //add alle squares aan een lijstje
+        gridSquares.Add(gridSquare1.transform.position);
+        //dit hoeft maybe niet meer
+        Build_GridDots(gridStartingPoint);
     }
 
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    
 
     internal void spawnLevel1()
     {
