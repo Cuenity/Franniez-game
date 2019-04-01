@@ -161,6 +161,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6693b16348bcea44985fe343c4436dc8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  LocalizationDutch: localizedText_nl.json
+  LocalizationEnglish: localizedText_en.json
 --- !u!1 &205263123
 GameObject:
   m_ObjectHideFlags: 0
@@ -172,6 +174,7 @@ GameObject:
   - component: {fileID: 205263124}
   - component: {fileID: 205263126}
   - component: {fileID: 205263125}
+  - component: {fileID: 205263127}
   m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
@@ -196,7 +199,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -0.00012207031, y: 0.000038146973}
-  m_SizeDelta: {x: 480, y: 272.1}
+  m_SizeDelta: {x: 404.7, y: 191.1}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &205263125
 MonoBehaviour:
@@ -220,9 +223,9 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 12800000, guid: b988d265406eac048a19369702eb547c, type: 3}
-    m_FontSize: 128
+    m_FontSize: 91
     m_FontStyle: 0
-    m_BestFit: 0
+    m_BestFit: 1
     m_MinSize: 10
     m_MaxSize: 139
     m_Alignment: 4
@@ -231,7 +234,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: PLAY
+  m_Text: PLay
 --- !u!222 &205263126
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -240,6 +243,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 205263123}
   m_CullTransparentMesh: 0
+--- !u!114 &205263127
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 205263123}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc6d2a230847dbc459ed333eeb622ace, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  key: play_button
 --- !u!1 &253975140
 GameObject:
   m_ObjectHideFlags: 0
