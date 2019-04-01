@@ -20,7 +20,7 @@ public class Sticker : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        playerManager.stickerCollected = true;
+        playerManager.collectedSticker = true;
         Destroy(gameObject);
     }
 }
