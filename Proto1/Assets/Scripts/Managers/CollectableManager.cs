@@ -5,12 +5,13 @@ using UnityEngine;
 public class CollectableManager : MonoBehaviour
 {
     public Coin coin;
+    public Sticker sticker;
     List<Vector3> coinPositions;
+    Vector3 stickerPosition;
 
     // Start is called before the first frame update
     void Start()
     {
-        InitCoins();
     }
 
     // Update is called once per frame
@@ -19,25 +20,29 @@ public class CollectableManager : MonoBehaviour
         
     }
 
-    void InitCoins()
+    public void InitCollectables(List<Vector3> coinPositions, Vector3 stickerPosition)
     {
-        /*
-        Vector3 platform1 = new Vector3(1, 1, 1);
-        Vector3 platform2 = new Vector3(3, 5, 1);
+        this.coinPositions = coinPositions;
+        this.stickerPosition = stickerPosition;
 
-        platformPositions.Add(platform1);
-        platformPositions.Add(platform2);
-        foreach (Vector3 item in platformPositions)
+        InitCoins();
+        InitSticker();
+    }
+
+    public void InitCoins()
+    {
+        foreach (Vector3 coinPosition in coinPositions)
         {
-            platform = Instantiate(platform);
-            platform.transform.position = item;
-            platform.transform.Rotate(new Vector3(0, 0, 2));
-
-
+            coin = Instantiate(coin);
+            coin.transform.position = coinPosition;
+            coin.transform.Rotate(new Vector3(0, 90,0));
         }
-        */
+    }
 
-        coin = Instantiate(coin);
-        coin.transform.position = new Vector3(1, 1.5f, 1);
+    public void InitSticker()
+    {
+
+        sticker = Instantiate(sticker);
+        sticker.transform.position = stickerPosition;
     }
 }
