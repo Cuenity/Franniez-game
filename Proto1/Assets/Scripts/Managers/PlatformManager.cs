@@ -7,6 +7,8 @@ using System.Linq;
 
 public class PlatformManager : MonoBehaviour
 {
+    GridManager gridManager;
+
     public GameObject platform;
     public GameObject ramp;
     public GameObject PlatformSquare;
@@ -33,6 +35,8 @@ public class PlatformManager : MonoBehaviour
     private void Awake()
     {
         platformPositions = new List<Vector3>();
+
+        gridManager = gameObject.AddComponent<GridManager>();
     }
     void Start()
     {
@@ -47,11 +51,11 @@ public class PlatformManager : MonoBehaviour
             Build_level();
         }
 
-        if (currentScene.name == "TestLevel1")
-        {
-            Build_Grid1();
-            Build_Level1();
-        }
+        //if (currentScene.name == "TestLevel1")
+        //{
+        //    Build_Grid1();
+        //    Build_Level1();
+        //}
 
         
     }
@@ -97,7 +101,7 @@ public class PlatformManager : MonoBehaviour
         }
     }
 
-    private void Build_Level1()
+    internal void Build_Level1()
     {
         Vector3 blok1Spawn = gridPunten[0][0];
 
@@ -119,7 +123,7 @@ public class PlatformManager : MonoBehaviour
         
     }
 
-    private void Build_Grid1()
+    internal void Build_Grid1()
     {
         //variablen
         Vector3 moveRight = new Vector3(1f, 0f, 0f);
