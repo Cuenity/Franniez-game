@@ -4,10 +4,16 @@ using UnityEngine;
 
 public class BuildingPhaseManager : MonoBehaviour
 {
-    // Start is called before the first frame update
+    GameState gameState;
+
+    private void Awake()
+    {
+        gameState = GameObject.Find("GameState").GetComponent<GameState>();
+    }
+
     void Start()
     {
-        
+         
     }
 
     // Update is called once per frame
@@ -18,5 +24,6 @@ public class BuildingPhaseManager : MonoBehaviour
 
     public void Init() {
         Debug.Log("spawn building UI");
+        gameState.UIManager.InventoryButtons(2);
     }
 }

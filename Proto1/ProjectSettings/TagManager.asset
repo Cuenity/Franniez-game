@@ -8,6 +8,7 @@ TagManager:
   - Kill
   - Pick-Up
   - Cannon
+  - UICanvas
   layers:
   - Default
   - TransparentFX

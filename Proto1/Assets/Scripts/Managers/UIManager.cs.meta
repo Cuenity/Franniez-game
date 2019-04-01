@@ -6,6 +6,8 @@ MonoImporter:
   defaultReferences:
   - canvas: {fileID: 2879492348112831362, guid: da83d1c688dacde4a824218a9b65e098,
       type: 3}
+  - inventoryButton: {fileID: 4106794643439255396, guid: ec46b2a2eb4814e44a4f05858e3a45e8,
+      type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

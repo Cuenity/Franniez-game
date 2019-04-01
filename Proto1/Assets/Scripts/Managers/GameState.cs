@@ -8,7 +8,7 @@ public class GameState : MonoBehaviour
     public RollingPhaseManager rollingPhaseManager;
     IOManager IOManager;
     InputManager InputManager;
-    UIManager UIManager;
+    public UIManager UIManager;
     LevelManager levelManager;
     public PlayerManager playerManager;
     public PlatformManager platformManager;

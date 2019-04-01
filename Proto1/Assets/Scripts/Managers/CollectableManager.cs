@@ -41,7 +41,6 @@ public class CollectableManager : MonoBehaviour
 
     public void InitSticker()
     {
-
         sticker = Instantiate(sticker);
         sticker.transform.position = stickerPosition;
     }
