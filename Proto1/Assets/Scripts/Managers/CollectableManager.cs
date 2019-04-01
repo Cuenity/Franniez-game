@@ -35,7 +35,7 @@ public class CollectableManager : MonoBehaviour
         {
             coin = Instantiate(coin);
             coin.transform.position = coinPosition;
-            coin.transform.Rotate(new Vector3(0, 90,0));
+            coin.transform.Rotate(new Vector3(0, 90, 0));
         }
     }
 

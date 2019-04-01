@@ -13,9 +13,9 @@ public class GameState : MonoBehaviour
     CollectableManager collectableManager;
     private bool buildingPhaseActive;
     private bool rollingPhaseActive;
-    public CameraClass cameraClass;
-    Scene currentScene;
 
+    Scene currentScene;
+    
 
     public bool BuildingPhaseActive
     {
@@ -70,8 +70,12 @@ public class GameState : MonoBehaviour
         InputManager = gameObject.AddComponent<InputManager>();
         UIManager = gameObject.AddComponent<UIManager>();
         levelManager = gameObject.AddComponent<LevelManager>();
-        cameraClass = Instantiate(cameraClass);
 
+        SceneInit();
+    }
+
+    void SceneInit()
+    {
         currentScene = SceneManager.GetActiveScene();
 
         if (currentScene.name == "TestLevelCoen")
@@ -81,18 +85,15 @@ public class GameState : MonoBehaviour
             coinPositions.Add(new Vector3(3, 2, 0));
             coinPositions.Add(new Vector3(6, 2, 0));
 
-            Vector3 stickerPosition = new Vector3(0, 0, 3);
+            Vector3 stickerPosition = new Vector3(0, -2, 0);
 
             collectableManager.InitCollectables(coinPositions, stickerPosition);
         }
     }
 
-
-
     // Start is called before the first frame update
     void Start()
     {
-
 
         //PlayerManager.spawnPlayer();
     }
@@ -102,5 +103,5 @@ public class GameState : MonoBehaviour
     {
 
     }
-
+    
 }

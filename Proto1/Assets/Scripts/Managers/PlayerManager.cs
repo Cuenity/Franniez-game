@@ -17,7 +17,7 @@ public class PlayerManager : MonoBehaviour
     void Start()
     {
         balletje = Instantiate(balletje);
-        balletje.transform.position = new Vector3(1, 3, 1);
+        balletje.transform.position = new Vector3(1, 3, 0);
         CameraClass camera = GameObject.Find("Camera(Clone)").GetComponent<CameraClass>();
         camera.Target = balletje;
     }
