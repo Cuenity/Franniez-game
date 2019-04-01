@@ -17,6 +17,7 @@ public class GameState : MonoBehaviour
     private bool rollingPhaseActive = false;
     public CameraClass cameraClass;
     Scene currentScene;
+    public GridManager gridManager;
 
     //private CameraClass camera;
 
@@ -78,6 +79,7 @@ public class GameState : MonoBehaviour
         levelManager = gameObject.AddComponent<LevelManager>();
         playerManager = gameObject.AddComponent<PlayerManager>();
         platformManager = gameObject.AddComponent<PlatformManager>();
+        gridManager = gameObject.AddComponent<GridManager>();
         cameraClass = Instantiate(cameraClass);
 
         levelManager.InitScene();

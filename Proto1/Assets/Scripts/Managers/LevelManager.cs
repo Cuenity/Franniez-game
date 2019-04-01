@@ -17,8 +17,8 @@ public class LevelManager : MonoBehaviour
     {
         currentScene = SceneManager.GetActiveScene();
 
-        gameState.platformManager.spawnLevel1();
-        gameState.platformManager.Init_Platforms();
+        //gameState.platformManager.spawnLevel1();
+        //gameState.platformManager.Init_Platforms();
 
         if (currentScene.name == "TestLevelCoen")
         {
@@ -30,6 +30,11 @@ public class LevelManager : MonoBehaviour
             Vector3 stickerPosition = new Vector3(0, -2, 0);
 
             gameState.collectableManager.InitCollectables(coinPositions, stickerPosition);
+        }
+        if(currentScene.name == "TestLevel1")
+        {
+            gameState.gridManager.Build_Grid1();
+            gameState.platformManager.Build_Level1();
         }
     }
 }
