@@ -194,8 +194,8 @@ public class PlatformManager : MonoBehaviour
     internal void Init_Platforms()
     {
         //wat roept dit aan?
-        if (currentScene.name == "TestAnne")
-        {
+        
+        
             Vector3 platform1 = new Vector3(1, 1, 1);
             Vector3 platform2 = new Vector3(3, 5, 1);
 
@@ -209,7 +209,7 @@ public class PlatformManager : MonoBehaviour
 
 
             }
-        }
+        
         //spawn level in grid
     }
 

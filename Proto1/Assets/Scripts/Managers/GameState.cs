@@ -11,8 +11,8 @@ public class GameState : MonoBehaviour
     UIManager UIManager;
     LevelManager levelManager;
     CollectableManager collectableManager;
-    private bool buildingPhaseActive;
-    private bool rollingPhaseActive;
+    private bool buildingPhaseActive = true;
+    private bool rollingPhaseActive = false;
     public CameraClass cameraClass;
     Scene currentScene;
 
@@ -20,7 +20,7 @@ public class GameState : MonoBehaviour
 
     public GameObject fixCamera;
     private Camera cameraReal;
-    
+
 
     public bool BuildingPhaseActive
     {
@@ -76,7 +76,7 @@ public class GameState : MonoBehaviour
         levelManager = gameObject.AddComponent<LevelManager>();
         cameraClass = Instantiate(cameraClass);
         SceneInit();
-        
+
     }
 
     void SceneInit()
@@ -99,7 +99,7 @@ public class GameState : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-       
+
         //PlayerManager.spawnPlayer();
     }
 
@@ -108,5 +108,5 @@ public class GameState : MonoBehaviour
     {
 
     }
-    
+
 }

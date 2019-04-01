@@ -96,8 +96,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61855380e27ebd34194bdcb74ea70dee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TargetMovementOffset: {x: 0, y: 0, z: 0}
-  TargetLookAtOffset: {x: -10, y: 0, z: 0}
+  TargetMovementOffset: {x: -10, y: 5, z: 0}
+  TargetLookAtOffset: {x: 0, y: 0, z: 0}
   SpringForce: 10
   SpringDamper: 10
 --- !u!54 &2116874778110079020
