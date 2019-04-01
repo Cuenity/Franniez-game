@@ -74,8 +74,9 @@ public class GameState : MonoBehaviour
         InputManager = gameObject.AddComponent<InputManager>();
         UIManager = gameObject.AddComponent<UIManager>();
         levelManager = gameObject.AddComponent<LevelManager>();
-        SceneInit();
         cameraClass = Instantiate(cameraClass);
+        SceneInit();
+        
     }
 
     void SceneInit()
