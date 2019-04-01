@@ -4,18 +4,25 @@ using UnityEngine.SceneManagement;
 
 public class GameState : MonoBehaviour
 {
-    BuildingPhaseManager buildingPhaseManager;
-    RollingPhaseManager rollingPhaseManager;
+    public BuildingPhaseManager buildingPhaseManager;
+    public RollingPhaseManager rollingPhaseManager;
     IOManager IOManager;
     InputManager InputManager;
     UIManager UIManager;
     LevelManager levelManager;
-    CollectableManager collectableManager;
-    private bool buildingPhaseActive;
-    private bool rollingPhaseActive;
-
+    public PlayerManager playerManager;
+    public PlatformManager platformManager;
+    public CollectableManager collectableManager;
+    private bool buildingPhaseActive = true;
+    private bool rollingPhaseActive = false;
+    public CameraClass cameraClass;
     Scene currentScene;
-    
+
+    //private CameraClass camera;
+
+    public GameObject fixCamera;
+    private Camera cameraReal;
+
 
     public bool BuildingPhaseActive
     {
@@ -65,30 +72,15 @@ public class GameState : MonoBehaviour
         buildingPhaseManager = gameObject.AddComponent<BuildingPhaseManager>();
         rollingPhaseManager = gameObject.AddComponent<RollingPhaseManager>();
         collectableManager = gameObject.AddComponent<CollectableManager>();
-
         IOManager = gameObject.AddComponent<IOManager>();
         InputManager = gameObject.AddComponent<InputManager>();
         UIManager = gameObject.AddComponent<UIManager>();
         levelManager = gameObject.AddComponent<LevelManager>();
+        playerManager = gameObject.AddComponent<PlayerManager>();
+        platformManager = gameObject.AddComponent<PlatformManager>();
+        cameraClass = Instantiate(cameraClass);
 
-        SceneInit();
-    }
-
-    void SceneInit()
-    {
-        currentScene = SceneManager.GetActiveScene();
-
-        if (currentScene.name == "TestLevelCoen")
-        {
-            List<Vector3> coinPositions = new List<Vector3>();
-            coinPositions.Add(new Vector3(0, 1.5f, 0));
-            coinPositions.Add(new Vector3(3, 2, 0));
-            coinPositions.Add(new Vector3(6, 2, 0));
-
-            Vector3 stickerPosition = new Vector3(0, -2, 0);
-
-            collectableManager.InitCollectables(coinPositions, stickerPosition);
-        }
+        levelManager.InitScene();
     }
 
     // Start is called before the first frame update
@@ -103,5 +95,5 @@ public class GameState : MonoBehaviour
     {
 
     }
-    
+
 }
