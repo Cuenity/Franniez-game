@@ -1,30 +1,35 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class LevelManager : MonoBehaviour
 {
-    PlayerManager PlayerManager;
-    PlatformManager platformManager;
+    GameState gameState;
+    Scene currentScene;
    
     private void Awake()
     {
-        PlayerManager = gameObject.AddComponent<PlayerManager>();
-        platformManager = gameObject.AddComponent<PlatformManager>();
-        platformManager.spawnLevel1();
-        platformManager.Init_Platforms();
-    }
-    // Start is called before the first frame update
-    void Start()
-    {
-       
+        gameState = gameState = GameObject.Find("GameState").GetComponent<GameState>();
     }
 
-    // Update is called once per frame
-    void Update()
+    public void InitScene()
     {
-        
-    }
-    
+        currentScene = SceneManager.GetActiveScene();
 
+        gameState.platformManager.spawnLevel1();
+        gameState.platformManager.Init_Platforms();
+
+        if (currentScene.name == "TestLevelCoen")
+        {
+            List<Vector3> coinPositions = new List<Vector3>();
+            coinPositions.Add(new Vector3(0, 1.5f, 0));
+            coinPositions.Add(new Vector3(3, 2, 0));
+            coinPositions.Add(new Vector3(6, 2, 0));
+
+            Vector3 stickerPosition = new Vector3(0, -2, 0);
+
+            gameState.collectableManager.InitCollectables(coinPositions, stickerPosition);
+        }
+    }
 }
