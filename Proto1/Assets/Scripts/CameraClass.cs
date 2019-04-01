@@ -5,6 +5,7 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody))]
 public class CameraClass : MonoBehaviour
 {
+    private GameState gameState;
 
     public Balletje Target { get; set; }
 
@@ -17,19 +18,24 @@ public class CameraClass : MonoBehaviour
     private void Start()
     {
         transform.LookAt(Target.transform.position + TargetLookAtOffset);
+        gameState = GameObject.Find("GameState").GetComponent<GameState>();
     }
 
     void FixedUpdate()
     {
-        Rigidbody Body = this.GetComponent<Rigidbody>();
+        if (gameState.RollingPhaseActive == true)
+        {
+            Debug.Log(gameState.RollingPhaseActive.ToString());
+            Rigidbody Body = this.GetComponent<Rigidbody>();
 
-        Vector3 Diff = transform.position - (Target.transform.position + TargetMovementOffset);
-        Vector3 Vel = Body.velocity;
+            Vector3 Diff = transform.position - (Target.transform.position + TargetMovementOffset);
+            Vector3 Vel = Body.velocity;
 
-        Vector3 force = (Diff * -SpringForce) - (Vel * SpringDamper);
+            Vector3 force = (Diff * -SpringForce) - (Vel * SpringDamper);
 
-        Body.AddForce(force);
+            Body.AddForce(force);
 
-        transform.LookAt(Target.transform.position + TargetLookAtOffset);
+            transform.LookAt(Target.transform.position + TargetLookAtOffset);
+        }
     }
 }
