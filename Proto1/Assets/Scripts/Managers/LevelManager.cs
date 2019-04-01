@@ -18,7 +18,7 @@ public class LevelManager : MonoBehaviour
         currentScene = SceneManager.GetActiveScene();
 
         //gameState.platformManager.spawnLevel1();
-        //gameState.platformManager.Init_Platforms();
+        gameState.platformManager.Init_Platforms();
 
         if (currentScene.name == "TestLevelCoen")
         {

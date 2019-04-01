@@ -5,7 +5,6 @@ using UnityEngine;
 public class PlayerManager : MonoBehaviour
 {
     public Balletje balletje;
-    //public CameraClass cameraClass;
     public int collectedCoins;
     public bool collectedSticker;
 
@@ -26,12 +25,5 @@ public class PlayerManager : MonoBehaviour
     void Update()
     {
 
-    }
-    public void SpawnBal()
-    {
-        
-       // cameraClass = Instantiate(cameraClass);
-       // .Target = balletje;
-      
     }
 }
