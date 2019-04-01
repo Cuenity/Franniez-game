@@ -44,7 +44,7 @@ public class PlatformManager : MonoBehaviour
             Build_Level1();
         }
 
-        
+
     }
 
     private void Build_Level1()
@@ -66,7 +66,7 @@ public class PlatformManager : MonoBehaviour
         ramp1.transform.localScale = new Vector3(1, 50, 50);
         ramp1.transform.Rotate(new Vector3(-90, 0, 0));
 
-        
+
     }
 
     private void Build_Grid1()
@@ -132,32 +132,25 @@ public class PlatformManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     internal void spawnLevel1()
     {
-       // platform = Instantiate(platform);
+        // platform = Instantiate(platform);
 
     }
     internal void Init_Platforms()
     {
-        //wat roept dit aan?
-        if (currentScene.name == "TestAnne")
+        Vector3 platform1 = new Vector3(1, 1, 0);
+        Vector3 platform2 = new Vector3(3, 5, 0);
+
+        platformPositions.Add(platform1);
+        platformPositions.Add(platform2);
+        foreach (Vector3 item in platformPositions)
         {
-            Vector3 platform1 = new Vector3(1, 1, 1);
-            Vector3 platform2 = new Vector3(3, 5, 1);
-
-            platformPositions.Add(platform1);
-            platformPositions.Add(platform2);
-            foreach (Vector3 item in platformPositions)
-            {
-                platform = Instantiate(platform);
-                platform.transform.position = item;
-                platform.transform.Rotate(new Vector3(0, 0, 2));
-
-
-            }
+            platform = Instantiate(platform);
+            platform.transform.position = item;
         }
         //spawn level in grid
     }
@@ -177,7 +170,7 @@ public class PlatformManager : MonoBehaviour
         Vector3 rampcorrection = new Vector3(0, -0.5f, -0.5f);
 
         //nu ipv hardcoded positie enzo gebruik maken van gridpoints
-        ramp1 = Instantiate(ramp, gridPunten[0][0]+rampcorrection, new Quaternion(0, 0, 0, 0));
+        ramp1 = Instantiate(ramp, gridPunten[0][0] + rampcorrection, new Quaternion(0, 0, 0, 0));
         ramp1.transform.localScale = new Vector3(1, 50, 50);
         ramp1.transform.Rotate(new Vector3(-90, 0, 0));
 
@@ -248,7 +241,7 @@ public class PlatformManager : MonoBehaviour
         //variablen
         Vector3 moveRight = new Vector3(0f, 0f, -1f);
         Vector3 moveDown = new Vector3(0f, -1f, 0f);
-        Vector3 gridStartingPoint = new Vector3(0f,0f,0f);
+        Vector3 gridStartingPoint = new Vector3(0f, 0f, 0f);
 
 
         for (int i = 0; i < 100; i++)
@@ -292,7 +285,7 @@ public class PlatformManager : MonoBehaviour
         Vector3 point4 = startingPoint + new Vector3(0f, 0.5f, -0.5f);//new Vector3(1, 1.5f, 0.5f);
 
         Vector3 rotate = new Vector3(90f, 0f, 0f);
-        
+
 
         //spawn lijn 1
         lijn1 = Instantiate(lijn, point1, new Quaternion(0f, 0f, 0f, 0f));
@@ -313,10 +306,10 @@ public class PlatformManager : MonoBehaviour
         //5midden
         Vector3[] vectors = new Vector3[5];
 
-        vectors[0] = startingPoint + new Vector3(0f, 0.5f,  0f);
+        vectors[0] = startingPoint + new Vector3(0f, 0.5f, 0f);
         vectors[1] = startingPoint + new Vector3(0f, 0.5f, -1f);
-        vectors[2] = startingPoint + new Vector3(0f, -0.5f  , 0f);
-        vectors[3] = startingPoint + new Vector3(0f, -0.5f  , -1f);
+        vectors[2] = startingPoint + new Vector3(0f, -0.5f, 0f);
+        vectors[3] = startingPoint + new Vector3(0f, -0.5f, -1f);
         vectors[4] = startingPoint + new Vector3(0, 0, -0.5f);
 
         //build dots
