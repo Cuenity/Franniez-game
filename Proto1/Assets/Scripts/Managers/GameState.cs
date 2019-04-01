@@ -1,18 +1,29 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class GameState : MonoBehaviour
 {
-    BuildingPhaseManager buildingPhaseManager;
-    RollingPhaseManager rollingPhaseManager;
+    public BuildingPhaseManager buildingPhaseManager;
+    public RollingPhaseManager rollingPhaseManager;
     IOManager IOManager;
     InputManager InputManager;
     UIManager UIManager;
     LevelManager levelManager;
-    CollectableManager collectableManager;
-    private bool buildingPhaseActive;
-    private bool rollingPhaseActive;
-    
+    public PlayerManager playerManager;
+    public PlatformManager platformManager;
+    public CollectableManager collectableManager;
+    private bool buildingPhaseActive = true;
+    private bool rollingPhaseActive = false;
+    public CameraClass cameraClass;
+    Scene currentScene;
+    public GridManager gridManager;
+
+    //private CameraClass camera;
+
+    public GameObject fixCamera;
+    private Camera cameraReal;
+
 
     public bool BuildingPhaseActive
     {
@@ -62,14 +73,17 @@ public class GameState : MonoBehaviour
         buildingPhaseManager = gameObject.AddComponent<BuildingPhaseManager>();
         rollingPhaseManager = gameObject.AddComponent<RollingPhaseManager>();
         collectableManager = gameObject.AddComponent<CollectableManager>();
-
         IOManager = gameObject.AddComponent<IOManager>();
         InputManager = gameObject.AddComponent<InputManager>();
         UIManager = gameObject.AddComponent<UIManager>();
         levelManager = gameObject.AddComponent<LevelManager>();
+        playerManager = gameObject.AddComponent<PlayerManager>();
+        platformManager = gameObject.AddComponent<PlatformManager>();
+        gridManager = gameObject.AddComponent<GridManager>();
+        cameraClass = Instantiate(cameraClass);
+
+        levelManager.InitScene();
     }
-
-
 
     // Start is called before the first frame update
     void Start()
@@ -83,5 +97,5 @@ public class GameState : MonoBehaviour
     {
 
     }
-    
+
 }

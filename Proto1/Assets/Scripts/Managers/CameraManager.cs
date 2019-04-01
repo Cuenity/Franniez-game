@@ -12,7 +12,7 @@ public class CameraManager : MonoBehaviour
     }
     void Start()
     {
-        SpawnCamera();
+       
     }
 
     // Update is called once per frame
@@ -20,12 +20,7 @@ public class CameraManager : MonoBehaviour
     {
 
     }
-    public void SpawnCamera()
-    {
-        //camera = Instantiate(camera);
-        cameraclass = gameObject.AddComponent<CameraClass>(); 
-
-    }
+  
 
 
 }
