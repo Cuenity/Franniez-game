@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerManager : MonoBehaviour
 {
     public Balletje balletje;
-    public CameraManager cameraManager;
+    public CameraClass cameraClass;
     public int collectedCoins;
     // Start is called before the first frame update
     private void Awake()
@@ -27,6 +27,8 @@ public class PlayerManager : MonoBehaviour
     {
         balletje = Instantiate(balletje);
         balletje.transform.position = new Vector3(1, 3, 1);
-        cameraManager = gameObject.AddComponent<CameraManager>();
+        cameraClass = Instantiate(cameraClass);
+        cameraClass.Target = balletje;
+        cameraClass.transform.position = new Vector3(10, 1, 1);
     }
 }

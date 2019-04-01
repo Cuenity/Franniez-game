@@ -23,7 +23,7 @@ public class CameraManager : MonoBehaviour
     public void SpawnCamera()
     {
         //camera = Instantiate(camera);
-        cameraclass = gameObject.AddComponent<CameraClass>(); 
+       // cameraclass = gameObject.AddComponent<CameraClass>(); 
 
     }
 

@@ -98,7 +98,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Target: {fileID: 5237722401397529735, guid: 286c6364973fb564e93ab31e3f148acf, type: 3}
   TargetMovementOffset: {x: 0, y: 0, z: 0}
-  TargetLookAtOffset: {x: 5, y: 0, z: 0}
+  TargetLookAtOffset: {x: 10, y: 0, z: 0}
   BehindPlayerPosition: {x: 0, y: 0, z: 0}
   SpringForce: 10
   SpringDamper: 10
