@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class GameState : MonoBehaviour
@@ -12,6 +13,8 @@ public class GameState : MonoBehaviour
     CollectableManager collectableManager;
     private bool buildingPhaseActive;
     private bool rollingPhaseActive;
+
+    Scene currentScene;
     
 
     public bool BuildingPhaseActive
@@ -67,9 +70,26 @@ public class GameState : MonoBehaviour
         InputManager = gameObject.AddComponent<InputManager>();
         UIManager = gameObject.AddComponent<UIManager>();
         levelManager = gameObject.AddComponent<LevelManager>();
+
+        SceneInit();
     }
 
+    void SceneInit()
+    {
+        currentScene = SceneManager.GetActiveScene();
 
+        if (currentScene.name == "TestLevelCoen")
+        {
+            List<Vector3> coinPositions = new List<Vector3>();
+            coinPositions.Add(new Vector3(0, 1.5f, 0));
+            coinPositions.Add(new Vector3(3, 2, 0));
+            coinPositions.Add(new Vector3(6, 2, 0));
+
+            Vector3 stickerPosition = new Vector3(0, -2, 0);
+
+            collectableManager.InitCollectables(coinPositions, stickerPosition);
+        }
+    }
 
     // Start is called before the first frame update
     void Start()
