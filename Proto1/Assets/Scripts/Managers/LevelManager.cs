@@ -33,7 +33,7 @@ public class LevelManager : MonoBehaviour
         }
         if(currentScene.name == "TestLevel1")
         {
-            gameState.gridManager.Build_Grid1();
+            gameState.gridManager.Build_Grid1_Without_Visuals();
             gameState.platformManager.Build_Level1();
         }
     }

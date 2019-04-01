@@ -52,4 +52,27 @@ public class GridManager : MonoBehaviour
         gridSquares.Add(gridSquare1.transform.position);
         
     }
+
+    internal void Build_Grid1_Without_Visuals()
+    {
+        //variablen
+        Vector3 moveRight = new Vector3(1f, 0f, 0f);
+        Vector3 moveDown = new Vector3(0f, -1f, 0f);
+        Vector3 gridStartingPoint = new Vector3(-7.5f, 7f, 0f);
+
+
+        for (int i = 0; i < 11; i++)
+        {
+            gridStartingPoint.x = -7.5f;
+            gridStartingPoint = gridStartingPoint + moveDown;
+
+            for (int i2 = 0; i2 < 15; i2++)
+            {
+                gridSquares.Add(gridStartingPoint);
+                //place 2 the left
+                gridStartingPoint = gridStartingPoint + moveRight;
+            }
+        }
+    }
+
 }
