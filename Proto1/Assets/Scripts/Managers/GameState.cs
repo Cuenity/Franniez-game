@@ -40,7 +40,7 @@ public class GameState : MonoBehaviour
             }
             else
             {
-
+                UIManager.RemoveInventoryButtons();
             }
         }
     }
