@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class Coin : MonoBehaviour
 {
+
+    public delegate void ClickAction();
+    public static event ClickAction PickedCoin;
+
     GameState gameState;
     PlayerManager playerManager;
     
@@ -22,5 +26,6 @@ public class Coin : MonoBehaviour
     {
         playerManager.collectedCoins++;
         Destroy(gameObject);
+        PickedCoin?.Invoke();
     }
 }

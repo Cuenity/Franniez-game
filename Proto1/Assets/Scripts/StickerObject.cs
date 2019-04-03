@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class StickerObject : MonoBehaviour
 {
+    public delegate void ClickAction();
+    public static event ClickAction PickedSticker;
+
     GameState gameState;
     PlayerManager playerManager;
 

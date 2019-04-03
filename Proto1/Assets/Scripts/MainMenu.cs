@@ -8,6 +8,7 @@ public class MainMenu : MonoBehaviour
     // Deze moeten uiteindelijk uit de player preference komen
     public string LocalizationDutch = "localizedText_nl.json";
     public string LocalizationEnglish = "localizedText_en.json";
+    private Player player;
 
     // Start is called before the first frame update
 
@@ -15,9 +16,6 @@ public class MainMenu : MonoBehaviour
     {
         LocalizationManager localizationManager = new LocalizationManager();
         localizationManager.LoadLocalizedText(LocalizationDutch);
-        DataController dataController = new DataController();
-        dataController.LoadPlayerData();
-        Debug.Log(dataController.player.coins);
     }
 
     public void StartGame()
