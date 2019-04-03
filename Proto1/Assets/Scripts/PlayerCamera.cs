@@ -18,13 +18,15 @@ public class PlayerCamera : MonoBehaviour
     public float dragSpeed = 2;
     private Vector3 dragOrigin;
     Camera camera;
+    private void Awake()
+    {
+        gameState = GameState.Instance;
+        camera = this.GetComponent<Camera>();
+        this.transform.position = (new Vector3(0, 5, -10));
+    }
     private void Start()
     {
         transform.LookAt(Target.transform.position + TargetLookAtOffset);
-        gameState = GameObject.Find("GameState").GetComponent<GameState>();
-        camera= this.GetComponent<Camera>();
-
-        
     }
 
     void FixedUpdate()
@@ -50,14 +52,14 @@ public class PlayerCamera : MonoBehaviour
                 //zoomin
                 Vector3 cameraposition = camera.transform.position;
                 if (cameraposition.x <= -5)
-                   camera.transform.position = new Vector3(cameraposition.x + 1, cameraposition.y, cameraposition.z);
+                    camera.transform.position = new Vector3(cameraposition.x + 1, cameraposition.y, cameraposition.z);
             }
             else if (mousedata.y < 0)
             {
                 //zoomout
-                Vector3 cameraposition =camera.transform.position;
+                Vector3 cameraposition = camera.transform.position;
                 if (cameraposition.x >= -20) //level groote
-                   camera.transform.position = new Vector3(cameraposition.x - 1, cameraposition.y, cameraposition.z);
+                    camera.transform.position = new Vector3(cameraposition.x - 1, cameraposition.y, cameraposition.z);
             }
         }
         Transfrom_YZ();
@@ -80,10 +82,10 @@ public class PlayerCamera : MonoBehaviour
         Vector3 diffrence = new Vector3(0, dragend.y - dragOrigin.y, dragend.x - dragOrigin.x);
 
 
-       // Vector3 move = new Vector3(diffrence.x * dragSpeed, diffrence.y * dragSpeed, 0);
-        Vector3 move2 = new Vector3( 0, diffrence.x * dragSpeed, diffrence.y * dragSpeed);
+        // Vector3 move = new Vector3(diffrence.x * dragSpeed, diffrence.y * dragSpeed, 0);
+        Vector3 move2 = new Vector3(0, diffrence.x * dragSpeed, diffrence.y * dragSpeed);
 
-       // transform.Translate(move, Space.World);
+        // transform.Translate(move, Space.World);
         transform.Translate(move2, Space.World);
     }
 
