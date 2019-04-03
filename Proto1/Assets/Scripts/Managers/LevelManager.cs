@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -7,6 +8,34 @@ public class LevelManager : MonoBehaviour
 {
     GameState gameState;
     Scene currentScene;
+
+
+    //ik wil levels uit een textbestand kunnen opslaan en uitlezen ga ik proberen hier
+
+    private void ReadLevelsFromText(string levelName)
+    {
+        string filePath = Path.Combine(Application.streamingAssetsPath, levelName);
+
+        if (File.Exists(filePath))
+        {
+            string dataAsJSON = File.ReadAllText(filePath);
+            LocalizationData loadedData = JsonUtility.FromJson<LocalizationData>(dataAsJSON);
+
+            
+
+            //Debug.Log("Data is geladen.");
+        }
+        else
+        {
+            //moet file createn
+            Debug.LogError("Cannot find file!");
+        }
+    }
+
+    private void SaveLevelToText()
+    {
+
+    }
    
     private void Awake()
     {
@@ -34,6 +63,7 @@ public class LevelManager : MonoBehaviour
         }
         if(currentScene.name == "TestLevel1")
         {
+            ReadLevelsFromText("Level1.json");
             gameState.gridManager.width = 11;
             gameState.gridManager.heigth = 12;
             gameState.gridManager.Build_Grid1_Without_Visuals();
