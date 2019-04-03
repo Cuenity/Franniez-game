@@ -10,7 +10,8 @@ public class LevelManager : MonoBehaviour
    
     private void Awake()
     {
-        gameState = gameState = GameObject.Find("GameState").GetComponent<GameState>();
+        gameState = GameState.Instance;
+        //gameState = GameObject.Find("GameState").GetComponent<GameState>();
     }
 
     public void InitScene()

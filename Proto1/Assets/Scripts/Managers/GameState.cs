@@ -24,6 +24,14 @@ public class GameState : MonoBehaviour
     public GameObject fixCamera;
     private Camera cameraReal;
 
+    private static GameState instance;
+    public static GameState Instance
+    {
+        get
+        {
+            return instance;
+        }
+    }
 
     public bool BuildingPhaseActive
     {
@@ -69,6 +77,8 @@ public class GameState : MonoBehaviour
     void Awake()
     {
         DontDestroyOnLoad(this);
+
+        instance = this;
 
         buildingPhaseManager = gameObject.AddComponent<BuildingPhaseManager>();
         rollingPhaseManager = gameObject.AddComponent<RollingPhaseManager>();
