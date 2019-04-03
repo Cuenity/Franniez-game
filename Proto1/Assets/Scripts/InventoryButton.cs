@@ -1,31 +1,40 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.UI;
+﻿using UnityEngine;
+
+
 
 [RequireComponent(typeof(GameObject))]
 public class InventoryButton : MonoBehaviour
 {
-    //public Button buttonComponent;
-    //public Text nameLabel;
-    //public Image iconImage;
-    //public Text priceText;
-    
-    void Start()
-    {
-        //buttonComponent.onClick.AddListener(HandleClick);
-    }
-
-    public void Setup()
-    {
-        //nameLabel.text = "blieb";
-        // iconImage.sprite = item.icon;
-        //priceText.text = item.price.ToString();
-        //scrollList = currentScrollList;
-
-    }
+    public GameObject platform;
 
     public void HandleClick()
     {
+
+    }
+
+    public void Update()
+    {
+        //if (Input.GetMouseButton(0) && spawn != null)
+        //{
+        //    var pos = Input.mousePosition;
+        //    pos.z = -Camera.main.transform.position.z;
+        //    spawn.transform.position = Camera.main.ScreenToWorldPoint(pos);
+        //}
+
+
+        //if (platform == null)
+        //{
+        //    Instantiate(platform);
+        //}
+
+        //if (Input.GetMouseButtonDown(0))
+        //{
+        //    Instantiate(platform);
+        //}
+
+        //if (Input.GetMouseButton(0) && platform != null)
+        //{
+        //    platform.transform.position = Input.mousePosition;
+        //}
     }
 }

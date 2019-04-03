@@ -36,8 +36,10 @@ public class ButtonManager : MonoBehaviour
         }
     }
 
-    public void InventoryButton(Platform platform)
+    public void InventoryButton(GameObject platformSquare)
     {
-        Instantiate(platform);
+        //Instantiate(platformSquare);
+        //var pos = Input.mousePosition;
+
     }
 }

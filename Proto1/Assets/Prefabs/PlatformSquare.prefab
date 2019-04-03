@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 4581323721576774966}
   - component: {fileID: 4581323721577742326}
   - component: {fileID: 5005420362235525775}
+  - component: {fileID: 3856240486077131770}
   m_Layer: 0
   m_Name: PlatformSquare
   m_TagString: Untagged
@@ -92,3 +93,16 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 14
   m_Mesh: {fileID: 4300000, guid: 6f906a2e275b37c48ba03b91aa118416, type: 3}
+--- !u!114 &3856240486077131770
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4581323721575538998}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf1247cb0ac581a4fab833e88a8f2b29, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  platform: {fileID: 4581323721575538998}

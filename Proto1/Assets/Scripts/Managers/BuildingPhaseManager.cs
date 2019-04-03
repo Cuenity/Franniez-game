@@ -23,6 +23,6 @@ public class BuildingPhaseManager : MonoBehaviour
 
     public void Init() {
         Debug.Log("spawn building UI");
-        gameState.UIManager.InventoryButtons(5); // InventoryButtons moet meegeven welke platformen en hoeveel van elk, elk verschillend type krijgt één knop met daarin een platform (als afbeelding of wat dan ook) met het aantal weergegeven.
+        gameState.UIManager.InventoryButtons(1); // InventoryButtons moet meegeven welke platformen en hoeveel van elk, elk verschillend type krijgt één knop met daarin een platform (als afbeelding of wat dan ook) met het aantal weergegeven.
     }
 }
