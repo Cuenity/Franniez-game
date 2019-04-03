@@ -4,9 +4,7 @@ MonoImporter:
   externalObjects: {}
   serializedVersion: 2
   defaultReferences:
-  - balletje: {fileID: 5237722401397529735, guid: 286c6364973fb564e93ab31e3f148acf,
-      type: 3}
-  - cameraClass: {fileID: 1191019344074348885, guid: 61b591db70fb0b54b82d0d0c243f3b2f,
+  - player: {fileID: 5237722401397529735, guid: 286c6364973fb564e93ab31e3f148acf,
       type: 3}
   executionOrder: 0
   icon: {instanceID: 0}

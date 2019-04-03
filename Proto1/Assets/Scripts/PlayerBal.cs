@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 [RequireComponent(typeof(Rigidbody))]
-public class Balletje : MonoBehaviour
+public class PlayerBal : MonoBehaviour
 {
     GameState gameState;
     // Start is called before the first frame update
@@ -23,6 +23,10 @@ public class Balletje : MonoBehaviour
         if (gameState.RollingPhaseActive)
         {
             this.GetComponent<Rigidbody>().useGravity= true;
+        }
+        else
+        {
+            this.GetComponent<Rigidbody>().useGravity = false;
         }
             
     }

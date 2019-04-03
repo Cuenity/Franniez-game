@@ -8,7 +8,7 @@ public class PlayerCamera : MonoBehaviour
 {
     private GameState gameState;
 
-    public Balletje Target { get; set; }
+    public PlayerBal Target { get; set; }
 
     public Vector3 TargetMovementOffset;
     public Vector3 TargetLookAtOffset;
@@ -51,15 +51,15 @@ public class PlayerCamera : MonoBehaviour
             {
                 //zoomin
                 Vector3 cameraposition = camera.transform.position;
-                if (cameraposition.x <= -5)
-                    camera.transform.position = new Vector3(cameraposition.x + 1, cameraposition.y, cameraposition.z);
+                if (cameraposition.z <= -10)
+                    camera.transform.position = new Vector3(cameraposition.x , cameraposition.y, cameraposition.z+1);
             }
             else if (mousedata.y < 0)
             {
                 //zoomout
                 Vector3 cameraposition = camera.transform.position;
-                if (cameraposition.x >= -20) //level groote
-                    camera.transform.position = new Vector3(cameraposition.x - 1, cameraposition.y, cameraposition.z);
+                if (cameraposition.z >= -30) //level groote
+                    camera.transform.position = new Vector3(cameraposition.x, cameraposition.y, cameraposition.z-1);
             }
         }
         Transfrom_YZ();
@@ -79,14 +79,14 @@ public class PlayerCamera : MonoBehaviour
         if (!Input.GetMouseButton(0)) return;
 
         Vector3 dragend = camera.ScreenToViewportPoint(Input.mousePosition);
-        Vector3 diffrence = new Vector3(0, dragend.y - dragOrigin.y, dragend.x - dragOrigin.x);
+        Vector3 diffrence = new Vector3(dragend.x - dragOrigin.x, dragend.y - dragOrigin.y, 0 );
 
 
-        // Vector3 move = new Vector3(diffrence.x * dragSpeed, diffrence.y * dragSpeed, 0);
-        Vector3 move2 = new Vector3(0, diffrence.x * dragSpeed, diffrence.y * dragSpeed);
+        
+        Vector3 move = new Vector3(diffrence.x * dragSpeed, diffrence.y * dragSpeed,0);
 
         // transform.Translate(move, Space.World);
-        transform.Translate(move2, Space.World);
+        transform.Translate(move, Space.World);
     }
 
 }

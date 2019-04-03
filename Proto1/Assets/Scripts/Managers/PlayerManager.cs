@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerManager : MonoBehaviour
 {
-    public Balletje balletje;
+    public PlayerBal player;
     public int collectedCoins;
     public bool collectedSticker;
     GameState gameState;
@@ -15,9 +15,9 @@ public class PlayerManager : MonoBehaviour
     }
     void Start()
     {
-        balletje = Instantiate(balletje);
-        balletje.transform.position = new Vector3(1, 3, 0);
-        gameState.playerCamera.Target = balletje;
+        player = Instantiate(player);
+        player.transform.position = new Vector3(1, 3, 0);
+        gameState.playerCamera.Target = player;
     }
 
     // Update is called once per frame
