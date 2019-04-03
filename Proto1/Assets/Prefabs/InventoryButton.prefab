@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 434118350964790186}
   - component: {fileID: 4106794643439255396}
   - component: {fileID: 1064841267642665712}
+  - component: {fileID: 8772989674176887729}
   m_Layer: 5
   m_Name: InventoryButton
   m_TagString: InventoryButton
@@ -119,12 +120,13 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 4418830896463924126}
-        m_MethodName: 
-        m_Mode: 1
+      - m_Target: {fileID: 1064841267642665712}
+        m_MethodName: InventoryButton
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgument: {fileID: 4581323721575538998, guid: af6585d6aa968f246804e97579948daa,
+            type: 3}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -144,6 +146,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d9dfa645f4a33d44fae1164e15c60cf7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  platform: {fileID: 4581323721575538998, guid: af6585d6aa968f246804e97579948daa,
+    type: 3}
 --- !u!114 &1064841267642665712
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -156,6 +160,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45d50a01dcef27d4f9851899cc694e70, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &8772989674176887729
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4418830896463924126}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf1247cb0ac581a4fab833e88a8f2b29, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  platform: {fileID: 4581323721575538998, guid: af6585d6aa968f246804e97579948daa,
+    type: 3}
 --- !u!1 &5519461846180486255
 GameObject:
   m_ObjectHideFlags: 0
