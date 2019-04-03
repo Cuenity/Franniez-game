@@ -2,8 +2,8 @@
 using System.Collections;
 
 [System.Serializable]
-public class Sticker
+public enum Language 
 {
 
-    public string color;
+    Dutch, English, Spanish
 }

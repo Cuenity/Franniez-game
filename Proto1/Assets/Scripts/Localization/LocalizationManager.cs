@@ -7,7 +7,6 @@ public class LocalizationManager : MonoBehaviour
 {
     public static LocalizationManager instance;
 
-    public enum Language { Dutch, English, Spanish };
     private Dictionary<string, string> localizedText;
     //private Language Language;
     private Language LanguageChoice;
