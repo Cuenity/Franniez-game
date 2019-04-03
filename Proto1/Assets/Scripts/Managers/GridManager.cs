@@ -8,6 +8,10 @@ public class GridManager : MonoBehaviour
     public GameObject gridSquare;
     public List<Vector3> gridSquares = new List<Vector3>();
 
+    public int width ;
+    public int heigth;
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -61,12 +65,12 @@ public class GridManager : MonoBehaviour
         Vector3 gridStartingPoint = new Vector3(-7.5f, 7f, 0f);
 
 
-        for (int i = 0; i < 11; i++)
+        for (int i = 0; i < heigth; i++)
         {
             gridStartingPoint.x = -7.5f;
             gridStartingPoint = gridStartingPoint + moveDown;
 
-            for (int i2 = 0; i2 < 15; i2++)
+            for (int i2 = 0; i2 < width; i2++)
             {
                 gridSquares.Add(gridStartingPoint);
                 //place 2 the left
