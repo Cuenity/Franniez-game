@@ -69,7 +69,6 @@ public class LocalizedTextEditor : EditorWindow
 
     private void SaveGameData()
     {
-        //string filePath = EditorUtility.SaveFilePanel("Save localization data file", Application.streamingAssetsPath, "", "json");
         if (!string.IsNullOrEmpty(FilePath))
         {
             string dataAsJson = JsonUtility.ToJson(localizationData);
