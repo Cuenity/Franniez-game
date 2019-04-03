@@ -15,11 +15,15 @@ public class MainMenu : MonoBehaviour
     {
         LocalizationManager localizationManager = new LocalizationManager();
         localizationManager.LoadLocalizedText(LocalizationDutch);
+        DataController dataController = new DataController();
+        dataController.LoadPlayerData();
+        Debug.Log(dataController.player.coins);
     }
 
     public void StartGame()
     {
         Debug.Log("Start Game");
+        
 
         //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
