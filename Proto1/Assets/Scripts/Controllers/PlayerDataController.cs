@@ -2,26 +2,34 @@
 using System.Collections;
 using System.IO;
 
-public class DataController : MonoBehaviour
+public class PlayerDataController : MonoBehaviour
 {
-    public static DataController instance;
-    public Player player;
+    public static PlayerDataController instance;
+
+    public Player player
+    {
+        get { return player; }
+        set
+        {   player = value;
+            SavePlayerData();
+        }
+    }
     private string fileName = "PlayerData.json";
     private string filePath;
 
     // Use this for initialization
-    public void Awake()
+    private void Awake()
     {
         if (instance == null)
         {
             instance = this;
         }
-        else if (this != null)
+        else if (this != null && instance != null)
         {
             Destroy(gameObject);
         }
 
-        DontDestroyOnLoad(gameObject);
+        DontDestroyOnLoad(this.gameObject);
     }
 
 
@@ -47,5 +55,15 @@ public class DataController : MonoBehaviour
             string dataAsJson = JsonUtility.ToJson(player);
             File.WriteAllText(filePath, dataAsJson);
         }
+    }
+
+    public Player GetPlayer()
+    {
+        return player;
+    }
+
+    public void SetPlayer(Player setPlayer)
+    {
+        player = setPlayer;
     }
 }
