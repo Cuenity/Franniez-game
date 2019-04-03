@@ -3,7 +3,16 @@ guid: 3fcb342646f49774e832e195962b5af1
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - buildingPhaseManager: {instanceID: 0}
+  - rollingPhaseManager: {instanceID: 0}
+  - UIManager: {instanceID: 0}
+  - playerManager: {instanceID: 0}
+  - platformManager: {instanceID: 0}
+  - collectableManager: {instanceID: 0}
+  - playerCamera: {fileID: 1191019344074348885, guid: 61b591db70fb0b54b82d0d0c243f3b2f,
+      type: 3}
+  - gridManager: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

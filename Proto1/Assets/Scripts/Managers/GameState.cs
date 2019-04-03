@@ -15,14 +15,9 @@ public class GameState : MonoBehaviour
     public CollectableManager collectableManager;
     private bool buildingPhaseActive = true;
     private bool rollingPhaseActive = false;
-    public PlayerCamera cameraClass;
+    public PlayerCamera playerCamera;
     Scene currentScene;
     public GridManager gridManager;
-
-    //private CameraClass camera;
-
-    public GameObject fixCamera;
-    private Camera cameraReal;
 
     private static GameState instance;
     public static GameState Instance
@@ -90,7 +85,7 @@ public class GameState : MonoBehaviour
         playerManager = gameObject.AddComponent<PlayerManager>();
         platformManager = gameObject.AddComponent<PlatformManager>();
         gridManager = gameObject.AddComponent<GridManager>();
-        cameraClass = Instantiate(cameraClass);
+        playerCamera = Instantiate(playerCamera);
 
         levelManager.InitScene();
     }
