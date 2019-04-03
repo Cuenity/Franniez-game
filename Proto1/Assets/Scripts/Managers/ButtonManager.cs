@@ -17,9 +17,15 @@ public class ButtonManager : MonoBehaviour
 
     public void StartButton()
     {
-        Debug.Log("f");
-
-        gameState.RollingPhaseActive = true;
-        gameState.BuildingPhaseActive = false;
+        if (gameState.BuildingPhaseActive == true)
+        {
+            gameState.RollingPhaseActive = true;
+            gameState.BuildingPhaseActive = false;
+        } 
+        else if (gameState.rollingPhaseManager == true)
+        {
+            gameState.RollingPhaseActive = false;
+            gameState.BuildingPhaseActive = true;
+        } 
     }
 }

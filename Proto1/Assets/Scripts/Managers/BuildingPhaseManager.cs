@@ -4,13 +4,18 @@ using UnityEngine;
 
 public class BuildingPhaseManager : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    GameState gameState;
+
+    private void Awake()
     {
-        
+        gameState = GameObject.Find("GameState").GetComponent<GameState>();
     }
 
-    // Update is called once per frame
+    void Start()
+    {
+         
+    }
+    
     void Update()
     {
         
@@ -18,5 +23,6 @@ public class BuildingPhaseManager : MonoBehaviour
 
     public void Init() {
         Debug.Log("spawn building UI");
+        gameState.UIManager.InventoryButtons(5); // InventoryButtons moet meegeven welke platformen en hoeveel van elk, elk verschillend type krijgt één knop met daarin een platform (als afbeelding of wat dan ook) met het aantal weergegeven.
     }
 }

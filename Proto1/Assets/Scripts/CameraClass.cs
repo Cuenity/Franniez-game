@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(Rigidbody))]
+
+[RequireComponent(typeof(Camera))]
 public class CameraClass : MonoBehaviour
 {
     private GameState gameState;
@@ -27,7 +28,6 @@ public class CameraClass : MonoBehaviour
     {
         if (gameState.RollingPhaseActive == true)
         {
-            Debug.Log(gameState.RollingPhaseActive.ToString());
             Rigidbody Body = this.GetComponent<Rigidbody>();
 
             Vector3 Diff = transform.position - (Target.transform.position + TargetMovementOffset);
@@ -57,19 +57,30 @@ public class CameraClass : MonoBehaviour
                     gameState.cameraClass.transform.position = new Vector3(cameraposition.x - 1, cameraposition.y, cameraposition.z);
             }
         }
+        //Transfrom_YZ();
 
-        //if (Input.GetMouseButtonDown(0))
-        //{
-        //    dragOrigin = Input.mousePosition;
-        //    return;
-        //}
 
-        //if (!Input.GetMouseButton(0)) return;
-        //Vector3 pos = new Vector3(gameState.cameraClass.transform.position.x, Input.mousePosition.y - dragOrigin.y, Input.mousePosition.z - dragOrigin.z);
-        //Vector3 move = new Vector3(pos.x * dragSpeed, 0, pos.y * dragSpeed);
-
-        //transform.Translate(move, Space.World);
     }
+
+    //private void Transfrom_YZ()
+    //{
+    //    if (Input.GetMouseButtonDown(0))
+    //    {
+    //        Debug.Log(Camera.main.ScreenToViewportPoint(Input.mousePosition));
+    //        dragOrigin = Camera.main.ScreenToViewportPoint(Input.mousePosition);
+    //        return;
+    //    }
+
+    //    if (!Input.GetMouseButton(0)) return;
+
+    //    Vector3 dragend = Camera.main.ScreenToViewportPoint(Input.mousePosition);
+    //    Vector3 diffrence = new Vector3(0, dragend.y - dragOrigin.y, dragend.x - dragOrigin.x);
+
+
+    //    Vector3 move = new Vector3(diffrence.x * dragSpeed, diffrence.y * dragSpeed,0);
+
+    //    transform.Translate(move, Space.World);
+    //}
 
 }
 

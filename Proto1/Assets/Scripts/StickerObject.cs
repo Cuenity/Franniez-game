@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Sticker : MonoBehaviour
+public class StickerObject : MonoBehaviour
 {
     GameState gameState;
     PlayerManager playerManager;

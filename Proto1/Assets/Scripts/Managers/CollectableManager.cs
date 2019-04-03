@@ -5,7 +5,7 @@ using UnityEngine;
 public class CollectableManager : MonoBehaviour
 {
     public Coin coin;
-    public Sticker sticker;
+    public StickerObject sticker;
     List<Vector3> coinPositions;
     Vector3 stickerPosition;
 
@@ -41,7 +41,6 @@ public class CollectableManager : MonoBehaviour
 
     public void InitSticker()
     {
-
         sticker = Instantiate(sticker);
         sticker.transform.position = stickerPosition;
     }

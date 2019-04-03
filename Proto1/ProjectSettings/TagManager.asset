@@ -8,6 +8,8 @@ TagManager:
   - Kill
   - Pick-Up
   - Cannon
+  - UICanvas
+  - InventoryButton
   layers:
   - Default
   - TransparentFX
