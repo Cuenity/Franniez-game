@@ -15,7 +15,7 @@ public class GameState : MonoBehaviour
     public CollectableManager collectableManager;
     private bool buildingPhaseActive = true;
     private bool rollingPhaseActive = false;
-    public CameraClass cameraClass;
+    public PlayerCamera cameraClass;
     Scene currentScene;
     public GridManager gridManager;
 
