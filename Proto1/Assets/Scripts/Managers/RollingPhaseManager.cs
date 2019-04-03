@@ -49,12 +49,14 @@ public class RollingPhaseManager : MonoBehaviour
     {
         Coin.PickedCoin += AddCoin;
         StickerObject.PickedSticker += AddSticker;
+        Finish.Finished += Finished;
     }
 
     private void OnDisable()
     {
         Coin.PickedCoin -= AddCoin;
-        StickerObject.PickedSticker -= AddSticker;  
+        StickerObject.PickedSticker -= AddSticker;
+        Finish.Finished -= Finished;
     }
 
     private void AddSticker()
