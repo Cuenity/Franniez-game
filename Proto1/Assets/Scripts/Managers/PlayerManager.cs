@@ -4,21 +4,20 @@ using UnityEngine;
 
 public class PlayerManager : MonoBehaviour
 {
-    public Balletje balletje;
+    public PlayerBal player;
     public int collectedCoins;
     public bool collectedSticker;
-
+    GameState gameState;
     // Start is called before the first frame update
     private void Awake()
     {
-
+        gameState = GameState.Instance;
     }
     void Start()
     {
-        balletje = Instantiate(balletje);
-        balletje.transform.position = new Vector3(1, 3, 0);
-        PlayerCamera camera = GameObject.Find("Camera(Clone)").GetComponent<PlayerCamera>();
-        camera.Target = balletje;
+        player = Instantiate(player);
+        player.transform.position = new Vector3(1, 3, 0);
+        gameState.playerCamera.Target = player;
     }
 
     // Update is called once per frame

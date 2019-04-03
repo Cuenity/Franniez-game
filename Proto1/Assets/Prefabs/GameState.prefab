@@ -43,5 +43,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3fcb342646f49774e832e195962b5af1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cameraClass: {fileID: 1191019344074348885, guid: 61b591db70fb0b54b82d0d0c243f3b2f,
+  buildingPhaseManager: {fileID: 0}
+  rollingPhaseManager: {fileID: 0}
+  UIManager: {fileID: 0}
+  playerManager: {fileID: 0}
+  platformManager: {fileID: 0}
+  collectableManager: {fileID: 0}
+  playerCamera: {fileID: 1191019344074348885, guid: 61b591db70fb0b54b82d0d0c243f3b2f,
     type: 3}
+  gridManager: {fileID: 0}

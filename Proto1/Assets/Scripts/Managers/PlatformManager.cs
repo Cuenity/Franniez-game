@@ -37,7 +37,7 @@ public class PlatformManager : MonoBehaviour
     {
         platformPositions = new List<Vector3>();
 
-        gameState = gameState = GameObject.Find("GameState").GetComponent<GameState>();
+        gameState = GameState.Instance;
     }
     void Start()
     {
@@ -50,7 +50,7 @@ public class PlatformManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        //snaptest code
         if (currentScene.name == "TestLevel1")
         {
             if (Input.GetKeyDown(KeyCode.Q))
@@ -90,51 +90,120 @@ public class PlatformManager : MonoBehaviour
         }
     }
 
-    internal void Build_Level1()
+    internal void BuildLevelFromText(LevelPlatformen levelPlatformen)
     {
+        Vector3 rampAdjustment = new Vector3(0.5f, 0f, 0f);
+        for (int i = 0; i < levelPlatformen.tileList.Length; i++)
+        {
+            if (levelPlatformen.tileList[i] == 0)
+            {
+                
+            }
+            else if (levelPlatformen.tileList[i] == 1)
+            {
+                ramp.SpawnRamp(gameState.gridManager.gridSquares[i]);
+            }
+            else if (levelPlatformen.tileList[i] == 2)
+            {
+                ramp.SpawnRampReversed(gameState.gridManager.gridSquares[i]);
+            }
+            else if (levelPlatformen.tileList[i] == 3)
+            {
+                
+                PlatformSquare = Instantiate(PlatformSquare, gameState.gridManager.gridSquares[i] + rampAdjustment, new Quaternion(0, 0, 0, 0));
+                PlatformSquare.transform.Rotate(new Vector3(-90f, -90f, 0));
+            }
+        }
+    }
+
+    internal void Build_Level1(LevelPlatformen levelPlatformen)
+    {
+
+        //deze methode maakt hardcoded een level dit is voor testing doeleinden opgezet
+        //later moeten levels gebouwd worden door middel van drag en drop en dit opgeslagen in een txt file
         List<int> RampSpots = new List<int>();
         List<int> PlatformSpots = new List<int>();
         List<int> RampSpotsReversed = new List<int>();
 
         Vector3 rampAdjustment = new Vector3(0.5f, 0f, 0f);
 
+        //levelPlatformen.tileList[12] = 1;
+        //betekent op tile 12 staat een ramp
+        //1 is ramp
+        //2 is rampreversed
+        //3 is platform
+
+
+
         //bouw stom lijstje
         RampSpots.Add(12);
+        levelPlatformen.tileList[12] = 1;
         RampSpots.Add(24);
+        levelPlatformen.tileList[24] = 1;
         RampSpots.Add(66);
+        levelPlatformen.tileList[66] = 1;
 
         //bouw stom lijst voor ramps andere kant op
         RampSpotsReversed.Add(42);
+        levelPlatformen.tileList[42] = 2;
         RampSpotsReversed.Add(52);
+        levelPlatformen.tileList[52] = 2;
         RampSpotsReversed.Add(57);
+        levelPlatformen.tileList[57] = 2;
         RampSpotsReversed.Add(97);
+        levelPlatformen.tileList[97] = 2;
         RampSpotsReversed.Add(107);
+        levelPlatformen.tileList[107] = 2;
 
         //bouw stom lijstje
         PlatformSpots.Add(34);
+        levelPlatformen.tileList[34] = 3;
         PlatformSpots.Add(35);
+        levelPlatformen.tileList[35] = 3;
         PlatformSpots.Add(36);
+        levelPlatformen.tileList[36] = 3;
         PlatformSpots.Add(37);
+        levelPlatformen.tileList[37] = 3;
         PlatformSpots.Add(38);
+        levelPlatformen.tileList[38] = 3;
         PlatformSpots.Add(39);
+        levelPlatformen.tileList[39] = 3;
         PlatformSpots.Add(40);
+        levelPlatformen.tileList[40] = 3;
         PlatformSpots.Add(58);
+        levelPlatformen.tileList[58] = 3;
         PlatformSpots.Add(59);
+        levelPlatformen.tileList[59] = 3;
         PlatformSpots.Add(60);
+        levelPlatformen.tileList[60] = 3;
         PlatformSpots.Add(61);
+        levelPlatformen.tileList[61] = 3;
         PlatformSpots.Add(62);
+        levelPlatformen.tileList[62] = 3;
         PlatformSpots.Add(63);
+        levelPlatformen.tileList[63] = 3;
         PlatformSpots.Add(64);
+        levelPlatformen.tileList[64] = 3;
         PlatformSpots.Add(77);
+        levelPlatformen.tileList[77] = 3;
         PlatformSpots.Add(78);
+        levelPlatformen.tileList[78] = 3;
         PlatformSpots.Add(79);
+        levelPlatformen.tileList[79] = 3;
         PlatformSpots.Add(80);
+        levelPlatformen.tileList[80] = 3;
         PlatformSpots.Add(81);
+        levelPlatformen.tileList[81] = 3;
         PlatformSpots.Add(82);
+        levelPlatformen.tileList[82] = 3;
         PlatformSpots.Add(83);
+        levelPlatformen.tileList[83] = 3;
         PlatformSpots.Add(84);
+        levelPlatformen.tileList[84] = 3;
         PlatformSpots.Add(85);
+        levelPlatformen.tileList[85] = 3;
         PlatformSpots.Add(87);
+        levelPlatformen.tileList[87] = 3;
 
         for (int i = 0; i < RampSpots.Count; i++)
         {
@@ -151,65 +220,7 @@ public class PlatformManager : MonoBehaviour
         {
             ramp.SpawnRampReversed(gameState.gridManager.gridSquares[RampSpotsReversed[i]]);
         }
-
-
-        //ramp = Instantiate(ramp,gameState.gridManager.gridSquares[0]+rampAdjustment,new Quaternion(0,0,0,0));
-        //ramp.transform.localScale = new Vector3(200f, 50f, 50f);
-        //ramp.transform.Rotate(new Vector3(-90f, -90f, 0));
-
-        ////ramp = Instantiate(ramp, gameState.gridManager.gridSquares[16] + rampAdjustment, new Quaternion(0, 0, 0, 0));
-        ////ramp.transform.localScale = new Vector3(200f, 50f, 50f);
-        ////ramp.transform.Rotate(new Vector3(-90f, -90f, 0));
-
-        //PlatformSquare = Instantiate(PlatformSquare, gameState.gridManager.gridSquares[32] + rampAdjustment, new Quaternion(0, 0, 0, 0));
-        //PlatformSquare.transform.Rotate(new Vector3(-90f, -90f, 0));
-
-
-        //ramp.SpawnRamp(gameState.gridManager.gridSquares[33]);
-
-        //Balletje = Instantiate(Balletje, gameState.gridManager.gridSquares[1], new Quaternion(0, 0, 0, 0));
-    }
-
-   
-
-    //private void Build_GridDots(Vector3 gridStartingPoint)
-    //{
-    //    Vector3[] vectors = new Vector3[5];
-
-
-    //    vectors[0] = gridStartingPoint + new Vector3(0f, 0.5f, 0f);
-    //    vectors[1] = gridStartingPoint + new Vector3(0f, 0.5f, -1f);
-    //    vectors[2] = gridStartingPoint + new Vector3(0f, -0.5f, 0f);
-    //    vectors[3] = gridStartingPoint + new Vector3(0f, -0.5f, -1f);
-    //    vectors[4] = gridStartingPoint + new Vector3(0, 0, -0.5f);
-
-    //    //GameObject gridDot1;
-    //    //GameObject gridDot2;
-    //    //GameObject gridDot3;
-    //    //GameObject gridDot4;
-    //    //GameObject gridDot5;
-
-    //    //build dots
-    //    //gridDot1 = Instantiate(gridDot, vectors[0], new Quaternion(0f, 0f, 0f, 0f));
-    //    //gridDot2 = Instantiate(gridDot, vectors[1], new Quaternion(0f, 0f, 0f, 0f));
-    //    //gridDot3 = Instantiate(gridDot, vectors[2], new Quaternion(0f, 0f, 0f, 0f));
-    //    //gridDot4 = Instantiate(gridDot, vectors[3], new Quaternion(0f, 0f, 0f, 0f));
-    //    //gridDot5 = Instantiate(gridDot, vectors[4], new Quaternion(0f, 0f, 0f, 0f));
-
-
-    //    //toevoegen aan gridpunten
-    //    gridPunten.Add(vectors);
-    //}
-
-    
-
-
-    
-
-    internal void spawnLevel1()
-    {
-       // platform = Instantiate(platform);
-
+        
     }
     internal void Init_Platforms()
     {
@@ -233,172 +244,5 @@ public class PlatformManager : MonoBehaviour
         //spawn level in grid
     }
 
-    //internal void Build_level()
-    //{
-    //    Vector3 blok1Spawn = gridPunten[0][0];
-
-    //    GameObject plankje1;
-    //    GameObject plankje2;
-    //    GameObject ramp1;
-    //    GameObject ramp2;
-    //    GameObject ramp3;
-
-    //    GameObject snapRamp;
-
-    //    Vector3 rampcorrection = new Vector3(0, -0.5f, -0.5f);
-
-    //    //nu ipv hardcoded positie enzo gebruik maken van gridpoints
-    //    ramp1 = Instantiate(ramp, gridPunten[0][0]+rampcorrection, new Quaternion(0, 0, 0, 0));
-    //    ramp1.transform.localScale = new Vector3(1, 50, 50);
-    //    ramp1.transform.Rotate(new Vector3(-90, 0, 0));
-
-    //    ramp2 = Instantiate(ramp, gridPunten[101][0] + rampcorrection, new Quaternion(0, 0, 0, 0));
-    //    ramp2.transform.localScale = new Vector3(1, 50, 50);
-    //    ramp2.transform.Rotate(new Vector3(-90, 0, 0));
-
-    //    ramp3 = Instantiate(ramp, gridPunten[202][0] + rampcorrection, new Quaternion(0, 0, 0, 0));
-    //    ramp3.transform.localScale = new Vector3(1, 50, 50);
-    //    ramp3.transform.Rotate(new Vector3(-90, 0, 0));
-
-    //    //werkende code maar wel hardcoded
-    //    //plankje1 = Instantiate(platform, new Vector3(0,-1,-4.5f),new Quaternion(0f,0f,0f,0f));
-    //    //plankje1.transform.localScale = new Vector3(1, 112.5f, 100);
-    //    //plankje1.transform.Rotate(new Vector3(-90, 0, 0));
-
-    //    //plankje2 = Instantiate(platform, new Vector3(0, -5, -8.5f), new Quaternion(0f, 0f, 0f, 0f));
-    //    //plankje2.transform.localScale = new Vector3(1, 112.5f, 100);
-    //    //plankje2.transform.Rotate(new Vector3(-180, 0, 0));
-
-    //    //ramp1 = Instantiate(ramp, new Vector3(0, -1, -9.5f), new Quaternion(0, 0, 0, 0));
-    //    //ramp1.transform.localScale = new Vector3(1, 50, 50);
-    //    //ramp1.transform.Rotate(new Vector3(-90, 0, 0));
-
-    //    //snaptest
-    //    snapRamp = Instantiate(ramp, new Vector3(0, 0, 0), new Quaternion(0, 0, 0, 0));
-    //    snapRamp.transform.localScale = new Vector3(1, 50, 50);
-    //    snapRamp.transform.Rotate(new Vector3(-90, 0, 0));
-    //    //if (gridPunten[0][4] != snapRamp.transform.position)
-    //    //{
-    //    //    snapRamp.transform.position = gridPunten[0][4];
-    //    //}
-
-    //    //
-    //    //
-    //    //
-    //    //
-    //    //
-    //    //
-    //    //dit moet bij elke spawn
-    //    bool isInGrid = false;
-    //    for (int i = 0; i < gridPunten.Count; i++)
-    //    {
-    //        //check of gridpunten[i][5] hetzelfde is als het gespawnde object
-    //        if (gridPunten[i][4] == snapRamp.transform.position)
-    //        {
-    //            isInGrid = true;
-    //        }
-    //    }
-    //    if (!isInGrid)
-    //    {
-    //        //vind het dichtsbijzijnde gridpunt?
-    //        Vector3 difference = snapRamp.transform.position - gridPunten[0][4];
-    //        Vector3 closest = gridPunten[0][4];
-    //        for (int i = 0; i < gridPunten.Count; i++)
-    //        {
-    //            //if (difference > snapRamp.transform.position - gridPunten[i][5])
-    //            //{
-
-    //            //}
-    //        }
-    //    }
-
-    //}
-
-    //internal void Build_Grid()
-    //{
-    //    //variablen
-    //    Vector3 moveRight = new Vector3(0f, 0f, -1f);
-    //    Vector3 moveDown = new Vector3(0f, -1f, 0f);
-    //    Vector3 gridStartingPoint = new Vector3(0f,0f,0f);
-
-
-    //    for (int i = 0; i < 100; i++)
-    //    {
-    //        gridStartingPoint = gridStartingPoint + moveDown;
-    //        gridStartingPoint.z = 0;
-
-    //        for (int i2 = 0; i2 < 100; i2++)
-    //        {
-    //            Build_Square(gridStartingPoint);
-    //            //place 2 the left
-    //            gridStartingPoint = gridStartingPoint + moveRight;
-    //        }
-    //    }
-    //}
-    //internal void Build_Square(Vector3 startingPoint)
-    //{
-    //    GameObject lijn1;
-    //    GameObject lijn2;
-    //    GameObject lijn3;
-    //    GameObject lijn4;
-
-    //    GameObject gridDot1;
-    //    GameObject gridDot2;
-    //    GameObject gridDot3;
-    //    GameObject gridDot4;
-    //    GameObject gridDot5;
-
-
-    //    //              ____________3_________
-    //    //              |                    |
-    //    //              |                    |
-    //    //             1|                    |2
-    //    //              |                    |
-    //    //              |                    |
-    //    //              |                    |
-    //    //              ____________4________|
-    //    Vector3 point1 = startingPoint;
-    //    Vector3 point2 = startingPoint + new Vector3(0f, 0f, -1f);
-    //    Vector3 point3 = startingPoint + new Vector3(0f, -0.5f, -0.5f);//new Vector3(1, 0.5f, 0.5f); 
-    //    Vector3 point4 = startingPoint + new Vector3(0f, 0.5f, -0.5f);//new Vector3(1, 1.5f, 0.5f);
-
-    //    Vector3 rotate = new Vector3(90f, 0f, 0f);
-        
-
-    //    //spawn lijn 1
-    //    lijn1 = Instantiate(lijn, point1, new Quaternion(0f, 0f, 0f, 0f));
-    //    //spawn lijn 2
-    //    lijn2 = Instantiate(lijn, point2, new Quaternion(0f, 0f, 0f, 0f));
-    //    //spawn lijn 3
-    //    lijn3 = Instantiate(lijn, point3, new Quaternion(0f, 0f, 0f, 0f));
-    //    lijn3.transform.Rotate(rotate);
-    //    //spawn lijn 4
-    //    lijn4 = Instantiate(lijn, point4, new Quaternion(0f, 0f, 0f, 0f));
-    //    lijn4.transform.Rotate(rotate);
-
-    //    //opslaan gridpunten
-    //    //1linksboven
-    //    //2rechtsboven
-    //    //3linksonder
-    //    //4rechtsonder
-    //    //5midden
-    //    Vector3[] vectors = new Vector3[5];
-
-    //    vectors[0] = startingPoint + new Vector3(0f, 0.5f,  0f);
-    //    vectors[1] = startingPoint + new Vector3(0f, 0.5f, -1f);
-    //    vectors[2] = startingPoint + new Vector3(0f, -0.5f  , 0f);
-    //    vectors[3] = startingPoint + new Vector3(0f, -0.5f  , -1f);
-    //    vectors[4] = startingPoint + new Vector3(0, 0, -0.5f);
-
-    //    //build dots
-    //    gridDot1 = Instantiate(gridDot, vectors[0], new Quaternion(0f, 0f, 0f, 0f));
-    //    gridDot2 = Instantiate(gridDot, vectors[1], new Quaternion(0f, 0f, 0f, 0f));
-    //    gridDot3 = Instantiate(gridDot, vectors[2], new Quaternion(0f, 0f, 0f, 0f));
-    //    gridDot4 = Instantiate(gridDot, vectors[3], new Quaternion(0f, 0f, 0f, 0f));
-    //    //gridDot5 = Instantiate(gridDot, vectors[4], new Quaternion(0f, 0f, 0f, 0f));
-
-
-    //    //toevoegen aan gridpunten
-    //    gridPunten.Add(vectors);
-    //}
+    
 }

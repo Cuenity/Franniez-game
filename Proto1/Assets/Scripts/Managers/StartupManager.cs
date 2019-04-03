@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class StartupManager : MonoBehaviour
 {
 
-    public DataController dataController;
+    public PlayerDataController dataController;
     // Start is called before the first frame update
     private IEnumerator Start()
     {
@@ -15,8 +15,10 @@ public class StartupManager : MonoBehaviour
             // Wacht 1 frame
             yield return null;
         }
-
-        dataController = gameObject.AddComponent<DataController>();
+        PlayerDataController.instance.LoadPlayerData();
+        //DataController dataController = DataController.instance;
+        //dataController.LoadPlayerData();
+        //dataController = gameObject.AddComponent<DataController>();
 
 
         SceneManager.LoadScene("StartMenu");
