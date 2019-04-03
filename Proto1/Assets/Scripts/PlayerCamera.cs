@@ -4,7 +4,7 @@ using UnityEngine;
 
 
 [RequireComponent(typeof(Camera))]
-public class CameraClass : MonoBehaviour
+public class PlayerCamera : MonoBehaviour
 {
     private GameState gameState;
 
@@ -17,11 +17,14 @@ public class CameraClass : MonoBehaviour
     public float SpringDamper;
     public float dragSpeed = 2;
     private Vector3 dragOrigin;
-
+    Camera camera;
     private void Start()
     {
         transform.LookAt(Target.transform.position + TargetLookAtOffset);
         gameState = GameObject.Find("GameState").GetComponent<GameState>();
+        camera= this.GetComponent<Camera>();
+
+        
     }
 
     void FixedUpdate()
@@ -45,42 +48,44 @@ public class CameraClass : MonoBehaviour
             if (mousedata.y > 0)
             {
                 //zoomin
-                Vector3 cameraposition = gameState.cameraClass.transform.position;
+                Vector3 cameraposition = camera.transform.position;
                 if (cameraposition.x <= -5)
-                    gameState.cameraClass.transform.position = new Vector3(cameraposition.x + 1, cameraposition.y, cameraposition.z);
+                   camera.transform.position = new Vector3(cameraposition.x + 1, cameraposition.y, cameraposition.z);
             }
             else if (mousedata.y < 0)
             {
                 //zoomout
-                Vector3 cameraposition = gameState.cameraClass.transform.position;
+                Vector3 cameraposition =camera.transform.position;
                 if (cameraposition.x >= -20) //level groote
-                    gameState.cameraClass.transform.position = new Vector3(cameraposition.x - 1, cameraposition.y, cameraposition.z);
+                   camera.transform.position = new Vector3(cameraposition.x - 1, cameraposition.y, cameraposition.z);
             }
         }
-        //Transfrom_YZ();
+        Transfrom_YZ();
 
 
     }
 
-    //private void Transfrom_YZ()
-    //{
-    //    if (Input.GetMouseButtonDown(0))
-    //    {
-    //        Debug.Log(Camera.main.ScreenToViewportPoint(Input.mousePosition));
-    //        dragOrigin = Camera.main.ScreenToViewportPoint(Input.mousePosition);
-    //        return;
-    //    }
+    private void Transfrom_YZ()
+    {
+        if (Input.GetMouseButtonDown(0))
+        {
+            Debug.Log(camera.ScreenToViewportPoint(Input.mousePosition));
+            dragOrigin = camera.ScreenToViewportPoint(Input.mousePosition);
+            return;
+        }
 
-    //    if (!Input.GetMouseButton(0)) return;
+        if (!Input.GetMouseButton(0)) return;
 
-    //    Vector3 dragend = Camera.main.ScreenToViewportPoint(Input.mousePosition);
-    //    Vector3 diffrence = new Vector3(0, dragend.y - dragOrigin.y, dragend.x - dragOrigin.x);
+        Vector3 dragend = camera.ScreenToViewportPoint(Input.mousePosition);
+        Vector3 diffrence = new Vector3(0, dragend.y - dragOrigin.y, dragend.x - dragOrigin.x);
 
 
-    //    Vector3 move = new Vector3(diffrence.x * dragSpeed, diffrence.y * dragSpeed,0);
+       // Vector3 move = new Vector3(diffrence.x * dragSpeed, diffrence.y * dragSpeed, 0);
+        Vector3 move2 = new Vector3( 0, diffrence.x * dragSpeed, diffrence.y * dragSpeed);
 
-    //    transform.Translate(move, Space.World);
-    //}
+       // transform.Translate(move, Space.World);
+        transform.Translate(move2, Space.World);
+    }
 
 }
 
