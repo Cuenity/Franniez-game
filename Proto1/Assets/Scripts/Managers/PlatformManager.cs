@@ -90,7 +90,33 @@ public class PlatformManager : MonoBehaviour
         }
     }
 
-    internal void Build_Level1()
+    internal void BuildLevelFromText(LevelPlatformen levelPlatformen)
+    {
+        Vector3 rampAdjustment = new Vector3(0.5f, 0f, 0f);
+        for (int i = 0; i < levelPlatformen.tileList.Length; i++)
+        {
+            if (levelPlatformen.tileList[i] == 0)
+            {
+                
+            }
+            else if (levelPlatformen.tileList[i] == 1)
+            {
+                ramp.SpawnRamp(gameState.gridManager.gridSquares[i]);
+            }
+            else if (levelPlatformen.tileList[i] == 2)
+            {
+                ramp.SpawnRampReversed(gameState.gridManager.gridSquares[i]);
+            }
+            else if (levelPlatformen.tileList[i] == 3)
+            {
+                
+                PlatformSquare = Instantiate(PlatformSquare, gameState.gridManager.gridSquares[i] + rampAdjustment, new Quaternion(0, 0, 0, 0));
+                PlatformSquare.transform.Rotate(new Vector3(-90f, -90f, 0));
+            }
+        }
+    }
+
+    internal void Build_Level1(LevelPlatformen levelPlatformen)
     {
         List<int> RampSpots = new List<int>();
         List<int> PlatformSpots = new List<int>();
@@ -98,43 +124,83 @@ public class PlatformManager : MonoBehaviour
 
         Vector3 rampAdjustment = new Vector3(0.5f, 0f, 0f);
 
+        //levelPlatformen.tileList[12] = 1;
+        //betekent op tile 12 staat een ramp
+        //1 is ramp
+        //2 is rampreversed
+        //3 is platform
+
+
+
         //bouw stom lijstje
         RampSpots.Add(12);
+        levelPlatformen.tileList[12] = 1;
         RampSpots.Add(24);
+        levelPlatformen.tileList[24] = 1;
         RampSpots.Add(66);
+        levelPlatformen.tileList[66] = 1;
 
         //bouw stom lijst voor ramps andere kant op
         RampSpotsReversed.Add(42);
+        levelPlatformen.tileList[42] = 2;
         RampSpotsReversed.Add(52);
+        levelPlatformen.tileList[52] = 2;
         RampSpotsReversed.Add(57);
+        levelPlatformen.tileList[57] = 2;
         RampSpotsReversed.Add(97);
+        levelPlatformen.tileList[97] = 2;
         RampSpotsReversed.Add(107);
+        levelPlatformen.tileList[107] = 2;
 
         //bouw stom lijstje
         PlatformSpots.Add(34);
+        levelPlatformen.tileList[34] = 3;
         PlatformSpots.Add(35);
+        levelPlatformen.tileList[35] = 3;
         PlatformSpots.Add(36);
+        levelPlatformen.tileList[36] = 3;
         PlatformSpots.Add(37);
+        levelPlatformen.tileList[37] = 3;
         PlatformSpots.Add(38);
+        levelPlatformen.tileList[38] = 3;
         PlatformSpots.Add(39);
+        levelPlatformen.tileList[39] = 3;
         PlatformSpots.Add(40);
+        levelPlatformen.tileList[40] = 3;
         PlatformSpots.Add(58);
+        levelPlatformen.tileList[58] = 3;
         PlatformSpots.Add(59);
+        levelPlatformen.tileList[59] = 3;
         PlatformSpots.Add(60);
+        levelPlatformen.tileList[60] = 3;
         PlatformSpots.Add(61);
+        levelPlatformen.tileList[61] = 3;
         PlatformSpots.Add(62);
+        levelPlatformen.tileList[62] = 3;
         PlatformSpots.Add(63);
+        levelPlatformen.tileList[63] = 3;
         PlatformSpots.Add(64);
+        levelPlatformen.tileList[64] = 3;
         PlatformSpots.Add(77);
+        levelPlatformen.tileList[77] = 3;
         PlatformSpots.Add(78);
+        levelPlatformen.tileList[78] = 3;
         PlatformSpots.Add(79);
+        levelPlatformen.tileList[79] = 3;
         PlatformSpots.Add(80);
+        levelPlatformen.tileList[80] = 3;
         PlatformSpots.Add(81);
+        levelPlatformen.tileList[81] = 3;
         PlatformSpots.Add(82);
+        levelPlatformen.tileList[82] = 3;
         PlatformSpots.Add(83);
+        levelPlatformen.tileList[83] = 3;
         PlatformSpots.Add(84);
+        levelPlatformen.tileList[84] = 3;
         PlatformSpots.Add(85);
+        levelPlatformen.tileList[85] = 3;
         PlatformSpots.Add(87);
+        levelPlatformen.tileList[87] = 3;
 
         for (int i = 0; i < RampSpots.Count; i++)
         {
