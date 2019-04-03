@@ -3,8 +3,8 @@
 public class UIManager : MonoBehaviour
 {
     public Canvas canvas;
-    public GameObject inventoryButton;
-    private GameObject[] instantiatedInventoryButtons;
+    public InventoryButton inventoryButton;
+    private InventoryButton[] instantiatedInventoryButtons;
 
     void Start()
     {
@@ -20,14 +20,14 @@ public class UIManager : MonoBehaviour
     {
         bool instantiatedInventoryButtonsArrayNotInstantiated = instantiatedInventoryButtons == null;
         if (instantiatedInventoryButtonsArrayNotInstantiated)        
-            instantiatedInventoryButtons = new GameObject[inventoryButtonAmmount];
+            instantiatedInventoryButtons = new InventoryButton[inventoryButtonAmmount];
 
         bool instantiatedInventoryButtonsAlreadyInstantiated = instantiatedInventoryButtons[0] != null;
         if (instantiatedInventoryButtonsAlreadyInstantiated)
         {
-            foreach (GameObject buttonToActivate in instantiatedInventoryButtons)
+            foreach (InventoryButton buttonToActivate in instantiatedInventoryButtons)
             {
-                buttonToActivate.SetActive(true);
+                buttonToActivate.gameObject.SetActive(true);
             }
         }
 
@@ -54,9 +54,9 @@ public class UIManager : MonoBehaviour
         //instantiatedInventoryButtons = GameObject.FindGameObjectsWithTag("InventoryButton");
         if (instantiatedInventoryButtons != null)
         {
-            foreach (GameObject buttonToDeactivate in instantiatedInventoryButtons)
+            foreach (InventoryButton buttonToDeactivate in instantiatedInventoryButtons)
             {
-                buttonToDeactivate.SetActive(false);
+                buttonToDeactivate.gameObject.SetActive(false);
             }
         }
     }

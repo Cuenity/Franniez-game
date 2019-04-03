@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+[RequireComponent(typeof(GameObject))]
 public class InventoryButton : MonoBehaviour
 {
     //public Button buttonComponent;

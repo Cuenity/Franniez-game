@@ -2,17 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Level : MonoBehaviour
+[System.Serializable]
+public class Level
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    public int LevelRound;
+    public int countCoins;
+    public bool gotSticker;
+    public bool playedLevel;
+    public bool completed;
 }

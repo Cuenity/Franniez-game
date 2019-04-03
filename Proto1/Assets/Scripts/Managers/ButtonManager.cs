@@ -6,8 +6,7 @@ public class ButtonManager : MonoBehaviour
     
     void Start()
     {
-        gameState = GameObject.Find("GameState").GetComponent<GameState>();
-        PlayerManager test= gameState.GetComponent<PlayerManager>();
+        gameState = GameState.Instance;
     }
     
     void Update()
@@ -27,5 +26,10 @@ public class ButtonManager : MonoBehaviour
             gameState.RollingPhaseActive = false;
             gameState.BuildingPhaseActive = true;
         } 
+    }
+
+    public void InventoryButton(Platform platform)
+    {
+        Instantiate(platform);
     }
 }
