@@ -33,6 +33,8 @@ public class LevelManager : MonoBehaviour
         }
         if(currentScene.name == "TestLevel1")
         {
+            gameState.gridManager.width = 11;
+            gameState.gridManager.heigth = 12;
             gameState.gridManager.Build_Grid1_Without_Visuals();
             gameState.platformManager.Build_Level1();
         }

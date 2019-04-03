@@ -94,16 +94,47 @@ public class PlatformManager : MonoBehaviour
     {
         List<int> RampSpots = new List<int>();
         List<int> PlatformSpots = new List<int>();
+        List<int> RampSpotsReversed = new List<int>();
 
         Vector3 rampAdjustment = new Vector3(0.5f, 0f, 0f);
 
         //bouw stom lijstje
-        RampSpots.Add(15);
-        RampSpots.Add(33);
+        RampSpots.Add(12);
+        RampSpots.Add(24);
+        RampSpots.Add(66);
+
+        //bouw stom lijst voor ramps andere kant op
+        RampSpotsReversed.Add(42);
+        RampSpotsReversed.Add(52);
+        RampSpotsReversed.Add(57);
+        RampSpotsReversed.Add(97);
+        RampSpotsReversed.Add(107);
 
         //bouw stom lijstje
-        PlatformSpots.Add(32);
-        PlatformSpots.Add(31);
+        PlatformSpots.Add(34);
+        PlatformSpots.Add(35);
+        PlatformSpots.Add(36);
+        PlatformSpots.Add(37);
+        PlatformSpots.Add(38);
+        PlatformSpots.Add(39);
+        PlatformSpots.Add(40);
+        PlatformSpots.Add(58);
+        PlatformSpots.Add(59);
+        PlatformSpots.Add(60);
+        PlatformSpots.Add(61);
+        PlatformSpots.Add(62);
+        PlatformSpots.Add(63);
+        PlatformSpots.Add(64);
+        PlatformSpots.Add(77);
+        PlatformSpots.Add(78);
+        PlatformSpots.Add(79);
+        PlatformSpots.Add(80);
+        PlatformSpots.Add(81);
+        PlatformSpots.Add(82);
+        PlatformSpots.Add(83);
+        PlatformSpots.Add(84);
+        PlatformSpots.Add(85);
+        PlatformSpots.Add(87);
 
         for (int i = 0; i < RampSpots.Count; i++)
         {
@@ -114,6 +145,11 @@ public class PlatformManager : MonoBehaviour
         {
             PlatformSquare = Instantiate(PlatformSquare, gameState.gridManager.gridSquares[PlatformSpots[i]] + rampAdjustment, new Quaternion(0, 0, 0, 0));
             PlatformSquare.transform.Rotate(new Vector3(-90f, -90f, 0));
+        }
+
+        for (int i = 0; i < RampSpotsReversed.Count; i++)
+        {
+            ramp.SpawnRampReversed(gameState.gridManager.gridSquares[RampSpotsReversed[i]]);
         }
 
 
