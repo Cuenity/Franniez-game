@@ -8,7 +8,7 @@ public class UIManager : MonoBehaviour
 
     void Start()
     {
-        //Instantiate(Resources.Load<TextAsset>("Text/textFile01");
+        Instantiate(canvas);
     }
 
     void Update()
