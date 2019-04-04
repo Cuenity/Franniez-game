@@ -3,14 +3,38 @@ using UnityEngine.EventSystems;
 
 public class PlatformDragManager : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHandler
 {
-    
     public GameObject platform;
-    private Camera camera;
+    private new Camera camera;
     PlatformManager platformManager;
     PlayerCamera playercamera;
-    private int index = 0;
-    
-    
+
+
+    float zAxis = 0;
+    Vector3 clickOffset = Vector3.zero;
+
+
+    private void Start()
+    {
+        playercamera = GameState.Instance.playerCamera;
+        camera = GameState.Instance.playerCamera.GetComponent<Camera>();
+
+        zAxis = transform.position.z;
+    }
+
+    private Vector3 ScreenPointToWorldOnPlane(Vector3 screenPosition, float zPosition)
+    {
+        float enterDist;
+        Plane plane = new Plane(Vector3.forward, new Vector3(0, 0, zPosition));
+        Ray rayCast = camera.ScreenPointToRay(screenPosition);
+        plane.Raycast(rayCast, out enterDist);
+        return rayCast.GetPoint(enterDist);
+    }
+
+    public void OnPointerDown(PointerEventData eventData)
+    {
+        clickOffset = transform.position - ScreenPointToWorldOnPlane(eventData.position, zAxis);
+    }
+
 
     public void OnBeginDrag(PointerEventData data)
     {
@@ -22,46 +46,16 @@ public class PlatformDragManager : MonoBehaviour, IDragHandler, IBeginDragHandle
         platformManager = GameState.Instance.platformManager.GetComponent<PlatformManager>();
 
         platform = Instantiate(platform);
-
-
-
-    //    playercamera.platformDragActive = true;
-    //    Debug.Log(data);
-    //    platform = Instantiate(platform); // GameObject.CreatePrimitive(PrimitiveType.Sphere);
     }
-
-    //public void OnDrag(PointerEventData data)
-    //{
-    //    // Dragging logic goes here
-
-    //    sphere.transform.localScale = new Vector3(3.0f, 3.0f, 1.0f);
-    //    //transform.Translate(0, 0, Time.deltaTime);
-    //    sphere.transform.position = new Vector3(4, 0, 0);
-    //}
+    
 
 
     public void OnDrag(PointerEventData eventData)
     {
-
-
-        //Vector3 pos = camera.ScreenToWorldPoint(Input.mousePosition);
-        //platform.transform.position = new Vector3(pos.x, pos.y, 0);
-
-        //Vector3 pos = camera.ScreenToWorldPoint(Input.mousePosition);
-        //platform.transform.position = new Vector3(pos.x, pos.y, 0);
-
-        Ray ray = camera.ScreenPointToRay(Input.mousePosition);
-        Vector3 pos = ray.origin + (ray.direction);
-        Debug.Log(index);
-        //Vector3 pos = Input.mousePosition;
-        pos.z = 0;
-        platform.transform.position = pos;
-        //index++;
-
-        
-
+        platform.transform.position = ScreenPointToWorldOnPlane(eventData.position, zAxis) + clickOffset; 
 
     }
+
 
     public void OnEndDrag(PointerEventData eventData)
     {
@@ -77,21 +71,20 @@ public class PlatformDragManager : MonoBehaviour, IDragHandler, IBeginDragHandle
         playercamera.platformDragActive = false;
     }
 
-    void Awake()
-    {
-       
-    }
-    private void Start()
-    {
-        playercamera = GameState.Instance.playerCamera;
-        camera = GameState.Instance.playerCamera.GetComponent<Camera>();
-        
-    }
 
-    void Update()
-    {
 
-    }
+
+
 }
 
-
+//public static class extensionMethod
+//{
+//    public static Vector3 ScreenPointToWoldOnPlane(this Camera cam, Vector3 screenPosition, float zPos)
+//    {
+//        float enterDist;
+//        Plane plane = new Plane(Vector3.forward, new Vector3(0, 0, zPos));
+//        Ray rayCast = cam.ScreenPointToRay(screenPosition);
+//        plane.Raycast(rayCast, out enterDist);
+//        return rayCast.GetPoint(enterDist);
+//    }
+//}
