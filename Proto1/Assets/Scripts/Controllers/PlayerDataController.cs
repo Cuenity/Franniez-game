@@ -6,14 +6,7 @@ public class PlayerDataController : MonoBehaviour
 {
     public static PlayerDataController instance;
 
-    public Player player
-    {
-        get { return player; }
-        set
-        {   player = value;
-            SavePlayerData();
-        }
-    }
+    public Player player{ get; set; }
     private string fileName = "PlayerData.json";
     private string filePath;
 
@@ -33,9 +26,9 @@ public class PlayerDataController : MonoBehaviour
     }
 
 
-    public void LoadPlayerData()
+    public bool LoadPlayerData()
     {
-        
+       bool loaded = false;
        filePath = Path.Combine(Application.streamingAssetsPath, fileName);
 
         if(File.Exists(filePath))
@@ -44,8 +37,9 @@ public class PlayerDataController : MonoBehaviour
             string dataAsJSON = File.ReadAllText(filePath);
             player = JsonUtility.FromJson<Player>(dataAsJSON);
             Debug.Log(player.name);
-
+            loaded = true;
         }
+        return loaded;
     }
 
     public void SavePlayerData()
