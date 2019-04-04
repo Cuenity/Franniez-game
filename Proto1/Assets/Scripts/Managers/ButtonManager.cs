@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class ButtonManager : MonoBehaviour
 {
@@ -41,5 +42,17 @@ public class ButtonManager : MonoBehaviour
         //Instantiate(platformSquare);
         //var pos = Input.mousePosition;
 
+    }
+
+    public void TestLang(string pathFile)
+    {
+        LocalizationManager.instance.LoadLocalizedText(pathFile);
+
+        Player player = new Player();
+        player.name = "";
+        player.language = (int)LocalizationManager.instance.LanguageChoice;
+        PlayerDataController.instance.player = player;
+        PlayerDataController.instance.SavePlayerData();
+        SceneManager.LoadScene("StartMenu");
     }
 }

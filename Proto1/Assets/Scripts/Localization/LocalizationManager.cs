@@ -8,11 +8,12 @@ public class LocalizationManager : MonoBehaviour
     public static LocalizationManager instance;
 
     private Dictionary<string, string> localizedText;
-    //private Language Language;
     public Language LanguageChoice { get; set; }
     private bool isReady = false;
     private string missingTextString = "Localized text not found";
 
+    public delegate void ClickAction();
+    public static event ClickAction ClickedButton;
 
 
     // Start is called before the first frame update
@@ -21,13 +22,14 @@ public class LocalizationManager : MonoBehaviour
         if (instance == null)
         {
             instance = this;
+            DontDestroyOnLoad(gameObject);
         }
         else if (this != null)
         {
             Destroy(gameObject);
         }
 
-        DontDestroyOnLoad(gameObject);
+        
     }
 
     public void GetLanguageSettings()
@@ -75,6 +77,7 @@ public class LocalizationManager : MonoBehaviour
             Debug.LogError("Cannot find file!");
         }
 
+        ClickedButton.Invoke();
         isReady = true;
         
     }

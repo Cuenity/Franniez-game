@@ -64,6 +64,7 @@ public class PlayerCamera : MonoBehaviour
             }
         }
         
+        
         if (gameState.RollingPhaseActive == false)
         {
             if (platformDragActive == false)

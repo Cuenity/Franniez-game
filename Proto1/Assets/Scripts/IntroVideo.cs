@@ -41,6 +41,7 @@ public class IntroVideo : MonoBehaviour
         bool test = PlayerDataController.instance.LoadPlayerData();
         if (PlayerDataController.instance.LoadPlayerData())
         {
+
             LocalizationManager.instance.GetLanguageSettings();
             SceneManager.LoadScene("StartMenu");
         }

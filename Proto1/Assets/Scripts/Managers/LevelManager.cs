@@ -69,7 +69,8 @@ public class LevelManager : MonoBehaviour
 
             gameState.collectableManager.InitCollectables(coinPositions, stickerPosition);
         }
-        if (currentScene.name == "TestLevel1")
+      
+        else if(currentScene.name == "TestLevel1")
         {
 
             //lees level uit Json en vul levelPlatformen
@@ -96,7 +97,18 @@ public class LevelManager : MonoBehaviour
 
             //SaveLevelToText("Level1.json");
         }
-        if (currentScene.name == "TestJaspe")
+
+        else if (currentScene.name == "LevelEditor")
+        {
+            gameState.gridManager.width = 50;
+            gameState.gridManager.heigth = 25;
+
+            
+
+
+            gameState.gridManager.Build_Grid1_Without_Visuals();
+        }
+else if (currentScene.name == "TestJaspe")
         {
             Vector3 playeradjustment = new Vector3(.5f, 0, 0);
             gameState.gridManager.width = 11;
