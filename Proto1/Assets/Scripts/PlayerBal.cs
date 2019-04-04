@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerBal : MonoBehaviour
 {
     GameState gameState;
+    public Vector3 spawnpoint;
     // Start is called before the first frame update
     private void Awake()
     {
@@ -13,8 +14,8 @@ public class PlayerBal : MonoBehaviour
     }
     void Start()
     {
-      
-        
+
+
     }
 
     // Update is called once per frame
@@ -22,12 +23,12 @@ public class PlayerBal : MonoBehaviour
     {
         if (gameState.RollingPhaseActive)
         {
-            this.GetComponent<Rigidbody>().useGravity= true;
+            this.GetComponent<Rigidbody>().useGravity = true;
         }
         else
         {
             this.GetComponent<Rigidbody>().useGravity = false;
         }
-            
+
     }
 }

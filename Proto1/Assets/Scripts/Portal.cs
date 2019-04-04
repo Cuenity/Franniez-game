@@ -1,0 +1,40 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class Portal : MonoBehaviour
+{
+    GameState gameState;
+
+    // Start is called before the first frame update
+    void Start()
+    {
+        gameState = GameState.Instance;
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+
+    }
+    internal void SpawnPortal(Vector3 spawnPosition)
+    {
+        Vector3 rampAdjustment = new Vector3(0.5f, 0f, 0f);
+        Portal ramp = Instantiate(this, spawnPosition + rampAdjustment, new Quaternion(0, 0, 0, 0));
+        ramp.transform.localScale = new Vector3(200f, 50f, 50f);
+        ramp.transform.Rotate(new Vector3(-90f, -90f, -180));
+    }
+    private void OnTriggerEnter(Collider other)
+    {
+        PlayerBal player = gameState.playerManager.player;
+        List<Portal> portallist= gameState.platformManager.allPortals;
+        foreach(Portal item in portallist)
+        {
+            if(this != item)
+            {
+                player.transform.position = item.transform.position;
+            }
+        }
+    }
+}
+

@@ -23,7 +23,7 @@ public class LevelManager : MonoBehaviour
             string dataAsJSON = File.ReadAllText(filePath);
             levelPlatformen = JsonUtility.FromJson<LevelPlatformen>(dataAsJSON);
 
-            
+
 
             //Debug.Log("Data is geladen.");
         }
@@ -44,7 +44,7 @@ public class LevelManager : MonoBehaviour
             File.WriteAllText(filePath, dataAsJson);
         }
     }
-   
+
     private void Awake()
     {
         gameState = GameState.Instance;
@@ -69,12 +69,12 @@ public class LevelManager : MonoBehaviour
 
             gameState.collectableManager.InitCollectables(coinPositions, stickerPosition);
         }
-        if(currentScene.name == "TestLevel1")
+        if (currentScene.name == "TestLevel1")
         {
 
             //lees level uit Json en vul levelPlatformen
             ReadLevelsFromText("Level1.json");
-            
+
 
 
             //Dit moet ergens anders
@@ -95,6 +95,15 @@ public class LevelManager : MonoBehaviour
 
 
             //SaveLevelToText("Level1.json");
+        }
+        if (currentScene.name == "TestJaspe")
+        {
+            Vector3 playeradjustment = new Vector3(.5f, 0, 0);
+            gameState.gridManager.width = 11;
+            gameState.gridManager.heigth = 12;
+            gameState.gridManager.Build_Grid1_Without_Visuals();
+            gameState.playerManager.player.spawnpoint = gameState.gridManager.gridSquares[1]+playeradjustment;
+            gameState.platformManager.Build_Level2();
         }
     }
 }
