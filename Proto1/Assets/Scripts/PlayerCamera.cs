@@ -7,11 +7,12 @@ using UnityEngine;
 public class PlayerCamera : MonoBehaviour
 {
     private GameState gameState;
-
+    public bool platformDragActive = false;
     public PlayerBal Target { get; set; }
 
     public Vector3 TargetMovementOffset;
     public Vector3 TargetLookAtOffset;
+    
 
     public float SpringForce;
     public float SpringDamper;
@@ -62,7 +63,11 @@ public class PlayerCamera : MonoBehaviour
                     camera.transform.position = new Vector3(cameraposition.x, cameraposition.y, cameraposition.z-1);
             }
         }
-        Transfrom_YZ();
+        Debug.Log(gameState.RollingPhaseActive);
+        if (platformDragActive == false || gameState.RollingPhaseActive == false)
+        {
+            Transfrom_YZ();
+        }
 
 
     }
@@ -71,7 +76,6 @@ public class PlayerCamera : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
-            Debug.Log(camera.ScreenToViewportPoint(Input.mousePosition));
             dragOrigin = camera.ScreenToViewportPoint(Input.mousePosition);
             return;
         }

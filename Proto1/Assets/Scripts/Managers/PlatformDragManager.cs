@@ -3,16 +3,18 @@ using UnityEngine.EventSystems;
 
 public class PlatformDragManager : MonoBehaviour, IDragHandler, IBeginDragHandler
 {
-
+    
     public GameObject platform;
     private Camera camera;
+    PlayerCamera playercamera;
     private int index = 0;
 
     public void OnBeginDrag(PointerEventData data)
     {
+        playercamera = GameState.Instance.playerCamera;
         camera = GameState.Instance.playerCamera.GetComponent<Camera>();
         Debug.Log(data);
-
+        playercamera.platformDragActive = true;
         platform = Instantiate(platform); // GameObject.CreatePrimitive(PrimitiveType.Sphere);
     }
 
@@ -48,6 +50,7 @@ public class PlatformDragManager : MonoBehaviour, IDragHandler, IBeginDragHandle
 
         //platform.transform.position = Vector3.zero;
         //transform.localPosition = Vector3.zero;
+        playercamera.platformDragActive = false;
     }
 
     void Awake()
