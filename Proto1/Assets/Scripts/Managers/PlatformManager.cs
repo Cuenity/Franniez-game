@@ -13,6 +13,9 @@ public class PlatformManager : MonoBehaviour
     public Ramp ramp;
     public GameObject PlatformSquare;
     public GameObject Balletje;
+    public Portal portal;
+    public List<Portal> allPortals = new List<Portal>();
+    public Trampoline trampoline;
 
     GameState gameState;
 
@@ -21,7 +24,7 @@ public class PlatformManager : MonoBehaviour
     public GameObject gridDot;
     public GameObject gridSquare;
     public List<Vector3[]> gridPunten = new List<Vector3[]>();
-    
+
 
     Scene currentScene;
 
@@ -43,9 +46,9 @@ public class PlatformManager : MonoBehaviour
     {
 
         currentScene = SceneManager.GetActiveScene();
-        
 
-        
+
+
     }
 
     public void spawnPlatformOnGrid(Vector3 position, GameObject gameObject)
@@ -58,7 +61,7 @@ public class PlatformManager : MonoBehaviour
             distances.Add(Vector3.Distance(position, gameState.gridManager.gridSquares[i]));
         }
         int minimumValueIndex = distances.IndexOf(distances.Min());
-        
+
         gameObject.transform.position = gameState.gridManager.gridSquares[minimumValueIndex] + rampAdjustment;
 
         //voor generic spawnen
@@ -114,7 +117,7 @@ public class PlatformManager : MonoBehaviour
         {
             if (levelPlatformen.tileList[i] == 0)
             {
-                
+
             }
             else if (levelPlatformen.tileList[i] == 1)
             {
@@ -126,7 +129,7 @@ public class PlatformManager : MonoBehaviour
             }
             else if (levelPlatformen.tileList[i] == 3)
             {
-                
+
                 PlatformSquare = Instantiate(PlatformSquare, gameState.gridManager.gridSquares[i] + rampAdjustment, new Quaternion(0, 0, 0, 0));
                 PlatformSquare.transform.Rotate(new Vector3(-90f, -90f, 0));
             }
@@ -237,29 +240,102 @@ public class PlatformManager : MonoBehaviour
         {
             ramp.SpawnRampReversed(gameState.gridManager.gridSquares[RampSpotsReversed[i]]);
         }
-        
+
+    }
+    internal void Build_Level2()
+    {
+
+        //deze methode maakt hardcoded een level dit is voor testing doeleinden opgezet
+        //later moeten levels gebouwd worden door middel van drag en drop en dit opgeslagen in een txt file
+        List<int> RampSpots = new List<int>();
+        List<int> PlatformSpots = new List<int>();
+        List<int> RampSpotsReversed = new List<int>();
+        List<int> PortalSpots = new List<int>();
+        List<int> TrampolineSpots = new List<int>();
+
+        Vector3 rampAdjustment = new Vector3(0.5f, 0f, 0f);
+
+        //levelPlatformen.tileList[12] = 1;
+        //betekent op tile 12 staat een ramp
+        //1 is ramp
+        //2 is rampreversed
+        //3 is platform
+
+
+
+        //bouw stom lijstje
+        RampSpots.Add(12);
+        //RampSpotsReversed.Add(14);
+        //PortalSpots.Add(24);
+        // PortalSpots.Add(54);
+        // PlatformSpots.Add(53);
+        TrampolineSpots.Add(24);
+
+
+
+        //bouw stom lijst voor ramps andere kant op
+
+
+        //bouw stom lijstje
+
+        if (RampSpots.Count > 0)
+        {
+            for (int i = 0; i < RampSpots.Count; i++)
+            {
+                ramp.SpawnRamp(gameState.gridManager.gridSquares[RampSpots[i]]);
+            }
+        }
+        if (PlatformSpots.Count > 0)
+        {
+            for (int i = 0; i < PlatformSpots.Count; i++)
+            {
+                PlatformSquare = Instantiate(PlatformSquare, gameState.gridManager.gridSquares[PlatformSpots[i]] + rampAdjustment, new Quaternion(0, 0, 0, 0));
+                PlatformSquare.transform.Rotate(new Vector3(-90f, -90f, 0));
+            }
+        }
+        if (RampSpotsReversed.Count > 0)
+        {
+            for (int i = 0; i < RampSpotsReversed.Count; i++)
+            {
+                ramp.SpawnRampReversed(gameState.gridManager.gridSquares[RampSpotsReversed[i]]);
+            }
+        }
+        if (PortalSpots.Count > 0)
+        {
+            for (int i = 0; i < PortalSpots.Count; i++)
+            {
+                portal = Instantiate(portal, gameState.gridManager.gridSquares[PortalSpots[i]] + new Vector3(.5f, .5f, 0), new Quaternion(0, 0, 0, 0));
+                allPortals.Add(portal);
+            }
+        }
+        if (TrampolineSpots.Count > 0)
+        {
+            for (int i = 0; i < TrampolineSpots.Count; i++)
+            {
+                trampoline = Instantiate(trampoline, gameState.gridManager.gridSquares[TrampolineSpots[i]] + new Vector3(1, 0, 0), new Quaternion(0, 0, 0, 0));
+            }
+        }
+
     }
     internal void Init_Platforms()
     {
         //wat roept dit aan?
-        
-        
-            Vector3 platform1 = new Vector3(1, 1, 1);
-            Vector3 platform2 = new Vector3(3, 5, 1);
-
-            platformPositions.Add(platform1);
-            platformPositions.Add(platform2);
-            foreach (Vector3 item in platformPositions)
-            {
-                platform = Instantiate(platform);
-                platform.transform.position = item;
-                platform.transform.Rotate(new Vector3(0, 0, 2));
 
 
-            }
-        
+        Vector3 platform1 = new Vector3(1, 1, 1);
+        Vector3 platform2 = new Vector3(3, 5, 1);
+
+        platformPositions.Add(platform1);
+        platformPositions.Add(platform2);
+        foreach (Vector3 item in platformPositions)
+        {
+            platform = Instantiate(platform);
+            platform.transform.position = item;
+            platform.transform.Rotate(new Vector3(0, 0, 2));
+        }
+
         //spawn level in grid
     }
 
-    
+
 }

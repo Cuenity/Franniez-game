@@ -24,7 +24,7 @@ public class ButtonManager : MonoBehaviour
         }
         else if (gameState.RollingPhaseActive == true)
         {
-            Vector3 spawnpunt = new Vector3(1, 3, 0);
+            Vector3 spawnpunt = gameState.playerManager.player.spawnpoint;
             PlayerCamera camera = gameState.playerCamera;
             PlayerBal player = gameState.playerManager.player;
             gameState.RollingPhaseActive = false;
