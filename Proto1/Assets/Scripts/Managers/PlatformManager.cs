@@ -48,7 +48,7 @@ public class PlatformManager : MonoBehaviour
         
     }
 
-    void spawnPlatformOnGrid(Vector3 position, GameObject gameObject)
+    public void spawnPlatformOnGrid(Vector3 position, GameObject gameObject)
     {
         GameObject gameObjectGeneric = gameObject;
         Vector3 rampAdjustment = new Vector3(0.5f, 0f, 0f);
