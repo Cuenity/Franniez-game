@@ -1,11 +1,12 @@
 ﻿using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class PlatformDragManager : MonoBehaviour, IDragHandler, IBeginDragHandler
+public class PlatformDragManager : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHandler
 {
     
     public GameObject platform;
     private Camera camera;
+    PlatformManager platformManager;
     PlayerCamera playercamera;
     private int index = 0;
     
@@ -13,9 +14,20 @@ public class PlatformDragManager : MonoBehaviour, IDragHandler, IBeginDragHandle
 
     public void OnBeginDrag(PointerEventData data)
     {
+
+        playercamera = GameState.Instance.playerCamera;
+        camera = GameState.Instance.playerCamera.GetComponent<Camera>();
         playercamera.platformDragActive = true;
-        Debug.Log(data);
-        platform = Instantiate(platform); // GameObject.CreatePrimitive(PrimitiveType.Sphere);
+
+        platformManager = GameState.Instance.platformManager.GetComponent<PlatformManager>();
+
+        platform = Instantiate(platform);
+
+
+
+    //    playercamera.platformDragActive = true;
+    //    Debug.Log(data);
+    //    platform = Instantiate(platform); // GameObject.CreatePrimitive(PrimitiveType.Sphere);
     }
 
     //public void OnDrag(PointerEventData data)
@@ -30,21 +42,30 @@ public class PlatformDragManager : MonoBehaviour, IDragHandler, IBeginDragHandle
 
     public void OnDrag(PointerEventData eventData)
     {
+
+
         //Vector3 pos = camera.ScreenToWorldPoint(Input.mousePosition);
         //platform.transform.position = new Vector3(pos.x, pos.y, 0);
 
-        //Debug.Log(index);
-        //    Vector3 pos = Input.mousePosition;
-        //platform.transform.position = camera.ScreenToWorldPoint(new Vector3(pos.x, pos.y, 0));
+        //Vector3 pos = camera.ScreenToWorldPoint(Input.mousePosition);
+        //platform.transform.position = new Vector3(pos.x, pos.y, 0);
+
+        Debug.Log(index);
+        Vector3 pos = Input.mousePosition;
+        platform.transform.position = camera.ScreenToWorldPoint(new Vector3(pos.x, pos.y, 0));
         //index++;
 
 
     }
 
-    public void OnEndDrag()
+    public void OnEndDrag(PointerEventData eventData)
     {
+        Vector3 pos = camera.ScreenToWorldPoint(Input.mousePosition);
 
+        platformManager.spawnPlatformOnGrid(new Vector3(pos.x, pos.y, 0), platform);
         //spawnPlatformOnGrid()
+
+
 
         //platform.transform.position = Vector3.zero;
         //transform.localPosition = Vector3.zero;
@@ -67,3 +88,5 @@ public class PlatformDragManager : MonoBehaviour, IDragHandler, IBeginDragHandle
 
     }
 }
+
+

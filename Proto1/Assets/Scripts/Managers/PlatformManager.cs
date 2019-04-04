@@ -55,7 +55,7 @@ public class PlatformManager : MonoBehaviour
         List<float> distances = new List<float>();
         for (int i = 0; i < gameState.gridManager.gridSquares.Count; i++)
         {
-            distances.Add(Vector3.Distance(position, gameState.gridManager.gridSquares[0]));
+            distances.Add(Vector3.Distance(position, gameState.gridManager.gridSquares[i]));
         }
         int minimumValueIndex = distances.IndexOf(distances.Min());
         //

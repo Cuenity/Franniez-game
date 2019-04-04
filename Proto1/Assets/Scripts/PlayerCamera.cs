@@ -63,7 +63,7 @@ public class PlayerCamera : MonoBehaviour
                     camera.transform.position = new Vector3(cameraposition.x, cameraposition.y, cameraposition.z - 1);
             }
         }
-        Debug.Log(gameState.RollingPhaseActive + " " +  platformDragActive);
+        //Debug.Log(gameState.RollingPhaseActive + " " +  platformDragActive);
         if (gameState.RollingPhaseActive == false)
         {
             if (platformDragActive == false)
