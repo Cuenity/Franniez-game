@@ -1,9 +1,11 @@
 ﻿using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class PlatformDragManager : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHandler
+public class PlatformDragManager : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHandler //, IPointerDownHandler
 {
-    public GameObject platform;
+    public GameObject platformSquare;
+    public GameObject ramp;
+
     private new Camera camera;
     PlatformManager platformManager;
     PlayerCamera playercamera;
@@ -30,29 +32,29 @@ public class PlatformDragManager : MonoBehaviour, IDragHandler, IBeginDragHandle
         return rayCast.GetPoint(enterDist);
     }
 
-    public void OnPointerDown(PointerEventData eventData)
-    {
-        clickOffset = transform.position - ScreenPointToWorldOnPlane(eventData.position, zAxis);
-    }
+    //public void OnPointerDown(PointerEventData eventData)
+    //{
+    //    Debug.Log(eventData);
+    //    clickOffset = transform.position - ScreenPointToWorldOnPlane(eventData.position, zAxis);
+    //}
 
 
     public void OnBeginDrag(PointerEventData data)
     {
-
         playercamera = GameState.Instance.playerCamera;
         camera = GameState.Instance.playerCamera.GetComponent<Camera>();
         playercamera.platformDragActive = true;
 
         platformManager = GameState.Instance.platformManager.GetComponent<PlatformManager>();
 
-        platform = Instantiate(platform);
+        platformSquare = Instantiate(platformSquare);
     }
     
 
 
     public void OnDrag(PointerEventData eventData)
     {
-        platform.transform.position = ScreenPointToWorldOnPlane(eventData.position, zAxis) + clickOffset; 
+        platformSquare.transform.position = ScreenPointToWorldOnPlane(eventData.position, zAxis) + clickOffset; 
 
     }
 
@@ -61,7 +63,7 @@ public class PlatformDragManager : MonoBehaviour, IDragHandler, IBeginDragHandle
     {
         Vector3 pos = camera.ScreenToWorldPoint(Input.mousePosition);
 
-        platformManager.spawnPlatformOnGrid(platform.transform.position, platform);
+        platformManager.spawnPlatformOnGrid(platformSquare.transform.position, platformSquare);
         //spawnPlatformOnGrid()
 
 

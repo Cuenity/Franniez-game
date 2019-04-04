@@ -9,7 +9,7 @@ public class GameState : MonoBehaviour
     IOManager IOManager;
     InputManager InputManager;
     public UIManager UIManager;
-    LevelManager levelManager;
+    public LevelManager levelManager;
     public PlayerManager playerManager;
     public PlatformManager platformManager;
     public CollectableManager collectableManager;

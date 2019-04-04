@@ -9,6 +9,19 @@ public class LevelManager : MonoBehaviour
     GameState gameState;
     Scene currentScene;
 
+    public PlayerPlatforms playerPlatforms;
+    //public PlayerPlatforms PlayerPlatforms
+    //{
+    //    get
+    //    {
+    //        return playerPlatforms;
+    //    }
+    //    set
+    //    {
+    //        playerPlatforms = value;
+    //    }
+    //}
+
     LevelPlatformen levelPlatformen = new LevelPlatformen();
 
 
@@ -74,7 +87,11 @@ public class LevelManager : MonoBehaviour
 
             //lees level uit Json en vul levelPlatformen
             ReadLevelsFromText("Level1.json");
-            
+
+            playerPlatforms = new PlayerPlatforms(2, 3);
+            //PlayerPlatforms[0] = PlatformType.ramp;
+            //PlayerPlatforms[1] = PlatformType.platformSquare;
+            //PlayerPlatforms[2] = PlatformType.platformSquare;
 
 
             //Dit moet ergens anders
