@@ -50,10 +50,15 @@ public class PlatformDragManager : MonoBehaviour, IDragHandler, IBeginDragHandle
         //Vector3 pos = camera.ScreenToWorldPoint(Input.mousePosition);
         //platform.transform.position = new Vector3(pos.x, pos.y, 0);
 
+        Ray ray = camera.ScreenPointToRay(Input.mousePosition);
+        Vector3 pos = ray.origin + (ray.direction);
         Debug.Log(index);
-        Vector3 pos = Input.mousePosition;
-        platform.transform.position = camera.ScreenToWorldPoint(new Vector3(pos.x, pos.y, 0));
+        //Vector3 pos = Input.mousePosition;
+        pos.z = 0;
+        platform.transform.position = pos;
         //index++;
+
+        
 
 
     }
@@ -62,7 +67,7 @@ public class PlatformDragManager : MonoBehaviour, IDragHandler, IBeginDragHandle
     {
         Vector3 pos = camera.ScreenToWorldPoint(Input.mousePosition);
 
-        platformManager.spawnPlatformOnGrid(new Vector3(pos.x, pos.y, 0), platform);
+        platformManager.spawnPlatformOnGrid(platform.transform.position, platform);
         //spawnPlatformOnGrid()
 
 
