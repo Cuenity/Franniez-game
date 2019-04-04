@@ -9,7 +9,7 @@ public class LocalizationManager : MonoBehaviour
 
     private Dictionary<string, string> localizedText;
     //private Language Language;
-    private Language LanguageChoice;
+    public Language LanguageChoice { get; set; }
     private bool isReady = false;
     private string missingTextString = "Localized text not found";
 
@@ -30,6 +30,27 @@ public class LocalizationManager : MonoBehaviour
         DontDestroyOnLoad(gameObject);
     }
 
+    public void GetLanguageSettings()
+    {
+        Language language = (Language)PlayerDataController.instance.player.language;
+        string filePath = "";
+
+        switch (language)
+        {
+            case Language.Dutch:
+                filePath = "localizedText_Nl.json";
+                break;
+            case Language.English:
+                filePath = "localizedText_En.json";
+                break;
+            case Language.Spanish:
+                filePath = "localizedText_Es.json";
+                break;
+        }
+
+        LoadLocalizedText(filePath);
+    }
+
     public void LoadLocalizedText(string filename)
     {
         localizedText = new Dictionary<string, string>();
@@ -46,7 +67,7 @@ public class LocalizationManager : MonoBehaviour
             }
 
             SetLanguage();
-            //Debug.Log("Data is geladen.");
+            Debug.Log("Data is geladen.");
         }
         else
         {

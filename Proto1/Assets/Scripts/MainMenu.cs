@@ -14,8 +14,8 @@ public class MainMenu : MonoBehaviour
 
     public void Start()
     {
-        LocalizationManager localizationManager = new LocalizationManager();
-        localizationManager.LoadLocalizedText(LocalizationDutch);
+        //LocalizationManager localizationManager = new LocalizationManager();
+        //localizationManager.LoadLocalizedText(LocalizationDutch);
     }
 
     public void StartGame()

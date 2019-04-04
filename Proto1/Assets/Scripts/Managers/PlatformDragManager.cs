@@ -10,7 +10,7 @@ public class PlatformDragManager : MonoBehaviour, IDragHandler, IBeginDragHandle
 
     public void OnBeginDrag(PointerEventData data)
     {
-        camera = GameState.Instance.cameraClass.GetComponent<Camera>();
+        camera = GameState.Instance.playerCamera.GetComponent<Camera>();
         Debug.Log(data);
 
         platform = Instantiate(platform); // GameObject.CreatePrimitive(PrimitiveType.Sphere);

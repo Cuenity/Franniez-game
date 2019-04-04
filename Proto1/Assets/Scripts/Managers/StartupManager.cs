@@ -5,23 +5,23 @@ using UnityEngine.SceneManagement;
 
 public class StartupManager : MonoBehaviour
 {
-
     public PlayerDataController dataController;
     // Start is called before the first frame update
-    private IEnumerator Start()
+    public IEnumerator Start()
     {
-        while (!LocalizationManager.instance.GetisReady())
+       while(!LocalizationManager.instance.GetisReady())
         {
             // Wacht 1 frame
             yield return null;
         }
-        PlayerDataController.instance.LoadPlayerData();
-        //DataController dataController = DataController.instance;
-        //dataController.LoadPlayerData();
-        //dataController = gameObject.AddComponent<DataController>();
 
+        Player player = new Player();
+        player.name = "";
+        player.language = (int)LocalizationManager.instance.LanguageChoice;
+        PlayerDataController.instance.player = player;
 
         SceneManager.LoadScene("StartMenu");
+        
     }
 }
 
