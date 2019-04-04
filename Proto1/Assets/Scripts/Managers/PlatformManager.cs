@@ -14,7 +14,7 @@ public class PlatformManager : MonoBehaviour
     public GameObject PlatformSquare;
     public GameObject Balletje;
     public Portal portal;
-    public List<Portal> allPortals=new List<Portal>();
+    public List<Portal> allPortals = new List<Portal>();
 
     GameState gameState;
 
@@ -60,7 +60,7 @@ public class PlatformManager : MonoBehaviour
             distances.Add(Vector3.Distance(position, gameState.gridManager.gridSquares[i]));
         }
         int minimumValueIndex = distances.IndexOf(distances.Min());
-        
+
         gameObject.transform.position = gameState.gridManager.gridSquares[minimumValueIndex] + rampAdjustment;
 
         //voor generic spawnen
@@ -262,9 +262,11 @@ public class PlatformManager : MonoBehaviour
 
 
         //bouw stom lijstje
-        RampSpots.Add(12);
+        //RampSpots.Add(12);
+        RampSpotsReversed.Add(14);
         PortalList.Add(24);
         PortalList.Add(54);
+        PlatformSpots.Add(53);
 
 
         //bouw stom lijst voor ramps andere kant op
@@ -298,7 +300,7 @@ public class PlatformManager : MonoBehaviour
         {
             for (int i = 0; i < PortalList.Count; i++)
             {
-                portal = Instantiate(portal, gameState.gridManager.gridSquares[PortalList[i]] + rampAdjustment, new Quaternion(0, 0, 0, 0));
+                portal = Instantiate(portal, gameState.gridManager.gridSquares[PortalList[i]] + new Vector3(.5f,.5f,0), new Quaternion(0, 0, 0, 0));
                 allPortals.Add(portal);
                 Debug.Log(this.allPortals);
             }
@@ -320,8 +322,6 @@ public class PlatformManager : MonoBehaviour
             platform = Instantiate(platform);
             platform.transform.position = item;
             platform.transform.Rotate(new Vector3(0, 0, 2));
-
-
         }
 
         //spawn level in grid

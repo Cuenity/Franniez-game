@@ -27,12 +27,21 @@ public class Portal : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         PlayerBal player = gameState.playerManager.player;
-        List<Portal> portallist= gameState.platformManager.allPortals;
-        foreach(Portal item in portallist)
+        List<Portal> portallist = gameState.platformManager.allPortals;
+        foreach (Portal item in portallist)
         {
-            if(this != item)
+
+            if (this != item)
             {
-                player.transform.position = item.transform.position;
+                Vector3 velocity = player.GetComponent<Rigidbody>().velocity;
+                if (velocity.x > 0)
+                {
+                    player.transform.position = item.transform.position + new Vector3(1,0, 0);
+                }
+                else
+                {
+                    player.transform.position = item.transform.position + new Vector3(-1, 0, 0);
+                }
             }
         }
     }
