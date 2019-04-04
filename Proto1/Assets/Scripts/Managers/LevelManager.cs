@@ -91,7 +91,6 @@ public class LevelManager : MonoBehaviour
 
             playerPlatforms = new PlayerPlatforms(2, 3);
 
-
             //Dit moet ergens anders
             gameState.gridManager.width = 11;
             gameState.gridManager.heigth = 12;

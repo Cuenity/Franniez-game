@@ -10,6 +10,7 @@ public class PlayerBal : MonoBehaviour
     private void Awake()
     {
         this.GetComponent<Rigidbody>().useGravity = false;
+        this.GetComponent<SphereCollider>().isTrigger = true; // verander later ofzo
         gameState = GameState.Instance;
     }
     void Start()
@@ -24,10 +25,12 @@ public class PlayerBal : MonoBehaviour
         if (gameState.RollingPhaseActive)
         {
             this.GetComponent<Rigidbody>().useGravity = true;
+            this.GetComponent<SphereCollider>().isTrigger = false;
         }
         else
         {
             this.GetComponent<Rigidbody>().useGravity = false;
+            this.GetComponent<SphereCollider>().isTrigger = true;
         }
 
     }
