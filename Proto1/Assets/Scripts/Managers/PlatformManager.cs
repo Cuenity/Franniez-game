@@ -47,6 +47,24 @@ public class PlatformManager : MonoBehaviour
 
         
     }
+
+    public void spawnPlatformOnGrid(Vector3 position, GameObject gameObject)
+    {
+        GameObject gameObjectGeneric = gameObject;
+        Vector3 rampAdjustment = new Vector3(0.5f, 0f, 0f);
+        List<float> distances = new List<float>();
+        for (int i = 0; i < gameState.gridManager.gridSquares.Count; i++)
+        {
+            distances.Add(Vector3.Distance(position, gameState.gridManager.gridSquares[0]));
+        }
+        int minimumValueIndex = distances.IndexOf(distances.Min());
+        //
+        PlatformSquare = Instantiate(PlatformSquare, gameState.gridManager.gridSquares[minimumValueIndex] + rampAdjustment, new Quaternion(0, 0, 0, 0));
+        PlatformSquare.transform.Rotate(new Vector3(-90f, -90f, 0));
+
+        //voor generic spawnen
+        //PlatformSquare = Instantiate(gameObjectGeneric, gameState.gridManager.gridSquares[minimumValueIndex] + rampAdjustment, new Quaternion(0, 0, 0, 0));
+    }
     // Update is called once per frame
     void Update()
     {

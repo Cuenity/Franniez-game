@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class RollingPhaseManager : MonoBehaviour
@@ -19,29 +16,30 @@ public class RollingPhaseManager : MonoBehaviour
         Scene scene = SceneManager.GetActiveScene();
         int.TryParse(scene.name, out levelNumber);
 
-        player = PlayerDataController.instance.player;
+        //player = PlayerDataController.instance.player;
 
-        level = player.levels[levelNumber - 1];
+        //level = player.levels[levelNumber - 1];
 
-        if (level.gotSticker)
-        {
-            pickedSticker = true;
-        }
+        //if (level.gotSticker)
+        //{
+        //    pickedSticker = true;
+        //}
     }
     // Start is called before the first frame update
     void Start()
     {
-        amountCoins = 0;
-        level.playedLevel = true;
+        //amountCoins = 0;
+        //level.playedLevel = true;
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
-    public void Init() {
+    public void Init()
+    {
         Debug.Log("spawn rolling UI");
     }
 
