@@ -114,7 +114,7 @@ public class LevelManager : MonoBehaviour
             gameState.gridManager.width = 11;
             gameState.gridManager.heigth = 12;
             gameState.gridManager.Build_Grid1_Without_Visuals();
-            gameState.playerManager.player.spawnpoint = gameState.gridManager.gridSquares[3] + playeradjustment;
+            gameState.playerManager.player.spawnpoint = gameState.gridManager.gridSquares[1] + playeradjustment;
             gameState.platformManager.Build_Level2();
         }
     }

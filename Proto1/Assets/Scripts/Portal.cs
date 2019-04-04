@@ -36,7 +36,7 @@ public class Portal : MonoBehaviour
                 Vector3 velocity = player.GetComponent<Rigidbody>().velocity;
                 if (velocity.x > 0)
                 {
-                    player.transform.position = item.transform.position + new Vector3(1,0, 0);
+                    player.transform.position = item.transform.position + new Vector3(1, 0, 0);
                 }
                 else
                 {

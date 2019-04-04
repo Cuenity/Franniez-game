@@ -21,7 +21,6 @@ public class PlayerBal : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(this.gameObject.GetComponent<Rigidbody>().velocity);
         if (gameState.RollingPhaseActive)
         {
             this.GetComponent<Rigidbody>().useGravity = true;

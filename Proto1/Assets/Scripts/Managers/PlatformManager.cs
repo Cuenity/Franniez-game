@@ -15,6 +15,7 @@ public class PlatformManager : MonoBehaviour
     public GameObject Balletje;
     public Portal portal;
     public List<Portal> allPortals = new List<Portal>();
+    public Trampoline trampoline;
 
     GameState gameState;
 
@@ -249,7 +250,8 @@ public class PlatformManager : MonoBehaviour
         List<int> RampSpots = new List<int>();
         List<int> PlatformSpots = new List<int>();
         List<int> RampSpotsReversed = new List<int>();
-        List<int> PortalList = new List<int>();
+        List<int> PortalSpots = new List<int>();
+        List<int> TrampolineSpots = new List<int>();
 
         Vector3 rampAdjustment = new Vector3(0.5f, 0f, 0f);
 
@@ -262,11 +264,13 @@ public class PlatformManager : MonoBehaviour
 
 
         //bouw stom lijstje
-        //RampSpots.Add(12);
-        RampSpotsReversed.Add(14);
-        PortalList.Add(24);
-        PortalList.Add(54);
-        PlatformSpots.Add(53);
+        RampSpots.Add(12);
+        //RampSpotsReversed.Add(14);
+        //PortalSpots.Add(24);
+        // PortalSpots.Add(54);
+        // PlatformSpots.Add(53);
+        TrampolineSpots.Add(24);
+
 
 
         //bouw stom lijst voor ramps andere kant op
@@ -296,13 +300,19 @@ public class PlatformManager : MonoBehaviour
                 ramp.SpawnRampReversed(gameState.gridManager.gridSquares[RampSpotsReversed[i]]);
             }
         }
-        if (PortalList.Count > 0)
+        if (PortalSpots.Count > 0)
         {
-            for (int i = 0; i < PortalList.Count; i++)
+            for (int i = 0; i < PortalSpots.Count; i++)
             {
-                portal = Instantiate(portal, gameState.gridManager.gridSquares[PortalList[i]] + new Vector3(.5f,.5f,0), new Quaternion(0, 0, 0, 0));
+                portal = Instantiate(portal, gameState.gridManager.gridSquares[PortalSpots[i]] + new Vector3(.5f, .5f, 0), new Quaternion(0, 0, 0, 0));
                 allPortals.Add(portal);
-                Debug.Log(this.allPortals);
+            }
+        }
+        if (TrampolineSpots.Count > 0)
+        {
+            for (int i = 0; i < TrampolineSpots.Count; i++)
+            {
+                trampoline = Instantiate(trampoline, gameState.gridManager.gridSquares[TrampolineSpots[i]] + new Vector3(1, 0, 0), new Quaternion(0, 0, 0, 0));
             }
         }
 
