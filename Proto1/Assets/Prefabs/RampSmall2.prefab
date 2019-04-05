@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 5818311206027225093}
   - component: {fileID: 5818311206025898021}
   - component: {fileID: 5818311206024800997}
-  - component: {fileID: 5438634198318327630}
   - component: {fileID: 8102719373825109458}
+  - component: {fileID: 7030363388737609308}
   m_Layer: 0
   m_Name: RampSmall2
   m_TagString: Untagged
@@ -79,18 +79,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!114 &5438634198318327630
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5818311206027064357}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 01103c4ae3f74d748aa60523da7daf5f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!64 &8102719373825109458
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -105,3 +93,15 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 14
   m_Mesh: {fileID: 4300000, guid: 5249c0b207548c54abb62ab3c4d0fa1d, type: 3}
+--- !u!114 &7030363388737609308
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5818311206027064357}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5e9c44a670213b04ab9d6d8013b7ab83, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

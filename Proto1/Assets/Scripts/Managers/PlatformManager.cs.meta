@@ -16,6 +16,10 @@ MonoImporter:
       type: 3}
   - trampoline: {fileID: 7618533241555142815, guid: a1d0b674e9fbf79479b62fce2ce7e9ec,
       type: 3}
+  - bigRamp: {fileID: 7030363388737609308, guid: de84970bd124bbc46a21c24d6ccfb070,
+      type: 3}
+  - finish: {fileID: 2032823587391776419, guid: c85261ac462ef85448b10b92e43df3f9,
+      type: 3}
   - lijn: {fileID: 1965857940646614433, guid: 791b4e3d080d72244a4df542575acaa0, type: 3}
   - gridDot: {fileID: 866343401640163591, guid: bc23aee495a663643ab17e58f38c60da,
       type: 3}
