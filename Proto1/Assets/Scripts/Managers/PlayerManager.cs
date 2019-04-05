@@ -16,7 +16,8 @@ public class PlayerManager : MonoBehaviour
     void Start()
     {
         player = Instantiate(player);
-        player.transform.position = new Vector3(1, 3, 0);
+        player.transform.position= player.spawnpoint;
+        Debug.Log(player.spawnpoint);
         gameState.playerCamera.Target = player;
     }
 

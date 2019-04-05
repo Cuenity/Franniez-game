@@ -8,7 +8,7 @@ public class BuildingPhaseManager : MonoBehaviour
 
     private void Awake()
     {
-        gameState = GameObject.Find("GameState").GetComponent<GameState>();
+        gameState = GameState.Instance;
     }
 
     void Start()
@@ -22,7 +22,7 @@ public class BuildingPhaseManager : MonoBehaviour
     }
 
     public void Init() {
-        Debug.Log("spawn building UI");
-        gameState.UIManager.InventoryButtons(1); // InventoryButtons moet meegeven welke platformen en hoeveel van elk, elk verschillend type krijgt één knop met daarin een platform (als afbeelding of wat dan ook) met het aantal weergegeven.
+        PlayerPlatforms platforms = gameState.levelManager.playerPlatforms;
+        gameState.UIManager.InventoryButtons(platforms); // InventoryButtons moet meegeven welke platformen en hoeveel van elk, elk verschillend type krijgt één knop met daarin een platform (als afbeelding of wat dan ook) met het aantal weergegeven.
     }
 }

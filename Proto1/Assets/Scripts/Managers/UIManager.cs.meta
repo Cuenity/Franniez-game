@@ -8,6 +8,9 @@ MonoImporter:
       type: 3}
   - inventoryButton: {fileID: 4106794643439255396, guid: ec46b2a2eb4814e44a4f05858e3a45e8,
       type: 3}
+  - rampImage: {fileID: 21300000, guid: 58658af157b87a944893f2ab562031e5, type: 3}
+  - platformSquareImage: {fileID: 21300000, guid: cf81ca485854bc1499be3537b667dd5b,
+      type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

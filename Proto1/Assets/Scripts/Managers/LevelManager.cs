@@ -10,7 +10,20 @@ public class LevelManager : MonoBehaviour
     GameState gameState;
     Scene currentScene;
 
-    public LevelPlatformen levelPlatformen;
+    public PlayerPlatforms playerPlatforms;
+    //public PlayerPlatforms PlayerPlatforms
+    //{
+    //    get
+    //    {
+    //        return playerPlatforms;
+    //    }
+    //    set
+    //    {
+    //        playerPlatforms = value;
+    //    }
+    //}
+
+    LevelPlatformen levelPlatformen = new LevelPlatformen();
 
 
     //ik wil levels uit een textbestand kunnen opslaan en uitlezen ga ik proberen hier
@@ -28,7 +41,6 @@ public class LevelManager : MonoBehaviour
         {
             string dataAsJSON = File.ReadAllText(filePath);
             levelPlatformen = JsonUtility.FromJson<LevelPlatformen>(dataAsJSON);
-            
         }
         else
         {
@@ -53,7 +65,7 @@ public class LevelManager : MonoBehaviour
             File.WriteAllText(filePath, dataAsJson);
         }
     }
-   
+
     private void Awake()
     {
         gameState = GameState.Instance;
@@ -79,13 +91,14 @@ public class LevelManager : MonoBehaviour
 
             gameState.collectableManager.InitCollectables(coinPositions, stickerPosition);
         }
-        else if(currentScene.name == "TestLevel1")
+
+        else if (currentScene.name == "TestLevel1")
         {
 
             //lees level uit Json en vul levelPlatformen
             ReadLevelsFromText("Level1.json");
-            
 
+            playerPlatforms = new PlayerPlatforms(2, 3);
 
             //Dit moet ergens anders
             gameState.gridManager.width = 11;
@@ -112,8 +125,19 @@ public class LevelManager : MonoBehaviour
             gameState.gridManager.width = 11;
             gameState.gridManager.heigth = 12;
 
-            levelPlatformen.tileList = new int[11 * 12];
+
+
+
             gameState.gridManager.Build_Grid1_Without_Visuals();
+        }
+        else if (currentScene.name == "TestJaspe")
+        {
+            Vector3 playeradjustment = new Vector3(.5f, 0, 0);
+            gameState.gridManager.width = 11;
+            gameState.gridManager.heigth = 12;
+            gameState.gridManager.Build_Grid1_Without_Visuals();
+            gameState.playerManager.player.spawnpoint = gameState.gridManager.gridSquares[1] + playeradjustment;
+            gameState.platformManager.Build_Level2();
         }
     }
 }
