@@ -78,44 +78,7 @@ public class PlatformManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //snaptest code
-        if (currentScene.name == "TestLevel1")
-        {
-            if (Input.GetKeyDown(KeyCode.Q))
-            {
-                List<float> distances = new List<float>();
-                Vector3 rampAdjustment = new Vector3(0.5f, 0f, 0f);
-                //Vector3 muisPositie = Input.mousePosition;
-                //snapRamp = Instantiate(ramp, muisPositie, new Quaternion(0, 0, 0, 0));
-
-                Vector3 position = new Vector3(UnityEngine.Random.Range(-8.0f, 8.0f), UnityEngine.Random.Range(-8.0f, 8.0f), 0);
-                snapRamp = Instantiate(ramp, position, new Quaternion(0, 0, 0, 0));
-                snapRamp.transform.localScale = new Vector3(200f, 50f, 50f);
-                snapRamp.transform.Rotate(new Vector3(-90f, -90f, 0));
-
-                for (int i = 0; i < gameState.gridManager.gridSquares.Count; i++)
-                {
-                    distances.Add(Vector3.Distance(position, gameState.gridManager.gridSquares[i]));
-                }
-                int minimumValueIndex = distances.IndexOf(distances.Min());
-                snapRamp.transform.position = gameState.gridManager.gridSquares[minimumValueIndex] + rampAdjustment;
-            }
-            if (Input.GetKeyDown(KeyCode.W))
-            {
-                Vector3 snapPlatformSquareAdjustment = new Vector3(0.5f, 0, 0);
-                List<float> distances = new List<float>();
-                Vector3 position = new Vector3(UnityEngine.Random.Range(-8.0f, 8.0f), UnityEngine.Random.Range(-8.0f, 8.0f), 0);
-                snapPlatformSquare = Instantiate(PlatformSquare, position, new Quaternion(0, 0, 0, 0));
-                snapPlatformSquare.transform.Rotate(new Vector3(-90f, -90f, 0));
-
-                for (int i = 0; i < gameState.gridManager.gridSquares.Count; i++)
-                {
-                    distances.Add(Vector3.Distance(position, gameState.gridManager.gridSquares[i]));
-                }
-                int minimumValueIndex = distances.IndexOf(distances.Min());
-                snapPlatformSquare.transform.position = gameState.gridManager.gridSquares[minimumValueIndex] + snapPlatformSquareAdjustment;
-            }
-        }
+        
     }
 
     internal void BuildLevelFromText(LevelPlatformen levelPlatformen)
