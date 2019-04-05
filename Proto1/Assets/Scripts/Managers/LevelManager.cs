@@ -109,7 +109,7 @@ public class LevelManager : MonoBehaviour
             //levelPlatformen.heigth = 12;
             //levelPlatformen.tileList = new int[11*12];
 
-
+            levelPlatformen.tileList = new int[11 * 12];
             gameState.gridManager.Build_Grid1_Without_Visuals();
 
             gameState.platformManager.BuildLevelFromText(levelPlatformen);
