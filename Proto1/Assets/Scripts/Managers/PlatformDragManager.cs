@@ -3,8 +3,11 @@ using UnityEngine.EventSystems;
 
 public class PlatformDragManager : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHandler//, IPointerDownHandler
 {
+    //deze fields verwijderen
     public GameObject platformSquare;
     public GameObject ramp;
+    //tot hier
+
 
     GameObject draggedPlatform;
 
@@ -55,14 +58,27 @@ public class PlatformDragManager : MonoBehaviour, IDragHandler, IBeginDragHandle
 
         GameObject inventoryButton = data.pointerPressRaycast.gameObject.transform.parent.gameObject;
 
-        if (inventoryButton.name == "platformSquareButton")
+        if (inventoryButton)
         {
-            draggedPlatform = Instantiate(platformSquare);
-        } 
-        else if (inventoryButton.name == "rampInventoryButton")
-        {
-            draggedPlatform = Instantiate(ramp);
+            if (inventoryButton.name == "platformSquareButton")
+            {
+                draggedPlatform = Instantiate(platformSquare);
+            }
+            else if (inventoryButton.name == "rampInventoryButton")
+            {
+                draggedPlatform = Instantiate(ramp);
+            }
         }
+
+        else
+        {
+            Debug.Log(data.pointerPressRaycast.gameObject);
+            draggedPlatform = data.pointerPressRaycast.gameObject;
+        }
+
+
+
+        //draggedPlatform = GameState.Instance.levelManager.playerPlatforms.InstantiatePlayerPlatform(inventoryButton);
     }
     
 
@@ -70,12 +86,13 @@ public class PlatformDragManager : MonoBehaviour, IDragHandler, IBeginDragHandle
     public void OnDrag(PointerEventData eventData)
     {
         draggedPlatform.transform.position = ScreenPointToWorldOnPlane(eventData.position, zAxis); //+ clickOffset; 
-
     }
 
 
     public void OnEndDrag(PointerEventData eventData)
     {
+        GameState.Instance.levelManager.playerPlatforms.placedPlatforms.Add(draggedPlatform);
+
         Vector3 pos = camera.ScreenToWorldPoint(Input.mousePosition);
 
         platformManager.spawnPlatformOnGrid(draggedPlatform.transform.position, draggedPlatform);
@@ -86,22 +103,5 @@ public class PlatformDragManager : MonoBehaviour, IDragHandler, IBeginDragHandle
         //platform.transform.position = Vector3.zero;
         //transform.localPosition = Vector3.zero;
         playercamera.platformDragActive = false;
-    }
-
-
-
-
-
+    }    
 }
-
-//public static class extensionMethod
-//{
-//    public static Vector3 ScreenPointToWoldOnPlane(this Camera cam, Vector3 screenPosition, float zPos)
-//    {
-//        float enterDist;
-//        Plane plane = new Plane(Vector3.forward, new Vector3(0, 0, zPos));
-//        Ray rayCast = cam.ScreenPointToRay(screenPosition);
-//        plane.Raycast(rayCast, out enterDist);
-//        return rayCast.GetPoint(enterDist);
-//    }
-//}
