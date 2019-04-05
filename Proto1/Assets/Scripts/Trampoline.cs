@@ -16,18 +16,38 @@ public class Trampoline : MonoBehaviour
     {
 
     }
-    private void OnTriggerEnter(Collider other)
-    {
-        PlayerBal player = gamestate.playerManager.player;
-        Vector3 velocity = player.GetComponent<Rigidbody>().velocity;
-        float velocityY = velocity.y * -1;
-        player.GetComponent<Rigidbody>().AddForce(velocity.x*1.5f, velocityY*5, 0, ForceMode.Impulse);
-    }
     private void OnCollisionEnter(Collision collision)
     {
         PlayerBal player = gamestate.playerManager.player;
         Vector3 velocity = player.GetComponent<Rigidbody>().velocity;
-        float velocityY = velocity.y * -1;
-        player.GetComponent<Rigidbody>().AddForce(velocity.x*5, velocityY * 4, 0, ForceMode.Impulse);
+        float velocityY;
+        float velocityx;
+        if (velocity.y > 0)
+        {
+            velocityY = velocity.y;
+        }
+        else
+        {
+            velocityY = velocity.y * -1;
+        }
+        if (velocityY < 2)
+        {
+            velocityY = 2;
+        }
+
+        if (velocity.x <1 && velocity.x >0 )
+        {
+            velocityx = 2;
+        }
+        else if (velocity.x > -1 && velocity.x < 0 || velocity.x == 0)
+        {
+            velocityx = -2;
+        }
+        else 
+        {
+            velocityx = velocity.x;
+        }
+       
+        player.GetComponent<Rigidbody>().AddForce(velocityx, velocityY * 2.5f, 0, ForceMode.Impulse);
     }
 }

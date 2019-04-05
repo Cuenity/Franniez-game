@@ -27,11 +27,14 @@ public class ButtonManager : MonoBehaviour
             Vector3 spawnpunt = gameState.playerManager.player.spawnpoint;
             PlayerCamera camera = gameState.playerCamera;
             PlayerBal player = gameState.playerManager.player;
+            Camera actualcamera = gameState.GetComponent<Camera>();
             gameState.RollingPhaseActive = false;
             player.transform.position = spawnpunt;
-            //gameState.playerCamera.Target = player;
+           
             player.GetComponent<Rigidbody>().velocity = new Vector3(0, 0, 0); ;
             camera.transform.position = new Vector3(spawnpunt.x + camera.TargetMovementOffset.x, spawnpunt.y + camera.TargetMovementOffset.y, spawnpunt.z + camera.TargetMovementOffset.z);
+            camera.transform.LookAt(camera.Target.transform.position + camera.TargetMovementOffset);
+
             camera.GetComponent<Rigidbody>().velocity = new Vector3(0, 0, 0); ;
             gameState.BuildingPhaseActive = true;
         }

@@ -4,7 +4,8 @@ MonoImporter:
   externalObjects: {}
   serializedVersion: 2
   defaultReferences:
-  - platform: {fileID: 741766284408628129, guid: b9468f973b2243a4f920413211ca2691,
+  - platform: {instanceID: 0}
+  - rechthoek: {fileID: 2204122891480544061, guid: b9468f973b2243a4f920413211ca2691,
       type: 3}
   - ramp: {fileID: 9210791763351795000, guid: 61b9fd3847e219a41911fc30f5f1d340, type: 3}
   - PlatformSquare: {fileID: 4581323721575538998, guid: af6585d6aa968f246804e97579948daa,

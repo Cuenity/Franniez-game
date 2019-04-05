@@ -133,8 +133,9 @@ public class LevelManager : MonoBehaviour
         }
         else if (currentScene.name == "TestJaspe")
         {
+            playerPlatforms = new PlayerPlatforms(2, 3);
             Vector3 playeradjustment = new Vector3(.5f, 0, 0);
-            gameState.gridManager.width = 11;
+            gameState.gridManager.width = 20;
             gameState.gridManager.heigth = 12;
             gameState.gridManager.Build_Grid1_Without_Visuals();
             gameState.playerManager.player.spawnpoint = gameState.gridManager.gridSquares[1] + playeradjustment;
