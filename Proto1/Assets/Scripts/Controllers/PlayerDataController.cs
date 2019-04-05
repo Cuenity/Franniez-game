@@ -46,27 +46,19 @@ public class PlayerDataController : MonoBehaviour
             Debug.Log(player.name);
         }
         return fileExist;
-
-        //filePath = Path.Combine(Application.streamingAssetsPath, fileName);
-        //Debug.Log(filePath.ToString());
-
-        //if (Application.platform == RuntimePlatform.Android)
-        //{
-        //    filePath = Path.Combine("jar:file://" + Application.dataPath + "!assets/", fileName);
-        //    Debug.Log("RunTime Android goed gegaan. FIlepath is nu:");
-        //    Debug.Log(filePath.ToString());
-        //}
-
-        //// Maak hier nog een if statement of file gevonden is, NIET MET File.EXISTS()!!!!
-
-        //if(File.Exists(filePath))
-        //{
-        //    Debug.Log("Bestand is gevonden");
-        //}
     }
 
     public void Save()
     {
+
+        Player playerTest = new Player();
+        playerTest.coins = 0;
+        playerTest.language = 2;
+        playerTest.levels = new Level[1];
+        playerTest.stickers = new Sticker[1];
+        playerTest.name = "Joris";
+
+        player = playerTest;
         BinaryFormatter bf = new BinaryFormatter();
 
         FileStream file = File.Create(Application.persistentDataPath + "/PlayerInfo.dat");
@@ -75,9 +67,6 @@ public class PlayerDataController : MonoBehaviour
         file.Close();
         Debug.Log("Opgeslagen");
     }
-
-
-
 
     public Player GetPlayer()
     {

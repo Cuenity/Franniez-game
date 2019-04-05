@@ -89,31 +89,51 @@ public class LocalizationManager : MonoBehaviour
 
     }
 
-    private void SetLanguage()
+    // Alleen public voor Debug, weer terug veranderen naar Private
+
+    public void SetLanguage()
     {
-        string key = "language";
-        if (localizedText == null) { return; }
-        if (localizedText.ContainsKey(key))
+        Player player = PlayerDataController.instance.player;
+
+        switch (player.language)
         {
-            string languageValue = localizedText[key].ToLower();
-
-            if (languageValue == "dutch")
-            {
+            case 0:
                 LanguageChoice = Language.Dutch;
-                Debug.Log("Taal is Nederlands");
-            }
-            else if (languageValue == "english")
-            {
+        break;
+            case 1:
                 LanguageChoice = Language.English;
-                Debug.Log("Taal is Engels");
-            }
-            else if (languageValue == "spanish")
-            {
+                break;
+            case 2:
                 LanguageChoice = Language.Spanish;
-                Debug.Log("Taal is Spaans");
-            }
-
+                break;
+            default:
+                LanguageChoice = Language.English;
+                break;
         }
+
+        //string key = "language";
+        //if (localizedText == null) { return; }
+        //if (localizedText.ContainsKey(key))
+        //{
+        //    string languageValue = localizedText[key].ToLower();
+
+        //    if (languageValue == "dutch")
+        //    {
+        //        LanguageChoice = Language.Dutch;
+        //        Debug.Log("Taal is Nederlands");
+        //    }
+        //    else if (languageValue == "english")
+        //    {
+        //        LanguageChoice = Language.English;
+        //        Debug.Log("Taal is Engels");
+        //    }
+        //    else if (languageValue == "spanish")
+        //    {
+        //        LanguageChoice = Language.Spanish;
+        //        Debug.Log("Taal is Spaans");
+        //    }
+
+        //}
 
 
 
