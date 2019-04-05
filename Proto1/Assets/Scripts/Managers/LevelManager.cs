@@ -174,5 +174,30 @@ public class LevelManager : MonoBehaviour
 
             gameState.platformManager.Build_Vertical_Slice_Level2();
         }
+        else if (currentScene.name == "VerticalSliceLevel1")
+        {
+            Vector3 playeradjustment = new Vector3(.5f, 0, 0);
+            gameState.gridManager.width = 8;
+            gameState.gridManager.heigth = 7;
+
+            playerPlatforms = new PlayerPlatforms(2, 3);
+
+            gameState.gridManager.Build_Grid_BuildingPhase_With_Visuals();
+            gameState.playerManager.player.spawnpoint = gameState.gridManager.gridSquares[1] + playeradjustment;
+
+            gameState.platformManager.Build_Vertical_Slice_Level1();
+        }
+        else if (currentScene.name == "VerticalSliceLevel3")
+        {
+            Vector3 playeradjustment = new Vector3(.5f, 0, 0);
+            gameState.gridManager.width = 27;
+            gameState.gridManager.heigth = 17;
+
+            playerPlatforms = new PlayerPlatforms(2, 3);
+            
+            gameState.gridManager.Build_Grid_BuildingPhase_With_Visuals();
+            gameState.playerManager.player.spawnpoint = gameState.gridManager.gridSquares[0] + playeradjustment;
+            gameState.platformManager.Build_Vertical_Slice_Level3();
+        }
     }
 }

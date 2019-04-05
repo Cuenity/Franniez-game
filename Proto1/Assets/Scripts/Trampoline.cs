@@ -32,7 +32,7 @@ public class Trampoline : MonoBehaviour
         }
         if (velocityY < 2)
         {
-            velocityY = 2;
+            velocityY = 4;
         }
 
         if (velocity.x <1 && velocity.x >0 )
@@ -48,6 +48,6 @@ public class Trampoline : MonoBehaviour
             velocityx = velocity.x;
         }
        
-        player.GetComponent<Rigidbody>().AddForce(velocityx, velocityY * 2.5f, 0, ForceMode.Impulse);
+        player.GetComponent<Rigidbody>().AddForce(velocityx, velocityY * 2f, 0, ForceMode.Impulse);
     }
 }
