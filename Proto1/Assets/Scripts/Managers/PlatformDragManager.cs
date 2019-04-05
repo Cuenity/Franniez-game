@@ -4,22 +4,11 @@ using UnityEngine;
 
 public class PlatformDragManager : MonoBehaviour
 {
-    private Vector3 screenPoint; private Vector3 offset;
+    private Vector3 screenPoint;
+    private Vector3 offset;
 
     private Camera camera;
-
-    void Start()
-    {
-    }
-
-
-    void Update()
-    {
-
-    }
-
-
-
+    
     void OnMouseDown()
     {
         camera = GameState.Instance.playerCamera.GetComponent<Camera>();

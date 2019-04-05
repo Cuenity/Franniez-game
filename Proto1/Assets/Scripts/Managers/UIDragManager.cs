@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 public class UIDragManager : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHandler//, IPointerDownHandler
 {
@@ -65,10 +66,21 @@ public class UIDragManager : MonoBehaviour, IDragHandler, IBeginDragHandler, IEn
             if (inventoryButton.name == "platformSquareButton")
             {
                 draggedPlatform = Instantiate(platformSquare);
+                GameState.Instance.levelManager.playerPlatforms.platformSquaresLeftToPlace--;
+                foreach (InventoryButton button in GameState.Instance.UIManager.instantiatedInventoryButtons)
+                {
+                    if (button.name == inventoryButton.name)
+                    {
+                        Text buttonText = button.transform.GetChild(0).gameObject.GetComponent<Text>();
+                        buttonText.text = GameState.Instance.levelManager.playerPlatforms.platformSquaresLeftToPlace + "/" + GameState.Instance.levelManager.playerPlatforms.platformSquares;
+                    }
+                }
+                //GameState.Instance.UIManager.InventoryButtons.GetComponent()
             }
             else if (inventoryButton.name == "rampInventoryButton")
             {
                 draggedPlatform = Instantiate(ramp);
+                GameState.Instance.levelManager.playerPlatforms.rampsLeftToPlace--;
             }
         }
 
@@ -98,12 +110,8 @@ public class UIDragManager : MonoBehaviour, IDragHandler, IBeginDragHandler, IEn
         Vector3 pos = camera.ScreenToWorldPoint(Input.mousePosition);
 
         platformManager.spawnPlatformOnGrid(draggedPlatform.transform.position, draggedPlatform);
-        //spawnPlatformOnGrid()
-
-
-
-        //platform.transform.position = Vector3.zero;
-        //transform.localPosition = Vector3.zero;
         playercamera.platformDragActive = false;
+
+        
     }    
 }
