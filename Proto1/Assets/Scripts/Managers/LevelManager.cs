@@ -23,7 +23,7 @@ public class LevelManager : MonoBehaviour
     //    }
     //}
 
-    LevelPlatformen levelPlatformen = new LevelPlatformen();
+    public LevelPlatformen levelPlatformen = new LevelPlatformen();
 
 
     //ik wil levels uit een textbestand kunnen opslaan en uitlezen ga ik proberen hier
