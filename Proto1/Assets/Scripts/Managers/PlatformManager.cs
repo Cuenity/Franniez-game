@@ -294,8 +294,6 @@ public class PlatformManager : MonoBehaviour
         List<int> TrampolineSpots = new List<int>();
         List<int> rechthoekSpots = new List<int>();
 
-        Vector3 rampAdjustment = new Vector3(0.5f, 0f, 0f);
-
         //levelPlatformen.tileList[12] = 1;
         //betekent op tile 12 staat een ramp
         //1 is ramp
@@ -314,14 +312,12 @@ public class PlatformManager : MonoBehaviour
         TrampolineSpots.Add(63);
         TrampolineSpots.Add(26);
         rechthoekSpots.Add(66);
+        Init_Platforms(RampSpots, PlatformSpots, RampSpotsReversed, PortalSpots, TrampolineSpots, rechthoekSpots);
 
-
-
-        //bouw stom lijst voor ramps andere kant op
-
-
-        //bouw stom lijstje
-
+    }
+    internal void Init_Platforms(List<int> RampSpots, List<int> PlatformSpots, List<int> RampSpotsReversed, List<int> PortalSpots, List<int> TrampolineSpots, List<int> rechthoekSpots)
+    {
+        Vector3 rampAdjustment = new Vector3(0.5f, 0f, 0f);
         if (RampSpots.Count > 0)
         {
             for (int i = 0; i < RampSpots.Count; i++)
@@ -364,29 +360,9 @@ public class PlatformManager : MonoBehaviour
             for (int i = 0; i < rechthoekSpots.Count; i++)
             {
                 rechthoek = Instantiate(rechthoek, gameState.gridManager.gridSquares[rechthoekSpots[i]] + new Vector3(.5f, 0, 0), new Quaternion(0, 0, 0, 0));
-                
+
             }
         }
-
-    }
-    internal void Init_Platforms()
-    {
-        //wat roept dit aan?
-
-
-        Vector3 platform1 = new Vector3(1, 1, 1);
-        Vector3 platform2 = new Vector3(3, 5, 1);
-
-        platformPositions.Add(platform1);
-        platformPositions.Add(platform2);
-        foreach (Vector3 item in platformPositions)
-        {
-            platform = Instantiate(platform);
-            platform.transform.position = item;
-            platform.transform.Rotate(new Vector3(0, 0, 2));
-        }
-
-        //spawn level in grid
     }
 
 
