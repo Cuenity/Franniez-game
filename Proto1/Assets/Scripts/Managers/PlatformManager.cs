@@ -4,10 +4,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using System.Linq;
+using UnityEngine.UI;
+using System.IO;
 
 public class PlatformManager : MonoBehaviour
 {
-    GridManager gridManager;
 
     public GameObject platform;
     public Ramp ramp;
@@ -53,16 +54,20 @@ public class PlatformManager : MonoBehaviour
         GameObject gameObjectGeneric = gameObject;
         Vector3 rampAdjustment = new Vector3(0.5f, 0f, 0f);
         List<float> distances = new List<float>();
-        for (int i = 0; i < gameState.gridManager.gridSquares.Count; i++)
+        if (gameState.gridManager.gridSquares.Count > 0)
         {
-            distances.Add(Vector3.Distance(position, gameState.gridManager.gridSquares[i]));
+            for (int i = 0; i < gameState.gridManager.gridSquares.Count; i++)
+            {
+                distances.Add(Vector3.Distance(position, gameState.gridManager.gridSquares[i]));
+            }
         }
+        
         int minimumValueIndex = distances.IndexOf(distances.Min());
         
         gameObject.transform.position = gameState.gridManager.gridSquares[minimumValueIndex] + rampAdjustment;
 
-        //voor generic spawnen
-        //PlatformSquare = Instantiate(gameObjectGeneric, gameState.gridManager.gridSquares[minimumValueIndex] + rampAdjustment, new Quaternion(0, 0, 0, 0));
+        gameState.levelManager.levelPlatformen.tileList[minimumValueIndex] = 3;
+        
     }
     // Update is called once per frame
     void Update()
@@ -261,5 +266,9 @@ public class PlatformManager : MonoBehaviour
         //spawn level in grid
     }
 
+
     
+
+
+
 }

@@ -3,44 +3,53 @@ using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class LevelManager : MonoBehaviour
 {
     GameState gameState;
     Scene currentScene;
 
-    LevelPlatformen levelPlatformen = new LevelPlatformen();
+    public LevelPlatformen levelPlatformen;
 
 
     //ik wil levels uit een textbestand kunnen opslaan en uitlezen ga ik proberen hier
 
-    private void ReadLevelsFromText(string levelName)
+    public void ReadLevelsFromText(string levelName)
     {
-        string filePath = Path.Combine(Application.streamingAssetsPath, levelName);
+        if (levelName == "")
+        {
+            InputField InputName = GameObject.Find("LevelName").GetComponent<InputField>();
+            levelName = InputName.text;
+        }
+        string filePath = Application.streamingAssetsPath + "/" + levelName + ".json";
 
         if (File.Exists(filePath))
         {
             string dataAsJSON = File.ReadAllText(filePath);
             levelPlatformen = JsonUtility.FromJson<LevelPlatformen>(dataAsJSON);
-
             
-
-            //Debug.Log("Data is geladen.");
         }
         else
         {
             //moet file createn
             Debug.LogError("Cannot find file!");
         }
+        GameState.Instance.platformManager.BuildLevelFromText(levelPlatformen);
     }
 
-    private void SaveLevelToText(string levelName)
+    public void SaveLevelToText(string levelName)
     {
-        string filePath = Path.Combine(Application.streamingAssetsPath, levelName);
-
+        
+        if (levelName == "")
+        {
+            InputField InputName = GameObject.Find("LevelName").GetComponent<InputField>();
+            levelName = InputName.text;
+        }
+        string filePath = Application.streamingAssetsPath +"/" + levelName +".json";
         if (!string.IsNullOrEmpty(filePath))
         {
-            string dataAsJson = JsonUtility.ToJson(levelPlatformen);
+            string dataAsJson = JsonUtility.ToJson(gameState.levelManager.levelPlatformen);
             File.WriteAllText(filePath, dataAsJson);
         }
     }
@@ -48,6 +57,7 @@ public class LevelManager : MonoBehaviour
     private void Awake()
     {
         gameState = GameState.Instance;
+        levelPlatformen = new LevelPlatformen();
         //gameState = GameObject.Find("GameState").GetComponent<GameState>();
     }
 
@@ -99,12 +109,10 @@ public class LevelManager : MonoBehaviour
 
         else if (currentScene.name == "LevelEditor")
         {
-            gameState.gridManager.width = 50;
-            gameState.gridManager.heigth = 25;
+            gameState.gridManager.width = 11;
+            gameState.gridManager.heigth = 12;
 
-            
-
-
+            levelPlatformen.tileList = new int[11 * 12];
             gameState.gridManager.Build_Grid1_Without_Visuals();
         }
     }
