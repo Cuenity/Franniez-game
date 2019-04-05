@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -63,8 +63,6 @@ public class PlayerCamera : MonoBehaviour
                     camera.transform.position = new Vector3(cameraposition.x, cameraposition.y, cameraposition.z - 1);
             }
         }
-        
-        
         if (gameState.RollingPhaseActive == false)
         {
             if (platformDragActive == false)

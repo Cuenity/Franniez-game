@@ -25,5 +25,6 @@ public class StickerObject : MonoBehaviour
     {
         playerManager.collectedSticker = true;
         Destroy(gameObject);
+        PickedSticker();
     }
 }

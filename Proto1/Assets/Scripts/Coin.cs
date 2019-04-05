@@ -26,6 +26,6 @@ public class Coin : MonoBehaviour
     {
         playerManager.collectedCoins++;
         Destroy(gameObject);
-        PickedCoin?.Invoke();
+        PickedCoin();
     }
 }

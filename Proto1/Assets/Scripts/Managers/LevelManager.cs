@@ -80,16 +80,17 @@ public class LevelManager : MonoBehaviour
         //gameState.platformManager.spawnLevel1();
         //gameState.platformManager.Init_Platforms();
 
-        if (currentScene.name == "TestLevelCoen")
+        if (currentScene.name == "1")
         {
             List<Vector3> coinPositions = new List<Vector3>();
-            coinPositions.Add(new Vector3(0, 1.5f, 0));
-            coinPositions.Add(new Vector3(3, 2, 0));
-            coinPositions.Add(new Vector3(6, 2, 0));
+            coinPositions.Add(new Vector3(1, 1.5f, 0));
+            coinPositions.Add(new Vector3(1, -2, 0));
+            coinPositions.Add(new Vector3(1, -3, 0));
 
-            Vector3 stickerPosition = new Vector3(0, -2, 0);
+            Vector3 stickerPosition = new Vector3(1, -2, 0);
+            Vector3 finishPosition = new Vector3(1, -10, 0);
 
-            gameState.collectableManager.InitCollectables(coinPositions, stickerPosition);
+            gameState.collectableManager.InitCollectables(coinPositions, stickerPosition, finishPosition);
         }
 
         else if (currentScene.name == "TestLevel1")
