@@ -226,28 +226,53 @@ public class PlatformManager : MonoBehaviour
         List<int> PlatformSpots = new List<int>();
         List<int> FinishSpots = new List<int>();
         List<int> TrampolineSpots = new List<int>();
+        List<int> PortalSpots = new List<int>();
+        List<int> rechthoekSpots = new List<int>();
+        List<int> RampSpotsReversed = new List<int>();
+
         Vector3 rampAdjustment = new Vector3(0.5f, 0f, 0f);
         RampSpots.Add(20);
         TrampolineSpots.Add(117);
-        for (int i = 0; i < RampSpots.Count; i++)
-        {
-            bigRamp.SpawnRamp(gameState.gridManager.gridSquares[RampSpots[i]]);
-        }
+        PortalSpots.Add(62);
+        PortalSpots.Add(103);
+        Init_Platforms(RampSpots, PlatformSpots, RampSpotsReversed, PortalSpots, TrampolineSpots, rechthoekSpots);
+    }
 
-        for (int i = 0; i < PlatformSpots.Count; i++)
-        {
-            PlatformSquare = Instantiate(PlatformSquare, gameState.gridManager.gridSquares[PlatformSpots[i]] + rampAdjustment, new Quaternion(0, 0, 0, 0));
-            PlatformSquare.transform.Rotate(new Vector3(-90f, -90f, 0));
-        }
-        for (int i = 0; i < FinishSpots.Count; i++)
-        {
-            finish = Instantiate(finish, gameState.gridManager.gridSquares[FinishSpots[i]], new Quaternion(0, 0, 0, 0));
+    internal void Build_Vertical_Slice_Level3()
+    {
+        Vector3 rampAdjustment = new Vector3(0.5f, 0f, 0f);
+        List<int> RampSpots = new List<int>();
+        List<int> PlatformSpots = new List<int>();
+        List<int> FinishSpots = new List<int>();
+        List<int> TrampolineSpots = new List<int>();
+        List<int> PortalSpots = new List<int>();
+        List<int> rechthoekSpots = new List<int>();
+        List<int> RampSpotsReversed = new List<int>();
+        RampSpots.Add(27);
+        PlatformSpots.Add(8);
+        PlatformSpots.Add(35);
+        PlatformSpots.Add(62);
+        PlatformSpots.Add(89);
+        PlatformSpots.Add(116);
+        PlatformSpots.Add(143);
+        PlatformSpots.Add(170);
+        PlatformSpots.Add(194);
+        PlatformSpots.Add(195);
+        PlatformSpots.Add(196);
+        PlatformSpots.Add(197);
+        PlatformSpots.Add(221);
+        PlatformSpots.Add(248);
+        PlatformSpots.Add(278);
+        PlatformSpots.Add(305);
+        PlatformSpots.Add(332);
+        PlatformSpots.Add(359);
+        PlatformSpots.Add(386);
+        PlatformSpots.Add(413);
+        PlatformSpots.Add(440);
+        TrampolineSpots.Add(381);
 
-        }
-        for (int i = 0; i < TrampolineSpots.Count; i++)
-        {
-            trampoline = Instantiate(trampoline, gameState.gridManager.gridSquares[TrampolineSpots[i]] + new Vector3(1, 0, 0), new Quaternion(0, 0, 0, 0));
-        }
+
+        Init_Platforms(RampSpots, PlatformSpots, RampSpotsReversed, PortalSpots, TrampolineSpots, rechthoekSpots);
     }
 
     internal void Build_Vertical_Slice_Level1()
@@ -255,6 +280,11 @@ public class PlatformManager : MonoBehaviour
         List<int> RampSpots = new List<int>();
         List<int> PlatformSpots = new List<int>();
         List<int> FinishSpots = new List<int>();
+        
+        List<int> RampSpotsReversed = new List<int>();
+        List<int> PortalSpots = new List<int>();
+        List<int> TrampolineSpots = new List<int>();
+        List<int> rechthoekSpots = new List<int>();
 
         Vector3 rampAdjustment = new Vector3(0.5f, 0f, 0f);
 
@@ -280,6 +310,7 @@ public class PlatformManager : MonoBehaviour
             finish = Instantiate(finish, gameState.gridManager.gridSquares[FinishSpots[i]], new Quaternion(0, 0, 0, 0));
             
         }
+        Init_Platforms(RampSpots, PlatformSpots, RampSpotsReversed, PortalSpots, TrampolineSpots, rechthoekSpots);
     }
 
     internal void Build_Level2()
