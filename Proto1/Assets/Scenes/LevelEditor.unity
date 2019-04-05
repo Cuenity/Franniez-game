@@ -1782,6 +1782,7 @@ MonoBehaviour:
   portal: {fileID: 0}
   allPortals: []
   trampoline: {fileID: 0}
+  bigRamp: {fileID: 0}
   lijn: {fileID: 1965857940646614433, guid: 791b4e3d080d72244a4df542575acaa0, type: 3}
   gridDot: {fileID: 866343401640163591, guid: bc23aee495a663643ab17e58f38c60da, type: 3}
   gridSquare: {fileID: 5277723055925215312, guid: c3402e776dd95844ab6d4872d579ef6b,
@@ -2058,6 +2059,7 @@ MonoBehaviour:
   portal: {fileID: 0}
   allPortals: []
   trampoline: {fileID: 0}
+  bigRamp: {fileID: 0}
   lijn: {fileID: 1965857940646614433, guid: 791b4e3d080d72244a4df542575acaa0, type: 3}
   gridDot: {fileID: 866343401640163591, guid: bc23aee495a663643ab17e58f38c60da, type: 3}
   gridSquare: {fileID: 5277723055925215312, guid: c3402e776dd95844ab6d4872d579ef6b,
