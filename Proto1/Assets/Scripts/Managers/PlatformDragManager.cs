@@ -6,13 +6,15 @@ public class PlatformDragManager : MonoBehaviour, IDragHandler, IBeginDragHandle
     public GameObject platformSquare;
     public GameObject ramp;
 
+    GameObject draggedPlatform;
+
     private new Camera camera;
     PlatformManager platformManager;
     PlayerCamera playercamera;
 
 
     float zAxis = 0;
-    Vector3 clickOffset = Vector3.zero;
+    //Vector3 clickOffset = Vector3.zero;
 
 
     private void Start()
@@ -25,10 +27,10 @@ public class PlatformDragManager : MonoBehaviour, IDragHandler, IBeginDragHandle
 
     private Vector3 ScreenPointToWorldOnPlane(Vector3 screenPosition, float zPosition)
     {
-        float enterDist;
+        //float enterDist;
         Plane plane = new Plane(Vector3.forward, new Vector3(0, 0, zPosition));
         Ray rayCast = camera.ScreenPointToRay(screenPosition);
-        plane.Raycast(rayCast, out enterDist);
+        plane.Raycast(rayCast, out float enterDist);
         return rayCast.GetPoint(enterDist);
     }
 
@@ -47,14 +49,23 @@ public class PlatformDragManager : MonoBehaviour, IDragHandler, IBeginDragHandle
 
         platformManager = GameState.Instance.platformManager.GetComponent<PlatformManager>();
 
-        platformSquare = Instantiate(platformSquare);
+        GameObject inventoryButton = data.pointerPressRaycast.gameObject.transform.parent.gameObject;
+
+        if (inventoryButton.name == "platformSquareButton")
+        {
+            draggedPlatform = Instantiate(platformSquare);
+        } 
+        else if (inventoryButton.name == "rampInventoryButton")
+        {
+            draggedPlatform = Instantiate(ramp);
+        }
     }
     
 
 
     public void OnDrag(PointerEventData eventData)
     {
-        platformSquare.transform.position = ScreenPointToWorldOnPlane(eventData.position, zAxis) + clickOffset; 
+        draggedPlatform.transform.position = ScreenPointToWorldOnPlane(eventData.position, zAxis); //+ clickOffset; 
 
     }
 
@@ -63,7 +74,7 @@ public class PlatformDragManager : MonoBehaviour, IDragHandler, IBeginDragHandle
     {
         Vector3 pos = camera.ScreenToWorldPoint(Input.mousePosition);
 
-        platformManager.spawnPlatformOnGrid(platformSquare.transform.position, platformSquare);
+        platformManager.spawnPlatformOnGrid(draggedPlatform.transform.position, draggedPlatform);
         //spawnPlatformOnGrid()
 
 

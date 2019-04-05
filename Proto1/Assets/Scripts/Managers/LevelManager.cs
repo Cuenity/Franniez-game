@@ -97,7 +97,7 @@ public class LevelManager : MonoBehaviour
         {
 
             //lees level uit Json en vul levelPlatformen
-            ReadLevelsFromText("Level1.json");
+            //ReadLevelsFromText("Level1.json");
 
             playerPlatforms = new PlayerPlatforms(2, 3);
 

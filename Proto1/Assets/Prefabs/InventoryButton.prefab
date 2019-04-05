@@ -173,7 +173,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   platformSquare: {fileID: 4581323721575538998, guid: af6585d6aa968f246804e97579948daa,
     type: 3}
-  ramp: {fileID: 7211509322386875987, guid: 61b9fd3847e219a41911fc30f5f1d340, type: 3}
+  ramp: {fileID: 3053333542818622701, guid: 5c1d50512c7b7eb4cb74387fcb1286df, type: 3}
 --- !u!1 &4918047297470904844
 GameObject:
   m_ObjectHideFlags: 0
