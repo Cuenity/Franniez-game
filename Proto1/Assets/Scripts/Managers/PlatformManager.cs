@@ -11,6 +11,7 @@ public class PlatformManager : MonoBehaviour
 {
 
     public GameObject platform;
+    public GameObject rechthoek;
     public Ramp ramp;
     public GameObject PlatformSquare;
     public GameObject Balletje;
@@ -285,6 +286,7 @@ public class PlatformManager : MonoBehaviour
         List<int> RampSpotsReversed = new List<int>();
         List<int> PortalSpots = new List<int>();
         List<int> TrampolineSpots = new List<int>();
+        List<int> rechthoekSpots = new List<int>();
 
         Vector3 rampAdjustment = new Vector3(0.5f, 0f, 0f);
 
@@ -297,12 +299,15 @@ public class PlatformManager : MonoBehaviour
 
 
         //bouw stom lijstje
-        RampSpots.Add(12);
+        RampSpots.Add(21);
+        RampSpots.Add(42);
         //RampSpotsReversed.Add(14);
         //PortalSpots.Add(24);
         // PortalSpots.Add(54);
         // PlatformSpots.Add(53);
-        TrampolineSpots.Add(24);
+        TrampolineSpots.Add(63);
+        TrampolineSpots.Add(26);
+        rechthoekSpots.Add(66);
 
 
 
@@ -346,6 +351,14 @@ public class PlatformManager : MonoBehaviour
             for (int i = 0; i < TrampolineSpots.Count; i++)
             {
                 trampoline = Instantiate(trampoline, gameState.gridManager.gridSquares[TrampolineSpots[i]] + new Vector3(1, 0, 0), new Quaternion(0, 0, 0, 0));
+            }
+        }
+        if (rechthoekSpots.Count > 0)
+        {
+            for (int i = 0; i < rechthoekSpots.Count; i++)
+            {
+                rechthoek = Instantiate(rechthoek, gameState.gridManager.gridSquares[rechthoekSpots[i]] + new Vector3(.5f, 0, 0), new Quaternion(0, 0, 0, 0));
+                
             }
         }
 

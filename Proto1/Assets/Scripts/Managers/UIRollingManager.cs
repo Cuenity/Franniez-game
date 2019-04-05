@@ -24,7 +24,7 @@ public class UIRollingManager : MonoBehaviour
         // Dit wil later uit een Scenemanager halen. 
         currentScene = SceneManager.GetActiveScene();
         levelIndicator = currentScene.name;
-        levelNumberText.text = "LEVEL " + levelIndicator;
+        //levelNumberText.text = "LEVEL " + levelIndicator;
     }
 
     private void OnEnable()

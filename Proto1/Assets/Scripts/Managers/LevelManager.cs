@@ -83,6 +83,12 @@ public class LevelManager : MonoBehaviour
 
         if (currentScene.name == "1")
         {
+            gameState.gridManager.width = 11;
+            gameState.gridManager.heigth = 12;
+            gameState.gridManager.Build_Grid1_Without_Visuals();
+            Vector3 playeradjustment = new Vector3(.5f, 0, 0);
+            gameState.playerManager.player.spawnpoint = gameState.gridManager.gridSquares[1] + playeradjustment;
+            playerPlatforms = new PlayerPlatforms(2, 3);
             List<Vector3> coinPositions = new List<Vector3>();
             coinPositions.Add(new Vector3(1, 1.5f, 0));
             coinPositions.Add(new Vector3(1, -2, 0));
@@ -135,8 +141,9 @@ public class LevelManager : MonoBehaviour
         }
         else if (currentScene.name == "TestJaspe")
         {
+            playerPlatforms = new PlayerPlatforms(2, 3);
             Vector3 playeradjustment = new Vector3(.5f, 0, 0);
-            gameState.gridManager.width = 11;
+            gameState.gridManager.width = 20;
             gameState.gridManager.heigth = 12;
             levelPlatformen.tileList = new int[gameState.gridManager.width * gameState.gridManager.heigth];
             gameState.gridManager.Build_Grid1_Without_Visuals();
