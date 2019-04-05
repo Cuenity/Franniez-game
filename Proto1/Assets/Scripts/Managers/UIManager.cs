@@ -1,10 +1,14 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
     public Canvas canvas;
     public InventoryButton inventoryButton;
     private InventoryButton[] instantiatedInventoryButtons;
+
+    public Sprite rampImage;
+    public Sprite platformSquareImage;
 
     void Start()
     {
@@ -16,36 +20,72 @@ public class UIManager : MonoBehaviour
 
     }
 
-    public void InventoryButtons(int inventoryButtonAmmount)
+    public void InventoryButtons(PlayerPlatforms playerPlatforms)
     {
-        bool instantiatedInventoryButtonsArrayNotInstantiated = instantiatedInventoryButtons == null;
-        if (instantiatedInventoryButtonsArrayNotInstantiated)        
-            instantiatedInventoryButtons = new InventoryButton[inventoryButtonAmmount];
+        //PlayerPlatforms playerPlatforms = new PlayerPlatforms();
+        //int ramps = 0;
+        //int platformSquares = 0;
+        //int inventoryButtonAmmount = 0;
 
-        bool instantiatedInventoryButtonsAlreadyInstantiated = instantiatedInventoryButtons[0] != null;
-        if (instantiatedInventoryButtonsAlreadyInstantiated)
+        //foreach (var platform in playerPlatforms)
+        //{
+        //    switch (platform)
+        //    {
+        //        case PlatformType.ramp:
+        //            if (ramps == 0)
+        //            {
+        //                inventoryButtonAmmount++;
+        //            }
+        //            ramps++;
+        //            break;
+        //        case PlatformType.platformSquare:
+        //            if (platformSquares == 0)
+        //            {
+        //                inventoryButtonAmmount++;
+        //            }
+        //            platformSquares++;
+        //            break;
+        //        default:
+        //            break;
+        //    }
+        //}
+
+        InstantiateInventoryButtonsCheck(playerPlatforms.inventoryButtonAmmount);
+
+        bool instantiatedInventoryButtonsArrayNotInstantiated = instantiatedInventoryButtons[0] == null;
+        if (instantiatedInventoryButtonsArrayNotInstantiated)
+        {
+            GameObject uiCanvas = GameObject.FindGameObjectWithTag("UICanvas");
+
+            int buttonDistance = Screen.width / (playerPlatforms.inventoryButtonAmmount + 1);
+            int buttonHeight = Screen.height / 8;
+
+            for (int i = 0; i < playerPlatforms.inventoryButtonAmmount; i++)
+            {
+                instantiatedInventoryButtons[i] = Instantiate(inventoryButton);
+                instantiatedInventoryButtons[i].transform.SetParent(uiCanvas.transform);
+
+                ChangeInventoryButtonImageAndText(i, playerPlatforms);
+
+                instantiatedInventoryButtons[i].transform.position = new Vector3(buttonDistance * (i + 1), buttonHeight, 0);
+            }
+        }
+
+        else
         {
             foreach (InventoryButton buttonToActivate in instantiatedInventoryButtons)
             {
                 buttonToActivate.gameObject.SetActive(true);
             }
         }
+    }
 
-        else
+    private void InstantiateInventoryButtonsCheck(int inventoryButtonAmmount)
+    {
+        bool instantiatedInventoryButtonsArrayNotInstantiated = instantiatedInventoryButtons == null;
+        if (instantiatedInventoryButtonsArrayNotInstantiated)
         {
-            GameObject uiCanvas = GameObject.FindGameObjectWithTag("UICanvas");
-
-            int buttonDistance = Screen.width / (inventoryButtonAmmount + 1);
-            int buttonHeight = Screen.height / 8;
-
-            for (int i = 0; i < inventoryButtonAmmount; i++)
-            {
-                inventoryButton = Instantiate(inventoryButton);
-                inventoryButton.transform.SetParent(uiCanvas.transform);
-                inventoryButton.transform.position = new Vector3(buttonDistance * (i + 1), buttonHeight, 0);
-                
-                instantiatedInventoryButtons[i] = inventoryButton;
-            }
+            instantiatedInventoryButtons = new InventoryButton[inventoryButtonAmmount];
         }
     }
 
@@ -59,5 +99,29 @@ public class UIManager : MonoBehaviour
                 buttonToDeactivate.gameObject.SetActive(false);
             }
         }
+    }
+
+    public void ChangeInventoryButtonImageAndText(int i, PlayerPlatforms playerPlatforms)
+    {
+        GameObject buttonImage = instantiatedInventoryButtons[i].transform.GetChild(0).gameObject;
+        GameObject buttonText = instantiatedInventoryButtons[i].transform.GetChild(1).gameObject;
+
+        if (playerPlatforms.ramps > 0 && !playerPlatforms.rampButtonInstantiated)
+        {
+            buttonImage.GetComponent<Image>().sprite = rampImage;
+            instantiatedInventoryButtons[i].name = "rampInventoryButton";
+            buttonText.GetComponent<Text>().text = playerPlatforms.ramps + "/" + playerPlatforms.ramps;
+
+            playerPlatforms.rampButtonInstantiated = true;
+        }
+        else if (playerPlatforms.platformSquares > 0 && !playerPlatforms.platformSquaresButtonInstantated)
+        {
+            buttonImage.GetComponent<Image>().sprite = platformSquareImage;
+            instantiatedInventoryButtons[i].name = "platformSquareButton";
+            buttonText.GetComponent<Text>().text = playerPlatforms.platformSquares + "/" + playerPlatforms.platformSquares;
+
+            playerPlatforms.platformSquaresButtonInstantated = true;
+        }
+
     }
 }
