@@ -1,109 +1,49 @@
-﻿using UnityEngine;
-using UnityEngine.EventSystems;
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
 
-public class PlatformDragManager : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHandler//, IPointerDownHandler
+public class PlatformDragManager : MonoBehaviour
 {
-    //deze fields verwijderen
-    public GameObject platformSquare;
-    public GameObject ramp;
-    //tot hier
+    private Vector3 screenPoint; private Vector3 offset;
 
+    private Camera camera;
 
-    GameObject draggedPlatform;
-
-    private new Camera camera;
-    PlatformManager platformManager;
-    PlayerCamera playercamera;
-
-
-    float zAxis = 0;
-    //Vector3 clickOffset = Vector3.zero;
-
-    private void OnPointerDown()
+    void Start()
     {
-        playercamera.platformDragActive = true;
     }
 
-    private void Start()
+
+    void Update()
     {
-        playercamera = GameState.Instance.playerCamera;
+
+    }
+
+
+
+    void OnMouseDown()
+    {
         camera = GameState.Instance.playerCamera.GetComponent<Camera>();
+        screenPoint = camera.WorldToScreenPoint(transform.position);
 
-        zAxis = transform.position.z;
+        GameState.Instance.playerCamera.platformDragActive = true;
+
+        //offset = transform.position - Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, screenPoint.z));
     }
 
-    private Vector3 ScreenPointToWorldOnPlane(Vector3 screenPosition, float zPosition)
+    void OnMouseDrag()
     {
-        //float enterDist;
-        Plane plane = new Plane(Vector3.forward, new Vector3(0, 0, zPosition));
-        Ray rayCast = camera.ScreenPointToRay(screenPosition);
-        plane.Raycast(rayCast, out float enterDist);
-        return rayCast.GetPoint(enterDist);
+        Vector3 curScreenPoint = new Vector3(Input.mousePosition.x, Input.mousePosition.y, screenPoint.z);
+        Vector3 curPosition = camera.ScreenToWorldPoint(curScreenPoint);// + offset;
+        transform.position = curPosition;
     }
 
-    //public void OnPointerDown(PointerEventData eventData)
-    //{
-    //    Debug.Log(eventData);
-    //    clickOffset = transform.position - ScreenPointToWorldOnPlane(eventData.position, zAxis);
-    //}
-
-        
-    public void OnBeginDrag(PointerEventData data)
+    private void OnMouseUp()
     {
-        Debug.Log(data.pointerPressRaycast.gameObject.name);
-
-        playercamera = GameState.Instance.playerCamera;
-        camera = GameState.Instance.playerCamera.GetComponent<Camera>();
-        playercamera.platformDragActive = true;
-
-        platformManager = GameState.Instance.platformManager.GetComponent<PlatformManager>();
-
-        GameObject inventoryButton = data.pointerPressRaycast.gameObject.transform.parent.gameObject;
-
-        if (inventoryButton)
-        {
-            if (inventoryButton.name == "platformSquareButton")
-            {
-                draggedPlatform = Instantiate(platformSquare);
-            }
-            else if (inventoryButton.name == "rampInventoryButton")
-            {
-                draggedPlatform = Instantiate(ramp);
-            }
-        }
-
-        else
-        {
-            Debug.Log(data.pointerPressRaycast.gameObject);
-            draggedPlatform = data.pointerPressRaycast.gameObject;
-        }
-
-
-
-        //draggedPlatform = GameState.Instance.levelManager.playerPlatforms.InstantiatePlayerPlatform(inventoryButton);
-    }
-    
-
-
-    public void OnDrag(PointerEventData eventData)
-    {
-        draggedPlatform.transform.position = ScreenPointToWorldOnPlane(eventData.position, zAxis); //+ clickOffset; 
-    }
-
-
-    public void OnEndDrag(PointerEventData eventData)
-    {
-        GameState.Instance.levelManager.playerPlatforms.placedPlatforms.Add(draggedPlatform);
+        GameState.Instance.levelManager.playerPlatforms.placedPlatforms.Add(gameObject);
 
         Vector3 pos = camera.ScreenToWorldPoint(Input.mousePosition);
 
-        platformManager.spawnPlatformOnGrid(draggedPlatform.transform.position, draggedPlatform);
-        //spawnPlatformOnGrid()
-
-
-
-        //platform.transform.position = Vector3.zero;
-        //transform.localPosition = Vector3.zero;
-        playercamera.platformDragActive = false;
-    }    
+        GameState.Instance.platformManager.spawnPlatformOnGrid(transform.position, gameObject);
+        GameState.Instance.playerCamera.platformDragActive = false;
+    }
 }

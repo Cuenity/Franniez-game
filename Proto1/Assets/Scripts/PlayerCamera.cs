@@ -25,7 +25,6 @@ public class PlayerCamera : MonoBehaviour
     }
     private void Start()
     {
-        this.transform.position = Target.transform.position + TargetMovementOffset;
         transform.LookAt(Target.transform.position + TargetLookAtOffset);
     }
 
