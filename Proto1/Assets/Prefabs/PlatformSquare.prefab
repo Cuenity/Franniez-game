@@ -101,12 +101,13 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4581323721575538998}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cf1247cb0ac581a4fab833e88a8f2b29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  platform: {fileID: 4581323721575538998}
+  platformSquare: {fileID: 4581323721575538998}
+  ramp: {fileID: 3053333542818622701, guid: 5c1d50512c7b7eb4cb74387fcb1286df, type: 3}
 --- !u!114 &711328914229756783
 MonoBehaviour:
   m_ObjectHideFlags: 0
