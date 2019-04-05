@@ -4,6 +4,8 @@ MonoImporter:
   externalObjects: {}
   serializedVersion: 2
   defaultReferences:
+  - gridSquareBuild: {fileID: 5429024496108619967, guid: 59935b2ea82b6744284ab2da34fd4ca6,
+      type: 3}
   - gridSquare: {fileID: 5277723055925215312, guid: c3402e776dd95844ab6d4872d579ef6b,
       type: 3}
   executionOrder: 0

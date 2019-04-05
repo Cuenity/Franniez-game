@@ -69,7 +69,10 @@ public class PlatformManager : MonoBehaviour
 
         gameObject.transform.position = gameState.gridManager.gridSquares[minimumValueIndex] + rampAdjustment;
 
-        gameState.levelManager.levelPlatformen.tileList[minimumValueIndex] = 3;
+        if (gameState.levelManager.levelPlatformen.tileList != null)
+        {
+            gameState.levelManager.levelPlatformen.tileList[minimumValueIndex] = 3;
+        }
         
     }
     // Update is called once per frame
