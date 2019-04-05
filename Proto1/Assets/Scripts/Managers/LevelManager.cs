@@ -97,7 +97,7 @@ public class LevelManager : MonoBehaviour
         {
 
             //lees level uit Json en vul levelPlatformen
-            ReadLevelsFromText("Level1.json");
+            //ReadLevelsFromText("Level1.json");
 
             playerPlatforms = new PlayerPlatforms(2, 3);
 
@@ -110,7 +110,7 @@ public class LevelManager : MonoBehaviour
             //levelPlatformen.heigth = 12;
             //levelPlatformen.tileList = new int[11*12];
 
-            levelPlatformen.tileList = new int[11 * 12];
+            levelPlatformen.tileList = new int[gameState.gridManager.width * gameState.gridManager.heigth];
             gameState.gridManager.Build_Grid1_Without_Visuals();
 
             gameState.platformManager.BuildLevelFromText(levelPlatformen);
@@ -126,10 +126,11 @@ public class LevelManager : MonoBehaviour
             gameState.gridManager.width = 11;
             gameState.gridManager.heigth = 12;
 
+            playerPlatforms = new PlayerPlatforms(2, 3);
 
+            levelPlatformen.tileList = new int[gameState.gridManager.width * gameState.gridManager.heigth];
 
-
-            gameState.gridManager.Build_Grid1_Without_Visuals();
+            gameState.gridManager.Build_Grid_BuildingPhase_With_Visuals();
         }
         else if (currentScene.name == "TestJaspe")
         {
@@ -137,6 +138,7 @@ public class LevelManager : MonoBehaviour
             Vector3 playeradjustment = new Vector3(.5f, 0, 0);
             gameState.gridManager.width = 20;
             gameState.gridManager.heigth = 12;
+            levelPlatformen.tileList = new int[gameState.gridManager.width * gameState.gridManager.heigth];
             gameState.gridManager.Build_Grid1_Without_Visuals();
             gameState.playerManager.player.spawnpoint = gameState.gridManager.gridSquares[1] + playeradjustment;
             gameState.platformManager.Build_Level2();

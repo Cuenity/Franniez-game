@@ -7,6 +7,8 @@ using UnityEngine.UI;
 public class GridManager : MonoBehaviour
 {
 
+    public GameObject gridSquareBuild;
+
     public GameObject gridSquare;
     public List<Vector3> gridSquares = new List<Vector3>();
 
@@ -119,6 +121,38 @@ public class GridManager : MonoBehaviour
             }
         }
         gameState.levelManager.levelPlatformen.tileList = new int[heigth*width];
+    }
+
+    internal void Build_Grid_BuildingPhase_With_Visuals()
+    {
+        Vector3 moveRight = new Vector3(1f, 0f, 0f);
+        Vector3 moveDown = new Vector3(0f, -1f, 0f);
+        Vector3 gridStartingPoint = new Vector3(-7.5f, 7f, 0f);
+
+
+        for (int i = 0; i < heigth; i++)
+        {
+            gridStartingPoint.x = -7.5f;
+            gridStartingPoint = gridStartingPoint + moveDown;
+
+            for (int i2 = 0; i2 < width; i2++)
+            {
+                Build_SquareBest(gridStartingPoint);
+                //place 2 the left
+                gridStartingPoint = gridStartingPoint + moveRight;
+            }
+        }
+        gameState.levelManager.levelPlatformen.tileList = new int[heigth * width];
+    }
+
+    internal void Build_SquareBest(Vector3 startingPoint)
+    {
+        GameObject gridSquare1;
+
+        gridSquare1 = Instantiate(gridSquareBuild, startingPoint, new Quaternion(0, 0, 0, 0));
+
+        //add alle squares aan een lijstje
+        gridSquares.Add(gridSquare1.transform.position);
     }
 
 }
