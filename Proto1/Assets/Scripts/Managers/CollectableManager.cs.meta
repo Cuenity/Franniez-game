@@ -7,6 +7,8 @@ MonoImporter:
   - coin: {fileID: 9148849811850824367, guid: 6e0e5fcc9b0132e489c4dff1900a1c88, type: 3}
   - sticker: {fileID: 7059130672778521763, guid: 383c48a0d6e302541a57c7a33de8e65d,
       type: 3}
+  - finish: {fileID: 2032823587391776419, guid: c85261ac462ef85448b10b92e43df3f9,
+      type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

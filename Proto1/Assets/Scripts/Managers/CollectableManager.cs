@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -6,8 +7,10 @@ public class CollectableManager : MonoBehaviour
 {
     public Coin coin;
     public StickerObject sticker;
+    public Finish finish;
     List<Vector3> coinPositions;
     Vector3 stickerPosition;
+    Vector3 finishPosition;
 
     // Start is called before the first frame update
     void Start()
@@ -27,6 +30,23 @@ public class CollectableManager : MonoBehaviour
 
         InitCoins();
         InitSticker();
+    }
+
+    public void InitCollectables(List<Vector3> coinPositions, Vector3 stickerPosition, Vector3 finishPosition)
+    {
+        this.coinPositions = coinPositions;
+        this.stickerPosition = stickerPosition;
+        this.finishPosition = finishPosition;
+
+        InitCoins();
+        InitSticker();
+        InitFinish();
+    }
+
+    public void InitFinish()
+    {
+        finish = Instantiate(finish);
+        finish.transform.position = finishPosition;
     }
 
     public void InitCoins()

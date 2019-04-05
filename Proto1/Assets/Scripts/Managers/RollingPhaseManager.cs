@@ -11,26 +11,33 @@ public class RollingPhaseManager : MonoBehaviour
     private Level level;
 
 
-    private void Awake()
-    {
-        Scene scene = SceneManager.GetActiveScene();
-        int.TryParse(scene.name, out levelNumber);
-
-        //player = PlayerDataController.instance.player;
-
-        //level = player.levels[levelNumber - 1];
-
-        //if (level.gotSticker)
-        //{
-        //    pickedSticker = true;
-        //}
-    }
+    //public void Awake()
+    //{
+        
+    //}
     // Start is called before the first frame update
     void Start()
     {
-        //amountCoins = 0;
-        //level.playedLevel = true;
+        amountCoins = 0;
+        //level = new Level();
+
+        Scene scene = SceneManager.GetActiveScene();
+        int.TryParse(scene.name, out levelNumber);
+
+        //Load player data for testing
+        // Ff Playerdata erin zetten
+        PlayerDataController.instance.LoadPlayerData();
+        player = PlayerDataController.instance.player;
+
+        level = player.levels[levelNumber - 1];
+
+        if (level.gotSticker)
+        {
+            pickedSticker = true;
+        }
+        level.playedLevel = true;
     }
+
 
     // Update is called once per frame
     void Update()
@@ -43,31 +50,33 @@ public class RollingPhaseManager : MonoBehaviour
         Debug.Log("spawn rolling UI");
     }
 
-    private void OnEnable()
+    void OnEnable()
     {
         Coin.PickedCoin += AddCoin;
         StickerObject.PickedSticker += AddSticker;
-        Finish.Finished += Finished;
+        Finish.Finished += ReachedFinish;
     }
 
-    private void OnDisable()
+    void OnDisable()
     {
         Coin.PickedCoin -= AddCoin;
         StickerObject.PickedSticker -= AddSticker;
-        Finish.Finished -= Finished;
+        Finish.Finished -= ReachedFinish;
     }
 
     private void AddSticker()
     {
         pickedSticker = true;
+        Debug.Log("Sticker gepakt");
     }
 
     private void AddCoin()
     {
         amountCoins++;
+        Debug.Log("Coin gepakt");
     }
 
-    private void Finished()
+    private void ReachedFinish()
     {
         level.gotSticker = pickedSticker;
         level.completed = true;
@@ -82,6 +91,7 @@ public class RollingPhaseManager : MonoBehaviour
         player.coins += amountCoins;
 
         PlayerDataController.instance.player = player;
+        PlayerDataController.instance.SavePlayerData();
     }
 
 }
