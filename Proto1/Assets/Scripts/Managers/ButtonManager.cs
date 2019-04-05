@@ -54,7 +54,7 @@ public class ButtonManager : MonoBehaviour
         player.name = "";
         player.language = (int)LocalizationManager.instance.LanguageChoice;
         PlayerDataController.instance.player = player;
-        PlayerDataController.instance.SavePlayerData();
+        PlayerDataController.instance.Save();
         SceneManager.LoadScene("StartMenu");
     }
 }

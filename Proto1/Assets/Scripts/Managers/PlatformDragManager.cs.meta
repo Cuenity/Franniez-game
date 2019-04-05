@@ -3,10 +3,7 @@ guid: cf1247cb0ac581a4fab833e88a8f2b29
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences:
-  - platformSquare: {fileID: 4581323721575538998, guid: af6585d6aa968f246804e97579948daa,
-      type: 3}
-  - ramp: {fileID: 7211509322386875987, guid: 61b9fd3847e219a41911fc30f5f1d340, type: 3}
+  defaultReferences: []
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
