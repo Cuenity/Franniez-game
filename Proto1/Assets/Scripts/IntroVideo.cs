@@ -38,8 +38,8 @@ public class IntroVideo : MonoBehaviour
             break;
         }
 
-        bool test = PlayerDataController.instance.LoadPlayerData();
-        if (PlayerDataController.instance.LoadPlayerData())
+        bool test = PlayerDataController.instance.Load();
+        if (PlayerDataController.instance.Load())
         {
 
             LocalizationManager.instance.GetLanguageSettings();

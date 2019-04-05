@@ -28,8 +28,6 @@ public class LocalizationManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
-
-        
     }
 
     public void GetLanguageSettings()
@@ -58,34 +56,43 @@ public class LocalizationManager : MonoBehaviour
         localizedText = new Dictionary<string, string>();
         string filePath = Path.Combine(Application.streamingAssetsPath, filename);
 
-        if (File.Exists(filePath))
+        if (Application.platform == RuntimePlatform.Android)
         {
-            string dataAsJSON = File.ReadAllText(filePath);
-            LocalizationData loadedData = JsonUtility.FromJson<LocalizationData>(dataAsJSON);
+            filePath = Path.Combine("jar:file://" + Application.dataPath + "!assets/", filename);
+        }
 
-            for (int i = 0; i < loadedData.items.Length; i++)
+        string dataAsJSON = "";
+
+        if (Application.platform == RuntimePlatform.Android)
+        {
+            WWW reader = new WWW(filePath);
+            while (!reader.isDone)
             {
-                localizedText.Add(loadedData.items[i].key, loadedData.items[i].value);
             }
-
-            SetLanguage();
-            Debug.Log("Data is geladen.");
+            dataAsJSON = reader.text;
         }
         else
         {
-
-            Debug.LogError("Cannot find file!");
+            dataAsJSON = File.ReadAllText(filePath);
         }
 
-        ClickedButton.Invoke();
+        LocalizationData loadedData = JsonUtility.FromJson<LocalizationData>(dataAsJSON);
+
+        for (int i = 0; i < loadedData.items.Length; i++)
+        {
+            localizedText.Add(loadedData.items[i].key, loadedData.items[i].value);
+        }
+
+        SetLanguage();
+        Debug.Log("Taal is geladen.");
         isReady = true;
-        
+
     }
 
     private void SetLanguage()
     {
         string key = "language";
-        if(localizedText == null){ return;}
+        if (localizedText == null) { return; }
         if (localizedText.ContainsKey(key))
         {
             string languageValue = localizedText[key].ToLower();
@@ -108,7 +115,7 @@ public class LocalizationManager : MonoBehaviour
 
         }
 
-   
+
 
     }
 

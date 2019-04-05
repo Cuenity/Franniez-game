@@ -26,7 +26,7 @@ public class RollingPhaseManager : MonoBehaviour
 
         //Load player data for testing
         // Ff Playerdata erin zetten
-        PlayerDataController.instance.LoadPlayerData();
+        PlayerDataController.instance.Load();
         player = PlayerDataController.instance.player;
 
         level = player.levels[levelNumber - 1];
@@ -91,7 +91,7 @@ public class RollingPhaseManager : MonoBehaviour
         player.coins += amountCoins;
 
         PlayerDataController.instance.player = player;
-        PlayerDataController.instance.SavePlayerData();
+        PlayerDataController.instance.Save();
     }
 
 }
