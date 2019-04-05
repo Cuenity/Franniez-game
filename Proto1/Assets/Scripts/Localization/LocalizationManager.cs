@@ -28,8 +28,6 @@ public class LocalizationManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
-
-        
     }
 
     public void GetLanguageSettings()
@@ -58,57 +56,86 @@ public class LocalizationManager : MonoBehaviour
         localizedText = new Dictionary<string, string>();
         string filePath = Path.Combine(Application.streamingAssetsPath, filename);
 
-        if (File.Exists(filePath))
+        if (Application.platform == RuntimePlatform.Android)
         {
-            string dataAsJSON = File.ReadAllText(filePath);
-            LocalizationData loadedData = JsonUtility.FromJson<LocalizationData>(dataAsJSON);
+            filePath = Path.Combine("jar:file://" + Application.dataPath + "!assets/", filename);
+        }
 
-            for (int i = 0; i < loadedData.items.Length; i++)
+        string dataAsJSON = "";
+
+        if (Application.platform == RuntimePlatform.Android)
+        {
+            WWW reader = new WWW(filePath);
+            while (!reader.isDone)
             {
-                localizedText.Add(loadedData.items[i].key, loadedData.items[i].value);
             }
-
-            SetLanguage();
-            Debug.Log("Data is geladen.");
+            dataAsJSON = reader.text;
         }
         else
         {
-
-            Debug.LogError("Cannot find file!");
+            dataAsJSON = File.ReadAllText(filePath);
         }
 
-        ClickedButton.Invoke();
+        LocalizationData loadedData = JsonUtility.FromJson<LocalizationData>(dataAsJSON);
+
+        for (int i = 0; i < loadedData.items.Length; i++)
+        {
+            localizedText.Add(loadedData.items[i].key, loadedData.items[i].value);
+        }
+
+        SetLanguage();
+        Debug.Log("Taal is geladen.");
         isReady = true;
-        
+
     }
 
-    private void SetLanguage()
+    // Alleen public voor Debug, weer terug veranderen naar Private
+
+    public void SetLanguage()
     {
-        string key = "language";
-        if(localizedText == null){ return;}
-        if (localizedText.ContainsKey(key))
+        Player player = PlayerDataController.instance.player;
+
+        switch (player.language)
         {
-            string languageValue = localizedText[key].ToLower();
-
-            if (languageValue == "dutch")
-            {
+            case 0:
                 LanguageChoice = Language.Dutch;
-                Debug.Log("Taal is Nederlands");
-            }
-            else if (languageValue == "english")
-            {
+        break;
+            case 1:
                 LanguageChoice = Language.English;
-                Debug.Log("Taal is Engels");
-            }
-            else if (languageValue == "spanish")
-            {
+                break;
+            case 2:
                 LanguageChoice = Language.Spanish;
-                Debug.Log("Taal is Spaans");
-            }
-
+                break;
+            default:
+                LanguageChoice = Language.English;
+                break;
         }
 
-   
+        //string key = "language";
+        //if (localizedText == null) { return; }
+        //if (localizedText.ContainsKey(key))
+        //{
+        //    string languageValue = localizedText[key].ToLower();
+
+        //    if (languageValue == "dutch")
+        //    {
+        //        LanguageChoice = Language.Dutch;
+        //        Debug.Log("Taal is Nederlands");
+        //    }
+        //    else if (languageValue == "english")
+        //    {
+        //        LanguageChoice = Language.English;
+        //        Debug.Log("Taal is Engels");
+        //    }
+        //    else if (languageValue == "spanish")
+        //    {
+        //        LanguageChoice = Language.Spanish;
+        //        Debug.Log("Taal is Spaans");
+        //    }
+
+        //}
+
+
 
     }
 
