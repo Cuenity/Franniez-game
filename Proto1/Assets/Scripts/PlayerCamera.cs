@@ -63,6 +63,12 @@ public class PlayerCamera : MonoBehaviour
                     camera.transform.position = new Vector3(cameraposition.x, cameraposition.y, cameraposition.z - 1);
             }
         }
+        
+
+
+    }
+    private void LateUpdate()
+    {
         if (gameState.RollingPhaseActive == false)
         {
             if (platformDragActive == false)
@@ -70,8 +76,6 @@ public class PlayerCamera : MonoBehaviour
                 Transfrom_YZ();
             }
         }
-
-
     }
 
     private void Transfrom_YZ()

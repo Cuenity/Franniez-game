@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class PlatformDragManager : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHandler //, IPointerDownHandler
+public class PlatformDragManager : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHandler//, IPointerDownHandler
 {
     //deze fields verwijderen
     public GameObject platformSquare;
@@ -19,6 +19,10 @@ public class PlatformDragManager : MonoBehaviour, IDragHandler, IBeginDragHandle
     float zAxis = 0;
     //Vector3 clickOffset = Vector3.zero;
 
+    private void OnPointerDown()
+    {
+        playercamera.platformDragActive = true;
+    }
 
     private void Start()
     {
@@ -43,7 +47,7 @@ public class PlatformDragManager : MonoBehaviour, IDragHandler, IBeginDragHandle
     //    clickOffset = transform.position - ScreenPointToWorldOnPlane(eventData.position, zAxis);
     //}
 
-
+        
     public void OnBeginDrag(PointerEventData data)
     {
         playercamera = GameState.Instance.playerCamera;
