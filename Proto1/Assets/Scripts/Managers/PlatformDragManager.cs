@@ -50,6 +50,8 @@ public class PlatformDragManager : MonoBehaviour, IDragHandler, IBeginDragHandle
         
     public void OnBeginDrag(PointerEventData data)
     {
+        Debug.Log(data.pointerPressRaycast.gameObject.name);
+
         playercamera = GameState.Instance.playerCamera;
         camera = GameState.Instance.playerCamera.GetComponent<Camera>();
         playercamera.platformDragActive = true;

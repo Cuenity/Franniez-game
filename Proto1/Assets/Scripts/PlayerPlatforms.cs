@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerPlatforms: MonoBehaviour
+public class PlayerPlatforms
 {
     public GameObject platformSquare;
     public GameObject ramp;

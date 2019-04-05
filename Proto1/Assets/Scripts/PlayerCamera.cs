@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 
@@ -53,30 +51,58 @@ public class PlayerCamera : MonoBehaviour
                 //zoomin
                 Vector3 cameraposition = camera.transform.position;
                 if (cameraposition.z <= -10)
+                {
                     camera.transform.position = new Vector3(cameraposition.x, cameraposition.y, cameraposition.z + 1);
+                }
             }
             else if (mousedata.y < 0)
             {
                 //zoomout
                 Vector3 cameraposition = camera.transform.position;
                 if (cameraposition.z >= -30) //level groote
+                {
                     camera.transform.position = new Vector3(cameraposition.x, cameraposition.y, cameraposition.z - 1);
+                }
             }
+
         }
-        
-
-
-    }
-    private void LateUpdate()
-    {
         if (gameState.RollingPhaseActive == false)
         {
-            if (platformDragActive == false)
+            if (Input.GetMouseButtonDown(0))
             {
-                Transfrom_YZ();
+                RaycastHit hit;
+                Ray ray = camera.ScreenPointToRay(Input.mousePosition);
+                if (Physics.Raycast(ray, out hit))
+                {
+                    if (hit.collider != null)
+                    {
+                        GameObject platformHit = hit.collider.gameObject;
+                        Debug.Log(GameState.Instance.levelManager.playerPlatforms.placedPlatforms);
+                        foreach (GameObject platform in GameState.Instance.levelManager.playerPlatforms.placedPlatforms)
+                        {
+                            if (platformHit == platform)
+                            {
+                                Debug.Log(platformHit.name
+                                    + platform.name);
+                                //platform.OnBeginDrag();
+                                platformDragActive = true;
+                            }
+                        }
+                    }
+                }
             }
         }
     }
+
+
+    private void LateUpdate()
+    {
+        if (platformDragActive == false)
+        {
+            Transfrom_YZ();
+        }
+    }
+
 
     private void Transfrom_YZ()
     {
@@ -86,7 +112,10 @@ public class PlayerCamera : MonoBehaviour
             return;
         }
 
-        if (!Input.GetMouseButton(0)) return;
+        if (!Input.GetMouseButton(0))
+        {
+            return;
+        }
 
         Vector3 dragend = camera.ScreenToViewportPoint(Input.mousePosition);
         Vector3 diffrence = new Vector3(dragend.x - dragOrigin.x, dragend.y - dragOrigin.y, 0);
