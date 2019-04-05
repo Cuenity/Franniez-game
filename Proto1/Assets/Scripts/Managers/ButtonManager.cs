@@ -33,8 +33,7 @@ public class ButtonManager : MonoBehaviour
            
             player.GetComponent<Rigidbody>().velocity = new Vector3(0, 0, 0); ;
             camera.transform.position = new Vector3(spawnpunt.x + camera.TargetMovementOffset.x, spawnpunt.y + camera.TargetMovementOffset.y, spawnpunt.z + camera.TargetMovementOffset.z);
-            camera.transform.LookAt(camera.Target.transform.position + camera.TargetMovementOffset);
-
+            camera.transform.LookAt(camera.Target.transform.position);
             camera.GetComponent<Rigidbody>().velocity = new Vector3(0, 0, 0); ;
             gameState.BuildingPhaseActive = true;
         }
