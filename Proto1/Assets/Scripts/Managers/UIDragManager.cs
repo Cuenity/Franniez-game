@@ -71,16 +71,30 @@ public class UIDragManager : MonoBehaviour, IDragHandler, IBeginDragHandler, IEn
                 {
                     if (button.name == inventoryButton.name)
                     {
-                        Text buttonText = button.transform.GetChild(0).gameObject.GetComponent<Text>();
+                        Text buttonText = button.transform.GetChild(1).gameObject.GetComponent<Text>();
                         buttonText.text = GameState.Instance.levelManager.playerPlatforms.platformSquaresLeftToPlace + "/" + GameState.Instance.levelManager.playerPlatforms.platformSquares;
                     }
                 }
-                //GameState.Instance.UIManager.InventoryButtons.GetComponent()
             }
             else if (inventoryButton.name == "rampInventoryButton")
             {
                 draggedPlatform = Instantiate(ramp);
                 GameState.Instance.levelManager.playerPlatforms.rampsLeftToPlace--;
+
+                foreach (InventoryButton button in GameState.Instance.UIManager.instantiatedInventoryButtons)
+                {
+                    if (button.name == inventoryButton.name)
+                    {
+                        if (GameState.Instance.levelManager.playerPlatforms.rampsLeftToPlace == 0)
+                        {
+                            button.inventoryButtonDisable = true; // doe hier iets 
+                            //Button buttonInteractable = button.gameObject.GetComponent<Button>();
+                            //    buttonInteractable.interactable = false;
+                        }
+                        Text buttonText = button.transform.GetChild(1).gameObject.GetComponent<Text>();
+                        buttonText.text = GameState.Instance.levelManager.playerPlatforms.rampsLeftToPlace + "/" + GameState.Instance.levelManager.playerPlatforms.ramps;
+                    }
+                }
             }
         }
 
