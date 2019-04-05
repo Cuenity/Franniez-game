@@ -1,10 +1,15 @@
 ﻿using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class PlatformDragManager : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHandler //, IPointerDownHandler
+public class PlatformDragManager : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHandler//, IPointerDownHandler
 {
+    //deze fields verwijderen
     public GameObject platformSquare;
     public GameObject ramp;
+    //tot hier
+
+
+    GameObject draggedPlatform;
 
     private new Camera camera;
     PlatformManager platformManager;
@@ -12,8 +17,12 @@ public class PlatformDragManager : MonoBehaviour, IDragHandler, IBeginDragHandle
 
 
     float zAxis = 0;
-    Vector3 clickOffset = Vector3.zero;
+    //Vector3 clickOffset = Vector3.zero;
 
+    private void OnPointerDown()
+    {
+        playercamera.platformDragActive = true;
+    }
 
     private void Start()
     {
@@ -25,10 +34,10 @@ public class PlatformDragManager : MonoBehaviour, IDragHandler, IBeginDragHandle
 
     private Vector3 ScreenPointToWorldOnPlane(Vector3 screenPosition, float zPosition)
     {
-        float enterDist;
+        //float enterDist;
         Plane plane = new Plane(Vector3.forward, new Vector3(0, 0, zPosition));
         Ray rayCast = camera.ScreenPointToRay(screenPosition);
-        plane.Raycast(rayCast, out enterDist);
+        plane.Raycast(rayCast, out float enterDist);
         return rayCast.GetPoint(enterDist);
     }
 
@@ -38,7 +47,7 @@ public class PlatformDragManager : MonoBehaviour, IDragHandler, IBeginDragHandle
     //    clickOffset = transform.position - ScreenPointToWorldOnPlane(eventData.position, zAxis);
     //}
 
-
+        
     public void OnBeginDrag(PointerEventData data)
     {
         playercamera = GameState.Instance.playerCamera;
@@ -47,23 +56,46 @@ public class PlatformDragManager : MonoBehaviour, IDragHandler, IBeginDragHandle
 
         platformManager = GameState.Instance.platformManager.GetComponent<PlatformManager>();
 
-        platformSquare = Instantiate(platformSquare);
+        GameObject inventoryButton = data.pointerPressRaycast.gameObject.transform.parent.gameObject;
+
+        if (inventoryButton)
+        {
+            if (inventoryButton.name == "platformSquareButton")
+            {
+                draggedPlatform = Instantiate(platformSquare);
+            }
+            else if (inventoryButton.name == "rampInventoryButton")
+            {
+                draggedPlatform = Instantiate(ramp);
+            }
+        }
+
+        else
+        {
+            Debug.Log(data.pointerPressRaycast.gameObject);
+            draggedPlatform = data.pointerPressRaycast.gameObject;
+        }
+
+
+
+        //draggedPlatform = GameState.Instance.levelManager.playerPlatforms.InstantiatePlayerPlatform(inventoryButton);
     }
     
 
 
     public void OnDrag(PointerEventData eventData)
     {
-        platformSquare.transform.position = ScreenPointToWorldOnPlane(eventData.position, zAxis) + clickOffset; 
-
+        draggedPlatform.transform.position = ScreenPointToWorldOnPlane(eventData.position, zAxis); //+ clickOffset; 
     }
 
 
     public void OnEndDrag(PointerEventData eventData)
     {
+        GameState.Instance.levelManager.playerPlatforms.placedPlatforms.Add(draggedPlatform);
+
         Vector3 pos = camera.ScreenToWorldPoint(Input.mousePosition);
 
-        platformManager.spawnPlatformOnGrid(platformSquare.transform.position, platformSquare);
+        platformManager.spawnPlatformOnGrid(draggedPlatform.transform.position, draggedPlatform);
         //spawnPlatformOnGrid()
 
 
@@ -71,22 +103,5 @@ public class PlatformDragManager : MonoBehaviour, IDragHandler, IBeginDragHandle
         //platform.transform.position = Vector3.zero;
         //transform.localPosition = Vector3.zero;
         playercamera.platformDragActive = false;
-    }
-
-
-
-
-
+    }    
 }
-
-//public static class extensionMethod
-//{
-//    public static Vector3 ScreenPointToWoldOnPlane(this Camera cam, Vector3 screenPosition, float zPos)
-//    {
-//        float enterDist;
-//        Plane plane = new Plane(Vector3.forward, new Vector3(0, 0, zPos));
-//        Ray rayCast = cam.ScreenPointToRay(screenPosition);
-//        plane.Raycast(rayCast, out enterDist);
-//        return rayCast.GetPoint(enterDist);
-//    }
-//}
