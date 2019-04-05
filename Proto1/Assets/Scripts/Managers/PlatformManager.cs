@@ -225,8 +225,10 @@ public class PlatformManager : MonoBehaviour
         List<int> RampSpots = new List<int>();
         List<int> PlatformSpots = new List<int>();
         List<int> FinishSpots = new List<int>();
+        List<int> TrampolineSpots = new List<int>();
         Vector3 rampAdjustment = new Vector3(0.5f, 0f, 0f);
         RampSpots.Add(20);
+        TrampolineSpots.Add(117);
         for (int i = 0; i < RampSpots.Count; i++)
         {
             bigRamp.SpawnRamp(gameState.gridManager.gridSquares[RampSpots[i]]);
@@ -241,6 +243,10 @@ public class PlatformManager : MonoBehaviour
         {
             finish = Instantiate(finish, gameState.gridManager.gridSquares[FinishSpots[i]], new Quaternion(0, 0, 0, 0));
 
+        }
+        for (int i = 0; i < TrampolineSpots.Count; i++)
+        {
+            trampoline = Instantiate(trampoline, gameState.gridManager.gridSquares[TrampolineSpots[i]] + new Vector3(1, 0, 0), new Quaternion(0, 0, 0, 0));
         }
     }
 
