@@ -59,19 +59,20 @@ public class PlatformManager : MonoBehaviour
     {
         GameObject gameObjectGeneric = gameObject;
         Vector3 rampAdjustment = new Vector3(0.5f, 0f, 0f);
+        Vector3 gridAdjustment = new Vector3(0.5f, 0, 0);
         List<float> distances = new List<float>();
         if (gameState.gridManager.gridSquares.Count > 0)
         {
             for (int i = 0; i < gameState.gridManager.gridSquares.Count; i++)
             {
-                distances.Add(Vector3.Distance(position, gameState.gridManager.gridSquares[i]));
+                distances.Add(Vector3.Distance(position, (gameState.gridManager.gridSquares[i])+gridAdjustment));
             }
         }
         
         int minimumValueIndex = distances.IndexOf(distances.Min());
 
         gameObject.transform.position = gameState.gridManager.gridSquares[minimumValueIndex] + rampAdjustment;
-
+        // code voor opslaan van levels
         if (gameState.levelManager.levelPlatformen.tileList != null)
         {
             if(gameObject.name.Contains("PlatformSquare"))
