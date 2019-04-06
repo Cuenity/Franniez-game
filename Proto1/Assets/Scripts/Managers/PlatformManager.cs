@@ -57,6 +57,7 @@ public class PlatformManager : MonoBehaviour
 
     public void spawnPlatformOnGrid(Vector3 position, GameObject gameObject)
     {
+        //als deze methode alleen is voor speler blokjes kunnen we hier die glow doen
         GameObject gameObjectGeneric = gameObject;
         Vector3 rampAdjustment = new Vector3(0.5f, 0f, 0f);
         Vector3 gridAdjustment = new Vector3(0.5f, 0, 0);
