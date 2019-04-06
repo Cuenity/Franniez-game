@@ -13,6 +13,9 @@ GameObject:
   - component: {fileID: 3053333542816690733}
   - component: {fileID: 3573814550062563206}
   - component: {fileID: 762218629626508570}
+  - component: {fileID: 2820400560952811141}
+  - component: {fileID: 6318548473984972713}
+  - component: {fileID: 7311353477010906873}
   m_Layer: 0
   m_Name: RampSmall
   m_TagString: Untagged
@@ -105,3 +108,45 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 14
   m_Mesh: {fileID: 4300000, guid: 5249c0b207548c54abb62ab3c4d0fa1d, type: 3}
+--- !u!114 &2820400560952811141
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3053333542818622701}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf1247cb0ac581a4fab833e88a8f2b29, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  platformSquare: {fileID: 4581323721575538998, guid: af6585d6aa968f246804e97579948daa,
+    type: 3}
+  ramp: {fileID: 7211509322386875987, guid: 61b9fd3847e219a41911fc30f5f1d340, type: 3}
+--- !u!114 &6318548473984972713
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3053333542818622701}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -619905303, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_FirstSelected: {fileID: 0}
+  m_sendNavigationEvents: 1
+  m_DragThreshold: 10
+--- !u!114 &7311353477010906873
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3053333542818622701}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd38fd595c3e3a74b8551081e115b4df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
