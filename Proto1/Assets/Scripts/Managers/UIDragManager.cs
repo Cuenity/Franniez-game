@@ -70,8 +70,6 @@ public class UIDragManager : MonoBehaviour, IDragHandler, IBeginDragHandler, IEn
                 
                 foreach (InventoryButton button in GameState.Instance.UIManager.instantiatedInventoryButtons)
                 {
-
-
                     if (button.name == inventoryButton.name)
                     {
                         if (button.InventoryButtonAllowed)
@@ -86,6 +84,13 @@ public class UIDragManager : MonoBehaviour, IDragHandler, IBeginDragHandler, IEn
 
                             Text buttonText = button.transform.GetChild(1).gameObject.GetComponent<Text>();
                             buttonText.text = GameState.Instance.levelManager.playerPlatforms.platformSquaresLeftToPlace + "/" + GameState.Instance.levelManager.playerPlatforms.platformSquares;
+
+                            var outline = draggedPlatform.AddComponent<Outline>();
+                            outline.OutlineMode = Outline.Mode.OutlineAll;
+                            outline.OutlineColor = Color.blue;
+                            outline.OutlineWidth = 10f;
+
+                            draggedPlatform.AddComponent<PlatformDragManager>();
                         }
                         else
                         {
@@ -112,6 +117,13 @@ public class UIDragManager : MonoBehaviour, IDragHandler, IBeginDragHandler, IEn
                             }
                             Text buttonText = button.transform.GetChild(1).gameObject.GetComponent<Text>();
                             buttonText.text = GameState.Instance.levelManager.playerPlatforms.rampsLeftToPlace + "/" + GameState.Instance.levelManager.playerPlatforms.ramps;
+
+                            var outline = draggedPlatform.AddComponent<Outline>();
+                            outline.OutlineMode = Outline.Mode.OutlineAll;
+                            outline.OutlineColor = Color.blue;
+                            outline.OutlineWidth = 10f;
+
+                            draggedPlatform.AddComponent<PlatformDragManager>();
                         }
                         else
                         {
