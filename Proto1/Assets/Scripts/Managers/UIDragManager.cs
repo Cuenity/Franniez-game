@@ -11,6 +11,8 @@ public class UIDragManager : MonoBehaviour, IDragHandler, IBeginDragHandler, IEn
 
 
     GameObject draggedPlatform;
+    bool draggingAllowed;
+
 
     private new Camera camera;
     PlatformManager platformManager;
@@ -48,10 +50,10 @@ public class UIDragManager : MonoBehaviour, IDragHandler, IBeginDragHandler, IEn
     //    clickOffset = transform.position - ScreenPointToWorldOnPlane(eventData.position, zAxis);
     //}
 
-        
+
     public void OnBeginDrag(PointerEventData data)
     {
-        Debug.Log(data.pointerPressRaycast.gameObject.name);
+        draggingAllowed = true;
 
         playercamera = GameState.Instance.playerCamera;
         camera = GameState.Instance.playerCamera.GetComponent<Camera>();
@@ -65,67 +67,94 @@ public class UIDragManager : MonoBehaviour, IDragHandler, IBeginDragHandler, IEn
         {
             if (inventoryButton.name == "platformSquareButton")
             {
-                draggedPlatform = Instantiate(platformSquare);
-                GameState.Instance.levelManager.playerPlatforms.platformSquaresLeftToPlace--;
+                
                 foreach (InventoryButton button in GameState.Instance.UIManager.instantiatedInventoryButtons)
                 {
+
+
                     if (button.name == inventoryButton.name)
                     {
-                        Text buttonText = button.transform.GetChild(1).gameObject.GetComponent<Text>();
-                        buttonText.text = GameState.Instance.levelManager.playerPlatforms.platformSquaresLeftToPlace + "/" + GameState.Instance.levelManager.playerPlatforms.platformSquares;
+                        if (button.InventoryButtonAllowed)
+                        {
+                            draggedPlatform = Instantiate(platformSquare);
+                            GameState.Instance.levelManager.playerPlatforms.platformSquaresLeftToPlace--;
+
+                            if (GameState.Instance.levelManager.playerPlatforms.platformSquaresLeftToPlace == 0)
+                            {
+                                button.InventoryButtonAllowed = false;
+                            }
+
+                            Text buttonText = button.transform.GetChild(1).gameObject.GetComponent<Text>();
+                            buttonText.text = GameState.Instance.levelManager.playerPlatforms.platformSquaresLeftToPlace + "/" + GameState.Instance.levelManager.playerPlatforms.platformSquares;
+                        }
+                        else
+                        {
+                            draggingAllowed = false;
+                        }
                     }
                 }
             }
             else if (inventoryButton.name == "rampInventoryButton")
             {
-                draggedPlatform = Instantiate(ramp);
-                GameState.Instance.levelManager.playerPlatforms.rampsLeftToPlace--;
 
                 foreach (InventoryButton button in GameState.Instance.UIManager.instantiatedInventoryButtons)
                 {
                     if (button.name == inventoryButton.name)
                     {
-                        if (GameState.Instance.levelManager.playerPlatforms.rampsLeftToPlace == 0)
+                        if (button.InventoryButtonAllowed)
                         {
-                            button.inventoryButtonDisable = true; // doe hier iets 
-                            //Button buttonInteractable = button.gameObject.GetComponent<Button>();
-                            //    buttonInteractable.interactable = false;
+                            draggedPlatform = Instantiate(ramp);
+                            GameState.Instance.levelManager.playerPlatforms.rampsLeftToPlace--;
+
+                            if (GameState.Instance.levelManager.playerPlatforms.rampsLeftToPlace == 0)
+                            {
+                                button.InventoryButtonAllowed = false;
+                            }
+                            Text buttonText = button.transform.GetChild(1).gameObject.GetComponent<Text>();
+                            buttonText.text = GameState.Instance.levelManager.playerPlatforms.rampsLeftToPlace + "/" + GameState.Instance.levelManager.playerPlatforms.ramps;
                         }
-                        Text buttonText = button.transform.GetChild(1).gameObject.GetComponent<Text>();
-                        buttonText.text = GameState.Instance.levelManager.playerPlatforms.rampsLeftToPlace + "/" + GameState.Instance.levelManager.playerPlatforms.ramps;
+                        else
+                        {
+                            draggingAllowed = false;
+                        }
                     }
                 }
             }
         }
 
-        else
-        {
-            Debug.Log(data.pointerPressRaycast.gameObject);
-            draggedPlatform = data.pointerPressRaycast.gameObject;
-        }
+        //else
+        //{
+        //    Debug.Log(data.pointerPressRaycast.gameObject);
+        //    draggedPlatform = data.pointerPressRaycast.gameObject;
+        //}
 
 
 
         //draggedPlatform = GameState.Instance.levelManager.playerPlatforms.InstantiatePlayerPlatform(inventoryButton);
     }
-    
+
 
 
     public void OnDrag(PointerEventData eventData)
     {
-        draggedPlatform.transform.position = ScreenPointToWorldOnPlane(eventData.position, zAxis); //+ clickOffset; 
+        if (draggingAllowed)
+        {
+            draggedPlatform.transform.position = ScreenPointToWorldOnPlane(eventData.position, zAxis); //+ clickOffset; 
+        }
     }
 
 
     public void OnEndDrag(PointerEventData eventData)
     {
-        GameState.Instance.levelManager.playerPlatforms.placedPlatforms.Add(draggedPlatform);
+        if (draggingAllowed)
+        {
+            GameState.Instance.levelManager.playerPlatforms.placedPlatforms.Add(draggedPlatform);
 
-        Vector3 pos = camera.ScreenToWorldPoint(Input.mousePosition);
 
-        platformManager.spawnPlatformOnGrid(draggedPlatform.transform.position, draggedPlatform);
-        playercamera.platformDragActive = false;
+            Vector3 pos = camera.ScreenToWorldPoint(Input.mousePosition);
 
-        
-    }    
+            platformManager.spawnPlatformOnGrid(draggedPlatform.transform.position, draggedPlatform);
+            playercamera.platformDragActive = false;
+        }
+    }
 }
