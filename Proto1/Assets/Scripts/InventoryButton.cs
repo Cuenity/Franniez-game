@@ -3,7 +3,7 @@ using UnityEngine.UI;
 
 
 
-//[RequireComponent(typeof(GameObject))]
+[RequireComponent(typeof(GameObject))]
 public class InventoryButton : MonoBehaviour
 {
     private bool inventoryButtonAllowed;

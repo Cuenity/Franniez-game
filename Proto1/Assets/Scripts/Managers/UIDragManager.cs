@@ -82,8 +82,7 @@ public class UIDragManager : MonoBehaviour, IDragHandler, IBeginDragHandler, IEn
                                 button.InventoryButtonAllowed = false;
                             }
 
-                            Text buttonText = button.transform.GetChild(1).gameObject.GetComponent<Text>();
-                            buttonText.text = GameState.Instance.levelManager.playerPlatforms.platformSquaresLeftToPlace + "/" + GameState.Instance.levelManager.playerPlatforms.platformSquares;
+                            GameState.Instance.levelManager.playerPlatforms.UpdatePlatformSquaresLeft(button);
 
                             var outline = draggedPlatform.AddComponent<Outline>();
                             outline.OutlineMode = Outline.Mode.OutlineAll;
@@ -95,6 +94,7 @@ public class UIDragManager : MonoBehaviour, IDragHandler, IBeginDragHandler, IEn
                         else
                         {
                             draggingAllowed = false;
+                            playercamera.platformDragActive = false;
                         }
                     }
                 }
@@ -115,8 +115,8 @@ public class UIDragManager : MonoBehaviour, IDragHandler, IBeginDragHandler, IEn
                             {
                                 button.InventoryButtonAllowed = false;
                             }
-                            Text buttonText = button.transform.GetChild(1).gameObject.GetComponent<Text>();
-                            buttonText.text = GameState.Instance.levelManager.playerPlatforms.rampsLeftToPlace + "/" + GameState.Instance.levelManager.playerPlatforms.ramps;
+
+                            GameState.Instance.levelManager.playerPlatforms.UpdateRampsLeft(button);
 
                             var outline = draggedPlatform.AddComponent<Outline>();
                             outline.OutlineMode = Outline.Mode.OutlineAll;
@@ -128,6 +128,7 @@ public class UIDragManager : MonoBehaviour, IDragHandler, IBeginDragHandler, IEn
                         else
                         {
                             draggingAllowed = false;
+                            playercamera.platformDragActive = false;
                         }
                     }
                 }
@@ -166,7 +167,6 @@ public class UIDragManager : MonoBehaviour, IDragHandler, IBeginDragHandler, IEn
             Vector3 pos = camera.ScreenToWorldPoint(Input.mousePosition);
 
             platformManager.spawnPlatformOnGrid(draggedPlatform.transform.position, draggedPlatform);
-            playercamera.platformDragActive = false;
         }
     }
 }
