@@ -190,27 +190,27 @@ public class LevelManager : MonoBehaviour
 
         else if (currentScene.name == "VerticalSliceLevel2")
         {
-            gameState.gridManager.width = 19;
-            gameState.gridManager.heigth = 7;
+            gameState.gridManager.width = 20;
+            gameState.gridManager.heigth = 11;
 
             playerPlatforms = new PlayerPlatforms(2, 3);
 
             gameState.gridManager.Build_Grid_BuildingPhase_With_Visuals();
 
-            gameState.platformManager.Build_Vertical_Slice_Level2();
+            gameState.platformManager.Build_Vertical_Slice_Level6();
         }
         else if (currentScene.name == "VerticalSliceLevel1")
         {
             Vector3 playeradjustment = new Vector3(.5f, 0, 0);
-            gameState.gridManager.width = 8;
-            gameState.gridManager.heigth = 7;
+            gameState.gridManager.width = 20;
+            gameState.gridManager.heigth = 11;
 
-            playerPlatforms = new PlayerPlatforms(2, 3);
+            playerPlatforms = new PlayerPlatforms(2, 12);
 
             gameState.gridManager.Build_Grid_BuildingPhase_With_Visuals();
             gameState.playerManager.player.spawnpoint = gameState.gridManager.gridSquares[1] + playeradjustment;
 
-            gameState.platformManager.Build_Vertical_Slice_Level4();
+            gameState.platformManager.Build_Vertical_Slice_Level6();
         }
         else if (currentScene.name == "VerticalSliceLevel3")
         {
@@ -223,6 +223,16 @@ public class LevelManager : MonoBehaviour
             gameState.gridManager.Build_Grid_BuildingPhase_With_Visuals();
             gameState.playerManager.player.spawnpoint = gameState.gridManager.gridSquares[0] + playeradjustment;
             gameState.platformManager.Build_Vertical_Slice_Level3();
+        }
+        else if (currentScene.name == "VerticalSliceLevel4")
+        {
+            Vector3 playeradjustment = new Vector3(.5f, 0, 0);
+            gameState.gridManager.width = 27;
+            gameState.gridManager.heigth = 17;
+
+            playerPlatforms = new PlayerPlatforms(2, 3);
+            gameState.gridManager.Build_Grid_BuildingPhase_With_Visuals();
+            gameState.playerManager.player.spawnpoint = gameState.gridManager.gridSquares[0] + playeradjustment;
         }
     }
 }

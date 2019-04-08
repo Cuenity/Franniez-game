@@ -5,16 +5,19 @@ public class RollingPhaseManager : MonoBehaviour
 {
     private int amountCoins = 0;
     private bool pickedSticker = false;
+    public AudioSource source;
 
     private int levelNumber;
     private Player player;
     private Level level;
 
+    public AudioClip audioClip;
 
-    //public void Awake()
-    //{
+
+    public void Awake()
+    {
         
-    //}
+    }
     // Start is called before the first frame update
     //void Start()
     //{
@@ -78,6 +81,8 @@ public class RollingPhaseManager : MonoBehaviour
 
     private void ReachedFinish()
     {
+        source.clip = audioClip;
+        source.Play();
         level.gotSticker = pickedSticker;
         level.completed = true;
 
