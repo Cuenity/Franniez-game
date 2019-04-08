@@ -14,7 +14,7 @@ public class PlayerCamera : MonoBehaviour
 
     public float SpringForce;
     public float SpringDamper;
-    public float dragSpeed = 1;
+   // public float dragSpeed = 1;
     private Vector3 dragOrigin;
     Camera camera;
     private void Awake()
@@ -115,7 +115,7 @@ public class PlayerCamera : MonoBehaviour
 
         Vector3 dragend = camera.ScreenToViewportPoint(Input.mousePosition);
         Vector3 diffrence = new Vector3(dragend.x - dragOrigin.x, dragend.y - dragOrigin.y, 0);
-        Vector3 move = new Vector3(diffrence.x * dragSpeed, diffrence.y * dragSpeed, 0);
+        Vector3 move = new Vector3(diffrence.x, diffrence.y, 0);
         transform.Translate(move, Space.World);
     }
 
