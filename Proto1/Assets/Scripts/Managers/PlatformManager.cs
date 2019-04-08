@@ -21,6 +21,7 @@ public class PlatformManager : MonoBehaviour
     public BigRamp bigRamp;
     public Finish finish;
     public PlatformBreekbaar platformBreekbaar;
+    public GameObject PlatformSquareNoGrass;
 
     GameState gameState;
 
@@ -251,29 +252,36 @@ public class PlatformManager : MonoBehaviour
         List<int> PortalSpots = new List<int>();
         List<int> rechthoekSpots = new List<int>();
         List<int> RampSpotsReversed = new List<int>();
-        RampSpots.Add(27);
+
+        List<int> PlatformNoGrassSpots = new List<int>();
+
+        RampSpots.Add(28);
         PlatformSpots.Add(8);
-        PlatformSpots.Add(35);
-        PlatformSpots.Add(62);
-        PlatformSpots.Add(89);
-        PlatformSpots.Add(116);
-        PlatformSpots.Add(143);
-        PlatformSpots.Add(170);
+        PlatformNoGrassSpots.Add(35);
+        PlatformNoGrassSpots.Add(62);
+        PlatformNoGrassSpots.Add(89);
+        PlatformNoGrassSpots.Add(116);
+        PlatformNoGrassSpots.Add(143);
+        PlatformNoGrassSpots.Add(170);
         PlatformSpots.Add(194);
         PlatformSpots.Add(195);
         PlatformSpots.Add(196);
         PlatformSpots.Add(197);
-        PlatformSpots.Add(221);
-        PlatformSpots.Add(248);
+        PlatformSpots.Add(219);
+        PlatformSpots.Add(246);
         PlatformSpots.Add(278);
-        PlatformSpots.Add(305);
-        PlatformSpots.Add(332);
-        PlatformSpots.Add(359);
-        PlatformSpots.Add(386);
-        PlatformSpots.Add(413);
-        PlatformSpots.Add(440);
-        TrampolineSpots.Add(381);
-
+        PlatformNoGrassSpots.Add(305);
+        PlatformNoGrassSpots.Add(332);
+        PlatformNoGrassSpots.Add(359);
+        PlatformNoGrassSpots.Add(386);
+        PlatformNoGrassSpots.Add(413);
+        PlatformNoGrassSpots.Add(440);
+        TrampolineSpots.Add(354);
+        for (int i = 0; i < PlatformNoGrassSpots.Count; i++)
+        {
+            PlatformSquareNoGrass = Instantiate(PlatformSquareNoGrass, gameState.gridManager.gridSquares[PlatformNoGrassSpots[i]] + rampAdjustment, new Quaternion(0, 0, 0, 0));
+            
+        }
 
         Init_Platforms(RampSpots, PlatformSpots, RampSpotsReversed, PortalSpots, TrampolineSpots, rechthoekSpots);
     }
@@ -293,7 +301,7 @@ public class PlatformManager : MonoBehaviour
         List<int> breakableSpots = new List<int>();
 
         RampSpots.Add(9);
-        RampSpotsReversed.Add(11);
+        PlatformSpots.Add(11);
         PlatformSpots.Add(17);
         PlatformSpots.Add(25);
         PlatformSpots.Add(33);
@@ -301,13 +309,13 @@ public class PlatformManager : MonoBehaviour
         PlatformSpots.Add(35);
         PlatformSpots.Add(19);
         PlatformSpots.Add(27);
-        breakableSpots.Add(19);
+        breakableSpots.Add(22);
         TrampolineSpots.Add(26);
 
 
         for (int i = 0; i < breakableSpots.Count; i++)
         {
-            platformBreekbaar = Instantiate(platformBreekbaar, gameState.gridManager.gridSquares[PlatformSpots[i]] + rampAdjustment, new Quaternion(0, 0, 0, 0));
+            platformBreekbaar = Instantiate(platformBreekbaar, gameState.gridManager.gridSquares[PlatformSpots[i]]+rampAdjustment, new Quaternion(0, 0, 0, 0));
         }
 
         Init_Platforms(RampSpots, PlatformSpots, RampSpotsReversed, PortalSpots, TrampolineSpots, rechthoekSpots);
