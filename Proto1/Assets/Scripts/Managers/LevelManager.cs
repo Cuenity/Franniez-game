@@ -174,7 +174,7 @@ public class LevelManager : MonoBehaviour
             gameState.gridManager.Build_Grid_BuildingPhase_With_Visuals();
             gameState.playerManager.player.spawnpoint = gameState.gridManager.gridSquares[1] + playeradjustment;
 
-            gameState.platformManager.Build_Vertical_Slice_Level1();
+            gameState.platformManager.Build_Vertical_Slice_Level4();
         }
         else if (currentScene.name == "VerticalSliceLevel3")
         {
