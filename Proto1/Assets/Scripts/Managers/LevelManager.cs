@@ -141,14 +141,14 @@ public class LevelManager : MonoBehaviour
         }
         else if (currentScene.name == "TestJaspe")
         {
-            playerPlatforms = new PlayerPlatforms(2, 3);
-            Vector3 playeradjustment = new Vector3(.5f, 0, 0);
+            playerPlatforms = new PlayerPlatforms(2, 6);
+            
             gameState.gridManager.width = 20;
             gameState.gridManager.heigth = 12;
             levelPlatformen.tileList = new int[gameState.gridManager.width * gameState.gridManager.heigth];
            // gameState.gridManager.Build_Grid1_Without_Visuals();
             gameState.gridManager.Build_Grid_BuildingPhase_With_Visuals();
-            gameState.playerManager.player.spawnpoint = gameState.gridManager.gridSquares[1] + playeradjustment;
+            gameState.playerManager.player.SetSpawnpoint(1);
             gameState.platformManager.Build_Level2();
         }
         
