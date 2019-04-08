@@ -282,11 +282,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 126c06d7473d72b42b200d22cc47e358, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gridSquareBuild: {fileID: 0}
   gridSquare: {fileID: 5277723055925215312, guid: c3402e776dd95844ab6d4872d579ef6b,
     type: 3}
   gridSquares: []
   width: 15
   heigth: 11
+  secretGridSquares: []
 --- !u!4 &789998546
 Transform:
   m_ObjectHideFlags: 0

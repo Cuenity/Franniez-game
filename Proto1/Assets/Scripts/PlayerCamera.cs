@@ -25,7 +25,6 @@ public class PlayerCamera : MonoBehaviour
     }
     private void Start()
     {
-        this.transform.position = Target.transform.position + TargetMovementOffset;
         transform.LookAt(Target.transform.position + TargetLookAtOffset);
     }
 
@@ -78,14 +77,10 @@ public class PlayerCamera : MonoBehaviour
                     if (hit.collider != null)
                     {
                         GameObject platformHit = hit.collider.gameObject;
-                        Debug.Log(GameState.Instance.levelManager.playerPlatforms.placedPlatforms);
                         foreach (GameObject platform in GameState.Instance.levelManager.playerPlatforms.placedPlatforms)
                         {
                             if (platformHit == platform)
                             {
-                                Debug.Log(platformHit.name
-                                    + platform.name);
-                                //platform.OnBeginDrag();
                                 platformDragActive = true;
                             }
                         }

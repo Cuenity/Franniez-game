@@ -5,7 +5,7 @@ public class UIManager : MonoBehaviour
 {
     public Canvas canvas;
     public InventoryButton inventoryButton;
-    private InventoryButton[] instantiatedInventoryButtons;
+    public InventoryButton[] instantiatedInventoryButtons;
 
     public Sprite rampImage;
     public Sprite platformSquareImage;
@@ -22,34 +22,6 @@ public class UIManager : MonoBehaviour
 
     public void InventoryButtons(PlayerPlatforms playerPlatforms)
     {
-        //PlayerPlatforms playerPlatforms = new PlayerPlatforms();
-        //int ramps = 0;
-        //int platformSquares = 0;
-        //int inventoryButtonAmmount = 0;
-
-        //foreach (var platform in playerPlatforms)
-        //{
-        //    switch (platform)
-        //    {
-        //        case PlatformType.ramp:
-        //            if (ramps == 0)
-        //            {
-        //                inventoryButtonAmmount++;
-        //            }
-        //            ramps++;
-        //            break;
-        //        case PlatformType.platformSquare:
-        //            if (platformSquares == 0)
-        //            {
-        //                inventoryButtonAmmount++;
-        //            }
-        //            platformSquares++;
-        //            break;
-        //        default:
-        //            break;
-        //    }
-        //}
-
         InstantiateInventoryButtonsCheck(playerPlatforms.inventoryButtonAmmount);
 
         bool instantiatedInventoryButtonsArrayNotInstantiated = instantiatedInventoryButtons[0] == null;

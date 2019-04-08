@@ -1,17 +1,20 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerPlatforms
 {
     public GameObject platformSquare;
-    public GameObject ramp;
-
-    public bool rampButtonInstantiated;
+    public int platformSquares;
+    public int platformSquaresLeftToPlace;
     public bool platformSquaresButtonInstantated;
 
+    public GameObject ramp;
     public int ramps;
-    public int platformSquares;
+    public int rampsLeftToPlace;
+    public bool rampButtonInstantiated;
+
     public int inventoryButtonAmmount;
 
     //private GameObject draggedPlatform;
@@ -23,6 +26,8 @@ public class PlayerPlatforms
 
         this.ramps = ramps;
         this.platformSquares = platformSquares;
+        rampsLeftToPlace = ramps;
+        platformSquaresLeftToPlace = platformSquares;
 
         inventoryButtonAmmount = 0;
 
@@ -30,7 +35,18 @@ public class PlayerPlatforms
             inventoryButtonAmmount = inventoryButtonAmmount + 1;
         if (platformSquares > 0)
             inventoryButtonAmmount = inventoryButtonAmmount + 1;
+    }
 
+    public void UpdateRampsLeft(InventoryButton button)
+    {
+        Text buttonText = button.transform.GetChild(1).gameObject.GetComponent<Text>();
+        buttonText.text = GameState.Instance.levelManager.playerPlatforms.rampsLeftToPlace + "/" + GameState.Instance.levelManager.playerPlatforms.ramps;
+    }
+
+    public void UpdatePlatformSquaresLeft(InventoryButton button)
+    {
+        Text buttonText = button.transform.GetChild(1).gameObject.GetComponent<Text>();
+        buttonText.text = GameState.Instance.levelManager.playerPlatforms.platformSquaresLeftToPlace + "/" + GameState.Instance.levelManager.playerPlatforms.platformSquares;
     }
 
     //public GameObject InstantiatePlayerPlatform(GameObject inventoryButton)
