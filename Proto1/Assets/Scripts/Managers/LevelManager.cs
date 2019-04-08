@@ -10,6 +10,12 @@ public class LevelManager : MonoBehaviour
 {
     GameState gameState;
     Scene currentScene;
+    List<Vector3> coinPositions = new List<Vector3>();
+    Vector3 stickerPosition;
+    Vector3 finishPosition;
+    public List<Coin> coinList = new List<Coin>();
+    public StickerObject stickerObject;
+    public Finish finish;
 
     public PlayerPlatforms playerPlatforms;
     //public PlayerPlatforms PlayerPlatforms
@@ -53,13 +59,13 @@ public class LevelManager : MonoBehaviour
 
     public void SaveLevelToText(string levelName)
     {
-        
+
         if (levelName == "")
         {
             InputField InputName = GameObject.Find("LevelName").GetComponent<InputField>();
             levelName = InputName.text;
         }
-        string filePath = Application.streamingAssetsPath +"/" + levelName +".json";
+        string filePath = Application.streamingAssetsPath + "/" + levelName + ".json";
         if (!string.IsNullOrEmpty(filePath))
         {
             string dataAsJson = JsonUtility.ToJson(gameState.levelManager.levelPlatformen);
@@ -74,6 +80,32 @@ public class LevelManager : MonoBehaviour
         //gameState = GameObject.Find("GameState").GetComponent<GameState>();
     }
 
+    public void RespawnCollectables()
+    {
+        foreach (Coin item in coinList)
+        {
+            item.gameObject.SetActive(false);
+        }
+        stickerObject.gameObject.SetActive(false);
+        finish.gameObject.SetActive(false);
+
+        gameState.collectableManager.InitCollectables(coinPositions, stickerObject.spawnpoint, finish.spawnpoint);
+    }
+    public void SetCoinPositions(int i)
+    {
+        Vector3 coinAdjustment = new Vector3(.5f, 0, 0);
+        coinPositions.Add(gameState.gridManager.gridSquares[i] + coinAdjustment);
+    }
+    public void SetStickerPositions(int i)
+    {
+        Vector3 stickerAdjustment = new Vector3(.5f, 0, 0);
+      stickerPosition= gameState.gridManager.gridSquares[i] + stickerAdjustment;
+    }
+    public void SetfinishPositions(int i)
+    {
+        Vector3 finishAdjustment = new Vector3(.5f, 0, 0);
+        finishPosition = gameState.gridManager.gridSquares[i] + finishAdjustment;
+    }
     public void InitScene()
     {
         currentScene = SceneManager.GetActiveScene();
@@ -87,15 +119,13 @@ public class LevelManager : MonoBehaviour
             gameState.gridManager.heigth = 12;
             gameState.gridManager.Build_Grid1_Without_Visuals();
             Vector3 playeradjustment = new Vector3(.5f, 0, 0);
-            gameState.playerManager.player.spawnpoint = gameState.gridManager.gridSquares[1] + playeradjustment;
+            gameState.playerManager.player.SetSpawnpoint(1);
             playerPlatforms = new PlayerPlatforms(2, 3);
-            List<Vector3> coinPositions = new List<Vector3>();
-            coinPositions.Add(new Vector3(1, 1.5f, 0));
-            coinPositions.Add(new Vector3(1, -2, 0));
-            coinPositions.Add(new Vector3(1, -3, 0));
-
-            Vector3 stickerPosition = new Vector3(1, -2, 0);
-            Vector3 finishPosition = new Vector3(1, -10, 0);
+            SetCoinPositions(1);
+            SetCoinPositions(2);
+            SetCoinPositions(3);
+            SetStickerPositions(4);
+            SetfinishPositions(5);
 
             gameState.collectableManager.InitCollectables(coinPositions, stickerPosition, finishPosition);
         }
@@ -142,16 +172,22 @@ public class LevelManager : MonoBehaviour
         else if (currentScene.name == "TestJaspe")
         {
             playerPlatforms = new PlayerPlatforms(2, 6);
-            
             gameState.gridManager.width = 20;
             gameState.gridManager.heigth = 12;
             levelPlatformen.tileList = new int[gameState.gridManager.width * gameState.gridManager.heigth];
-           // gameState.gridManager.Build_Grid1_Without_Visuals();
+            // gameState.gridManager.Build_Grid1_Without_Visuals();
             gameState.gridManager.Build_Grid_BuildingPhase_With_Visuals();
             gameState.playerManager.player.SetSpawnpoint(1);
             gameState.platformManager.Build_Level2();
+            SetCoinPositions(1);
+            SetCoinPositions(2);
+            SetCoinPositions(3);
+            SetStickerPositions(4);
+            SetfinishPositions(5);
+
+            gameState.collectableManager.InitCollectables(coinPositions, stickerPosition, finishPosition);
         }
-        
+
         else if (currentScene.name == "VerticalSliceLevel2")
         {
             gameState.gridManager.width = 19;
@@ -183,7 +219,7 @@ public class LevelManager : MonoBehaviour
             gameState.gridManager.heigth = 17;
 
             playerPlatforms = new PlayerPlatforms(2, 3);
-            
+
             gameState.gridManager.Build_Grid_BuildingPhase_With_Visuals();
             gameState.playerManager.player.spawnpoint = gameState.gridManager.gridSquares[0] + playeradjustment;
             gameState.platformManager.Build_Vertical_Slice_Level3();
