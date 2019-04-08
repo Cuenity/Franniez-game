@@ -19,27 +19,27 @@ public class RollingPhaseManager : MonoBehaviour
         
     }
     // Start is called before the first frame update
-    //void Start()
-    //{
-    //    amountCoins = 0;
-    //    //level = new Level();
+    void Start()
+    {
+        amountCoins = 0;
+        //level = new Level();
 
-    //    Scene scene = SceneManager.GetActiveScene();
-    //    int.TryParse(scene.name, out levelNumber);
+        Scene scene = SceneManager.GetActiveScene();
+        int.TryParse(scene.name, out levelNumber);
 
-    //    //Load player data for testing
-    //    // Ff Playerdata erin zetten
-    //    PlayerDataController.instance.Load();
-    //    player = PlayerDataController.instance.player;
+        //Load player data for testing
+        // Ff Playerdata erin zetten
+        PlayerDataController.instance.Load();
+        player = PlayerDataController.instance.player;
 
-    //    level = player.levels[levelNumber - 1];
+        level = player.levels[levelNumber - 1];
 
-    //    if (level.gotSticker)
-    //    {
-    //        pickedSticker = true;
-    //    }
-    //    level.playedLevel = true;
-    //}
+        if (level.gotSticker)
+        {
+            pickedSticker = true;
+        }
+        level.playedLevel = true;
+    }
 
 
     // Update is called once per frame

@@ -211,6 +211,13 @@ public class LevelManager : MonoBehaviour
             gameState.playerManager.player.spawnpoint = gameState.gridManager.gridSquares[1] + playeradjustment;
 
             gameState.platformManager.Build_Vertical_Slice_Level6();
+            SetCoinPositions(46);
+            SetCoinPositions(70);
+            SetCoinPositions(97);
+            SetStickerPositions(1);
+            SetfinishPositions(139);
+
+            gameState.collectableManager.InitCollectables(coinPositions, stickerPosition, finishPosition);
         }
         else if (currentScene.name == "VerticalSliceLevel3")
         {

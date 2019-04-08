@@ -30,7 +30,7 @@ public class PlayerDataController : MonoBehaviour
     public bool Load()
     {
         bool fileExist = false;
-    
+        Save();
         if (File.Exists(Application.persistentDataPath + "/PlayerInfo.dat"))
         {
             fileExist = true;
