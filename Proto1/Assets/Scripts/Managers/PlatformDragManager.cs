@@ -33,43 +33,33 @@ public class PlatformDragManager : MonoBehaviour
         List<RaycastResult> results = new List<RaycastResult>();
         InventoryButton button = null;
         bool platformDraggedToButton = false;
-        bool foundButton = false;
         for (int i = 0; i < GameState.Instance.UIManager.instantiatedInventoryButtons.Length; i++)
         {
-            if (!foundButton)
+            GraphicRaycaster ray = GameState.Instance.UIManager.instantiatedInventoryButtons[i].GetComponent<GraphicRaycaster>();
+            PointerEventData pointerEventData = new PointerEventData(eventSystem);
+            pointerEventData.position = Input.mousePosition;
+            ray.Raycast(pointerEventData, results);
+
+            foreach (RaycastResult result in results)
             {
-                GraphicRaycaster ray = GameState.Instance.UIManager.instantiatedInventoryButtons[i].GetComponent<GraphicRaycaster>();
-                PointerEventData pointerEventData = new PointerEventData(eventSystem);
-                pointerEventData.position = Input.mousePosition;
-                ray.Raycast(pointerEventData, results);
-
-                foreach (RaycastResult result in results)
+                if (result.gameObject.tag == "InventoryButton")
                 {
-                    Debug.Log(result);
-                    if (result.gameObject.tag == "InventoryButton")
-                    {
-                        button = GameState.Instance.UIManager.instantiatedInventoryButtons[i];
-                        platformDraggedToButton = true;
 
-                        foundButton = true;
-                    }
+                    platformDraggedToButton = true;
                 }
             }
+            if (tag == "PlatformSquare" && GameState.Instance.UIManager.instantiatedInventoryButtons[i].name == "platformSquareButton")
+            {
+                    button = GameState.Instance.UIManager.instantiatedInventoryButtons[i];
+                
+            }
+            else if (tag == "Ramp" && GameState.Instance.UIManager.instantiatedInventoryButtons[i].name == "rampInventoryButton")
+            {
+                    button = GameState.Instance.UIManager.instantiatedInventoryButtons[i];
+                
+            }
         }
-        //ray = button.GetComponent<GraphicRaycaster>(); 
-        ////GraphicRaycaster ray2 = GameState.Instance.UIManager.instantiatedInventoryButtons[1].GetComponent<GraphicRaycaster>();
 
-        //PointerEventData pointerEventData = new PointerEventData(eventSystem);
-        //pointerEventData.position = Input.mousePosition;
-        //List<RaycastResult> results = new List<RaycastResult>();
-
-        //ray.Raycast(pointerEventData, results);
-        //foreach (RaycastResult result in results)
-        //{
-        //    if (result.gameObject.tag == "InventoryButton")
-        //    {
-        //foreach (InventoryButton button in GameState.Instance.UIManager.instantiatedInventoryButtons)
-        //{
         if (platformDraggedToButton)
         {
             if (tag == "PlatformSquare")
@@ -87,12 +77,6 @@ public class PlatformDragManager : MonoBehaviour
             GameState.Instance.levelManager.playerPlatforms.placedPlatforms.Remove(gameObject);
             Destroy(gameObject);
         }
-                //}
-
-
-        //    }
-        //}
-        //}
 
         GameState.Instance.platformManager.spawnPlatformOnGrid(transform.position, gameObject);
         GameState.Instance.playerCamera.platformDragActive = false;
