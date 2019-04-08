@@ -49,4 +49,11 @@ public class PlayerBal : MonoBehaviour
         gameState.BuildingPhaseActive = true;
     }
 
+    public void SetSpawnpoint(int i)
+    {
+        gameState = GameState.Instance;
+        Vector3 playeradjustment = new Vector3(.5f, 0, 0);
+        this.spawnpoint = gameState.gridManager.gridSquares[i] + playeradjustment;
+    }
+
 }

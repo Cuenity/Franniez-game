@@ -374,16 +374,16 @@ public class PlatformManager : MonoBehaviour
 
 
         //bouw stom lijstje
-        RampSpots.Add(21);
-        RampSpots.Add(42);
+        RampSpots.Add(41);
+        RampSpots.Add(62);
         //RampSpotsReversed.Add(14);
         //PortalSpots.Add(24);
         // PortalSpots.Add(54);
         // PlatformSpots.Add(53);
-        TrampolineSpots.Add(63);
-        TrampolineSpots.Add(26);
+        TrampolineSpots.Add(83);
+        TrampolineSpots.Add(6);
         //rechthoekSpots.Add(66);
-        redZoneSpots.Add(6);
+        // redZoneSpots.Add(6);
 
         Init_Platforms(RampSpots, PlatformSpots, RampSpotsReversed, PortalSpots, TrampolineSpots, rechthoekSpots);
         initRedZones(redZoneSpots);
