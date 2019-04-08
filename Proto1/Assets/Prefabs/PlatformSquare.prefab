@@ -14,10 +14,9 @@ GameObject:
   - component: {fileID: 5005420362235525775}
   - component: {fileID: 711328914229756783}
   - component: {fileID: 826389100105153693}
-  - component: {fileID: 7478262586862998550}
   m_Layer: 0
   m_Name: PlatformSquare
-  m_TagString: Untagged
+  m_TagString: PlatformSquare
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -127,15 +126,3 @@ MonoBehaviour:
   m_FirstSelected: {fileID: 0}
   m_sendNavigationEvents: 1
   m_DragThreshold: 10
---- !u!114 &7478262586862998550
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4581323721575538998}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cd38fd595c3e3a74b8551081e115b4df, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
