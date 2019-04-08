@@ -34,4 +34,19 @@ public class PlayerBal : MonoBehaviour
         }
 
     }
+
+    public void respawnBal()
+    {
+        gameState.RollingPhaseActive = false;
+        Camera actualcamera = gameState.GetComponent<Camera>();
+        PlayerCamera camera = gameState.playerCamera;
+        this.transform.position = this.spawnpoint;
+        this.GetComponent<Rigidbody>().angularVelocity = new Vector3(0, 0, 0);
+        this.GetComponent<Rigidbody>().velocity = new Vector3(0, 0, 0);
+        camera.transform.position = new Vector3(this.spawnpoint.x + camera.TargetMovementOffset.x, this.spawnpoint.y + camera.TargetMovementOffset.y, this.spawnpoint.z + camera.TargetMovementOffset.z);
+        camera.transform.LookAt(camera.Target.transform.position);
+        camera.GetComponent<Rigidbody>().velocity = new Vector3(0, 0, 0); 
+        gameState.BuildingPhaseActive = true;
+    }
+
 }

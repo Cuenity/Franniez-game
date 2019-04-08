@@ -21,7 +21,8 @@ public class PlatformManager : MonoBehaviour
     public BigRamp bigRamp;
     public Finish finish;
     public PlatformBreekbaar platformBreekbaar;
-    public GameObject PlatformSquareNoGrass;
+    public RedZone redZone;
+    public GameObject platformSquareNoGrass;
 
     GameState gameState;
 
@@ -279,7 +280,7 @@ public class PlatformManager : MonoBehaviour
         TrampolineSpots.Add(354);
         for (int i = 0; i < PlatformNoGrassSpots.Count; i++)
         {
-            PlatformSquareNoGrass = Instantiate(PlatformSquareNoGrass, gameState.gridManager.gridSquares[PlatformNoGrassSpots[i]] + rampAdjustment, new Quaternion(0, 0, 0, 0));
+            platformSquareNoGrass = Instantiate(platformSquareNoGrass, gameState.gridManager.gridSquares[PlatformNoGrassSpots[i]] + rampAdjustment, new Quaternion(0, 0, 0, 0));
             
         }
 
@@ -370,6 +371,7 @@ public class PlatformManager : MonoBehaviour
         List<int> PortalSpots = new List<int>();
         List<int> TrampolineSpots = new List<int>();
         List<int> rechthoekSpots = new List<int>();
+        List<int> redZoneSpots = new List<int>();
 
         //levelPlatformen.tileList[12] = 1;
         //betekent op tile 12 staat een ramp
@@ -388,8 +390,12 @@ public class PlatformManager : MonoBehaviour
         // PlatformSpots.Add(53);
         TrampolineSpots.Add(63);
         TrampolineSpots.Add(26);
-        rechthoekSpots.Add(66);
+        //rechthoekSpots.Add(66);
+        redZoneSpots.Add(6);
+
         Init_Platforms(RampSpots, PlatformSpots, RampSpotsReversed, PortalSpots, TrampolineSpots, rechthoekSpots);
+        initRedZones(redZoneSpots);
+
 
     }
     internal void Init_Platforms(List<int> RampSpots, List<int> PlatformSpots, List<int> RampSpotsReversed, List<int> PortalSpots, List<int> TrampolineSpots, List<int> rechthoekSpots)
@@ -437,6 +443,17 @@ public class PlatformManager : MonoBehaviour
             for (int i = 0; i < rechthoekSpots.Count; i++)
             {
                 rechthoek = Instantiate(rechthoek, gameState.gridManager.gridSquares[rechthoekSpots[i]] + new Vector3(.5f, 0, 0), new Quaternion(0, 0, 0, 0));
+
+            }
+        }
+    }
+    public void initRedZones(List<int> redZones)
+    {
+        if (redZones.Count > 0)
+        {
+            for (int i = 0; i < redZones.Count; i++)
+            {
+                redZone = Instantiate(redZone, gameState.gridManager.gridSquares[redZones[i]] + new Vector3(1.5f, -1f, 0), new Quaternion(0, 0, 0, 0));
 
             }
         }
