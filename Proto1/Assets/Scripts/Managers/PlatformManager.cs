@@ -23,6 +23,7 @@ public class PlatformManager : MonoBehaviour
     public PlatformBreekbaar platformBreekbaar;
     public RedZone redZone;
     public GameObject platformSquareNoGrass;
+    public Coin coin;
 
     GameState gameState;
 
@@ -222,6 +223,79 @@ public class PlatformManager : MonoBehaviour
         {
             ramp.SpawnRampReversed(gameState.gridManager.gridSquares[RampSpotsReversed[i]]);
         }
+
+    }
+
+    internal void Build_Vertical_Slice_Level6()
+    {
+        Vector3 rampAdjustment = new Vector3(0.5f, 0f, 0f);
+        List<int> RampSpots = new List<int>();
+        List<int> PlatformSpots = new List<int>();
+        List<int> FinishSpots = new List<int>();
+        List<int> TrampolineSpots = new List<int>();
+        List<int> PortalSpots = new List<int>();
+        List<int> rechthoekSpots = new List<int>();
+        List<int> RampSpotsReversed = new List<int>();
+        List<int> CoinSpots = new List<int>();
+        List<int> RedZoneSpots = new List<int>();
+
+        RampSpots.Add(21);
+        RampSpots.Add(90);
+        PlatformSpots.Add(158);
+        PlatformSpots.Add(159);
+
+
+        //dit moet later anders zijn collectables 
+        CoinSpots.Add(46);
+        CoinSpots.Add(70);
+        CoinSpots.Add(97);
+        FinishSpots.Add(139);
+
+
+
+        Init_Platforms(RampSpots, PlatformSpots, RampSpotsReversed, PortalSpots, TrampolineSpots, rechthoekSpots);
+
+        for (int i = 0; i < CoinSpots.Count; i++)
+        {
+            coin = Instantiate(coin, gameState.gridManager.gridSquares[CoinSpots[i]] + rampAdjustment, new Quaternion(0, 0, 0, 0));
+
+        }
+
+        for (int i = 0; i < FinishSpots.Count; i++)
+        {
+            finish = Instantiate(finish, gameState.gridManager.gridSquares[FinishSpots[i]], new Quaternion(0, 0, 0, 0));
+
+        }
+
+        initRedZones(RedZoneSpots);
+    }
+
+    internal void Build_Vertical_Slice_Level5()
+    {
+        Vector3 rampAdjustment = new Vector3(0.5f, 0f, 0f);
+        List<int> RampSpots = new List<int>();
+        List<int> PlatformSpots = new List<int>();
+        List<int> FinishSpots = new List<int>();
+        List<int> TrampolineSpots = new List<int>();
+        List<int> PortalSpots = new List<int>();
+        List<int> rechthoekSpots = new List<int>();
+        List<int> RampSpotsReversed = new List<int>();
+        List<int> CoinSpots = new List<int>();
+        List<int> RedZoneSpots = new List<int>();
+
+        RampSpots.Add(21);
+        TrampolineSpots.Add(144);
+        CoinSpots.Add(107);
+        RedZoneSpots.Add(5);
+        Init_Platforms(RampSpots, PlatformSpots, RampSpotsReversed, PortalSpots, TrampolineSpots, rechthoekSpots);
+
+        for (int i = 0; i < CoinSpots.Count; i++)
+        {
+            coin = Instantiate(coin, gameState.gridManager.gridSquares[CoinSpots[i]]+rampAdjustment, new Quaternion(0, 0, 0, 0));
+
+        }
+
+        initRedZones(RedZoneSpots);
 
     }
 
