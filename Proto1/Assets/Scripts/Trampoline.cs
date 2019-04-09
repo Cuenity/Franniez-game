@@ -30,9 +30,13 @@ public class Trampoline : MonoBehaviour
         {
             velocityY = velocity.y * -1;
         }
-        if (velocityY < 2)
+        if (velocityY < 2 && velocityY >0)
         {
             velocityY = 4;
+        }
+        else if(velocityY > -2 && velocityY < 0)
+        {
+            velocityY = -4;
         }
 
         if (velocity.x <1 && velocity.x >0 )
