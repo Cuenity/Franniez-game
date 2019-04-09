@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 7139857650001529294}
   - component: {fileID: 1191019344074348885}
   - component: {fileID: 2116874778110079020}
+  - component: {fileID: 1968428553410101219}
   m_Layer: 0
   m_Name: Camera
   m_TagString: Untagged
@@ -96,11 +97,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61855380e27ebd34194bdcb74ea70dee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  platformDragActive: 0
   TargetMovementOffset: {x: 0, y: 0, z: -10}
   TargetLookAtOffset: {x: 0, y: 0, z: 0}
   SpringForce: 10
   SpringDamper: 10
-  dragSpeed: 2
 --- !u!54 &2116874778110079020
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -117,3 +118,12 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!45 &1968428553410101219
+Skybox:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5103629974025486095}
+  m_Enabled: 1
+  m_CustomSkybox: {fileID: 2100000, guid: 2bd8959f5fbd3644aa33af1a155fc147, type: 2}
