@@ -22,7 +22,7 @@ public class PlayerCamera : MonoBehaviour
 
         gameState = GameState.Instance;
         camera = this.GetComponent<Camera>();
-        this.transform.position = gameState.playerManager.player.spawnpoint + TargetMovementOffset;
+
     }
     private void Start()
     {
@@ -32,7 +32,11 @@ public class PlayerCamera : MonoBehaviour
         }
     }
 
-
+    internal void InitCamera()
+    {
+        
+        this.transform.position = gameState.playerManager.player.spawnpoint + TargetMovementOffset;
+    }
 
     void FixedUpdate()
     {

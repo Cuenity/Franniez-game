@@ -13,7 +13,7 @@ public class UIManager : MonoBehaviour
 
     void Start()
     {
-        Instantiate(canvas);
+        //Instantiate(canvas);
     }
 
     void Update()

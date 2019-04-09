@@ -21,36 +21,36 @@ public class RollingPhaseManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        amountCoins = 0;
-        level = new Level();
+        //amountCoins = 0;
+        //level = new Level();
 
-        Scene scene = SceneManager.GetActiveScene();
-        //int.TryParse(scene.name, out levelNumber);
+        //Scene scene = SceneManager.GetActiveScene();
+        ////int.TryParse(scene.name, out levelNumber);
 
-        player = PlayerDataController.instance.player;
+        //player = PlayerDataController.instance.player;
 
-        if (player == null)
-        {
-            return;
-        }
+        //if (player == null)
+        //{
+        //    return;
+        //}
 
-        if(player.levels !=null)
-        {
-            // Als hij het niet vind, doet ff iets
-            level = player.levels[1-1];
-        }
-        else
-        {
-            level = new Level();
-        }
+        //if(player.levels !=null)
+        //{
+        //    // Als hij het niet vind, doet ff iets
+        //    level = player.levels[1-1];
+        //}
+        //else
+        //{
+        //    level = new Level();
+        //}
 
-        //level = player.levels[levelNumber - 1];
+        ////level = player.levels[levelNumber - 1];
 
-        if (level.gotSticker)
-        {
-            pickedSticker = true;
-        }
-        level.playedLevel = true;
+        //if (level.gotSticker)
+        //{
+        //    pickedSticker = true;
+        //}
+        //level.playedLevel = true;
     }
 
 
