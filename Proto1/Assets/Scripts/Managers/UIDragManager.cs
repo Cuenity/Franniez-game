@@ -7,6 +7,7 @@ public class UIDragManager : MonoBehaviour, IDragHandler, IBeginDragHandler, IEn
     public GameObject platformSquare;
     public GameObject ramp;
     public GameObject trampoline;
+    public GameObject boostPlatform;
     //tot hier
     public RotateSprite rotateSprite;
 
@@ -154,6 +155,40 @@ public class UIDragManager : MonoBehaviour, IDragHandler, IBeginDragHandler, IEn
                             }
 
                             GameState.Instance.levelManager.playerPlatforms.UpdateTrampolinesLeft(button);
+
+                            var outline = draggedPlatform.AddComponent<Outline>();
+                            outline.OutlineMode = Outline.Mode.OutlineAll;
+                            outline.OutlineColor = Color.blue;
+                            outline.OutlineWidth = 10f;
+
+                            draggedPlatform.AddComponent<PlatformDragManager>();
+                        }
+                        else
+                        {
+                            draggingAllowed = false;
+                            playercamera.platformDragActive = false;
+                        }
+                    }
+                }
+            }
+            else if (inventoryButton.name == "boostPlatformButton")
+            {
+                type = PlatformType.boostPlatform;
+                foreach (InventoryButton button in GameState.Instance.UIManager.instantiatedInventoryButtons)
+                {
+                    if (button.name == inventoryButton.name)
+                    {
+                        if (button.InventoryButtonAllowed)
+                        {
+                            draggedPlatform = Instantiate(boostPlatform);
+                            GameState.Instance.levelManager.playerPlatforms.boostPlatformsLeftToPlace--;
+
+                            if (GameState.Instance.levelManager.playerPlatforms.boostPlatformsLeftToPlace == 0)
+                            {
+                                button.InventoryButtonAllowed = false;
+                            }
+
+                            GameState.Instance.levelManager.playerPlatforms.UpdateBoostPlatformsLeft(button);
 
                             var outline = draggedPlatform.AddComponent<Outline>();
                             outline.OutlineMode = Outline.Mode.OutlineAll;
