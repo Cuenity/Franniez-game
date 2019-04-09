@@ -25,7 +25,7 @@ public class StickerObject : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        playerManager.collectedSticker = true;
+        //playerManager.collectedSticker = true;
         this.gameObject.SetActive(false);
         PickedSticker();
     }

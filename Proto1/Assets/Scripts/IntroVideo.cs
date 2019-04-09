@@ -38,6 +38,7 @@ public class IntroVideo : MonoBehaviour
             break;
         }
 
+        
         bool test = PlayerDataController.instance.Load();
         if (PlayerDataController.instance.Load())
         {
