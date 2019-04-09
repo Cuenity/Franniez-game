@@ -27,20 +27,18 @@ public class RollingPhaseManager : MonoBehaviour
         Scene scene = SceneManager.GetActiveScene();
         //int.TryParse(scene.name, out levelNumber);
 
-        //Load player data for testing
-        // Ff Playerdata erin zetten
-        PlayerDataController.instance.MakeNewPlayer();
-        PlayerDataController.instance.Load();
         player = PlayerDataController.instance.player;
 
-        if (player.levels.Length > 0 && player.levels[0] != null)
+        if (player == null)
         {
-           
-                level = player.levels[0];
-            
-            
+            return;
         }
 
+        if(player.levels !=null)
+        {
+            // Als hij het niet vind, doet ff iets
+            level = player.levels[1-1];
+        }
         else
         {
             level = new Level();
@@ -117,7 +115,13 @@ public class RollingPhaseManager : MonoBehaviour
             level.countCoins = amountCoins;
         }
 
-        if(player.levels.Length > 0 && player.levels[0] != null)
+        player = PlayerDataController.instance.player;
+
+        if(player.levels == null)
+        {
+            player.levels = new Level[50];
+        }
+        if (player.levels.Length > 0 && player.levels[0] != null)
         {
             player.levels[levelNumber - 1] = level;
         }

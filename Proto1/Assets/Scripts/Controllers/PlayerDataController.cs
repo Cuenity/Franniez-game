@@ -2,6 +2,7 @@
 using System.Collections;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
+using System;
 
 public class PlayerDataController : MonoBehaviour
 {
@@ -50,8 +51,6 @@ public class PlayerDataController : MonoBehaviour
 
     public void Save()
     {
-
-        
         BinaryFormatter bf = new BinaryFormatter();
 
         FileStream file = File.Create(Application.persistentDataPath + "/PlayerInfo.dat");
@@ -82,5 +81,10 @@ public class PlayerDataController : MonoBehaviour
     public void SetPlayer(Player setPlayer)
     {
         player = setPlayer;
+    }
+
+    internal void SetLanguage(int languageNumber)
+    {
+        player.language = languageNumber;
     }
 }
