@@ -63,7 +63,7 @@ public class PlatformManager : MonoBehaviour
     {
         //als deze methode alleen is voor speler blokjes kunnen we hier die glow doen
         GameObject gameObjectGeneric = gameObject;
-        Vector3 rampAdjustment = new Vector3(0.5f, 0f, 0f);
+        Vector3 rampAdjustment = new Vector3(1f, 0f, 0f);
         Vector3 gridAdjustment = new Vector3(0.5f, 0, 0);
         List<float> distances = new List<float>();
         if (gameState.gridManager.gridSquares.Count > 0)
@@ -475,7 +475,7 @@ public class PlatformManager : MonoBehaviour
         {
             for (int i = 0; i < RampSpots.Count; i++)
             {
-                ramp.SpawnRamp(gameState.gridManager.gridSquares[RampSpots[i]]);
+                ramp.SpawnRamp(gameState.gridManager.gridSquares[RampSpots[i]]+ new Vector3(.5f,0,0));
             }
         }
         if (PlatformSpots.Count > 0)
