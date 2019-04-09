@@ -46,11 +46,11 @@ public class RollingPhaseManager : MonoBehaviour
 
         //level = player.levels[levelNumber - 1];
 
-        if (level.gotSticker)
-        {
-            pickedSticker = true;
-        }
-        level.playedLevel = true;
+        //if (level.gotSticker)
+        //{
+        //    pickedSticker = true;
+        //}
+        //level.playedLevel = true;
     }
 
 
