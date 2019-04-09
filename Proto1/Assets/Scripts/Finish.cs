@@ -8,12 +8,14 @@ public class Finish : MonoBehaviour
 
     GameState gameState;
     PlayerManager playerManager;
+    public Vector3 spawnpoint;
 
     // Use this for initialization
     void Start()
     {
         gameState = GameObject.Find("GameState").GetComponent<GameState>();
         playerManager = gameState.GetComponent<PlayerManager>();
+        gameState.levelManager.finish = this;
     }
 
     // Update is called once per frame
@@ -26,6 +28,6 @@ public class Finish : MonoBehaviour
     {
         playerManager.collectedCoins++;
         Finished();
-        Destroy(gameObject);
+        this.gameObject.SetActive(false);
     }
 }

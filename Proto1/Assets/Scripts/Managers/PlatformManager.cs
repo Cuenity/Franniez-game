@@ -23,6 +23,7 @@ public class PlatformManager : MonoBehaviour
     public PlatformBreekbaar platformBreekbaar;
     public RedZone redZone;
     public GameObject platformSquareNoGrass;
+    public Coin coin;
 
     GameState gameState;
 
@@ -225,6 +226,75 @@ public class PlatformManager : MonoBehaviour
 
     }
 
+    internal void Build_Vertical_Slice_Level6()
+    {
+        Vector3 rampAdjustment = new Vector3(0.5f, 0f, 0f);
+        List<int> RampSpots = new List<int>();
+        List<int> PlatformSpots = new List<int>();
+        List<int> FinishSpots = new List<int>();
+        List<int> TrampolineSpots = new List<int>();
+        List<int> PortalSpots = new List<int>();
+        List<int> rechthoekSpots = new List<int>();
+        List<int> RampSpotsReversed = new List<int>();
+        List<int> CoinSpots = new List<int>();
+        List<int> RedZoneSpots = new List<int>();
+
+        RampSpots.Add(21);
+        RampSpots.Add(90);
+        PlatformSpots.Add(158);
+        PlatformSpots.Add(159);
+
+
+        //dit moet later anders zijn collectables 
+      
+
+
+        Init_Platforms(RampSpots, PlatformSpots, RampSpotsReversed, PortalSpots, TrampolineSpots, rechthoekSpots);
+
+        for (int i = 0; i < CoinSpots.Count; i++)
+        {
+            coin = Instantiate(coin, gameState.gridManager.gridSquares[CoinSpots[i]] + rampAdjustment, new Quaternion(0, 0, 0, 0));
+
+        }
+
+        for (int i = 0; i < FinishSpots.Count; i++)
+        {
+            finish = Instantiate(finish, gameState.gridManager.gridSquares[FinishSpots[i]], new Quaternion(0, 0, 0, 0));
+
+        }
+
+        initRedZones(RedZoneSpots);
+    }
+
+    internal void Build_Vertical_Slice_Level5()
+    {
+        Vector3 rampAdjustment = new Vector3(0.5f, 0f, 0f);
+        List<int> RampSpots = new List<int>();
+        List<int> PlatformSpots = new List<int>();
+        List<int> FinishSpots = new List<int>();
+        List<int> TrampolineSpots = new List<int>();
+        List<int> PortalSpots = new List<int>();
+        List<int> rechthoekSpots = new List<int>();
+        List<int> RampSpotsReversed = new List<int>();
+        List<int> CoinSpots = new List<int>();
+        List<int> RedZoneSpots = new List<int>();
+
+        RampSpots.Add(21);
+        TrampolineSpots.Add(144);
+        CoinSpots.Add(107);
+        RedZoneSpots.Add(5);
+        Init_Platforms(RampSpots, PlatformSpots, RampSpotsReversed, PortalSpots, TrampolineSpots, rechthoekSpots);
+
+        for (int i = 0; i < CoinSpots.Count; i++)
+        {
+            coin = Instantiate(coin, gameState.gridManager.gridSquares[CoinSpots[i]]+rampAdjustment, new Quaternion(0, 0, 0, 0));
+
+        }
+
+        initRedZones(RedZoneSpots);
+
+    }
+
     internal void Build_Vertical_Slice_Level2()
     {
         List<int> RampSpots = new List<int>();
@@ -385,11 +455,11 @@ public class PlatformManager : MonoBehaviour
         RampSpots.Add(41);
         RampSpots.Add(62);
         //RampSpotsReversed.Add(14);
-        //PortalSpots.Add(24);
-        // PortalSpots.Add(54);
+        PortalSpots.Add(84);
+        PortalSpots.Add(96);
         // PlatformSpots.Add(53);
-        TrampolineSpots.Add(83);
-        TrampolineSpots.Add(6);
+        //TrampolineSpots.Add(83);
+        //TrampolineSpots.Add(6);
         //rechthoekSpots.Add(66);
         // redZoneSpots.Add(6);
 

@@ -22,8 +22,8 @@ public class MainMenu : MonoBehaviour
     {
         Debug.Log("Start Game");
         
-
-        //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        
+        SceneManager.LoadScene("VerticalSliceLevel1");
     }
 
     public void FixedUpdate()

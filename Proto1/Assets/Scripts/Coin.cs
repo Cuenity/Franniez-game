@@ -7,6 +7,7 @@ public class Coin : MonoBehaviour
 
     public delegate void ClickAction();
     public static event ClickAction PickedCoin;
+    public Vector3 spawnpoint;
 
     GameState gameState;
     PlayerManager playerManager;
@@ -15,6 +16,7 @@ public class Coin : MonoBehaviour
     {
         gameState = GameObject.Find("GameState").GetComponent<GameState>();
         playerManager = gameState.GetComponent<PlayerManager>();
+        gameState.levelManager.coinList.Add(this);
     }
     
     void Update()
@@ -25,7 +27,13 @@ public class Coin : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         playerManager.collectedCoins++;
-        Destroy(gameObject);
         PickedCoin();
+        this.gameObject.SetActive(false);
+    }
+    public void SetSpawnpoint(int i)
+    {
+        gameState = GameState.Instance;
+        Vector3 coinadjustment = new Vector3(-.5f, 0, 0);
+        this.spawnpoint = gameState.gridManager.gridSquares[i] + coinadjustment;
     }
 }
