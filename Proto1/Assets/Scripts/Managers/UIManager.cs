@@ -10,6 +10,7 @@ public class UIManager : MonoBehaviour
     public Sprite rampImage;
     public Sprite platformSquareImage;
     public Sprite trampolineImage;
+    public Sprite boostPlatformImage;
 
     void Start()
     {
@@ -100,6 +101,14 @@ public class UIManager : MonoBehaviour
             buttonImage.GetComponent<Image>().sprite = trampolineImage;
             instantiatedInventoryButtons[currentButton].name = "trampolineButton";
             buttonText.GetComponent<Text>().text = playerPlatforms.trampolines + "/" + playerPlatforms.trampolines;
+
+            playerPlatforms.trampolineButtonInstantiated = true;
+        }
+        else if (playerPlatforms.boostPlatforms > 0 && !playerPlatforms.boostPlatformButtonInstantiated)
+        {
+            buttonImage.GetComponent<Image>().sprite = boostPlatformImage;
+            instantiatedInventoryButtons[currentButton].name = "boostPlatformButton";
+            buttonText.GetComponent<Text>().text = playerPlatforms.boostPlatforms + "/" + playerPlatforms.boostPlatforms;
 
             playerPlatforms.trampolineButtonInstantiated = true;
         }
