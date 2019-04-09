@@ -39,16 +39,14 @@ public class PlayerBal : MonoBehaviour
     {
         if(this.transform.position.y < gameState.gridManager.heigth*-1 || this.transform.position.x <0 || this.transform.position.x > gameState.gridManager.width +1)
         {
-            respawnBal();
-            gameState.levelManager.RespawnCollectables();
-            this.GetComponent<Rigidbody>().velocity = new Vector3(0, 0, 0);
+            gameState.levelManager.SetBuildingPhase();
         }
     }
 
     private IEnumerator respawnballinternal()
     {
         yield return new WaitForEndOfFrame();
-        gameState.RollingPhaseActive = false;
+        
         Camera actualcamera = gameState.GetComponent<Camera>();
         PlayerCamera camera = gameState.playerCamera;
         this.transform.position = this.spawnpoint;
@@ -59,7 +57,6 @@ public class PlayerBal : MonoBehaviour
         camera.transform.LookAt(camera.Target.transform.position);
         camera.GetComponent<Rigidbody>().velocity = new Vector3(0, 0, 0);
         this.GetComponent<Rigidbody>().Sleep();
-        gameState.BuildingPhaseActive = true;
     }
 
     public void respawnBal()

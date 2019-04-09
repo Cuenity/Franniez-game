@@ -245,4 +245,19 @@ public class LevelManager : MonoBehaviour
             gameState.playerManager.player.spawnpoint = gameState.gridManager.gridSquares[0] + playeradjustment;
         } 
     }
+    public void SetRollingPhase()
+    {
+        gameState.BuildingPhaseActive = false;
+        gameState.RollingPhaseActive = true;
+        Time.timeScale = 1;
+    }
+    public void SetBuildingPhase()
+    {
+        gameState.RollingPhaseActive = false;
+        gameState.playerManager.player.respawnBal();
+        gameState.levelManager.RespawnCollectables();
+        gameState.BuildingPhaseActive = true;
+        Time.timeScale = 0;
+        
+    }
 }
