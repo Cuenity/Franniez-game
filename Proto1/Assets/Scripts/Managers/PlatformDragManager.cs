@@ -43,6 +43,7 @@ public class PlatformDragManager : MonoBehaviour
     {
         if (EventSystem.current.IsPointerOverGameObject())
         {
+            // check if rotatespritehit?
         }
 
             rotateSpriteHit = false;
@@ -56,7 +57,7 @@ public class PlatformDragManager : MonoBehaviour
                 if (potentialRotateSprite.gameObject.tag == "RotateSprite")
                 {
                     rotateSpriteHit = true;
-                    gameObject.transform.rotation = Quaternion.Euler(new Vector3(0, 90, 0));
+                    //gameObject.transform.rotation = Quaternion.Euler(new Vector3(0, 90, 0));
                 }
             }
         }
