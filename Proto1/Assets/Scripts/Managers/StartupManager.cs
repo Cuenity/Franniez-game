@@ -24,9 +24,10 @@ public class StartupManager : MonoBehaviour
     public void ButtonClicked()
     {
         Player player = new Player();
-        player.name = "";
+        player.name = "Test";
         player.language = (int)LocalizationManager.instance.LanguageChoice;
-        PlayerDataController.instance.player = player;
+        PlayerDataController.instance.SetPlayer(player);
+        PlayerDataController.instance.Save();
 
         SceneManager.LoadScene("StartMenu");
     }

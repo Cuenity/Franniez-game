@@ -83,16 +83,41 @@ public class LocalizationManager : MonoBehaviour
             localizedText.Add(loadedData.items[i].key, loadedData.items[i].value);
         }
 
-        SetLanguage();
+        //SetLanguage();
         Debug.Log("Taal is geladen.");
         isReady = true;
 
+    }
+
+    public void ReturnLanguage(string filePath)
+    {
+        int languageNumber = 0;
+        switch(filePath)
+        {
+            case "localizedText_Nl.json":
+                LanguageChoice = Language.Dutch;
+                languageNumber= 0;
+                break;
+            case "localizedText_En.json":
+                LanguageChoice = Language.English;
+                languageNumber = 1;
+                break;
+            case "localizedText_Es.json":
+                LanguageChoice = Language.Spanish;
+                languageNumber = 2;
+                break;
+            default:
+                break;
+        }
+
+        PlayerDataController.instance.SetLanguage(languageNumber);
     }
 
     // Alleen public voor Debug, weer terug veranderen naar Private
 
     public void SetLanguage()
     {
+        PlayerDataController.instance.Load();
         Player player = PlayerDataController.instance.player;
 
         switch (player.language)

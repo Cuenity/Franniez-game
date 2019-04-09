@@ -45,11 +45,11 @@ public class ButtonManager : MonoBehaviour
     {
         LocalizationManager.instance.LoadLocalizedText(pathFile);
 
-        Player player = new Player();
-        player.name = "";
-        player.language = (int)LocalizationManager.instance.LanguageChoice;
+
+        Player player = new Player{name = ""};
         PlayerDataController.instance.player = player;
         PlayerDataController.instance.Save();
+        LocalizationManager.instance.ReturnLanguage(pathFile);
         SceneManager.LoadScene("StartMenu");
     }
 
