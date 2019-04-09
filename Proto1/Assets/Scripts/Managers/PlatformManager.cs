@@ -246,11 +246,7 @@ public class PlatformManager : MonoBehaviour
 
 
         //dit moet later anders zijn collectables 
-        CoinSpots.Add(46);
-        CoinSpots.Add(70);
-        CoinSpots.Add(97);
-        FinishSpots.Add(139);
-
+      
 
 
         Init_Platforms(RampSpots, PlatformSpots, RampSpotsReversed, PortalSpots, TrampolineSpots, rechthoekSpots);
@@ -459,11 +455,11 @@ public class PlatformManager : MonoBehaviour
         RampSpots.Add(41);
         RampSpots.Add(62);
         //RampSpotsReversed.Add(14);
-        //PortalSpots.Add(24);
-        // PortalSpots.Add(54);
+        PortalSpots.Add(84);
+        PortalSpots.Add(96);
         // PlatformSpots.Add(53);
-        TrampolineSpots.Add(83);
-        TrampolineSpots.Add(6);
+        //TrampolineSpots.Add(83);
+        //TrampolineSpots.Add(6);
         //rechthoekSpots.Add(66);
         // redZoneSpots.Add(6);
 

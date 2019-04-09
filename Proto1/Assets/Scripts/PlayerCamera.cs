@@ -21,7 +21,7 @@ public class PlayerCamera : MonoBehaviour
     {
         gameState = GameState.Instance;
         camera = this.GetComponent<Camera>();
-        this.transform.position = (new Vector3(0, 5, -10));
+        this.transform.position = gameState.playerManager.player.spawnpoint +TargetMovementOffset;
     }
     private void Start()
     {

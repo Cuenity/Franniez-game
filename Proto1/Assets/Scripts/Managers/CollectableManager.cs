@@ -20,7 +20,7 @@ public class CollectableManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     public void InitCollectables(List<Vector3> coinPositions, Vector3 stickerPosition)
@@ -46,7 +46,9 @@ public class CollectableManager : MonoBehaviour
     public void InitFinish()
     {
         finish = Instantiate(finish);
-        finish.transform.position = finishPosition;
+        finish.spawnpoint = finishPosition;
+        finish.transform.position = finish.spawnpoint;
+        finish.gameObject.SetActive(true);
     }
 
     public void InitCoins()
@@ -54,14 +56,18 @@ public class CollectableManager : MonoBehaviour
         foreach (Vector3 coinPosition in coinPositions)
         {
             coin = Instantiate(coin);
-            coin.transform.position = coinPosition;
-            coin.transform.Rotate(new Vector3(0, 90, 0));
+            coin.spawnpoint = coinPosition;
+            coin.transform.position = coin.spawnpoint;
+            coin.gameObject.SetActive(true);
         }
     }
 
     public void InitSticker()
     {
         sticker = Instantiate(sticker);
-        sticker.transform.position = stickerPosition;
+        sticker.spawnpoint = stickerPosition;
+        
+        sticker.transform.position = sticker.spawnpoint;
+        sticker.gameObject.SetActive(true);
     }
 }

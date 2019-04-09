@@ -28,7 +28,8 @@ public class ButtonManager : MonoBehaviour
         }
         else if (gameState.RollingPhaseActive == true)
         {
-            gameState.playerManager.player.respawnBal();           
+            gameState.playerManager.player.respawnBal();
+            gameState.levelManager.RespawnCollectables();
         }
         ChangeEnvironment();
     }
