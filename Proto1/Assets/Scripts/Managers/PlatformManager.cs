@@ -24,6 +24,7 @@ public class PlatformManager : MonoBehaviour
     public RedZone redZone;
     public GameObject platformSquareNoGrass;
     public Coin coin;
+    public BoostPlatform boostPlatform;
 
     GameState gameState;
 
@@ -238,8 +239,10 @@ public class PlatformManager : MonoBehaviour
         List<int> RampSpotsReversed = new List<int>();
         List<int> CoinSpots = new List<int>();
         List<int> RedZoneSpots = new List<int>();
-
+        List<int> boosterPlatformSpots = new List<int>();
         RampSpots.Add(21);
+        boosterPlatformSpots.Add(43);
+        boosterPlatformSpots.Add(45);
         RampSpots.Add(90);
         PlatformSpots.Add(158);
         PlatformSpots.Add(159);
@@ -262,7 +265,7 @@ public class PlatformManager : MonoBehaviour
             finish = Instantiate(finish, gameState.gridManager.gridSquares[FinishSpots[i]], new Quaternion(0, 0, 0, 0));
 
         }
-
+        initBoostPlatforms(boosterPlatformSpots);
         initRedZones(RedZoneSpots);
     }
 
@@ -278,6 +281,7 @@ public class PlatformManager : MonoBehaviour
         List<int> RampSpotsReversed = new List<int>();
         List<int> CoinSpots = new List<int>();
         List<int> RedZoneSpots = new List<int>();
+        List<int> BoosterPlatform = new List<int>();
 
         RampSpots.Add(21);
         TrampolineSpots.Add(144);
@@ -292,7 +296,7 @@ public class PlatformManager : MonoBehaviour
         }
 
         initRedZones(RedZoneSpots);
-
+        initBoostPlatforms(BoosterPlatform);
     }
 
     internal void Build_Vertical_Slice_Level2()
@@ -524,6 +528,17 @@ public class PlatformManager : MonoBehaviour
             for (int i = 0; i < redZones.Count; i++)
             {
                 redZone = Instantiate(redZone, gameState.gridManager.gridSquares[redZones[i]] + new Vector3(1.5f, -1f, 0), new Quaternion(0, 0, 0, 0));
+
+            }
+        }
+    }
+    public void initBoostPlatforms(List<int> boosterPlatformSpots) 
+    {
+        if (boosterPlatformSpots.Count > 0)
+        {
+            for (int i = 0; i < boosterPlatformSpots.Count; i++)
+            {
+                boostPlatform = Instantiate(boostPlatform, gameState.gridManager.gridSquares[boosterPlatformSpots[i]] + new Vector3(1, 0, 0), new Quaternion(0, 0, 0, 0));
 
             }
         }

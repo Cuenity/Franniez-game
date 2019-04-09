@@ -22,17 +22,15 @@ public class ButtonManager : MonoBehaviour
     {
         if (gameState.BuildingPhaseActive == true)
         {
-            gameState.BuildingPhaseActive = false;
-            gameState.RollingPhaseActive = true;
-            
+            gameState.levelManager.SetRollingPhase();
         }
         else if (gameState.RollingPhaseActive == true)
         {
-            gameState.playerManager.player.respawnBal();
-            gameState.levelManager.RespawnCollectables();
+            gameState.levelManager.SetBuildingPhase();
         }
         ChangeEnvironment();
     }
+    
 
     public void InventoryButton(GameObject platformSquare)
     {
