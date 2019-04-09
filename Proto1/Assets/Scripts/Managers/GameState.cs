@@ -87,7 +87,7 @@ public class GameState : MonoBehaviour
         gridManager = gameObject.AddComponent<GridManager>();
         //playerCamera = Instantiate(playerCamera);
 
-        levelManager.InitScene();
+        //levelManager.InitScene();
     }
 
     // Start is called before the first frame update

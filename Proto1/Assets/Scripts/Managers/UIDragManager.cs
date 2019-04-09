@@ -7,6 +7,7 @@ public class UIDragManager : MonoBehaviour, IDragHandler, IBeginDragHandler, IEn
     public GameObject platformSquare;
     public GameObject ramp;
     public GameObject trampoline;
+    public GameObject boostPlatform;
     //tot hier
     public RotateSprite rotateSprite;
 
@@ -170,6 +171,40 @@ public class UIDragManager : MonoBehaviour, IDragHandler, IBeginDragHandler, IEn
                     }
                 }
             }
+            else if (inventoryButton.name == "boostPlatformButton")
+            {
+                type = PlatformType.boostPlatform;
+                foreach (InventoryButton button in GameState.Instance.UIManager.instantiatedInventoryButtons)
+                {
+                    if (button.name == inventoryButton.name)
+                    {
+                        if (button.InventoryButtonAllowed)
+                        {
+                            draggedPlatform = Instantiate(boostPlatform);
+                            GameState.Instance.levelManager.playerPlatforms.boostPlatformsLeftToPlace--;
+
+                            if (GameState.Instance.levelManager.playerPlatforms.boostPlatformsLeftToPlace == 0)
+                            {
+                                button.InventoryButtonAllowed = false;
+                            }
+
+                            GameState.Instance.levelManager.playerPlatforms.UpdateBoostPlatformsLeft(button);
+
+                            var outline = draggedPlatform.AddComponent<Outline>();
+                            outline.OutlineMode = Outline.Mode.OutlineAll;
+                            outline.OutlineColor = Color.blue;
+                            outline.OutlineWidth = 10f;
+
+                            draggedPlatform.AddComponent<PlatformDragManager>();
+                        }
+                        else
+                        {
+                            draggingAllowed = false;
+                            playercamera.platformDragActive = false;
+                        }
+                    }
+                }
+            }
         }
 
         //else
@@ -200,15 +235,15 @@ public class UIDragManager : MonoBehaviour, IDragHandler, IBeginDragHandler, IEn
         {
             if (type == PlatformType.ramp)
             {
-                rotateSprite = Instantiate(rotateSprite);
-                rotateSprite.type = PlatformType.ramp;
+                RotateSprite sprite = Instantiate(rotateSprite);
+                sprite.type = PlatformType.ramp;
 
-                rotateSprite.transform.SetParent(draggedPlatform.transform); //x positie: 0,0200 (202) scale: 0.001 bij 0.0005
-                rotateSprite.transform.localScale = new Vector3(0.001f, 0.0005f, 0);
+                sprite.transform.SetParent(draggedPlatform.transform); //x positie: 0,0200 (202) scale: 0.001 bij 0.0005
+                sprite.transform.localScale = new Vector3(0.001f, 0.0005f, 0);
                 //rotateSprite.transform.Rotate(new Vector3(0, 90, 0));
-                rotateSprite.transform.position = draggedPlatform.transform.position + new Vector3(0, 0, -1.01f); //new Vector3(1, 0, -2);
+                sprite.transform.position = draggedPlatform.transform.position + new Vector3(0, 0, -1.01f); //new Vector3(1, 0, -2);
 
-                rotateSprite.transform.rotation = Quaternion.Euler(new Vector3(0, 0, 90));
+                sprite.transform.rotation = Quaternion.Euler(new Vector3(0, 0, 90));
                 //rotateSprite.AddComponent<MeshCollider>();
             }
 

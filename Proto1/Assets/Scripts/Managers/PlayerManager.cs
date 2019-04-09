@@ -30,5 +30,7 @@ public class PlayerManager : MonoBehaviour
         player.transform.position = player.spawnpoint;
         Debug.Log(player.spawnpoint);
         gameState.playerCamera.Target = player;
+        Camera camera=gameState.playerCamera.GetComponent<Camera>();
+        camera.transform.LookAt(gameState.playerCamera.Target.transform.position);
     }
 }

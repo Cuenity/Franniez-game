@@ -141,9 +141,11 @@ public class PlatformDragManager : MonoBehaviour
                 }
                 GameState.Instance.levelManager.playerPlatforms.placedPlatforms.Remove(gameObject);
                 Destroy(gameObject);
+            } else
+            {
+                GameState.Instance.platformManager.spawnPlatformOnGrid(transform.position, gameObject);
+                GameState.Instance.playerCamera.platformDragActive = false;
             }
-            GameState.Instance.platformManager.spawnPlatformOnGrid(transform.position, gameObject);
-            GameState.Instance.playerCamera.platformDragActive = false;
         }
     }
 }

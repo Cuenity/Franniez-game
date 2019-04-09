@@ -20,6 +20,11 @@ public class PlayerPlatforms
     public int trampolinesLeftToPlace;
     public bool trampolineButtonInstantiated;
 
+    public GameObject boostPlatform;
+    public int boostPlatforms;
+    public int boostPlatformsLeftToPlace;
+    public bool boostPlatformButtonInstantiated;
+
     public int inventoryButtonAmmount;
 
     //private GameObject draggedPlatform;
@@ -32,9 +37,11 @@ public class PlayerPlatforms
         this.ramps = ramps;
         this.platformSquares = platformSquares;
         this.trampolines = trampolines;
+        //this.boostPlatforms = boostPlatforms;
         rampsLeftToPlace = ramps;
         platformSquaresLeftToPlace = platformSquares;
         trampolinesLeftToPlace = trampolines;
+        //this.boostPlatformsLeftToPlace = boostPlatforms;
 
         inventoryButtonAmmount = 0;
 
@@ -44,6 +51,8 @@ public class PlayerPlatforms
             inventoryButtonAmmount++;
         if (trampolines > 0)
             inventoryButtonAmmount++;
+        //if (boostPlatforms > 0)
+        //    inventoryButtonAmmount++;
     }
 
     public void UpdateRampsLeft(InventoryButton button)
@@ -62,6 +71,12 @@ public class PlayerPlatforms
     {
         Text buttonText = button.transform.GetChild(1).gameObject.GetComponent<Text>();
         buttonText.text = GameState.Instance.levelManager.playerPlatforms.trampolinesLeftToPlace + "/" + GameState.Instance.levelManager.playerPlatforms.trampolines;
+    }
+
+    public void UpdateBoostPlatformsLeft(InventoryButton button)
+    {
+        Text buttonText = button.transform.GetChild(1).gameObject.GetComponent<Text>();
+        buttonText.text = GameState.Instance.levelManager.playerPlatforms.boostPlatforms + "/" + GameState.Instance.levelManager.playerPlatforms.boostPlatforms;
     }
 
     //public GameObject InstantiatePlayerPlatform(GameObject inventoryButton)

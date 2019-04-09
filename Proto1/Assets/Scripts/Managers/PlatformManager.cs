@@ -242,7 +242,7 @@ public class PlatformManager : MonoBehaviour
         List<int> boosterPlatformSpots = new List<int>();
         RampSpots.Add(21);
         boosterPlatformSpots.Add(43);
-        boosterPlatformSpots.Add(45);
+       // boosterPlatformSpots.Add(45);
         RampSpots.Add(90);
         PlatformSpots.Add(158);
         PlatformSpots.Add(159);

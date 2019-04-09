@@ -86,6 +86,7 @@ public class LevelManager : MonoBehaviour
         {
             item.gameObject.SetActive(false);
         }
+
         stickerObject.gameObject.SetActive(false);
         finish.gameObject.SetActive(false);
 
@@ -99,7 +100,7 @@ public class LevelManager : MonoBehaviour
     public void SetStickerPositions(int i)
     {
         Vector3 stickerAdjustment = new Vector3(.5f, 0, 0);
-      stickerPosition= gameState.gridManager.gridSquares[i] + stickerAdjustment;
+        stickerPosition = gameState.gridManager.gridSquares[i] + stickerAdjustment;
     }
     public void SetfinishPositions(int i)
     {
@@ -128,6 +129,7 @@ public class LevelManager : MonoBehaviour
             SetfinishPositions(5);
 
             gameState.collectableManager.InitCollectables(coinPositions, stickerPosition, finishPosition);
+            gameState.levelManager.SetBuildingPhase();
         }
 
         else if (currentScene.name == "TestLevel1")
@@ -169,25 +171,7 @@ public class LevelManager : MonoBehaviour
 
             gameState.gridManager.Build_Grid_BuildingPhase_With_Visuals();
         }
-        else if (currentScene.name == "TestJaspe")
-        {
-            playerPlatforms = new PlayerPlatforms(2, 6, 1);
-            gameState.gridManager.width = 20;
-            gameState.gridManager.heigth = 12;
-            levelPlatformen.tileList = new int[gameState.gridManager.width * gameState.gridManager.heigth];
-            // gameState.gridManager.Build_Grid1_Without_Visuals();
-            gameState.gridManager.Build_Grid_BuildingPhase_With_Visuals();
-            gameState.playerManager.player.SetSpawnpoint(1);
-            gameState.platformManager.Build_Level2();
-            SetCoinPositions(1);
-            SetCoinPositions(2);
-            SetCoinPositions(3);
-            SetStickerPositions(4);
-            SetfinishPositions(5);
-
-            gameState.collectableManager.InitCollectables(coinPositions, stickerPosition, finishPosition);
-        }
-
+        
         else if (currentScene.name == "VerticalSliceLevel2")
         {
             gameState.gridManager.width = 20;
@@ -203,24 +187,22 @@ public class LevelManager : MonoBehaviour
         {
 
             gameState.playerCamera = Instantiate(gameState.playerCamera);
-            gameState.playerManager.PlayerInit();
             Vector3 playeradjustment = new Vector3(.5f, 0, 0);
             gameState.gridManager.width = 20;
             gameState.gridManager.heigth = 11;
-
             playerPlatforms = new PlayerPlatforms(2, 12, 1);
-
-            gameState.gridManager.Build_Grid_BuildingPhase_With_Visuals();
+            gameState.gridManager.Build_Grid_BuildingPhase_Without_Visuals();
             gameState.playerManager.player.spawnpoint = gameState.gridManager.gridSquares[1] + playeradjustment;
-
             gameState.platformManager.Build_Vertical_Slice_Level6();
             SetCoinPositions(46);
             SetCoinPositions(70);
             SetCoinPositions(97);
-            SetStickerPositions(1);
+            SetStickerPositions(22);
             SetfinishPositions(139);
 
+            gameState.playerManager.PlayerInit();
             gameState.collectableManager.InitCollectables(coinPositions, stickerPosition, finishPosition);
+            gameState.BuildingPhaseActive = true;
         }
         else if (currentScene.name == "VerticalSliceLevel3")
         {
@@ -243,7 +225,7 @@ public class LevelManager : MonoBehaviour
             playerPlatforms = new PlayerPlatforms(2, 3, 1);
             gameState.gridManager.Build_Grid_BuildingPhase_With_Visuals();
             gameState.playerManager.player.spawnpoint = gameState.gridManager.gridSquares[0] + playeradjustment;
-        } 
+        }
     }
     public void SetRollingPhase()
     {
@@ -258,6 +240,6 @@ public class LevelManager : MonoBehaviour
         gameState.levelManager.RespawnCollectables();
         gameState.BuildingPhaseActive = true;
         Time.timeScale = 0;
-        
+
     }
 }
