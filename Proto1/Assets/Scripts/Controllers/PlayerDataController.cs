@@ -30,7 +30,7 @@ public class PlayerDataController : MonoBehaviour
     public bool Load()
     {
         bool fileExist = false;
-        Save();
+        
         if (File.Exists(Application.persistentDataPath + "/PlayerInfo.dat"))
         {
             fileExist = true;
@@ -51,6 +51,18 @@ public class PlayerDataController : MonoBehaviour
     public void Save()
     {
 
+        
+        BinaryFormatter bf = new BinaryFormatter();
+
+        FileStream file = File.Create(Application.persistentDataPath + "/PlayerInfo.dat");
+
+        bf.Serialize(file, player);
+        file.Close();
+        Debug.Log("Opgeslagen");
+    }
+
+    public void MakeNewPlayer()
+    {
         Player playerTest = new Player();
         playerTest.coins = 0;
         playerTest.language = 2;
@@ -59,13 +71,7 @@ public class PlayerDataController : MonoBehaviour
         playerTest.name = "Joris";
 
         player = playerTest;
-        BinaryFormatter bf = new BinaryFormatter();
-
-        FileStream file = File.Create(Application.persistentDataPath + "/PlayerInfo.dat");
-
-        bf.Serialize(file, player);
-        file.Close();
-        Debug.Log("Opgeslagen");
+        Save();
     }
 
     public Player GetPlayer()

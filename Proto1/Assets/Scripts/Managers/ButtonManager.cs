@@ -52,4 +52,25 @@ public class ButtonManager : MonoBehaviour
         PlayerDataController.instance.Save();
         SceneManager.LoadScene("StartMenu");
     }
+
+    public void ReturnMenu()
+    {
+        SceneManager.LoadScene("StartMenu");
+    }
+
+    public void NextLevel()
+    {
+        int levelNumber = 2;
+        //int levelNumber = GameState.Instance.PreviousLevel + 1;
+
+        SceneManager.LoadScene(levelNumber.ToString());
+    }
+
+    public void RestartScene()
+    {
+        int levelNumber = 1;
+        //int levelNumber = GameState.Instance.PreviousLevel;
+
+        SceneManager.LoadScene(levelNumber.ToString());
+    }
 }

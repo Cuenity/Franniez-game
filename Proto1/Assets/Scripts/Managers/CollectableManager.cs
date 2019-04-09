@@ -46,8 +46,9 @@ public class CollectableManager : MonoBehaviour
     public void InitFinish()
     {
         finish = Instantiate(finish);
+        Vector3 adjustment = new Vector3(0, -.5f, 0);
         finish.spawnpoint = finishPosition;
-        finish.transform.position = finish.spawnpoint;
+        finish.transform.position = finish.spawnpoint + adjustment;
         finish.gameObject.SetActive(true);
     }
 

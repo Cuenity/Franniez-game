@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -6,13 +6,11 @@ public class RollingPhaseManager : MonoBehaviour
 {
     private int amountCoins = 0;
     private bool pickedSticker = false;
-    public AudioSource source;
 
     private int levelNumber;
     private Player player;
     private Level level;
 
-    public AudioClip audioClip;
 
     private GameState gameState;
 
@@ -27,12 +25,26 @@ public class RollingPhaseManager : MonoBehaviour
         level = new Level();
 
         Scene scene = SceneManager.GetActiveScene();
-        int.TryParse(scene.name, out levelNumber);
+        //int.TryParse(scene.name, out levelNumber);
 
         //Load player data for testing
         // Ff Playerdata erin zetten
+        PlayerDataController.instance.MakeNewPlayer();
         PlayerDataController.instance.Load();
         player = PlayerDataController.instance.player;
+
+        if (player.levels.Length > 0 && player.levels[0] != null)
+        {
+           
+                level = player.levels[0];
+            
+            
+        }
+
+        else
+        {
+            level = new Level();
+        }
 
         //level = player.levels[levelNumber - 1];
 
@@ -96,8 +108,6 @@ public class RollingPhaseManager : MonoBehaviour
 
     private void ReachedFinish()
     {
-        source.clip = audioClip;
-        source.Play();
         level.gotSticker = pickedSticker;
         level.completed = true;
 
@@ -107,11 +117,20 @@ public class RollingPhaseManager : MonoBehaviour
             level.countCoins = amountCoins;
         }
 
-        player.levels[levelNumber - 1] = level;
+        if(player.levels.Length > 0 && player.levels[0] != null)
+        {
+            player.levels[levelNumber - 1] = level;
+        }
+        else
+        {
+            player.levels[0] = level;
+        }
+        
         player.coins += amountCoins;
 
         PlayerDataController.instance.player = player;
         PlayerDataController.instance.Save();
+        SceneManager.LoadScene("VictoryScreen");
     }
 
 }

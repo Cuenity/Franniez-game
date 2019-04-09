@@ -9,6 +9,10 @@ public class UIRollingManager : MonoBehaviour
     public Text amountCoinsText;
     public Text levelNumberText;
     public Text amountStickersText;
+    public Button startButton;
+
+    public Sprite startRolling;
+    public Sprite startBuilding;
 
     private int amountCoins =0;
     private string levelIndicator;
@@ -18,6 +22,7 @@ public class UIRollingManager : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+        
         amountCoinsText.text = "0/3";
         amountStickersText.text = "0/1";
 
@@ -45,10 +50,19 @@ public class UIRollingManager : MonoBehaviour
     private void ChangeEnviroment()
     {
         amountCoins = 0;
-        amountCoinsText.text = amountStickers + "/3";
+        amountCoinsText.text = "0/3";
 
         amountStickers = 0;
-        amountStickersText.text = amountStickers + "/1";
+        amountStickersText.text = "0/1";
+
+        if(GameState.Instance.BuildingPhaseActive)
+        {
+            startButton.GetComponent<Image>().sprite = startBuilding;
+        }
+        else
+        {
+            startButton.GetComponent<Image>().sprite = startRolling;
+        }
     }
 
     private void AddSticker()
