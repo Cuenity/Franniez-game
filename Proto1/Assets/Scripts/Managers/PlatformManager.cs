@@ -455,11 +455,11 @@ public class PlatformManager : MonoBehaviour
         RampSpots.Add(41);
         RampSpots.Add(62);
         //RampSpotsReversed.Add(14);
-        PortalSpots.Add(84);
-        PortalSpots.Add(96);
+        //PortalSpots.Add(84);
+       // PortalSpots.Add(96);
         // PlatformSpots.Add(53);
-        //TrampolineSpots.Add(83);
-        //TrampolineSpots.Add(6);
+        TrampolineSpots.Add(83);
+        TrampolineSpots.Add(6);
         //rechthoekSpots.Add(66);
         // redZoneSpots.Add(6);
 
@@ -497,7 +497,7 @@ public class PlatformManager : MonoBehaviour
         {
             for (int i = 0; i < PortalSpots.Count; i++)
             {
-                portal = Instantiate(portal, gameState.gridManager.gridSquares[PortalSpots[i]] + new Vector3(.5f, .5f, 0), new Quaternion(0, 0, 0, 0));
+                portal = Instantiate(portal, gameState.gridManager.gridSquares[PortalSpots[i]] + new Vector3(1, .5f, 0), new Quaternion(0, 0, 0, 0));
                 allPortals.Add(portal);
             }
         }

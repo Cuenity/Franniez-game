@@ -14,18 +14,22 @@ public class PlayerCamera : MonoBehaviour
 
     public float SpringForce;
     public float SpringDamper;
-   // public float dragSpeed = 1;
+    // public float dragSpeed = 1;
     private Vector3 dragOrigin;
     Camera camera;
     private void Awake()
     {
+
         gameState = GameState.Instance;
         camera = this.GetComponent<Camera>();
-        this.transform.position = gameState.playerManager.player.spawnpoint +TargetMovementOffset;
+        this.transform.position = gameState.playerManager.player.spawnpoint + TargetMovementOffset;
     }
     private void Start()
     {
-        transform.LookAt(Target.transform.position + TargetLookAtOffset);
+        if (Target != null)
+        {
+            transform.LookAt(Target.transform.position + TargetLookAtOffset);
+        }
     }
 
 
@@ -95,9 +99,13 @@ public class PlayerCamera : MonoBehaviour
 
     private void LateUpdate()
     {
-        if (platformDragActive == false)
+        if (gameState.RollingPhaseActive == false)
         {
-            Transfrom_YZ();
+            if (platformDragActive == false)
+            {
+                this.Transfrom_YZ();
+            }
+
         }
     }
 
@@ -114,11 +122,32 @@ public class PlayerCamera : MonoBehaviour
         {
             return;
         }
-
+        Vector3 position = this.transform.position;
         Vector3 dragend = camera.ScreenToViewportPoint(Input.mousePosition);
         Vector3 diffrence = new Vector3(dragend.x - dragOrigin.x, dragend.y - dragOrigin.y, 0);
         Vector3 move = new Vector3(diffrence.x, diffrence.y, 0);
+        Vector3 outsideGrid = move + position;
+        CorrectCamera(outsideGrid);
         transform.Translate(move, Space.World);
+    }
+    public void CorrectCamera(Vector3 outsideGrid)
+    {
+        if (outsideGrid.y < gameState.gridManager.heigth * -1)
+        {
+            this.transform.position = new Vector3(this.transform.position.x, gameState.gridManager.heigth * -1 + .1f, this.transform.position.z);
+        }
+        if (outsideGrid.y > 0)
+        {
+            this.transform.position = new Vector3(this.transform.position.x, -.1f, this.transform.position.z);
+        }
+        if (outsideGrid.x < 0)
+        {
+            this.transform.position = new Vector3(.1f, this.transform.position.y, this.transform.position.z);
+        }
+        if (outsideGrid.x > gameState.gridManager.width)
+        {
+            this.transform.position = new Vector3(gameState.gridManager.width - .1f, this.transform.position.y, this.transform.position.z);
+        }
     }
 
 }

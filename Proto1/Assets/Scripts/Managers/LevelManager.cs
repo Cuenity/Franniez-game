@@ -120,7 +120,7 @@ public class LevelManager : MonoBehaviour
             gameState.gridManager.Build_Grid1_Without_Visuals();
             Vector3 playeradjustment = new Vector3(.5f, 0, 0);
             gameState.playerManager.player.SetSpawnpoint(1);
-            playerPlatforms = new PlayerPlatforms(2, 3);
+            playerPlatforms = new PlayerPlatforms(2, 3, 1);
             SetCoinPositions(1);
             SetCoinPositions(2);
             SetCoinPositions(3);
@@ -136,7 +136,7 @@ public class LevelManager : MonoBehaviour
             //lees level uit Json en vul levelPlatformen
             //ReadLevelsFromText("Level1.json");
 
-            playerPlatforms = new PlayerPlatforms(2, 3);
+            playerPlatforms = new PlayerPlatforms(2, 3, 1);
 
             //Dit moet ergens anders
             gameState.gridManager.width = 11;
@@ -163,7 +163,7 @@ public class LevelManager : MonoBehaviour
             gameState.gridManager.width = 11;
             gameState.gridManager.heigth = 12;
 
-            playerPlatforms = new PlayerPlatforms(2, 3);
+            playerPlatforms = new PlayerPlatforms(2, 3, 1);
 
             levelPlatformen.tileList = new int[gameState.gridManager.width * gameState.gridManager.heigth];
 
@@ -171,7 +171,7 @@ public class LevelManager : MonoBehaviour
         }
         else if (currentScene.name == "TestJaspe")
         {
-            playerPlatforms = new PlayerPlatforms(2, 6);
+            playerPlatforms = new PlayerPlatforms(2, 6, 1);
             gameState.gridManager.width = 20;
             gameState.gridManager.heigth = 12;
             levelPlatformen.tileList = new int[gameState.gridManager.width * gameState.gridManager.heigth];
@@ -193,7 +193,7 @@ public class LevelManager : MonoBehaviour
             gameState.gridManager.width = 20;
             gameState.gridManager.heigth = 11;
 
-            playerPlatforms = new PlayerPlatforms(2, 3);
+            playerPlatforms = new PlayerPlatforms(2, 3, 1);
 
             gameState.gridManager.Build_Grid_BuildingPhase_With_Visuals();
 
@@ -201,11 +201,14 @@ public class LevelManager : MonoBehaviour
         }
         else if (currentScene.name == "VerticalSliceLevel1")
         {
+            
+            gameState.playerCamera = Instantiate(gameState.playerCamera);
+            gameState.playerManager.PlayerInit();
             Vector3 playeradjustment = new Vector3(.5f, 0, 0);
             gameState.gridManager.width = 20;
             gameState.gridManager.heigth = 11;
 
-            playerPlatforms = new PlayerPlatforms(2, 12);
+            playerPlatforms = new PlayerPlatforms(2, 12, 1);
 
             gameState.gridManager.Build_Grid_BuildingPhase_With_Visuals();
             gameState.playerManager.player.spawnpoint = gameState.gridManager.gridSquares[1] + playeradjustment;
@@ -225,7 +228,7 @@ public class LevelManager : MonoBehaviour
             gameState.gridManager.width = 27;
             gameState.gridManager.heigth = 17;
 
-            playerPlatforms = new PlayerPlatforms(2, 3);
+            playerPlatforms = new PlayerPlatforms(2, 3, 1);
 
             gameState.gridManager.Build_Grid_BuildingPhase_With_Visuals();
             gameState.playerManager.player.spawnpoint = gameState.gridManager.gridSquares[0] + playeradjustment;
@@ -237,7 +240,7 @@ public class LevelManager : MonoBehaviour
             gameState.gridManager.width = 27;
             gameState.gridManager.heigth = 17;
 
-            playerPlatforms = new PlayerPlatforms(2, 3);
+            playerPlatforms = new PlayerPlatforms(2, 3, 1);
             gameState.gridManager.Build_Grid_BuildingPhase_With_Visuals();
             gameState.playerManager.player.spawnpoint = gameState.gridManager.gridSquares[0] + playeradjustment;
         }

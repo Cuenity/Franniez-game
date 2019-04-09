@@ -11,6 +11,7 @@ MonoImporter:
   - rampImage: {fileID: 21300000, guid: 58658af157b87a944893f2ab562031e5, type: 3}
   - platformSquareImage: {fileID: 21300000, guid: cf81ca485854bc1499be3537b667dd5b,
       type: 3}
+  - trampolineImage: {fileID: 21300000, guid: 7afcebf36a4126c4cbbe72b1d046f10a, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

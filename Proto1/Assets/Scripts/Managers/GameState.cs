@@ -85,7 +85,7 @@ public class GameState : MonoBehaviour
         playerManager = gameObject.AddComponent<PlayerManager>();
         platformManager = gameObject.AddComponent<PlatformManager>();
         gridManager = gameObject.AddComponent<GridManager>();
-        playerCamera = Instantiate(playerCamera);
+        //playerCamera = Instantiate(playerCamera);
 
         levelManager.InitScene();
     }

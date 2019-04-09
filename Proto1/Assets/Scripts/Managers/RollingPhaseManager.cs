@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -22,7 +22,7 @@ public class RollingPhaseManager : MonoBehaviour
     void Start()
     {
         amountCoins = 0;
-        //level = new Level();
+        level = new Level();
 
         Scene scene = SceneManager.GetActiveScene();
         //int.TryParse(scene.name, out levelNumber);
@@ -45,6 +45,8 @@ public class RollingPhaseManager : MonoBehaviour
         {
             level = new Level();
         }
+
+        //level = player.levels[levelNumber - 1];
 
         if (level.gotSticker)
         {

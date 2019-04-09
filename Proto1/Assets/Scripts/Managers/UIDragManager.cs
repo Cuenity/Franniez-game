@@ -1,13 +1,14 @@
 ﻿using UnityEngine;
 using UnityEngine.EventSystems;
-using UnityEngine.UI;
 
 public class UIDragManager : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHandler//, IPointerDownHandler
 {
-    //deze fields verwijderen
+    //deze fields later verwijderen
     public GameObject platformSquare;
     public GameObject ramp;
+    public GameObject trampoline;
     //tot hier
+    public RotateSprite rotateSprite;
 
 
     GameObject draggedPlatform;
@@ -21,6 +22,8 @@ public class UIDragManager : MonoBehaviour, IDragHandler, IBeginDragHandler, IEn
 
     float zAxis = 0;
     //Vector3 clickOffset = Vector3.zero;
+
+    PlatformType type;
 
     private void OnPointerDown()
     {
@@ -67,7 +70,7 @@ public class UIDragManager : MonoBehaviour, IDragHandler, IBeginDragHandler, IEn
         {
             if (inventoryButton.name == "platformSquareButton")
             {
-                
+                type = PlatformType.platformSquare;
                 foreach (InventoryButton button in GameState.Instance.UIManager.instantiatedInventoryButtons)
                 {
                     if (button.name == inventoryButton.name)
@@ -101,7 +104,7 @@ public class UIDragManager : MonoBehaviour, IDragHandler, IBeginDragHandler, IEn
             }
             else if (inventoryButton.name == "rampInventoryButton")
             {
-
+                type = PlatformType.ramp;
                 foreach (InventoryButton button in GameState.Instance.UIManager.instantiatedInventoryButtons)
                 {
                     if (button.name == inventoryButton.name)
@@ -117,6 +120,40 @@ public class UIDragManager : MonoBehaviour, IDragHandler, IBeginDragHandler, IEn
                             }
 
                             GameState.Instance.levelManager.playerPlatforms.UpdateRampsLeft(button);
+
+                            var outline = draggedPlatform.AddComponent<Outline>();
+                            outline.OutlineMode = Outline.Mode.OutlineAll;
+                            outline.OutlineColor = Color.blue;
+                            outline.OutlineWidth = 10f;
+
+                            draggedPlatform.AddComponent<PlatformDragManager>();
+                        }
+                        else
+                        {
+                            draggingAllowed = false;
+                            playercamera.platformDragActive = false;
+                        }
+                    }
+                }
+            }
+            else if (inventoryButton.name == "trampolineButton")
+            {
+                type = PlatformType.trampoline;
+                foreach (InventoryButton button in GameState.Instance.UIManager.instantiatedInventoryButtons)
+                {
+                    if (button.name == inventoryButton.name)
+                    {
+                        if (button.InventoryButtonAllowed)
+                        {
+                            draggedPlatform = Instantiate(trampoline);
+                            GameState.Instance.levelManager.playerPlatforms.trampolinesLeftToPlace--;
+
+                            if (GameState.Instance.levelManager.playerPlatforms.trampolinesLeftToPlace == 0)
+                            {
+                                button.InventoryButtonAllowed = false;
+                            }
+
+                            GameState.Instance.levelManager.playerPlatforms.UpdateTrampolinesLeft(button);
 
                             var outline = draggedPlatform.AddComponent<Outline>();
                             outline.OutlineMode = Outline.Mode.OutlineAll;
@@ -161,8 +198,21 @@ public class UIDragManager : MonoBehaviour, IDragHandler, IBeginDragHandler, IEn
     {
         if (draggingAllowed)
         {
-            GameState.Instance.levelManager.playerPlatforms.placedPlatforms.Add(draggedPlatform);
+            if (type == PlatformType.ramp)
+            {
+                rotateSprite = Instantiate(rotateSprite);
+                rotateSprite.type = PlatformType.ramp;
 
+                rotateSprite.transform.SetParent(draggedPlatform.transform); //x positie: 0,0200 (202) scale: 0.001 bij 0.0005
+                rotateSprite.transform.localScale = new Vector3(0.001f, 0.0005f, 0);
+                //rotateSprite.transform.Rotate(new Vector3(0, 90, 0));
+                rotateSprite.transform.position = draggedPlatform.transform.position + new Vector3(0, 0, -1.01f); //new Vector3(1, 0, -2);
+
+                rotateSprite.transform.rotation = Quaternion.Euler(new Vector3(0, 0, 90));
+                //rotateSprite.AddComponent<MeshCollider>();
+            }
+
+            GameState.Instance.levelManager.playerPlatforms.placedPlatforms.Add(draggedPlatform);
 
             Vector3 pos = camera.ScreenToWorldPoint(Input.mousePosition);
 
