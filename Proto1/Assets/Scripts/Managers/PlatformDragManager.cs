@@ -115,6 +115,7 @@ public class PlatformDragManager : MonoBehaviour
                     button = GameState.Instance.UIManager.instantiatedInventoryButtons[i];
 
                 }
+                // hier
             }
 
             if (platformDraggedToButton)

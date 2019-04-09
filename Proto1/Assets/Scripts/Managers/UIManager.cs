@@ -9,6 +9,7 @@ public class UIManager : MonoBehaviour
 
     public Sprite rampImage;
     public Sprite platformSquareImage;
+    public Sprite trampolineImage;
 
     void Start()
     {
@@ -73,15 +74,15 @@ public class UIManager : MonoBehaviour
         }
     }
 
-    public void ChangeInventoryButtonImageAndText(int i, PlayerPlatforms playerPlatforms)
+    public void ChangeInventoryButtonImageAndText(int currentButton, PlayerPlatforms playerPlatforms)
     {
-        GameObject buttonImage = instantiatedInventoryButtons[i].transform.GetChild(0).gameObject;
-        GameObject buttonText = instantiatedInventoryButtons[i].transform.GetChild(1).gameObject;
+        GameObject buttonImage = instantiatedInventoryButtons[currentButton].transform.GetChild(0).gameObject;
+        GameObject buttonText = instantiatedInventoryButtons[currentButton].transform.GetChild(1).gameObject;
 
         if (playerPlatforms.ramps > 0 && !playerPlatforms.rampButtonInstantiated)
         {
             buttonImage.GetComponent<Image>().sprite = rampImage;
-            instantiatedInventoryButtons[i].name = "rampInventoryButton";
+            instantiatedInventoryButtons[currentButton].name = "rampInventoryButton";
             buttonText.GetComponent<Text>().text = playerPlatforms.ramps + "/" + playerPlatforms.ramps;
 
             playerPlatforms.rampButtonInstantiated = true;
@@ -89,11 +90,18 @@ public class UIManager : MonoBehaviour
         else if (playerPlatforms.platformSquares > 0 && !playerPlatforms.platformSquaresButtonInstantated)
         {
             buttonImage.GetComponent<Image>().sprite = platformSquareImage;
-            instantiatedInventoryButtons[i].name = "platformSquareButton";
+            instantiatedInventoryButtons[currentButton].name = "platformSquareButton";
             buttonText.GetComponent<Text>().text = playerPlatforms.platformSquares + "/" + playerPlatforms.platformSquares;
 
             playerPlatforms.platformSquaresButtonInstantated = true;
         }
+        else if (playerPlatforms.trampolines > 0 && !playerPlatforms.trampolineButtonInstantiated)
+        {
+            buttonImage.GetComponent<Image>().sprite = trampolineImage;
+            instantiatedInventoryButtons[currentButton].name = "trampolineButton";
+            buttonText.GetComponent<Text>().text = playerPlatforms.trampolines + "/" + playerPlatforms.trampolines;
 
+            playerPlatforms.trampolineButtonInstantiated = true;
+        }
     }
 }

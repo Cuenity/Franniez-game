@@ -1,5 +1,6 @@
 ﻿public enum PlatformType
 {
     ramp,
-    platformSquare
+    platformSquare,
+    trampoline
 }

@@ -136,6 +136,40 @@ public class UIDragManager : MonoBehaviour, IDragHandler, IBeginDragHandler, IEn
                     }
                 }
             }
+            else if (inventoryButton.name == "trampolineButton")
+            {
+                type = PlatformType.trampoline;
+                foreach (InventoryButton button in GameState.Instance.UIManager.instantiatedInventoryButtons)
+                {
+                    if (button.name == inventoryButton.name)
+                    {
+                        if (button.InventoryButtonAllowed)
+                        {
+                            draggedPlatform = Instantiate(trampoline);
+                            GameState.Instance.levelManager.playerPlatforms.trampolinesLeftToPlace--;
+
+                            if (GameState.Instance.levelManager.playerPlatforms.trampolinesLeftToPlace == 0)
+                            {
+                                button.InventoryButtonAllowed = false;
+                            }
+
+                            GameState.Instance.levelManager.playerPlatforms.UpdateTrampolinesLeft(button);
+
+                            var outline = draggedPlatform.AddComponent<Outline>();
+                            outline.OutlineMode = Outline.Mode.OutlineAll;
+                            outline.OutlineColor = Color.blue;
+                            outline.OutlineWidth = 10f;
+
+                            draggedPlatform.AddComponent<PlatformDragManager>();
+                        }
+                        else
+                        {
+                            draggingAllowed = false;
+                            playercamera.platformDragActive = false;
+                        }
+                    }
+                }
+            }
         }
 
         //else
