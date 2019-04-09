@@ -113,7 +113,7 @@ public class LevelManager : MonoBehaviour
         //gameState.platformManager.spawnLevel1();
         //gameState.platformManager.Init_Platforms();
 
-        if (currentScene.name == "1")
+        if (currentScene.name == "lol1")
         {
             gameState.gridManager.width = 11;
             gameState.gridManager.heigth = 12;
@@ -199,7 +199,7 @@ public class LevelManager : MonoBehaviour
 
             gameState.platformManager.Build_Vertical_Slice_Level6();
         }
-        else if (currentScene.name == "VerticalSliceLevel1")
+        else if (currentScene.name == "1")
         {
             
             gameState.playerCamera = Instantiate(gameState.playerCamera);
