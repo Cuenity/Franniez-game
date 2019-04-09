@@ -149,7 +149,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf1247cb0ac581a4fab833e88a8f2b29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  platformSquare: {fileID: 2204122891480544061, guid: b9468f973b2243a4f920413211ca2691,
+  platformSquare: {fileID: 9127627247367503243, guid: f64b25a01c7ede6419fceb8b4a3f8fe4,
     type: 3}
   ramp: {fileID: 3053333542818622701, guid: 5c1d50512c7b7eb4cb74387fcb1286df, type: 3}
   trampoline: {fileID: 5560910613633582698, guid: 8d6f88143f60d1a4a90a93381baa5782,

@@ -115,7 +115,7 @@ public class PlatformDragManager : MonoBehaviour
                     button = GameState.Instance.UIManager.instantiatedInventoryButtons[i];
 
                 }
-                // hier
+                // hier de trampoline doen en hieronder
             }
 
             if (platformDraggedToButton)
