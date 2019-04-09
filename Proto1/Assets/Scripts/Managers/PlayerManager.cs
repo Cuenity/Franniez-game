@@ -15,15 +15,20 @@ public class PlayerManager : MonoBehaviour
     }
     void Start()
     {
-        player = Instantiate(player);
-        player.transform.position= player.spawnpoint;
-        Debug.Log(player.spawnpoint);
-        gameState.playerCamera.Target = player;
+        
     }
 
     // Update is called once per frame
     void Update()
     {
 
+    }
+
+    internal void PlayerInit()
+    {
+        player = Instantiate(player);
+        player.transform.position = player.spawnpoint;
+        Debug.Log(player.spawnpoint);
+        gameState.playerCamera.Target = player;
     }
 }

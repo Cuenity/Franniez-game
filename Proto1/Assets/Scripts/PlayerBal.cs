@@ -6,16 +6,18 @@ public class PlayerBal : MonoBehaviour
 {
     GameState gameState;
     public Vector3 spawnpoint;
+
+    
     // Start is called before the first frame update
     private void Awake()
     {
-        this.GetComponent<Rigidbody>().useGravity = false;
-        this.GetComponent<SphereCollider>().isTrigger = true; // verander later ofzo
         gameState = GameState.Instance;
+        gameState.playerManager.player.GetComponent<Rigidbody>().useGravity = false;
+        gameState.playerManager.player.GetComponent<SphereCollider>().isTrigger = true; // verander later ofzo
     }
     void Start()
-    {
-
+    {   
+        
 
     }
 
@@ -24,13 +26,13 @@ public class PlayerBal : MonoBehaviour
     {
         if (gameState.RollingPhaseActive)
         {
-            this.GetComponent<Rigidbody>().useGravity = true;
-            this.GetComponent<SphereCollider>().isTrigger = false;
+            gameState.playerManager.player.GetComponent<Rigidbody>().useGravity = true;
+            gameState.playerManager.player.GetComponent<SphereCollider>().isTrigger = false;
         }
         else
         {
-            this.GetComponent<Rigidbody>().useGravity = false;
-            this.GetComponent<SphereCollider>().isTrigger = true;
+            gameState.playerManager.player.GetComponent<Rigidbody>().useGravity = false;
+            gameState.playerManager.player.GetComponent<SphereCollider>().isTrigger = true;
         }
 
     }
@@ -40,10 +42,10 @@ public class PlayerBal : MonoBehaviour
         gameState.RollingPhaseActive = false;
         Camera actualcamera = gameState.GetComponent<Camera>();
         PlayerCamera camera = gameState.playerCamera;
-        this.transform.position = this.spawnpoint;
-        this.GetComponent<Rigidbody>().angularVelocity = new Vector3(0, 0, 0);
-        this.GetComponent<Rigidbody>().velocity = new Vector3(0, 0, 0);
-        camera.transform.position = new Vector3(this.spawnpoint.x + camera.TargetMovementOffset.x, this.spawnpoint.y + camera.TargetMovementOffset.y, this.spawnpoint.z + camera.TargetMovementOffset.z);
+        gameState.playerManager.player.transform.position = gameState.playerManager.player.spawnpoint;
+        gameState.playerManager.player.GetComponent<Rigidbody>().angularVelocity = new Vector3(0, 0, 0);
+        gameState.playerManager.player.GetComponent<Rigidbody>().velocity = new Vector3(0, 0, 0);
+        camera.transform.position = new Vector3(gameState.playerManager.player.spawnpoint.x + camera.TargetMovementOffset.x, gameState.playerManager.player.spawnpoint.y + camera.TargetMovementOffset.y, gameState.playerManager.player.spawnpoint.z + camera.TargetMovementOffset.z);
         camera.transform.LookAt(camera.Target.transform.position);
         camera.GetComponent<Rigidbody>().velocity = new Vector3(0, 0, 0); 
         gameState.BuildingPhaseActive = true;
@@ -53,7 +55,7 @@ public class PlayerBal : MonoBehaviour
     {
         gameState = GameState.Instance;
         Vector3 playeradjustment = new Vector3(.5f, 0, 0);
-        this.spawnpoint = gameState.gridManager.gridSquares[i] + playeradjustment;
+        gameState.playerManager.player.spawnpoint = gameState.gridManager.gridSquares[i] + playeradjustment;
     }
 
 }

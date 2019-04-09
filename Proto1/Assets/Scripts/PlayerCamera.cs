@@ -19,13 +19,17 @@ public class PlayerCamera : MonoBehaviour
     Camera camera;
     private void Awake()
     {
+
         gameState = GameState.Instance;
         camera = this.GetComponent<Camera>();
         this.transform.position = gameState.playerManager.player.spawnpoint +TargetMovementOffset;
     }
     private void Start()
     {
-        transform.LookAt(Target.transform.position + TargetLookAtOffset);
+        if (Target != null)
+        {
+            transform.LookAt(Target.transform.position + TargetLookAtOffset);
+        }
     }
 
 

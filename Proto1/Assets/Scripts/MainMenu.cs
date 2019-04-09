@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -21,9 +22,14 @@ public class MainMenu : MonoBehaviour
     public void StartGame()
     {
         Debug.Log("Start Game");
-        
-        
+
+        SceneManager.sceneLoaded += SceneIsLoaded;
         SceneManager.LoadScene("VerticalSliceLevel1");
+    }
+
+    private void SceneIsLoaded(Scene arg0, LoadSceneMode arg1)
+    {
+        GameState.Instance.levelManager.InitScene();
     }
 
     public void FixedUpdate()
