@@ -32,12 +32,23 @@ public class UIRollingManager : MonoBehaviour
         // Add Subscription
         Coin.PickedCoin += AddCoin;
         StickerObject.PickedSticker += AddSticker;
+        ButtonManager.ChangeEnvironment += ChangeEnviroment;
     }
 
     private void OnDisable()
     {
         Coin.PickedCoin -= AddCoin;
         StickerObject.PickedSticker -= AddSticker;
+        ButtonManager.ChangeEnvironment -= ChangeEnviroment;
+    }
+
+    private void ChangeEnviroment()
+    {
+        amountCoins = 0;
+        amountCoinsText.text = amountStickers + "/3";
+
+        amountStickers = 0;
+        amountStickersText.text = amountStickers + "/1";
     }
 
     private void AddSticker()

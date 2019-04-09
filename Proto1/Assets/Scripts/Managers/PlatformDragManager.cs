@@ -80,5 +80,6 @@ public class PlatformDragManager : MonoBehaviour
 
         GameState.Instance.platformManager.spawnPlatformOnGrid(transform.position, gameObject);
         GameState.Instance.playerCamera.platformDragActive = false;
+        
     }
 }

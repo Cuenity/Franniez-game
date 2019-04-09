@@ -9,11 +9,13 @@ public class StickerObject : MonoBehaviour
 
     GameState gameState;
     PlayerManager playerManager;
+    public Vector3 spawnpoint;
 
     void Start()
     {
         gameState = GameObject.Find("GameState").GetComponent<GameState>();
         playerManager = gameState.GetComponent<PlayerManager>();
+        gameState.levelManager.stickerObject = this;
     }
 
     void Update()
@@ -24,7 +26,7 @@ public class StickerObject : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         playerManager.collectedSticker = true;
-        Destroy(gameObject);
+        this.gameObject.SetActive(false);
         PickedSticker();
     }
 }
