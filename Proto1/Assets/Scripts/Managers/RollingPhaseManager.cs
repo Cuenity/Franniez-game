@@ -64,7 +64,17 @@ public class RollingPhaseManager : MonoBehaviour
 
     public void Init()
     {
-        Debug.Log("spawn rolling UI");
+        foreach (var placedPlatform in GameState.Instance.levelManager.playerPlatforms.placedPlatforms)
+        {
+            PlatformDragManager drag = placedPlatform.GetComponent<PlatformDragManager>();
+            drag.enabled = false;
+            Destroy(drag);
+            placedPlatform.GetComponent<Outline>().enabled = false;
+            if (placedPlatform.gameObject.transform.childCount > 0)
+            {
+                placedPlatform.gameObject.transform.GetChild(0).gameObject.SetActive(false);
+            }
+        }
     }
 
     void OnEnable()
