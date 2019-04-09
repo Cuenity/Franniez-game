@@ -13,6 +13,8 @@ TagManager:
   - Ramp
   - PlatformSquare
   - RotateSprite
+  - FxTemporaire
+  - Trampoline
   layers:
   - Default
   - TransparentFX

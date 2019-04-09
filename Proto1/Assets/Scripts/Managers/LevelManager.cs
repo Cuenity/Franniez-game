@@ -113,7 +113,7 @@ public class LevelManager : MonoBehaviour
         //gameState.platformManager.spawnLevel1();
         //gameState.platformManager.Init_Platforms();
 
-        if (currentScene.name == "eagjebcjbefc")
+        if (currentScene.name == "lol1")
         {
             gameState.gridManager.width = 11;
             gameState.gridManager.heigth = 12;

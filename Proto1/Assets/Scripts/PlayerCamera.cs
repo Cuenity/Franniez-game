@@ -36,6 +36,7 @@ public class PlayerCamera : MonoBehaviour
 
     void FixedUpdate()
     {
+
         if (gameState.RollingPhaseActive == true)
         {
             Rigidbody Body = this.GetComponent<Rigidbody>();
@@ -51,26 +52,32 @@ public class PlayerCamera : MonoBehaviour
         }
         if (gameState.BuildingPhaseActive == true)
         {
-            Vector2 mousedata = Input.mouseScrollDelta;
-            if (mousedata.y > 0)
+            if (Application.platform != RuntimePlatform.Android)
             {
-                //zoomin
-                Vector3 cameraposition = camera.transform.position;
-                if (cameraposition.z <= -10)
+                Vector2 mousedata = Input.mouseScrollDelta;
+                if (mousedata.y > 0)
                 {
-                    camera.transform.position = new Vector3(cameraposition.x, cameraposition.y, cameraposition.z + 1);
+                    //zoomin
+                    Vector3 cameraposition = camera.transform.position;
+                    if (cameraposition.z <= -10)
+                    {
+                        camera.transform.position = new Vector3(cameraposition.x, cameraposition.y, cameraposition.z + 1);
+                    }
+                }
+                else if (mousedata.y < 0)
+                {
+                    //zoomout
+                    Vector3 cameraposition = camera.transform.position;
+                    if (cameraposition.z >= -30) //level groote
+                    {
+                        camera.transform.position = new Vector3(cameraposition.x, cameraposition.y, cameraposition.z - 1);
+                    }
                 }
             }
-            else if (mousedata.y < 0)
+            else
             {
-                //zoomout
-                Vector3 cameraposition = camera.transform.position;
-                if (cameraposition.z >= -30) //level groote
-                {
-                    camera.transform.position = new Vector3(cameraposition.x, cameraposition.y, cameraposition.z - 1);
-                }
+                mobileScroll();
             }
-
         }
         if (gameState.RollingPhaseActive == false)
         {
@@ -147,6 +154,50 @@ public class PlayerCamera : MonoBehaviour
         if (outsideGrid.x > gameState.gridManager.width)
         {
             this.transform.position = new Vector3(gameState.gridManager.width - .1f, this.transform.position.y, this.transform.position.z);
+        }
+    }
+
+    public float perspectiveZoomSpeed = 0.5f;        // The rate of change of the field of view in perspective mode.
+    public float orthoZoomSpeed = 0.5f;        // The rate of change of the orthographic size in orthographic mode.
+
+
+    public void mobileScroll()
+    {
+        // If there are two touches on the device...
+        if (Input.touchCount == 2)
+        {
+            // Store both touches.
+            Touch touchZero = Input.GetTouch(0);
+            Touch touchOne = Input.GetTouch(1);
+
+            // Find the position in the previous frame of each touch.
+            Vector2 touchZeroPrevPos = touchZero.position - touchZero.deltaPosition;
+            Vector2 touchOnePrevPos = touchOne.position - touchOne.deltaPosition;
+
+            // Find the magnitude of the vector (the distance) between the touches in each frame.
+            float prevTouchDeltaMag = (touchZeroPrevPos - touchOnePrevPos).magnitude;
+            float touchDeltaMag = (touchZero.position - touchOne.position).magnitude;
+
+            // Find the difference in the distances between each frame.
+            float deltaMagnitudeDiff = prevTouchDeltaMag - touchDeltaMag;
+
+            // If the camera is orthographic...
+            if (camera.orthographic)
+            {
+                // ... change the orthographic size based on the change in distance between the touches.
+                camera.orthographicSize += deltaMagnitudeDiff * orthoZoomSpeed;
+
+                // Make sure the orthographic size never drops below zero.
+                camera.orthographicSize = Mathf.Max(camera.orthographicSize, 0.1f);
+            }
+            else
+            {
+                // Otherwise change the field of view based on the change in distance between the touches.
+                camera.fieldOfView += deltaMagnitudeDiff * perspectiveZoomSpeed;
+
+                // Clamp the field of view to make sure it's between 0 and 180.
+                camera.fieldOfView = Mathf.Clamp(camera.fieldOfView, 0.1f, 179.9f);
+            }
         }
     }
 

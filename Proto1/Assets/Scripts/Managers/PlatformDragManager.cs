@@ -108,14 +108,15 @@ public class PlatformDragManager : MonoBehaviour
                 if (tag == "PlatformSquare" && GameState.Instance.UIManager.instantiatedInventoryButtons[i].name == "platformSquareButton")
                 {
                     button = GameState.Instance.UIManager.instantiatedInventoryButtons[i];
-
                 }
                 else if (tag == "Ramp" && GameState.Instance.UIManager.instantiatedInventoryButtons[i].name == "rampInventoryButton")
                 {
                     button = GameState.Instance.UIManager.instantiatedInventoryButtons[i];
-
                 }
-                // hier de trampoline doen en hieronder
+                else if (tag == "Trampoline" && GameState.Instance.UIManager.instantiatedInventoryButtons[i].name == "trampolineButton")
+                {
+                    button = GameState.Instance.UIManager.instantiatedInventoryButtons[i];
+                }
             }
 
             if (platformDraggedToButton)
@@ -130,6 +131,12 @@ public class PlatformDragManager : MonoBehaviour
                 {
                     GameState.Instance.levelManager.playerPlatforms.rampsLeftToPlace++;
                     GameState.Instance.levelManager.playerPlatforms.UpdateRampsLeft(button);
+                    button.InventoryButtonAllowed = true;
+                }
+                else if (tag == "Trampoline")
+                {
+                    GameState.Instance.levelManager.playerPlatforms.trampolinesLeftToPlace++;
+                    GameState.Instance.levelManager.playerPlatforms.UpdateTrampolinesLeft(button);
                     button.InventoryButtonAllowed = true;
                 }
                 GameState.Instance.levelManager.playerPlatforms.placedPlatforms.Remove(gameObject);
