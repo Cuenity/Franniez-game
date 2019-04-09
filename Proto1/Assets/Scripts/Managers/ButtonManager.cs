@@ -5,6 +5,9 @@ public class ButtonManager : MonoBehaviour
 {
     private GameState gameState;
 
+    public delegate void ClickAction();
+    public static event ClickAction ChangeEnvironment;
+
     void Start()
     {
         gameState = GameState.Instance;
@@ -21,11 +24,13 @@ public class ButtonManager : MonoBehaviour
         {
             gameState.BuildingPhaseActive = false;
             gameState.RollingPhaseActive = true;
+            
         }
         else if (gameState.RollingPhaseActive == true)
         {
             gameState.playerManager.player.respawnBal();           
         }
+        ChangeEnvironment();
     }
 
     public void InventoryButton(GameObject platformSquare)

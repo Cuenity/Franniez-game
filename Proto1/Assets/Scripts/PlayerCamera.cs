@@ -28,6 +28,8 @@ public class PlayerCamera : MonoBehaviour
         transform.LookAt(Target.transform.position + TargetLookAtOffset);
     }
 
+
+
     void FixedUpdate()
     {
         if (gameState.RollingPhaseActive == true)

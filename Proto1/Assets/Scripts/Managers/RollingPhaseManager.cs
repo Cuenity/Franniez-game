@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class RollingPhaseManager : MonoBehaviour
@@ -13,10 +14,11 @@ public class RollingPhaseManager : MonoBehaviour
 
     public AudioClip audioClip;
 
+    private GameState gameState;
 
     public void Awake()
     {
-        
+        gameState = GameState.Instance;
     }
     // Start is called before the first frame update
     //void Start()
@@ -58,19 +60,32 @@ public class RollingPhaseManager : MonoBehaviour
         Coin.PickedCoin += AddCoin;
         StickerObject.PickedSticker += AddSticker;
         Finish.Finished += ReachedFinish;
+        ButtonManager.ChangeEnvironment += ChangeEnvironment;
     }
+
+    
 
     void OnDisable()
     {
         Coin.PickedCoin -= AddCoin;
         StickerObject.PickedSticker -= AddSticker;
         Finish.Finished -= ReachedFinish;
+        ButtonManager.ChangeEnvironment -= ChangeEnvironment;
     }
 
     private void AddSticker()
     {
         pickedSticker = true;
         Debug.Log("Sticker gepakt");
+    }
+
+    private void ChangeEnvironment()
+    {
+        if (gameState.RollingPhaseActive)
+        {
+            amountCoins = 0;
+            pickedSticker = false;
+        }
     }
 
     private void AddCoin()
