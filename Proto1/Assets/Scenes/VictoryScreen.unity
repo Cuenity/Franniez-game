@@ -1429,7 +1429,7 @@ MonoBehaviour:
   star1: {fileID: 21300000, guid: cade273753fc1e84fa1a6425075b99fa, type: 3}
   stars2: {fileID: 21300000, guid: 6013c18ed44f03c4dadb54f7dc6ad60e, type: 3}
   stars3: {fileID: 21300000, guid: 33fbfc46460004d4b8f2a6744a009369, type: 3}
-  stars0: {fileID: 21300000, guid: 33fbfc46460004d4b8f2a6744a009369, type: 3}
+  stars0: {fileID: 21300000, guid: f6846a0b12cff344ea912edd5b6b7ae6, type: 3}
   ribbon_Dutch: {fileID: 21300000, guid: 75c2e9a055e0ab54bb51726377f3cc08, type: 3}
   ribbon_English: {fileID: 21300000, guid: 7d93eea15fd1be7478bf0f09fd6d22c6, type: 3}
   ribbon_Spanish: {fileID: 21300000, guid: 628490bc3930ae14f8b9e1bcb86144c7, type: 3}
