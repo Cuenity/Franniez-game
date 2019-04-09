@@ -11,10 +11,12 @@ public class CollectableManager : MonoBehaviour
     List<Vector3> coinPositions;
     Vector3 stickerPosition;
     Vector3 finishPosition;
+    GameState gameaState;
 
     // Start is called before the first frame update
     void Start()
     {
+        gameaState = GameState.Instance;
     }
 
     // Update is called once per frame
@@ -67,8 +69,8 @@ public class CollectableManager : MonoBehaviour
     {
         sticker = Instantiate(sticker);
         sticker.spawnpoint = stickerPosition;
-        
         sticker.transform.position = sticker.spawnpoint;
         sticker.gameObject.SetActive(true);
+        // gameaState.levelManager.stickerObject = sticker2;
     }
 }
