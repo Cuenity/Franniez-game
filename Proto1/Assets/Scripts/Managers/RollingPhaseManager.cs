@@ -24,7 +24,7 @@ public class RollingPhaseManager : MonoBehaviour
     void Start()
     {
         amountCoins = 0;
-        //level = new Level();
+        level = new Level();
 
         Scene scene = SceneManager.GetActiveScene();
         int.TryParse(scene.name, out levelNumber);
@@ -34,7 +34,7 @@ public class RollingPhaseManager : MonoBehaviour
         PlayerDataController.instance.Load();
         player = PlayerDataController.instance.player;
 
-        level = player.levels[levelNumber - 1];
+        //level = player.levels[levelNumber - 1];
 
         if (level.gotSticker)
         {

@@ -41,12 +41,12 @@ public class GridManager : MonoBehaviour
         //variablen
         Vector3 moveRight = new Vector3(1f, 0f, 0f);
         Vector3 moveDown = new Vector3(0f, -1f, 0f);
-        Vector3 gridStartingPoint = new Vector3(-7.5f, 7f, 0f);
+        Vector3 gridStartingPoint = new Vector3(0f,0f, 0f);
 
 
         for (int i = 0; i < heigth; i++)
         {
-            gridStartingPoint.x = -7.5f;
+            gridStartingPoint.x = 0f;
             gridStartingPoint = gridStartingPoint + moveDown;
 
             for (int i2 = 0; i2 < width; i2++)
@@ -74,12 +74,12 @@ public class GridManager : MonoBehaviour
         //variablen
         Vector3 moveRight = new Vector3(1f, 0f, 0f);
         Vector3 moveDown = new Vector3(0f, -1f, 0f);
-        Vector3 gridStartingPoint = new Vector3(-7.5f, 7f, 0f);
+        Vector3 gridStartingPoint = new Vector3(0, 0f, 0f);
 
 
         for (int i = 0; i < heigth; i++)
         {
-            gridStartingPoint.x = -7.5f;
+            gridStartingPoint.x = 0f;
             gridStartingPoint = gridStartingPoint + moveDown;
 
             for (int i2 = 0; i2 < width; i2++)
@@ -95,7 +95,7 @@ public class GridManager : MonoBehaviour
     {
         Vector3 moveRight = new Vector3(1f, 0f, 0f);
         Vector3 moveDown = new Vector3(0f, -1f, 0f);
-        Vector3 gridStartingPoint = new Vector3(-7.5f, 7f, 0f);
+        Vector3 gridStartingPoint = new Vector3(0f, 0f, 0f);
 
         InputField widthObject = GameObject.Find("Width").GetComponent<InputField>();
         InputField heigthObject = GameObject.Find("Heigth").GetComponent<InputField>();
@@ -109,7 +109,7 @@ public class GridManager : MonoBehaviour
 
         for (int i = 0; i < heigth; i++)
         {
-            gridStartingPoint.x = -7.5f;
+            gridStartingPoint.x = 0f;
             gridStartingPoint = gridStartingPoint + moveDown;
 
             for (int i2 = 0; i2 < width; i2++)
@@ -127,12 +127,12 @@ public class GridManager : MonoBehaviour
     {
         Vector3 moveRight = new Vector3(1f, 0f, 0f);
         Vector3 moveDown = new Vector3(0f, -1f, 0f);
-        Vector3 gridStartingPoint = new Vector3(-7.5f, 7f, 0f);
+        Vector3 gridStartingPoint = new Vector3(0f, 0f, 0f);
 
 
         for (int i = 0; i < heigth; i++)
         {
-            gridStartingPoint.x = -7.5f;
+            gridStartingPoint.x = 0f;
             gridStartingPoint = gridStartingPoint + moveDown;
 
             for (int i2 = 0; i2 < width; i2++)

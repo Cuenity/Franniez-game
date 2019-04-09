@@ -201,6 +201,9 @@ public class LevelManager : MonoBehaviour
         }
         else if (currentScene.name == "VerticalSliceLevel1")
         {
+            
+            gameState.playerCamera = Instantiate(gameState.playerCamera);
+            gameState.playerManager.PlayerInit();
             Vector3 playeradjustment = new Vector3(.5f, 0, 0);
             gameState.gridManager.width = 20;
             gameState.gridManager.heigth = 11;
