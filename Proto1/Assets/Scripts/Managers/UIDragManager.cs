@@ -217,6 +217,8 @@ public class UIDragManager : MonoBehaviour, IDragHandler, IBeginDragHandler, IEn
             Vector3 pos = camera.ScreenToWorldPoint(Input.mousePosition);
 
             platformManager.spawnPlatformOnGrid(draggedPlatform.transform.position, draggedPlatform);
+
+            GameState.Instance.playerCamera.platformDragActive = false;
         }
     }
 }
