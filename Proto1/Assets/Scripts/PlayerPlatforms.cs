@@ -23,7 +23,7 @@ public class PlayerPlatforms
     public int inventoryButtonAmmount;
 
     //private GameObject draggedPlatform;
-    public List<GameObject> placedPlatforms;
+    public List<GameObject> placedPlatforms = new List<GameObject>();
 
     public PlayerPlatforms(int ramps, int platformSquares, int trampolines)
     {

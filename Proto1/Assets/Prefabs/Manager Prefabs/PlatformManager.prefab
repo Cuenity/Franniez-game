@@ -1,0 +1,71 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &7219218893985467059
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1383381949428678398}
+  - component: {fileID: 3341095186285935732}
+  m_Layer: 0
+  m_Name: PlatformManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1383381949428678398
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7219218893985467059}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -7, y: 6, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3341095186285935732
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7219218893985467059}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 928a36a2c3bcf4946a551e2533006958, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  platform: {fileID: 0}
+  rechthoek: {fileID: 2204122891480544061, guid: b9468f973b2243a4f920413211ca2691,
+    type: 3}
+  ramp: {fileID: 3573814550062563206, guid: 5c1d50512c7b7eb4cb74387fcb1286df, type: 3}
+  PlatformSquare: {fileID: 4581323721575538998, guid: af6585d6aa968f246804e97579948daa,
+    type: 3}
+  Balletje: {fileID: 7823360769061626192, guid: 286c6364973fb564e93ab31e3f148acf,
+    type: 3}
+  portal: {fileID: 4567507474081468774, guid: 3d4907e6bd39f474b8fd8220920e65c4, type: 3}
+  allPortals: []
+  trampoline: {fileID: 4755417564985550153, guid: 8d6f88143f60d1a4a90a93381baa5782,
+    type: 3}
+  bigRamp: {fileID: 7030363388737609308, guid: de84970bd124bbc46a21c24d6ccfb070, type: 3}
+  finish: {fileID: 2032823587391776419, guid: c85261ac462ef85448b10b92e43df3f9, type: 3}
+  platformBreekbaar: {fileID: 3859311413686586849, guid: 3e0da72abecab7f46a4d5c49b7722f20,
+    type: 3}
+  redZone: {fileID: 8710621441245465718, guid: 39a2ea194c03ff6419bceabc64173936, type: 3}
+  platformSquareNoGrass: {fileID: 8080736827418773245, guid: 9433a1c3e512ac54b85776c52288d841,
+    type: 3}
+  coin: {fileID: 9148849811850824367, guid: 6e0e5fcc9b0132e489c4dff1900a1c88, type: 3}
+  boostPlatform: {fileID: 4837618528027019247, guid: 5056670d27e4a7747a109176d4272b1a,
+    type: 3}
+  lijn: {fileID: 1965857940646614433, guid: 791b4e3d080d72244a4df542575acaa0, type: 3}
+  gridDot: {fileID: 866343401640163591, guid: bc23aee495a663643ab17e58f38c60da, type: 3}
+  gridSquare: {fileID: 5277723055925215312, guid: c3402e776dd95844ab6d4872d579ef6b,
+    type: 3}

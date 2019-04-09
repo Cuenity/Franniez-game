@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &8743422529653483518
+--- !u!1 &2752214082910243754
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,46 +8,44 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 8743422529653483516}
-  - component: {fileID: 8743422529653483519}
+  - component: {fileID: 1757994579277691890}
+  - component: {fileID: 5066816606044360096}
   m_Layer: 0
-  m_Name: GridManager
+  m_Name: UIDragManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &8743422529653483516
+--- !u!4 &1757994579277691890
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8743422529653483518}
+  m_GameObject: {fileID: 2752214082910243754}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -10.299999, y: 8.5, z: 0}
+  m_LocalPosition: {x: -7, y: 6, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &8743422529653483519
+--- !u!114 &5066816606044360096
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8743422529653483518}
+  m_GameObject: {fileID: 2752214082910243754}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 126c06d7473d72b42b200d22cc47e358, type: 3}
+  m_Script: {fileID: 11500000, guid: cf1247cb0ac581a4fab833e88a8f2b29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridSquareBuild: {fileID: 5429024496108619967, guid: 59935b2ea82b6744284ab2da34fd4ca6,
+  platformSquare: {fileID: 4581323721575538998, guid: af6585d6aa968f246804e97579948daa,
     type: 3}
-  gridSquare: {fileID: 5277723055925215312, guid: c3402e776dd95844ab6d4872d579ef6b,
+  ramp: {fileID: 5818311206027064357, guid: de84970bd124bbc46a21c24d6ccfb070, type: 3}
+  trampoline: {fileID: 5560910613633582698, guid: 8d6f88143f60d1a4a90a93381baa5782,
     type: 3}
-  gridSquares: []
-  width: 0
-  heigth: 0
-  secretGridSquares: []
+  rotateSprite: {fileID: 0}
