@@ -201,7 +201,7 @@ public class LevelManager : MonoBehaviour
         }
         else if (currentScene.name == "1")
         {
-            
+
             gameState.playerCamera = Instantiate(gameState.playerCamera);
             gameState.playerManager.PlayerInit();
             Vector3 playeradjustment = new Vector3(.5f, 0, 0);
@@ -243,6 +243,6 @@ public class LevelManager : MonoBehaviour
             playerPlatforms = new PlayerPlatforms(2, 3, 1);
             gameState.gridManager.Build_Grid_BuildingPhase_With_Visuals();
             gameState.playerManager.player.spawnpoint = gameState.gridManager.gridSquares[0] + playeradjustment;
-        }
+        } 
     }
 }
