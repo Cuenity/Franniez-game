@@ -1,13 +1,13 @@
 ﻿using UnityEngine;
 using UnityEngine.EventSystems;
-using UnityEngine.UI;
 
 public class UIDragManager : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHandler//, IPointerDownHandler
 {
-    //deze fields verwijderen
+    //deze fields later verwijderen
     public GameObject platformSquare;
     public GameObject ramp;
     //tot hier
+    public GameObject rotateSprite;
 
 
     GameObject draggedPlatform;
@@ -67,7 +67,7 @@ public class UIDragManager : MonoBehaviour, IDragHandler, IBeginDragHandler, IEn
         {
             if (inventoryButton.name == "platformSquareButton")
             {
-                
+
                 foreach (InventoryButton button in GameState.Instance.UIManager.instantiatedInventoryButtons)
                 {
                     if (button.name == inventoryButton.name)
@@ -161,6 +161,16 @@ public class UIDragManager : MonoBehaviour, IDragHandler, IBeginDragHandler, IEn
     {
         if (draggingAllowed)
         {
+            rotateSprite = Instantiate(rotateSprite);
+            rotateSprite.transform.SetParent(draggedPlatform.transform); //x positie: 0,0200 (202) scale: 0.001 bij 0.0005
+            rotateSprite.transform.localScale = new Vector3(0.001f, 0.0005f, 0);
+            //rotateSprite.transform.Rotate(new Vector3(0, 90, 0));
+            rotateSprite.transform.position = draggedPlatform.transform.position + new Vector3(1, 0, -2);
+
+            rotateSprite.transform.rotation = Quaternion.Euler(new Vector3(0, 0, 90));
+            //rotateSprite.AddComponent<MeshCollider>();
+
+
             GameState.Instance.levelManager.playerPlatforms.placedPlatforms.Add(draggedPlatform);
 
 
