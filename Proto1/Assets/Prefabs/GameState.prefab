@@ -46,6 +46,7 @@ MonoBehaviour:
   buildingPhaseManager: {fileID: 0}
   rollingPhaseManager: {fileID: 0}
   UIManager: {fileID: 0}
+  levelManager: {fileID: 0}
   playerManager: {fileID: 0}
   platformManager: {fileID: 0}
   collectableManager: {fileID: 0}

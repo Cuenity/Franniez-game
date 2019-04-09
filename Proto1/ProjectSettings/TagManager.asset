@@ -12,6 +12,7 @@ TagManager:
   - InventoryButton
   - Ramp
   - PlatformSquare
+  - RotateSprite
   layers:
   - Default
   - TransparentFX
