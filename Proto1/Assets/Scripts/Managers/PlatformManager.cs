@@ -24,6 +24,7 @@ public class PlatformManager : MonoBehaviour
     public RedZone redZone;
     public GameObject platformSquareNoGrass;
     public Coin coin;
+    public BoostPlatform boostPlatform;
 
     GameState gameState;
 
@@ -238,8 +239,9 @@ public class PlatformManager : MonoBehaviour
         List<int> RampSpotsReversed = new List<int>();
         List<int> CoinSpots = new List<int>();
         List<int> RedZoneSpots = new List<int>();
-
+        List<int> boosterPLatformSpots = new List<int>();
         RampSpots.Add(21);
+        boosterPLatformSpots.Add(42);
         RampSpots.Add(90);
         PlatformSpots.Add(158);
         PlatformSpots.Add(159);
@@ -262,7 +264,14 @@ public class PlatformManager : MonoBehaviour
             finish = Instantiate(finish, gameState.gridManager.gridSquares[FinishSpots[i]], new Quaternion(0, 0, 0, 0));
 
         }
+        if (boosterPLatformSpots.Count > 0)
+        {
+            for (int i = 0; i < boosterPLatformSpots.Count; i++)
+            {
+                boostPlatform = Instantiate(boostPlatform, gameState.gridManager.gridSquares[boosterPLatformSpots[i]] + new Vector3(1.5f, -1f, 0), new Quaternion(0, 0, 0, 0));
 
+            }
+        }
         initRedZones(RedZoneSpots);
     }
 
@@ -278,6 +287,7 @@ public class PlatformManager : MonoBehaviour
         List<int> RampSpotsReversed = new List<int>();
         List<int> CoinSpots = new List<int>();
         List<int> RedZoneSpots = new List<int>();
+        List<int> BoosterPlatform = new List<int>();
 
         RampSpots.Add(21);
         TrampolineSpots.Add(144);

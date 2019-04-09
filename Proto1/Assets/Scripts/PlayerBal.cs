@@ -45,8 +45,9 @@ public class PlayerBal : MonoBehaviour
         }
     }
 
-    public void respawnBal()
+    private IEnumerator respawnballinternal()
     {
+        yield return new WaitForEndOfFrame();
         gameState.RollingPhaseActive = false;
         Camera actualcamera = gameState.GetComponent<Camera>();
         PlayerCamera camera = gameState.playerCamera;
@@ -56,8 +57,14 @@ public class PlayerBal : MonoBehaviour
         //this.GetComponent<Rigidbody>().rotation = new Quaternion(0, 0, 0, 0);
         camera.transform.position = new Vector3(this.spawnpoint.x + camera.TargetMovementOffset.x, this.spawnpoint.y + camera.TargetMovementOffset.y, this.spawnpoint.z + camera.TargetMovementOffset.z);
         camera.transform.LookAt(camera.Target.transform.position);
-        camera.GetComponent<Rigidbody>().velocity = new Vector3(0, 0, 0); 
+        camera.GetComponent<Rigidbody>().velocity = new Vector3(0, 0, 0);
+        this.GetComponent<Rigidbody>().Sleep();
         gameState.BuildingPhaseActive = true;
+    }
+
+    public void respawnBal()
+    {
+        StartCoroutine(respawnballinternal());
     }
 
     public void SetSpawnpoint(int i)
