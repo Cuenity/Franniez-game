@@ -100,6 +100,10 @@ public class PlatformDragManager : MonoBehaviour
                 {
                     button = GameState.Instance.UIManager.instantiatedInventoryButtons[i];
                 }
+                else if (tag == "Booster" && GameState.Instance.UIManager.instantiatedInventoryButtons[i].name == "boostPlatformButton")
+                {
+                    button = GameState.Instance.UIManager.instantiatedInventoryButtons[i];
+                }
             }
 
             if (platformDraggedToButton)
@@ -122,6 +126,12 @@ public class PlatformDragManager : MonoBehaviour
                 {
                     GameState.Instance.levelManager.playerPlatforms.trampolinesLeftToPlace++;
                     GameState.Instance.levelManager.playerPlatforms.UpdateTrampolinesLeft(button);
+                    button.InventoryButtonAllowed = true;
+                }
+                else if (tag == "Booster")
+                {
+                    GameState.Instance.levelManager.playerPlatforms.boostPlatformsLeftToPlace++;
+                    GameState.Instance.levelManager.playerPlatforms.UpdateBoostPlatformsLeft(button);
                     button.InventoryButtonAllowed = true;
                 }
                 GameState.Instance.levelManager.playerPlatforms.placedPlatforms.Remove(gameObject);
