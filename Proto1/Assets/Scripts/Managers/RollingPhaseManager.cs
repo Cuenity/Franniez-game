@@ -145,7 +145,7 @@ public class RollingPhaseManager : MonoBehaviour
         
         
         player.coins += amountCoins;
-
+        gameState.PreviousLevel = Convert.ToInt32(SceneManager.GetActiveScene().name);
         PlayerDataController.instance.player = player;
         PlayerDataController.instance.Save();
         SceneManager.LoadScene("VictoryScreen");

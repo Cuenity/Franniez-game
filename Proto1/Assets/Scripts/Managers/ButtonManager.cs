@@ -59,7 +59,7 @@ public class ButtonManager : MonoBehaviour
     public void NextLevel()
     {
         int levelNumber = 2;
-        //int levelNumber = GameState.Instance.PreviousLevel + 1;
+        levelNumber = GameState.Instance.PreviousLevel + 1;
 
         SceneManager.LoadScene(levelNumber.ToString());
     }
