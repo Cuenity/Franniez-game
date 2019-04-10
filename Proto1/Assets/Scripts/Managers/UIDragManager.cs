@@ -65,7 +65,15 @@ public class UIDragManager : MonoBehaviour, IDragHandler, IBeginDragHandler, IEn
 
         platformManager = GameState.Instance.platformManager.GetComponent<PlatformManager>();
 
-        GameObject inventoryButton = data.pointerPressRaycast.gameObject.transform.parent.gameObject;
+        GameObject inventoryButton;
+        if (data.pointerPressRaycast.gameObject.transform.parent.gameObject.name == "UICanvas 1" )
+        {
+            inventoryButton = data.pointerPressRaycast.gameObject;
+        }
+        else
+        {
+            inventoryButton = data.pointerPressRaycast.gameObject.transform.parent.gameObject;
+        }
 
         if (inventoryButton)
         {
