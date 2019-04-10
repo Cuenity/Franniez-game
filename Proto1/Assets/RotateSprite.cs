@@ -19,7 +19,7 @@ public class RotateSprite : MonoBehaviour
                 gameObject.transform.localPosition = new Vector3(
                     gameObject.transform.localPosition.x * -1.0f, 
                     gameObject.transform.localPosition.y * -1.0f, 
-                    gameObject.transform.localPosition.z * -1.0f); //= new Vector3(-0.0101f, 0, 0);
+                    gameObject.transform.localPosition.z); //= new Vector3(-0.0101f, 0, 0);
 
                 //gameObject.transform.parent.transform.rotation = Quaternion.Euler(new Vector3(0, 90, 0));
                 break;

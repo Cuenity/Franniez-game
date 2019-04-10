@@ -241,7 +241,7 @@ public class UIDragManager : MonoBehaviour, IDragHandler, IBeginDragHandler, IEn
                 sprite.transform.SetParent(draggedPlatform.transform); //x positie: 0,0200 (202) scale: 0.001 bij 0.0005
                 sprite.transform.localScale = new Vector3(0.001f, 0.0005f, 0);
                 //rotateSprite.transform.Rotate(new Vector3(0, 90, 0));
-                sprite.transform.position = draggedPlatform.transform.position + new Vector3(0, 0, -1.01f); //new Vector3(1, 0, -2);
+                sprite.transform.position = draggedPlatform.transform.position + new Vector3(0, -0.8f, -0.51f); //new Vector3(1, 0, -2);
 
                 sprite.transform.rotation = Quaternion.Euler(new Vector3(0, 0, 90));
                 //rotateSprite.AddComponent<MeshCollider>();

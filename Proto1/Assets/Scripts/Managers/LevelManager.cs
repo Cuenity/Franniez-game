@@ -248,6 +248,26 @@ public class LevelManager : MonoBehaviour
             gameState.BuildingPhaseActive = true;
             GameState.Instance.PreviousLevel = 2;
         }
+        else if (currentScene.name == "3")
+        {
+            gameState.playerCamera = Instantiate(gameState.playerCamera);
+            Vector3 playeradjustment = new Vector3(.5f, 0, 0);
+            gameState.gridManager.width = 20;
+            gameState.gridManager.heigth = 14;
+            playerPlatforms = new PlayerPlatforms(6, 2, 1);
+            gameState.gridManager.Build_Grid_BuildingPhase_Without_Visuals();
+            gameState.playerManager.player.spawnpoint = gameState.gridManager.gridSquares[1] + playeradjustment;
+            gameState.platformManager.BuildLevelCoen();
+            SetCoinPositions(110);
+            SetCoinPositions(138);
+            SetCoinPositions(196);
+            SetStickerPositions(145);
+            SetfinishPositions(254);
+
+            gameState.playerManager.PlayerInit();
+            gameState.collectableManager.InitCollectables(coinPositions, stickerPosition, finishPosition);
+            gameState.BuildingPhaseActive = true;
+        }
     }
     public void SetRollingPhase()
     {
