@@ -396,6 +396,48 @@ public class PlatformManager : MonoBehaviour
         Init_Platforms(RampSpots, PlatformSpots, RampSpotsReversed, PortalSpots, TrampolineSpots, rechthoekSpots);
     }
 
+    public void BuildLevelCoen()
+    {
+        Vector3 rampAdjustment = new Vector3(0.5f, 0f, 0f);
+        List<int> RampSpots = new List<int>();
+        List<int> PlatformSpots = new List<int>();
+        List<int> FinishSpots = new List<int>();
+        List<int> TrampolineSpots = new List<int>();
+        List<int> PortalSpots = new List<int>();
+        List<int> rechthoekSpots = new List<int>();
+        List<int> RampSpotsReversed = new List<int>();
+        List<int> CoinSpots = new List<int>();
+        List<int> RedZoneSpots = new List<int>();
+        List<int> boosterPlatformSpots = new List<int>();
+        RampSpots.Add(21);
+        PlatformSpots.Add(128);
+        PlatformSpots.Add(129);
+       // RampSpots.Add(150);
+        PortalSpots.Add(151);
+        PortalSpots.Add(35);
+        //RampSpots.Add(149);
+
+        //boosterPlatformSpots.Add(43);
+        // boosterPlatformSpots.Add(45);
+        //PlatformSpots.Add(159);
+
+        Init_Platforms(RampSpots, PlatformSpots, RampSpotsReversed, PortalSpots, TrampolineSpots, rechthoekSpots);
+
+        for (int i = 0; i < CoinSpots.Count; i++)
+        {
+            coin = Instantiate(coin, gameState.gridManager.gridSquares[CoinSpots[i]] + rampAdjustment, new Quaternion(0, 0, 0, 0));
+
+        }
+
+        for (int i = 0; i < FinishSpots.Count; i++)
+        {
+            finish = Instantiate(finish, gameState.gridManager.gridSquares[FinishSpots[i]], new Quaternion(0, 0, 0, 0));
+
+        }
+        initBoostPlatforms(boosterPlatformSpots);
+        initRedZones(RedZoneSpots);
+    }
+
     internal void Build_Vertical_Slice_Level1()
     {
         List<int> RampSpots = new List<int>();
