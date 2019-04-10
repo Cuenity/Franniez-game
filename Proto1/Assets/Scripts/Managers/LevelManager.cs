@@ -203,7 +203,6 @@ public class LevelManager : MonoBehaviour
             gameState.playerManager.PlayerInit();
             gameState.collectableManager.InitCollectables(coinPositions, stickerPosition, finishPosition);
             gameState.BuildingPhaseActive = true;
-            GameState.Instance.PreviousScene = 1;
         }
         else if (currentScene.name == "VerticalSliceLevel3")
         {
@@ -246,14 +245,13 @@ public class LevelManager : MonoBehaviour
             gameState.playerManager.PlayerInit();
             gameState.collectableManager.InitCollectables(coinPositions, stickerPosition, finishPosition);
             gameState.BuildingPhaseActive = true;
-            GameState.Instance.PreviousScene = 2;
         }
     }
     public void SetRollingPhase()
     {
         gameState.BuildingPhaseActive = false;
         gameState.RollingPhaseActive = true;
-        Time.timeScale = 1;
+        gameState.playerManager.player.GetComponent<Rigidbody>().isKinematic = false;
     }
     public void SetBuildingPhase()
     {
@@ -261,7 +259,7 @@ public class LevelManager : MonoBehaviour
         gameState.playerManager.player.respawnBal();
         gameState.levelManager.RespawnCollectables();
         gameState.BuildingPhaseActive = true;
-        Time.timeScale = 0;
+        gameState.playerManager.player.GetComponent<Rigidbody>().isKinematic = true;
 
     }
 }
