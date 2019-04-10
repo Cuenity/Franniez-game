@@ -451,25 +451,31 @@ public class PlatformManager : MonoBehaviour
 
         RampSpots.Add(21);
 
-        PlatformSpots.Add(19);
+        //PlatformSpots.Add(19);
         //PlatformSpots.Add(128);
         PlatformSpots.Add(129);
         PlatformSpots.Add(130);
-        PlatformSpots.Add(138);
+        //PlatformSpots.Add(138);
         PlatformSpots.Add(214);
         PlatformSpots.Add(215);
-        // RampSpots.Add(150);
-        PortalSpots.Add(151);
+        PlatformSpots.Add(216);
+        PlatformSpots.Add(274);
+        PlatformSpots.Add(275);
+
+        PlatformSpots.Add(94);
+        PlatformSpots.Add(95);
+        
+        PortalSpots.Add(131);
         PortalSpots.Add(35);
-        //RampSpots.Add(149);
+
         RedZoneSpots.Add(13);
         RedZoneSpots.Add(33);
         RedZoneSpots.Add(53);
         RedZoneSpots.Add(73);
 
-        RedZoneSpots.Add(88);
-        RedZoneSpots.Add(89);
-        RedZoneSpots.Add(90);
+        RedZoneSpots.Add(68);
+        RedZoneSpots.Add(69);
+        RedZoneSpots.Add(70);
 
         RedZoneSpots.Add(93);
         RedZoneSpots.Add(113);
