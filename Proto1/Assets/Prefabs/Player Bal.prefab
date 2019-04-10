@@ -105,7 +105,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0bccb2673a40e234cb4f74d39145366a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnpoint: {x: 0, y: 0, z: 0}
+  spawnpoint: {x: 1.5, y: -1, z: 0}
 --- !u!54 &8951874512824316334
 Rigidbody:
   m_ObjectHideFlags: 0
