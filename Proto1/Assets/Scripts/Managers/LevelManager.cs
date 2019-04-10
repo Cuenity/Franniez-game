@@ -203,6 +203,7 @@ public class LevelManager : MonoBehaviour
             gameState.playerManager.PlayerInit();
             gameState.collectableManager.InitCollectables(coinPositions, stickerPosition, finishPosition);
             gameState.BuildingPhaseActive = true;
+            GameState.Instance.PreviousScene = 1;
         }
         else if (currentScene.name == "VerticalSliceLevel3")
         {
@@ -245,6 +246,7 @@ public class LevelManager : MonoBehaviour
             gameState.playerManager.PlayerInit();
             gameState.collectableManager.InitCollectables(coinPositions, stickerPosition, finishPosition);
             gameState.BuildingPhaseActive = true;
+            GameState.Instance.PreviousScene = 2;
         }
     }
     public void SetRollingPhase()

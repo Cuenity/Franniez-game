@@ -19,6 +19,8 @@ public class GameState : MonoBehaviour
     Scene currentScene;
     public GridManager gridManager;
 
+    public int PreviousScene { get; set; }
+
     private static GameState instance;
     public static GameState Instance
     {
@@ -96,6 +98,7 @@ public class GameState : MonoBehaviour
         gridManager = Instantiate(gridManager, instance.transform);
         gridManager.transform.parent = this.transform;
 
+        //PreviousScene = 0;
 
         //buildingPhaseManager = gameObject.AddComponent<BuildingPhaseManager>();
         //rollingPhaseManager = gameObject.AddComponent<RollingPhaseManager>();

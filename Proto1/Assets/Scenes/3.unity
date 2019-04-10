@@ -323,8 +323,8 @@ MonoBehaviour:
   levelNumberText: {fileID: 1338705806}
   amountStickersText: {fileID: 1338705805}
   startButton: {fileID: 1338705808}
-  startRolling: {fileID: 21300000, guid: 2b091fff9478a5c49b268a29916d64da, type: 3}
-  startBuilding: {fileID: 21300000, guid: 6535966eb02c1d74cb064582f6f5766a, type: 3}
+  startRolling: {fileID: 21300000, guid: 6535966eb02c1d74cb064582f6f5766a, type: 3}
+  startBuilding: {fileID: 21300000, guid: 2b091fff9478a5c49b268a29916d64da, type: 3}
 --- !u!4 &406746482
 Transform:
   m_ObjectHideFlags: 0

@@ -24,33 +24,31 @@ public class RollingPhaseManager : MonoBehaviour
         //amountCoins = 0;
         level = new Level();
 
-        //Scene scene = SceneManager.GetActiveScene();
-        ////int.TryParse(scene.name, out levelNumber);
+        Scene scene = SceneManager.GetActiveScene();
+        int.TryParse(scene.name, out levelNumber);
 
-        //player = PlayerDataController.instance.player;
+        if (levelNumber == 0){return;}
+        player = PlayerDataController.instance.player;
 
-        //if (player == null)
-        //{
-        //    return;
-        //}
+        if (player == null){return;}
 
-        //if(player.levels !=null)
-        //{
-        //    // Als hij het niet vind, doet ff iets
-        //    level = player.levels[1-1];
-        //}
-        //else
-        //{
-        //    level = new Level();
-        //}
+        if (player.levels[levelNumber - 1] != null)
+        {
+            // Als hij het niet vind, doet ff iets
 
-        ////level = player.levels[levelNumber - 1];
+            level = player.levels[levelNumber - 1];
+        }
+        else
+        {
+            level = new Level();
+        }
 
-        //if (level.gotSticker)
-        //{
-        //    pickedSticker = true;
-        //}
-        //level.playedLevel = true;
+
+        if (level.gotSticker)
+        {
+            pickedSticker = true;
+        }
+        level.playedLevel = true;
     }
 
 
@@ -142,12 +140,13 @@ public class RollingPhaseManager : MonoBehaviour
                 player.levels[0] = level;
             }
         }
-        
-        
-        player.coins += amountCoins;
 
+        int sceneef = GameState.Instance.PreviousScene;
+        player.coins += amountCoins;
+        GameState.Instance.PreviousScene = levelNumber;
         PlayerDataController.instance.player = player;
         PlayerDataController.instance.Save();
+        PlayerDataController.instance.previousScene = levelNumber;
         SceneManager.LoadScene("VictoryScreen");
     }
 
