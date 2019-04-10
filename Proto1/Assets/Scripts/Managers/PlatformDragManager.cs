@@ -11,23 +11,7 @@ public class PlatformDragManager : MonoBehaviour
     private Camera camera;
 
     bool rotateSpriteHit;
-
-    //bool timerOn;
-    //float time;
-
-
-    //private void Update()
-    //{
-    //    if (timerOn)
-    //    {
-    //        Timer timer = new Timer(1000);
-    //        time = Time.deltaTime;
-    //        if (time > 100)
-    //        {
-    //            ShowTurnPlatformButton();
-    //        }
-    //    }
-    //}
+    // true na slepen op knop
 
     private void Awake()
     {

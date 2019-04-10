@@ -26,8 +26,8 @@ public class UIManager : MonoBehaviour
     {
         InstantiateInventoryButtonsCheck(playerPlatforms.inventoryButtonAmmount);
 
-        bool instantiatedInventoryButtonsArrayNotInstantiated = instantiatedInventoryButtons[0] == null;
-        if (instantiatedInventoryButtonsArrayNotInstantiated)
+        //bool instantiatedInventoryButtonsArrayNotInstantiated = instantiatedInventoryButtons[0] == null;
+        if (instantiatedInventoryButtons[0] == null)
         {
             GameObject uiCanvas = GameObject.FindGameObjectWithTag("UICanvas");
 
@@ -56,8 +56,9 @@ public class UIManager : MonoBehaviour
 
     private void InstantiateInventoryButtonsCheck(int inventoryButtonAmmount)
     {
-        bool instantiatedInventoryButtonsArrayNotInstantiated = instantiatedInventoryButtons == null;
-        if (instantiatedInventoryButtonsArrayNotInstantiated)
+        //bool instantiatedInventoryButtonsArrayNotInstantiated = instantiatedInventoryButtons == null;
+        bool check = instantiatedInventoryButtons.Length > 0;
+        if (instantiatedInventoryButtons == null || !check)
         {
             instantiatedInventoryButtons = new InventoryButton[inventoryButtonAmmount];
         }
