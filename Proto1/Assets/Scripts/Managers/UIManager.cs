@@ -79,13 +79,13 @@ public class UIManager : MonoBehaviour
     public void ChangeInventoryButtonImageAndText(int currentButton, PlayerPlatforms playerPlatforms)
     {
         GameObject buttonImage = instantiatedInventoryButtons[currentButton].transform.GetChild(0).gameObject;
-        GameObject buttonText = instantiatedInventoryButtons[currentButton].transform.GetChild(1).gameObject;
+        GameObject buttonText = instantiatedInventoryButtons[currentButton].transform.GetChild(3).gameObject;
 
         if (playerPlatforms.ramps > 0 && !playerPlatforms.rampButtonInstantiated)
         {
             buttonImage.GetComponent<Image>().sprite = rampImage;
             instantiatedInventoryButtons[currentButton].name = "rampInventoryButton";
-            buttonText.GetComponent<Text>().text = playerPlatforms.ramps + "/" + playerPlatforms.ramps;
+            buttonText.GetComponent<Text>().text = playerPlatforms.ramps.ToString();
 
             playerPlatforms.rampButtonInstantiated = true;
         }
@@ -93,7 +93,7 @@ public class UIManager : MonoBehaviour
         {
             buttonImage.GetComponent<Image>().sprite = platformSquareImage;
             instantiatedInventoryButtons[currentButton].name = "platformSquareButton";
-            buttonText.GetComponent<Text>().text = playerPlatforms.platformSquares + "/" + playerPlatforms.platformSquares;
+            buttonText.GetComponent<Text>().text = playerPlatforms.platformSquares.ToString();
 
             playerPlatforms.platformSquaresButtonInstantated = true;
         }
@@ -101,7 +101,7 @@ public class UIManager : MonoBehaviour
         {
             buttonImage.GetComponent<Image>().sprite = trampolineImage;
             instantiatedInventoryButtons[currentButton].name = "trampolineButton";
-            buttonText.GetComponent<Text>().text = playerPlatforms.trampolines + "/" + playerPlatforms.trampolines;
+            buttonText.GetComponent<Text>().text = playerPlatforms.trampolines.ToString();
 
             playerPlatforms.trampolineButtonInstantiated = true;
         }
@@ -109,7 +109,7 @@ public class UIManager : MonoBehaviour
         {
             buttonImage.GetComponent<Image>().sprite = boostPlatformImage;
             instantiatedInventoryButtons[currentButton].name = "boostPlatformButton";
-            buttonText.GetComponent<Text>().text = playerPlatforms.boostPlatforms + "/" + playerPlatforms.boostPlatforms;
+            buttonText.GetComponent<Text>().text = playerPlatforms.boostPlatforms.ToString();
 
             playerPlatforms.trampolineButtonInstantiated = true;
         }
