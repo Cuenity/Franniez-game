@@ -19,6 +19,8 @@ public class GameState : MonoBehaviour
     Scene currentScene;
     public GridManager gridManager;
 
+    public int PreviousLevel;
+
     private static GameState instance;
     public static GameState Instance
     {
