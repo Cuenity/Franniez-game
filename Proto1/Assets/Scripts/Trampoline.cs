@@ -52,6 +52,6 @@ public class Trampoline : MonoBehaviour
             velocityx = velocity.x;
         }
        
-        player.GetComponent<Rigidbody>().AddForce(velocityx, velocityY * 2f, 0, ForceMode.Impulse);
+        player.GetComponent<Rigidbody>().AddForce(velocityx, velocityY * 7f, 0, ForceMode.Impulse);
     }
 }
