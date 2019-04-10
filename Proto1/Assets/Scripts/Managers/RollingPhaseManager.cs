@@ -131,14 +131,18 @@ public class RollingPhaseManager : MonoBehaviour
         {
             player.levels = new Level[50];
         }
-        if (player.levels.Length > 0 && player.levels[0] != null)
+        if (levelNumber != 0)
         {
-            player.levels[levelNumber - 1] = level;
+            if (player.levels.Length > 0 && player.levels[0] != null)
+            {
+                player.levels[levelNumber - 1] = level;
+            }
+            else
+            {
+                player.levels[0] = level;
+            }
         }
-        else
-        {
-            player.levels[0] = level;
-        }
+        
         
         player.coins += amountCoins;
 
