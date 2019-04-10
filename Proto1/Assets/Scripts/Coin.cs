@@ -26,7 +26,7 @@ public class Coin : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        playerManager.collectedCoins++;
+        GameState.Instance.playerManager.collectedCoins++;
         PickedCoin();
         this.gameObject.SetActive(false);
     }
