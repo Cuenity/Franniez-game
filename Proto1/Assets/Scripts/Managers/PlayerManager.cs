@@ -28,6 +28,7 @@ public class PlayerManager : MonoBehaviour
     {
         player = Instantiate(player);
         player.transform.position = player.spawnpoint;
+        player.GetComponent<Rigidbody>().maxAngularVelocity = 99;
         Debug.Log(player.spawnpoint);
         gameState.playerCamera.Target = player;
         Camera camera=gameState.playerCamera.GetComponent<Camera>();
