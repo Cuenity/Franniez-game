@@ -192,13 +192,13 @@ public class LevelManager : MonoBehaviour
             gameState.gridManager.heigth = 11;
             playerPlatforms = new PlayerPlatforms(12, 12, 1);
             gameState.gridManager.Build_Grid_BuildingPhase_With_Visuals();
-            gameState.playerManager.player.spawnpoint = gameState.gridManager.gridSquares[0] + playeradjustment;
+            gameState.playerManager.player.spawnpoint = gameState.gridManager.gridSquares[1] + playeradjustment;
             gameState.platformManager.Build_Vertical_Slice_Level6();
-            SetCoinPositions(46);
-            SetCoinPositions(70);
-            SetCoinPositions(97);
-            SetStickerPositions(22);
-            SetfinishPositions(139);
+            SetCoinPositions(67);
+            SetCoinPositions(90);
+            SetCoinPositions(115);
+            SetStickerPositions(177);
+            SetfinishPositions(178);
 
             gameState.playerManager.PlayerInit();
             gameState.collectableManager.InitCollectables(coinPositions, stickerPosition, finishPosition);
