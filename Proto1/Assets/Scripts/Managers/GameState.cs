@@ -19,7 +19,7 @@ public class GameState : MonoBehaviour
     Scene currentScene;
     public GridManager gridManager;
 
-    public int PreviousScene { get; set; }
+    public int PreviousLevel;
 
     private static GameState instance;
     public static GameState Instance

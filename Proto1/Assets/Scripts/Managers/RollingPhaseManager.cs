@@ -141,9 +141,7 @@ public class RollingPhaseManager : MonoBehaviour
             }
         }
 
-        int sceneef = GameState.Instance.PreviousScene;
         player.coins += amountCoins;
-        GameState.Instance.PreviousScene = levelNumber;
         PlayerDataController.instance.player = player;
         PlayerDataController.instance.Save();
         PlayerDataController.instance.previousScene = levelNumber;

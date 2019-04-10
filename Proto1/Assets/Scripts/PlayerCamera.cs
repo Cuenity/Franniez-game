@@ -34,7 +34,7 @@ public class PlayerCamera : MonoBehaviour
 
     internal void InitCamera()
     {
-        
+
         this.transform.position = gameState.playerManager.player.spawnpoint + TargetMovementOffset;
     }
 
@@ -135,8 +135,16 @@ public class PlayerCamera : MonoBehaviour
         }
         Vector3 position = this.transform.position;
         Vector3 dragend = camera.ScreenToViewportPoint(Input.mousePosition);
+        Vector3 move;
         Vector3 diffrence = new Vector3(dragend.x - dragOrigin.x, dragend.y - dragOrigin.y, 0);
-        Vector3 move = new Vector3(-diffrence.x, -diffrence.y, 0);
+        if (Application.platform != RuntimePlatform.Android)
+        {
+            move = new Vector3(diffrence.x, diffrence.y, 0);
+        }
+        else
+        {
+            move = new Vector3(-diffrence.x, -diffrence.y, 0);
+        }
         Vector3 outsideGrid = move + position;
         CorrectCamera(outsideGrid);
         transform.Translate(move, Space.World);
@@ -179,28 +187,31 @@ public class PlayerCamera : MonoBehaviour
             Vector2 touchOnePrevPos = touchOne.position - touchOne.deltaPosition;
 
             // Find the magnitude of the vector (the distance) between the touches in each frame.
-            float prevTouchDeltaMag = (touchZeroPrevPos - touchOnePrevPos).magnitude;
-            float touchDeltaMag = (touchZero.position - touchOne.position).magnitude;
+            Vector3 prevTouchDeltaMag = touchZeroPrevPos - touchOnePrevPos;
+            Vector3 touchDeltaMag = touchZero.position - touchOne.position;
+            Vector3 diffrence = prevTouchDeltaMag - touchDeltaMag;
 
-            // Find the difference in the distances between each frame.
-            float deltaMagnitudeDiff = prevTouchDeltaMag - touchDeltaMag;
-
-            // If the camera is orthographic...
-            if (camera.orthographic)
+            if (diffrence.x < 0 && diffrence.y < 0)
             {
-                // ... change the orthographic size based on the change in distance between the touches.
-                camera.orthographicSize += deltaMagnitudeDiff * orthoZoomSpeed;
-
-                // Make sure the orthographic size never drops below zero.
-                camera.orthographicSize = Mathf.Max(camera.orthographicSize, 0.1f);
+                if (camera.transform.position.z >= -30)
+                {
+                    camera.transform.position = new Vector3(camera.transform.position.x, camera.transform.position.y, camera.transform.position.z - 1);
+                }
+                else
+                {
+                    camera.transform.position = new Vector3(camera.transform.position.x, camera.transform.position.y, -29.9f);
+                }
             }
-            else
+            if (diffrence.x > 0 && diffrence.y > 0)
             {
-                // Otherwise change the field of view based on the change in distance between the touches.
-                camera.fieldOfView += deltaMagnitudeDiff * perspectiveZoomSpeed;
-
-                // Clamp the field of view to make sure it's between 0 and 180.
-                camera.fieldOfView = Mathf.Clamp(camera.fieldOfView, 0.1f, 179.9f);
+                if (camera.transform.position.z <= -10)
+                {
+                    camera.transform.position = new Vector3(camera.transform.position.x, camera.transform.position.y, camera.transform.position.z + 1);
+                }
+                else
+                {
+                    camera.transform.position = new Vector3(camera.transform.position.x, camera.transform.position.y, -10.1f);
+                }
             }
         }
     }
