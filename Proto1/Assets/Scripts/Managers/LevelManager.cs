@@ -94,7 +94,7 @@ public class LevelManager : MonoBehaviour
     }
     public void SetCoinPositions(int i)
     {
-        Vector3 coinAdjustment = new Vector3(.5f, 0, 0);
+        Vector3 coinAdjustment = new Vector3(.3f, 0, 0);
         coinPositions.Add(gameState.gridManager.gridSquares[i] + coinAdjustment);
     }
     public void SetStickerPositions(int i)
