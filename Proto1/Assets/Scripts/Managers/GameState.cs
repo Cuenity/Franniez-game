@@ -98,6 +98,7 @@ public class GameState : MonoBehaviour
         gridManager = Instantiate(gridManager, instance.transform);
         gridManager.transform.parent = this.transform;
 
+        //PreviousScene = 0;
 
         //buildingPhaseManager = gameObject.AddComponent<BuildingPhaseManager>();
         //rollingPhaseManager = gameObject.AddComponent<RollingPhaseManager>();

@@ -22,14 +22,13 @@ public class UIRollingManager : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        
         amountCoinsText.text = "0/3";
         amountStickersText.text = "0/1";
 
         // Dit wil later uit een Scenemanager halen. 
         currentScene = SceneManager.GetActiveScene();
         levelIndicator = currentScene.name;
-        //levelNumberText.text = "LEVEL " + levelIndicator;
+        levelNumberText.text = "LEVEL " + levelIndicator;
     }
 
     private void OnEnable()

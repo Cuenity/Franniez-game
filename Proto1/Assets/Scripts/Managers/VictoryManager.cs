@@ -24,13 +24,10 @@ public class VictoryManager : MonoBehaviour
 
     private void Awake()
     {
-        PlayerDataController.instance.Save();
-        PlayerDataController.instance.Load();
         player = PlayerDataController.instance.player;
+        SetLanguage();
         sticker.enabled = false;
         GetData();
-        
-
     }
 
     // Start is called before the first frame update
@@ -67,9 +64,9 @@ public class VictoryManager : MonoBehaviour
     private void GetData()
     {
         // Onderstaande code toepassen wanneer Anne klaar is met Gamestate
-        //int previousScene = GameState.Instance.previousScene;
-        int previousScene = 1;
-
+        int previousScene = PlayerDataController.instance.previousScene;
+        //int previousScene = 1;
+        
         Level level = player.levels[previousScene - 1];
 
         switch (level.countCoins)
