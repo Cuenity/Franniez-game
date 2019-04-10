@@ -136,7 +136,7 @@ public class PlayerCamera : MonoBehaviour
         Vector3 position = this.transform.position;
         Vector3 dragend = camera.ScreenToViewportPoint(Input.mousePosition);
         Vector3 diffrence = new Vector3(dragend.x - dragOrigin.x, dragend.y - dragOrigin.y, 0);
-        Vector3 move = new Vector3(diffrence.x, diffrence.y, 0);
+        Vector3 move = new Vector3(-diffrence.x, -diffrence.y, 0);
         Vector3 outsideGrid = move + position;
         CorrectCamera(outsideGrid);
         transform.Translate(move, Space.World);
