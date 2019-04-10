@@ -22,7 +22,7 @@ public class RollingPhaseManager : MonoBehaviour
     void Start()
     {
         //amountCoins = 0;
-        //level = new Level();
+        level = new Level();
 
         //Scene scene = SceneManager.GetActiveScene();
         ////int.TryParse(scene.name, out levelNumber);

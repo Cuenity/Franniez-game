@@ -75,16 +75,38 @@ public class GameState : MonoBehaviour
 
         instance = this;
 
-        buildingPhaseManager = gameObject.AddComponent<BuildingPhaseManager>();
-        rollingPhaseManager = gameObject.AddComponent<RollingPhaseManager>();
-        collectableManager = gameObject.AddComponent<CollectableManager>();
-        IOManager = gameObject.AddComponent<IOManager>();
-        InputManager = gameObject.AddComponent<InputManager>();
-        UIManager = gameObject.AddComponent<UIManager>();
-        levelManager = gameObject.AddComponent<LevelManager>();
-        playerManager = gameObject.AddComponent<PlayerManager>();
-        platformManager = gameObject.AddComponent<PlatformManager>();
-        gridManager = gameObject.AddComponent<GridManager>();
+        buildingPhaseManager = Instantiate(buildingPhaseManager, instance.transform);
+        buildingPhaseManager.transform.parent = this.transform;
+        rollingPhaseManager = Instantiate(rollingPhaseManager, instance.transform);
+        rollingPhaseManager.transform.parent = this.transform;
+        collectableManager = Instantiate(collectableManager, instance.transform);
+        collectableManager.transform.parent = this.transform;
+        //IOManager = Instantiate(IOManager, instance.transform);
+        //IOManager.transform.parent = this.transform;
+        //InputManager = Instantiate(InputManager, instance.transform);
+        //InputManager.transform.parent = this.transform;
+        UIManager = Instantiate(UIManager, instance.transform);
+        UIManager.transform.parent = this.transform;
+        levelManager = Instantiate(levelManager, instance.transform);
+        levelManager.transform.parent = this.transform;
+        playerManager = Instantiate(playerManager, instance.transform);
+        playerManager.transform.parent = this.transform;
+        platformManager = Instantiate(platformManager, instance.transform);
+        platformManager.transform.parent = this.transform;
+        gridManager = Instantiate(gridManager, instance.transform);
+        gridManager.transform.parent = this.transform;
+
+
+        //buildingPhaseManager = gameObject.AddComponent<BuildingPhaseManager>();
+        //rollingPhaseManager = gameObject.AddComponent<RollingPhaseManager>();
+        //collectableManager = gameObject.AddComponent<CollectableManager>();
+        //IOManager = gameObject.AddComponent<IOManager>();
+        //InputManager = gameObject.AddComponent<InputManager>();
+        //UIManager = gameObject.AddComponent<UIManager>();
+        //levelManager = gameObject.AddComponent<LevelManager>();
+        //playerManager = gameObject.AddComponent<PlayerManager>();
+        //platformManager = gameObject.AddComponent<PlatformManager>();
+        //gridManager = gameObject.AddComponent<GridManager>();
         //playerCamera = Instantiate(playerCamera);
 
         //levelManager.InitScene();

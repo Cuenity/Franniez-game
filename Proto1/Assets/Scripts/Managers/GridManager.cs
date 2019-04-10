@@ -144,6 +144,27 @@ public class GridManager : MonoBehaviour
         }
         gameState.levelManager.levelPlatformen.tileList = new int[heigth * width];
     }
+    internal void Build_Grid_BuildingPhase_Without_Visuals()
+    {
+        Vector3 moveRight = new Vector3(1f, 0f, 0f);
+        Vector3 moveDown = new Vector3(0f, -1f, 0f);
+        Vector3 gridStartingPoint = new Vector3(0f, 0f, 0f);
+
+
+        for (int i = 0; i < heigth; i++)
+        {
+            gridStartingPoint.x = 0f;
+            gridStartingPoint = gridStartingPoint + moveDown;
+
+            for (int i2 = 0; i2 < width; i2++)
+            {
+                Build_SquareBest_no_instance(gridStartingPoint);
+                //place 2 the left
+                gridStartingPoint = gridStartingPoint + moveRight;
+            }
+        }
+        gameState.levelManager.levelPlatformen.tileList = new int[heigth * width];
+    }
 
     internal void Build_SquareBest(Vector3 startingPoint)
     {
@@ -154,5 +175,13 @@ public class GridManager : MonoBehaviour
         //add alle squares aan een lijstje
         gridSquares.Add(gridSquare1.transform.position);
     }
+    internal void Build_SquareBest_no_instance(Vector3 startingPoint)
+    {
+        GameObject gridSquare1;
 
+        //gridSquare1 = Instantiate(gridSquareBuild, startingPoint, new Quaternion(0, 0, 0, 0));
+
+        //add alle squares aan een lijstje
+        gridSquares.Add(startingPoint);
+    }
 }

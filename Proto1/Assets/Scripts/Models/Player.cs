@@ -6,7 +6,7 @@ using UnityEngine;
 public class Player
 {
     public string name;
-    public Level[] levels;
+    public Level[] levels = new Level[50];
     public int coins;
     public Sticker[] stickers;
     public int language;

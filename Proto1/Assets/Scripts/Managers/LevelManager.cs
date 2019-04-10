@@ -191,7 +191,7 @@ public class LevelManager : MonoBehaviour
             gameState.gridManager.width = 20;
             gameState.gridManager.heigth = 11;
             playerPlatforms = new PlayerPlatforms(2, 12, 1);
-            gameState.gridManager.Build_Grid_BuildingPhase_With_Visuals();
+            gameState.gridManager.Build_Grid_BuildingPhase_Without_Visuals();
             gameState.playerManager.player.spawnpoint = gameState.gridManager.gridSquares[1] + playeradjustment;
             gameState.platformManager.Build_Vertical_Slice_Level6();
             SetCoinPositions(46);

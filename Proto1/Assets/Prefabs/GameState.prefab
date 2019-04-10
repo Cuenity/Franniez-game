@@ -43,13 +43,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3fcb342646f49774e832e195962b5af1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buildingPhaseManager: {fileID: 0}
-  rollingPhaseManager: {fileID: 0}
-  UIManager: {fileID: 0}
-  levelManager: {fileID: 0}
-  playerManager: {fileID: 0}
-  platformManager: {fileID: 0}
-  collectableManager: {fileID: 0}
+  buildingPhaseManager: {fileID: 5303370470136486851, guid: 5582bd732ece5134085a039231757213,
+    type: 3}
+  rollingPhaseManager: {fileID: 7645430946078338272, guid: 271f3822d85eab649982b8f29183c942,
+    type: 3}
+  UIManager: {fileID: 1218672733677847242, guid: 48d9b4dbf9af2204386724a6746fd805,
+    type: 3}
+  levelManager: {fileID: 4406663779918949810, guid: 78af9bc8422846a4d924218b14917760,
+    type: 3}
+  playerManager: {fileID: 3567921175699516993, guid: 5a31af07896c82f498d33e0319696e40,
+    type: 3}
+  platformManager: {fileID: 3341095186285935732, guid: 02fbaa1d8d1b64b4783d678e3def4358,
+    type: 3}
+  collectableManager: {fileID: 2626670310270314878, guid: 0443363293bab184a8a1acf13fe3a24f,
+    type: 3}
   playerCamera: {fileID: 1191019344074348885, guid: 61b591db70fb0b54b82d0d0c243f3b2f,
     type: 3}
-  gridManager: {fileID: 0}
+  gridManager: {fileID: 8743422529653483519, guid: 28dacca19fab48a41889c3c30d772e54,
+    type: 3}
