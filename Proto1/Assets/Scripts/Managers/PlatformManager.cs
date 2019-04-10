@@ -447,13 +447,34 @@ public class PlatformManager : MonoBehaviour
         List<int> CoinSpots = new List<int>();
         List<int> RedZoneSpots = new List<int>();
         List<int> boosterPlatformSpots = new List<int>();
+        
+
         RampSpots.Add(21);
-        PlatformSpots.Add(128);
+
+        PlatformSpots.Add(19);
+        //PlatformSpots.Add(128);
         PlatformSpots.Add(129);
-       // RampSpots.Add(150);
+        PlatformSpots.Add(130);
+        PlatformSpots.Add(138);
+        PlatformSpots.Add(214);
+        PlatformSpots.Add(215);
+        // RampSpots.Add(150);
         PortalSpots.Add(151);
         PortalSpots.Add(35);
         //RampSpots.Add(149);
+        RedZoneSpots.Add(13);
+        RedZoneSpots.Add(33);
+        RedZoneSpots.Add(53);
+        RedZoneSpots.Add(73);
+        RedZoneSpots.Add(93);
+        RedZoneSpots.Add(113);
+        RedZoneSpots.Add(133);
+        RedZoneSpots.Add(153);
+        RedZoneSpots.Add(173);
+        RedZoneSpots.Add(193);
+        RedZoneSpots.Add(213);
+        RedZoneSpots.Add(233);
+        RedZoneSpots.Add(253);
 
         //boosterPlatformSpots.Add(43);
         // boosterPlatformSpots.Add(45);

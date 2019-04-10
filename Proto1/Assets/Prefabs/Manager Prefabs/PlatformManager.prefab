@@ -59,7 +59,7 @@ MonoBehaviour:
   finish: {fileID: 2032823587391776419, guid: c85261ac462ef85448b10b92e43df3f9, type: 3}
   platformBreekbaar: {fileID: 3859311413686586849, guid: 3e0da72abecab7f46a4d5c49b7722f20,
     type: 3}
-  redZone: {fileID: 8710621441245465718, guid: 39a2ea194c03ff6419bceabc64173936, type: 3}
+  redZone: {fileID: 4725783322653570780, guid: a5768f07423815a49ad9b24b4634fde6, type: 3}
   platformSquareNoGrass: {fileID: 8080736827418773245, guid: 9433a1c3e512ac54b85776c52288d841,
     type: 3}
   coin: {fileID: 9148849811850824367, guid: 6e0e5fcc9b0132e489c4dff1900a1c88, type: 3}

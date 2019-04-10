@@ -11,7 +11,6 @@ public class PlatformDragManager : MonoBehaviour
     private Camera camera;
 
     bool rotateSpriteHit;
-    // true na slepen op knop
 
     private void Awake()
     {
@@ -105,6 +104,8 @@ public class PlatformDragManager : MonoBehaviour
 
             if (platformDraggedToButton)
             {
+
+                // true na slepen op knop
                 if (tag == "PlatformSquare")
                 {
                     GameState.Instance.levelManager.playerPlatforms.platformSquaresLeftToPlace++;
@@ -125,6 +126,7 @@ public class PlatformDragManager : MonoBehaviour
                 }
                 GameState.Instance.levelManager.playerPlatforms.placedPlatforms.Remove(gameObject);
                 Destroy(gameObject);
+                GameState.Instance.playerCamera.platformDragActive = false;
             } else
             {
                 GameState.Instance.platformManager.spawnPlatformOnGrid(transform.position, gameObject);
