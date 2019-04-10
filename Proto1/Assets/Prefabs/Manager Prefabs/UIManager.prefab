@@ -51,4 +51,4 @@ MonoBehaviour:
   platformSquareImage: {fileID: 21300000, guid: cf81ca485854bc1499be3537b667dd5b,
     type: 3}
   trampolineImage: {fileID: 21300000, guid: 7afcebf36a4126c4cbbe72b1d046f10a, type: 3}
-  boostPlatformImage: {fileID: 0}
+  boostPlatformImage: {fileID: 21300000, guid: a95d26a4316b334418579ba7dd58dcec, type: 3}

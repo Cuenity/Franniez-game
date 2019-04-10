@@ -121,7 +121,7 @@ public class LevelManager : MonoBehaviour
             gameState.gridManager.Build_Grid1_Without_Visuals();
             Vector3 playeradjustment = new Vector3(.5f, 0, 0);
             gameState.playerManager.player.SetSpawnpoint(1);
-            playerPlatforms = new PlayerPlatforms(2, 3, 1);
+            playerPlatforms = new PlayerPlatforms(2, 3, 1, 0);
             SetCoinPositions(1);
             SetCoinPositions(2);
             SetCoinPositions(3);
@@ -138,7 +138,7 @@ public class LevelManager : MonoBehaviour
             //lees level uit Json en vul levelPlatformen
             //ReadLevelsFromText("Level1.json");
 
-            playerPlatforms = new PlayerPlatforms(2, 3, 1);
+            playerPlatforms = new PlayerPlatforms(2, 3, 1, 0);
 
             //Dit moet ergens anders
             gameState.gridManager.width = 11;
@@ -165,7 +165,7 @@ public class LevelManager : MonoBehaviour
             gameState.gridManager.width = 11;
             gameState.gridManager.heigth = 12;
 
-            playerPlatforms = new PlayerPlatforms(2, 3, 1);
+            playerPlatforms = new PlayerPlatforms(2, 3, 1, 0);
 
             levelPlatformen.tileList = new int[gameState.gridManager.width * gameState.gridManager.heigth];
 
@@ -177,7 +177,7 @@ public class LevelManager : MonoBehaviour
             gameState.gridManager.width = 20;
             gameState.gridManager.heigth = 11;
 
-            playerPlatforms = new PlayerPlatforms(2, 3, 1);
+            playerPlatforms = new PlayerPlatforms(2, 3, 1, 0);
 
             gameState.gridManager.Build_Grid_BuildingPhase_With_Visuals();
 
@@ -190,7 +190,7 @@ public class LevelManager : MonoBehaviour
             Vector3 playeradjustment = new Vector3(.5f, 0, 0);
             gameState.gridManager.width = 20;
             gameState.gridManager.heigth = 11;
-            playerPlatforms = new PlayerPlatforms(12, 12, 1);
+            playerPlatforms = new PlayerPlatforms(12, 12, 1, 1);
             gameState.gridManager.Build_Grid_BuildingPhase_With_Visuals();
             gameState.playerManager.player.spawnpoint = gameState.gridManager.gridSquares[1] + playeradjustment;
             gameState.platformManager.Build_Vertical_Slice_Level6();
@@ -211,9 +211,9 @@ public class LevelManager : MonoBehaviour
             gameState.gridManager.width = 27;
             gameState.gridManager.heigth = 17;
 
-            playerPlatforms = new PlayerPlatforms(2, 3, 1);
+            playerPlatforms = new PlayerPlatforms(2, 3, 1, 0);
 
-            gameState.gridManager.Build_Grid_BuildingPhase_With_Visuals();
+            gameState.gridManager.Build_Grid_BuildingPhase_Without_Visuals();
             gameState.playerManager.player.spawnpoint = gameState.gridManager.gridSquares[0] + playeradjustment;
             gameState.platformManager.Build_Vertical_Slice_Level3();
         }
@@ -223,7 +223,7 @@ public class LevelManager : MonoBehaviour
             gameState.gridManager.width = 27;
             gameState.gridManager.heigth = 17;
 
-            playerPlatforms = new PlayerPlatforms(2, 3, 1);
+            playerPlatforms = new PlayerPlatforms(2, 3, 1, 0);
             gameState.gridManager.Build_Grid_BuildingPhase_With_Visuals();
             gameState.playerManager.player.spawnpoint = gameState.gridManager.gridSquares[0] + playeradjustment;
         }
@@ -233,7 +233,7 @@ public class LevelManager : MonoBehaviour
             Vector3 playeradjustment = new Vector3(.5f, 0, 0);
             gameState.gridManager.width = 20;
             gameState.gridManager.heigth = 14;
-            playerPlatforms = new PlayerPlatforms(6, 2, 1);
+            playerPlatforms = new PlayerPlatforms(6, 2, 1, 0);
             gameState.gridManager.Build_Grid_BuildingPhase_Without_Visuals();
             gameState.playerManager.player.spawnpoint = gameState.gridManager.gridSquares[1] + playeradjustment;
             gameState.platformManager.BuildLevelCoen();
@@ -254,7 +254,7 @@ public class LevelManager : MonoBehaviour
             Vector3 playeradjustment = new Vector3(.5f, 0, 0);
             gameState.gridManager.width = 20;
             gameState.gridManager.heigth = 11;
-            playerPlatforms = new PlayerPlatforms(4, 4, 1);
+            playerPlatforms = new PlayerPlatforms(4, 4, 1, 0);
             gameState.gridManager.Build_Grid_BuildingPhase_Without_Visuals();
             gameState.playerManager.player.spawnpoint = gameState.gridManager.gridSquares[60] + playeradjustment;
             //gameState.platformManager.Build_Vertical_Slice_Level6();
