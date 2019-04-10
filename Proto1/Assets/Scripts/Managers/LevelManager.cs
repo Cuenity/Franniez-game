@@ -183,29 +183,6 @@ public class LevelManager : MonoBehaviour
 
             gameState.platformManager.Build_Vertical_Slice_Level6();
         }
-        //else if (currentScene.name == "1")
-        //{
-
-        //    gameState.playerCamera = Instantiate(gameState.playerCamera);
-        //    Vector3 playeradjustment = new Vector3(.5f, 0, 0);
-        //    gameState.gridManager.width = 20;
-        //    gameState.gridManager.heigth = 11;
-        //    playerPlatforms = new PlayerPlatforms(12, 12, 1);
-        //    gameState.gridManager.Build_Grid_BuildingPhase_With_Visuals();
-        //    gameState.playerManager.player.spawnpoint = gameState.gridManager.gridSquares[0] + playeradjustment;
-        //    gameState.platformManager.Build_Vertical_Slice_Level6();
-        //    SetCoinPositions(46);
-        //    SetCoinPositions(70);
-        //    SetCoinPositions(97);
-        //    SetStickerPositions(22);
-        //    SetfinishPositions(139);
-
-        //    gameState.playerManager.PlayerInit();
-        //    gameState.collectableManager.InitCollectables(coinPositions, stickerPosition, finishPosition);
-        //    gameState.BuildingPhaseActive = true;
-        //    GameState.Instance.PreviousLevel = 1;
-        //}
-
         else if (currentScene.name == "1")
         {
 
@@ -213,16 +190,15 @@ public class LevelManager : MonoBehaviour
             Vector3 playeradjustment = new Vector3(.5f, 0, 0);
             gameState.gridManager.width = 20;
             gameState.gridManager.heigth = 11;
-            playerPlatforms = new PlayerPlatforms(4, 4, 1);
-            gameState.gridManager.Build_Grid_BuildingPhase_Without_Visuals();
-            gameState.playerManager.player.spawnpoint = gameState.gridManager.gridSquares[60] + playeradjustment;
-            //gameState.platformManager.Build_Vertical_Slice_Level6();
-            gameState.platformManager.Build_Vertical_Slice_Level7();
-            SetCoinPositions(137);
-            SetCoinPositions(123);
-            SetCoinPositions(187);
-            SetStickerPositions(12);
-            SetfinishPositions(88);
+            playerPlatforms = new PlayerPlatforms(12, 12, 1);
+            gameState.gridManager.Build_Grid_BuildingPhase_With_Visuals();
+            gameState.playerManager.player.spawnpoint = gameState.gridManager.gridSquares[1] + playeradjustment;
+            gameState.platformManager.Build_Vertical_Slice_Level6();
+            SetCoinPositions(67);
+            SetCoinPositions(90);
+            SetCoinPositions(115);
+            SetStickerPositions(177);
+            SetfinishPositions(178);
 
             gameState.playerManager.PlayerInit();
             gameState.collectableManager.InitCollectables(coinPositions, stickerPosition, finishPosition);
