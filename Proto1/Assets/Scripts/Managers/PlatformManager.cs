@@ -659,6 +659,48 @@ public class PlatformManager : MonoBehaviour
             }
         }
     }
+    internal void Build_Vertical_Slice_Level7()
+    {
+        Vector3 rampAdjustment = new Vector3(0.5f, 0f, 0f);
+        List<int> RampSpots = new List<int>();
+        List<int> PlatformSpots = new List<int>();
+        List<int> FinishSpots = new List<int>();
+        List<int> TrampolineSpots = new List<int>();
+        List<int> PortalSpots = new List<int>();
+        List<int> rechthoekSpots = new List<int>();
+        List<int> RampSpotsReversed = new List<int>();
+        List<int> CoinSpots = new List<int>();
+        List<int> RedZoneSpots = new List<int>();
+        List<int> boosterPlatformSpots = new List<int>();
+        RampSpots.Add(80);
+        PortalSpots.Add(91);
+        PortalSpots.Add(34);
+        TrampolineSpots.Add(174);
+        TrampolineSpots.Add(211);
+        PlatformSpots.Add(108);
+        PlatformSpots.Add(109);
+        RedZoneSpots.Add(7);
+        RedZoneSpots.Add(27);
+        RedZoneSpots.Add(47);
+        RedZoneSpots.Add(67);
+        RedZoneSpots.Add(87);
+        RedZoneSpots.Add(107);
+        RedZoneSpots.Add(127);
+        RedZoneSpots.Add(147);
+        RedZoneSpots.Add(148);
+        RedZoneSpots.Add(149);
+        RedZoneSpots.Add(150);
+        RedZoneSpots.Add(151);
+
+
+        //dit moet later anders zijn collectables 
+
+
+
+        Init_Platforms(RampSpots, PlatformSpots, RampSpotsReversed, PortalSpots, TrampolineSpots, rechthoekSpots);
+        initBoostPlatforms(boosterPlatformSpots);
+        initRedZones(RedZoneSpots);
+    }
 
 
 
