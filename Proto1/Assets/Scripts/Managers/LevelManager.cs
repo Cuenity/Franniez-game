@@ -86,7 +86,7 @@ public class LevelManager : MonoBehaviour
         {
             item.gameObject.SetActive(false);
         }
-
+        coinList.Clear();
         stickerObject.gameObject.SetActive(false);
         finish.gameObject.SetActive(false);
 
@@ -190,9 +190,9 @@ public class LevelManager : MonoBehaviour
             Vector3 playeradjustment = new Vector3(.5f, 0, 0);
             gameState.gridManager.width = 20;
             gameState.gridManager.heigth = 11;
-            playerPlatforms = new PlayerPlatforms(2, 12, 1);
-            gameState.gridManager.Build_Grid_BuildingPhase_Without_Visuals();
-            gameState.playerManager.player.spawnpoint = gameState.gridManager.gridSquares[1] + playeradjustment;
+            playerPlatforms = new PlayerPlatforms(12, 12, 1);
+            gameState.gridManager.Build_Grid_BuildingPhase_With_Visuals();
+            gameState.playerManager.player.spawnpoint = gameState.gridManager.gridSquares[0] + playeradjustment;
             gameState.platformManager.Build_Vertical_Slice_Level6();
             SetCoinPositions(46);
             SetCoinPositions(70);

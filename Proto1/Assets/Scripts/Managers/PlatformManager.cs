@@ -241,11 +241,11 @@ public class PlatformManager : MonoBehaviour
         List<int> RedZoneSpots = new List<int>();
         List<int> boosterPlatformSpots = new List<int>();
         RampSpots.Add(21);
-        boosterPlatformSpots.Add(43);
+        //boosterPlatformSpots.Add(43);
        // boosterPlatformSpots.Add(45);
-        RampSpots.Add(90);
-        PlatformSpots.Add(158);
-        PlatformSpots.Add(159);
+        RampSpots.Add(87);
+        PlatformSpots.Add(153);
+        PlatformSpots.Add(154);
 
 
         //dit moet later anders zijn collectables 
@@ -282,13 +282,9 @@ public class PlatformManager : MonoBehaviour
         List<int> CoinSpots = new List<int>();
         List<int> RedZoneSpots = new List<int>();
         List<int> boosterPlatformSpots = new List<int>();
-        RampSpots.Add(21);
-        boosterPlatformSpots.Add(43);
-        // boosterPlatformSpots.Add(45);
-        RampSpots.Add(90);
-        PlatformSpots.Add(158);
-        PlatformSpots.Add(159);
-        RedZoneSpots.Add(0);
+
+        RampSpots.Add(20);
+        TrampolineSpots.Add(124);
 
         //dit moet later anders zijn collectables 
 
