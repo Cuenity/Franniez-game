@@ -29,6 +29,10 @@ public class UIRollingManager : MonoBehaviour
         currentScene = SceneManager.GetActiveScene();
         levelIndicator = currentScene.name;
         levelNumberText.text = "LEVEL " + levelIndicator;
+        if (LocalizationManager.instance.LanguageChoice == Language.Spanish)
+        {
+            levelNumberText.text = "NIVEL " + levelIndicator;
+        }
     }
 
     private void OnEnable()
