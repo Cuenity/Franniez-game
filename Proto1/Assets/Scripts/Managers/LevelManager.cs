@@ -248,7 +248,7 @@ public class LevelManager : MonoBehaviour
             gameState.BuildingPhaseActive = true;
             GameState.Instance.PreviousLevel = 2;
         }
-        else if (currentScene.name == "3")
+        else if (currentScene.name == "4")
         {
             gameState.playerCamera = Instantiate(gameState.playerCamera);
             Vector3 playeradjustment = new Vector3(.5f, 0, 0);
@@ -268,7 +268,28 @@ public class LevelManager : MonoBehaviour
             gameState.playerManager.PlayerInit();
             gameState.collectableManager.InitCollectables(coinPositions, stickerPosition, finishPosition);
             gameState.BuildingPhaseActive = true;
-            GameState.Instance.PreviousLevel = 1;
+            GameState.Instance.PreviousLevel = 4;
+        }
+        else if (currentScene.name == "3")
+        {
+            gameState.playerCamera = Instantiate(gameState.playerCamera);
+            Vector3 playeradjustment = new Vector3(.5f, 0, 0);
+            gameState.gridManager.width = 20;
+            gameState.gridManager.heigth = 11;
+            playerPlatforms = new PlayerPlatforms(8, 8, 1, 0);
+            gameState.gridManager.Build_Grid_BuildingPhase_Without_Visuals();
+            gameState.playerManager.player.spawnpoint = gameState.gridManager.gridSquares[1] + playeradjustment;
+            gameState.platformManager.Build_Vertical_Slice_LevelBoost();
+            SetCoinPositions(104);
+            SetCoinPositions(90);
+            SetCoinPositions(190);
+            SetStickerPositions(75);
+            SetfinishPositions(188);
+
+            gameState.playerManager.PlayerInit();
+            gameState.collectableManager.InitCollectables(coinPositions, stickerPosition, finishPosition);
+            gameState.BuildingPhaseActive = true;
+            GameState.Instance.PreviousLevel = 3;
         }
     }
     public void SetRollingPhase()

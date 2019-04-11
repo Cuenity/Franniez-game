@@ -20,6 +20,6 @@ public class BoostPlatform : MonoBehaviour
     {
         PlayerBal balletje = gameState.playerManager.player;
         Rigidbody body = balletje.GetComponent<Rigidbody>();
-        body.AddForce(new Vector3(body.velocity.x * 3, body.velocity.y, 0), ForceMode.Impulse);
+        body.AddForce(new Vector3(body.velocity.x * 9, body.velocity.y, 0), ForceMode.Impulse);
     }
 }

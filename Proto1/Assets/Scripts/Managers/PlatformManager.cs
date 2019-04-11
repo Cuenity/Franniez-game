@@ -341,6 +341,61 @@ public class PlatformManager : MonoBehaviour
         initBoostPlatforms(BoosterPlatform);
     }
 
+    internal void Build_Vertical_Slice_LevelBoost()
+    {
+        Vector3 rampAdjustment = new Vector3(0.5f, 0f, 0f);
+        List<int> RampSpots = new List<int>();
+        List<int> PlatformSpots = new List<int>();
+        List<int> FinishSpots = new List<int>();
+        List<int> TrampolineSpots = new List<int>();
+        List<int> PortalSpots = new List<int>();
+        List<int> rechthoekSpots = new List<int>();
+        List<int> RampSpotsReversed = new List<int>();
+        List<int> CoinSpots = new List<int>();
+        List<int> RedZoneSpots = new List<int>();
+        List<int> boosterPlatformSpots = new List<int>();
+        RampSpots.Add(21);
+        //RampSpots.Add(43);
+        //RampSpots.Add(65);
+        //RampSpots.Add(87);
+        boosterPlatformSpots.Add(124);
+        //RampSpots.Add(131);
+        //RampSpots.Add(153);
+        //RampSpots.Add(175);
+
+        //RampSpotsReversed.Add(106);
+
+        RedZoneSpots.Add(127);
+        RedZoneSpots.Add(128);
+        RedZoneSpots.Add(129);
+        RedZoneSpots.Add(130);
+
+        RedZoneSpots.Add(68);
+        RedZoneSpots.Add(69);
+        RedZoneSpots.Add(70);
+
+        //dit moet later anders zijn collectables 
+        PlatformSpots.Add(208);
+        PlatformSpots.Add(209);
+        PlatformSpots.Add(207);
+
+        Init_Platforms(RampSpots, PlatformSpots, RampSpotsReversed, PortalSpots, TrampolineSpots, rechthoekSpots);
+
+        for (int i = 0; i < CoinSpots.Count; i++)
+        {
+            coin = Instantiate(coin, gameState.gridManager.gridSquares[CoinSpots[i]] + rampAdjustment, new Quaternion(0, 0, 0, 0));
+
+        }
+
+        for (int i = 0; i < FinishSpots.Count; i++)
+        {
+            finish = Instantiate(finish, gameState.gridManager.gridSquares[FinishSpots[i]], new Quaternion(0, 0, 0, 0));
+
+        }
+        initBoostPlatforms(boosterPlatformSpots);
+        initRedZones(RedZoneSpots);
+    }
+
     internal void Build_Vertical_Slice_Level2()
     {
         List<int> RampSpots = new List<int>();
@@ -610,7 +665,7 @@ public class PlatformManager : MonoBehaviour
         {
             for (int i = 0; i < RampSpotsReversed.Count; i++)
             {
-                ramp.SpawnRampReversed(gameState.gridManager.gridSquares[RampSpotsReversed[i]]);
+                ramp.SpawnRampReversed(gameState.gridManager.gridSquares[RampSpotsReversed[i]] + rampAdjustment);
             }
         }
         if (PortalSpots.Count > 0)
