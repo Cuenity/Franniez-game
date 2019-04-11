@@ -37,7 +37,7 @@ public class UIManager : MonoBehaviour
             for (int i = 0; i < playerPlatforms.inventoryButtonAmmount; i++)
             {
                 InventoryButton buttonForWidth = Instantiate(inventoryButton);
-                buttonForWidth.GetComponent<RectTransform>().sizeDelta = new Vector2(Screen.width / 8, Screen.width / 8);
+                //buttonForWidth.GetComponent<RectTransform>().sizeDelta = new Vector2(Screen.width / 8, Screen.width / 8);
                 instantiatedInventoryButtons[i] = buttonForWidth;
                 instantiatedInventoryButtons[i].transform.SetParent(uiCanvas.transform);
 
