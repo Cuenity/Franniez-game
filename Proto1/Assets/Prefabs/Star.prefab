@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 6470899132723306600}
   - component: {fileID: 9078435339952801508}
   - component: {fileID: 6710506409260164385}
+  - component: {fileID: 4152671995334224270}
   m_Layer: 0
   m_Name: Star
   m_TagString: Untagged
@@ -29,7 +30,7 @@ Transform:
   m_GameObject: {fileID: 6470899132725313192}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.6218662, y: 4.262662, z: 2.2718968}
-  m_LocalScale: {x: 0.15, y: 0.15, z: 0.15}
+  m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -102,8 +103,21 @@ MeshCollider:
   m_GameObject: {fileID: 6470899132725313192}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Convex: 1
   m_CookingOptions: 14
   m_Mesh: {fileID: 4300000, guid: ecb0478104b45834ca051938a0c0fff4, type: 3}
+--- !u!65 &4152671995334224270
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6470899132725313192}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 7.635495, y: 8.392701, z: 2.0114594}
+  m_Center: {x: 1.6027703, y: -0.044824123, z: 0.23214597}

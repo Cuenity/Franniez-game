@@ -33,7 +33,7 @@ public class Coin : MonoBehaviour
     public void SetSpawnpoint(int i)
     {
         gameState = GameState.Instance;
-        Vector3 coinadjustment = new Vector3(-.5f, 0, 0);
+        Vector3 coinadjustment = new Vector3(2f, 0, 0);
         this.spawnpoint = gameState.gridManager.gridSquares[i] + coinadjustment;
     }
 }

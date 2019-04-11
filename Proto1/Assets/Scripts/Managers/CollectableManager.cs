@@ -11,12 +11,12 @@ public class CollectableManager : MonoBehaviour
     List<Vector3> coinPositions;
     Vector3 stickerPosition;
     Vector3 finishPosition;
-    GameState gameaState;
+    GameState gameState;
 
     // Start is called before the first frame update
     void Start()
     {
-        gameaState = GameState.Instance;
+        gameState = GameState.Instance;
     }
 
     // Update is called once per frame
@@ -36,6 +36,7 @@ public class CollectableManager : MonoBehaviour
 
     public void InitCollectables(List<Vector3> coinPositions, Vector3 stickerPosition, Vector3 finishPosition)
     {
+        gameState = GameState.Instance;
         this.coinPositions = coinPositions;
         this.stickerPosition = stickerPosition;
         this.finishPosition = finishPosition;
@@ -47,30 +48,32 @@ public class CollectableManager : MonoBehaviour
 
     public void InitFinish()
     {
-        finish = Instantiate(finish);
+        Finish finish2 = Instantiate(finish);
         Vector3 adjustment = new Vector3(0, -.5f, 0);
-        finish.spawnpoint = finishPosition;
-        finish.transform.position = finish.spawnpoint + adjustment;
-        finish.gameObject.SetActive(true);
+        finish2.spawnpoint = finishPosition;
+        finish2.transform.position = finish2.spawnpoint + adjustment;
+        finish2.gameObject.SetActive(true);
+        gameState.levelManager.finish = finish2;
     }
 
     public void InitCoins()
     {
         foreach (Vector3 coinPosition in coinPositions)
         {
-            coin = Instantiate(coin);
-            coin.spawnpoint = coinPosition;
-            coin.transform.position = coin.spawnpoint;
-            coin.gameObject.SetActive(true);
+            Coin coin2 = Instantiate(coin);
+            coin2.spawnpoint = coinPosition;
+            coin2.transform.position = coin2.spawnpoint;
+            coin2.gameObject.SetActive(true);
+            gameState.levelManager.coinList.Add(coin2);
         }
     }
 
     public void InitSticker()
     {
-        sticker = Instantiate(sticker);
-        sticker.spawnpoint = stickerPosition;
-        sticker.transform.position = sticker.spawnpoint;
-        sticker.gameObject.SetActive(true);
-        // gameaState.levelManager.stickerObject = sticker2;
+        StickerObject sticker2 = Instantiate(sticker);
+        sticker2.spawnpoint = stickerPosition;
+        sticker2.transform.position = sticker2.spawnpoint;
+        sticker2.gameObject.SetActive(true);
+        gameState.levelManager.stickerObject = sticker2;
     }
 }
