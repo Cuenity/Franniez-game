@@ -84,10 +84,6 @@ public class PlayerCamera : MonoBehaviour
                     }
                 }
             }
-            else
-            {
-                mobileScroll();
-            }
         }
         if (gameState.RollingPhaseActive == false)
         {
@@ -116,14 +112,21 @@ public class PlayerCamera : MonoBehaviour
 
     private void LateUpdate()
     {
-        //if (gameState.RollingPhaseActive == false)
-        //{
-        //    if (platformDragActive == false)
-        //    {
-        //        this.Transfrom_YZ();
-        //    }
+        if (gameState.RollingPhaseActive == false)
+        {
+            if (platformDragActive == false)
+            {
+                if (Application.platform != RuntimePlatform.Android)
+                {
+                    Transfrom_YZ();
+                }
+                else
+                {
+                    mobileScroll();
+                }
+            }
 
-        //}
+        }
     }
 
 
@@ -174,52 +177,6 @@ public class PlayerCamera : MonoBehaviour
             this.transform.position = new Vector3(gameState.gridManager.width - .1f, this.transform.position.y, this.transform.position.z);
         }
     }
-
-    // The rate of change of the orthographic size in orthographic mode.
-
-
-    //public void mobileScroll()
-    //{
-    //    // If there are two touches on the device...
-    //    if (Input.touchCount == 2)
-    //    {
-    //        // Store both touches.
-    //        Touch touchZero = Input.GetTouch(0);
-    //        Touch touchOne = Input.GetTouch(1);
-
-    //        // Find the position in the previous frame of each touch.
-    //        Vector3 touchZeroPrevPos = touchZero.position - touchZero.deltaPosition;
-    //        Vector3 touchOnePrevPos = touchOne.position - touchOne.deltaPosition;
-
-    //        // Find the magnitude of the vector (the distance) between the touches in each frame.
-    //        Vector3 prevTouchDeltaMag = touchZeroPrevPos - touchOnePrevPos;
-    //        Vector3 touchDeltaMag = touchZero.position - touchOne.position;
-    //        Vector3 diffrence = prevTouchDeltaMag - touchDeltaMag;
-
-    //        if (diffrence.x < 0 && diffrence.y < 0)
-    //        {
-    //            if (camera.transform.position.z >= -30)
-    //            {
-    //                camera.transform.position = new Vector3(camera.transform.position.x, camera.transform.position.y, camera.transform.position.z - 1);
-    //            }
-    //            else
-    //            {
-    //                camera.transform.position = new Vector3(camera.transform.position.x, camera.transform.position.y, -29.9f);
-    //            }
-    //        }
-    //        if (diffrence.x > 0 && diffrence.y > 0)
-    //        {
-    //            if (camera.transform.position.z <= -10)
-    //            {
-    //                camera.transform.position = new Vector3(camera.transform.position.x, camera.transform.position.y, camera.transform.position.z + 1);
-    //            }
-    //            else
-    //            {
-    //                camera.transform.position = new Vector3(camera.transform.position.x, camera.transform.position.y, -10.1f);
-    //            }
-    //        }
-    //    }
-    //}
 
     public void mobileZoom()
     {
