@@ -15,26 +15,25 @@ public class UIDragManager : MonoBehaviour, IDragHandler, IBeginDragHandler, IEn
     GameObject draggedPlatform;
     bool draggingAllowed;
 
-
     private new Camera camera;
     PlatformManager platformManager;
     PlayerCamera playercamera;
-
 
     float zAxis = 0;
     //Vector3 clickOffset = Vector3.zero;
 
     PlatformType type;
 
-    private void OnPointerDown()
-    {
-        playercamera.platformDragActive = true;
-    }
+    //private void OnPointerDown()
+    //{
+    //    playercamera.platformDragActive = true;
+    //}
 
     private void Start()
     {
         playercamera = GameState.Instance.playerCamera;
         camera = GameState.Instance.playerCamera.GetComponent<Camera>();
+        platformManager = GameState.Instance.platformManager.GetComponent<PlatformManager>();
 
         zAxis = transform.position.z;
     }
@@ -51,29 +50,16 @@ public class UIDragManager : MonoBehaviour, IDragHandler, IBeginDragHandler, IEn
     public void OnBeginDrag(PointerEventData data)
     {
         draggingAllowed = true;
-
-        playercamera = GameState.Instance.playerCamera;
-        camera = GameState.Instance.playerCamera.GetComponent<Camera>();
         playercamera.platformDragActive = true;
 
-        platformManager = GameState.Instance.platformManager.GetComponent<PlatformManager>();
 
-        GameObject inventoryButton = FindInventoryButton(data);
 
-        InventoryButton correctButton = null;
-        foreach (InventoryButton button in GameState.Instance.UIManager.instantiatedInventoryButtons)
-        {
-            if (button.name == inventoryButton.name)
-            {
-                correctButton = button;
-                break;
-            }
-        }
+        InventoryButton correctButton = FindInventoryButton(data);
         if (correctButton != null)
         {
             if (correctButton.InventoryButtonAllowed)
             {
-                if (inventoryButton.name == "platformSquareButton")
+                if (correctButton.name == InventoryButtonName.platformSquareButton.ToString())
                 {
                     type = PlatformType.platformSquare;
                     draggedPlatform = Instantiate(platformSquare);
@@ -85,7 +71,7 @@ public class UIDragManager : MonoBehaviour, IDragHandler, IBeginDragHandler, IEn
                     }
                     GameState.Instance.levelManager.playerPlatforms.UpdatePlatformSquaresLeft(correctButton);
                 }
-                else if (inventoryButton.name == "rampInventoryButton")
+                else if (correctButton.name == InventoryButtonName.rampInventoryButton.ToString())
                 {
                     type = PlatformType.ramp;
                     draggedPlatform = Instantiate(ramp);
@@ -98,7 +84,7 @@ public class UIDragManager : MonoBehaviour, IDragHandler, IBeginDragHandler, IEn
 
                     GameState.Instance.levelManager.playerPlatforms.UpdateRampsLeft(correctButton);
                 }
-                else if (inventoryButton.name == "trampolineButton")
+                else if (correctButton.name == InventoryButtonName.trampolineButton.ToString())
                 {
                     type = PlatformType.trampoline;
 
@@ -112,7 +98,7 @@ public class UIDragManager : MonoBehaviour, IDragHandler, IBeginDragHandler, IEn
 
                     GameState.Instance.levelManager.playerPlatforms.UpdateTrampolinesLeft(correctButton);
                 }
-                else if (inventoryButton.name == "boostPlatformButton")
+                else if (correctButton.name == InventoryButtonName.boostPlatformButton.ToString())
                 {
                     type = PlatformType.boostPlatform;
 
@@ -142,17 +128,30 @@ public class UIDragManager : MonoBehaviour, IDragHandler, IBeginDragHandler, IEn
         }
     }
 
-    private GameObject FindInventoryButton(PointerEventData data)
+    private InventoryButton FindInventoryButton(PointerEventData data)
     {
-        if (data.pointerPressRaycast.gameObject.transform.parent.gameObject.name == "UICanvas") // type is canvas? apparte tag voor UICanvas? naam geven zonder 1?
+        GameObject buttonFromRaycast = null;
+        if (data.pointerPressRaycast.gameObject.tag == "InventoryButton")
         {
-            return data.pointerPressRaycast.gameObject;
+            buttonFromRaycast = data.pointerPressRaycast.gameObject;
         }
         else
         {
-            return data.pointerPressRaycast.gameObject.transform.parent.gameObject;
+            buttonFromRaycast = data.pointerPressRaycast.gameObject.transform.parent.gameObject;
         }
+
+        InventoryButton correctButton = null;
+        foreach (InventoryButton button in GameState.Instance.UIManager.instantiatedInventoryButtons)
+        {
+            if (button.name == buttonFromRaycast.name)
+            {
+                correctButton = button;
+                return correctButton;
+            }
+        }
+        return correctButton;
     }
+
 
     public void OnDrag(PointerEventData eventData)
     {
