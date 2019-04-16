@@ -1,0 +1,59 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &6562022877409085260
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6562022877409085262}
+  - component: {fileID: 6562022877409085263}
+  m_Layer: 0
+  m_Name: LevelEditorManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6562022877409085262
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6562022877409085260}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -107, y: 395, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6562022877409085263
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6562022877409085260}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c376542ab24d12549b5eeec753e78329, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  width: 0
+  heigth: 0
+  gridSquares: []
+  ramp: {fileID: 1365197987278355187, guid: 6e5c851c8e894f64fb41414aaeec110f, type: 3}
+  platform: {fileID: 4581323721575538998, guid: af6585d6aa968f246804e97579948daa,
+    type: 3}
+  inventoryButton: {fileID: 4106794643439255396, guid: ec46b2a2eb4814e44a4f05858e3a45e8,
+    type: 3}
+  instantiatedInventoryButtons: []
+  rampImage: {fileID: 21300000, guid: 58658af157b87a944893f2ab562031e5, type: 3}
+  platformSquareImage: {fileID: 21300000, guid: cf81ca485854bc1499be3537b667dd5b,
+    type: 3}
+  trampolineImage: {fileID: 21300000, guid: 7afcebf36a4126c4cbbe72b1d046f10a, type: 3}
+  boostPlatformImage: {fileID: 21300000, guid: a95d26a4316b334418579ba7dd58dcec, type: 3}
