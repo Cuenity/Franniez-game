@@ -19,7 +19,8 @@ public class UIManager : MonoBehaviour
         //bool instantiatedInventoryButtonsArrayNotInstantiated = instantiatedInventoryButtons[0] == null;
         if (instantiatedInventoryButtons[0] == null)
         {
-            GameObject uiCanvas = GameObject.FindGameObjectWithTag("UICanvas");
+            //GameObject uiCanvas = GameObject.FindGameObjectWithTag("UICanvas");
+            Canvas uiCanvas = canvas;
 
             int buttonDistance = Screen.width / (playerPlatforms.inventoryButtonAmmount + 1);
             int buttonHeight = Screen.height / 8;

@@ -86,6 +86,7 @@ public class PlatformDragManager : MonoBehaviour
                     if (result.gameObject.tag == "InventoryButton")
                     {
                         platformDraggedToButton = true;
+                        break;
                     }
                 }
                 if (tag == "PlatformSquare" && GameState.Instance.UIManager.instantiatedInventoryButtons[i].name == InventoryButtonName.platformSquareButton.ToString())

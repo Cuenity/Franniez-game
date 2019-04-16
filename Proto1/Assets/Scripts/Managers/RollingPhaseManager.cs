@@ -18,21 +18,54 @@ public class RollingPhaseManager : MonoBehaviour
     {
         gameState = GameState.Instance;
     }
-    // Start is called before the first frame update
-    void Start()
+
+    // moet weg uit start
+    void Start() // moet weg uit start
     {
-        //amountCoins = 0;
         level = new Level();
 
         Scene scene = SceneManager.GetActiveScene();
         int.TryParse(scene.name, out levelNumber);
 
-        if (levelNumber == 0){return;}
+        if (levelNumber == 0) { return; }
         player = PlayerDataController.instance.player;
 
-        if (player == null){return;}
+        if (player == null) { return; }
 
-        if (player.levels.Length > levelNumber-1 && player.levels[levelNumber - 1] != null)
+        if (player.levels.Length > levelNumber - 1 && player.levels[levelNumber - 1] != null)
+        {
+            // Als hij het niet vind, doet ff iets
+
+            level = player.levels[levelNumber - 1];
+        }
+        else
+        {
+            level = new Level();
+        }
+
+
+        if (level.gotSticker)
+        {
+            pickedSticker = true;
+        }
+        level.playedLevel = true;
+    }
+
+    public void StartLevel()
+    {
+        //gameState = GameState.Instance;
+
+        level = new Level();
+
+        Scene scene = SceneManager.GetActiveScene();
+        int.TryParse(scene.name, out levelNumber);
+
+        if (levelNumber == 0) { return; }
+        player = PlayerDataController.instance.player;
+
+        if (player == null) { return; }
+
+        if (player.levels.Length > levelNumber - 1 && player.levels[levelNumber - 1] != null)
         {
             // Als hij het niet vind, doet ff iets
 
@@ -52,11 +85,6 @@ public class RollingPhaseManager : MonoBehaviour
     }
 
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
 
     public void Init()
     {

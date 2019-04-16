@@ -16,6 +16,7 @@ public class LevelManager : MonoBehaviour
     public List<Coin> coinList = new List<Coin>();
     public StickerObject stickerObject;
     public Finish finish;
+    public Canvas canvas;
 
     public PlayerPlatforms playerPlatforms;
     //public PlayerPlatforms PlayerPlatforms
@@ -185,6 +186,10 @@ public class LevelManager : MonoBehaviour
         }
         else if (currentScene.name == "1")
         {
+            gameState.UIManager.canvas = Instantiate(canvas);
+
+            //word belangrijk!!!! mag dan niet meer via de start van rollingPhaseManager
+            //gameState.rollingPhaseManager.StartLevel();
 
             gameState.playerCamera = Instantiate(gameState.playerCamera);
             Vector3 playeradjustment = new Vector3(.5f, 0, 0);
@@ -229,6 +234,8 @@ public class LevelManager : MonoBehaviour
         }
         else if (currentScene.name == "2")
         {
+            gameState.UIManager.canvas = Instantiate(canvas);
+
             gameState.playerCamera = Instantiate(gameState.playerCamera);
             Vector3 playeradjustment = new Vector3(.5f, 0, 0);
             gameState.gridManager.width = 20;
@@ -250,6 +257,8 @@ public class LevelManager : MonoBehaviour
         }
         else if (currentScene.name == "4")
         {
+            gameState.UIManager.canvas = Instantiate(canvas);
+
             gameState.playerCamera = Instantiate(gameState.playerCamera);
             Vector3 playeradjustment = new Vector3(.5f, 0, 0);
             gameState.gridManager.width = 20;
@@ -272,6 +281,8 @@ public class LevelManager : MonoBehaviour
         }
         else if (currentScene.name == "3")
         {
+            gameState.UIManager.canvas = Instantiate(canvas);
+
             gameState.playerCamera = Instantiate(gameState.playerCamera);
             Vector3 playeradjustment = new Vector3(.5f, 0, 0);
             gameState.gridManager.width = 20;
