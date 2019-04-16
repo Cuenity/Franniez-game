@@ -8,7 +8,7 @@ public class PlatformDragManager : MonoBehaviour
     private Vector3 screenPoint;
     private Vector3 offset;
 
-    private Camera camera;
+    private new Camera camera;
 
     bool rotateSpriteHit;
 
@@ -88,19 +88,19 @@ public class PlatformDragManager : MonoBehaviour
                         platformDraggedToButton = true;
                     }
                 }
-                if (tag == "PlatformSquare" && GameState.Instance.UIManager.instantiatedInventoryButtons[i].name == "platformSquareButton")
+                if (tag == "PlatformSquare" && GameState.Instance.UIManager.instantiatedInventoryButtons[i].name == InventoryButtonName.platformSquareButton.ToString())
                 {
                     button = GameState.Instance.UIManager.instantiatedInventoryButtons[i];
                 }
-                else if (tag == "Ramp" && GameState.Instance.UIManager.instantiatedInventoryButtons[i].name == "rampInventoryButton")
+                else if (tag == "Ramp" && GameState.Instance.UIManager.instantiatedInventoryButtons[i].name == InventoryButtonName.rampInventoryButton.ToString())
                 {
                     button = GameState.Instance.UIManager.instantiatedInventoryButtons[i];
                 }
-                else if (tag == "Trampoline" && GameState.Instance.UIManager.instantiatedInventoryButtons[i].name == "trampolineButton")
+                else if (tag == "Trampoline" && GameState.Instance.UIManager.instantiatedInventoryButtons[i].name == InventoryButtonName.trampolineButton.ToString())
                 {
                     button = GameState.Instance.UIManager.instantiatedInventoryButtons[i];
                 }
-                else if (tag == "Booster" && GameState.Instance.UIManager.instantiatedInventoryButtons[i].name == "boostPlatformButton")
+                else if (tag == "Booster" && GameState.Instance.UIManager.instantiatedInventoryButtons[i].name == InventoryButtonName.boostPlatformButton.ToString())
                 {
                     button = GameState.Instance.UIManager.instantiatedInventoryButtons[i];
                 }
