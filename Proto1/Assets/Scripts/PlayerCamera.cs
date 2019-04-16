@@ -17,6 +17,11 @@ public class PlayerCamera : MonoBehaviour
     // public float dragSpeed = 1;
     private Vector3 dragOrigin;
     Camera camera;
+    Vector2?[] oldTouchPositions = {
+        null,
+        null
+    };
+
     private void Awake()
     {
 
@@ -53,12 +58,13 @@ public class PlayerCamera : MonoBehaviour
             Body.AddForce(force);
 
             transform.LookAt(Target.transform.position + TargetLookAtOffset);
+            mobileZoom();
         }
         if (gameState.BuildingPhaseActive == true)
         {
             if (Application.platform != RuntimePlatform.Android)
             {
-                Vector2 mousedata = Input.mouseScrollDelta;
+                Vector3 mousedata = Input.mouseScrollDelta;
                 if (mousedata.y > 0)
                 {
                     //zoomin
@@ -110,14 +116,14 @@ public class PlayerCamera : MonoBehaviour
 
     private void LateUpdate()
     {
-        if (gameState.RollingPhaseActive == false)
-        {
-            if (platformDragActive == false)
-            {
-                this.Transfrom_YZ();
-            }
+        //if (gameState.RollingPhaseActive == false)
+        //{
+        //    if (platformDragActive == false)
+        //    {
+        //        this.Transfrom_YZ();
+        //    }
 
-        }
+        //}
     }
 
 
@@ -169,15 +175,58 @@ public class PlayerCamera : MonoBehaviour
         }
     }
 
-    public float perspectiveZoomSpeed = 0.5f;        // The rate of change of the field of view in perspective mode.
-    public float orthoZoomSpeed = 0.5f;        // The rate of change of the orthographic size in orthographic mode.
+    // The rate of change of the orthographic size in orthographic mode.
 
 
-    public void mobileScroll()
+    //public void mobileScroll()
+    //{
+    //    // If there are two touches on the device...
+    //    if (Input.touchCount == 2)
+    //    {
+    //        // Store both touches.
+    //        Touch touchZero = Input.GetTouch(0);
+    //        Touch touchOne = Input.GetTouch(1);
+
+    //        // Find the position in the previous frame of each touch.
+    //        Vector3 touchZeroPrevPos = touchZero.position - touchZero.deltaPosition;
+    //        Vector3 touchOnePrevPos = touchOne.position - touchOne.deltaPosition;
+
+    //        // Find the magnitude of the vector (the distance) between the touches in each frame.
+    //        Vector3 prevTouchDeltaMag = touchZeroPrevPos - touchOnePrevPos;
+    //        Vector3 touchDeltaMag = touchZero.position - touchOne.position;
+    //        Vector3 diffrence = prevTouchDeltaMag - touchDeltaMag;
+
+    //        if (diffrence.x < 0 && diffrence.y < 0)
+    //        {
+    //            if (camera.transform.position.z >= -30)
+    //            {
+    //                camera.transform.position = new Vector3(camera.transform.position.x, camera.transform.position.y, camera.transform.position.z - 1);
+    //            }
+    //            else
+    //            {
+    //                camera.transform.position = new Vector3(camera.transform.position.x, camera.transform.position.y, -29.9f);
+    //            }
+    //        }
+    //        if (diffrence.x > 0 && diffrence.y > 0)
+    //        {
+    //            if (camera.transform.position.z <= -10)
+    //            {
+    //                camera.transform.position = new Vector3(camera.transform.position.x, camera.transform.position.y, camera.transform.position.z + 1);
+    //            }
+    //            else
+    //            {
+    //                camera.transform.position = new Vector3(camera.transform.position.x, camera.transform.position.y, -10.1f);
+    //            }
+    //        }
+    //    }
+    //}
+
+    public void mobileZoom()
     {
-        // If there are two touches on the device...
         if (Input.touchCount == 2)
         {
+            float perspectiveZoomSpeed = 0.1f;        // The rate of change of the field of view in perspective mode.
+            
             // Store both touches.
             Touch touchZero = Input.GetTouch(0);
             Touch touchOne = Input.GetTouch(1);
@@ -187,36 +236,92 @@ public class PlayerCamera : MonoBehaviour
             Vector2 touchOnePrevPos = touchOne.position - touchOne.deltaPosition;
 
             // Find the magnitude of the vector (the distance) between the touches in each frame.
-            Vector3 prevTouchDeltaMag = touchZeroPrevPos - touchOnePrevPos;
-            Vector3 touchDeltaMag = touchZero.position - touchOne.position;
-            Vector3 diffrence = prevTouchDeltaMag - touchDeltaMag;
+            float prevTouchDeltaMag = (touchZeroPrevPos - touchOnePrevPos).magnitude;
+            float touchDeltaMag = (touchZero.position - touchOne.position).magnitude;
 
-            if (diffrence.x < 0 && diffrence.y < 0)
-            {
-                if (camera.transform.position.z >= -30)
-                {
-                    camera.transform.position = new Vector3(camera.transform.position.x, camera.transform.position.y, camera.transform.position.z - 1);
-                }
-                else
-                {
-                    camera.transform.position = new Vector3(camera.transform.position.x, camera.transform.position.y, -29.9f);
-                }
-            }
-            if (diffrence.x > 0 && diffrence.y > 0)
-            {
-                if (camera.transform.position.z <= -10)
-                {
-                    camera.transform.position = new Vector3(camera.transform.position.x, camera.transform.position.y, camera.transform.position.z + 1);
-                }
-                else
-                {
-                    camera.transform.position = new Vector3(camera.transform.position.x, camera.transform.position.y, -10.1f);
-                }
-            }
+            // Find the difference in the distances between each frame.
+            float deltaMagnitudeDiff = prevTouchDeltaMag - touchDeltaMag;
+
+            // If the camera is orthographic...
+
+            // Otherwise change the field of view based on the change in distance between the touches.
+            camera.fieldOfView += deltaMagnitudeDiff * perspectiveZoomSpeed;
+
+            // Clamp the field of view to make sure it's between 0 and 180.
+            camera.fieldOfView = Mathf.Clamp(camera.fieldOfView, 25.1f, 89.9f);
         }
     }
 
+    public void mobileScroll()
+    {
+        Vector2 oldTouchVector = new Vector2();
+        float oldTouchDistance = new float();
+
+        if (Input.touchCount == 0)
+        {
+            oldTouchPositions[0] = null;
+            oldTouchPositions[1] = null;
+        }
+        else if (Input.touchCount == 1)
+        {
+            if (oldTouchPositions[0] == null || oldTouchPositions[1] != null)
+            {
+                oldTouchPositions[0] = Input.GetTouch(0).position;
+                oldTouchPositions[1] = null;
+            }
+            else
+            {
+                Vector2 newTouchPosition = Input.GetTouch(0).position;
+                Vector3 outsideGrid = transform.position + transform.TransformDirection((Vector3)((oldTouchPositions[0] - newTouchPosition) * GetComponent<Camera>().orthographicSize / GetComponent<Camera>().pixelHeight * 2f));
+                bool nope = true;
+                if (outsideGrid.y < gameState.gridManager.heigth * -1)
+                {
+                    transform.position = new Vector3(outsideGrid.x, gameState.gridManager.heigth * -1 + .1f, outsideGrid.z);
+                    nope = false;
+                }
+                if (outsideGrid.y > 0)
+                {
+                    transform.position = new Vector3(outsideGrid.x, -.1f, outsideGrid.z);
+                    nope = false;
+                }
+                if (outsideGrid.x < 0)
+                {
+                    transform.position = new Vector3(.1f, outsideGrid.y, outsideGrid.z);
+                    nope = false;
+                }
+                if (outsideGrid.x > gameState.gridManager.width)
+                {
+                    transform.position = new Vector3(gameState.gridManager.width - .1f, outsideGrid.y, outsideGrid.z);
+                    nope = false;
+                }
+                if (nope== true)
+                {
+                    transform.position = outsideGrid;
+                }
+
+                // transform.position += transform.TransformDirection((Vector3)((oldTouchPositions[0] - newTouchPosition) * GetComponent<Camera>().orthographicSize / GetComponent<Camera>().pixelHeight * 2f));
+
+                oldTouchPositions[0] = newTouchPosition;
+            }
+        }
+        else
+        {
+            if (oldTouchPositions[1] == null)
+            {
+                oldTouchPositions[0] = Input.GetTouch(0).position;
+                oldTouchPositions[1] = Input.GetTouch(1).position;
+                oldTouchVector = (Vector2)(oldTouchPositions[0] - oldTouchPositions[1]);
+                oldTouchDistance = oldTouchVector.magnitude;
+            }
+            else
+            {
+                mobileZoom();
+            }
+        }
+    }
 }
+
+
 
 
 
