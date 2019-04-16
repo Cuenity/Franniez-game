@@ -43,7 +43,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ae9cfa20e1c29845a306f306335880a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  canvas: {fileID: 2879492348112831362, guid: da83d1c688dacde4a824218a9b65e098, type: 3}
+  canvas: {fileID: 5378894420974302099, guid: 51b8d6f18130beb459ad0df4dc04e1e6, type: 3}
   inventoryButton: {fileID: 4106794643439255396, guid: ec46b2a2eb4814e44a4f05858e3a45e8,
     type: 3}
   instantiatedInventoryButtons: []

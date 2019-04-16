@@ -32,7 +32,7 @@ public class RollingPhaseManager : MonoBehaviour
 
         if (player == null){return;}
 
-        if (player.levels[levelNumber - 1] != null)
+        if (player.levels.Length > levelNumber-1 && player.levels[levelNumber - 1] != null)
         {
             // Als hij het niet vind, doet ff iets
 
