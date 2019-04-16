@@ -19,6 +19,6 @@ public class RedZone : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         Handheld.Vibrate();
-        gameState.playerManager.player.respawnBal();
+        gameState.levelManager.SetBuildingPhase();
     }
 }
