@@ -149,7 +149,7 @@ public class RollingPhaseManager : MonoBehaviour
         PlayerDataController.instance.Save();
         PlayerDataController.instance.previousScene = levelNumber;
         DontDestroyOnLoad(gameState.playerManager.player);
-        gameState.UIManager.RemoveInventoryButtons();
+        gameState.UIManager.DeactivateInventoryButtons();
         GameState.Instance.levelManager.AsynchronousLoadStart("VictoryScreen");
         gameState.playerCamera.gameObject.SetActive(false);
         gameState.levelManager.levelIsSpawned = false;

@@ -251,7 +251,7 @@ GameObject:
   - component: {fileID: 2537083201353956709}
   - component: {fileID: 2809481282549040139}
   m_Layer: 5
-  m_Name: Button
+  m_Name: GarbageBinButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
