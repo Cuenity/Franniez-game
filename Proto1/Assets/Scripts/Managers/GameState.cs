@@ -4,40 +4,38 @@ using UnityEngine.SceneManagement;
 
 public class GameState : MonoBehaviour
 {
-    public BuildingPhaseManager buildingPhaseManager;
+
+    // Serialize deze dingen nog
     public RollingPhaseManager rollingPhaseManager;
-    IOManager IOManager;
-    InputManager InputManager;
-    public UIManager UIManager;
+    public BuildingPhaseManager buildingPhaseManager;
     public LevelManager levelManager;
+
     public PlayerManager playerManager;
+    public PlayerBallManager playerBallManager;
+    public PlayerCamera playerCamera;
+
     public PlatformManager platformManager;
     public CollectableManager collectableManager;
+    public GridManager gridManager;
+    public ButtonManager buttonManager;
+
+    public UIManager UIManager;
+
+    // Privates
     private bool buildingPhaseActive = true;
     private bool rollingPhaseActive = false;
-    public PlayerCamera playerCamera;
-    Scene currentScene;
-    public GridManager gridManager;
-    public PlayerBallManager playerBallManager;
-    public ButtonManager buttonManager;
 
     public int PreviousLevel;
 
     private static GameState instance;
     public static GameState Instance
     {
-        get
-        {
-            return instance;
-        }
+        get {  return instance; }
     }
 
     public bool BuildingPhaseActive
     {
-        get
-        {
-            return buildingPhaseActive;
-        }
+        get { return buildingPhaseActive; }
         set
         {
             buildingPhaseActive = value;
@@ -54,10 +52,7 @@ public class GameState : MonoBehaviour
 
     public bool RollingPhaseActive
     {
-        get
-        {
-            return rollingPhaseActive;
-        }
+        get {  return rollingPhaseActive; }
         set
         {
             rollingPhaseActive = value;
@@ -65,74 +60,50 @@ public class GameState : MonoBehaviour
             {
                 rollingPhaseManager.Init();
             }
-            else
-            {
-
-            }
         }
     }
 
 
     void Awake()
     {
-        //DontDestroyOnLoad(this);
+        DontDestroyOnLoad(this);
 
         instance = this;
 
-        buildingPhaseManager = Instantiate(buildingPhaseManager, instance.transform);
-        buildingPhaseManager.transform.parent = this.transform;
         rollingPhaseManager = Instantiate(rollingPhaseManager, instance.transform);
         rollingPhaseManager.transform.parent = this.transform;
-        collectableManager = Instantiate(collectableManager, instance.transform);
-        collectableManager.transform.parent = this.transform;
-        //IOManager = Instantiate(IOManager, instance.transform);
-        //IOManager.transform.parent = this.transform;
-        //InputManager = Instantiate(InputManager, instance.transform);
-        //InputManager.transform.parent = this.transform;
-        UIManager = Instantiate(UIManager, instance.transform);
-        UIManager.transform.parent = this.transform;
-        levelManager = Instantiate(levelManager, instance.transform);
-        levelManager.transform.parent = this.transform;
+
+        buildingPhaseManager = Instantiate(buildingPhaseManager, instance.transform);
+        buildingPhaseManager.transform.parent = this.transform;
+
         playerManager = Instantiate(playerManager, instance.transform);
         playerManager.transform.parent = this.transform;
-        platformManager = Instantiate(platformManager, instance.transform);
-        platformManager.transform.parent = this.transform;
-        gridManager = Instantiate(gridManager, instance.transform);
-        gridManager.transform.parent = this.transform;
+
+        playerBallManager = Instantiate(playerBallManager, instance.transform);
+        playerBallManager.transform.parent = this.transform;
+
         playerCamera = Instantiate(playerCamera, instance.transform);
         playerCamera.transform.parent = this.transform;
- 		playerBallManager = Instantiate(playerBallManager, instance.transform);
-        playerBallManager.transform.parent = this.transform;
+
+        platformManager = Instantiate(platformManager, instance.transform);
+        platformManager.transform.parent = this.transform;
+
+        collectableManager = Instantiate(collectableManager, instance.transform);
+        collectableManager.transform.parent = this.transform;
+
+        gridManager = Instantiate(gridManager, instance.transform);
+        gridManager.transform.parent = this.transform;
+
         buttonManager = Instantiate(buttonManager, instance.transform);
         buttonManager.transform.parent = this.transform;
-        //PreviousScene = 0;
 
-        //buildingPhaseManager = gameObject.AddComponent<BuildingPhaseManager>();
-        //rollingPhaseManager = gameObject.AddComponent<RollingPhaseManager>();
-        //collectableManager = gameObject.AddComponent<CollectableManager>();
-        //IOManager = gameObject.AddComponent<IOManager>();
-        //InputManager = gameObject.AddComponent<InputManager>();
-        //UIManager = gameObject.AddComponent<UIManager>();
-        //levelManager = gameObject.AddComponent<LevelManager>();
-        //playerManager = gameObject.AddComponent<PlayerManager>();
-        //platformManager = gameObject.AddComponent<PlatformManager>();
-        //gridManager = gameObject.AddComponent<GridManager>();
-        //playerCamera = Instantiate(playerCamera);
+        levelManager = Instantiate(levelManager, instance.transform);
+        levelManager.transform.parent = this.transform;
 
         levelManager.InitScene("1");
     }
 
     // Start is called before the first frame update
-    void Start()
-    {
-
-        //PlayerManager.spawnPlayer();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
+    void Start(){}
 
 }

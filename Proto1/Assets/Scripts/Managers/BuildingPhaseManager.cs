@@ -24,7 +24,7 @@ public class BuildingPhaseManager : MonoBehaviour
 
     public void Init() {
         //LET OP ELKE KEER ALS DIE SHIT VERANDERT GAAN WE HIERDOORHEEN IS DAT NIET CHILL
-        if (SceneManager.GetActiveScene().name != "VictoryScreen")
+        if (SceneManager.GetActiveScene().name != "VictoryScreen" && SceneManager.GetActiveScene().name != "MainMenu")
         {
             PlayerPlatforms platforms = gameState.levelManager.playerPlatforms;
             gameState.UIManager.InventoryButtons(platforms); // InventoryButtons moet meegeven welke platformen en hoeveel van elk, elk verschillend type krijgt één knop met daarin een platform (als afbeelding of wat dan ook) met het aantal weergegeven.
