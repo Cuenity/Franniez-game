@@ -76,14 +76,12 @@ public class ButtonManager : MonoBehaviour
 
     public void RemoveAllPlayerPlatformsFromScene()
     {
-        if (gameState.levelManager.playerPlatforms.placedPlatforms.Count > 0)
-        {
-            foreach (GameObject placedPlatform in gameState.levelManager.playerPlatforms.placedPlatforms)
-            {
-                UpdatePlayerPlatforms(placedPlatform);
+        int placedPlatformsAmount = gameState.levelManager.playerPlatforms.placedPlatforms.Count;
 
-                Destroy(placedPlatform);
-            }
+        while (placedPlatformsAmount > 0)
+        {
+            UpdatePlayerPlatforms(gameState.levelManager.playerPlatforms.placedPlatforms[0]);
+            placedPlatformsAmount--;
         }
     }
 
@@ -117,8 +115,8 @@ public class ButtonManager : MonoBehaviour
             GameState.Instance.levelManager.playerPlatforms.UpdateBoostPlatformsLeft(button);
             button.InventoryButtonAllowed = true;
         }
-        GameState.Instance.levelManager.playerPlatforms.placedPlatforms.Remove(gameObject);
-        Destroy(gameObject);
+        GameState.Instance.levelManager.playerPlatforms.placedPlatforms.Remove(playerPlatform);
+        Destroy(playerPlatform);
         GameState.Instance.playerCamera.platformDragActive = false;
 
     }
