@@ -18,59 +18,26 @@ public class RollingPhaseManager : MonoBehaviour
     {
         gameState = GameState.Instance;
     }
-
-    // moet weg uit start
-    void Start() // moet weg uit start
+    // Start is called before the first frame update
+    void Start()
     {
+        //amountCoins = 0;
         level = new Level();
 
         Scene scene = SceneManager.GetActiveScene();
         int.TryParse(scene.name, out levelNumber);
 
-        if (levelNumber == 0) { return; }
+        if (levelNumber == 0){return;}
         player = PlayerDataController.instance.player;
 
-        if (player == null) { return; }
+        if (player == null){return;}
+        //INDEX OUT OF RANGE BIJ LEVELSWITCH
+        //if (player.levels[levelNumber - 1] != null)
+        //{
+        //    // Als hij het niet vind, doet ff iets
 
-        if (player.levels.Length > levelNumber - 1 && player.levels[levelNumber - 1] != null)
-        {
-            // Als hij het niet vind, doet ff iets
-
-            level = player.levels[levelNumber - 1];
-        }
-        else
-        {
-            level = new Level();
-        }
-
-
-        if (level.gotSticker)
-        {
-            pickedSticker = true;
-        }
-        level.playedLevel = true;
-    }
-
-    public void StartLevel()
-    {
-        //gameState = GameState.Instance;
-
-        level = new Level();
-
-        Scene scene = SceneManager.GetActiveScene();
-        int.TryParse(scene.name, out levelNumber);
-
-        if (levelNumber == 0) { return; }
-        player = PlayerDataController.instance.player;
-
-        if (player == null) { return; }
-
-        if (player.levels.Length > levelNumber - 1 && player.levels[levelNumber - 1] != null)
-        {
-            // Als hij het niet vind, doet ff iets
-
-            level = player.levels[levelNumber - 1];
-        }
+        //    level = player.levels[levelNumber - 1];
+        //}
         else
         {
             level = new Level();
@@ -85,6 +52,11 @@ public class RollingPhaseManager : MonoBehaviour
     }
 
 
+    // Update is called once per frame
+    void Update()
+    {
+
+    }
 
     public void Init()
     {
@@ -160,23 +132,28 @@ public class RollingPhaseManager : MonoBehaviour
         {
             player.levels = new Level[50];
         }
-        if (levelNumber != 0)
-        {
-            if (player.levels.Length > 0 && player.levels[0] != null)
-            {
-                player.levels[levelNumber - 1] = level;
-            }
-            else
-            {
-                player.levels[0] = level;
-            }
-        }
+        //if (levelNumber != 0)
+        //{
+        //    if (player.levels.Length > 0 && player.levels[0] != null)
+        //    {
+        //        player.levels[levelNumber - 1] = level;
+        //    }
+        //    else
+        //    {
+        //        player.levels[0] = level;
+        //    }
+        //}
 
         player.coins += amountCoins;
         PlayerDataController.instance.player = player;
         PlayerDataController.instance.Save();
         PlayerDataController.instance.previousScene = levelNumber;
-        SceneManager.LoadScene("VictoryScreen");
+        DontDestroyOnLoad(gameState.playerManager.player);
+        gameState.UIManager.RemoveInventoryButtons();
+        GameState.Instance.levelManager.AsynchronousLoadStart("VictoryScreen");
+        gameState.playerCamera.gameObject.SetActive(false);
+        gameState.levelManager.levelIsSpawned = false;
+        //SceneManager.LoadScene("VictoryScreen");
     }
 
 }

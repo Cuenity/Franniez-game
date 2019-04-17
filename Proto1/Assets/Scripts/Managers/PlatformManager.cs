@@ -258,17 +258,17 @@ public class PlatformManager : MonoBehaviour
 
         Init_Platforms(RampSpots, PlatformSpots, RampSpotsReversed, PortalSpots, TrampolineSpots, rechthoekSpots);
 
-        for (int i = 0; i < CoinSpots.Count; i++)
-        {
-            coin = Instantiate(coin, gameState.gridManager.gridSquares[CoinSpots[i]] + rampAdjustment, new Quaternion(0, 0, 0, 0));
+        //for (int i = 0; i < CoinSpots.Count; i++)
+        //{
+        //    coin = Instantiate(coin, gameState.gridManager.gridSquares[CoinSpots[i]] + rampAdjustment, new Quaternion(0, 0, 0, 0));
 
-        }
+        //}
 
-        for (int i = 0; i < FinishSpots.Count; i++)
-        {
-            finish = Instantiate(finish, gameState.gridManager.gridSquares[FinishSpots[i]], new Quaternion(0, 0, 0, 0));
+        //for (int i = 0; i < FinishSpots.Count; i++)
+        //{
+        //    finish = Instantiate(finish, gameState.gridManager.gridSquares[FinishSpots[i]], new Quaternion(0, 0, 0, 0));
 
-        }
+        //}
         initBoostPlatforms(boosterPlatformSpots);
         initRedZones(RedZoneSpots);
     }
@@ -657,8 +657,8 @@ public class PlatformManager : MonoBehaviour
         {
             for (int i = 0; i < PlatformSpots.Count; i++)
             {
-                PlatformSquare = Instantiate(PlatformSquare, gameState.gridManager.gridSquares[PlatformSpots[i]] + rampAdjustment, new Quaternion(0, 0, 0, 0));
-                PlatformSquare.transform.Rotate(new Vector3(-90f, -90f, 0));
+                Instantiate(PlatformSquare, gameState.gridManager.gridSquares[PlatformSpots[i]] + rampAdjustment, new Quaternion(0, 0, 0, 0));
+                //PlatformSquare.transform.Rotate(new Vector3(-90f, -90f, 0));
             }
         }
         if (RampSpotsReversed.Count > 0)
@@ -698,7 +698,7 @@ public class PlatformManager : MonoBehaviour
         {
             for (int i = 0; i < redZones.Count; i++)
             {
-                redZone = Instantiate(redZone, gameState.gridManager.gridSquares[redZones[i]] + new Vector3(.5f, 0, 0), new Quaternion(0, 0, 0, 0));
+                Instantiate(redZone, gameState.gridManager.gridSquares[redZones[i]] + new Vector3(.5f, 0, 0), new Quaternion(0, 0, 0, 0));
 
             }
         }

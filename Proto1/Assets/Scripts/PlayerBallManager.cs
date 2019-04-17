@@ -9,6 +9,7 @@ public class PlayerBallManager : MonoBehaviour
     public BlackHoleBall blackHoleBall;
     public NormalBall normalBall;
     public LightBall lightBall;
+    public GameObject activePlayer;
 
 
 
@@ -26,18 +27,38 @@ public class PlayerBallManager : MonoBehaviour
         switch (type)
         {
             case  "blackholeball":
-               blackHoleBall= Instantiate(blackHoleBall);
+               activePlayer= Instantiate(blackHoleBall).gameObject;
                 break;
             case "lightball":
-                lightBall = Instantiate(lightBall);
+                activePlayer = Instantiate(lightBall).gameObject;
                 break;
             case "normalball":
-                normalBall = Instantiate(normalBall);
+                activePlayer = Instantiate(normalBall).gameObject;
                 break;
             default:
-                normalBall = Instantiate(normalBall);
+                activePlayer = Instantiate(normalBall).gameObject;
                 break;
         }
+    }
+    private IEnumerator respawnballinternal()
+    {
+        yield return new WaitForEndOfFrame();
+        gameState = GameState.Instance;
+        Camera actualcamera = gameState.GetComponent<Camera>();
+        PlayerCamera camera = gameState.playerCamera;
+        this.activePlayer.transform.position = gameState.playerBallManager.spawnpoint;
+        this.activePlayer.GetComponent<Rigidbody>().angularVelocity = new Vector3(0, 0, 0);
+        this.activePlayer.GetComponent<Rigidbody>().velocity = new Vector3(0, 0, 0);
+        //this.GetComponent<Rigidbody>().rotation = new Quaternion(0, 0, 0, 0);
+        camera.transform.position = new Vector3(gameState.playerBallManager.spawnpoint.x + camera.TargetMovementOffset.x, gameState.playerBallManager.spawnpoint.y + camera.TargetMovementOffset.y, gameState.playerBallManager.spawnpoint.z + camera.TargetMovementOffset.z);
+        camera.transform.LookAt(camera.Target.transform.position);
+        camera.GetComponent<Rigidbody>().velocity = new Vector3(0, 0, 0);
+        this.GetComponent<Rigidbody>().Sleep();
+    }
+
+    public void respawnBal()
+    {
+        StartCoroutine(respawnballinternal());
     }
 
 }

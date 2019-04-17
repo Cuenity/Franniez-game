@@ -6,7 +6,7 @@ public class PlayerCamera : MonoBehaviour
 {
     private GameState gameState;
     public bool platformDragActive = false;
-    public PlayerBallManager Target { get; set; }
+    public GameObject Target { get; set; }
 
     public Vector3 TargetMovementOffset;
     public Vector3 TargetLookAtOffset;
@@ -40,6 +40,18 @@ public class PlayerCamera : MonoBehaviour
     internal void InitCamera()
     {
 
+        this.transform.position = gameState.playerManager.player.spawnpoint + TargetMovementOffset;
+    }
+
+    internal void ManualInit()
+    {
+        gameState = GameState.Instance;
+        camera = this.GetComponent<Camera>();
+        camera.gameObject.SetActive(true);
+        if (Target != null)
+        {
+            transform.LookAt(Target.transform.position + TargetLookAtOffset);
+        }
         this.transform.position = gameState.playerManager.player.spawnpoint + TargetMovementOffset;
     }
 
