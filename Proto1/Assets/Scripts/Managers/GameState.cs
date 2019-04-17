@@ -99,6 +99,8 @@ public class GameState : MonoBehaviour
 
         levelManager = Instantiate(levelManager, instance.transform);
         levelManager.transform.parent = this.transform;
+
+        levelManager.InitScene("1");
     }
 
     // Start is called before the first frame update
