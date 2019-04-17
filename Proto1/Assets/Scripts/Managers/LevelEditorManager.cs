@@ -212,7 +212,7 @@ public class LevelEditorManager : MonoBehaviour
         if (playerPlatforms.ramps > 0 && !playerPlatforms.rampButtonInstantiated)
         {
             buttonImage.GetComponent<Image>().sprite = rampImage;
-            instantiatedInventoryButtons[currentButton].name = "rampInventoryButton";
+            instantiatedInventoryButtons[currentButton].name = InventoryButtonName.rampInventoryButton.ToString();
             buttonText.GetComponent<Text>().text = playerPlatforms.ramps.ToString();
 
             playerPlatforms.rampButtonInstantiated = true;
@@ -220,7 +220,7 @@ public class LevelEditorManager : MonoBehaviour
         else if (playerPlatforms.platformSquares > 0 && !playerPlatforms.platformSquaresButtonInstantated)
         {
             buttonImage.GetComponent<Image>().sprite = platformSquareImage;
-            instantiatedInventoryButtons[currentButton].name = "platformSquareButton";
+            instantiatedInventoryButtons[currentButton].name = InventoryButtonName.platformSquareButton.ToString();
             buttonText.GetComponent<Text>().text = playerPlatforms.platformSquares.ToString();
 
             playerPlatforms.platformSquaresButtonInstantated = true;
@@ -228,7 +228,7 @@ public class LevelEditorManager : MonoBehaviour
         else if (playerPlatforms.trampolines > 0 && !playerPlatforms.trampolineButtonInstantiated)
         {
             buttonImage.GetComponent<Image>().sprite = trampolineImage;
-            instantiatedInventoryButtons[currentButton].name = "trampolineButton";
+            instantiatedInventoryButtons[currentButton].name = InventoryButtonName.trampolineButton.ToString();
             buttonText.GetComponent<Text>().text = playerPlatforms.trampolines.ToString();
 
             playerPlatforms.trampolineButtonInstantiated = true;
@@ -236,7 +236,7 @@ public class LevelEditorManager : MonoBehaviour
         else if (playerPlatforms.boostPlatforms > 0 && !playerPlatforms.boostPlatformButtonInstantiated)
         {
             buttonImage.GetComponent<Image>().sprite = boostPlatformImage;
-            instantiatedInventoryButtons[currentButton].name = "boostPlatformButton";
+            instantiatedInventoryButtons[currentButton].name = InventoryButtonName.boostPlatformButton.ToString();
             buttonText.GetComponent<Text>().text = playerPlatforms.boostPlatforms.ToString();
 
             playerPlatforms.trampolineButtonInstantiated = true;

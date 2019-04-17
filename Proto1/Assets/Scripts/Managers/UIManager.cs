@@ -12,16 +12,7 @@ public class UIManager : MonoBehaviour
     public Sprite trampolineImage;
     public Sprite boostPlatformImage;
 
-    void Start()
-    {
-        //Instantiate(canvas);
-    }
-
-    void Update()
-    {
-
-    }
-
+    public bool newLevelInventoryisRequired =false;
     public void InventoryButtons(PlayerPlatforms playerPlatforms)
     {
         InstantiateInventoryButtonsCheck(playerPlatforms.inventoryButtonAmmount);
@@ -29,7 +20,8 @@ public class UIManager : MonoBehaviour
         //bool instantiatedInventoryButtonsArrayNotInstantiated = instantiatedInventoryButtons[0] == null;
         if (instantiatedInventoryButtons[0] == null)
         {
-            GameObject uiCanvas = GameObject.FindGameObjectWithTag("UICanvas");
+            //GameObject uiCanvas = GameObject.FindGameObjectWithTag("UICanvas");
+            Canvas uiCanvas = canvas;
 
             int buttonDistance = Screen.width / (playerPlatforms.inventoryButtonAmmount + 1);
             int buttonHeight = Screen.height / 8;
@@ -64,6 +56,15 @@ public class UIManager : MonoBehaviour
         {
             instantiatedInventoryButtons = new InventoryButton[inventoryButtonAmmount];
         }
+        if (newLevelInventoryisRequired == true)
+        {
+            instantiatedInventoryButtons = new InventoryButton[inventoryButtonAmmount];
+            newLevelInventoryisRequired = false;
+        }
+        //if (instantiatedInventoryButtons.Length != inventoryButtonAmmount)
+        //{
+        //    instantiatedInventoryButtons = new InventoryButton[inventoryButtonAmmount];
+        //}
     }
 
     public void RemoveInventoryButtons()
@@ -86,7 +87,7 @@ public class UIManager : MonoBehaviour
         if (playerPlatforms.ramps > 0 && !playerPlatforms.rampButtonInstantiated)
         {
             buttonImage.GetComponent<Image>().sprite = rampImage;
-            instantiatedInventoryButtons[currentButton].name = "rampInventoryButton";
+            instantiatedInventoryButtons[currentButton].name = InventoryButtonName.rampInventoryButton.ToString();
             buttonText.GetComponent<Text>().text = playerPlatforms.ramps.ToString();
 
             playerPlatforms.rampButtonInstantiated = true;
@@ -94,7 +95,7 @@ public class UIManager : MonoBehaviour
         else if (playerPlatforms.platformSquares > 0 && !playerPlatforms.platformSquaresButtonInstantated)
         {
             buttonImage.GetComponent<Image>().sprite = platformSquareImage;
-            instantiatedInventoryButtons[currentButton].name = "platformSquareButton";
+            instantiatedInventoryButtons[currentButton].name = InventoryButtonName.platformSquareButton.ToString();
             buttonText.GetComponent<Text>().text = playerPlatforms.platformSquares.ToString();
 
             playerPlatforms.platformSquaresButtonInstantated = true;
@@ -102,7 +103,7 @@ public class UIManager : MonoBehaviour
         else if (playerPlatforms.trampolines > 0 && !playerPlatforms.trampolineButtonInstantiated)
         {
             buttonImage.GetComponent<Image>().sprite = trampolineImage;
-            instantiatedInventoryButtons[currentButton].name = "trampolineButton";
+            instantiatedInventoryButtons[currentButton].name = InventoryButtonName.trampolineButton.ToString();
             buttonText.GetComponent<Text>().text = playerPlatforms.trampolines.ToString();
 
             playerPlatforms.trampolineButtonInstantiated = true;
@@ -110,7 +111,7 @@ public class UIManager : MonoBehaviour
         else if (playerPlatforms.boostPlatforms > 0 && !playerPlatforms.boostPlatformButtonInstantiated)
         {
             buttonImage.GetComponent<Image>().sprite = boostPlatformImage;
-            instantiatedInventoryButtons[currentButton].name = "boostPlatformButton";
+            instantiatedInventoryButtons[currentButton].name = InventoryButtonName.boostPlatformButton.ToString();
             buttonText.GetComponent<Text>().text = playerPlatforms.boostPlatforms.ToString();
 
             playerPlatforms.trampolineButtonInstantiated = true;

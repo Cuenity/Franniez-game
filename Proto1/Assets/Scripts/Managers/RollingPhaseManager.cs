@@ -31,13 +31,13 @@ public class RollingPhaseManager : MonoBehaviour
         player = PlayerDataController.instance.player;
 
         if (player == null){return;}
+        //INDEX OUT OF RANGE BIJ LEVELSWITCH
+        //if (player.levels[levelNumber - 1] != null)
+        //{
+        //    // Als hij het niet vind, doet ff iets
 
-        if (player.levels.Length > levelNumber-1 && player.levels[levelNumber - 1] != null)
-        {
-            // Als hij het niet vind, doet ff iets
-
-            level = player.levels[levelNumber - 1];
-        }
+        //    level = player.levels[levelNumber - 1];
+        //}
         else
         {
             level = new Level();
@@ -132,23 +132,28 @@ public class RollingPhaseManager : MonoBehaviour
         {
             player.levels = new Level[50];
         }
-        if (levelNumber != 0)
-        {
-            if (player.levels.Length > 0 && player.levels[0] != null)
-            {
-                player.levels[levelNumber - 1] = level;
-            }
-            else
-            {
-                player.levels[0] = level;
-            }
-        }
+        //if (levelNumber != 0)
+        //{
+        //    if (player.levels.Length > 0 && player.levels[0] != null)
+        //    {
+        //        player.levels[levelNumber - 1] = level;
+        //    }
+        //    else
+        //    {
+        //        player.levels[0] = level;
+        //    }
+        //}
 
         player.coins += amountCoins;
         PlayerDataController.instance.player = player;
         PlayerDataController.instance.Save();
         PlayerDataController.instance.previousScene = levelNumber;
-        SceneManager.LoadScene("VictoryScreen");
+        DontDestroyOnLoad(gameState.playerManager.player);
+        gameState.UIManager.RemoveInventoryButtons();
+        GameState.Instance.levelManager.AsynchronousLoadStart("VictoryScreen");
+        gameState.playerCamera.gameObject.SetActive(false);
+        gameState.levelManager.levelIsSpawned = false;
+        //SceneManager.LoadScene("VictoryScreen");
     }
 
 }

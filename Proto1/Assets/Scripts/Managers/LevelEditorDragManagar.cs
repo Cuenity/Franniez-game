@@ -74,7 +74,7 @@ public class LevelEditorDragManager : MonoBehaviour, IDragHandler, IBeginDragHan
 
         if (inventoryButton)
         {
-            if (inventoryButton.name == "platformSquareButton")
+            if (inventoryButton.name == InventoryButtonName.platformSquareButton.ToString())
             {
                 type = PlatformType.platformSquare;
                 foreach (InventoryButton button in GameState.Instance.UIManager.instantiatedInventoryButtons)
@@ -108,7 +108,7 @@ public class LevelEditorDragManager : MonoBehaviour, IDragHandler, IBeginDragHan
                     }
                 }
             }
-            else if (inventoryButton.name == "rampInventoryButton")
+            else if (inventoryButton.name == InventoryButtonName.rampInventoryButton.ToString())
             {
                 type = PlatformType.ramp;
                 foreach (InventoryButton button in GameState.Instance.UIManager.instantiatedInventoryButtons)
@@ -142,7 +142,7 @@ public class LevelEditorDragManager : MonoBehaviour, IDragHandler, IBeginDragHan
                     }
                 }
             }
-            else if (inventoryButton.name == "trampolineButton")
+            else if (inventoryButton.name == InventoryButtonName.trampolineButton.ToString())
             {
                 type = PlatformType.trampoline;
                 foreach (InventoryButton button in GameState.Instance.UIManager.instantiatedInventoryButtons)
@@ -176,7 +176,7 @@ public class LevelEditorDragManager : MonoBehaviour, IDragHandler, IBeginDragHan
                     }
                 }
             }
-            else if (inventoryButton.name == "boostPlatformButton")
+            else if (inventoryButton.name == InventoryButtonName.boostPlatformButton.ToString())
             {
                 type = PlatformType.boostPlatform;
                 foreach (InventoryButton button in GameState.Instance.UIManager.instantiatedInventoryButtons)

@@ -8,7 +8,7 @@ public class PlatformDragManager : MonoBehaviour
     private Vector3 screenPoint;
     private Vector3 offset;
 
-    private Camera camera;
+    private new Camera camera;
 
     bool rotateSpriteHit;
 
@@ -29,7 +29,7 @@ public class PlatformDragManager : MonoBehaviour
             // check if rotatespritehit?
         }
 
-            rotateSpriteHit = false;
+        rotateSpriteHit = false;
         RaycastHit hit;
         Ray ray = camera.ScreenPointToRay(Input.mousePosition);
         if (Physics.Raycast(ray, out hit))
@@ -86,21 +86,22 @@ public class PlatformDragManager : MonoBehaviour
                     if (result.gameObject.tag == "InventoryButton")
                     {
                         platformDraggedToButton = true;
+                        break;
                     }
                 }
-                if (tag == "PlatformSquare" && GameState.Instance.UIManager.instantiatedInventoryButtons[i].name == "platformSquareButton")
+                if (tag == "PlatformSquare" && GameState.Instance.UIManager.instantiatedInventoryButtons[i].name == InventoryButtonName.platformSquareButton.ToString())
                 {
                     button = GameState.Instance.UIManager.instantiatedInventoryButtons[i];
                 }
-                else if (tag == "Ramp" && GameState.Instance.UIManager.instantiatedInventoryButtons[i].name == "rampInventoryButton")
+                else if (tag == "Ramp" && GameState.Instance.UIManager.instantiatedInventoryButtons[i].name == InventoryButtonName.rampInventoryButton.ToString())
                 {
                     button = GameState.Instance.UIManager.instantiatedInventoryButtons[i];
                 }
-                else if (tag == "Trampoline" && GameState.Instance.UIManager.instantiatedInventoryButtons[i].name == "trampolineButton")
+                else if (tag == "Trampoline" && GameState.Instance.UIManager.instantiatedInventoryButtons[i].name == InventoryButtonName.trampolineButton.ToString())
                 {
                     button = GameState.Instance.UIManager.instantiatedInventoryButtons[i];
                 }
-                else if (tag == "Booster" && GameState.Instance.UIManager.instantiatedInventoryButtons[i].name == "boostPlatformButton")
+                else if (tag == "Booster" && GameState.Instance.UIManager.instantiatedInventoryButtons[i].name == InventoryButtonName.boostPlatformButton.ToString())
                 {
                     button = GameState.Instance.UIManager.instantiatedInventoryButtons[i];
                 }
@@ -108,40 +109,13 @@ public class PlatformDragManager : MonoBehaviour
 
             if (platformDraggedToButton)
             {
-
-                // true na slepen op knop
-                if (tag == "PlatformSquare")
-                {
-                    GameState.Instance.levelManager.playerPlatforms.platformSquaresLeftToPlace++;
-                    GameState.Instance.levelManager.playerPlatforms.UpdatePlatformSquaresLeft(button);
-                    button.InventoryButtonAllowed = true;
-                }
-                else if (tag == "Ramp")
-                {
-                    GameState.Instance.levelManager.playerPlatforms.rampsLeftToPlace++;
-                    GameState.Instance.levelManager.playerPlatforms.UpdateRampsLeft(button);
-                    button.InventoryButtonAllowed = true;
-                }
-                else if (tag == "Trampoline")
-                {
-                    GameState.Instance.levelManager.playerPlatforms.trampolinesLeftToPlace++;
-                    GameState.Instance.levelManager.playerPlatforms.UpdateTrampolinesLeft(button);
-                    button.InventoryButtonAllowed = true;
-                }
-                else if (tag == "Booster")
-                {
-                    GameState.Instance.levelManager.playerPlatforms.boostPlatformsLeftToPlace++;
-                    GameState.Instance.levelManager.playerPlatforms.UpdateBoostPlatformsLeft(button);
-                    button.InventoryButtonAllowed = true;
-                }
-                GameState.Instance.levelManager.playerPlatforms.placedPlatforms.Remove(gameObject);
-                Destroy(gameObject);
-                GameState.Instance.playerCamera.platformDragActive = false;
-            } else
+                //GameState.Instance.ButtonManager.UpdatePlayerPlatforms(gameObject);
+            }
+            else
             {
                 GameState.Instance.platformManager.spawnPlatformOnGrid(transform.position, gameObject);
                 GameState.Instance.playerCamera.platformDragActive = false;
             }
+            }
         }
     }
-}

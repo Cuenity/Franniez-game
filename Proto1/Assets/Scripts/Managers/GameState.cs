@@ -18,6 +18,8 @@ public class GameState : MonoBehaviour
     public PlayerCamera playerCamera;
     Scene currentScene;
     public GridManager gridManager;
+    public PlayerBallManager playerBallManager;
+    public ButtonManager buttonManager;
 
     public int PreviousLevel;
 
@@ -97,7 +99,12 @@ public class GameState : MonoBehaviour
         platformManager.transform.parent = this.transform;
         gridManager = Instantiate(gridManager, instance.transform);
         gridManager.transform.parent = this.transform;
-
+        playerCamera = Instantiate(playerCamera, instance.transform);
+        playerCamera.transform.parent = this.transform;
+ 		playerBallManager = Instantiate(playerBallManager, instance.transform);
+        playerBallManager.transform.parent = this.transform;
+        buttonManager = Instantiate(buttonManager, instance.transform);
+        buttonManager.transform.parent = this.transform;
         //PreviousScene = 0;
 
         //buildingPhaseManager = gameObject.AddComponent<BuildingPhaseManager>();
