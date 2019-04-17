@@ -135,33 +135,6 @@ public class LocalizationManager : MonoBehaviour
                 LanguageChoice = Language.English;
                 break;
         }
-
-        //string key = "language";
-        //if (localizedText == null) { return; }
-        //if (localizedText.ContainsKey(key))
-        //{
-        //    string languageValue = localizedText[key].ToLower();
-
-        //    if (languageValue == "dutch")
-        //    {
-        //        LanguageChoice = Language.Dutch;
-        //        Debug.Log("Taal is Nederlands");
-        //    }
-        //    else if (languageValue == "english")
-        //    {
-        //        LanguageChoice = Language.English;
-        //        Debug.Log("Taal is Engels");
-        //    }
-        //    else if (languageValue == "spanish")
-        //    {
-        //        LanguageChoice = Language.Spanish;
-        //        Debug.Log("Taal is Spaans");
-        //    }
-
-        //}
-
-
-
     }
 
     public string GetLocalizedValue(string key)

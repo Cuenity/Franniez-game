@@ -19,7 +19,7 @@ public class PlayerBallManager : MonoBehaviour
     {
         gameState = GameState.Instance;
         Vector3 playeradjustment = new Vector3(.5f, 0, 0);
-        this.spawnpoint = gameState.gridManager.gridSquares[i] + playeradjustment;
+        gameState.playerBallManager.spawnpoint = gameState.gridManager.gridSquares[i] + playeradjustment;
     }
 
     public void InitTypeBall(string type)

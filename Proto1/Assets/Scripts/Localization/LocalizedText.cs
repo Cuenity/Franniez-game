@@ -13,4 +13,15 @@ public class LocalizedText : MonoBehaviour
         Text text = GetComponent<Text>();
         text.text = LocalizationManager.instance.GetLocalizedValue(key);
     }
+
+    private void OnEnable()
+    {
+        MainMenu.ChangeLanguage += RefreshText;
+    }
+
+    public void RefreshText()
+    {
+        Text text = GetComponent<Text>();
+        text.text = LocalizationManager.instance.GetLocalizedValue(key);
+    }
 }
