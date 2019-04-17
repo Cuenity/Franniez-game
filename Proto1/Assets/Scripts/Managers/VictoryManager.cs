@@ -94,12 +94,12 @@ public class VictoryManager : MonoBehaviour
 
     public void Restart()
     {
-        SceneManager.LoadScene("");
+        SceneManager.LoadScene("1");
     }
 
     public void NextScene()
     {
-        SceneManager.LoadScene("");
+        SceneManager.LoadScene("2");
     }
 
     public void ReturnToMenu()
