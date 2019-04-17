@@ -8,6 +8,7 @@ public class PlayerManager : MonoBehaviour
     public int collectedCoins;
     public bool collectedSticker;
     GameState gameState;
+    bool newPlayerBallIsRequired = true;
     // Start is called before the first frame update
     private void Awake()
     {
@@ -26,12 +27,22 @@ public class PlayerManager : MonoBehaviour
 
     internal void PlayerInit()
     {
-        player = Instantiate(player);
-        player.transform.position = player.spawnpoint;
-        player.GetComponent<Rigidbody>().maxAngularVelocity = 99;
-        Debug.Log(player.spawnpoint);
-        gameState.playerCamera.Target = player;
-        Camera camera=gameState.playerCamera.GetComponent<Camera>();
-        camera.transform.LookAt(gameState.playerCamera.Target.transform.position);
+        if (newPlayerBallIsRequired)
+        {
+            player = Instantiate(player);
+            player.transform.position = player.spawnpoint;
+            player.GetComponent<Rigidbody>().maxAngularVelocity = 99;
+            Debug.Log(player.spawnpoint);
+            gameState.playerCamera.Target = player;
+            Camera camera = gameState.playerCamera.GetComponent<Camera>();
+            camera.transform.LookAt(gameState.playerCamera.Target.transform.position);
+            newPlayerBallIsRequired = false;
+        }
+        else
+        {
+            player.transform.position = player.spawnpoint;
+            player.GetComponent<Rigidbody>().isKinematic = true;
+            gameState.playerCamera.GetComponent<Rigidbody>().isKinematic = true;
+        }
     }
 }

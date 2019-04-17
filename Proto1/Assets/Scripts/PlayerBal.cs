@@ -12,12 +12,12 @@ public class PlayerBal : MonoBehaviour
     private void Awake()
     {
         gameState = GameState.Instance;
-        gameState.playerManager.player.GetComponent<Rigidbody>().useGravity = false;
-        gameState.playerManager.player.GetComponent<SphereCollider>().isTrigger = true; // verander later ofzo
+         // verander later ofzo
     }
     void Start()
-    {   
-        
+    {
+        gameState.playerManager.player.GetComponent<Rigidbody>().useGravity = false;
+        gameState.playerManager.player.GetComponent<SphereCollider>().isTrigger = true;
 
     }
 

@@ -38,6 +38,18 @@ public class PlayerCamera : MonoBehaviour
         this.transform.position = gameState.playerManager.player.spawnpoint + TargetMovementOffset;
     }
 
+    internal void ManualInit()
+    {
+        gameState = GameState.Instance;
+        camera = this.GetComponent<Camera>();
+        camera.gameObject.SetActive(true);
+        if (Target != null)
+        {
+            transform.LookAt(Target.transform.position + TargetLookAtOffset);
+        }
+        this.transform.position = gameState.playerManager.player.spawnpoint + TargetMovementOffset;
+    }
+
     void FixedUpdate()
     {
 

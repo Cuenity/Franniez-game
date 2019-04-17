@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class ButtonManager : MonoBehaviour
@@ -61,7 +62,8 @@ public class ButtonManager : MonoBehaviour
         int levelNumber = 2;
         levelNumber = GameState.Instance.PreviousLevel + 1;
 
-        SceneManager.LoadScene(levelNumber.ToString());
+        GameState.Instance.levelManager.AsynchronousLoadStart(Convert.ToString(levelNumber));
+        //SceneManager.LoadScene(levelNumber.ToString());
     }
 
     public void RestartScene()

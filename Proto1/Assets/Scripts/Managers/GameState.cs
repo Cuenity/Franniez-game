@@ -97,6 +97,8 @@ public class GameState : MonoBehaviour
         platformManager.transform.parent = this.transform;
         gridManager = Instantiate(gridManager, instance.transform);
         gridManager.transform.parent = this.transform;
+        playerCamera = Instantiate(playerCamera, instance.transform);
+        playerCamera.transform.parent = this.transform;
 
         //PreviousScene = 0;
 

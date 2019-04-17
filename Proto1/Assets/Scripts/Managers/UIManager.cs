@@ -12,6 +12,8 @@ public class UIManager : MonoBehaviour
     public Sprite trampolineImage;
     public Sprite boostPlatformImage;
 
+    public bool newLevelInventoryisRequired =false;
+
     void Start()
     {
         //Instantiate(canvas);
@@ -64,6 +66,15 @@ public class UIManager : MonoBehaviour
         {
             instantiatedInventoryButtons = new InventoryButton[inventoryButtonAmmount];
         }
+        if (newLevelInventoryisRequired == true)
+        {
+            instantiatedInventoryButtons = new InventoryButton[inventoryButtonAmmount];
+            newLevelInventoryisRequired = false;
+        }
+        //if (instantiatedInventoryButtons.Length != inventoryButtonAmmount)
+        //{
+        //    instantiatedInventoryButtons = new InventoryButton[inventoryButtonAmmount];
+        //}
     }
 
     public void RemoveInventoryButtons()
