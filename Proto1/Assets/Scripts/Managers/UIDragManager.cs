@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 using UnityEngine.EventSystems;
 
 public class UIDragManager : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHandler//, IPointerDownHandler
@@ -189,7 +190,14 @@ public class UIDragManager : MonoBehaviour, IDragHandler, IBeginDragHandler, IEn
 
             platformManager.spawnPlatformOnGrid(draggedPlatform.transform.position, draggedPlatform);
 
-            GameState.Instance.playerCamera.platformDragActive = false;
+            StartCoroutine(CorutineDragActive());
+            //coroutine wacht een frame
         }
+    }
+
+    public IEnumerator CorutineDragActive()
+    {
+        yield return new WaitForEndOfFrame();
+        GameState.Instance.playerCamera.platformDragActive = false;
     }
 }

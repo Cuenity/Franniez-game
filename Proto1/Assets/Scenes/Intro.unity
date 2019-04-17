@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481694, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -184,6 +184,12 @@ PrefabInstance:
       propertyPath: UICanvas
       value: 
       objectReference: {fileID: 5378894420974302099, guid: 51b8d6f18130beb459ad0df4dc04e1e6,
+        type: 3}
+    - target: {fileID: 5339472121745837788, guid: ae7ddb24a3c793b4d88ccf36c2b14321,
+        type: 3}
+      propertyPath: buttonManager
+      value: 
+      objectReference: {fileID: 5994358701905949460, guid: 45ecb82bb517a8e4cb2d26ff48028db0,
         type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ae7ddb24a3c793b4d88ccf36c2b14321, type: 3}

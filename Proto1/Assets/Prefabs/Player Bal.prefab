@@ -110,6 +110,7 @@ MonoBehaviour:
   blackHoleBall: {fileID: 0}
   normalBall: {fileID: 0}
   lightBall: {fileID: 0}
+  activePlayer: {fileID: 0}
 --- !u!54 &8951874512824316334
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -122,10 +123,10 @@ Rigidbody:
   m_Drag: 0.2
   m_AngularDrag: 0.05
   m_UseGravity: 0
-  m_IsKinematic: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 2
+  m_CollisionDetection: 3
 --- !u!114 &4045212194601171583
 MonoBehaviour:
   m_ObjectHideFlags: 0
