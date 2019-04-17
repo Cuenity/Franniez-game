@@ -54,7 +54,8 @@ public class ButtonManager : MonoBehaviour
 
     public void ReturnMenu()
     {
-        SceneManager.LoadScene("StartMenu");
+        //pas aanzetten als de levelselect er is
+        //GameState.Instance.levelManager.AsynchronousLoadStart("LevelSelect");
     }
 
     public void NextLevel()
@@ -63,14 +64,13 @@ public class ButtonManager : MonoBehaviour
         levelNumber = GameState.Instance.PreviousLevel + 1;
 
         GameState.Instance.levelManager.AsynchronousLoadStart(Convert.ToString(levelNumber));
-        //SceneManager.LoadScene(levelNumber.ToString());
     }
 
     public void RestartScene()
     {
         int levelNumber = 1;
-        //int levelNumber = GameState.Instance.PreviousLevel;
+        levelNumber = GameState.Instance.PreviousLevel;
 
-        SceneManager.LoadScene(levelNumber.ToString());
+        GameState.Instance.levelManager.AsynchronousLoadStart(levelNumber.ToString());
     }
 }
