@@ -152,6 +152,7 @@ public class RollingPhaseManager : MonoBehaviour
         gameState.UIManager.RemoveInventoryButtons();
         GameState.Instance.levelManager.AsynchronousLoadStart("VictoryScreen");
         gameState.playerCamera.gameObject.SetActive(false);
+        gameState.levelManager.levelIsSpawned = false;
         //SceneManager.LoadScene("VictoryScreen");
     }
 
