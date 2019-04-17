@@ -126,7 +126,6 @@ public class PlayerCamera : MonoBehaviour
     {
         if (gameState.RollingPhaseActive == false)
         {
-            Debug.Log(platformDragActive);
             if (platformDragActive == false)
             {
                 if (Application.platform != RuntimePlatform.Android)
