@@ -75,7 +75,7 @@ public class GameState : MonoBehaviour
 
     void Awake()
     {
-        DontDestroyOnLoad(this);
+        //DontDestroyOnLoad(this);
 
         instance = this;
 
@@ -119,7 +119,7 @@ public class GameState : MonoBehaviour
         //gridManager = gameObject.AddComponent<GridManager>();
         //playerCamera = Instantiate(playerCamera);
 
-        //levelManager.InitScene();
+        levelManager.InitScene("1");
     }
 
     // Start is called before the first frame update
