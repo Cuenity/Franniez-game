@@ -16,6 +16,7 @@ public class LevelManager : MonoBehaviour
     public List<Coin> coinList = new List<Coin>();
     public StickerObject stickerObject;
     public Finish finish;
+    public Canvas canvas;
 
     public PlayerPlatforms playerPlatforms;
     //public PlayerPlatforms PlayerPlatforms
@@ -132,6 +133,7 @@ public class LevelManager : MonoBehaviour
         
         else if (sceneName == "1")
         {
+            gameState.UIManager.canvas = Instantiate(canvas);
             gameState.UIManager.newLevelInventoryisRequired = true;
             gameState.collectableManager.newCollectablesAreRequired = true;
             coinPositions.Clear();
@@ -164,6 +166,7 @@ public class LevelManager : MonoBehaviour
         
         else if (sceneName == "2")
         {
+            gameState.UIManager.canvas = Instantiate(canvas);
             gameState.UIManager.newLevelInventoryisRequired = true;
             gameState.collectableManager.newCollectablesAreRequired = true;
             coinPositions.Clear();
@@ -195,6 +198,7 @@ public class LevelManager : MonoBehaviour
         }
         else if (sceneName == "4")
         {
+            gameState.UIManager.canvas = Instantiate(canvas);
             gameState.UIManager.newLevelInventoryisRequired = true;
             gameState.collectableManager.newCollectablesAreRequired = true;
             coinPositions.Clear();
@@ -222,6 +226,7 @@ public class LevelManager : MonoBehaviour
         }
         else if (sceneName == "3")
         {
+            gameState.UIManager.canvas = Instantiate(canvas);
             gameState.UIManager.newLevelInventoryisRequired = true;
             gameState.collectableManager.newCollectablesAreRequired = true;
             coinPositions.Clear();

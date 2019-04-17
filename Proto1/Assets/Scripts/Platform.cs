@@ -1,6 +1,11 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
 
-public class Platform : MonoBehaviour
+public abstract class Platform : MonoBehaviour
 {
+    //public void UpdatePlatformAmount()
+    //{
 
+    //}
 }
