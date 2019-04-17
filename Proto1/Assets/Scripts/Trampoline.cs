@@ -18,7 +18,7 @@ public class Trampoline : MonoBehaviour
     }
     private void OnCollisionEnter(Collision collision)
     {
-        PlayerBal player = gamestate.playerManager.player;
+        PlayerBallManager player = gamestate.playerManager.player;
         Vector3 velocity = player.GetComponent<Rigidbody>().velocity;
         float velocityY;
         float velocityx;

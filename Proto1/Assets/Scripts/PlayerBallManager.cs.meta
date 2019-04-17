@@ -1,0 +1,17 @@
+fileFormatVersion: 2
+guid: 0bccb2673a40e234cb4f74d39145366a
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - blackHoleBall: {fileID: 3503785656540482296, guid: f79b9a6bea4fb9c4b9f71404b5343d52,
+      type: 3}
+  - normalBall: {fileID: 4045212194601171583, guid: 286c6364973fb564e93ab31e3f148acf,
+      type: 3}
+  - lightBall: {fileID: 3487010160076124655, guid: 0b8d6287b946e164d9adfa7f855af0fd,
+      type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

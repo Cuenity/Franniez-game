@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerManager : MonoBehaviour
 {
-    public PlayerBal player;
+    public PlayerBallManager player;
     public int collectedCoins;
     public bool collectedSticker;
     GameState gameState;
@@ -29,19 +29,19 @@ public class PlayerManager : MonoBehaviour
     {
         if (newPlayerBallIsRequired)
         {
-            player = Instantiate(player);
-            player.transform.position = player.spawnpoint;
-            player.GetComponent<Rigidbody>().maxAngularVelocity = 99;
-            Debug.Log(player.spawnpoint);
-            gameState.playerCamera.Target = player;
+            gameState.playerBallManager.InitTypeBall("normal");
+
+            gameState.playerBallManager.activePlayer.transform.position = gameState.playerBallManager.spawnpoint;
+            gameState.playerBallManager.activePlayer.GetComponent<Rigidbody>().maxAngularVelocity = 99;
+            gameState.playerCamera.Target = gameState.playerBallManager.activePlayer;
             Camera camera = gameState.playerCamera.GetComponent<Camera>();
             camera.transform.LookAt(gameState.playerCamera.Target.transform.position);
             newPlayerBallIsRequired = false;
         }
         else
         {
-            player.transform.position = player.spawnpoint;
-            player.GetComponent<Rigidbody>().isKinematic = true;
+            gameState.playerBallManager.activePlayer.transform.position = gameState.playerBallManager.spawnpoint;
+            gameState.playerBallManager.activePlayer.GetComponent<Rigidbody>().isKinematic = true;
             gameState.playerCamera.GetComponent<Rigidbody>().isKinematic = true;
         }
     }
