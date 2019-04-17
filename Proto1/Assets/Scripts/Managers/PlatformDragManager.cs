@@ -109,7 +109,7 @@ public class PlatformDragManager : MonoBehaviour
 
             if (platformDraggedToButton)
             {
-                GameState.Instance.ButtonManager.UpdatePlayerPlatforms(gameObject);
+                //GameState.Instance.ButtonManager.UpdatePlayerPlatforms(gameObject);
             }
             else
             {
