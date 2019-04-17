@@ -52,8 +52,6 @@ public class UIDragManager : MonoBehaviour, IDragHandler, IBeginDragHandler, IEn
         draggingAllowed = true;
         playercamera.platformDragActive = true;
 
-
-
         InventoryButton correctButton = FindInventoryButton(data);
         if (correctButton != null)
         {

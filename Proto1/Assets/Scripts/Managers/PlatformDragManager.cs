@@ -29,7 +29,7 @@ public class PlatformDragManager : MonoBehaviour
             // check if rotatespritehit?
         }
 
-            rotateSpriteHit = false;
+        rotateSpriteHit = false;
         RaycastHit hit;
         Ray ray = camera.ScreenPointToRay(Input.mousePosition);
         if (Physics.Raycast(ray, out hit))
@@ -109,40 +109,13 @@ public class PlatformDragManager : MonoBehaviour
 
             if (platformDraggedToButton)
             {
-
-                // true na slepen op knop
-                if (tag == "PlatformSquare")
-                {
-                    GameState.Instance.levelManager.playerPlatforms.platformSquaresLeftToPlace++;
-                    GameState.Instance.levelManager.playerPlatforms.UpdatePlatformSquaresLeft(button);
-                    button.InventoryButtonAllowed = true;
-                }
-                else if (tag == "Ramp")
-                {
-                    GameState.Instance.levelManager.playerPlatforms.rampsLeftToPlace++;
-                    GameState.Instance.levelManager.playerPlatforms.UpdateRampsLeft(button);
-                    button.InventoryButtonAllowed = true;
-                }
-                else if (tag == "Trampoline")
-                {
-                    GameState.Instance.levelManager.playerPlatforms.trampolinesLeftToPlace++;
-                    GameState.Instance.levelManager.playerPlatforms.UpdateTrampolinesLeft(button);
-                    button.InventoryButtonAllowed = true;
-                }
-                else if (tag == "Booster")
-                {
-                    GameState.Instance.levelManager.playerPlatforms.boostPlatformsLeftToPlace++;
-                    GameState.Instance.levelManager.playerPlatforms.UpdateBoostPlatformsLeft(button);
-                    button.InventoryButtonAllowed = true;
-                }
-                GameState.Instance.levelManager.playerPlatforms.placedPlatforms.Remove(gameObject);
-                Destroy(gameObject);
-                GameState.Instance.playerCamera.platformDragActive = false;
-            } else
+                GameState.Instance.ButtonManager.UpdatePlayerPlatforms(gameObject);
+            }
+            else
             {
                 GameState.Instance.platformManager.spawnPlatformOnGrid(transform.position, gameObject);
                 GameState.Instance.playerCamera.platformDragActive = false;
             }
+            }
         }
     }
-}
