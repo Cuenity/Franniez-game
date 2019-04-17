@@ -45,7 +45,7 @@ public class PlayerDataController : MonoBehaviour
             Debug.Log("Player van het lezen: ");
             Debug.Log(playerData);
             Debug.Log("Player die opgeslagen is in property");
-            //Debug.Log(player.name);
+            Debug.Log(player.name);
         }
         return fileExist;
     }
