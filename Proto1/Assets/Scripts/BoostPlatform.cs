@@ -18,7 +18,7 @@ public class BoostPlatform : MonoBehaviour
     }
     private void OnCollisionEnter(Collision collision)
     {
-        PlayerBal balletje = gameState.playerManager.player;
+        PlayerBallManager balletje = gameState.playerManager.player;
         Rigidbody body = balletje.GetComponent<Rigidbody>();
         body.AddForce(new Vector3(body.velocity.x * 9, body.velocity.y, 0), ForceMode.Impulse);
     }

@@ -26,7 +26,7 @@ public class Portal : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        PlayerBal player = gameState.playerManager.player;
+        PlayerBallManager player = gameState.playerManager.player;
         List<Portal> portallist = gameState.platformManager.allPortals;
         foreach (Portal item in portallist)
         {

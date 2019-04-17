@@ -18,6 +18,7 @@ public class GameState : MonoBehaviour
     public PlayerCamera playerCamera;
     Scene currentScene;
     public GridManager gridManager;
+    public PlayerBallManager playerBallManager;
 
     public int PreviousLevel;
 
@@ -97,6 +98,8 @@ public class GameState : MonoBehaviour
         platformManager.transform.parent = this.transform;
         gridManager = Instantiate(gridManager, instance.transform);
         gridManager.transform.parent = this.transform;
+        playerBallManager = Instantiate(playerBallManager, instance.transform);
+        playerBallManager.transform.parent = this.transform;
 
         //PreviousScene = 0;
 

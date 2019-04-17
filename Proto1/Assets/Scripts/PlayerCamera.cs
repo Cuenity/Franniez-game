@@ -6,7 +6,7 @@ public class PlayerCamera : MonoBehaviour
 {
     private GameState gameState;
     public bool platformDragActive = false;
-    public PlayerBal Target { get; set; }
+    public PlayerBallManager Target { get; set; }
 
     public Vector3 TargetMovementOffset;
     public Vector3 TargetLookAtOffset;
@@ -114,6 +114,7 @@ public class PlayerCamera : MonoBehaviour
     {
         if (gameState.RollingPhaseActive == false)
         {
+            Debug.Log(platformDragActive);
             if (platformDragActive == false)
             {
                 if (Application.platform != RuntimePlatform.Android)
@@ -251,7 +252,7 @@ public class PlayerCamera : MonoBehaviour
                     transform.position = new Vector3(gameState.gridManager.width - .1f, outsideGrid.y, outsideGrid.z);
                     nope = false;
                 }
-                if (nope== true)
+                if (nope)
                 {
                     transform.position = outsideGrid;
                 }
