@@ -150,7 +150,8 @@ public class LevelManager : MonoBehaviour
                 gameState.gridManager.heigth = 11;
                 playerPlatforms = new PlayerPlatforms(6, 6, 0, 0);
                 gameState.gridManager.Build_Grid_BuildingPhase_Without_Visuals();
-                gameState.playerManager.player.spawnpoint = gameState.gridManager.gridSquares[1] + playeradjustment;
+                gameState.playerBallManager.SetSpawnpoint(1);
+                //gameState.playerManager.player.spawnpoint = gameState.gridManager.gridSquares[1] + playeradjustment;
                 gameState.platformManager.Build_Vertical_Slice_Level6();
                 SetCoinPositions(67);
                 SetCoinPositions(90);
@@ -197,7 +198,7 @@ public class LevelManager : MonoBehaviour
                 SetfinishPositions(254);
 
                 gameState.playerManager.PlayerInit();
-                gameState.playerManager.player.spawnpoint = gameState.gridManager.gridSquares[1] + playeradjustment;
+                gameState.playerBallManager.SetSpawnpoint(1);
                 gameState.collectableManager.InitCollectables(coinPositions, stickerPosition, finishPosition);
                 //hier dan een vieze boolean
 
@@ -222,7 +223,7 @@ public class LevelManager : MonoBehaviour
                 gameState.gridManager.heigth = 11;
                 playerPlatforms = new PlayerPlatforms(8, 8, 1, 0);
                 gameState.gridManager.Build_Grid_BuildingPhase_Without_Visuals();
-                gameState.playerManager.player.spawnpoint = gameState.gridManager.gridSquares[1] + playeradjustment;
+                gameState.playerBallManager.SetSpawnpoint(1);
                 gameState.platformManager.Build_Vertical_Slice_LevelBoost();
                 SetCoinPositions(104);
                 SetCoinPositions(90);
@@ -253,7 +254,7 @@ public class LevelManager : MonoBehaviour
                 gameState.gridManager.heigth = 11;
                 playerPlatforms = new PlayerPlatforms(4, 4, 1, 0);
                 gameState.gridManager.Build_Grid_BuildingPhase_Without_Visuals();
-                gameState.playerManager.player.spawnpoint = gameState.gridManager.gridSquares[60] + playeradjustment;
+                gameState.playerBallManager.SetSpawnpoint(60);
                 //gameState.platformManager.Build_Vertical_Slice_Level6();
                 gameState.platformManager.Build_Vertical_Slice_Level7();
                 SetCoinPositions(137);
