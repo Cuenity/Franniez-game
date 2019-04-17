@@ -35,20 +35,26 @@ public class GameState : MonoBehaviour
 
     public bool BuildingPhaseActive
     {
-        get { return buildingPhaseActive; }
+        get
+        {
+            return buildingPhaseActive;
+        }
         set
         {
             buildingPhaseActive = value;
             if (buildingPhaseActive)
             {
                 buildingPhaseManager.Init();
+                UIManager.ActivateGarbageBinButton();
             }
             else
             {
                 UIManager.DeactivateInventoryButtons();
+                UIManager.DeactivateGarbageBinButton();
             }
         }
     }
+
 
     public bool RollingPhaseActive
     {
