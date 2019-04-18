@@ -142,7 +142,7 @@ public class LevelManager : MonoBehaviour
                 //gameState.collectableManager.newCollectablesAreRequired = true;
                 //coinPositions.Clear();
                 //coinList.Clear();
-                GameState.Instance.playerCamera.ManualInit();
+                //GameState.Instance.playerCamera.ManualInit();
                 gameState.collectableManager.newCollectablesAreRequired = true;
                 GameState.Instance.playerCamera.ManualInit();
                 Vector3 playeradjustment = new Vector3(.5f, 0, 0);
