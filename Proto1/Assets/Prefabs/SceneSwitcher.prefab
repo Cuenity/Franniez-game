@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &8095790393924898175
+--- !u!1 &6420967375897004683
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,48 +8,41 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 5636895691728892239}
-  - component: {fileID: 4406663779918949810}
+  - component: {fileID: 6420967375897004680}
+  - component: {fileID: 6420967375897004681}
   m_Layer: 0
-  m_Name: LevelManager
+  m_Name: SceneSwitcher
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &5636895691728892239
+--- !u!4 &6420967375897004680
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8095790393924898175}
+  m_GameObject: {fileID: 6420967375897004683}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -7, y: 6, z: 0}
+  m_LocalPosition: {x: 0, y: 1, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &4406663779918949810
+--- !u!114 &6420967375897004681
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8095790393924898175}
+  m_GameObject: {fileID: 6420967375897004683}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5b4f56cc787365f43a79748a6e3b1793, type: 3}
+  m_Script: {fileID: 11500000, guid: c8f6dadc65db2d24298411065e494562, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  coinList: []
-  stickerObject: {fileID: 7059130672778521763, guid: 383c48a0d6e302541a57c7a33de8e65d,
+  LoadingBar: {fileID: 7037932095002200938, guid: 014f88fc07dfa1b42b849222696a9be6,
     type: 3}
-  finish: {fileID: 2032823587391776419, guid: c85261ac462ef85448b10b92e43df3f9, type: 3}
-  canvas: {fileID: 5378894420974302099, guid: da83d1c688dacde4a824218a9b65e098, type: 3}
-  levelIsSpawned: 0
-  levelPlatformen:
-    width: 0
-    heigth: 0
-    tileList: 
+  canvas: {fileID: 5864296343360505310, guid: 985b72cac8fda2644928ec2ac76e9306, type: 3}

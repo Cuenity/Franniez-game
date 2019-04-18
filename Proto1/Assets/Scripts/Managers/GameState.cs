@@ -105,7 +105,7 @@ public class GameState : MonoBehaviour
 
         levelManager = Instantiate(levelManager, instance.transform);
         levelManager.transform.parent = this.transform;
-
+        //dynamisch maken
         levelManager.InitScene("1");
     }
 

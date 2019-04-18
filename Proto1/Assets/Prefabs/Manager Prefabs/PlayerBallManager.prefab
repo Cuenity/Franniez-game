@@ -67,3 +67,4 @@ MonoBehaviour:
     type: 3}
   lightBall: {fileID: 3487010160076124655, guid: 0b8d6287b946e164d9adfa7f855af0fd,
     type: 3}
+  activePlayer: {fileID: 0}
