@@ -5,6 +5,8 @@ using UnityEngine;
 using UnityEngine.Experimental.UIElements;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using GameAnalyticsSDK;
+using GameAnalyticsSDK.Events;
 
 public class MainMenu : MonoBehaviour
 {
@@ -41,7 +43,10 @@ public class MainMenu : MonoBehaviour
             AudioListener.volume = 0f;
         }
 
-        
+        GameAnalytics.Initialize();
+        GameAnalytics.NewProgressionEvent(GAProgressionStatus.Start, "MainMenu");
+
+
     }
 
     public void StartGame()
@@ -49,8 +54,7 @@ public class MainMenu : MonoBehaviour
         Debug.Log("Start Game");
 
         //SceneManager.sceneLoaded += SceneIsLoaded;
-        SceneManager.LoadScene("1");
-        //GameState.Instance.levelManager.AsynchronousLoadStart("1");
+        SceneSwitcher.Instance.AsynchronousLoadStart("1");
     }
 
     //private void SceneIsLoaded(Scene arg0, LoadSceneMode arg1)

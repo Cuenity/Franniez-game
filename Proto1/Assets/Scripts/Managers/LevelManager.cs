@@ -89,7 +89,7 @@ public class LevelManager : MonoBehaviour
        {
             item.gameObject.SetActive(false) ;
        }
-       //coinList.Clear();
+       coinList.Clear();
        stickerObject.gameObject.SetActive(false);
        finish.gameObject.SetActive(false);
        
@@ -139,9 +139,9 @@ public class LevelManager : MonoBehaviour
             {
                 gameState.UIManager.canvas = Instantiate(canvas);
                 gameState.UIManager.newLevelInventoryisRequired = true;
-                gameState.collectableManager.newCollectablesAreRequired = true;
-                coinPositions.Clear();
-                coinList.Clear();
+                //gameState.collectableManager.newCollectablesAreRequired = true;
+                //coinPositions.Clear();
+                //coinList.Clear();
                 GameState.Instance.playerCamera.ManualInit();
                 gameState.collectableManager.newCollectablesAreRequired = true;
                 GameState.Instance.playerCamera.ManualInit();

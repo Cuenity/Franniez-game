@@ -35,20 +35,26 @@ public class GameState : MonoBehaviour
 
     public bool BuildingPhaseActive
     {
-        get { return buildingPhaseActive; }
+        get
+        {
+            return buildingPhaseActive;
+        }
         set
         {
             buildingPhaseActive = value;
             if (buildingPhaseActive)
             {
                 buildingPhaseManager.Init();
+                UIManager.ActivateGarbageBinButton();
             }
             else
             {
-                UIManager.RemoveInventoryButtons();
+                UIManager.DeactivateInventoryButtons();
+                UIManager.DeactivateGarbageBinButton();
             }
         }
     }
+
 
     public bool RollingPhaseActive
     {
@@ -99,7 +105,7 @@ public class GameState : MonoBehaviour
 
         levelManager = Instantiate(levelManager, instance.transform);
         levelManager.transform.parent = this.transform;
-
+        //dynamisch maken
         levelManager.InitScene("1");
     }
 
