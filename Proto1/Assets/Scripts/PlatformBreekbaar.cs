@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlatformBreekbaar : MonoBehaviour
+public class PlatformBreekbaar : Platform
 {
     Vector3 spawnPosition;
     bool hasCollided;

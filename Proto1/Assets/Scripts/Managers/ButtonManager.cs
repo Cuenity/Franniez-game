@@ -121,6 +121,8 @@ public class ButtonManager : MonoBehaviour
             GameState.Instance.levelManager.playerPlatforms.UpdateBoostPlatformsLeft(button);
             button.InventoryButtonAllowed = true;
         }
+
+        GameState.Instance.gridManager.RemoveFilledGridSpots(playerPlatform.GetComponent<Platform>().fillsGridSpot);
         GameState.Instance.levelManager.playerPlatforms.placedPlatforms.Remove(playerPlatform);
         Destroy(playerPlatform);
         GameState.Instance.playerCamera.platformDragActive = false;
