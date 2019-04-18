@@ -43,7 +43,6 @@ public class MainMenu : MonoBehaviour
             AudioListener.volume = 0f;
         }
 
-        GameAnalytics.Initialize();
         GameAnalytics.NewProgressionEvent(GAProgressionStatus.Start, "MainMenu");
 
 

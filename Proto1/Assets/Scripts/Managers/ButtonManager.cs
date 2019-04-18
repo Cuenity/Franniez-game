@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GameAnalyticsSDK;
+using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -40,15 +41,20 @@ public class ButtonManager : MonoBehaviour
 
     }
 
-    public void TestLang(string pathFile)
+    public void ChooseLanguage(string pathFile)
     {
         LocalizationManager.instance.LoadLocalizedText(pathFile);
-
 
         Player player = new Player { name = "" };
         PlayerDataController.instance.player = player;
         PlayerDataController.instance.Save();
         LocalizationManager.instance.ReturnLanguage(pathFile);
+
+        string language = LocalizationManager.instance.LanguageChoice.ToString();
+        language = "Language:" + language;
+        GameAnalytics.NewDesignEvent(language);
+
+
         SceneManager.LoadScene("StartMenu");
     }
 
