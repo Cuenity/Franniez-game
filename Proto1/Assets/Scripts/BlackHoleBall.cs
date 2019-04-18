@@ -61,4 +61,13 @@ public class BlackHoleBall : MonoBehaviour
     {
         StartCoroutine(respawnballinternal());
     }
+    private void OnTriggerEnter(Collider other)
+    {
+        //Debug.Log(other);
+        if(other.name.Contains("Star"))
+        {
+            Debug.Log("JE MOEDER");
+        }
+    }
+
 }

@@ -72,7 +72,7 @@ public class GameState : MonoBehaviour
 
     void Awake()
     {
-        DontDestroyOnLoad(this);
+        //DontDestroyOnLoad(this);
 
         instance = this;
 
@@ -105,8 +105,9 @@ public class GameState : MonoBehaviour
 
         levelManager = Instantiate(levelManager, instance.transform);
         levelManager.transform.parent = this.transform;
-
-        levelManager.InitScene("1");
+        //dynamisch maken
+        Scene scene = SceneManager.GetActiveScene();
+        levelManager.InitScene(scene.name);
     }
 
     // Start is called before the first frame update
