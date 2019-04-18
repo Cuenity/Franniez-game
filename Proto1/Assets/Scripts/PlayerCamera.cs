@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 
@@ -10,6 +11,8 @@ public class PlayerCamera : MonoBehaviour
 
     public Vector3 TargetMovementOffset;
     public Vector3 TargetLookAtOffset;
+    int index = 0;
+    bool animation = false;
 
 
     public float SpringForce;
@@ -31,15 +34,19 @@ public class PlayerCamera : MonoBehaviour
     }
     private void Start()
     {
+        PlayAnimation();
         if (Target != null)
         {
             transform.LookAt(Target.transform.position + TargetLookAtOffset);
         }
     }
+    private void OnAnimatorIK(int layerIndex)
+    {
+        
+    }
 
     internal void InitCamera()
     {
-
         this.transform.position = gameState.playerManager.player.spawnpoint + TargetMovementOffset;
     }
 
@@ -57,7 +64,11 @@ public class PlayerCamera : MonoBehaviour
 
     void FixedUpdate()
     {
-
+        if (animation== false)
+        {
+            StartCoroutine(PlayAnimation());
+            animation = true;
+        }
         if (gameState.RollingPhaseActive == true)
         {
             Rigidbody Body = this.GetComponent<Rigidbody>();
@@ -195,7 +206,7 @@ public class PlayerCamera : MonoBehaviour
         if (Input.touchCount == 2)
         {
             float perspectiveZoomSpeed = 0.1f;        // The rate of change of the field of view in perspective mode.
-            
+
             // Store both touches.
             Touch touchZero = Input.GetTouch(0);
             Touch touchOne = Input.GetTouch(1);
@@ -288,6 +299,42 @@ public class PlayerCamera : MonoBehaviour
             }
         }
     }
+
+    public IEnumerator PlayAnimation()
+    {
+        yield return new WaitForEndOfFrame();
+        gameState.RollingPhaseActive = false;
+        gameState.BuildingPhaseActive = false;
+        gameState = GameState.Instance;
+        gameState.playerCamera.transform.position = gameState.levelManager.finish.transform.position + TargetMovementOffset;
+        camera = gameState.playerCamera.GetComponent<Camera>();
+        gameState.playerCamera.Target = gameState.levelManager.finish.gameObject;
+        camera.transform.LookAt(gameState.levelManager.finish.transform.position);
+        zoomout();
+        index = 0;
+        zoomin();
+    }
+    public void zoomout()
+    {
+
+        while (index <= 10)
+        {
+            this.transform.position = this.transform.position + new Vector3(0, 0, -1);
+            System.Threading.Thread.Sleep(1000);
+            index++;
+        }
+    }
+    public void zoomin()
+    {
+        while (index <= 10)
+        {
+            this.transform.position = this.transform.position + new Vector3(0, 0, 1);
+            new WaitForEndOfFrame();
+            index++;
+
+        }
+    }
+
 }
 
 
