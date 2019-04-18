@@ -167,6 +167,7 @@ public class LevelManager : MonoBehaviour
                 gameState.collectableManager.InitCollectables(coinPositions, stickerPosition, finishPosition);
                 gameState.BuildingPhaseActive = true;
                 GameState.Instance.PreviousLevel = 1;
+                PlayerDataController.instance.previousScene = 1;
                 levelIsSpawned = true;
             }
         }
@@ -204,6 +205,7 @@ public class LevelManager : MonoBehaviour
 
                 gameState.BuildingPhaseActive = true;
                 GameState.Instance.PreviousLevel = 2;
+                PlayerDataController.instance.previousScene = 2;
                 levelIsSpawned = true;
             }
         }
@@ -213,11 +215,11 @@ public class LevelManager : MonoBehaviour
             {
                 gameState.UIManager.canvas = Instantiate(canvas);
                 gameState.UIManager.newLevelInventoryisRequired = true;
-                gameState.collectableManager.newCollectablesAreRequired = true;
-                coinPositions.Clear();
-                coinList.Clear();
+                //gameState.collectableManager.newCollectablesAreRequired = true;
+                //coinPositions.Clear();
+                //coinList.Clear();
                 GameState.Instance.playerCamera.ManualInit();
-                gameState.playerCamera = Instantiate(gameState.playerCamera);
+                //gameState.playerCamera = Instantiate(gameState.playerCamera);
                 Vector3 playeradjustment = new Vector3(.5f, 0, 0);
                 gameState.gridManager.width = 20;
                 gameState.gridManager.heigth = 11;
@@ -235,6 +237,7 @@ public class LevelManager : MonoBehaviour
                 gameState.collectableManager.InitCollectables(coinPositions, stickerPosition, finishPosition);
                 gameState.BuildingPhaseActive = true;
                 GameState.Instance.PreviousLevel = 3;
+                PlayerDataController.instance.previousScene = 3;
                 levelIsSpawned = true;
             }
         }
@@ -244,11 +247,11 @@ public class LevelManager : MonoBehaviour
             {
                 gameState.UIManager.canvas = Instantiate(canvas);
                 gameState.UIManager.newLevelInventoryisRequired = true;
-                gameState.collectableManager.newCollectablesAreRequired = true;
-                coinPositions.Clear();
-                coinList.Clear();
+                //gameState.collectableManager.newCollectablesAreRequired = true;
+                //coinPositions.Clear();
+                //coinList.Clear();
                 GameState.Instance.playerCamera.ManualInit();
-                gameState.playerCamera = Instantiate(gameState.playerCamera);
+                //gameState.playerCamera = Instantiate(gameState.playerCamera);
                 Vector3 playeradjustment = new Vector3(.5f, 0, 0);
                 gameState.gridManager.width = 20;
                 gameState.gridManager.heigth = 11;
@@ -267,6 +270,7 @@ public class LevelManager : MonoBehaviour
                 gameState.collectableManager.InitCollectables(coinPositions, stickerPosition, finishPosition);
                 gameState.BuildingPhaseActive = true;
                 GameState.Instance.PreviousLevel = 4;
+                PlayerDataController.instance.previousScene = 4;
             }
         }
     }
