@@ -41,12 +41,12 @@ public class Coin : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        if (other.isTrigger && other.name.Contains("BlackHoleBall"))
+        if (other.isTrigger && other.name.Contains("Ball"))
         {
             Debug.Log(other);
             go_toBall(other);
         }
-        else if (other.name.Contains("BlackHoleBall"))
+        else if (other.name.Contains("Ball"))
         {
             gameState = GameState.Instance;
             GameState.Instance.playerManager.collectedCoins++;

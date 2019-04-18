@@ -30,22 +30,50 @@ public class Trampoline : MonoBehaviour
         {
             velocityY = velocity.y * -1;
         }
-        if ((velocityY < 2 && velocityY >0 )|| velocityY == 0)
+        if ((velocityY < 4 && velocityY >0 )|| velocityY == 0)
         {
-            velocityY = 4;
+            if(gamestate.playerBallManager.activePlayer.name.Contains("Light"))
+            {
+                velocityY = 2;
+            }
+            else
+            {
+                velocityY = 4;
+            }
         }
-        else if(velocityY > -2 && velocityY < 0)
+        else if(velocityY > -4 && velocityY < 0)
         {
-            velocityY = -4;
+            if (gamestate.playerBallManager.activePlayer.name.Contains("Light"))
+            {
+                velocityY = -2;
+            }
+            else
+            {
+                velocityY = -4;
+            }
         }
 
         if (velocity.x <1 && velocity.x >0 )
         {
-            velocityx = 2;
+            if (gamestate.playerBallManager.activePlayer.name.Contains("Light"))
+            {
+                velocityx = 1;
+            }
+            else
+            {
+                velocityx = 2;
+            }
         }
         else if ((velocity.x > -1 && velocity.x < 0) || velocity.x == 0)
         {
-            velocityx = -2;
+            if (gamestate.playerBallManager.activePlayer.name.Contains("Light"))
+            {
+                velocityx = -1;
+            }
+            else
+            {
+                velocityx = -2;
+            }
         }
         else 
         {

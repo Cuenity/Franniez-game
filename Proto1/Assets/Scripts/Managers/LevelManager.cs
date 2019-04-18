@@ -189,7 +189,7 @@ public class LevelManager : MonoBehaviour
                 playerPlatforms = new PlayerPlatforms(6, 2, 1, 0);
                 gameState.gridManager.Build_Grid_BuildingPhase_Without_Visuals();
 
-
+                gameState.playerBallManager.SetSpawnpoint(1);
                 gameState.platformManager.BuildLevelCoen();
                 SetCoinPositions(110);
                 SetCoinPositions(138);
@@ -198,7 +198,7 @@ public class LevelManager : MonoBehaviour
                 SetfinishPositions(254);
 
                 gameState.playerManager.PlayerInit();
-                gameState.playerBallManager.SetSpawnpoint(1);
+                
                 gameState.collectableManager.InitCollectables(coinPositions, stickerPosition, finishPosition);
                 //hier dan een vieze boolean
 
