@@ -27,19 +27,18 @@ public class CollectableManager : MonoBehaviour
 
     }
 
-    //public void InitCollectables(List<Vector3> coinPositions, Vector3 stickerPosition)
-    //{
-    //    this.coinPositions = coinPositions;
-    //    this.stickerPosition = stickerPosition;
+    public void InitCollectables(List<Vector3> coinPositions, Vector3 stickerPosition)
+    {
+        this.coinPositions = coinPositions;
+        this.stickerPosition = stickerPosition;
 
-    //    InitCoins();
-    //    InitSticker();
-    //}
+        InitCoins();
+        InitSticker();
+    }
 
     public void InitCollectables(List<Vector3> coinPositions, Vector3 stickerPosition, Vector3 finishPosition)
     {
-        if (newCollectablesAreRequired)
-        {
+        
             gameState = GameState.Instance;
             this.coinPositions = coinPositions;
             this.stickerPosition = stickerPosition;
@@ -51,17 +50,8 @@ public class CollectableManager : MonoBehaviour
             
 
             newCollectablesAreRequired = false;
-        }
-        else
-        {
-            foreach (Coin item in GameState.Instance.levelManager.coinList)
-            {
-                item.gameObject.SetActive(true);
-            }
-            GameState.Instance.levelManager.coinList.Clear();
-            GameState.Instance.levelManager.stickerObject.gameObject.SetActive(true);
-            GameState.Instance.levelManager.finish.gameObject.SetActive(true);
-        }
+        
+        
     }
 
     public void InitFinish()
