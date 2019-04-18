@@ -46,6 +46,11 @@ public class ButtonManager : MonoBehaviour
         LocalizationManager.instance.LoadLocalizedText(pathFile);
 
         Player player = new Player { name = "" };
+        for (int i = 0; i < player.levels.Length; i++)
+        {
+            player.levels[i] = new Level();
+        }
+        
         PlayerDataController.instance.player = player;
         PlayerDataController.instance.Save();
         LocalizationManager.instance.ReturnLanguage(pathFile);

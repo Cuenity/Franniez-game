@@ -26,7 +26,7 @@ public class Portal : Platform
     }
     private void OnTriggerEnter(Collider other)
     {
-        PlayerBallManager player = gameState.playerManager.player;
+        GameObject player = gameState.playerBallManager.activePlayer;
         List<Portal> portallist = gameState.platformManager.allPortals;
         foreach (Portal item in portallist)
         {

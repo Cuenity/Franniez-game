@@ -20,6 +20,7 @@ public class GameState : MonoBehaviour
     public ButtonManager buttonManager;
 
     public UIManager UIManager;
+    public UIRollingManager uIRollingManager;
 
     // Privates
     private bool buildingPhaseActive = true;
@@ -105,6 +106,10 @@ public class GameState : MonoBehaviour
 
         levelManager = Instantiate(levelManager, instance.transform);
         levelManager.transform.parent = this.transform;
+
+        uIRollingManager = Instantiate(uIRollingManager, instance.transform);
+        uIRollingManager.transform.parent = this.transform;
+
         //dynamisch maken
         Scene scene = SceneManager.GetActiveScene();
         levelManager.InitScene(scene.name);
