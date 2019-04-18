@@ -64,11 +64,6 @@ public class PlayerCamera : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (animation== false)
-        {
-            StartCoroutine(PlayAnimation());
-            animation = true;
-        }
         if (gameState.RollingPhaseActive == true)
         {
             Rigidbody Body = this.GetComponent<Rigidbody>();
