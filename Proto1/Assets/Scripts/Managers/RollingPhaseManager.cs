@@ -126,23 +126,24 @@ public class RollingPhaseManager : MonoBehaviour
             level.countCoins = amountCoins;
         }
 
-        player = PlayerDataController.instance.player;
+        
 
         if(player.levels == null)
         {
             player.levels = new Level[50];
         }
-        //if (levelNumber != 0)
-        //{
-        //    if (player.levels.Length > 0 && player.levels[0] != null)
-        //    {
-        //        player.levels[levelNumber - 1] = level;
-        //    }
-        //    else
-        //    {
-        //        player.levels[0] = level;
-        //    }
-        //}
+        player = PlayerDataController.instance.player;
+        if (levelNumber != 0)
+        {
+            if (player.levels.Length > 0 && player.levels[0] != null)
+            {
+                player.levels[levelNumber - 1] = level;
+            }
+            else
+            {
+                player.levels[0] = level;
+            }
+        }
 
         player.coins += amountCoins;
         PlayerDataController.instance.player = player;
