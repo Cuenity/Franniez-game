@@ -28,14 +28,27 @@ public class BuildingPhaseManager : MonoBehaviour
         {
             PlayerPlatforms platforms = gameState.levelManager.playerPlatforms;
             gameState.UIManager.InventoryButtons(platforms); // InventoryButtons moet meegeven welke platformen en hoeveel van elk, elk verschillend type krijgt één knop met daarin een platform (als afbeelding of wat dan ook) met het aantal weergegeven.
-            foreach (var placedPlatform in GameState.Instance.levelManager.playerPlatforms.placedPlatforms)
+            foreach (GameObject placedPlatform in platforms.placedPlatforms)
             {
-                placedPlatform.AddComponent<PlatformDragManager>();
-                placedPlatform.GetComponent<Outline>().enabled = true;
-                if (placedPlatform.gameObject.transform.childCount > 0)
+                if (!placedPlatform.GetComponent<Cannon>())
                 {
-                    placedPlatform.gameObject.transform.GetChild(0).gameObject.SetActive(true);
+                    placedPlatform.AddComponent<PlatformDragManager>();
+                    placedPlatform.GetComponent<Outline>().enabled = true;
+                    // voor welk platform wordt onderstaande code uitgevoerd?
+                    if (placedPlatform.gameObject.transform.childCount > 0)
+                    {
+                        placedPlatform.gameObject.transform.GetChild(0).gameObject.SetActive(true);
+                    }
                 }
+                else
+                {
+                    placedPlatform.transform.GetChild(0).transform.GetChild(0).gameObject.AddComponent<PlatformDragManager>();
+                    placedPlatform.transform.GetChild(1).gameObject.AddComponent<PlatformDragManager>();
+                    placedPlatform.transform.GetChild(2).gameObject.AddComponent<PlatformDragManager>();
+                    placedPlatform.transform.GetChild(3).gameObject.AddComponent<PlatformDragManager>();
+                    // hier nog de outline op true als dat er nog bij cannon bij komt
+                }
+
                 //placedPlatform.GetComponent<PlatformDragManager>().enabled = true;
             }
         }

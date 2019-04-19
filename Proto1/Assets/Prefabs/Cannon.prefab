@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 1352131336928296915}
   - component: {fileID: 1352131336929393939}
   - component: {fileID: 1946392675971398698}
+  - component: {fileID: 3008133275420986010}
   m_Layer: 0
   m_Name: Pocket_mini_cannon___Clamp_1
   m_TagString: Cannon
@@ -92,6 +93,19 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 14
   m_Mesh: {fileID: 4300004, guid: 9513b2a45fad4fc4db4f658e66b16f6e, type: 3}
+--- !u!114 &3008133275420986010
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1352131336931582931}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2158f89dd56430641bba05d856cf6525, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fillsGridSpot: 0
 --- !u!1 &1352131336931582933
 GameObject:
   m_ObjectHideFlags: 0
@@ -104,6 +118,7 @@ GameObject:
   - component: {fileID: 1352131336928296917}
   - component: {fileID: 1352131336929393941}
   - component: {fileID: 7781847370601525241}
+  - component: {fileID: 5411458988981804019}
   m_Layer: 0
   m_Name: Pocket_mini_cannon___Clamp_2
   m_TagString: Cannon
@@ -184,6 +199,19 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 14
   m_Mesh: {fileID: 4300006, guid: 9513b2a45fad4fc4db4f658e66b16f6e, type: 3}
+--- !u!114 &5411458988981804019
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1352131336931582933}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2158f89dd56430641bba05d856cf6525, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fillsGridSpot: 0
 --- !u!1 &1352131336931582935
 GameObject:
   m_ObjectHideFlags: 0
@@ -196,6 +224,7 @@ GameObject:
   - component: {fileID: 1352131336928296919}
   - component: {fileID: 1352131336929393943}
   - component: {fileID: 5343070693345806726}
+  - component: {fileID: 8623940814585245683}
   m_Layer: 0
   m_Name: Pocket_mini_cannon___Frame_1
   m_TagString: Cannon
@@ -276,6 +305,19 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 14
   m_Mesh: {fileID: 4300002, guid: 9513b2a45fad4fc4db4f658e66b16f6e, type: 3}
+--- !u!114 &8623940814585245683
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1352131336931582935}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2158f89dd56430641bba05d856cf6525, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fillsGridSpot: 0
 --- !u!1 &1352131336931582937
 GameObject:
   m_ObjectHideFlags: 0
@@ -341,6 +383,7 @@ GameObject:
   - component: {fileID: 3015428605219354857}
   - component: {fileID: 3015428605220485673}
   - component: {fileID: 3317365671544570706}
+  - component: {fileID: 5628412717012762681}
   m_Layer: 0
   m_Name: Only Barrel
   m_TagString: Cannon
@@ -421,6 +464,19 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 14
   m_Mesh: {fileID: 4300000, guid: aecfa89aa8f65a543a3edbc5f9105603, type: 3}
+--- !u!114 &5628412717012762681
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3015428605218219241}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2158f89dd56430641bba05d856cf6525, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fillsGridSpot: 0
 --- !u!1 &8074463469989352316
 GameObject:
   m_ObjectHideFlags: 0

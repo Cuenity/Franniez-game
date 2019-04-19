@@ -142,6 +142,13 @@ public class ButtonManager : MonoBehaviour
             GameState.Instance.levelManager.playerPlatforms.UpdateBoostPlatformsLeft(button);
             button.InventoryButtonAllowed = true;
         }
+        else if (playerPlatform.tag == "Cannon")
+        {
+            InventoryButton button = FindCorrectInventoryButton(InventoryButtonName.cannonPlatformButton);
+            GameState.Instance.levelManager.playerPlatforms.cannonPlatformsLeftToPlace++;
+            GameState.Instance.levelManager.playerPlatforms.UpdateCannonPlatformsLeft(button);
+            button.InventoryButtonAllowed = true;
+        }
 
         GameState.Instance.levelManager.playerPlatforms.placedPlatforms.Remove(playerPlatform);
         Destroy(playerPlatform);
