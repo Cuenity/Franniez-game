@@ -23,7 +23,11 @@ public class LevelSelect : MonoBehaviour
 
     [SerializeField]
     Text stickersCollectedText;
-
+    [SerializeField]
+    Text stickersCollectedTextWorld2;
+    [SerializeField]
+    Text stickersCollectedTextWorld3;
+    
 
     int stickersCollectedCount;
     List<Button> LevelSelectButtons = new List<Button>();
@@ -49,7 +53,9 @@ public class LevelSelect : MonoBehaviour
                 stickersCollectedCount++;
             }
         }
-        stickersCollectedText.text = stickersCollectedCount.ToString();
+        stickersCollectedText.text = "Stickers:"+stickersCollectedCount.ToString()+"/10";
+        stickersCollectedTextWorld2.text = "Stickers Needed:" + stickersCollectedCount.ToString() + "/5";
+        stickersCollectedTextWorld3.text = "Stickers Needed:" + stickersCollectedCount.ToString() + "/10";
     }
 
     // Update is called once per frame

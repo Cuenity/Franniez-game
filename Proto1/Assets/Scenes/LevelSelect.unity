@@ -587,6 +587,8 @@ MonoBehaviour:
   stars2: {fileID: 21300000, guid: 16a55f6aa24772545a438d06dec514e9, type: 3}
   stars3: {fileID: 21300000, guid: 3f28eb9650209fc4d848e5f76b2f4ecf, type: 3}
   stickersCollectedText: {fileID: 994592929}
+  stickersCollectedTextWorld2: {fileID: 815454470}
+  stickersCollectedTextWorld3: {fileID: 1842066154}
 --- !u!4 &517491765
 Transform:
   m_ObjectHideFlags: 0
@@ -1133,7 +1135,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 168}
+  m_AnchoredPosition: {x: 0, y: -179}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &815454470
@@ -1169,7 +1171,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Collect Some Stickers SUCKAAAAAAA
+  m_Text: 
 --- !u!222 &815454471
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1444,7 +1446,7 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 12800000, guid: b988d265406eac048a19369702eb547c, type: 3}
     m_FontSize: 14
     m_FontStyle: 0
     m_BestFit: 0
@@ -2197,7 +2199,7 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 12800000, guid: b988d265406eac048a19369702eb547c, type: 3}
     m_FontSize: 14
     m_FontStyle: 0
     m_BestFit: 0
@@ -3400,7 +3402,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 172}
+  m_AnchoredPosition: {x: 0, y: -175}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1842066154
@@ -3436,7 +3438,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: COLLECT WAY MORE STICKERS SUCKKKAA
+  m_Text: 
 --- !u!222 &1842066155
 CanvasRenderer:
   m_ObjectHideFlags: 0
