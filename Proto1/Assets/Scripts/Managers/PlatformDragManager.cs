@@ -9,6 +9,7 @@ public class PlatformDragManager : MonoBehaviour
     private Vector3 offset;
 
     private new Camera camera;
+    private GameObject draggedPlatformInScene;
 
     bool rotateSpriteHit;
 
@@ -22,13 +23,9 @@ public class PlatformDragManager : MonoBehaviour
 
     //}
 
+    // rotatesprite code weg hier? dit zou moeten helpen als er op een sprite geklikt wordt en dan een ander platform onder zit dat die niet gedragged wordt maar werkt nu geloof ik niet
     void OnMouseDown()
     {
-        if (EventSystem.current.IsPointerOverGameObject())
-        {
-            // check if rotatespritehit?
-        }
-
         rotateSpriteHit = false;
         RaycastHit hit;
         Ray ray = camera.ScreenPointToRay(Input.mousePosition);
@@ -51,6 +48,16 @@ public class PlatformDragManager : MonoBehaviour
 
             GameState.Instance.playerCamera.platformDragActive = true;
 
+            if (tag == "Cannon")
+            {
+                draggedPlatformInScene = gameObject.transform.root.gameObject;
+                Debug.Log(draggedPlatformInScene.name);
+            }
+            else
+            {
+                draggedPlatformInScene = gameObject;
+            }
+
             //offset = transform.position - Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, screenPoint.z));
         }
 
@@ -62,7 +69,7 @@ public class PlatformDragManager : MonoBehaviour
         {
             Vector3 curScreenPoint = new Vector3(Input.mousePosition.x, Input.mousePosition.y, screenPoint.z);
             Vector3 curPosition = camera.ScreenToWorldPoint(curScreenPoint);// + offset;
-            transform.position = curPosition;
+            draggedPlatformInScene.transform.position = curPosition;
         }
     }
 
@@ -92,13 +99,13 @@ public class PlatformDragManager : MonoBehaviour
                 if (platformDraggedToButton)
                 {
                     RemoveFilledGridSpots();
-                    GameState.Instance.buttonManager.UpdatePlayerPlatforms(gameObject);
+                    GameState.Instance.buttonManager.UpdatePlayerPlatforms(draggedPlatformInScene);
                     // dragactive = false;?
                 }
                 else
                 {
                     RemoveFilledGridSpots();
-                    GameState.Instance.platformManager.spawnPlatformOnGrid(transform.position, gameObject);
+                    GameState.Instance.platformManager.spawnPlatformOnGrid(draggedPlatformInScene.transform.position, draggedPlatformInScene);
                     GameState.Instance.playerCamera.platformDragActive = false;
                 }
             }
@@ -118,7 +125,7 @@ public class PlatformDragManager : MonoBehaviour
         if (results.Count > 0)
         {
             RemoveFilledGridSpots();
-            GameState.Instance.buttonManager.UpdatePlayerPlatforms(gameObject);
+            GameState.Instance.buttonManager.UpdatePlayerPlatforms(draggedPlatformInScene.gameObject);
             return true;
         }
 
@@ -132,8 +139,8 @@ public class PlatformDragManager : MonoBehaviour
 
     private void RemoveFilledGridSpots()
     {
-        int filledGridSpotToRemove = GetComponent<Platform>().fillsGridSpot;
-        if (!GetComponent<Cannon>())
+        int filledGridSpotToRemove = draggedPlatformInScene.GetComponent<Platform>().fillsGridSpot;
+        if (!draggedPlatformInScene.GetComponent<Cannon>())
         {
             GameState.Instance.gridManager.RemoveFilledGridSpots(filledGridSpotToRemove, SizeType.twoByOne);
         }

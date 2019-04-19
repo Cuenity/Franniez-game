@@ -1,82 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &1352131336931582929
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1352131336931688433}
-  - component: {fileID: 1352131336928296913}
-  - component: {fileID: 1352131336929393937}
-  m_Layer: 0
-  m_Name: Pocket_mini_cannon___Cannon_1
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!4 &1352131336931688433
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1352131336931582929}
-  m_LocalRotation: {x: 0.8081501, y: 0.00184633, z: -0.021394912, w: 0.58858496}
-  m_LocalPosition: {x: -0.7805786, y: -0.91456413, z: -0.34568977}
-  m_LocalScale: {x: 0.9999852, y: 1.0000724, z: 1}
-  m_Children: []
-  m_Father: {fileID: 6201463152308279159}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &1352131336928296913
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1352131336931582929}
-  m_Mesh: {fileID: 4300000, guid: 9513b2a45fad4fc4db4f658e66b16f6e, type: 3}
---- !u!23 &1352131336929393937
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1352131336931582929}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 2100000, guid: 9513b2a45fad4fc4db4f658e66b16f6e, type: 3}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 0
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
 --- !u!1 &1352131336931582931
 GameObject:
   m_ObjectHideFlags: 0
@@ -88,9 +11,10 @@ GameObject:
   - component: {fileID: 1352131336931688435}
   - component: {fileID: 1352131336928296915}
   - component: {fileID: 1352131336929393939}
+  - component: {fileID: 1946392675971398698}
   m_Layer: 0
   m_Name: Pocket_mini_cannon___Clamp_1
-  m_TagString: Untagged
+  m_TagString: Cannon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -107,7 +31,7 @@ Transform:
   m_LocalScale: {x: 1, y: 0.99993706, z: 0.99993706}
   m_Children: []
   m_Father: {fileID: 6201463152308279159}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &1352131336928296915
 MeshFilter:
@@ -154,6 +78,20 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!64 &1946392675971398698
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1352131336931582931}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 0
+  m_CookingOptions: 14
+  m_Mesh: {fileID: 4300004, guid: 9513b2a45fad4fc4db4f658e66b16f6e, type: 3}
 --- !u!1 &1352131336931582933
 GameObject:
   m_ObjectHideFlags: 0
@@ -165,9 +103,10 @@ GameObject:
   - component: {fileID: 1352131336931688437}
   - component: {fileID: 1352131336928296917}
   - component: {fileID: 1352131336929393941}
+  - component: {fileID: 7781847370601525241}
   m_Layer: 0
   m_Name: Pocket_mini_cannon___Clamp_2
-  m_TagString: Untagged
+  m_TagString: Cannon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -184,7 +123,7 @@ Transform:
   m_LocalScale: {x: 1, y: 0.99993706, z: 0.99993706}
   m_Children: []
   m_Father: {fileID: 6201463152308279159}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &1352131336928296917
 MeshFilter:
@@ -231,6 +170,20 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!64 &7781847370601525241
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1352131336931582933}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 0
+  m_CookingOptions: 14
+  m_Mesh: {fileID: 4300006, guid: 9513b2a45fad4fc4db4f658e66b16f6e, type: 3}
 --- !u!1 &1352131336931582935
 GameObject:
   m_ObjectHideFlags: 0
@@ -242,9 +195,10 @@ GameObject:
   - component: {fileID: 1352131336931688439}
   - component: {fileID: 1352131336928296919}
   - component: {fileID: 1352131336929393943}
+  - component: {fileID: 5343070693345806726}
   m_Layer: 0
   m_Name: Pocket_mini_cannon___Frame_1
-  m_TagString: Untagged
+  m_TagString: Cannon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -261,7 +215,7 @@ Transform:
   m_LocalScale: {x: 1, y: 0.99993706, z: 0.99993706}
   m_Children: []
   m_Father: {fileID: 6201463152308279159}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &1352131336928296919
 MeshFilter:
@@ -308,6 +262,20 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!64 &5343070693345806726
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1352131336931582935}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 0
+  m_CookingOptions: 14
+  m_Mesh: {fileID: 4300002, guid: 9513b2a45fad4fc4db4f658e66b16f6e, type: 3}
 --- !u!1 &1352131336931582937
 GameObject:
   m_ObjectHideFlags: 0
@@ -317,12 +285,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6201463152308279159}
-  - component: {fileID: 5623255408101717864}
-  - component: {fileID: 5125400138165918770}
   - component: {fileID: 2252533963087119486}
   m_Layer: 0
   m_Name: Cannon
-  m_TagString: Untagged
+  m_TagString: Cannon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -339,7 +305,6 @@ RectTransform:
   m_LocalScale: {x: 0.0175, y: 0.0175, z: 0.0175}
   m_Children:
   - {fileID: 6904860946554515780}
-  - {fileID: 1352131336931688433}
   - {fileID: 1352131336931688435}
   - {fileID: 1352131336931688437}
   - {fileID: 1352131336931688439}
@@ -351,57 +316,6 @@ RectTransform:
   m_AnchoredPosition: {x: -34.535942, y: 8.2067375}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!23 &5623255408101717864
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1352131336931582937}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 0}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 0
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
---- !u!64 &5125400138165918770
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1352131336931582937}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 14
-  m_Mesh: {fileID: 0}
 --- !u!114 &2252533963087119486
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -426,9 +340,10 @@ GameObject:
   - component: {fileID: 3015428605218060489}
   - component: {fileID: 3015428605219354857}
   - component: {fileID: 3015428605220485673}
+  - component: {fileID: 3317365671544570706}
   m_Layer: 0
   m_Name: Only Barrel
-  m_TagString: Untagged
+  m_TagString: Cannon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -492,6 +407,20 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!64 &3317365671544570706
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3015428605218219241}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 0
+  m_CookingOptions: 14
+  m_Mesh: {fileID: 4300000, guid: aecfa89aa8f65a543a3edbc5f9105603, type: 3}
 --- !u!1 &8074463469989352316
 GameObject:
   m_ObjectHideFlags: 0
@@ -503,7 +432,7 @@ GameObject:
   - component: {fileID: 6904860946554515780}
   m_Layer: 0
   m_Name: Barrel
-  m_TagString: Untagged
+  m_TagString: Cannon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
