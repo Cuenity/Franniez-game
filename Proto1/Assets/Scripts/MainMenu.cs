@@ -53,7 +53,7 @@ public class MainMenu : MonoBehaviour
         Debug.Log("Start Game");
 
         //SceneManager.sceneLoaded += SceneIsLoaded;
-        SceneSwitcher.Instance.AsynchronousLoadStart("1");
+        SceneSwitcher.Instance.AsynchronousLoadStart("LevelSelect");
     }
 
     //private void SceneIsLoaded(Scene arg0, LoadSceneMode arg1)
