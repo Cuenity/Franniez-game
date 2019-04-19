@@ -154,6 +154,7 @@ public class RollingPhaseManager : MonoBehaviour
                 {
                     player.levels[levelNumber - 1].countCoins = level.countCoins;
                 }
+                player.levels[levelNumber - 1].gotSticker = level.gotSticker;
             }
             else
             {
