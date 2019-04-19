@@ -21,12 +21,20 @@ public class LevelSelect : MonoBehaviour
     [SerializeField]
     Sprite stars3;
 
+    [SerializeField]
+    Text stickersCollectedText;
+
+
+    int stickersCollectedCount;
     List<Button> LevelSelectButtons = new List<Button>();
+    Player player;
 
     // Start is called before the first frame update
     void Start()
     {
         levelSelectCanvas.gameObject.SetActive(false);
+        
+        player = PlayerDataController.instance.player;
         //DIT IS NIET ZUIVER REKEN HIER NIET OP 
         //maar je krijgt wel al je buttons in een lijstje zonder dat je 10 buttons moet declareren en slepen in editor
         //MAAR HET IS NIET ZUIVER JE KRIJGT OOK BACK BUTTON ENZO HOU HIER REKENING MEE
@@ -34,6 +42,14 @@ public class LevelSelect : MonoBehaviour
         {
             LevelSelectButtons.Add(button);
         }
+        for (int i = 0; i < player.levels.Length; i++)
+        {
+            if (player.levels[i].gotSticker)
+            {
+                stickersCollectedCount++;
+            }
+        }
+        stickersCollectedText.text = stickersCollectedCount.ToString();
     }
 
     // Update is called once per frame
@@ -44,7 +60,6 @@ public class LevelSelect : MonoBehaviour
 
     void LoadCorrectPicturesForLevels()
     {
-        Player player = PlayerDataController.instance.player;
         for (int i = 0; i < 10; i++)
         {
             switch (player.levels[i].countCoins)
@@ -87,5 +102,16 @@ public class LevelSelect : MonoBehaviour
         LoadCorrectPicturesForLevels();
         levelSelectCanvas.gameObject.SetActive(true);
         
+    }
+
+    public void BackToStartMenu()
+    {
+        SceneSwitcher.Instance.AsynchronousLoadStart("StartMenu");
+    }
+
+    public void BackToWorldSelect()
+    {
+        worldSelectCanvas.gameObject.SetActive(true);
+        levelSelectCanvas.gameObject.SetActive(false);
     }
 }

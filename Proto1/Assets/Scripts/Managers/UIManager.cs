@@ -129,7 +129,7 @@ public class UIManager : MonoBehaviour
             instantiatedInventoryButtons[currentButton].name = InventoryButtonName.boostPlatformButton.ToString();
             buttonText.GetComponent<Text>().text = playerPlatforms.boostPlatforms.ToString();
 
-            playerPlatforms.trampolineButtonInstantiated = true;
+            playerPlatforms.boostPlatformButtonInstantiated = true;
         }
         else if (playerPlatforms.cannonPlatforms > 0 && !playerPlatforms.cannonPlatformButtonInstantiated)
         {
