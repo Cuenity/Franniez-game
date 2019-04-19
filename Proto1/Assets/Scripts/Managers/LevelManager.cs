@@ -100,17 +100,12 @@ public class LevelManager : MonoBehaviour
        stickerObject.gameObject.SetActive(false);
        finish.gameObject.SetActive(false);
        
-       gameState.collectableManager.InitCollectables(coinPositions, stickerObject.spawnpoint, finish.spawnpoint);
+       gameState.collectableManager.InitCollectables(coinPositions, finish.spawnpoint);
     }
     public void SetCoinPositions(int i)
     {
         Vector3 coinAdjustment = new Vector3(.3f, 0, 0);
         coinPositions.Add(gameState.gridManager.gridSquares[i] + coinAdjustment);
-    }
-    public void SetStickerPositions(int i)
-    {
-        Vector3 stickerAdjustment = new Vector3(.5f, 0, 0);
-        stickerPosition = gameState.gridManager.gridSquares[i] + stickerAdjustment;
     }
     public void SetfinishPositions(int i)
     {
@@ -163,7 +158,6 @@ public class LevelManager : MonoBehaviour
                 SetCoinPositions(67);
                 SetCoinPositions(90);
                 SetCoinPositions(115);
-                SetStickerPositions(177);
                 SetfinishPositions(178);
 
 
@@ -171,7 +165,7 @@ public class LevelManager : MonoBehaviour
                 //boolean party voor elk level nu nodig
 
                 gameState.playerManager.PlayerInit();
-                gameState.collectableManager.InitCollectables(coinPositions, stickerPosition, finishPosition);
+                gameState.collectableManager.InitCollectables(coinPositions, finishPosition);
                 gameState.BuildingPhaseActive = true;
                 GameState.Instance.PreviousLevel = 1;
                 PlayerDataController.instance.previousScene = 1;
@@ -202,12 +196,11 @@ public class LevelManager : MonoBehaviour
                 SetCoinPositions(110);
                 SetCoinPositions(138);
                 SetCoinPositions(196);
-                SetStickerPositions(145);
                 SetfinishPositions(254);
 
                 gameState.playerManager.PlayerInit();
                 
-                gameState.collectableManager.InitCollectables(coinPositions, stickerPosition, finishPosition);
+                gameState.collectableManager.InitCollectables(coinPositions, finishPosition);
                 //hier dan een vieze boolean
 
                 gameState.BuildingPhaseActive = true;
@@ -237,11 +230,10 @@ public class LevelManager : MonoBehaviour
                 SetCoinPositions(104);
                 SetCoinPositions(90);
                 SetCoinPositions(190);
-                SetStickerPositions(75);
                 SetfinishPositions(188);
 
                 gameState.playerManager.PlayerInit();
-                gameState.collectableManager.InitCollectables(coinPositions, stickerPosition, finishPosition);
+                gameState.collectableManager.InitCollectables(coinPositions, finishPosition);
                 gameState.BuildingPhaseActive = true;
                 GameState.Instance.PreviousLevel = 3;
                 PlayerDataController.instance.previousScene = 3;
@@ -270,11 +262,11 @@ public class LevelManager : MonoBehaviour
                 SetCoinPositions(137);
                 SetCoinPositions(123);
                 SetCoinPositions(187);
-                SetStickerPositions(12);
+               
                 SetfinishPositions(88);
 
                 gameState.playerManager.PlayerInit();
-                gameState.collectableManager.InitCollectables(coinPositions, stickerPosition, finishPosition);
+                gameState.collectableManager.InitCollectables(coinPositions, finishPosition);
                 gameState.BuildingPhaseActive = true;
                 GameState.Instance.PreviousLevel = 4;
                 PlayerDataController.instance.previousScene = 4;
