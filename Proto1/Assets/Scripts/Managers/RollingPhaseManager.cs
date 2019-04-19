@@ -120,7 +120,7 @@ public class RollingPhaseManager : MonoBehaviour
     private void ReachedFinish()
     {
         Handheld.Vibrate();
-        level.gotSticker = pickedSticker;
+        //level.gotSticker = pickedSticker;
         level.completed = true;
         
 
@@ -140,6 +140,10 @@ public class RollingPhaseManager : MonoBehaviour
         player = PlayerDataController.instance.player;
         //hier moet een check komen die kijkt of de behaalde sterren hoger zijn(eerder) dan aantal sterren nu behaald
         //voor de duidelijkheid player.level is wat is opgeslagen terwijl level het net behaalde is
+        if(level.countCoins == 3)
+        {
+            level.gotSticker = true;
+        }
         if (levelNumber != 0)
         {
             
