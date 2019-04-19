@@ -83,22 +83,21 @@ public class PlatformDragManager : MonoBehaviour
                     pointerEventData.position = Input.mousePosition;
                     ray.Raycast(pointerEventData, results);
 
-                    foreach (RaycastResult result in results)
+                    if (results.Count > 0)
                     {
                         platformDraggedToButton = true;
-                        break;
                     }
                 }
 
                 if (platformDraggedToButton)
                 {
+                    RemoveFilledGridSpots();
                     GameState.Instance.buttonManager.UpdatePlayerPlatforms(gameObject);
                     // dragactive = false;?
                 }
                 else
                 {
-                    int filledGridSpotToRemove = GetComponent<Platform>().fillsGridSpot;
-                    GameState.Instance.gridManager.RemoveFilledGridSpots(filledGridSpotToRemove);
+                    RemoveFilledGridSpots();
                     GameState.Instance.platformManager.spawnPlatformOnGrid(transform.position, gameObject);
                     GameState.Instance.playerCamera.platformDragActive = false;
                 }
@@ -116,11 +115,31 @@ public class PlatformDragManager : MonoBehaviour
         pointerEventData.position = Input.mousePosition;
         ray.Raycast(pointerEventData, results);
 
-        foreach (RaycastResult result in results)
+        if (results.Count > 0)
         {
+            RemoveFilledGridSpots();
             GameState.Instance.buttonManager.UpdatePlayerPlatforms(gameObject);
             return true;
         }
+
+        //foreach (RaycastResult result in results)
+        //{
+        //    GameState.Instance.buttonManager.UpdatePlayerPlatforms(gameObject);
+        //    return true;
+        //}
         return false;
+    }
+
+    private void RemoveFilledGridSpots()
+    {
+        int filledGridSpotToRemove = GetComponent<Platform>().fillsGridSpot;
+        if (!GetComponent<Cannon>())
+        {
+            GameState.Instance.gridManager.RemoveFilledGridSpots(filledGridSpotToRemove, SizeType.twoByOne);
+        }
+        else
+        {
+            GameState.Instance.gridManager.RemoveFilledGridSpots(filledGridSpotToRemove, SizeType.oneByOne);
+        }
     }
 }
