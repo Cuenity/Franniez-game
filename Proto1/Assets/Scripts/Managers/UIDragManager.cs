@@ -127,10 +127,10 @@ public class UIDragManager : MonoBehaviour, IDragHandler, IBeginDragHandler, IEn
                     GameState.Instance.levelManager.playerPlatforms.UpdateCannonPlatformsLeft(correctButton);
                 }
 
-                var outline = draggedPlatform.AddComponent<Outline>();
-                outline.OutlineMode = Outline.Mode.OutlineAll;
-                outline.OutlineColor = Color.blue;
-                outline.OutlineWidth = 10f;
+                //var outline = draggedPlatform.AddComponent<Outline>();
+                //outline.OutlineMode = Outline.Mode.OutlineAll;
+                //outline.OutlineColor = Color.blue;
+                //outline.OutlineWidth = 10f;
 
                 draggedPlatform.AddComponent<PlatformDragManager>();
             }

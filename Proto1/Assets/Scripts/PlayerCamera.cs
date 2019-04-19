@@ -59,7 +59,7 @@ public class PlayerCamera : MonoBehaviour
         {
             transform.LookAt(Target.transform.position + TargetLookAtOffset);
         }
-        this.transform.position = gameState.playerBallManager.spawnpoint + TargetMovementOffset;
+        this.transform.position = gameState.playerManager.playerManager.spawnpoint + TargetMovementOffset;
     }
 
     void FixedUpdate()
