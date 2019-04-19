@@ -8,6 +8,10 @@ MonoImporter:
       type: 3}
   - gridSquare: {fileID: 5277723055925215312, guid: c3402e776dd95844ab6d4872d579ef6b,
       type: 3}
+  - redZone: {fileID: 6338105394343283622, guid: 3b65857da0db1eb42ac566f317f5564d,
+      type: 3}
+  - bottemredZone: {fileID: 7368482446166919657, guid: 654f2aa3716562d449917190680bcf18,
+      type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
