@@ -9,7 +9,7 @@ public class ButtonManager : MonoBehaviour
 
     public delegate void ClickAction();
     public static event ClickAction ChangeEnvironment;
-    
+
 
     void Start()
     {
@@ -18,7 +18,7 @@ public class ButtonManager : MonoBehaviour
 
     void Update()
     {
-       
+
     }
 
     public void StartButton()
@@ -51,7 +51,7 @@ public class ButtonManager : MonoBehaviour
         {
             player.levels[i] = new Level();
         }
-        
+
         PlayerDataController.instance.player = player;
         PlayerDataController.instance.Save();
         LocalizationManager.instance.ReturnLanguage(pathFile);
@@ -164,16 +164,14 @@ public class ButtonManager : MonoBehaviour
     public void ChangeBall()
     {
         gameState = GameState.Instance;
-        GameObject prev_ball=gameState.playerBallManager.activePlayer;
-        Debug.Log("test123");
+        GameObject prev_ball = gameState.playerBallManager.activePlayer;
         if (prev_ball.name.Contains("BlackHole"))
         {
-            Debug.Log("blackhole");
             Destroy(prev_ball);
             gameState.playerBallManager.InitTypeBall(Bal.Normal);
-            
+
         }
-        else if(prev_ball.name.Contains("Light"))
+        else if (prev_ball.name.Contains("Light"))
         {
             Destroy(prev_ball);
             gameState.playerBallManager.InitTypeBall(Bal.BlackHole);

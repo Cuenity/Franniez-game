@@ -21,6 +21,10 @@ public class LevelManager : MonoBehaviour
 
     public PlayerPlatforms playerPlatforms;
 
+    private void Start()
+    {
+        balknop = gameState.UIManager.canvas.GetComponentInChildren<BallKnop>();
+    }
     public Boolean levelIsSpawned = false;
     //public PlayerPlatforms PlayerPlatforms
     //{
@@ -81,7 +85,8 @@ public class LevelManager : MonoBehaviour
     {
         gameState = GameState.Instance;
         levelPlatformen = new LevelPlatformen();
-        balknop = gameState.UIManager.canvas.GetComponent<BallKnop>();
+      
+
         //gameState = GameObject.Find("GameState").GetComponent<GameState>();
     }
 
