@@ -26,7 +26,7 @@ public class Portal : Platform
     }
     private void OnTriggerEnter(Collider other)
     {
-        if (!other.isTrigger && !other.name.Contains("BlackHole"))
+        if (!other.isTrigger )
         {
             GameObject player = gameState.playerBallManager.activePlayer;
             List<Portal> portallist = gameState.platformManager.allPortals;
