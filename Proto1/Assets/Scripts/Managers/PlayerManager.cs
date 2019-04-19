@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerManager : MonoBehaviour
 {
-    public PlayerBallManager player;
+    public PlayerBallManager playerManager;
     public int collectedCoins;
     public bool collectedSticker;
     GameState gameState;
