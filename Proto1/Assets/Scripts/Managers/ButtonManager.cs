@@ -88,12 +88,27 @@ public class ButtonManager : MonoBehaviour
 
     public void RemoveAllPlayerPlatformsFromScene()
     {
+
         int placedPlatformsAmount = gameState.levelManager.playerPlatforms.placedPlatforms.Count;
 
         while (placedPlatformsAmount > 0)
         {
+            RemoveFilledGridSpots(gameState.levelManager.playerPlatforms.placedPlatforms[0]);
             UpdatePlayerPlatforms(gameState.levelManager.playerPlatforms.placedPlatforms[0]);
             placedPlatformsAmount--;
+        }
+    }
+
+    private void RemoveFilledGridSpots(GameObject platform)
+    {
+        int filledGridSpotToRemove = platform.GetComponent<Platform>().fillsGridSpot;
+        if (!platform.GetComponent<Cannon>())
+        {
+            GameState.Instance.gridManager.RemoveFilledGridSpots(filledGridSpotToRemove, SizeType.twoByOne);
+        }
+        else
+        {
+            GameState.Instance.gridManager.RemoveFilledGridSpots(filledGridSpotToRemove, SizeType.oneByOne);
         }
     }
 

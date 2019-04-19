@@ -67,8 +67,6 @@ public class PlatformManager : MonoBehaviour
         }
 
         int minimumValueIndex = distances.IndexOf(distances.Min());
-
-
         if (minimumValueIndex % gameState.gridManager.width == gameState.gridManager.width-1)
         {
             minimumValueIndex--;
