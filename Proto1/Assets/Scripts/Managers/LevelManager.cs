@@ -278,7 +278,7 @@ public class LevelManager : MonoBehaviour
     {
         gameState.BuildingPhaseActive = false;
         gameState.RollingPhaseActive = true;
-        gameState.playerManager.player.GetComponent<Rigidbody>().isKinematic = false;
+        gameState.playerBallManager.activePlayer.GetComponent<Rigidbody>().isKinematic = false;
     }
     public void SetBuildingPhase()
     {
@@ -288,7 +288,7 @@ public class LevelManager : MonoBehaviour
             gameState.playerBallManager.respawnBal();
             gameState.levelManager.RespawnCollectables();
             gameState.BuildingPhaseActive = true;
-            gameState.playerManager.player.GetComponent<Rigidbody>().isKinematic = true;
+            gameState.playerBallManager.activePlayer.GetComponent<Rigidbody>().isKinematic = true;
         }
         else
         {

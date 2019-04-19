@@ -14,7 +14,7 @@ public class LightBall : MonoBehaviour
     }
     void Start()
     {
-
+        this.GetComponent<Rigidbody>().maxAngularVelocity = 99;
 
     }
 
