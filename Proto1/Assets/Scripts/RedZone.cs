@@ -14,11 +14,20 @@ public class RedZone : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
     private void OnTriggerEnter(Collider other)
     {
         Handheld.Vibrate();
-        gameState.levelManager.SetBuildingPhase();
+        if (other.isTrigger && other.name.Contains("BlackHole"))
+        {
+
+        }
+        else
+        {
+            Handheld.Vibrate();
+            gameState.levelManager.SetBuildingPhase();
+        }
+
     }
 }

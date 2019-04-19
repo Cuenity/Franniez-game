@@ -9,6 +9,7 @@ public class ButtonManager : MonoBehaviour
 
     public delegate void ClickAction();
     public static event ClickAction ChangeEnvironment;
+    
 
     void Start()
     {
@@ -137,6 +138,26 @@ public class ButtonManager : MonoBehaviour
             }
         }
         return null;
+    }
+
+    public void ChangeBall()
+    {
+        gameState = GameState.Instance;
+        GameObject prev_ball=gameState.playerBallManager.activePlayer;
+        if (prev_ball.name.Contains("BlackHole"))
+        {
+            Debug.Log("ZWART GAT");
+            
+        }
+        else if(prev_ball.name.Contains("Light"))
+        {
+
+        }
+        else if (prev_ball.name.Contains("Player"))
+        {
+
+        }
+
     }
 
 }
