@@ -18,7 +18,7 @@ public class ButtonManager : MonoBehaviour
 
     void Update()
     {
-
+       
     }
 
     public void StartButton()

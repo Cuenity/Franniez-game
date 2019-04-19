@@ -89,6 +89,7 @@ GameObject:
   - component: {fileID: 5609380373236723937}
   - component: {fileID: 5554525992475807467}
   - component: {fileID: 1815741791406476562}
+  - component: {fileID: 7825184507139706850}
   m_Layer: 5
   m_Name: BallKnop
   m_TagString: InventoryButton
@@ -256,3 +257,15 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &7825184507139706850
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9101002502854603151}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b88d371f581bf943b55e59ea512d8ab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

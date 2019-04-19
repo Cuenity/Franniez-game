@@ -17,6 +17,7 @@ public class LevelManager : MonoBehaviour
     public StickerObject stickerObject;
     public Finish finish;
     public Canvas canvas;
+    BallKnop balknop;
 
     public PlayerPlatforms playerPlatforms;
 
@@ -80,6 +81,7 @@ public class LevelManager : MonoBehaviour
     {
         gameState = GameState.Instance;
         levelPlatformen = new LevelPlatformen();
+        balknop = gameState.UIManager.canvas.GetComponent<BallKnop>();
         //gameState = GameObject.Find("GameState").GetComponent<GameState>();
     }
 
@@ -278,6 +280,7 @@ public class LevelManager : MonoBehaviour
     {
         gameState.BuildingPhaseActive = false;
         gameState.RollingPhaseActive = true;
+        balknop.gameObject.SetActive(false);  
         gameState.playerBallManager.activePlayer.GetComponent<Rigidbody>().isKinematic = false;
     }
     public void SetBuildingPhase()
@@ -287,6 +290,7 @@ public class LevelManager : MonoBehaviour
             gameState.RollingPhaseActive = false;
             gameState.playerBallManager.respawnBal();
             gameState.levelManager.RespawnCollectables();
+            balknop.gameObject.SetActive(true);
             gameState.BuildingPhaseActive = true;
             gameState.playerBallManager.activePlayer.GetComponent<Rigidbody>().isKinematic = true;
         }
