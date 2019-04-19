@@ -4,8 +4,6 @@ using UnityEngine;
 
 public abstract class Platform : MonoBehaviour
 {
-    //public void UpdatePlatformAmount()
-    //{
-
-    //}
+    // this position only needs to be set on playerPlatforms
+    public int fillsGridSpot;
 }

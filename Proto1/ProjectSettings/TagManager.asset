@@ -15,6 +15,7 @@ TagManager:
   - RotateSprite
   - FxTemporaire
   - Trampoline
+  - RedZone
   layers:
   - Default
   - TransparentFX

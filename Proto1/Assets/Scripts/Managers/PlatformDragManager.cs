@@ -115,9 +115,11 @@ public class PlatformDragManager : MonoBehaviour
                 if (platformDraggedToButton)
                 {
                     GameState.Instance.buttonManager.UpdatePlayerPlatforms(gameObject);
+                    // dragactive = false;?
                 }
                 else
                 {
+                    GameState.Instance.gridManager.RemoveFilledGridSpots(this.GetComponent<Platform>().fillsGridSpot);
                     GameState.Instance.platformManager.spawnPlatformOnGrid(transform.position, gameObject);
                     GameState.Instance.playerCamera.platformDragActive = false;
                 }

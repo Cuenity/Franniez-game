@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class GridManager : MonoBehaviour
 {
     public bool[] filledGridSpots;
-    //public List<bool> filledGridSpots;
     public GameObject gridSquareBuild;
 
     public GameObject gridSquare;
@@ -24,26 +21,48 @@ public class GridManager : MonoBehaviour
         gameState = GameState.Instance;
     }
 
-    public void AddFilledGridSpots(int[] gridSpots)
+    public void AddFilledGridSpots(List<int> gridSpots, SizeType type)
     {
-        Debug.Log("Niet af");
-
-        //deze moet eerder gevuld gaan worden al bij de buildlevel dingen, dus dit kan dan weg.
-        //if (filledGridSpots.Length == 0)
-        //{
-        //    filledGridSpots = new bool[gridSquares.Count];
-        //}
-
-        foreach (int gridSpot in gridSpots)
+        switch (type)
         {
-            filledGridSpots[gridSpot] = true;
+            case SizeType.oneByOne:
+                foreach (int gridSpot in gridSpots)
+                {
+                    filledGridSpots[gridSpot] = true;
+                }
+                break;
+            case SizeType.twoByOne:
+                foreach (int gridSpot in gridSpots)
+                {
+                    filledGridSpots[gridSpot] = true;
+                    filledGridSpots[gridSpot + 1] = true; // behalve als dit aan het einde van een row is. Dan moet alles 1 stap extra naar lings
+                }
+                break;
+            case SizeType.twoByTwo:
+                Debug.Log("not finished portal filledgridspots");
+                // portal
+                break;
+            case SizeType.oneByTwo:
+                Debug.Log("not finished portal filledgridspots");
+                // vlag
+                break;
+            default:
+                break;
         }
     }
 
     public void RemoveFilledGridSpots(int gridSpot)
     {
-        Debug.Log("Niet af");
-        filledGridSpots[gridSpot] = false;
+        Debug.Log("Niet af, moet nog met sizetype");
+        if (gameObject.tag == "Cannon")
+        {
+            // een of vier squares
+        }
+        else
+        {
+            filledGridSpots[gridSpot] = false;
+            filledGridSpots[gridSpot + 1] = false;
+        }
     }
 
     //internal void Build_Grid1_With_Visuals()
@@ -189,7 +208,7 @@ public class GridManager : MonoBehaviour
     }
     internal void Build_SquareBest_no_instance(Vector3 startingPoint)
     {
-        GameObject gridSquare1;
+        //GameObject gridSquare1;
 
         //gridSquare1 = Instantiate(gridSquareBuild, startingPoint, new Quaternion(0, 0, 0, 0));
 
