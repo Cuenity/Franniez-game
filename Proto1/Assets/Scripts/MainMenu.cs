@@ -131,4 +131,9 @@ public class MainMenu : MonoBehaviour
         SettingsCanvas.GetComponent<Canvas>().enabled = false;
         LanguageCanvas.GetComponent<Canvas>().enabled = true;
     }
+
+    public void Button_GoToShop()
+    {
+        SceneManager.LoadScene("Shop");
+    }
 }
