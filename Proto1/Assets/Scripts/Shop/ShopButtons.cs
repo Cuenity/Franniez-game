@@ -4,6 +4,8 @@ using UnityEngine;
 using GameAnalyticsSDK;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using System.Timers;
+
 public class ShopButtons : MonoBehaviour
 {
     public GameObject SkinsPanel;
@@ -14,7 +16,8 @@ public class ShopButtons : MonoBehaviour
     public Button MusicButton;
     public Button CoinsButton;
 
-    private GameObject lastPanel;
+    private float startTime;
+    private float endTime;
 
     public delegate void ClickAction(string name);
     public static event ClickAction ChangeImage;
@@ -23,10 +26,14 @@ public class ShopButtons : MonoBehaviour
     {
         MusicPanel.SetActive(false);
         CoinsPanel.SetActive(false);
-        lastPanel = SkinsPanel;
+
+        //Start Time for GameAnal
+        startTime = Time.time;
     }
     public void ReturnMainMenu()
     {
+        endTime = Time.time - startTime;
+
         SendTimeAnal();
         SceneManager.LoadScene("StartMenu");
     }
@@ -35,6 +42,11 @@ public class ShopButtons : MonoBehaviour
     {
         // Verstuur hoelang de gebruiker in de shop was
         // Misschien andere naam verzinnen
+        //string seconds = durationShop.ToString();
+
+        int castTimeToInt = (int)endTime;
+
+        GameAnalytics.NewDesignEvent("Shop:Time", endTime);
     }
 
     public void ShowSkinsPanel(string buttonName)
