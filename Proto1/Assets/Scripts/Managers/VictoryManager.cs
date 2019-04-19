@@ -100,8 +100,10 @@ public class VictoryManager : MonoBehaviour
     {
         //previous level
         string prevlvl = Convert.ToString(PlayerDataController.instance.previousScene);
-        
-        SceneManager.LoadScene(prevlvl);
+
+        SceneSwitcher.Instance.AsynchronousLoadStart(prevlvl);
+
+        //SceneManager.LoadScene(prevlvl);
     }
 
     public void NextScene()
@@ -109,12 +111,14 @@ public class VictoryManager : MonoBehaviour
         //previous level + 1
         int prevlvl = PlayerDataController.instance.previousScene;
         string prevlvlString = Convert.ToString(prevlvl + 1);
-        SceneManager.LoadScene(prevlvlString);
+        SceneSwitcher.Instance.AsynchronousLoadStart(prevlvlString);
+        //SceneManager.LoadScene(prevlvlString);
     }
 
     public void ReturnToMenu()
     {
         //moet lvl select worden
-        SceneManager.LoadScene("StartMenu");
+        //SceneManager.LoadScene("StartMenu");
+        SceneSwitcher.Instance.AsynchronousLoadStartNoLoadingBar("LevelSelect");
     }
 }
