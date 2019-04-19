@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using System.Linq;
-using UnityEngine.UI;
-using System.IO;
 
 public class PlatformManager : MonoBehaviour
 {
@@ -42,7 +38,7 @@ public class PlatformManager : MonoBehaviour
     private Ramp snapRamp;
     private GameObject snapPlatform;
     private GameObject snapPlatformSquare;
-    
+
     private void Awake()
     {
         //platformPositions = new List<Vector3>();
@@ -65,58 +61,65 @@ public class PlatformManager : MonoBehaviour
         {
             for (int i = 0; i < gameState.gridManager.gridSquares.Count; i++)
             {
-                
-                distances.Add(Vector3.Distance(position, (gameState.gridManager.gridSquares[i])+gridAdjustment));
+
+                distances.Add(Vector3.Distance(position, (gameState.gridManager.gridSquares[i]) + gridAdjustment));
             }
         }
-        
+
         int minimumValueIndex = distances.IndexOf(distances.Min());
 
-        Debug.Log("Buiten grid vallen moet op een plek naar lings gezet worden");
-        Debug.Log(minimumValueIndex % gameState.gridManager.width);
 
-        if (minimumValueIndex % gameState.gridManager.width == 19)
+        if (minimumValueIndex % gameState.gridManager.width == gameState.gridManager.width-1)
         {
             minimumValueIndex--;
         }
 
-        // voor alle standaad 2 bij 1 platformen
-        if (!gameState.gridManager.filledGridSpots[minimumValueIndex] && !gameState.gridManager.filledGridSpots[minimumValueIndex + 1])
+        if (!gameObject.GetComponent<Cannon>() && !gameState.gridManager.filledGridSpots[minimumValueIndex] && !gameState.gridManager.filledGridSpots[minimumValueIndex + 1])
         {
             gameObject.transform.position = gameState.gridManager.gridSquares[minimumValueIndex] + rampAdjustment;
             gameObject.GetComponent<Platform>().fillsGridSpot = minimumValueIndex;
+            AddFilledGridSpots(minimumValueIndex);
+        }
+        else if (gameObject.GetComponent<Cannon>() && !gameState.gridManager.filledGridSpots[minimumValueIndex])
+        {
+            gameObject.transform.position = gameState.gridManager.gridSquares[minimumValueIndex] + rampAdjustment;
+            gameObject.GetComponent<Platform>().fillsGridSpot = minimumValueIndex;
+            AddFilledGridSpots(minimumValueIndex);
         }
         else
         {
+            gameObject.GetComponent<Platform>().fillsGridSpot = minimumValueIndex;
             GameState.Instance.buttonManager.UpdatePlayerPlatforms(gameObject);
             Handheld.Vibrate();
-            Debug.Log("Er is al een platform op deze plek");
         }
-
-        List<int> gridSpots;
-
-        if (gameObject.tag == "Cannon") // cannon heeft nog geen tag op het moment. maar moet wel SizeType.oneByOne meekrijgen
-        {
-
-        }
-        else
-        {
-            gridSpots = new List<int>();
-            gridSpots.Add(minimumValueIndex);
-            gameState.gridManager.AddFilledGridSpots(gridSpots, SizeType.twoByOne);
-        }
-
-        
 
         // code voor opslaan van levels
         if (gameState.levelManager.levelPlatformen.tileList != null)
         {
-            if(gameObject.name.Contains("PlatformSquare"))
+            if (gameObject.name.Contains("PlatformSquare"))
+            {
                 gameState.levelManager.levelPlatformen.tileList[minimumValueIndex] = 3;
-            else if(gameObject.name.Contains("RampSmall"))
+            }
+            else if (gameObject.name.Contains("RampSmall"))
+            {
                 gameState.levelManager.levelPlatformen.tileList[minimumValueIndex] = 1;
+            }
         }
-        
+    }
+
+    private void AddFilledGridSpots(int minimumValueIndex)
+    {
+        List<int> gridSpots = new List<int>();
+        gridSpots.Add(minimumValueIndex);
+
+        if (gameObject.GetComponent<Cannon>()) // cannon heeft nog geen tag op het moment. maar moet wel SizeType.oneByOne meekrijgen
+        {
+            gameState.gridManager.AddFilledGridSpots(gridSpots, SizeType.oneByOne);
+        }
+        else
+        {
+            gameState.gridManager.AddFilledGridSpots(gridSpots, SizeType.twoByOne);
+        }
     }
 
     internal void BuildLevelFromText(LevelPlatformen levelPlatformen)
@@ -278,7 +281,7 @@ public class PlatformManager : MonoBehaviour
 
 
         //dit moet later anders zijn collectables 
-      
+
 
 
         Init_Platforms(RampSpots, PlatformSpots, RampSpotsReversed, PortalSpots, TrampolineSpots, rechthoekSpots, boosterPlatformSpots);
@@ -359,7 +362,7 @@ public class PlatformManager : MonoBehaviour
 
         for (int i = 0; i < CoinSpots.Count; i++)
         {
-            coin = Instantiate(coin, gameState.gridManager.gridSquares[CoinSpots[i]]+rampAdjustment, new Quaternion(0, 0, 0, 0));
+            coin = Instantiate(coin, gameState.gridManager.gridSquares[CoinSpots[i]] + rampAdjustment, new Quaternion(0, 0, 0, 0));
 
         }
 
@@ -478,7 +481,7 @@ public class PlatformManager : MonoBehaviour
     //    for (int i = 0; i < PlatformNoGrassSpots.Count; i++)
     //    {
     //        platformSquareNoGrass = Instantiate(platformSquareNoGrass, gameState.gridManager.gridSquares[PlatformNoGrassSpots[i]] + rampAdjustment, new Quaternion(0, 0, 0, 0));
-            
+
     //    }
 
     //    Init_Platforms(RampSpots, PlatformSpots, RampSpotsReversed, PortalSpots, TrampolineSpots, rechthoekSpots);
@@ -532,7 +535,7 @@ public class PlatformManager : MonoBehaviour
         List<int> CoinSpots = new List<int>();
         List<int> RedZoneSpots = new List<int>();
         List<int> boosterPlatformSpots = new List<int>();
-        
+
 
         RampSpots.Add(21);
 
@@ -549,7 +552,7 @@ public class PlatformManager : MonoBehaviour
 
         PlatformSpots.Add(94);
         PlatformSpots.Add(95);
-        
+
         PortalSpots.Add(131);
         PortalSpots.Add(35);
 
@@ -598,7 +601,7 @@ public class PlatformManager : MonoBehaviour
     //    List<int> RampSpots = new List<int>();
     //    List<int> PlatformSpots = new List<int>();
     //    List<int> FinishSpots = new List<int>();
-        
+
     //    List<int> RampSpotsReversed = new List<int>();
     //    List<int> PortalSpots = new List<int>();
     //    List<int> TrampolineSpots = new List<int>();
@@ -626,7 +629,7 @@ public class PlatformManager : MonoBehaviour
     //    for (int i = 0; i < FinishSpots.Count; i++)
     //    {
     //        finish = Instantiate(finish, gameState.gridManager.gridSquares[FinishSpots[i]], new Quaternion(0, 0, 0, 0));
-            
+
     //    }
     //    Init_Platforms(RampSpots, PlatformSpots, RampSpotsReversed, PortalSpots, TrampolineSpots, rechthoekSpots);
     //}
@@ -675,7 +678,7 @@ public class PlatformManager : MonoBehaviour
         {
             for (int i = 0; i < RampSpots.Count; i++)
             {
-                ramp.SpawnRamp(gameState.gridManager.gridSquares[RampSpots[i]]+ new Vector3(.5f,0,0));
+                ramp.SpawnRamp(gameState.gridManager.gridSquares[RampSpots[i]] + new Vector3(.5f, 0, 0));
                 gameState.gridManager.AddFilledGridSpots(RampSpots, SizeType.twoByOne);
             }
         }
