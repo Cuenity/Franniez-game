@@ -54,6 +54,12 @@ public class SceneSwitcher : MonoBehaviour
         StartCoroutine(coroutine);
 
     }
+    //deze methode is speciaal bedoeld voor het overgaan van een level naar de victoryscreen
+    //hij accepteert een nieuwe variable en laat geen loading screen zien
+    internal void AsynchronousLoadStartNoLoadingBar(string scene)
+    {
+        SceneManager.LoadSceneAsync(scene);
+    }
 
     private void SceneIsLoaded(Scene arg0, LoadSceneMode arg1)
     {

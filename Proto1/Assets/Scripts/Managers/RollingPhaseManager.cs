@@ -119,6 +119,8 @@ public class RollingPhaseManager : MonoBehaviour
         Handheld.Vibrate();
         level.gotSticker = pickedSticker;
         level.completed = true;
+        
+
 
         int amountOfCoinsLevel = level.countCoins;
         if (amountCoins > amountOfCoinsLevel)
@@ -133,11 +135,18 @@ public class RollingPhaseManager : MonoBehaviour
             player.levels = new Level[50];
         }
         player = PlayerDataController.instance.player;
+        //hier moet een check komen die kijkt of de behaalde sterren hoger zijn(eerder) dan aantal sterren nu behaald
+        //voor de duidelijkheid player.level is wat is opgeslagen terwijl level het net behaalde is
         if (levelNumber != 0)
         {
+            
             if (player.levels.Length > 0 && player.levels[0] != null)
             {
-                player.levels[levelNumber - 1] = level;
+                player.levels[levelNumber - 1].completed = level.completed;
+                if (player.levels[levelNumber - 1].countCoins <= level.countCoins)
+                {
+                    player.levels[levelNumber - 1].countCoins = level.countCoins;
+                }
             }
             else
             {
@@ -149,8 +158,8 @@ public class RollingPhaseManager : MonoBehaviour
         PlayerDataController.instance.player = player;
         PlayerDataController.instance.Save();
         PlayerDataController.instance.previousScene = levelNumber;
-
-        SceneSwitcher.Instance.AsynchronousLoadStart("VictoryScreen");
+        PlayerDataController.instance.previousSceneCoinCount = level.countCoins;
+        SceneSwitcher.Instance.AsynchronousLoadStartNoLoadingBar("VictoryScreen");
         //DontDestroyOnLoad(gameState.playerManager.player);
         //gameState.UIManager.DeactivateInventoryButtons();
         //GameState.Instance.levelManager.AsynchronousLoadStart("VictoryScreen");
