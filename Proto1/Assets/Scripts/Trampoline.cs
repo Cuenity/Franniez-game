@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Trampoline : MonoBehaviour
+public class Trampoline : Platform
 {
     GameState gamestate;
     // Start is called before the first frame update

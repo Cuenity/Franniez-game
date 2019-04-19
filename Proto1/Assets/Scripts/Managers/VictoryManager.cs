@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using System;
 
 public class VictoryManager : MonoBehaviour
 {
@@ -63,43 +64,49 @@ public class VictoryManager : MonoBehaviour
 
     private void GetData()
     {
-        // Onderstaande code toepassen wanneer Anne klaar is met Gamestate
-        //int previousScene = PlayerDataController.instance.previousScene;
-        ////int previousScene = 1;
-        
-        //Level level = player.levels[previousScene - 1];
+        //Onderstaande code toepassen wanneer Anne klaar is met Gamestate
+        int previousScene = PlayerDataController.instance.previousScene;
+        //int previousScene = 1;
+        player = PlayerDataController.instance.player;
+        Level level = player.levels[previousScene - 1];
 
-        //switch (level.countCoins)
-        //{
-        //    case 1:
-        //        starImage.sprite = star1;
-        //        break;
-        //    case 2:
-        //        starImage.sprite = stars2;
-        //        break;
-        //    case 3:
-        //        starImage.sprite = stars3;
-        //        break;
-        //    default:
-        //        starImage.sprite = stars0;
-        //        break;
-        //}
+        switch (level.countCoins)
+        {
+            case 1:
+                starImage.sprite = star1;
+                break;
+            case 2:
+                starImage.sprite = stars2;
+                break;
+            case 3:
+                starImage.sprite = stars3;
+                break;
+            default:
+                starImage.sprite = stars0;
+                break;
+        }
 
-        //if(level.gotSticker)
-        //{
-        //    sticker.enabled = true;
-        //}
+        if (level.gotSticker)
+        {
+            sticker.enabled = true;
+        }
 
     }
 
     public void Restart()
     {
-        SceneManager.LoadScene("1");
+        //previous level
+        string prevlvl = Convert.ToString(PlayerDataController.instance.previousScene);
+        
+        SceneManager.LoadScene(prevlvl);
     }
 
     public void NextScene()
     {
-        SceneManager.LoadScene("2");
+        //previous level + 1
+        int prevlvl = PlayerDataController.instance.previousScene;
+        string prevlvlString = Convert.ToString(prevlvl + 1);
+        SceneManager.LoadScene(prevlvlString);
     }
 
     public void ReturnToMenu()

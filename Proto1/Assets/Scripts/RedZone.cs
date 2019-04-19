@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RedZone : MonoBehaviour
+public class RedZone : Platform
 {
     GameState gameState;
     // Start is called before the first frame update

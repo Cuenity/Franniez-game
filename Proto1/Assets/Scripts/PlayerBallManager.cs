@@ -20,6 +20,10 @@ public class PlayerBallManager : MonoBehaviour
         gameState = GameState.Instance;
         Vector3 playeradjustment = new Vector3(.5f, 0, 0);
         gameState.playerBallManager.spawnpoint = gameState.gridManager.gridSquares[i] + playeradjustment;
+
+        List<int> fillsGridSpot = new List<int>();
+        fillsGridSpot.Add(i);
+        GameState.Instance.gridManager.AddFilledGridSpots(fillsGridSpot, SizeType.oneByOne);
     }
 
     public void InitTypeBall(string type)
