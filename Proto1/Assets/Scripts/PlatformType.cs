@@ -3,5 +3,6 @@
     ramp,
     platformSquare,
     trampoline,
-    boostPlatform
+    boostPlatform,
+    cannon
 }

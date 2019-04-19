@@ -29,7 +29,7 @@ public class LevelEditorManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        playerPlatforms = new PlayerPlatforms(999, 999, 999, 999);
+        playerPlatforms = new PlayerPlatforms(999, 999, 999, 999, 999);
         MakeInventory();
     }
 

@@ -317,8 +317,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1352131336931688441}
+  - component: {fileID: 2252533963087119486}
   m_Layer: 0
-  m_Name: TestKk Ding
+  m_Name: Cannon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -343,6 +344,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2252533963087119486
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1352131336931582937}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2158f89dd56430641bba05d856cf6525, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3015428605218219241
 GameObject:
   m_ObjectHideFlags: 0
@@ -430,7 +443,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6904860946554515780}
   m_Layer: 0
-  m_Name: Kut Barrel
+  m_Name: Barrel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
