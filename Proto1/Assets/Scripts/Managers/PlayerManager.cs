@@ -33,8 +33,9 @@ public class PlayerManager : MonoBehaviour
 
             gameState.playerBallManager.activePlayer.transform.position = gameState.playerBallManager.spawnpoint;
             gameState.playerCamera.Target = gameState.playerBallManager.activePlayer;
-            Camera camera = gameState.playerCamera.GetComponent<Camera>();
-            camera.transform.LookAt(gameState.playerCamera.Target.transform.position);
+            gameState.playerCamera.transform.position = gameState.playerCamera.Target.transform.position + gameState.playerCamera.TargetMovementOffset;
+            gameState.playerCamera.transform.LookAt(gameState.playerCamera.Target.transform.position);
+
             newPlayerBallIsRequired = false;
         }
         else

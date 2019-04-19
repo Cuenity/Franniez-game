@@ -55,11 +55,13 @@ public class PlayerCamera : MonoBehaviour
         gameState = GameState.Instance;
         camera = this.GetComponent<Camera>();
         camera.gameObject.SetActive(true);
+        this.transform.position = gameState.playerBallManager.spawnpoint + TargetMovementOffset;
         if (Target != null)
         {
             transform.LookAt(Target.transform.position + TargetLookAtOffset);
         }
-        this.transform.position = gameState.playerBallManager.spawnpoint + TargetMovementOffset;
+        this.transform.rotation = new Quaternion(0, 0, 0, 0);
+       
     }
 
     void FixedUpdate()

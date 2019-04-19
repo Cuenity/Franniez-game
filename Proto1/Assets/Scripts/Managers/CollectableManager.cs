@@ -27,25 +27,14 @@ public class CollectableManager : MonoBehaviour
 
     }
 
-    public void InitCollectables(List<Vector3> coinPositions, Vector3 stickerPosition)
-    {
-        this.coinPositions = coinPositions;
-        this.stickerPosition = stickerPosition;
-
-        InitCoins();
-        InitSticker();
-    }
-
-    public void InitCollectables(List<Vector3> coinPositions, Vector3 stickerPosition, Vector3 finishPosition)
+    public void InitCollectables(List<Vector3> coinPositions, Vector3 finishPosition)
     {
         
             gameState = GameState.Instance;
             this.coinPositions = coinPositions;
-            this.stickerPosition = stickerPosition;
             this.finishPosition = finishPosition;
 
             InitCoins();
-            InitSticker();
             InitFinish();
             
 
@@ -76,12 +65,4 @@ public class CollectableManager : MonoBehaviour
         }
     }
 
-    public void InitSticker()
-    {
-        StickerObject sticker2 = Instantiate(sticker);
-        sticker2.spawnpoint = stickerPosition;
-        sticker2.transform.position = sticker2.spawnpoint;
-        sticker2.gameObject.SetActive(true);
-        gameState.levelManager.stickerObject = sticker2;
-    }
 }
