@@ -155,7 +155,7 @@ public class LevelManager : MonoBehaviour
                 Vector3 playeradjustment = new Vector3(.5f, 0, 0);
                 gameState.gridManager.width = 20;
                 gameState.gridManager.heigth = 11;
-                playerPlatforms = new PlayerPlatforms(6, 6, 0, 0, 1);
+                playerPlatforms = new PlayerPlatforms(6, 6, 0, 1, 1);
                 gameState.gridManager.Build_Grid_BuildingPhase_Without_Visuals();
                 gameState.playerBallManager.SetSpawnpoint(1);
                 //gameState.playerManager.player.spawnpoint = gameState.gridManager.gridSquares[1] + playeradjustment;

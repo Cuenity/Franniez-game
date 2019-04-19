@@ -64,9 +64,12 @@ public class RollingPhaseManager : MonoBehaviour
         {
             PlatformDragManager drag = placedPlatform.GetComponent<PlatformDragManager>();
             drag.enabled = false;
-            Destroy(drag);
-            placedPlatform.GetComponent<Outline>().enabled = false;
-            if (placedPlatform.gameObject.transform.childCount > 0)
+            //Destroy(drag);
+            if (!placedPlatform.GetComponent<Cannon>())
+            {
+                placedPlatform.GetComponent<Outline>().enabled = false;
+            }
+            if (placedPlatform.gameObject.transform.childCount > 0 && !placedPlatform.GetComponent<Cannon>())
             {
                 placedPlatform.gameObject.transform.GetChild(0).gameObject.SetActive(false);
             }
