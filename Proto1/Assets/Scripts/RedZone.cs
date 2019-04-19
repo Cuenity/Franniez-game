@@ -18,7 +18,6 @@ public class RedZone : Platform
     }
     private void OnTriggerEnter(Collider other)
     {
-        Handheld.Vibrate();
         if (other.isTrigger && other.name.Contains("BlackHole"))
         {
 

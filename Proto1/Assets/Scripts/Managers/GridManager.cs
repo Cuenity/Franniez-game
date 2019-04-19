@@ -35,7 +35,7 @@ public class GridManager : MonoBehaviour
                 foreach (int gridSpot in gridSpots)
                 {
                     filledGridSpots[gridSpot] = true;
-                    filledGridSpots[gridSpot + 1] = true; // behalve als dit aan het einde van een row is. Dan moet alles 1 stap extra naar lings
+                    filledGridSpots[gridSpot + 1] = true;
                 }
                 break;
             case SizeType.twoByTwo:
@@ -43,7 +43,7 @@ public class GridManager : MonoBehaviour
                 // portal
                 break;
             case SizeType.oneByTwo:
-                Debug.Log("not finished portal filledgridspots");
+                Debug.Log("not finished flag filledgridspots");
                 // vlag
                 break;
             default:
@@ -51,17 +51,27 @@ public class GridManager : MonoBehaviour
         }
     }
 
-    public void RemoveFilledGridSpots(int gridSpot)
+    public void RemoveFilledGridSpots(int gridSpot, SizeType type)
     {
-        Debug.Log("Niet af, moet nog met sizetype");
-        if (gameObject.tag == "Cannon")
+        switch (type)
         {
-            // een of vier squares
-        }
-        else
-        {
-            filledGridSpots[gridSpot] = false;
-            filledGridSpots[gridSpot + 1] = false;
+            case SizeType.oneByOne:
+                filledGridSpots[gridSpot] = true;
+                break;
+            case SizeType.twoByOne:
+                filledGridSpots[gridSpot] = false;
+                filledGridSpots[gridSpot + 1] = false;
+                break;
+            case SizeType.twoByTwo:
+                Debug.Log("not finished portal filledgridspots");
+                // portal
+                break;
+            case SizeType.oneByTwo:
+                Debug.Log("not finished flag filledgridspots");
+                // vlag
+                break;
+            default:
+                break;
         }
     }
 

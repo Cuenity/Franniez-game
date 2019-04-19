@@ -17,6 +17,7 @@ public class LevelManager : MonoBehaviour
     public StickerObject stickerObject;
     public Finish finish;
     public Canvas canvas;
+    BallKnop balknop;
 
     public PlayerPlatforms playerPlatforms;
 
@@ -80,6 +81,7 @@ public class LevelManager : MonoBehaviour
     {
         gameState = GameState.Instance;
         levelPlatformen = new LevelPlatformen();
+        balknop = gameState.UIManager.canvas.GetComponent<BallKnop>();
         //gameState = GameObject.Find("GameState").GetComponent<GameState>();
     }
 
@@ -125,7 +127,7 @@ public class LevelManager : MonoBehaviour
             gameState.gridManager.width = 11;
             gameState.gridManager.heigth = 12;
 
-            playerPlatforms = new PlayerPlatforms(2, 3, 1, 0);
+            playerPlatforms = new PlayerPlatforms(2, 3, 1, 0, 0);
 
             levelPlatformen.tileList = new int[gameState.gridManager.width * gameState.gridManager.heigth];
 
@@ -148,7 +150,7 @@ public class LevelManager : MonoBehaviour
                 Vector3 playeradjustment = new Vector3(.5f, 0, 0);
                 gameState.gridManager.width = 20;
                 gameState.gridManager.heigth = 11;
-                playerPlatforms = new PlayerPlatforms(6, 6, 0, 0);
+                playerPlatforms = new PlayerPlatforms(6, 6, 0, 0, 1);
                 gameState.gridManager.Build_Grid_BuildingPhase_Without_Visuals();
                 gameState.playerBallManager.SetSpawnpoint(1);
                 //gameState.playerManager.player.spawnpoint = gameState.gridManager.gridSquares[1] + playeradjustment;
@@ -187,7 +189,7 @@ public class LevelManager : MonoBehaviour
                 gameState.gridManager.heigth = 14;
                 //Array.Clear(gameState.UIManager.instantiatedInventoryButtons, 0, gameState.UIManager.instantiatedInventoryButtons.Length);
                 //playerPlatforms = null;
-                playerPlatforms = new PlayerPlatforms(6, 2, 1, 0);
+                playerPlatforms = new PlayerPlatforms(6, 2, 1, 0, 0);
                 gameState.gridManager.Build_Grid_BuildingPhase_Without_Visuals();
 
                 gameState.playerBallManager.SetSpawnpoint(1);
@@ -223,7 +225,7 @@ public class LevelManager : MonoBehaviour
                 Vector3 playeradjustment = new Vector3(.5f, 0, 0);
                 gameState.gridManager.width = 20;
                 gameState.gridManager.heigth = 11;
-                playerPlatforms = new PlayerPlatforms(8, 8, 1, 0);
+                playerPlatforms = new PlayerPlatforms(8, 8, 1, 0, 0);
                 gameState.gridManager.Build_Grid_BuildingPhase_Without_Visuals();
                 gameState.playerBallManager.SetSpawnpoint(1);
                 gameState.platformManager.Build_Vertical_Slice_LevelBoost();
@@ -255,7 +257,7 @@ public class LevelManager : MonoBehaviour
                 Vector3 playeradjustment = new Vector3(.5f, 0, 0);
                 gameState.gridManager.width = 20;
                 gameState.gridManager.heigth = 11;
-                playerPlatforms = new PlayerPlatforms(4, 4, 1, 0);
+                playerPlatforms = new PlayerPlatforms(4, 4, 1, 0, 0);
                 gameState.gridManager.Build_Grid_BuildingPhase_Without_Visuals();
                 gameState.playerBallManager.SetSpawnpoint(60);
                 //gameState.platformManager.Build_Vertical_Slice_Level6();
@@ -278,7 +280,8 @@ public class LevelManager : MonoBehaviour
     {
         gameState.BuildingPhaseActive = false;
         gameState.RollingPhaseActive = true;
-        gameState.playerManager.player.GetComponent<Rigidbody>().isKinematic = false;
+        balknop.gameObject.SetActive(false);  
+        gameState.playerBallManager.activePlayer.GetComponent<Rigidbody>().isKinematic = false;
     }
     public void SetBuildingPhase()
     {
@@ -287,8 +290,9 @@ public class LevelManager : MonoBehaviour
             gameState.RollingPhaseActive = false;
             gameState.playerBallManager.respawnBal();
             gameState.levelManager.RespawnCollectables();
+            balknop.gameObject.SetActive(true);
             gameState.BuildingPhaseActive = true;
-            gameState.playerManager.player.GetComponent<Rigidbody>().isKinematic = true;
+            gameState.playerBallManager.activePlayer.GetComponent<Rigidbody>().isKinematic = true;
         }
         else
         {

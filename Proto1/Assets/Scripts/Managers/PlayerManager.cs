@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerManager : MonoBehaviour
 {
-    public PlayerBallManager player;
+    public PlayerBallManager playerManager;
     public int collectedCoins;
     public bool collectedSticker;
     GameState gameState;
@@ -29,10 +29,9 @@ public class PlayerManager : MonoBehaviour
     {
         if (newPlayerBallIsRequired)
         {
-            gameState.playerBallManager.InitTypeBall("blackholeball");
+            gameState.playerBallManager.InitTypeBall(Bal.Normal);
 
             gameState.playerBallManager.activePlayer.transform.position = gameState.playerBallManager.spawnpoint;
-            gameState.playerBallManager.activePlayer.GetComponent<Rigidbody>().maxAngularVelocity = 99;
             gameState.playerCamera.Target = gameState.playerBallManager.activePlayer;
             Camera camera = gameState.playerCamera.GetComponent<Camera>();
             camera.transform.LookAt(gameState.playerCamera.Target.transform.position);

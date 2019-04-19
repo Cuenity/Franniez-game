@@ -18,7 +18,7 @@ public class ButtonManager : MonoBehaviour
 
     void Update()
     {
-
+       
     }
 
     public void StartButton()
@@ -88,12 +88,27 @@ public class ButtonManager : MonoBehaviour
 
     public void RemoveAllPlayerPlatformsFromScene()
     {
+
         int placedPlatformsAmount = gameState.levelManager.playerPlatforms.placedPlatforms.Count;
 
         while (placedPlatformsAmount > 0)
         {
+            RemoveFilledGridSpots(gameState.levelManager.playerPlatforms.placedPlatforms[0]);
             UpdatePlayerPlatforms(gameState.levelManager.playerPlatforms.placedPlatforms[0]);
             placedPlatformsAmount--;
+        }
+    }
+
+    private void RemoveFilledGridSpots(GameObject platform)
+    {
+        int filledGridSpotToRemove = platform.GetComponent<Platform>().fillsGridSpot;
+        if (!platform.GetComponent<Cannon>())
+        {
+            GameState.Instance.gridManager.RemoveFilledGridSpots(filledGridSpotToRemove, SizeType.twoByOne);
+        }
+        else
+        {
+            GameState.Instance.gridManager.RemoveFilledGridSpots(filledGridSpotToRemove, SizeType.oneByOne);
         }
     }
 
@@ -128,7 +143,6 @@ public class ButtonManager : MonoBehaviour
             button.InventoryButtonAllowed = true;
         }
 
-        GameState.Instance.gridManager.RemoveFilledGridSpots(playerPlatform.GetComponent<Platform>().fillsGridSpot);
         GameState.Instance.levelManager.playerPlatforms.placedPlatforms.Remove(playerPlatform);
         Destroy(playerPlatform);
         GameState.Instance.playerCamera.platformDragActive = false;
@@ -151,18 +165,23 @@ public class ButtonManager : MonoBehaviour
     {
         gameState = GameState.Instance;
         GameObject prev_ball=gameState.playerBallManager.activePlayer;
+        Debug.Log("test123");
         if (prev_ball.name.Contains("BlackHole"))
         {
-            Debug.Log("ZWART GAT");
+            Debug.Log("blackhole");
+            Destroy(prev_ball);
+            gameState.playerBallManager.InitTypeBall(Bal.Normal);
             
         }
         else if(prev_ball.name.Contains("Light"))
         {
-
+            Destroy(prev_ball);
+            gameState.playerBallManager.InitTypeBall(Bal.BlackHole);
         }
         else if (prev_ball.name.Contains("Player"))
         {
-
+            Destroy(prev_ball);
+            gameState.playerBallManager.InitTypeBall(Bal.Light);
         }
 
     }

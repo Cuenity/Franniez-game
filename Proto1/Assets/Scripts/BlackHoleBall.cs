@@ -14,7 +14,7 @@ public class BlackHoleBall : MonoBehaviour
     }
     void Start()
     {
-
+        this.GetComponent<Rigidbody>().maxAngularVelocity = 99;
 
     }
 
@@ -66,7 +66,7 @@ public class BlackHoleBall : MonoBehaviour
         //Debug.Log(other);
         if(other.name.Contains("Star"))
         {
-            Debug.Log("JE MOEDER");
+            //Debug.Log("JE MOEDER");
         }
     }
 

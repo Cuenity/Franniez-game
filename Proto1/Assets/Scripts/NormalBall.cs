@@ -14,7 +14,7 @@ public class NormalBall : MonoBehaviour
     }
     void Start()
     {
-
+        this.GetComponent<Rigidbody>().maxAngularVelocity = 99;
 
     }
 

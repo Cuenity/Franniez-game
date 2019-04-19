@@ -26,23 +26,26 @@ public class Portal : Platform
     }
     private void OnTriggerEnter(Collider other)
     {
-        GameObject player = gameState.playerBallManager.activePlayer;
-        List<Portal> portallist = gameState.platformManager.allPortals;
-        foreach (Portal item in portallist)
+        if (!other.isTrigger && !other.name.Contains("BlackHole"))
         {
-
-            if (this != item)
+            GameObject player = gameState.playerBallManager.activePlayer;
+            List<Portal> portallist = gameState.platformManager.allPortals;
+            foreach (Portal item in portallist)
             {
-                Vector3 velocity = player.GetComponent<Rigidbody>().velocity;
-                if (velocity.x > 0)
+
+                if (this != item)
                 {
-                    player.transform.position = item.transform.position + new Vector3(2, 0, 0);
-                    gameState.playerCamera.transform.position = player.transform.position + gameState.playerCamera.TargetMovementOffset;
-                }
-                else
-                {
-                    player.transform.position = item.transform.position + new Vector3(-2, 0, 0);
-                    gameState.playerCamera.transform.position = player.transform.position + gameState.playerCamera.TargetMovementOffset;
+                    Vector3 velocity = player.GetComponent<Rigidbody>().velocity;
+                    if (velocity.x > 0)
+                    {
+                        player.transform.position = item.transform.position + new Vector3(2, 0, 0);
+                        gameState.playerCamera.transform.position = player.transform.position + gameState.playerCamera.TargetMovementOffset;
+                    }
+                    else
+                    {
+                        player.transform.position = item.transform.position + new Vector3(-1, 0, 0);
+                        gameState.playerCamera.transform.position = player.transform.position + gameState.playerCamera.TargetMovementOffset;
+                    }
                 }
             }
         }

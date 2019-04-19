@@ -47,7 +47,7 @@ public class PlayerCamera : MonoBehaviour
 
     internal void InitCamera()
     {
-        this.transform.position = gameState.playerManager.player.spawnpoint + TargetMovementOffset;
+        this.transform.position = gameState.playerManager.playerManager.spawnpoint + TargetMovementOffset;
     }
 
     internal void ManualInit()
@@ -59,7 +59,7 @@ public class PlayerCamera : MonoBehaviour
         {
             transform.LookAt(Target.transform.position + TargetLookAtOffset);
         }
-        this.transform.position = gameState.playerManager.player.spawnpoint + TargetMovementOffset;
+        this.transform.position = gameState.playerBallManager.spawnpoint + TargetMovementOffset;
     }
 
     void FixedUpdate()

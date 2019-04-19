@@ -4,4 +4,5 @@
     rampInventoryButton,
     trampolineButton,
     boostPlatformButton,
+    cannonPlatformButton
 }

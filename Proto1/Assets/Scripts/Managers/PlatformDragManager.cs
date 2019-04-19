@@ -74,7 +74,6 @@ public class PlatformDragManager : MonoBehaviour
             {
                 EventSystem eventSystem = GetComponent<EventSystem>();
                 List<RaycastResult> results = new List<RaycastResult>();
-               // InventoryButton button = null;
                 bool platformDraggedToButton = false;
 
                 for (int i = 0; i < GameState.Instance.UIManager.instantiatedInventoryButtons.Length; i++)
@@ -84,42 +83,21 @@ public class PlatformDragManager : MonoBehaviour
                     pointerEventData.position = Input.mousePosition;
                     ray.Raycast(pointerEventData, results);
 
-                    foreach (RaycastResult result in results)
+                    if (results.Count > 0)
                     {
-                        //Debug.Log(result);
-                        //if (result.gameObject.tag == "InventoryButton" || result.gameObject.name == "GarbageBinButton")
-                        //{
                         platformDraggedToButton = true;
-                        break;
-                        //}
                     }
-
-                    //if (tag == "PlatformSquare" && GameState.Instance.UIManager.instantiatedInventoryButtons[i].name == InventoryButtonName.platformSquareButton.ToString())
-                    //{
-                    //    button = GameState.Instance.UIManager.instantiatedInventoryButtons[i];
-                    //}
-                    //else if (tag == "Ramp" && GameState.Instance.UIManager.instantiatedInventoryButtons[i].name == InventoryButtonName.rampInventoryButton.ToString())
-                    //{
-                    //    button = GameState.Instance.UIManager.instantiatedInventoryButtons[i];
-                    //}
-                    //else if (tag == "Trampoline" && GameState.Instance.UIManager.instantiatedInventoryButtons[i].name == InventoryButtonName.trampolineButton.ToString())
-                    //{
-                    //    button = GameState.Instance.UIManager.instantiatedInventoryButtons[i];
-                    //}
-                    //else if (tag == "Booster" && GameState.Instance.UIManager.instantiatedInventoryButtons[i].name == InventoryButtonName.boostPlatformButton.ToString())
-                    //{
-                    //    button = GameState.Instance.UIManager.instantiatedInventoryButtons[i];
-                    //}
                 }
 
                 if (platformDraggedToButton)
                 {
+                    RemoveFilledGridSpots();
                     GameState.Instance.buttonManager.UpdatePlayerPlatforms(gameObject);
                     // dragactive = false;?
                 }
                 else
                 {
-                    GameState.Instance.gridManager.RemoveFilledGridSpots(this.GetComponent<Platform>().fillsGridSpot);
+                    RemoveFilledGridSpots();
                     GameState.Instance.platformManager.spawnPlatformOnGrid(transform.position, gameObject);
                     GameState.Instance.playerCamera.platformDragActive = false;
                 }
@@ -131,19 +109,37 @@ public class PlatformDragManager : MonoBehaviour
     {
         EventSystem eventSystem = GetComponent<EventSystem>();
         List<RaycastResult> results = new List<RaycastResult>();
-        //InventoryButton button = null;
-        //bool platformDraggedToButton = false;
 
         GraphicRaycaster ray = GameState.Instance.UIManager.canvas.gameObject.transform.GetChild(6).GetComponent<GraphicRaycaster>();
         PointerEventData pointerEventData = new PointerEventData(eventSystem);
         pointerEventData.position = Input.mousePosition;
         ray.Raycast(pointerEventData, results);
 
-        foreach (RaycastResult result in results)
+        if (results.Count > 0)
         {
+            RemoveFilledGridSpots();
             GameState.Instance.buttonManager.UpdatePlayerPlatforms(gameObject);
             return true;
         }
+
+        //foreach (RaycastResult result in results)
+        //{
+        //    GameState.Instance.buttonManager.UpdatePlayerPlatforms(gameObject);
+        //    return true;
+        //}
         return false;
+    }
+
+    private void RemoveFilledGridSpots()
+    {
+        int filledGridSpotToRemove = GetComponent<Platform>().fillsGridSpot;
+        if (!GetComponent<Cannon>())
+        {
+            GameState.Instance.gridManager.RemoveFilledGridSpots(filledGridSpotToRemove, SizeType.twoByOne);
+        }
+        else
+        {
+            GameState.Instance.gridManager.RemoveFilledGridSpots(filledGridSpotToRemove, SizeType.oneByOne);
+        }
     }
 }

@@ -26,21 +26,29 @@ public class PlayerBallManager : MonoBehaviour
         GameState.Instance.gridManager.AddFilledGridSpots(fillsGridSpot, SizeType.oneByOne);
     }
 
-    public void InitTypeBall(string type)
+    public void InitTypeBall(Bal type)
     {
         switch (type)
         {
-            case  "blackholeball":
+            case Bal.BlackHole:
                activePlayer= Instantiate(blackHoleBall).gameObject;
+                gameState.playerBallManager.activePlayer = activePlayer;
+                gameState.playerCamera.Target = activePlayer;
                 break;
-            case "lightball":
+            case Bal.Light:
                 activePlayer = Instantiate(lightBall).gameObject;
+                gameState.playerBallManager.activePlayer = activePlayer;
+                gameState.playerCamera.Target = activePlayer;
                 break;
-            case "normalball":
+            case Bal.Normal:
                 activePlayer = Instantiate(normalBall).gameObject;
+                gameState.playerBallManager.activePlayer = activePlayer;
+                gameState.playerCamera.Target = activePlayer;
                 break;
             default:
                 activePlayer = Instantiate(normalBall).gameObject;
+                gameState.playerBallManager.activePlayer = activePlayer;
+                gameState.playerCamera.Target = activePlayer;
                 break;
         }
     }
