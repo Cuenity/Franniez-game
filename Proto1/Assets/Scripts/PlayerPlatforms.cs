@@ -25,12 +25,17 @@ public class PlayerPlatforms
     public int boostPlatformsLeftToPlace;
     public bool boostPlatformButtonInstantiated;
 
+    public GameObject cannonPlatform;
+    public int cannonPlatforms;
+    public int cannonPlatformsLeftToPlace;
+    public bool cannonPlatformButtonInstantiated;
+
     public int inventoryButtonAmmount;
 
     //private GameObject draggedPlatform;
     public List<GameObject> placedPlatforms = new List<GameObject>();
 
-    public PlayerPlatforms(int ramps, int platformSquares, int trampolines, int boostPlatforms)
+    public PlayerPlatforms(int ramps, int platformSquares, int trampolines, int boostPlatforms, int cannonPlatforms)
     {
         placedPlatforms = new List<GameObject>();
 
@@ -38,13 +43,14 @@ public class PlayerPlatforms
         this.platformSquares = platformSquares;
         this.trampolines = trampolines;
         this.boostPlatforms = boostPlatforms;
+        this.cannonPlatforms = cannonPlatforms;
         rampsLeftToPlace = ramps;
         platformSquaresLeftToPlace = platformSquares;
         trampolinesLeftToPlace = trampolines;
         boostPlatformsLeftToPlace = boostPlatforms;
+        cannonPlatformsLeftToPlace = cannonPlatforms;
 
         inventoryButtonAmmount = 0;
-
         if (ramps > 0)
             inventoryButtonAmmount++;
         if (platformSquares > 0)
@@ -52,6 +58,8 @@ public class PlayerPlatforms
         if (trampolines > 0)
             inventoryButtonAmmount++;
         if (boostPlatforms > 0)
+            inventoryButtonAmmount++;
+        if (cannonPlatforms > 0)
             inventoryButtonAmmount++;
     }
 
@@ -77,6 +85,12 @@ public class PlayerPlatforms
     {
         Text buttonText = button.transform.GetChild(3).gameObject.GetComponent<Text>();
         buttonText.text = GameState.Instance.levelManager.playerPlatforms.boostPlatformsLeftToPlace.ToString();
+    }
+
+    public void UpdateCannonPlatformsLeft(InventoryButton button)
+    {
+        Text buttonText = button.transform.GetChild(3).gameObject.GetComponent<Text>();
+        buttonText.text = GameState.Instance.levelManager.playerPlatforms.cannonPlatformsLeftToPlace.ToString();
     }
 
     //public GameObject InstantiatePlayerPlatform(GameObject inventoryButton)

@@ -9,6 +9,7 @@ public class UIDragManager : MonoBehaviour, IDragHandler, IBeginDragHandler, IEn
     public GameObject ramp;
     public GameObject trampoline;
     public GameObject boostPlatform;
+    public GameObject cannon;
     //tot hier
     public RotateSprite rotateSprite;
 
@@ -110,6 +111,20 @@ public class UIDragManager : MonoBehaviour, IDragHandler, IBeginDragHandler, IEn
                     }
 
                     GameState.Instance.levelManager.playerPlatforms.UpdateBoostPlatformsLeft(correctButton);
+                }
+                else if (correctButton.name == InventoryButtonName.cannonPlatformButton.ToString())
+                {
+                    type = PlatformType.cannon;
+
+                    draggedPlatform = Instantiate(cannon);
+                    GameState.Instance.levelManager.playerPlatforms.cannonPlatformsLeftToPlace--;
+
+                    if (GameState.Instance.levelManager.playerPlatforms.cannonPlatformsLeftToPlace == 0)
+                    {
+                        correctButton.InventoryButtonAllowed = false;
+                    }
+
+                    GameState.Instance.levelManager.playerPlatforms.UpdateCannonPlatformsLeft(correctButton);
                 }
 
                 var outline = draggedPlatform.AddComponent<Outline>();

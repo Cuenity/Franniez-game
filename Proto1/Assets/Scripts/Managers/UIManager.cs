@@ -12,6 +12,7 @@ public class UIManager : MonoBehaviour
     public Sprite platformSquareImage;
     public Sprite trampolineImage;
     public Sprite boostPlatformImage;
+    public Sprite cannonPlatformImage;
 
     public InventoryButton[] instantiatedInventoryButtons;
 
@@ -129,6 +130,14 @@ public class UIManager : MonoBehaviour
             buttonText.GetComponent<Text>().text = playerPlatforms.boostPlatforms.ToString();
 
             playerPlatforms.trampolineButtonInstantiated = true;
+        }
+        else if (playerPlatforms.cannonPlatforms > 0 && !playerPlatforms.cannonPlatformButtonInstantiated)
+        {
+            buttonImage.GetComponent<Image>().sprite = cannonPlatformImage;
+            instantiatedInventoryButtons[currentButton].name = InventoryButtonName.cannonPlatformButton.ToString();
+            buttonText.GetComponent<Text>().text = playerPlatforms.cannonPlatforms.ToString();
+
+            playerPlatforms.cannonPlatformButtonInstantiated = true;
         }
     }
 }
