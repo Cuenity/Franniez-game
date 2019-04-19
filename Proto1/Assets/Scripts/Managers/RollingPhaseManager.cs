@@ -117,7 +117,7 @@ public class RollingPhaseManager : MonoBehaviour
     private void ReachedFinish()
     {
         Handheld.Vibrate();
-        level.gotSticker = pickedSticker;
+        //level.gotSticker = pickedSticker;
         level.completed = true;
         
 
