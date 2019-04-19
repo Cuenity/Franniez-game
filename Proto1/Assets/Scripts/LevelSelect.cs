@@ -23,11 +23,16 @@ public class LevelSelect : MonoBehaviour
 
     [SerializeField]
     Text stickersCollectedText;
-
+    [SerializeField]
+    Text stickersCollectedTextWorld2;
+    [SerializeField]
+    Text stickersCollectedTextWorld3;
+    
 
     int stickersCollectedCount;
     List<Button> LevelSelectButtons = new List<Button>();
     Player player;
+    bool textIsUpdated = false;
 
     // Start is called before the first frame update
     void Start()
@@ -49,13 +54,20 @@ public class LevelSelect : MonoBehaviour
                 stickersCollectedCount++;
             }
         }
-        stickersCollectedText.text = stickersCollectedCount.ToString();
+        
     }
+    
 
     // Update is called once per frame
     void Update()
     {
-
+        if (!textIsUpdated)
+        {
+            stickersCollectedText.text = stickersCollectedText.text +" " + stickersCollectedCount.ToString();
+            stickersCollectedTextWorld2.text = stickersCollectedTextWorld2.text +" " +stickersCollectedCount.ToString() + "/5";
+            stickersCollectedTextWorld3.text = stickersCollectedTextWorld3.text +" " +stickersCollectedCount.ToString() + "/10";
+            textIsUpdated = true;
+        }
     }
 
     void LoadCorrectPicturesForLevels()
@@ -106,7 +118,7 @@ public class LevelSelect : MonoBehaviour
 
     public void BackToStartMenu()
     {
-        SceneSwitcher.Instance.AsynchronousLoadStart("StartMenu");
+        SceneSwitcher.Instance.AsynchronousLoadStartNoLoadingBar("StartMenu");
     }
 
     public void BackToWorldSelect()

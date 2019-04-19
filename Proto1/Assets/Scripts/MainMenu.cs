@@ -53,7 +53,7 @@ public class MainMenu : MonoBehaviour
         Debug.Log("Start Game");
 
         //SceneManager.sceneLoaded += SceneIsLoaded;
-        SceneSwitcher.Instance.AsynchronousLoadStart("LevelSelect");
+        SceneSwitcher.Instance.AsynchronousLoadStartNoLoadingBar("LevelSelect");
     }
 
     //private void SceneIsLoaded(Scene arg0, LoadSceneMode arg1)
@@ -130,5 +130,10 @@ public class MainMenu : MonoBehaviour
     {
         SettingsCanvas.GetComponent<Canvas>().enabled = false;
         LanguageCanvas.GetComponent<Canvas>().enabled = true;
+    }
+
+    public void Button_GoToShop()
+    {
+        SceneManager.LoadScene("Shop");
     }
 }

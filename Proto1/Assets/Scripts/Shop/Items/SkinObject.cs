@@ -2,17 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SkinObject : MonoBehaviour
+[System.Serializable]
+public class SkinObject : ScriptableObject
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    // Voor UI, dit ziet de speler
+    public string skinName = "Skin Name";
+    public int cost = 50;
+    public string description;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    // Voor het balletje zelf
+    public Sprite texture;
+
 }

@@ -586,7 +586,9 @@ MonoBehaviour:
   stars1: {fileID: 21300000, guid: 3aaf297dd6491ab42944a140dcde5ab7, type: 3}
   stars2: {fileID: 21300000, guid: 16a55f6aa24772545a438d06dec514e9, type: 3}
   stars3: {fileID: 21300000, guid: 3f28eb9650209fc4d848e5f76b2f4ecf, type: 3}
-  stickersCollectedText: {fileID: 994592929}
+  stickersCollectedText: {fileID: 1298875904}
+  stickersCollectedTextWorld2: {fileID: 815454470}
+  stickersCollectedTextWorld3: {fileID: 1842066154}
 --- !u!4 &517491765
 Transform:
   m_ObjectHideFlags: 0
@@ -1110,6 +1112,7 @@ GameObject:
   - component: {fileID: 815454469}
   - component: {fileID: 815454471}
   - component: {fileID: 815454470}
+  - component: {fileID: 815454472}
   m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
@@ -1133,7 +1136,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 168}
+  m_AnchoredPosition: {x: 0, y: -179}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &815454470
@@ -1169,7 +1172,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Collect Some Stickers SUCKAAAAAAA
+  m_Text: 
 --- !u!222 &815454471
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1178,6 +1181,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 815454468}
   m_CullTransparentMesh: 0
+--- !u!114 &815454472
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 815454468}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc6d2a230847dbc459ed333eeb622ace, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  key: StickersCollected_World2
 --- !u!1 &818813156
 GameObject:
   m_ObjectHideFlags: 0
@@ -1385,85 +1401,6 @@ CanvasRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 915791195}
-  m_CullTransparentMesh: 0
---- !u!1 &994592927
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 994592928}
-  - component: {fileID: 994592930}
-  - component: {fileID: 994592929}
-  m_Layer: 5
-  m_Name: StickersCollected
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &994592928
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 994592927}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1508333967}
-  m_RootOrder: 7
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -318, y: -135}
-  m_SizeDelta: {x: 160, y: 30}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &994592929
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 994592927}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
-  m_RaycastTarget: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
-      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 14
-    m_FontStyle: 0
-    m_BestFit: 0
-    m_MinSize: 10
-    m_MaxSize: 40
-    m_Alignment: 0
-    m_AlignByGeometry: 0
-    m_RichText: 1
-    m_HorizontalOverflow: 0
-    m_VerticalOverflow: 0
-    m_LineSpacing: 1
-  m_Text: 
---- !u!222 &994592930
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 994592927}
   m_CullTransparentMesh: 0
 --- !u!1 &998005210
 GameObject:
@@ -2150,6 +2087,7 @@ GameObject:
   - component: {fileID: 1298875903}
   - component: {fileID: 1298875905}
   - component: {fileID: 1298875904}
+  - component: {fileID: 1298875906}
   m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
@@ -2173,7 +2111,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: -179}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1298875904
@@ -2197,7 +2135,7 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 12800000, guid: b988d265406eac048a19369702eb547c, type: 3}
     m_FontSize: 14
     m_FontStyle: 0
     m_BestFit: 0
@@ -2218,6 +2156,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1298875902}
   m_CullTransparentMesh: 0
+--- !u!114 &1298875906
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1298875902}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc6d2a230847dbc459ed333eeb622ace, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  key: StickersCollected_World1
 --- !u!1 &1304564831
 GameObject:
   m_ObjectHideFlags: 0
@@ -2266,10 +2217,10 @@ MonoBehaviour:
   m_Script: {fileID: 1980459831, guid: f70555f144d8491a825f0804e09c671c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 1920, y: 1080}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
@@ -2744,10 +2695,10 @@ MonoBehaviour:
   m_Script: {fileID: 1980459831, guid: f70555f144d8491a825f0804e09c671c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 1920, y: 1080}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
@@ -2793,7 +2744,6 @@ RectTransform:
   - {fileID: 404930956}
   - {fileID: 269170349}
   - {fileID: 1560997038}
-  - {fileID: 994592928}
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3298,6 +3248,7 @@ GameObject:
   - component: {fileID: 1714155138}
   - component: {fileID: 1714155140}
   - component: {fileID: 1714155139}
+  - component: {fileID: 1714155141}
   m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
@@ -3322,7 +3273,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -22, y: 361}
-  m_SizeDelta: {x: 300, y: 50}
+  m_SizeDelta: {x: 500, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1714155139
 MonoBehaviour:
@@ -3345,7 +3296,7 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 12800000, guid: b988d265406eac048a19369702eb547c, type: 3}
     m_FontSize: 44
     m_FontStyle: 0
     m_BestFit: 0
@@ -3366,6 +3317,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1714155137}
   m_CullTransparentMesh: 0
+--- !u!114 &1714155141
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1714155137}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc6d2a230847dbc459ed333eeb622ace, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  key: Level_Select
 --- !u!1 &1842066152
 GameObject:
   m_ObjectHideFlags: 0
@@ -3377,6 +3341,7 @@ GameObject:
   - component: {fileID: 1842066153}
   - component: {fileID: 1842066155}
   - component: {fileID: 1842066154}
+  - component: {fileID: 1842066156}
   m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
@@ -3400,7 +3365,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 172}
+  m_AnchoredPosition: {x: 0, y: -175}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1842066154
@@ -3436,7 +3401,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: COLLECT WAY MORE STICKERS SUCKKKAA
+  m_Text: 
 --- !u!222 &1842066155
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3445,6 +3410,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1842066152}
   m_CullTransparentMesh: 0
+--- !u!114 &1842066156
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1842066152}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc6d2a230847dbc459ed333eeb622ace, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  key: StickersCollected_World3
 --- !u!1 &1866632892
 GameObject:
   m_ObjectHideFlags: 0
@@ -3804,6 +3782,7 @@ GameObject:
   - component: {fileID: 2021629401}
   - component: {fileID: 2021629403}
   - component: {fileID: 2021629402}
+  - component: {fileID: 2021629404}
   m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
@@ -3827,7 +3806,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 64, y: 377}
+  m_AnchoredPosition: {x: -22, y: 361}
   m_SizeDelta: {x: 500, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2021629402
@@ -3872,6 +3851,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2021629400}
   m_CullTransparentMesh: 0
+--- !u!114 &2021629404
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2021629400}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc6d2a230847dbc459ed333eeb622ace, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  key: Stage_Select
 --- !u!1 &2048071624
 GameObject:
   m_ObjectHideFlags: 0
