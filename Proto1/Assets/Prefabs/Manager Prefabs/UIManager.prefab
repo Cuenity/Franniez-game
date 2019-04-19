@@ -46,10 +46,12 @@ MonoBehaviour:
   canvas: {fileID: 5378894420974302099, guid: da83d1c688dacde4a824218a9b65e098, type: 3}
   inventoryButton: {fileID: 4106794643439255396, guid: ec46b2a2eb4814e44a4f05858e3a45e8,
     type: 3}
-  instantiatedInventoryButtons: []
   rampImage: {fileID: 21300000, guid: 58658af157b87a944893f2ab562031e5, type: 3}
   platformSquareImage: {fileID: 21300000, guid: cf81ca485854bc1499be3537b667dd5b,
     type: 3}
   trampolineImage: {fileID: 21300000, guid: 7afcebf36a4126c4cbbe72b1d046f10a, type: 3}
   boostPlatformImage: {fileID: 21300000, guid: a95d26a4316b334418579ba7dd58dcec, type: 3}
+  cannonPlatformImage: {fileID: 21300000, guid: beac2eafe23b6c04e84e09cb20ada5ee,
+    type: 3}
+  instantiatedInventoryButtons: []
   newLevelInventoryisRequired: 0
