@@ -43,7 +43,7 @@ public class GridManager : MonoBehaviour
                 // portal
                 break;
             case SizeType.oneByTwo:
-                Debug.Log("not finished portal filledgridspots");
+                Debug.Log("not finished flag filledgridspots");
                 // vlag
                 break;
             default:

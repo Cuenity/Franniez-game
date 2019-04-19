@@ -12,6 +12,7 @@ public class PlayerDataController : MonoBehaviour
     private string fileName = "PlayerData.json";
     private string filePath;
     public int previousScene { get; set; }
+    public int previousSceneCoinCount { get; set; }
 
     // Use this for initialization
     private void Awake()

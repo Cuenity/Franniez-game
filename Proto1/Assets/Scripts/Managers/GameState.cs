@@ -110,12 +110,16 @@ public class GameState : MonoBehaviour
         uIRollingManager = Instantiate(uIRollingManager, instance.transform);
         uIRollingManager.transform.parent = this.transform;
 
-        //dynamisch maken
+       
+        
         Scene scene = SceneManager.GetActiveScene();
         levelManager.InitScene(scene.name);
     }
 
     // Start is called before the first frame update
-    void Start(){}
+    void Start()
+    {
+        PlayerDataController.instance.previousSceneCoinCount = 0;
+    }
 
 }

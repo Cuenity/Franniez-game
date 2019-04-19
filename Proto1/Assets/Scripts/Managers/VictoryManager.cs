@@ -64,13 +64,17 @@ public class VictoryManager : MonoBehaviour
 
     private void GetData()
     {
+        //ok? hij doet dit 2 keer
         //Onderstaande code toepassen wanneer Anne klaar is met Gamestate
         int previousScene = PlayerDataController.instance.previousScene;
-        //int previousScene = 1;
+
         player = PlayerDataController.instance.player;
+        //hij pakt nu de level zoals het is opgeslagen (dus niet wat daadwerkelijk is behaald)
         Level level = player.levels[previousScene - 1];
 
-        switch (level.countCoins)
+        //nu pakt hij de coincount van previousscene die wordt opgeslagen bij het einde van previousSceneCoinCount
+        
+        switch (PlayerDataController.instance.previousSceneCoinCount)
         {
             case 1:
                 starImage.sprite = star1;
@@ -90,7 +94,6 @@ public class VictoryManager : MonoBehaviour
         {
             sticker.enabled = true;
         }
-
     }
 
     public void Restart()
@@ -111,6 +114,7 @@ public class VictoryManager : MonoBehaviour
 
     public void ReturnToMenu()
     {
+        //moet lvl select worden
         SceneManager.LoadScene("StartMenu");
     }
 }
