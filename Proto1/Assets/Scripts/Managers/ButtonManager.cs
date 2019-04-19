@@ -165,18 +165,23 @@ public class ButtonManager : MonoBehaviour
     {
         gameState = GameState.Instance;
         GameObject prev_ball=gameState.playerBallManager.activePlayer;
+        Debug.Log("test123");
         if (prev_ball.name.Contains("BlackHole"))
         {
-            Debug.Log("ZWART GAT");
+            Debug.Log("blackhole");
+            Destroy(prev_ball);
+            gameState.playerBallManager.InitTypeBall(Bal.Normal);
             
         }
         else if(prev_ball.name.Contains("Light"))
         {
-
+            Destroy(prev_ball);
+            gameState.playerBallManager.InitTypeBall(Bal.BlackHole);
         }
         else if (prev_ball.name.Contains("Player"))
         {
-
+            Destroy(prev_ball);
+            gameState.playerBallManager.InitTypeBall(Bal.Light);
         }
 
     }

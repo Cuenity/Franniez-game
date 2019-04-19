@@ -29,7 +29,7 @@ public class PlayerManager : MonoBehaviour
     {
         if (newPlayerBallIsRequired)
         {
-            gameState.playerBallManager.InitTypeBall("blackholeball");
+            gameState.playerBallManager.InitTypeBall(Bal.Normal);
 
             gameState.playerBallManager.activePlayer.transform.position = gameState.playerBallManager.spawnpoint;
             gameState.playerBallManager.activePlayer.GetComponent<Rigidbody>().maxAngularVelocity = 99;
