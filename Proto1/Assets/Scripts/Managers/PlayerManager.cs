@@ -32,7 +32,6 @@ public class PlayerManager : MonoBehaviour
             gameState.playerBallManager.InitTypeBall(Bal.Normal);
 
             gameState.playerBallManager.activePlayer.transform.position = gameState.playerBallManager.spawnpoint;
-            gameState.playerBallManager.activePlayer.GetComponent<Rigidbody>().maxAngularVelocity = 99;
             gameState.playerCamera.Target = gameState.playerBallManager.activePlayer;
             Camera camera = gameState.playerCamera.GetComponent<Camera>();
             camera.transform.LookAt(gameState.playerCamera.Target.transform.position);
