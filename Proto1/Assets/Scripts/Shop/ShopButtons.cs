@@ -45,8 +45,8 @@ public class ShopButtons : MonoBehaviour
         //string seconds = durationShop.ToString();
 
         int castTimeToInt = (int)endTime;
-
-        GameAnalytics.NewDesignEvent("Shop:Time", endTime);
+        Debug.Log(castTimeToInt);
+        GameAnalytics.NewDesignEvent("Shop:Time", castTimeToInt);
     }
 
     public void ShowSkinsPanel(string buttonName)
