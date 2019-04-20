@@ -61,26 +61,16 @@ public class RollingPhaseManager : MonoBehaviour
     {
         foreach (GameObject placedPlatform in GameState.Instance.levelManager.playerPlatforms.placedPlatforms)
         {
+            Destroy(placedPlatform.GetComponent<PlatformDragManager>());
             if (!placedPlatform.GetComponent<Cannon>())
             {
-                Destroy(placedPlatform.GetComponent<PlatformDragManager>());
                 placedPlatform.GetComponent<Outline>().enabled = false;
-                // voor welk platform wordt onderstaande code uitgevoerd?
-                if (placedPlatform.gameObject.transform.childCount > 0 && !placedPlatform.GetComponent<Cannon>())
-                {
-                    placedPlatform.gameObject.transform.GetChild(0).gameObject.SetActive(false);
-                }
             }
-
-            else
+            // voor welk platform wordt onderstaande code uitgevoerd?
+            if (placedPlatform.gameObject.transform.childCount > 0 && !placedPlatform.GetComponent<Cannon>())
             {
-                Destroy(placedPlatform.transform.GetChild(0).transform.GetChild(0).GetComponent<PlatformDragManager>());
-                Destroy(placedPlatform.transform.GetChild(1).GetComponent<PlatformDragManager>());
-                Destroy(placedPlatform.transform.GetChild(2).GetComponent<PlatformDragManager>());
-                Destroy(placedPlatform.transform.GetChild(3).GetComponent<PlatformDragManager>());
-                // hier nog de outline op false als dat er nog bij cannon bij komt
+                placedPlatform.gameObject.transform.GetChild(0).gameObject.SetActive(false);
             }
-
         }
     }
 

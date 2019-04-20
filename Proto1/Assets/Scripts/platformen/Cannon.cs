@@ -9,8 +9,10 @@ public class Cannon : Platform
         Debug.Log(collision);
         if (collision.gameObject.GetComponent<PlayerBallManager>())
         {
-            Debug.Log("Cannon fire!");
-            collision.gameObject.SetActive(false);
+            GameObject playerBall = collision.gameObject;
+
+
+            gameObject.GetComponentInChildren<CannonFirePoint>().FireCannon(this, playerBall);
         }
     }
 }

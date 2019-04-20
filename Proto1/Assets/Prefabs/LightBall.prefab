@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 2039938794917832374}
   - component: {fileID: 773101345312989564}
   - component: {fileID: 3487010160076124655}
+  - component: {fileID: 4981866996501244047}
   m_Layer: 0
   m_Name: LightBall
   m_TagString: Untagged
@@ -121,3 +122,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b55a09c58707ef4288108bbf13412e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &4981866996501244047
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6431243511034094987}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0bccb2673a40e234cb4f74d39145366a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawnpoint: {x: 0, y: 0, z: 0}
+  blackHoleBall: {fileID: 3503785656540482296, guid: f79b9a6bea4fb9c4b9f71404b5343d52,
+    type: 3}
+  normalBall: {fileID: 4045212194601171583, guid: 286c6364973fb564e93ab31e3f148acf,
+    type: 3}
+  lightBall: {fileID: 3487010160076124655}
+  activePlayer: {fileID: 0}

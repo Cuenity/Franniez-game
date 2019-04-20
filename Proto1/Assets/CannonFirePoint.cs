@@ -1,0 +1,43 @@
+﻿using System.Collections;
+using UnityEngine;
+
+public class CannonFirePoint : MonoBehaviour
+{
+    private GameObject playerBall;
+
+    [SerializeField]
+    private float waitingTimeTillFiring;
+    private float fireSpeed;
+
+    public void FireCannon(Cannon cannon, GameObject playerBall)
+    {
+        waitingTimeTillFiring = 1;
+        fireSpeed = 10;
+
+        this.playerBall = playerBall;
+        playerBall.SetActive(false);
+        playerBall.GetComponent<Rigidbody>().velocity = new Vector3(0, 0, 0);
+        playerBall.transform.position = gameObject.transform.position;
+        StartCoroutine(FireAfterTime());
+    }
+
+    private IEnumerator FireAfterTime()
+    {
+        yield return new WaitForSeconds(waitingTimeTillFiring);
+
+        StartCoroutine(DisableColliderForTime());
+
+        //playerBall.transform.position = transform.position + gameObject.transform.parent.forward;
+        playerBall.GetComponent<Rigidbody>().velocity = gameObject.transform.up * -fireSpeed;
+        //playerBall.GetComponent<Rigidbody>().velocity = new Vector3(gameObject.transform.parent.rotation.x, gameObject.transform.parent.rotation.y, gameObject.transform.parent.rotation.z);
+        playerBall.SetActive(true);
+    }
+
+    private IEnumerator DisableColliderForTime()
+    {
+        transform.root.gameObject.GetComponent<Collider>().enabled = false;
+        yield return new WaitForSeconds(0.2f);
+
+        transform.root.gameObject.GetComponent<Collider>().enabled = true;
+    }
+}
