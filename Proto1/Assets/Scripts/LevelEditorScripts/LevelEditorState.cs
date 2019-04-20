@@ -11,7 +11,7 @@ public class LevelEditorState : MonoBehaviour
     public LevelEditorGridManager gridManager;
     [SerializeField]
     public LevelEditorPlatformManager platformManager;
-    
+    [SerializeField]
     LevelEditorBall levelEditorBall;
 
     [SerializeField]
@@ -23,6 +23,8 @@ public class LevelEditorState : MonoBehaviour
     public int width;
     [SerializeField]
     public int heigth;
+    [SerializeField]
+    public int SpawnBallPosition;
 
     //opslagplek voor levelEigenschappen
     [SerializeField]
@@ -96,7 +98,6 @@ public class LevelEditorState : MonoBehaviour
     }
     public void TestLevel()
     {
-        levelEditorBall = GameObject.FindGameObjectWithTag("Player").GetComponent<LevelEditorBall>();
-        levelEditorBall.Roll();
+        Instantiate(levelEditorBall, gridManager.gridSquares[SpawnBallPosition], new Quaternion(0, 0, 0, 0)).Roll() ;
     }
 }

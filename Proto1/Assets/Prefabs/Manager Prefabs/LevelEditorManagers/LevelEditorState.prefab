@@ -47,10 +47,13 @@ MonoBehaviour:
     type: 3}
   platformManager: {fileID: 8852289546506907176, guid: 25271fe27e22c4e45813a89aceaaabdd,
     type: 3}
+  levelEditorBall: {fileID: 809268522919141895, guid: d420658204c6d944d9724b0ea21eaa95,
+    type: 3}
   UIManager: {fileID: 2935951329436851162, guid: 15d76ca8361becc48a5a80981123b617,
     type: 3}
   width: 10
   heigth: 10
+  SpawnBallPosition: 0
   levelPlatformen:
     width: 0
     heigth: 0

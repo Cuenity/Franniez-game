@@ -116,14 +116,6 @@ public class LevelEditorUIManager : MonoBehaviour
 
             playerPlatforms.redZoneButtonInstantiated = true;
         }
-        else if (playerPlatforms.balls > 0 && !playerPlatforms.ballButtonInstantiated)
-        {
-            buttonImage.GetComponent<Image>().sprite = cannonPlatformImage;
-            instantiatedInventoryButtons[currentButton].name = InventoryButtonName.ballButton.ToString();
-            buttonText.GetComponent<Text>().text = playerPlatforms.balls.ToString();
-
-            playerPlatforms.ballButtonInstantiated = true;
-        }
     }
 
     private void InstantiateInventoryButtonsCheck(int inventoryButtonAmmount)

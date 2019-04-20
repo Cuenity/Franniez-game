@@ -5,6 +5,5 @@
     trampolineButton,
     boostPlatformButton,
     cannonPlatformButton,
-    redZoneButton,
-    ballButton
+    redZoneButton
 }
