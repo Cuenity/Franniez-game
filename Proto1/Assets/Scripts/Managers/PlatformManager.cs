@@ -55,6 +55,7 @@ public class PlatformManager : MonoBehaviour
         //als deze methode alleen is voor speler blokjes kunnen we hier die glow doen
         //GameObject gameObjectGeneric = gameObject;
         Vector3 rampAdjustment = new Vector3(1f, 0f, 0f);
+        Vector3 cannonAdjustment = new Vector3(0.5f, 0f, 0f);
         Vector3 gridAdjustment = new Vector3(0.5f, 0, 0);
         List<float> distances = new List<float>();
         if (gameState.gridManager.gridSquares.Count > 0)
@@ -72,17 +73,20 @@ public class PlatformManager : MonoBehaviour
             minimumValueIndex--;
         }
 
+        List<int> gridSpots = new List<int>();
+        gridSpots.Add(minimumValueIndex);
+
         if (!gameObject.GetComponent<Cannon>() && !gameState.gridManager.filledGridSpots[minimumValueIndex] && !gameState.gridManager.filledGridSpots[minimumValueIndex + 1])
         {
             gameObject.transform.position = gameState.gridManager.gridSquares[minimumValueIndex] + rampAdjustment;
             gameObject.GetComponent<Platform>().fillsGridSpot = minimumValueIndex;
-            AddFilledGridSpots(minimumValueIndex);
+            gameState.gridManager.AddFilledGridSpots(gridSpots, SizeType.twoByOne);
         }
         else if (gameObject.GetComponent<Cannon>() && !gameState.gridManager.filledGridSpots[minimumValueIndex])
         {
-            gameObject.transform.position = gameState.gridManager.gridSquares[minimumValueIndex] + rampAdjustment;
+            gameObject.transform.position = gameState.gridManager.gridSquares[minimumValueIndex] + cannonAdjustment;
             gameObject.GetComponent<Platform>().fillsGridSpot = minimumValueIndex;
-            AddFilledGridSpots(minimumValueIndex);
+            gameState.gridManager.AddFilledGridSpots(gridSpots, SizeType.oneByOne);
         }
         else
         {
@@ -102,21 +106,6 @@ public class PlatformManager : MonoBehaviour
             {
                 gameState.levelManager.levelPlatformen.tileList[minimumValueIndex] = 1;
             }
-        }
-    }
-
-    private void AddFilledGridSpots(int minimumValueIndex)
-    {
-        List<int> gridSpots = new List<int>();
-        gridSpots.Add(minimumValueIndex);
-
-        if (gameObject.GetComponent<Cannon>()) // cannon heeft nog geen tag op het moment. maar moet wel SizeType.oneByOne meekrijgen
-        {
-            gameState.gridManager.AddFilledGridSpots(gridSpots, SizeType.oneByOne);
-        }
-        else
-        {
-            gameState.gridManager.AddFilledGridSpots(gridSpots, SizeType.twoByOne);
         }
     }
 

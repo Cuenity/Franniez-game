@@ -59,7 +59,7 @@ public class GridManager : MonoBehaviour
         switch (type)
         {
             case SizeType.oneByOne:
-                filledGridSpots[gridSpot] = true;
+                filledGridSpots[gridSpot] = false;
                 break;
             case SizeType.twoByOne:
                 filledGridSpots[gridSpot] = false;
