@@ -80,22 +80,59 @@ public class LevelEditorPlatformManager : MonoBehaviour
         // code voor opslaan van levels
         // 0 = leeg;
         // 1 = rampsmall
+        // 2 = rampsmallReversed
+        // 3 = platformSwaure
+        // 4 = trampoline
+        // 5 = boostplatform
+        // 6 = cannon
+        // 7 = redzone
         if (LevelEditorState.Instance.levelPlatformen.tileList != null)
         {
-            if (gameObject.name.Contains("PlatformSquare"))
-            {
-                LevelEditorState.Instance.levelPlatformen.tileList[minimumValueIndex] = 3;
-            }
-            else if (gameObject.name.Contains("RampSmall"))
+            if (gameObject.name.Contains("RampSmall"))
             {
                 LevelEditorState.Instance.levelPlatformen.tileList[minimumValueIndex] = 1;
+            }
+            //broken
+            else if (gameObject.name.Contains("RampSmall"))
+            {
+                LevelEditorState.Instance.levelPlatformen.tileList[minimumValueIndex] = 2;
+            }
+            else if (gameObject.name.Contains("PlatformSquare"))
+            {
+                LevelEditorState.Instance.levelPlatformen.tileList[minimumValueIndex] = 3;
+                gameObject.transform.position += new Vector3(-0.5f, 0, 0);
+            }
+            else if (gameObject.name.Contains("Trampoline"))
+            {
+                LevelEditorState.Instance.levelPlatformen.tileList[minimumValueIndex] = 4;
+            }
+            else if (gameObject.name.Contains("Booster"))
+            {
+                LevelEditorState.Instance.levelPlatformen.tileList[minimumValueIndex] = 5;
+            }
+            else if (gameObject.name.Contains("Cannon"))
+            {
+                LevelEditorState.Instance.levelPlatformen.tileList[minimumValueIndex] = 6;
+            }
+            else if (gameObject.name.Contains("RedZone"))
+            {
+                LevelEditorState.Instance.levelPlatformen.tileList[minimumValueIndex] = 7;
+                gameObject.transform.position += new Vector3(-0.5f,0,0);
             }
         }
     }
 
     internal void BuildLevelFromText(LevelPlatformen levelPlatformen)
     {
-        
+        // code voor opslaan/laden van levels
+        // 0 = leeg;
+        // 1 = rampsmall
+        // 2 = rampsmallReversed
+        // 3 = platformSwaure
+        // 4 = trampoline
+        // 5 = boostplatform
+        // 6 = cannon
+        // 7 = redzone
         Vector3 rampAdjustment = new Vector3(0.5f, 0f, 0f);
         for (int i = 0; i < levelPlatformen.tileList.Length; i++)
         {
@@ -114,8 +151,23 @@ public class LevelEditorPlatformManager : MonoBehaviour
             }
             else if (levelPlatformen.tileList[i] == 3)
             {
-
                 Instantiate(platformSquareClass, LevelEditorState.Instance.gridManager.gridSquares[i] + rampAdjustment, new Quaternion(0, 0, 0, 0));
+            }
+            else if (levelPlatformen.tileList[i] == 4)
+            {
+                Instantiate(trampolineClass, LevelEditorState.Instance.gridManager.gridSquares[i],new Quaternion(0, 0, 0, 0));
+            }
+            else if (levelPlatformen.tileList[i] == 5)
+            {
+                Instantiate(boostPlatformClass, LevelEditorState.Instance.gridManager.gridSquares[i], new Quaternion(0, 0, 0, 0));
+            }
+            else if (levelPlatformen.tileList[i] == 6)
+            {
+                Instantiate(cannonClass, LevelEditorState.Instance.gridManager.gridSquares[i], new Quaternion(0, 0, 0, 0));
+            }
+            else if (levelPlatformen.tileList[i] == 7)
+            {
+                Instantiate(redZoneClass, LevelEditorState.Instance.gridManager.gridSquares[i], new Quaternion(0, 0, 0, 0));
             }
         }
     }

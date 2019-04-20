@@ -438,7 +438,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: SpawnBall
+  m_Text: 'SpawnBall(rollingPhaseStart)
+
+'
 --- !u!222 &466332813
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1146,7 +1148,7 @@ GameObject:
   - component: {fileID: 1193365019}
   - component: {fileID: 1193365018}
   m_Layer: 5
-  m_Name: Play
+  m_Name: StartBuildingPhase
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1213,7 +1215,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 2118171850}
-        m_MethodName: TestLevel
+        m_MethodName: BackToBuilding
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1713,7 +1715,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Play
+  m_Text: BuildingPhaseStart
 --- !u!222 &1723138775
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1812,6 +1814,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: LevelEditorState
       objectReference: {fileID: 0}
+    - target: {fileID: 7299831131721186648, guid: 982768ef9bcb3e64896dd335258beaae,
+        type: 3}
+      propertyPath: levelEditorBall
+      value: 
+      objectReference: {fileID: 809268522919141895, guid: d420658204c6d944d9724b0ea21eaa95,
+        type: 3}
+    - target: {fileID: 7299831131721186648, guid: 982768ef9bcb3e64896dd335258beaae,
+        type: 3}
+      propertyPath: SpawnBallPosition
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4414134276927819666, guid: 982768ef9bcb3e64896dd335258beaae,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1867,12 +1880,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7299831131721186648, guid: 982768ef9bcb3e64896dd335258beaae,
-        type: 3}
-      propertyPath: levelEditorBall
-      value: 
-      objectReference: {fileID: 809268522919141895, guid: d420658204c6d944d9724b0ea21eaa95,
-        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 982768ef9bcb3e64896dd335258beaae, type: 3}
 --- !u!1001 &8243691012891503226

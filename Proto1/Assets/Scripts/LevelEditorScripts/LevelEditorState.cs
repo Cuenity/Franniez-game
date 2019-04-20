@@ -98,6 +98,65 @@ public class LevelEditorState : MonoBehaviour
     }
     public void TestLevel()
     {
+        //moet doen wat rollingphase starter ook doet en dat is nutteloze shit van die kankerplatforms afhalen
+        //outline uit en 
+        //leveleditorDragmanager verwijderen
+        foreach (GameObject placedPlatform in playerPlatforms.placedPlatforms)
+        {
+            if (!placedPlatform.GetComponent<Cannon>())
+            {
+                Destroy(placedPlatform.GetComponent<LevelEditorPlatformDragManager>());
+                placedPlatform.GetComponent<Outline>().enabled = false;
+                // voor welk platform wordt onderstaande code uitgevoerd?
+                if (placedPlatform.gameObject.transform.childCount > 0 && !placedPlatform.GetComponent<Cannon>())
+                {
+                    placedPlatform.gameObject.transform.GetChild(0).gameObject.SetActive(false);
+                }
+            }
+            if (placedPlatform.GetComponent<RedZone>())
+            {
+                placedPlatform.GetComponent<MeshCollider>().isTrigger = false;
+            }
+
+            else
+            {
+                Destroy(placedPlatform.transform.GetChild(0).transform.GetChild(0).GetComponent<LevelEditorPlatformDragManager>());
+                Destroy(placedPlatform.transform.GetChild(1).GetComponent<LevelEditorPlatformDragManager>());
+                Destroy(placedPlatform.transform.GetChild(2).GetComponent<LevelEditorPlatformDragManager>());
+                Destroy(placedPlatform.transform.GetChild(3).GetComponent<LevelEditorPlatformDragManager>());
+                // hier nog de outline op false als dat er nog bij cannon bij komt
+            }
+
+        }
+        
         Instantiate(levelEditorBall, gridManager.gridSquares[SpawnBallPosition], new Quaternion(0, 0, 0, 0)).Roll() ;
+    }
+    //
+    public void BackToBuilding()
+    {
+       // InventoryButtons moet meegeven welke platformen en hoeveel van elk, elk verschillend type krijgt één knop met daarin een platform (als afbeelding of wat dan ook) met het aantal weergegeven.
+        foreach (GameObject placedPlatform in playerPlatforms.placedPlatforms)
+        {
+            if (!placedPlatform.GetComponent<Cannon>())
+            {
+                placedPlatform.AddComponent<LevelEditorPlatformDragManager>();
+                placedPlatform.GetComponent<Outline>().enabled = true;
+                // voor welk platform wordt onderstaande code uitgevoerd?
+                if (placedPlatform.gameObject.transform.childCount > 0)
+                {
+                    placedPlatform.gameObject.transform.GetChild(0).gameObject.SetActive(true);
+                }
+            }
+            else
+            {
+                placedPlatform.transform.GetChild(0).transform.GetChild(0).gameObject.AddComponent<LevelEditorPlatformDragManager>();
+                placedPlatform.transform.GetChild(1).gameObject.AddComponent<LevelEditorPlatformDragManager>();
+                placedPlatform.transform.GetChild(2).gameObject.AddComponent<LevelEditorPlatformDragManager>();
+                placedPlatform.transform.GetChild(3).gameObject.AddComponent<LevelEditorPlatformDragManager>();
+                // hier nog de outline op true als dat er nog bij cannon bij komt
+            }
+
+            //placedPlatform.GetComponent<PlatformDragManager>().enabled = true;
+        }
     }
 }

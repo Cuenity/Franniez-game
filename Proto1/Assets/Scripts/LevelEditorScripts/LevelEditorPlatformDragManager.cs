@@ -39,6 +39,12 @@ public class LevelEditorPlatformDragManager : MonoBehaviour
 
         if (!rotateSpriteHit)
         {
+            //Dit doet vast coole shit maar ik heb het nodig om tilelist op een cristelijke manier bij te houden
+            // huidige trukje werkt alleen voor platformen die geen adjustments hebben
+            //int tileListIndex = LevelEditorState.Instance.gridManager.gridSquares.FindIndex(x => x == draggedPlatformInScene.transform.position);
+            // DUS aparte methodes voor dingen die adjustments hebben
+            // eerst:redzones
+            // TWEEDS:CANNON
             screenPoint = camera.WorldToScreenPoint(transform.position);
 
             //GameState.Instance.playerCamera.platformDragActive = true;
@@ -46,7 +52,15 @@ public class LevelEditorPlatformDragManager : MonoBehaviour
             if (tag == "Cannon")
             {
                 draggedPlatformInScene = gameObject.transform.root.gameObject;
-                Debug.Log(draggedPlatformInScene.name);
+                int tileListIndex = LevelEditorState.Instance.gridManager.gridSquares.FindIndex(x => x == (draggedPlatformInScene.transform.position + new Vector3(0.5f, 0, 0)));
+                LevelEditorState.Instance.levelPlatformen.tileList[tileListIndex - 1] = 0;
+            }
+            else if (gameObject.name.Contains("RedZone"))
+            {
+                draggedPlatformInScene = gameObject;
+                int tileListIndex = LevelEditorState.Instance.gridManager.gridSquares.FindIndex(x => x == (draggedPlatformInScene.transform.position+new Vector3(0.5f,0,0)));
+                LevelEditorState.Instance.levelPlatformen.tileList[tileListIndex - 1] = 0;
+                
             }
             else
             {
