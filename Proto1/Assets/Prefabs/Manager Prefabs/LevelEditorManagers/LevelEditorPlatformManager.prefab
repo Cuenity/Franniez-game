@@ -1,0 +1,61 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &3426719891737558159
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1477155451751544878}
+  - component: {fileID: 8852289546506907176}
+  m_Layer: 0
+  m_Name: LevelEditorPlatformManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1477155451751544878
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3426719891737558159}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8852289546506907176
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3426719891737558159}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ab2c891220a26c4390a56ad8ca25c62, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bigRampClass: {fileID: 4734090914819921343, guid: 6e5c851c8e894f64fb41414aaeec110f,
+    type: 3}
+  platformSquareClass: {fileID: 711328914229756783, guid: af6585d6aa968f246804e97579948daa,
+    type: 3}
+  rampClass: {fileID: 3573814550062563206, guid: 5c1d50512c7b7eb4cb74387fcb1286df,
+    type: 3}
+  trampolineClass: {fileID: 4755417564985550153, guid: 8d6f88143f60d1a4a90a93381baa5782,
+    type: 3}
+  boostPlatformClass: {fileID: 3145376341225367648, guid: 516ec392141bbba4ab8fe106760246dc,
+    type: 3}
+  cannonClass: {fileID: 2252533963087119486, guid: a73ca33b8a450624f881d27be9515c70,
+    type: 3}
+  redZoneClass: {fileID: 4725783322653570780, guid: a5768f07423815a49ad9b24b4634fde6,
+    type: 3}
+  ballClass: {fileID: 809268522919141895, guid: d420658204c6d944d9724b0ea21eaa95,
+    type: 3}
