@@ -18,11 +18,6 @@ public class PlatformDragManager : MonoBehaviour
         camera = GameState.Instance.playerCamera.GetComponent<Camera>();
     }
 
-    private void Start()
-    {
-        
-    }
-
     //private void ShowTurnPlatformButton()
     //{
 
