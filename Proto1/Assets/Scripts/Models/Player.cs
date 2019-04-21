@@ -10,5 +10,6 @@ public class Player
     public int coins;
     public Sticker[] stickers;
     public int language;
+    public int ShopCoins;
 }
 
