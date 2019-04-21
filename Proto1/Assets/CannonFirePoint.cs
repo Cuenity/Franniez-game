@@ -27,7 +27,7 @@ public class CannonFirePoint : MonoBehaviour
         StartCoroutine(DisableColliderForTime());
 
         //playerBall.transform.position = transform.position + gameObject.transform.parent.forward;
-        playerBall.GetComponent<Rigidbody>().velocity = gameObject.transform.up * -fireSpeed;
+        playerBall.GetComponent<Rigidbody>().velocity = new Vector3(gameObject.transform.up.x, gameObject.transform.up.y, 0) * -fireSpeed; // + new Vector3(-10, 0, 0)
         //playerBall.GetComponent<Rigidbody>().velocity = new Vector3(gameObject.transform.parent.rotation.x, gameObject.transform.parent.rotation.y, gameObject.transform.parent.rotation.z);
         playerBall.SetActive(true);
     }
