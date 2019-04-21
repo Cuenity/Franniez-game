@@ -14,13 +14,13 @@ public class LevelEditorPlatformManager : MonoBehaviour
     [SerializeField]
     public Ramp rampClass;
     [SerializeField]
-    public Trampoline trampolineClass;
+    public LevelEditorTrampoline trampolineClass;
     [SerializeField]
-    public BoostPlatform boostPlatformClass;
+    public LevelEditorBoost boostPlatformClass;
     [SerializeField]
-    public Cannon cannonClass;
+    public LevelEditorCannon cannonClass;
     [SerializeField]
-    public RedZone redZoneClass;
+    public LevelEditorRedZone redZoneClass;
     [SerializeField]
     public LevelEditorBall ballClass;
 
@@ -97,10 +97,9 @@ public class LevelEditorPlatformManager : MonoBehaviour
             {
                 LevelEditorState.Instance.levelPlatformen.tileList[minimumValueIndex] = 2;
             }
-            else if (gameObject.name.Contains("PlatformSquare"))
+            else if (gameObject.name.Contains("LevelEditorPlatform"))
             {
                 LevelEditorState.Instance.levelPlatformen.tileList[minimumValueIndex] = 3;
-                gameObject.transform.position += new Vector3(-0.5f, 0, 0);
             }
             else if (gameObject.name.Contains("Trampoline"))
             {
@@ -143,23 +142,26 @@ public class LevelEditorPlatformManager : MonoBehaviour
             }
             else if (levelPlatformen.tileList[i] == 1)
             {
-                bigRampClass.SpawnRamp(LevelEditorState.Instance.gridManager.gridSquares[i]);
+                BigRamp ramp = Instantiate(bigRampClass, LevelEditorState.Instance.gridManager.gridSquares[i+1], new Quaternion(0, 0, 0, 0));
+                ramp.transform.Rotate(new Vector3(-90f, -90f, 0));
+                //bigRampClass.SpawnRamp(LevelEditorState.Instance.gridManager.gridSquares[i]);
             }
             else if (levelPlatformen.tileList[i] == 2)
             {
+                //HAHAHA wat een tyfus
                 bigRampClass.SpawnRampReversed(LevelEditorState.Instance.gridManager.gridSquares[i]);
             }
             else if (levelPlatformen.tileList[i] == 3)
             {
-                Instantiate(platformSquareClass, LevelEditorState.Instance.gridManager.gridSquares[i] + rampAdjustment, new Quaternion(0, 0, 0, 0));
+                Instantiate(platformSquareClass, LevelEditorState.Instance.gridManager.gridSquares[i+1] , new Quaternion(0, 0, 0, 0)).transform.Rotate(new Vector3(-90,90,0));
             }
             else if (levelPlatformen.tileList[i] == 4)
             {
-                Instantiate(trampolineClass, LevelEditorState.Instance.gridManager.gridSquares[i],new Quaternion(0, 0, 0, 0));
+                Instantiate(trampolineClass, LevelEditorState.Instance.gridManager.gridSquares[i+1],new Quaternion(0, 0, 0, 0));
             }
             else if (levelPlatformen.tileList[i] == 5)
             {
-                Instantiate(boostPlatformClass, LevelEditorState.Instance.gridManager.gridSquares[i], new Quaternion(0, 0, 0, 0));
+                Instantiate(boostPlatformClass, LevelEditorState.Instance.gridManager.gridSquares[i+1], new Quaternion(0, 0, 0, 0));
             }
             else if (levelPlatformen.tileList[i] == 6)
             {
@@ -167,7 +169,7 @@ public class LevelEditorPlatformManager : MonoBehaviour
             }
             else if (levelPlatformen.tileList[i] == 7)
             {
-                Instantiate(redZoneClass, LevelEditorState.Instance.gridManager.gridSquares[i], new Quaternion(0, 0, 0, 0));
+                Instantiate(redZoneClass, LevelEditorState.Instance.gridManager.gridSquares[i]+rampAdjustment, new Quaternion(0, 0, 0, 0));
             }
         }
     }

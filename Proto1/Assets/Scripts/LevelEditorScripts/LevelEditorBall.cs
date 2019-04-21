@@ -77,83 +77,83 @@ public class LevelEditorBall : MonoBehaviour
         this.GetComponent<Rigidbody>().useGravity = true;
     }
 
-    void OnCollisionEnter(Collision collision)
-    {
-        Debug.Log("Collided");
-        if (collision.collider.name.Contains("Trampoline"))
-        {
+    //void OnCollisionEnter(Collision collision)
+    //{
+    //    Debug.Log("Collided");
+    //    if (collision.collider.name.Contains("Trampoline"))
+    //    {
 
-            Vector3 velocity = this.GetComponent<Rigidbody>().velocity;
-            float velocityY;
-            float velocityx;
-            if (velocity.y > 0)
-            {
-                velocityY = velocity.y;
-            }
-            else
-            {
-                velocityY = velocity.y * -1;
-            }
-            if ((velocityY < 4 && velocityY > 0) || velocityY == 0)
-            {
-                if (this.name.Contains("Light"))
-                {
-                    velocityY = 2;
-                }
-                else
-                {
-                    velocityY = 4;
-                }
-            }
-            else if (velocityY > -4 && velocityY < 0)
-            {
-                if (this.name.Contains("Light"))
-                {
-                    velocityY = -2;
-                }
-                else
-                {
-                    velocityY = -4;
-                }
-            }
+    //        Vector3 velocity = this.GetComponent<Rigidbody>().velocity;
+    //        float velocityY;
+    //        float velocityx;
+    //        if (velocity.y > 0)
+    //        {
+    //            velocityY = velocity.y;
+    //        }
+    //        else
+    //        {
+    //            velocityY = velocity.y * -1;
+    //        }
+    //        if ((velocityY < 4 && velocityY > 0) || velocityY == 0)
+    //        {
+    //            if (this.name.Contains("Light"))
+    //            {
+    //                velocityY = 2;
+    //            }
+    //            else
+    //            {
+    //                velocityY = 4;
+    //            }
+    //        }
+    //        else if (velocityY > -4 && velocityY < 0)
+    //        {
+    //            if (this.name.Contains("Light"))
+    //            {
+    //                velocityY = -2;
+    //            }
+    //            else
+    //            {
+    //                velocityY = -4;
+    //            }
+    //        }
 
-            if (velocity.x < 1 && velocity.x > 0)
-            {
-                if (this.name.Contains("Light"))
-                {
-                    velocityx = 1;
-                }
-                else
-                {
-                    velocityx = 2;
-                }
-            }
-            else if ((velocity.x > -1 && velocity.x < 0) || velocity.x == 0)
-            {
-                if (this.name.Contains("Light"))
-                {
-                    velocityx = -1;
-                }
-                else
-                {
-                    velocityx = -2;
-                }
-            }
-            else
-            {
-                velocityx = velocity.x;
-            }
+    //        if (velocity.x < 1 && velocity.x > 0)
+    //        {
+    //            if (this.name.Contains("Light"))
+    //            {
+    //                velocityx = 1;
+    //            }
+    //            else
+    //            {
+    //                velocityx = 2;
+    //            }
+    //        }
+    //        else if ((velocity.x > -1 && velocity.x < 0) || velocity.x == 0)
+    //        {
+    //            if (this.name.Contains("Light"))
+    //            {
+    //                velocityx = -1;
+    //            }
+    //            else
+    //            {
+    //                velocityx = -2;
+    //            }
+    //        }
+    //        else
+    //        {
+    //            velocityx = velocity.x;
+    //        }
 
-            this.GetComponent<Rigidbody>().AddForce(velocityx, velocityY * 7f, 0, ForceMode.Impulse);
-        }
-        if (collision.collider.name.Contains("Boost"))
-        {
-            Rigidbody body = this.GetComponent<Rigidbody>();
-            body.AddForce(new Vector3(body.velocity.x * 9, body.velocity.y, 0), ForceMode.Impulse);
-        }
-        if (collision.collider.name.Contains("RedZone"))
-        {
-            Destroy(this.gameObject);
-        }
-    }
+    //        this.GetComponent<Rigidbody>().AddForce(velocityx, velocityY * 7f, 0, ForceMode.Impulse);
+    //    }
+    //    if (collision.collider.name.Contains("Boost"))
+    //    {
+    //        Rigidbody body = this.GetComponent<Rigidbody>();
+    //        body.AddForce(new Vector3(body.velocity.x * 9, body.velocity.y, 0), ForceMode.Impulse);
+    //    }
+    //    if (collision.collider.name.Contains("RedZone"))
+    //    {
+    //        Destroy(this.gameObject);
+    //    }
+    //}
 }

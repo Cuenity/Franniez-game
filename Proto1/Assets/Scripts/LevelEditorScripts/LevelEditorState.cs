@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
@@ -12,7 +13,7 @@ public class LevelEditorState : MonoBehaviour
     [SerializeField]
     public LevelEditorPlatformManager platformManager;
     [SerializeField]
-    LevelEditorBall levelEditorBall;
+    public LevelEditorBall levelEditorBall;
 
     [SerializeField]
     public LevelEditorUIManager UIManager;
@@ -56,6 +57,13 @@ public class LevelEditorState : MonoBehaviour
 
     public void SpawnFreshGrid()
     {
+        string UserWidth = GameObject.Find("GridWidth").GetComponent<InputField>().text;
+        string UserHeigth = GameObject.Find("GridHeigth").GetComponent<InputField>().text;
+        if (UserWidth != "" && UserHeigth != "")
+        {
+            width = Convert.ToInt32(UserWidth);
+            heigth = Convert.ToInt32(UserHeigth);
+        }
         gridManager.Build_Grid_Fresh_With_Visuals(width,heigth);
     }
 
@@ -113,9 +121,13 @@ public class LevelEditorState : MonoBehaviour
                     placedPlatform.gameObject.transform.GetChild(0).gameObject.SetActive(false);
                 }
             }
-            if (placedPlatform.GetComponent<RedZone>())
+            else if (placedPlatform.GetComponent<RedZone>())
             {
                 placedPlatform.GetComponent<MeshCollider>().isTrigger = false;
+            }
+            else if (!placedPlatform.name.Contains("Ramp"))
+            {
+                Destroy(placedPlatform.transform.GetChild(0).GetComponent<LevelEditorPlatformDragManager>());
             }
 
             else
