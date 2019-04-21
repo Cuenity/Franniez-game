@@ -62,7 +62,8 @@ public class LevelManager : MonoBehaviour
             //moet file createn
             Debug.LogError("Cannot find file!");
         }
-        GameState.Instance.platformManager.BuildLevelFromText(levelPlatformen);
+        GameState.Instance.gridManager.Build_Grid_FromJSON_Without_Visuals(levelPlatformen.width, levelPlatformen.heigth);
+        GameState.Instance.platformManager.BuildLevelFromLevelPlatformen(levelPlatformen);
     }
 
     public void SaveLevelToText(string levelName)
@@ -272,6 +273,37 @@ public class LevelManager : MonoBehaviour
                 PlayerDataController.instance.previousScene = 4;
             }
         }
+        else if (sceneName == "5")
+        {
+            if (!levelIsSpawned)
+            {
+                ReadLevelsFromText("Sexy");
+                gameState.UIManager.canvas = Instantiate(canvas);
+                gameState.UIManager.newLevelInventoryisRequired = true;
+
+                gameState.collectableManager.newCollectablesAreRequired = true;
+                //coinPositions.Clear();
+                //coinList.Clear();
+                gameState.playerBallManager.SetSpawnpoint(1);
+                gameState.playerManager.PlayerInit();
+                GameState.Instance.playerCamera.ManualInit();
+                //gameState.playerCamera = Instantiate(gameState.playerCamera);
+                Vector3 playeradjustment = new Vector3(.5f, 0, 0);
+                
+                playerPlatforms = new PlayerPlatforms(4, 4, 1, 0, 0);
+                
+                SetCoinPositions(19);
+                SetCoinPositions(29);
+                SetCoinPositions(39);
+
+                SetfinishPositions(119);
+
+                gameState.collectableManager.InitCollectables(coinPositions, finishPosition);
+                gameState.BuildingPhaseActive = true;
+                GameState.Instance.PreviousLevel = 5;
+                PlayerDataController.instance.previousScene = 5;
+            }
+        }
     }
     public void SetRollingPhase()
     {
@@ -298,6 +330,15 @@ public class LevelManager : MonoBehaviour
         }
 
     }
+
+
+
+
+    ///////////////////////////////////////////
+    //////dit hieronder kan allemaal weg??/////
+    ///////////////////////////////////////////
+
+
     //SceneLoading and generals
     //https://www.alanzucconi.com/2016/03/30/loading-bar-in-unity/
     //

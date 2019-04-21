@@ -49,6 +49,8 @@ MonoBehaviour:
     type: 3}
   rampClass: {fileID: 3573814550062563206, guid: 5c1d50512c7b7eb4cb74387fcb1286df,
     type: 3}
+  rampReversedClass: {fileID: 4178073609103714751, guid: b3a0d06a611d5e146af7716b0fdf9fd4,
+    type: 3}
   trampolineClass: {fileID: 3801176668498716259, guid: cdd4ec2f6987fcf409b7a04177ac8083,
     type: 3}
   boostPlatformClass: {fileID: 7344724330855946511, guid: b591184cad5540c49aa4302e5931b377,

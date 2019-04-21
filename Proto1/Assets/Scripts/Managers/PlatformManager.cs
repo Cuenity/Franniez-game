@@ -21,6 +21,8 @@ public class PlatformManager : MonoBehaviour
     public GameObject platformSquareNoGrass;
     public Coin coin;
     public BoostPlatform boostPlatform;
+    public PlatformSquare levelEditorPlatform;
+    public Ramp levelEditorRampReversed;
 
     GameState gameState;
 
@@ -108,32 +110,79 @@ public class PlatformManager : MonoBehaviour
             }
         }
     }
-
-    internal void BuildLevelFromText(LevelPlatformen levelPlatformen)
+    internal void BuildLevelFromLevelPlatformen(LevelPlatformen levelPlatformen)
     {
+        // code voor opslaan/laden van levels
+        // 0 = leeg;
+        // 1 = rampsmall
+        // 2 = rampsmallReversed
+        // 3 = platformSwaure
+        // 4 = trampoline
+        // 5 = boostplatform
+        // 6 = cannon
+        // 7 = redzone
         Vector3 rampAdjustment = new Vector3(0.5f, 0f, 0f);
         for (int i = 0; i < levelPlatformen.tileList.Length; i++)
         {
+            //Conditions broken
             if (levelPlatformen.tileList[i] == 0)
             {
 
             }
             else if (levelPlatformen.tileList[i] == 1)
             {
-                bigRamp.SpawnRamp(gameState.gridManager.gridSquares[i]);
+                BigRamp ramp = Instantiate(bigRamp, GameState.Instance.gridManager.gridSquares[i + 1], new Quaternion(0, 0, 0, 0));
+                ramp.transform.Rotate(new Vector3(-90f, -90f, 0));
+                List<int> gridSpots = new List<int>();
+                gridSpots.Add(i);
+                GameState.Instance.gridManager.AddFilledGridSpots(gridSpots, SizeType.twoByOne);
+                //bigRampClass.SpawnRamp(LevelEditorState.Instance.gridManager.gridSquares[i]);
             }
             else if (levelPlatformen.tileList[i] == 2)
             {
-                bigRamp.SpawnRampReversed(gameState.gridManager.gridSquares[i]);
+                Ramp ramp = Instantiate(levelEditorRampReversed, GameState.Instance.gridManager.gridSquares[i + 1], new Quaternion(0, 0, 0, 0));
+                ramp.transform.Rotate(new Vector3(-90f, 90f, 0));
+                List<int> gridSpots = new List<int>();
+                gridSpots.Add(i);
+                GameState.Instance.gridManager.AddFilledGridSpots(gridSpots, SizeType.twoByOne);
             }
             else if (levelPlatformen.tileList[i] == 3)
             {
-
-                PlatformSquare = Instantiate(PlatformSquare, gameState.gridManager.gridSquares[i] + rampAdjustment, new Quaternion(0, 0, 0, 0));
-                PlatformSquare.transform.Rotate(new Vector3(-90f, -90f, 0));
+                Instantiate(levelEditorPlatform, GameState.Instance.gridManager.gridSquares[i + 1], new Quaternion(0, 0, 0, 0)).transform.Rotate(new Vector3(-90, 90, 0));
+                List<int> gridSpots = new List<int>();
+                gridSpots.Add(i);
+                GameState.Instance.gridManager.AddFilledGridSpots(gridSpots, SizeType.twoByOne);
+            }
+            else if (levelPlatformen.tileList[i] == 4)
+            {
+                Instantiate(trampoline, GameState.Instance.gridManager.gridSquares[i + 1], new Quaternion(0, 0, 0, 0));
+                List<int> gridSpots = new List<int>();
+                gridSpots.Add(i);
+                GameState.Instance.gridManager.AddFilledGridSpots(gridSpots, SizeType.twoByOne);
+            }
+            else if (levelPlatformen.tileList[i] == 5)
+            {
+                Instantiate(boostPlatform, GameState.Instance.gridManager.gridSquares[i + 1], new Quaternion(0, 0, 0, 0));
+                List<int> gridSpots = new List<int>();
+                gridSpots.Add(i);
+                GameState.Instance.gridManager.AddFilledGridSpots(gridSpots, SizeType.twoByOne);
+            }
+            else if (levelPlatformen.tileList[i] == 6)
+            {
+                //faka cannon
+                //Instantiate(cannon, LevelEditorState.Instance.gridManager.gridSquares[i], new Quaternion(0, 0, 0, 0));
+            }
+            else if (levelPlatformen.tileList[i] == 7)
+            {
+                Instantiate(redZone, GameState.Instance.gridManager.gridSquares[i] + rampAdjustment, new Quaternion(0, 0, 0, 0));
+                List<int> gridSpots = new List<int>();
+                gridSpots.Add(i);
+                GameState.Instance.gridManager.AddFilledGridSpots(gridSpots, SizeType.oneByOne);
             }
         }
     }
+
+
 
     //internal void Build_Level1(LevelPlatformen levelPlatformen)
     //{
@@ -786,7 +835,4 @@ public class PlatformManager : MonoBehaviour
         //initBoostPlatforms(boosterPlatformSpots);
         initRedZones(RedZoneSpots);
     }
-
-
-
 }

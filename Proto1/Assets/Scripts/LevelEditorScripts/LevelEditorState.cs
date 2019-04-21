@@ -42,7 +42,7 @@ public class LevelEditorState : MonoBehaviour
     void Start()
     {
         instance = this;
-        playerPlatforms = new LevelEditorPlatforms(1,999, 999, 999, 999, 999,999);
+        playerPlatforms = new LevelEditorPlatforms(999,999, 999, 999, 999, 999,999);
         UIManager.InventoryButtons(playerPlatforms);
         // And God said, “Let there be light,” and there was light.  God saw that the light was good, and he separated the light from the darkness. 
             

@@ -30,6 +30,7 @@ public class LevelEditorGridManager : MonoBehaviour
     //voor het laden van levels
     internal void Build_Grid_FromJSON_With_Visuals(int width, int heigth)
     {
+        gridSquares.Clear();
         Vector3 moveRight = new Vector3(1f, 0f, 0f);
         Vector3 moveDown = new Vector3(0f, -1f, 0f);
         Vector3 gridStartingPoint = new Vector3(0f, 0f, 0f);
@@ -55,6 +56,7 @@ public class LevelEditorGridManager : MonoBehaviour
     
     internal void Build_Grid_Fresh_With_Visuals(int width, int heigth)
     {
+        gridSquares.Clear();
         Vector3 moveRight = new Vector3(1f, 0f, 0f);
         Vector3 moveDown = new Vector3(0f, -1f, 0f);
         Vector3 gridStartingPoint = new Vector3(0f, 0f, 0f);

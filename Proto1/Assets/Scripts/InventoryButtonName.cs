@@ -5,5 +5,6 @@
     trampolineButton,
     boostPlatformButton,
     cannonPlatformButton,
-    redZoneButton
+    redZoneButton,
+    rampsReversedInventoryButton
 }

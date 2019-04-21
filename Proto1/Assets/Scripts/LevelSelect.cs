@@ -100,7 +100,7 @@ public class LevelSelect : MonoBehaviour
     public void LaadLevel(string level)
     {
         //hardcoded fix voor het feit dat er geen levels boven 4 bestaan
-        if(Convert.ToInt32(level) > 4)
+        if(Convert.ToInt32(level) > 5)
         {
             level = "4";
         }

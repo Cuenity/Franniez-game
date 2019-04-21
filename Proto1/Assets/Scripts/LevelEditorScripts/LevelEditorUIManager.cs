@@ -75,6 +75,14 @@ public class LevelEditorUIManager : MonoBehaviour
 
             playerPlatforms.rampButtonInstantiated = true;
         }
+        else if (playerPlatforms.rampsReversed > 0 && !playerPlatforms.rampReversedButtonInstantiated)
+        {
+            buttonImage.GetComponent<Image>().sprite = rampImage;
+            instantiatedInventoryButtons[currentButton].name = InventoryButtonName.rampsReversedInventoryButton.ToString();
+            buttonText.GetComponent<Text>().text = playerPlatforms.rampsReversed.ToString();
+
+            playerPlatforms.rampReversedButtonInstantiated = true;
+        }
         else if (playerPlatforms.platformSquares > 0 && !playerPlatforms.platformSquaresButtonInstantated)
         {
             buttonImage.GetComponent<Image>().sprite = platformSquareImage;

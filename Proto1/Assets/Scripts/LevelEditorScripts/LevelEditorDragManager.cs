@@ -100,6 +100,19 @@ public class LevelEditorDragManager : MonoBehaviour, IDragHandler, IBeginDragHan
 
                     //LevelEditorState.Instance.playerPlatforms.UpdateRampsLeft(correctButton);
                 }
+                else if (correctButton.name == InventoryButtonName.rampsReversedInventoryButton.ToString())
+                {
+                    type = PlatformType.ramp;
+                    draggedPlatform = Instantiate(LevelEditorState.Instance.platformManager.rampReversedClass.gameObject);
+                    //LevelEditorState.Instance.playerPlatforms.rampsLeftToPlace--;
+
+                    if (LevelEditorState.Instance.playerPlatforms.rampsReversedLeftToPlace == 0)
+                    {
+                        correctButton.InventoryButtonAllowed = false;
+                    }
+
+                    //LevelEditorState.Instance.playerPlatforms.UpdateRampsLeft(correctButton);
+                }
                 else if (correctButton.name == InventoryButtonName.trampolineButton.ToString())
                 {
                     type = PlatformType.trampoline;

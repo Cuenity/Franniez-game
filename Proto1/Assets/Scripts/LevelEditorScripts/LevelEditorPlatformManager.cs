@@ -14,6 +14,8 @@ public class LevelEditorPlatformManager : MonoBehaviour
     [SerializeField]
     public Ramp rampClass;
     [SerializeField]
+    public Ramp rampReversedClass;
+    [SerializeField]
     public LevelEditorTrampoline trampolineClass;
     [SerializeField]
     public LevelEditorBoost boostPlatformClass;
@@ -92,8 +94,7 @@ public class LevelEditorPlatformManager : MonoBehaviour
             {
                 LevelEditorState.Instance.levelPlatformen.tileList[minimumValueIndex] = 1;
             }
-            //broken
-            else if (gameObject.name.Contains("RampSmall"))
+            else if (gameObject.name.Contains("RampReversed"))
             {
                 LevelEditorState.Instance.levelPlatformen.tileList[minimumValueIndex] = 2;
             }
@@ -135,7 +136,7 @@ public class LevelEditorPlatformManager : MonoBehaviour
         Vector3 rampAdjustment = new Vector3(0.5f, 0f, 0f);
         for (int i = 0; i < levelPlatformen.tileList.Length; i++)
         {
-            //Conditions broken
+
             if (levelPlatformen.tileList[i] == 0)
             {
 
@@ -144,12 +145,12 @@ public class LevelEditorPlatformManager : MonoBehaviour
             {
                 BigRamp ramp = Instantiate(bigRampClass, LevelEditorState.Instance.gridManager.gridSquares[i+1], new Quaternion(0, 0, 0, 0));
                 ramp.transform.Rotate(new Vector3(-90f, -90f, 0));
-                //bigRampClass.SpawnRamp(LevelEditorState.Instance.gridManager.gridSquares[i]);
+
             }
             else if (levelPlatformen.tileList[i] == 2)
             {
-                //HAHAHA wat een tyfus
-                bigRampClass.SpawnRampReversed(LevelEditorState.Instance.gridManager.gridSquares[i]);
+                Ramp ramp = Instantiate(rampReversedClass, LevelEditorState.Instance.gridManager.gridSquares[i + 1], new Quaternion(0, 0, 0, 0));
+                ramp.transform.Rotate(new Vector3(-90f, 90f, 0));
             }
             else if (levelPlatformen.tileList[i] == 3)
             {
