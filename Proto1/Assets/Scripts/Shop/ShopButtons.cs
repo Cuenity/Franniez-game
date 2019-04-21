@@ -84,6 +84,8 @@ public class ShopButtons : MonoBehaviour
     {
         PlayerDataController.instance.AddShopCoins(amount);
         player.ShopCoins = player.ShopCoins + amount;
+        PlayerDataController.instance.player = player;
+        PlayerDataController.instance.Save();
         UpdateCoins();
     }
 
@@ -92,6 +94,8 @@ public class ShopButtons : MonoBehaviour
         if (amount <= player.ShopCoins)
         {
             player.ShopCoins -= amount;
+            PlayerDataController.instance.player = player;
+            PlayerDataController.instance.Save();
             UpdateCoins();
         }
 
