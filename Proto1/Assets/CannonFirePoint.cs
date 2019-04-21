@@ -5,14 +5,13 @@ public class CannonFirePoint : MonoBehaviour
 {
     private GameObject playerBall;
 
-    [SerializeField]
-    private float waitingTimeTillFiring;
-    private float fireSpeed;
+    [SerializeField] private float waitingTimeTillFiring;
+    [SerializeField] private float fireSpeed;
 
     public void FireCannon(Cannon cannon, GameObject playerBall)
     {
-        waitingTimeTillFiring = 1;
-        fireSpeed = 10;
+        //waitingTimeTillFiring = 1;
+        //fireSpeed = 10;
 
         this.playerBall = playerBall;
         playerBall.SetActive(false);
