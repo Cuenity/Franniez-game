@@ -43,7 +43,7 @@ public class Portal : Platform
                     }
                     else
                     {
-                        player.transform.position = item.transform.position + new Vector3(-1, 0, 0);
+                        player.transform.position = item.transform.position + new Vector3(-2, 0, 0);
                         gameState.playerCamera.transform.position = player.transform.position + gameState.playerCamera.TargetMovementOffset;
                     }
                 }
