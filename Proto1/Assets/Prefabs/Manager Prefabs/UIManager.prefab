@@ -53,7 +53,9 @@ MonoBehaviour:
     type: 3}
   trampolineImage: {fileID: 21300000, guid: 7afcebf36a4126c4cbbe72b1d046f10a, type: 3}
   boostPlatformImage: {fileID: 21300000, guid: a95d26a4316b334418579ba7dd58dcec, type: 3}
-  cannonPlatformImage: {fileID: 21300000, guid: beac2eafe23b6c04e84e09cb20ada5ee,
+  cannonPlatformImage: {fileID: 21300000, guid: d8baad05c521071468be11aaa5ad13fe,
     type: 3}
+  normalBallImage: {fileID: 21300000, guid: 18a264bb6a087284e90e2892c72747b5, type: 3}
   instantiatedInventoryButtons: []
   newLevelInventoryisRequired: 0
+  pauseMenu: {fileID: 0}
