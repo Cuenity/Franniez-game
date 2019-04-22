@@ -124,7 +124,7 @@ public class PlatformManager : MonoBehaviour
         Vector3 rampAdjustment = new Vector3(0.5f, 0f, 0f);
         for (int i = 0; i < levelPlatformen.tileList.Length; i++)
         {
-            //Conditions broken
+
             if (levelPlatformen.tileList[i] == 0)
             {
 
@@ -824,7 +824,7 @@ public class PlatformManager : MonoBehaviour
         RedZoneSpots.Add(148);
         RedZoneSpots.Add(149);
         RedZoneSpots.Add(150);
-        RedZoneSpots.Add(151);
+        //RedZoneSpots.Add(151);
 
 
         //dit moet later anders zijn collectables 
