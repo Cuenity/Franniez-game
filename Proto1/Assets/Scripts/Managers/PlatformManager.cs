@@ -41,6 +41,10 @@ public class PlatformManager : MonoBehaviour
     private GameObject snapPlatform;
     private GameObject snapPlatformSquare;
 
+    private List<Vector3> coinPositions = new List<Vector3>();
+    private Vector3 finishPosition;
+
+
     private void Awake()
     {
         //platformPositions = new List<Vector3>();
@@ -50,6 +54,39 @@ public class PlatformManager : MonoBehaviour
     void Start()
     {
         currentScene = SceneManager.GetActiveScene();
+    }
+
+    public void RespawnCollectables()
+    {
+        foreach (Coin item in gameState.levelManager.coinList)
+        {
+            item.gameObject.SetActive(false);
+        }
+        gameState.levelManager.coinList.Clear();
+        gameState.levelManager.stickerObject.gameObject.SetActive(false);
+        finish.gameObject.SetActive(false);
+
+        gameState.collectableManager.RespawnCoins(coinPositions);
+    }
+
+    public void SetCoinPosition(int i)
+    {
+        Vector3 coinAdjustment = new Vector3(.3f, 0, 0);
+        coinPositions.Add(gameState.gridManager.gridSquares[i] + coinAdjustment);
+
+        List<int> coinPosition = new List<int>();
+        coinPosition.Add(i);
+        gameState.gridManager.AddFilledGridSpots(coinPosition, SizeType.oneByOne);
+    }
+
+    public void SetfinishPosition(int i)
+    {
+        Vector3 finishAdjustment = new Vector3(.5f, 0, 0);
+        finishPosition = gameState.gridManager.gridSquares[i] + finishAdjustment;
+
+        List<int> finishPositionFillsGridSpot = new List<int>();
+        finishPositionFillsGridSpot.Add(i);
+        gameState.gridManager.AddFilledGridSpots(finishPositionFillsGridSpot, SizeType.oneByTwo);
     }
 
     public void spawnPlatformOnGrid(Vector3 position, GameObject gameObject)
@@ -70,7 +107,7 @@ public class PlatformManager : MonoBehaviour
         }
 
         int minimumValueIndex = distances.IndexOf(distances.Min());
-        if (minimumValueIndex % gameState.gridManager.width == gameState.gridManager.width-1)
+        if (minimumValueIndex % gameState.gridManager.width == gameState.gridManager.width - 1)
         {
             minimumValueIndex--;
         }
@@ -110,8 +147,16 @@ public class PlatformManager : MonoBehaviour
             }
         }
     }
+
     internal void BuildLevelFromLevelPlatformen(LevelPlatformen levelPlatformen)
     {
+
+        SetCoinPosition(71);
+        SetCoinPosition(103);
+        SetCoinPosition(136);
+
+        SetfinishPosition(171);
+        gameState.collectableManager.InitCollectables(coinPositions, finishPosition);
         // code voor opslaan/laden van levels
         // 0 = leeg;
         // 1 = rampsmall
@@ -182,114 +227,38 @@ public class PlatformManager : MonoBehaviour
         }
     }
 
+    public void BuildTutorial()
+    {
+        Vector3 rampAdjustment = new Vector3(0.5f, 0f, 0f);
+        List<int> RampSpots = new List<int>();
+        List<int> PlatformSpots = new List<int>();
+        List<int> FinishSpots = new List<int>();
+        List<int> TrampolineSpots = new List<int>();
+        List<int> PortalSpots = new List<int>();
+        List<int> rechthoekSpots = new List<int>();
+        List<int> RampSpotsReversed = new List<int>();
+        List<int> CoinSpots = new List<int>();
+        List<int> RedZoneSpots = new List<int>();
+        List<int> boosterPlatformSpots = new List<int>();
+        RampSpots.Add(8);
+        //rechthoekSpots.Add(16);
+        rechthoekSpots.Add(20);
+        rechthoekSpots.Add(32);
+        rechthoekSpots.Add(34);
+        rechthoekSpots.Add(36);
+        RampSpotsReversed.Add(30);
 
+        SetCoinPosition(11);
+        SetCoinPosition(26);
+        SetCoinPosition(29);
+        SetfinishPosition(24);
 
-    //internal void Build_Level1(LevelPlatformen levelPlatformen)
-    //{
+        //dit moet later anders zijn collectables 
 
-    //    //deze methode maakt hardcoded een level dit is voor testing doeleinden opgezet
-    //    //later moeten levels gebouwd worden door middel van drag en drop en dit opgeslagen in een txt file
-    //    List<int> RampSpots = new List<int>();
-    //    List<int> PlatformSpots = new List<int>();
-    //    List<int> RampSpotsReversed = new List<int>();
-
-    //    Vector3 rampAdjustment = new Vector3(0.5f, 0f, 0f);
-
-    //    //levelPlatformen.tileList[12] = 1;
-    //    //betekent op tile 12 staat een ramp
-    //    //1 is ramp
-    //    //2 is rampreversed
-    //    //3 is platform
-
-
-
-    //    //bouw stom lijstje
-    //    RampSpots.Add(12);
-    //    levelPlatformen.tileList[12] = 1;
-    //    RampSpots.Add(24);
-    //    levelPlatformen.tileList[24] = 1;
-    //    RampSpots.Add(66);
-    //    levelPlatformen.tileList[66] = 1;
-
-    //    //bouw stom lijst voor ramps andere kant op
-    //    RampSpotsReversed.Add(42);
-    //    levelPlatformen.tileList[42] = 2;
-    //    RampSpotsReversed.Add(52);
-    //    levelPlatformen.tileList[52] = 2;
-    //    RampSpotsReversed.Add(57);
-    //    levelPlatformen.tileList[57] = 2;
-    //    RampSpotsReversed.Add(97);
-    //    levelPlatformen.tileList[97] = 2;
-    //    RampSpotsReversed.Add(107);
-    //    levelPlatformen.tileList[107] = 2;
-
-    //    //bouw stom lijstje
-    //    PlatformSpots.Add(34);
-    //    levelPlatformen.tileList[34] = 3;
-    //    PlatformSpots.Add(35);
-    //    levelPlatformen.tileList[35] = 3;
-    //    PlatformSpots.Add(36);
-    //    levelPlatformen.tileList[36] = 3;
-    //    PlatformSpots.Add(37);
-    //    levelPlatformen.tileList[37] = 3;
-    //    PlatformSpots.Add(38);
-    //    levelPlatformen.tileList[38] = 3;
-    //    PlatformSpots.Add(39);
-    //    levelPlatformen.tileList[39] = 3;
-    //    PlatformSpots.Add(40);
-    //    levelPlatformen.tileList[40] = 3;
-    //    PlatformSpots.Add(58);
-    //    levelPlatformen.tileList[58] = 3;
-    //    PlatformSpots.Add(59);
-    //    levelPlatformen.tileList[59] = 3;
-    //    PlatformSpots.Add(60);
-    //    levelPlatformen.tileList[60] = 3;
-    //    PlatformSpots.Add(61);
-    //    levelPlatformen.tileList[61] = 3;
-    //    PlatformSpots.Add(62);
-    //    levelPlatformen.tileList[62] = 3;
-    //    PlatformSpots.Add(63);
-    //    levelPlatformen.tileList[63] = 3;
-    //    PlatformSpots.Add(64);
-    //    levelPlatformen.tileList[64] = 3;
-    //    PlatformSpots.Add(77);
-    //    levelPlatformen.tileList[77] = 3;
-    //    PlatformSpots.Add(78);
-    //    levelPlatformen.tileList[78] = 3;
-    //    PlatformSpots.Add(79);
-    //    levelPlatformen.tileList[79] = 3;
-    //    PlatformSpots.Add(80);
-    //    levelPlatformen.tileList[80] = 3;
-    //    PlatformSpots.Add(81);
-    //    levelPlatformen.tileList[81] = 3;
-    //    PlatformSpots.Add(82);
-    //    levelPlatformen.tileList[82] = 3;
-    //    PlatformSpots.Add(83);
-    //    levelPlatformen.tileList[83] = 3;
-    //    PlatformSpots.Add(84);
-    //    levelPlatformen.tileList[84] = 3;
-    //    PlatformSpots.Add(85);
-    //    levelPlatformen.tileList[85] = 3;
-    //    PlatformSpots.Add(87);
-    //    levelPlatformen.tileList[87] = 3;
-
-    //    for (int i = 0; i < RampSpots.Count; i++)
-    //    {
-    //        ramp.SpawnRamp(gameState.gridManager.gridSquares[RampSpots[i]]);
-    //    }
-
-    //    for (int i = 0; i < PlatformSpots.Count; i++)
-    //    {
-    //        PlatformSquare = Instantiate(PlatformSquare, gameState.gridManager.gridSquares[PlatformSpots[i]] + rampAdjustment, new Quaternion(0, 0, 0, 0));
-    //        PlatformSquare.transform.Rotate(new Vector3(-90f, -90f, 0));
-    //    }
-
-    //    for (int i = 0; i < RampSpotsReversed.Count; i++)
-    //    {
-    //        ramp.SpawnRampReversed(gameState.gridManager.gridSquares[RampSpotsReversed[i]]);
-    //    }
-
-    //}
+        Init_Platforms(RampSpots, PlatformSpots, RampSpotsReversed, PortalSpots, TrampolineSpots, rechthoekSpots, boosterPlatformSpots);
+        gameState.collectableManager.InitCollectables(coinPositions, finishPosition);
+        initRedZones(RedZoneSpots);
+    }
 
     internal void Build_Vertical_Slice_Level6()
     {
@@ -315,6 +284,10 @@ public class PlatformManager : MonoBehaviour
         PlatformSpots.Add(197);
         PlatformSpots.Add(198);
 
+        SetCoinPosition(67);
+        SetCoinPosition(90);
+        SetCoinPosition(115);
+        SetfinishPosition(178);
 
         //dit moet later anders zijn collectables 
 
@@ -322,19 +295,7 @@ public class PlatformManager : MonoBehaviour
 
         Init_Platforms(RampSpots, PlatformSpots, RampSpotsReversed, PortalSpots, TrampolineSpots, rechthoekSpots, boosterPlatformSpots);
 
-        //for (int i = 0; i < CoinSpots.Count; i++)
-        //{
-        //    coin = Instantiate(coin, gameState.gridManager.gridSquares[CoinSpots[i]] + rampAdjustment, new Quaternion(0, 0, 0, 0));
-
-        //}
-
-        //for (int i = 0; i < FinishSpots.Count; i++)
-        //{
-        //    finish = Instantiate(finish, gameState.gridManager.gridSquares[FinishSpots[i]], new Quaternion(0, 0, 0, 0));
-
-        //}
-
-        //initBoostPlatforms(boosterPlatformSpots);
+        gameState.collectableManager.InitCollectables(coinPositions, finishPosition);
         initRedZones(RedZoneSpots);
     }
 
@@ -372,7 +333,6 @@ public class PlatformManager : MonoBehaviour
             finish = Instantiate(finish, gameState.gridManager.gridSquares[FinishSpots[i]], new Quaternion(0, 0, 0, 0));
 
         }
-        //initBoostPlatforms(boosterPlatformSpots);
         initRedZones(RedZoneSpots);
     }
 
@@ -403,7 +363,6 @@ public class PlatformManager : MonoBehaviour
         }
 
         initRedZones(RedZoneSpots);
-        //initBoostPlatforms(BoosterPlatform);
     }
 
     internal void Build_Vertical_Slice_LevelBoost()
@@ -420,15 +379,7 @@ public class PlatformManager : MonoBehaviour
         List<int> RedZoneSpots = new List<int>();
         List<int> boosterPlatformSpots = new List<int>();
         RampSpots.Add(21);
-        //RampSpots.Add(43);
-        //RampSpots.Add(65);
-        //RampSpots.Add(87);
         boosterPlatformSpots.Add(124);
-        //RampSpots.Add(131);
-        //RampSpots.Add(153);
-        //RampSpots.Add(175);
-
-        //RampSpotsReversed.Add(106);
 
         RedZoneSpots.Add(127);
         RedZoneSpots.Add(128);
@@ -444,119 +395,27 @@ public class PlatformManager : MonoBehaviour
         PlatformSpots.Add(209);
         PlatformSpots.Add(207);
 
+        SetCoinPosition(104);
+        SetCoinPosition(90);
+        SetCoinPosition(190);
+        SetfinishPosition(188);
+
         Init_Platforms(RampSpots, PlatformSpots, RampSpotsReversed, PortalSpots, TrampolineSpots, rechthoekSpots, boosterPlatformSpots);
+        gameState.collectableManager.InitCollectables(coinPositions, finishPosition);
 
-        for (int i = 0; i < CoinSpots.Count; i++)
-        {
-            coin = Instantiate(coin, gameState.gridManager.gridSquares[CoinSpots[i]] + rampAdjustment, new Quaternion(0, 0, 0, 0));
+        //for (int i = 0; i < CoinSpots.Count; i++)
+        //{
+        //    coin = Instantiate(coin, gameState.gridManager.gridSquares[CoinSpots[i]] + rampAdjustment, new Quaternion(0, 0, 0, 0));
 
-        }
+        //}
 
-        for (int i = 0; i < FinishSpots.Count; i++)
-        {
-            finish = Instantiate(finish, gameState.gridManager.gridSquares[FinishSpots[i]], new Quaternion(0, 0, 0, 0));
+        //for (int i = 0; i < FinishSpots.Count; i++)
+        //{
+        //    finish = Instantiate(finish, gameState.gridManager.gridSquares[FinishSpots[i]], new Quaternion(0, 0, 0, 0));
 
-        }
-        //initBoostPlatforms(boosterPlatformSpots);
+        //}
         initRedZones(RedZoneSpots);
     }
-
-    //internal void Build_Vertical_Slice_Level2()
-    //{
-    //    List<int> RampSpots = new List<int>();
-    //    List<int> PlatformSpots = new List<int>();
-    //    List<int> FinishSpots = new List<int>();
-    //    List<int> TrampolineSpots = new List<int>();
-    //    List<int> PortalSpots = new List<int>();
-    //    List<int> rechthoekSpots = new List<int>();
-    //    List<int> RampSpotsReversed = new List<int>();
-
-    //    Vector3 rampAdjustment = new Vector3(0.5f, 0f, 0f);
-    //    RampSpots.Add(20);
-    //    TrampolineSpots.Add(117);
-    //    PortalSpots.Add(62);
-    //    PortalSpots.Add(103);
-    //    Init_Platforms(RampSpots, PlatformSpots, RampSpotsReversed, PortalSpots, TrampolineSpots, rechthoekSpots);
-    //}
-
-    //internal void Build_Vertical_Slice_Level3()
-    //{
-    //    Vector3 rampAdjustment = new Vector3(0.5f, 0f, 0f);
-    //    List<int> RampSpots = new List<int>();
-    //    List<int> PlatformSpots = new List<int>();
-    //    List<int> FinishSpots = new List<int>();
-    //    List<int> TrampolineSpots = new List<int>();
-    //    List<int> PortalSpots = new List<int>();
-    //    List<int> rechthoekSpots = new List<int>();
-    //    List<int> RampSpotsReversed = new List<int>();
-
-    //    List<int> PlatformNoGrassSpots = new List<int>();
-
-    //    RampSpots.Add(28);
-    //    PlatformSpots.Add(8);
-    //    PlatformNoGrassSpots.Add(35);
-    //    PlatformNoGrassSpots.Add(62);
-    //    PlatformNoGrassSpots.Add(89);
-    //    PlatformNoGrassSpots.Add(116);
-    //    PlatformNoGrassSpots.Add(143);
-    //    PlatformNoGrassSpots.Add(170);
-    //    PlatformSpots.Add(194);
-    //    PlatformSpots.Add(195);
-    //    PlatformSpots.Add(196);
-    //    PlatformSpots.Add(197);
-    //    PlatformSpots.Add(219);
-    //    PlatformSpots.Add(246);
-    //    PlatformSpots.Add(278);
-    //    PlatformNoGrassSpots.Add(305);
-    //    PlatformNoGrassSpots.Add(332);
-    //    PlatformNoGrassSpots.Add(359);
-    //    PlatformNoGrassSpots.Add(386);
-    //    PlatformNoGrassSpots.Add(413);
-    //    PlatformNoGrassSpots.Add(440);
-    //    TrampolineSpots.Add(354);
-    //    for (int i = 0; i < PlatformNoGrassSpots.Count; i++)
-    //    {
-    //        platformSquareNoGrass = Instantiate(platformSquareNoGrass, gameState.gridManager.gridSquares[PlatformNoGrassSpots[i]] + rampAdjustment, new Quaternion(0, 0, 0, 0));
-
-    //    }
-
-    //    Init_Platforms(RampSpots, PlatformSpots, RampSpotsReversed, PortalSpots, TrampolineSpots, rechthoekSpots);
-    //}
-
-    //internal void Build_Vertical_Slice_Level4()
-    //{
-
-    //    Vector3 rampAdjustment = new Vector3(0.5f, 0, 0);
-    //    List<int> RampSpots = new List<int>();
-    //    List<int> PlatformSpots = new List<int>();
-    //    List<int> FinishSpots = new List<int>();
-
-    //    List<int> RampSpotsReversed = new List<int>();
-    //    List<int> PortalSpots = new List<int>();
-    //    List<int> TrampolineSpots = new List<int>();
-    //    List<int> rechthoekSpots = new List<int>();
-    //    List<int> breakableSpots = new List<int>();
-
-    //    RampSpots.Add(9);
-    //    PlatformSpots.Add(11);
-    //    PlatformSpots.Add(17);
-    //    PlatformSpots.Add(25);
-    //    PlatformSpots.Add(33);
-    //    PlatformSpots.Add(34);
-    //    PlatformSpots.Add(35);
-    //    PlatformSpots.Add(19);
-    //    PlatformSpots.Add(27);
-    //    breakableSpots.Add(22);
-    //    TrampolineSpots.Add(26);
-
-
-    //    for (int i = 0; i < breakableSpots.Count; i++)
-    //    {
-    //        platformBreekbaar = Instantiate(platformBreekbaar, gameState.gridManager.gridSquares[PlatformSpots[i]]+rampAdjustment, new Quaternion(0, 0, 0, 0));
-    //    }
-
-    //    Init_Platforms(RampSpots, PlatformSpots, RampSpotsReversed, PortalSpots, TrampolineSpots, rechthoekSpots);
-    //}
 
     public void BuildLevelCoen()
     {
@@ -611,101 +470,15 @@ public class PlatformManager : MonoBehaviour
         RedZoneSpots.Add(233);
         RedZoneSpots.Add(253);
 
-        //boosterPlatformSpots.Add(43);
-        // boosterPlatformSpots.Add(45);
-        //PlatformSpots.Add(159);
+        SetCoinPosition(110);
+        SetCoinPosition(138);
+        SetCoinPosition(196);
+        SetfinishPosition(254);
 
         Init_Platforms(RampSpots, PlatformSpots, RampSpotsReversed, PortalSpots, TrampolineSpots, rechthoekSpots, boosterPlatformSpots);
-
-        //for (int i = 0; i < CoinSpots.Count; i++)
-        //{
-        //    coin = Instantiate(coin, gameState.gridManager.gridSquares[CoinSpots[i]] + rampAdjustment, new Quaternion(0, 0, 0, 0));
-
-        //}
-
-        //for (int i = 0; i < FinishSpots.Count; i++)
-        //{
-        //    finish = Instantiate(finish, gameState.gridManager.gridSquares[FinishSpots[i]], new Quaternion(0, 0, 0, 0));
-
-        //}
-        //initBoostPlatforms(boosterPlatformSpots);
+        gameState.collectableManager.InitCollectables(coinPositions, finishPosition);
         initRedZones(RedZoneSpots);
     }
-
-    //internal void Build_Vertical_Slice_Level1()
-    //{
-    //    List<int> RampSpots = new List<int>();
-    //    List<int> PlatformSpots = new List<int>();
-    //    List<int> FinishSpots = new List<int>();
-
-    //    List<int> RampSpotsReversed = new List<int>();
-    //    List<int> PortalSpots = new List<int>();
-    //    List<int> TrampolineSpots = new List<int>();
-    //    List<int> rechthoekSpots = new List<int>();
-
-    //    Vector3 rampAdjustment = new Vector3(0.5f, 0f, 0f);
-
-    //    RampSpots.Add(9);
-    //    RampSpots.Add(29);
-
-    //    PlatformSpots.Add(38);
-    //    PlatformSpots.Add(39);
-    //    FinishSpots.Add(31);
-
-    //    for (int i = 0; i < RampSpots.Count; i++)
-    //    {
-    //        bigRamp.SpawnRamp(gameState.gridManager.gridSquares[RampSpots[i]]);
-    //    }
-
-    //    for (int i = 0; i < PlatformSpots.Count; i++)
-    //    {
-    //        PlatformSquare = Instantiate(PlatformSquare, gameState.gridManager.gridSquares[PlatformSpots[i]] + rampAdjustment, new Quaternion(0, 0, 0, 0));
-    //        PlatformSquare.transform.Rotate(new Vector3(-90f, -90f, 0));
-    //    }
-    //    for (int i = 0; i < FinishSpots.Count; i++)
-    //    {
-    //        finish = Instantiate(finish, gameState.gridManager.gridSquares[FinishSpots[i]], new Quaternion(0, 0, 0, 0));
-
-    //    }
-    //    Init_Platforms(RampSpots, PlatformSpots, RampSpotsReversed, PortalSpots, TrampolineSpots, rechthoekSpots);
-    //}
-
-    //internal void Build_Level2()
-    //{
-
-    //    //deze methode maakt hardcoded een level dit is voor testing doeleinden opgezet
-    //    //later moeten levels gebouwd worden door middel van drag en drop en dit opgeslagen in een txt file
-    //    List<int> RampSpots = new List<int>();
-    //    List<int> PlatformSpots = new List<int>();
-    //    List<int> RampSpotsReversed = new List<int>();
-    //    List<int> PortalSpots = new List<int>();
-    //    List<int> TrampolineSpots = new List<int>();
-    //    List<int> rechthoekSpots = new List<int>();
-    //    List<int> redZoneSpots = new List<int>();
-
-    //    //levelPlatformen.tileList[12] = 1;
-    //    //betekent op tile 12 staat een ramp
-    //    //1 is ramp
-    //    //2 is rampreversed
-    //    //3 is platform
-
-
-
-    //    //bouw stom lijstje
-    //    RampSpots.Add(41);
-    //    RampSpots.Add(62);
-    //    //RampSpotsReversed.Add(14);
-    //    //PortalSpots.Add(84);
-    //   // PortalSpots.Add(96);
-    //    // PlatformSpots.Add(53);
-    //    TrampolineSpots.Add(83);
-    //    TrampolineSpots.Add(6);
-    //    //rechthoekSpots.Add(66);
-    //    // redZoneSpots.Add(6);
-
-    //    Init_Platforms(RampSpots, PlatformSpots, RampSpotsReversed, PortalSpots, TrampolineSpots, rechthoekSpots);
-    //    initRedZones(redZoneSpots);
-    //}
 
     internal void Init_Platforms(List<int> RampSpots, List<int> PlatformSpots, List<int> RampSpotsReversed, List<int> PortalSpots, List<int> TrampolineSpots, List<int> rechthoekSpots, List<int> boosterPlatformSpots)
     {
@@ -756,7 +529,7 @@ public class PlatformManager : MonoBehaviour
         {
             for (int i = 0; i < rechthoekSpots.Count; i++)
             {
-                rechthoek = Instantiate(rechthoek, gameState.gridManager.gridSquares[rechthoekSpots[i]] + new Vector3(.5f, 0, 0), new Quaternion(0, 0, 0, 0));
+                rechthoek = Instantiate(rechthoek, gameState.gridManager.gridSquares[rechthoekSpots[i]] + new Vector3(1, 0, 0), rechthoek.transform.rotation);
                 gameState.gridManager.AddFilledGridSpots(rechthoekSpots, SizeType.twoByOne);
             }
         }
@@ -824,7 +597,12 @@ public class PlatformManager : MonoBehaviour
         RedZoneSpots.Add(148);
         RedZoneSpots.Add(149);
         RedZoneSpots.Add(150);
-        //RedZoneSpots.Add(151);
+
+        SetCoinPosition(137);
+        SetCoinPosition(123);
+        SetCoinPosition(187);
+
+        SetfinishPosition(88);
 
 
         //dit moet later anders zijn collectables 
@@ -832,7 +610,7 @@ public class PlatformManager : MonoBehaviour
 
 
         Init_Platforms(RampSpots, PlatformSpots, RampSpotsReversed, PortalSpots, TrampolineSpots, rechthoekSpots, boosterPlatformSpots);
-        //initBoostPlatforms(boosterPlatformSpots);
+        gameState.collectableManager.InitCollectables(coinPositions, finishPosition);
         initRedZones(RedZoneSpots);
     }
 }

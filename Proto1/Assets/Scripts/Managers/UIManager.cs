@@ -4,6 +4,7 @@ using UnityEngine.UI;
 public class UIManager : MonoBehaviour
 {
     public Canvas canvas;
+    public Canvas pauseMenuCanvas;
 
     [SerializeField]
     private InventoryButton inventoryButton;
@@ -17,9 +18,16 @@ public class UIManager : MonoBehaviour
     public InventoryButton[] instantiatedInventoryButtons;
 
     public bool newLevelInventoryisRequired = false;
+    public Canvas pauseMenu;
 
     public void InventoryButtons(PlayerPlatforms playerPlatforms)
     {
+
+        // Dit moet nog veranderd worden naar niet een Tag. Maar dat deed het niet. Dus nu maar 
+        // op deze manier gedaan.
+        GameObject canvasTest = GameObject.FindGameObjectWithTag("PauseMenu");
+        pauseMenu = canvasTest.GetComponent<Canvas>();
+        pauseMenu.enabled = false;
 
         InstantiateInventoryButtonsCheck(playerPlatforms.inventoryButtonAmmount);
 
