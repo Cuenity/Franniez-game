@@ -20,6 +20,11 @@ public class LevelSelect : MonoBehaviour
     Sprite stars2;
     [SerializeField]
     Sprite stars3;
+    [SerializeField]
+    Sprite stickerCollected;
+    [SerializeField]
+    Sprite levelCompleted;
+
 
     [SerializeField]
     Text stickersCollectedText;
@@ -27,7 +32,33 @@ public class LevelSelect : MonoBehaviour
     Text stickersCollectedTextWorld2;
     [SerializeField]
     Text stickersCollectedTextWorld3;
-    
+
+    //Dit moet later weg is vieze oplossing voor viez probleem
+    [SerializeField]
+    Image stickerIndicationLevel1;
+    [SerializeField]
+    Image stickerIndicationLevel2;
+    [SerializeField]
+    Image stickerIndicationLevel3;
+    [SerializeField]
+    Image stickerIndicationLevel4;
+    [SerializeField]
+    Image stickerIndicationLevel5;
+    [SerializeField]
+    Image stickerIndicationLevel6;
+    [SerializeField]
+    Image stickerIndicationLevel7;
+    [SerializeField]
+    Image stickerIndicationLevel8;
+    [SerializeField]
+    Image stickerIndicationLevel9;
+    [SerializeField]
+    Image stickerIndicationLevel10;
+
+    Image[] stickerIndicators;
+    [SerializeField]
+    Image[] completedIndicators;
+
 
     int stickersCollectedCount;
     List<Button> LevelSelectButtons = new List<Button>();
@@ -37,6 +68,7 @@ public class LevelSelect : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        stickerIndicators = new Image[] { stickerIndicationLevel1, stickerIndicationLevel2, stickerIndicationLevel3, stickerIndicationLevel4, stickerIndicationLevel5, stickerIndicationLevel6, stickerIndicationLevel7, stickerIndicationLevel8, stickerIndicationLevel9, stickerIndicationLevel10 };
         levelSelectCanvas.gameObject.SetActive(false);
         
         player = PlayerDataController.instance.player;
@@ -91,6 +123,28 @@ public class LevelSelect : MonoBehaviour
 
                 default:
                     LevelSelectButtons[i].image.sprite = stars0;
+                    break;
+            }
+            switch (player.levels[i].gotSticker)
+            {
+                case (true):
+                    stickerIndicators[i].sprite = stickerCollected;
+                    break;
+                case (false):
+                    stickerIndicators[i].gameObject.SetActive(false);
+                    break;
+                default:
+                    break;
+            }
+            switch (player.levels[i].completed)
+            {
+                case (true):
+                    completedIndicators[i].sprite = levelCompleted;
+                    break;
+                case (false):
+                    completedIndicators[i].gameObject.SetActive(false);
+                    break;
+                default:
                     break;
             }
 
