@@ -140,8 +140,8 @@ public class LevelEditorState : MonoBehaviour
             }
 
         }
-        
-        Instantiate(levelEditorBall, gridManager.gridSquares[SpawnBallPosition], new Quaternion(0, 0, 0, 0)).Roll() ;
+        levelEditorBall.Roll();
+        //Instantiate(levelEditorBall, gridManager.gridSquares[SpawnBallPosition], new Quaternion(0, 0, 0, 0)).Roll() ;
     }
     //
     public void BackToBuilding()

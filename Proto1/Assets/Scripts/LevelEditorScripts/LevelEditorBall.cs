@@ -73,6 +73,7 @@ public class LevelEditorBall : MonoBehaviour
 
     public void Roll()
     {
+        Instantiate(this, LevelEditorState.Instance.gridManager.gridSquares[LevelEditorState.Instance.SpawnBallPosition], new Quaternion(0, 0, 0, 0));
         this.GetComponent<Rigidbody>().isKinematic = false;
         this.GetComponent<Rigidbody>().useGravity = true;
     }
