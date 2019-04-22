@@ -50,6 +50,6 @@ MonoBehaviour:
     type: 3}
   boostPlatform: {fileID: 5868270851285057774, guid: 516ec392141bbba4ab8fe106760246dc,
     type: 3}
-  cannon: {fileID: 1352131336931582937, guid: a73ca33b8a450624f881d27be9515c70, type: 3}
+  cannon: {fileID: 6936727596739162531, guid: 90295df9159913942a464ef460807cd1, type: 3}
   rotateSprite: {fileID: 6453307519854900062, guid: 4158dc43b49b823418fd10165cf9fa32,
     type: 3}

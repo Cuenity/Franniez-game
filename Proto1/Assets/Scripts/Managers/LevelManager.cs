@@ -8,6 +8,9 @@ using UnityEngine.UI;
 
 public class LevelManager : MonoBehaviour
 {
+    /// <summary > Arrays voor het bouwen van levels
+    int[] level5 = new int[] { 0, 0, 0, 0, 6, 6, 7, 0, 0, 0, 7, 7, 7, 7, 7, 7, 7, 0, 0, 0, 7, 0, 0, 0, 0, 0, 0, 0, 0, 7, 7, 7, 7, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 7, 0, 0, 0, 7, 0, 0, 0, 0, 0, 7, 7, 7, 7, 7, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 7, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 7, 0, 0, 0, 7, 0, 0, 0, 0, 0, 7, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 7, 0, 0, 0, 0, 0, 0, 0, 0, 5, 0, 0, 0, 0, 7, 0, 0, 0, 7, 0, 0, 0, 0, 0, 7, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 7, 7, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 7, 0, 0, 0, 7, 0, 0, 0, 0, 0, 7, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 7, 7, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 7, 0, 0, 0, 7, 0, 0, 0, 0, 0, 7, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 6, 0, 0, 0, 0, 0, 0, 0, 0, 7, 0, 0, 7, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 5, 0, 0, 0, 0, 0, 0, 0, 0, 3, 0, 0, 0, 1, 0, 0, 0, 0, 0, 7, 0, 7, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 7, 7, 4, 0, 7, 7, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 3, 0, 7, 7, 7, 7, 1, 0, 0, 0, 0, 7, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 0, 0, 0, 0, 0, 7, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 7, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 0, 0, 7, 0, 7, 0, 7, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 7, 7, 0, 7, 0, 0, 0, 0, 0, 0, 0, 0, 7, 7, 0, 0, 0, 0, 0, 0, 0, 0, 7, 0, 0, 0, 0, 0, 0, 0, 7, 0, 0, 0, 3, 0, 3, 0, 4, 0, 7, 0, 7, 0, 0, 0, 0, 0, 0, 0, 0, 7, 0, 0, 7, 7, 7, 0, 0, 0, 2, 0, 3, 0, 7, 0, 0, 0, 7, 0, 0, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 0, 0, 7, 0, 0, 0, 0, 0, 0, 7, 0, 0, 0, 0, 0, 0, 0, 2, 0, 3, 0, 3, 0, 0, 7, 7, 7, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 7, 7, 7, 7, 7, 7, 0, 0, 0, 0, 0, 0, 2, 0, 3, 0, 3, 0, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 5, 0, 3, 0, 3, 0, 3, 0, 3, 0 };
+    /// </summary>
     GameState gameState;
     Scene currentScene;
     List<Vector3> coinPositions = new List<Vector3>();
@@ -62,7 +65,8 @@ public class LevelManager : MonoBehaviour
             //moet file createn
             Debug.LogError("Cannot find file!");
         }
-        GameState.Instance.platformManager.BuildLevelFromText(levelPlatformen);
+        GameState.Instance.gridManager.Build_Grid_FromJSON_Without_Visuals(levelPlatformen.width, levelPlatformen.heigth);
+        GameState.Instance.platformManager.BuildLevelFromLevelPlatformen(levelPlatformen);
     }
 
     public void SaveLevelToText(string levelName)
@@ -272,6 +276,37 @@ public class LevelManager : MonoBehaviour
                 PlayerDataController.instance.previousScene = 4;
             }
         }
+        else if (sceneName == "5")
+        {
+            if (!levelIsSpawned)
+            {
+                gameState.UIManager.canvas = Instantiate(canvas);
+                gameState.UIManager.newLevelInventoryisRequired = true;
+                GameState.Instance.playerCamera.ManualInit();
+                Vector3 playeradjustment = new Vector3(.5f, 0, 0);
+                levelPlatformen.tileList = level5;
+                levelPlatformen.width = 40;
+                levelPlatformen.heigth = 15;
+                gameState.gridManager.width = 40;
+                gameState.gridManager.heigth = 15;
+                playerPlatforms = new PlayerPlatforms(5, 5, 5, 4, 0);
+                GameState.Instance.gridManager.Build_Grid_FromJSON_Without_Visuals(levelPlatformen.width, levelPlatformen.heigth);
+                
+                gameState.playerBallManager.SetSpawnpoint(1);
+                
+                GameState.Instance.platformManager.BuildLevelFromLevelPlatformen(levelPlatformen);
+                SetCoinPositions(19);
+                SetCoinPositions(29);
+                SetCoinPositions(39);
+
+                SetfinishPositions(273);
+                gameState.playerManager.PlayerInit();
+                gameState.collectableManager.InitCollectables(coinPositions, finishPosition);
+                gameState.BuildingPhaseActive = true;
+                GameState.Instance.PreviousLevel = 5;
+                PlayerDataController.instance.previousScene = 5;
+            }
+        }
     }
     public void SetRollingPhase()
     {
@@ -298,6 +333,15 @@ public class LevelManager : MonoBehaviour
         }
 
     }
+
+
+
+
+    ///////////////////////////////////////////
+    //////dit hieronder kan allemaal weg??/////
+    ///////////////////////////////////////////
+
+
     //SceneLoading and generals
     //https://www.alanzucconi.com/2016/03/30/loading-bar-in-unity/
     //

@@ -58,7 +58,7 @@ public class SceneSwitcher : MonoBehaviour
     //hij accepteert een nieuwe variable en laat geen loading screen zien
     internal void AsynchronousLoadStartNoLoadingBar(string scene)
     {
-        SceneManager.LoadSceneAsync(scene);
+        SceneManager.LoadScene(scene);
     }
 
     private void SceneIsLoaded(Scene arg0, LoadSceneMode arg1)

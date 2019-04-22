@@ -125,6 +125,11 @@ public class UIDragManager : MonoBehaviour, IDragHandler, IBeginDragHandler, IEn
                     }
 
                     GameState.Instance.levelManager.playerPlatforms.UpdateCannonPlatformsLeft(correctButton);
+
+                    //draggedPlatform.transform.GetChild(0).transform.GetChild(0).gameObject.AddComponent<PlatformDragManager>();
+                    //draggedPlatform.transform.GetChild(1).gameObject.AddComponent<PlatformDragManager>();
+                    //draggedPlatform.transform.GetChild(2).gameObject.AddComponent<PlatformDragManager>();
+                    //draggedPlatform.transform.GetChild(3).gameObject.AddComponent<PlatformDragManager>();
                 }
 
                 if (!draggedPlatform.GetComponent<Cannon>())
@@ -136,6 +141,7 @@ public class UIDragManager : MonoBehaviour, IDragHandler, IBeginDragHandler, IEn
                 }
 
                 draggedPlatform.AddComponent<PlatformDragManager>();
+
             }
             else
             {

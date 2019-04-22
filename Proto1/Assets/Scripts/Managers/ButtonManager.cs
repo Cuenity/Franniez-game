@@ -2,6 +2,7 @@
 using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class ButtonManager : MonoBehaviour
 {
@@ -14,11 +15,6 @@ public class ButtonManager : MonoBehaviour
     void Start()
     {
         gameState = GameState.Instance;
-    }
-
-    void Update()
-    {
-
     }
 
     public void StartButton()
@@ -142,6 +138,13 @@ public class ButtonManager : MonoBehaviour
             GameState.Instance.levelManager.playerPlatforms.UpdateBoostPlatformsLeft(button);
             button.InventoryButtonAllowed = true;
         }
+        else if (playerPlatform.tag == "Cannon")
+        {
+            InventoryButton button = FindCorrectInventoryButton(InventoryButtonName.cannonPlatformButton);
+            GameState.Instance.levelManager.playerPlatforms.cannonPlatformsLeftToPlace++;
+            GameState.Instance.levelManager.playerPlatforms.UpdateCannonPlatformsLeft(button);
+            button.InventoryButtonAllowed = true;
+        }
 
         GameState.Instance.levelManager.playerPlatforms.placedPlatforms.Remove(playerPlatform);
         Destroy(playerPlatform);
@@ -184,4 +187,15 @@ public class ButtonManager : MonoBehaviour
 
     }
 
+    public void ChangeCannonAngle()
+    {
+        Debug.Log(GetComponent<Slider>().value);
+        Debug.Log(transform.root.GetChild(0).GetChild(0).right); // transform.root.GetChild(0).GetChild(0).right + value
+        transform.root.GetChild(0).GetChild(0).transform.localRotation = Quaternion.Euler(GetComponent<Slider>().value, 0, 0);
+    }
+
+    public void MenuButton()
+    {
+        SceneManager.LoadScene("LevelSelect");
+    }
 }

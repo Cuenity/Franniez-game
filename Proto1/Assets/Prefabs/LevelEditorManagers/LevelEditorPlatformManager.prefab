@@ -1,0 +1,63 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &3426719891737558159
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1477155451751544878}
+  - component: {fileID: 8852289546506907176}
+  m_Layer: 0
+  m_Name: LevelEditorPlatformManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1477155451751544878
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3426719891737558159}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8852289546506907176
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3426719891737558159}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ab2c891220a26c4390a56ad8ca25c62, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bigRampClass: {fileID: 4734090914819921343, guid: 6e5c851c8e894f64fb41414aaeec110f,
+    type: 3}
+  platformSquareClass: {fileID: 2306342469624419777, guid: 71c6a679441c4b646ba657f582719b39,
+    type: 3}
+  rampClass: {fileID: 3573814550062563206, guid: 5c1d50512c7b7eb4cb74387fcb1286df,
+    type: 3}
+  rampReversedClass: {fileID: 4178073609103714751, guid: b3a0d06a611d5e146af7716b0fdf9fd4,
+    type: 3}
+  trampolineClass: {fileID: 3801176668498716259, guid: cdd4ec2f6987fcf409b7a04177ac8083,
+    type: 3}
+  boostPlatformClass: {fileID: 7344724330855946511, guid: b591184cad5540c49aa4302e5931b377,
+    type: 3}
+  cannonClass: {fileID: 5941945224724043234, guid: 1be048c3c516a7247b955b1632df500d,
+    type: 3}
+  redZoneClass: {fileID: 4734946786512146898, guid: f4fc21df606b1a742a38fbdf0699b528,
+    type: 3}
+  ballClass: {fileID: 809268522919141895, guid: d420658204c6d944d9724b0ea21eaa95,
+    type: 3}

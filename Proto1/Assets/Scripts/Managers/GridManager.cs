@@ -59,7 +59,7 @@ public class GridManager : MonoBehaviour
         switch (type)
         {
             case SizeType.oneByOne:
-                filledGridSpots[gridSpot] = true;
+                filledGridSpots[gridSpot] = false;
                 break;
             case SizeType.twoByOne:
                 filledGridSpots[gridSpot] = false;
@@ -259,5 +259,58 @@ public class GridManager : MonoBehaviour
 
         //add alle squares aan een lijstje
         gridSquares.Add(startingPoint);
+    }
+    //LevelEditor Code
+    internal void Build_Grid_FromJSON_With_Visuals(int width, int heigth)
+    {
+        Vector3 moveRight = new Vector3(1f, 0f, 0f);
+        Vector3 moveDown = new Vector3(0f, -1f, 0f);
+        Vector3 gridStartingPoint = new Vector3(0f, 0f, 0f);
+
+
+        for (int i = 0; i < heigth; i++)
+        {
+            gridStartingPoint.x = 0f;
+            gridStartingPoint = gridStartingPoint + moveDown;
+
+            for (int i2 = 0; i2 < width; i2++)
+            {
+                Build_SquareBest(gridStartingPoint);
+                //place 2 the left
+                gridStartingPoint = gridStartingPoint + moveRight;
+            }
+        }
+        filledGridSpots = new bool[heigth * width];
+        this.heigth = heigth;
+        this.width = width;
+        //onnodige balllllshit
+        //LevelEditorState.Instance.levelPlatformen.tileList = new int[heigth * width];
+
+    }
+    internal void Build_Grid_FromJSON_Without_Visuals(int width, int heigth)
+    {
+        Vector3 moveRight = new Vector3(1f, 0f, 0f);
+        Vector3 moveDown = new Vector3(0f, -1f, 0f);
+        Vector3 gridStartingPoint = new Vector3(0f, 0f, 0f);
+
+
+        for (int i = 0; i < heigth; i++)
+        {
+            gridStartingPoint.x = 0f;
+            gridStartingPoint = gridStartingPoint + moveDown;
+
+            for (int i2 = 0; i2 < width; i2++)
+            {
+                Build_SquareBest_no_instance(gridStartingPoint);
+                //place 2 the left
+                gridStartingPoint = gridStartingPoint + moveRight;
+            }
+        }
+        filledGridSpots = new bool[heigth * width];
+        this.heigth = heigth;
+        this.width = width;
+        //onnodige balllllshit
+        //LevelEditorState.Instance.levelPlatformen.tileList = new int[heigth * width];
+
     }
 }

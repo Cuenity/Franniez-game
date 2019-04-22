@@ -65,6 +65,10 @@ MonoBehaviour:
   coin: {fileID: 9148849811850824367, guid: 6e0e5fcc9b0132e489c4dff1900a1c88, type: 3}
   boostPlatform: {fileID: 3145376341225367648, guid: 516ec392141bbba4ab8fe106760246dc,
     type: 3}
+  levelEditorPlatform: {fileID: 2306342469624419777, guid: 71c6a679441c4b646ba657f582719b39,
+    type: 3}
+  levelEditorRampReversed: {fileID: 4178073609103714751, guid: b3a0d06a611d5e146af7716b0fdf9fd4,
+    type: 3}
   lijn: {fileID: 1965857940646614433, guid: 791b4e3d080d72244a4df542575acaa0, type: 3}
   gridDot: {fileID: 866343401640163591, guid: bc23aee495a663643ab17e58f38c60da, type: 3}
   gridSquare: {fileID: 5277723055925215312, guid: c3402e776dd95844ab6d4872d579ef6b,
