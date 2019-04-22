@@ -18,6 +18,7 @@ TagManager:
   - RedZone
   - Booster
   - LevelSelectStickerIndication
+  - PauseMenu
   layers:
   - Default
   - TransparentFX

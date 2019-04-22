@@ -7,19 +7,20 @@ public class ChangeSoundImage : MonoBehaviour
 {
     public Sprite SoundOn;
     public Sprite SoundOff;
+    public Button TestButton;
 
     private Button button;
     private bool SoundState = true;
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         button = GetComponent<Button>();
 
         // Only check if sound is off because the default image is on
         if(PlayerPrefs.GetInt("Sound") == 2)
         {
-            button.GetComponent<Image>().sprite = SoundOff;
+            TestButton.GetComponent<Image>().sprite = SoundOff;
             SoundState = false;
         }
     }
@@ -28,12 +29,12 @@ public class ChangeSoundImage : MonoBehaviour
     {
         if (SoundState)
         {
-            button.GetComponent<Image>().sprite = SoundOff;
+            TestButton.GetComponent<Image>().sprite = SoundOff;
             SoundState = false;
         }
         else
         {
-            button.GetComponent<Image>().sprite = SoundOn;
+            TestButton.GetComponent<Image>().sprite = SoundOn;
             SoundState = true; ;
         }
         
