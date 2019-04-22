@@ -202,7 +202,7 @@ public class PlayerCamera : MonoBehaviour
     {
         if (Input.touchCount == 2)
         {
-            float perspectiveZoomSpeed = 0.1f;        // The rate of change of the field of view in perspective mode.
+            float perspectiveZoomSpeed = 0.05f;        // The rate of change of the field of view in perspective mode.
 
             // Store both touches.
             Touch touchZero = Input.GetTouch(0);
@@ -225,7 +225,7 @@ public class PlayerCamera : MonoBehaviour
             camera.fieldOfView += deltaMagnitudeDiff * perspectiveZoomSpeed;
 
             // Clamp the field of view to make sure it's between 0 and 180.
-            camera.fieldOfView = Mathf.Clamp(camera.fieldOfView, 25.1f, 89.9f);
+            camera.fieldOfView = Mathf.Clamp(camera.fieldOfView, 40.1f, 89.9f);
         }
     }
 
@@ -275,8 +275,6 @@ public class PlayerCamera : MonoBehaviour
                 {
                     transform.position = outsideGrid;
                 }
-
-                // transform.position += transform.TransformDirection((Vector3)((oldTouchPositions[0] - newTouchPosition) * GetComponent<Camera>().orthographicSize / GetComponent<Camera>().pixelHeight * 2f));
 
                 oldTouchPositions[0] = newTouchPosition;
             }
