@@ -148,14 +148,14 @@ public class PlatformManager : MonoBehaviour
         }
     }
 
-    internal void BuildLevelFromLevelPlatformen(LevelPlatformen levelPlatformen)
+    internal void BuildLevelFromLevelPlatformen(LevelPlatformen levelPlatformen,int[] coins, int finish)
     {
+        foreach (int item in coins)
+        {
+            SetCoinPosition(item);
+        }
 
-        SetCoinPosition(71);
-        SetCoinPosition(103);
-        SetCoinPosition(136);
-
-        SetfinishPosition(171);
+        SetfinishPosition(finish);
         gameState.collectableManager.InitCollectables(coinPositions, finishPosition);
         // code voor opslaan/laden van levels
         // 0 = leeg;
