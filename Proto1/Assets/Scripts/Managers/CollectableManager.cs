@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 public class CollectableManager : MonoBehaviour
@@ -29,18 +27,21 @@ public class CollectableManager : MonoBehaviour
 
     public void InitCollectables(List<Vector3> coinPositions, Vector3 finishPosition)
     {
-        
-            gameState = GameState.Instance;
-            this.coinPositions = coinPositions;
-            this.finishPosition = finishPosition;
+        gameState = GameState.Instance;
+        this.coinPositions = coinPositions;
+        this.finishPosition = finishPosition;
 
-            InitCoins();
-            InitFinish();
-            
+        InitCoins();
+        InitFinish();
 
-            newCollectablesAreRequired = false;
-        
-        
+        newCollectablesAreRequired = false;
+    }
+
+    public void RespawnCoins(List<Vector3> coinPositions)
+    {
+        this.coinPositions = coinPositions;
+        InitCoins();
+        newCollectablesAreRequired = false;
     }
 
     public void InitFinish()

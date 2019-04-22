@@ -41,6 +41,10 @@ public class PlatformManager : MonoBehaviour
     private GameObject snapPlatform;
     private GameObject snapPlatformSquare;
 
+    private List<Vector3> coinPositions = new List<Vector3>();
+    private Vector3 finishPosition;
+
+
     private void Awake()
     {
         //platformPositions = new List<Vector3>();
@@ -50,6 +54,39 @@ public class PlatformManager : MonoBehaviour
     void Start()
     {
         currentScene = SceneManager.GetActiveScene();
+    }
+
+    public void RespawnCollectables()
+    {
+        foreach (Coin item in gameState.levelManager.coinList)
+        {
+            item.gameObject.SetActive(false);
+        }
+        gameState.levelManager.coinList.Clear();
+        gameState.levelManager.stickerObject.gameObject.SetActive(false);
+        finish.gameObject.SetActive(false);
+
+        gameState.collectableManager.RespawnCoins(coinPositions);
+    }
+
+    public void SetCoinPosition(int i)
+    {
+        Vector3 coinAdjustment = new Vector3(.3f, 0, 0);
+        coinPositions.Add(gameState.gridManager.gridSquares[i] + coinAdjustment);
+
+        List<int> coinPosition = new List<int>();
+        coinPosition.Add(i);
+        gameState.gridManager.AddFilledGridSpots(coinPosition, SizeType.oneByOne);
+    }
+
+    public void SetfinishPosition(int i)
+    {
+        Vector3 finishAdjustment = new Vector3(.5f, 0, 0);
+        finishPosition = gameState.gridManager.gridSquares[i] + finishAdjustment;
+
+        List<int> finishPositionFillsGridSpot = new List<int>();
+        finishPositionFillsGridSpot.Add(i);
+        gameState.gridManager.AddFilledGridSpots(finishPositionFillsGridSpot, SizeType.oneByTwo);
     }
 
     public void spawnPlatformOnGrid(Vector3 position, GameObject gameObject)
@@ -110,8 +147,16 @@ public class PlatformManager : MonoBehaviour
             }
         }
     }
+
     internal void BuildLevelFromLevelPlatformen(LevelPlatformen levelPlatformen)
     {
+
+        SetCoinPosition(71);
+        SetCoinPosition(103);
+        SetCoinPosition(136);
+
+        SetfinishPosition(171);
+        gameState.collectableManager.InitCollectables(coinPositions, finishPosition);
         // code voor opslaan/laden van levels
         // 0 = leeg;
         // 1 = rampsmall
@@ -203,10 +248,15 @@ public class PlatformManager : MonoBehaviour
         rechthoekSpots.Add(36);
         RampSpotsReversed.Add(30);
 
+        SetCoinPosition(11);
+        SetCoinPosition(26);
+        SetCoinPosition(29);
+        SetfinishPosition(24);
 
         //dit moet later anders zijn collectables 
 
         Init_Platforms(RampSpots, PlatformSpots, RampSpotsReversed, PortalSpots, TrampolineSpots, rechthoekSpots, boosterPlatformSpots);
+        gameState.collectableManager.InitCollectables(coinPositions, finishPosition);
         initRedZones(RedZoneSpots);
     }
 
@@ -234,6 +284,10 @@ public class PlatformManager : MonoBehaviour
         PlatformSpots.Add(197);
         PlatformSpots.Add(198);
 
+        SetCoinPosition(67);
+        SetCoinPosition(90);
+        SetCoinPosition(115);
+        SetfinishPosition(178);
 
         //dit moet later anders zijn collectables 
 
@@ -241,19 +295,7 @@ public class PlatformManager : MonoBehaviour
 
         Init_Platforms(RampSpots, PlatformSpots, RampSpotsReversed, PortalSpots, TrampolineSpots, rechthoekSpots, boosterPlatformSpots);
 
-        //for (int i = 0; i < CoinSpots.Count; i++)
-        //{
-        //    coin = Instantiate(coin, gameState.gridManager.gridSquares[CoinSpots[i]] + rampAdjustment, new Quaternion(0, 0, 0, 0));
-
-        //}
-
-        //for (int i = 0; i < FinishSpots.Count; i++)
-        //{
-        //    finish = Instantiate(finish, gameState.gridManager.gridSquares[FinishSpots[i]], new Quaternion(0, 0, 0, 0));
-
-        //}
-
-        //initBoostPlatforms(boosterPlatformSpots);
+        gameState.collectableManager.InitCollectables(coinPositions, finishPosition);
         initRedZones(RedZoneSpots);
     }
 
@@ -337,15 +379,7 @@ public class PlatformManager : MonoBehaviour
         List<int> RedZoneSpots = new List<int>();
         List<int> boosterPlatformSpots = new List<int>();
         RampSpots.Add(21);
-        //RampSpots.Add(43);
-        //RampSpots.Add(65);
-        //RampSpots.Add(87);
         boosterPlatformSpots.Add(124);
-        //RampSpots.Add(131);
-        //RampSpots.Add(153);
-        //RampSpots.Add(175);
-
-        //RampSpotsReversed.Add(106);
 
         RedZoneSpots.Add(127);
         RedZoneSpots.Add(128);
@@ -361,19 +395,25 @@ public class PlatformManager : MonoBehaviour
         PlatformSpots.Add(209);
         PlatformSpots.Add(207);
 
+        SetCoinPosition(104);
+        SetCoinPosition(90);
+        SetCoinPosition(190);
+        SetfinishPosition(188);
+
         Init_Platforms(RampSpots, PlatformSpots, RampSpotsReversed, PortalSpots, TrampolineSpots, rechthoekSpots, boosterPlatformSpots);
+        gameState.collectableManager.InitCollectables(coinPositions, finishPosition);
 
-        for (int i = 0; i < CoinSpots.Count; i++)
-        {
-            coin = Instantiate(coin, gameState.gridManager.gridSquares[CoinSpots[i]] + rampAdjustment, new Quaternion(0, 0, 0, 0));
+        //for (int i = 0; i < CoinSpots.Count; i++)
+        //{
+        //    coin = Instantiate(coin, gameState.gridManager.gridSquares[CoinSpots[i]] + rampAdjustment, new Quaternion(0, 0, 0, 0));
 
-        }
+        //}
 
-        for (int i = 0; i < FinishSpots.Count; i++)
-        {
-            finish = Instantiate(finish, gameState.gridManager.gridSquares[FinishSpots[i]], new Quaternion(0, 0, 0, 0));
+        //for (int i = 0; i < FinishSpots.Count; i++)
+        //{
+        //    finish = Instantiate(finish, gameState.gridManager.gridSquares[FinishSpots[i]], new Quaternion(0, 0, 0, 0));
 
-        }
+        //}
         initRedZones(RedZoneSpots);
     }
 
@@ -430,24 +470,13 @@ public class PlatformManager : MonoBehaviour
         RedZoneSpots.Add(233);
         RedZoneSpots.Add(253);
 
-        //boosterPlatformSpots.Add(43);
-        // boosterPlatformSpots.Add(45);
-        //PlatformSpots.Add(159);
+        SetCoinPosition(110);
+        SetCoinPosition(138);
+        SetCoinPosition(196);
+        SetfinishPosition(254);
 
         Init_Platforms(RampSpots, PlatformSpots, RampSpotsReversed, PortalSpots, TrampolineSpots, rechthoekSpots, boosterPlatformSpots);
-
-        //for (int i = 0; i < CoinSpots.Count; i++)
-        //{
-        //    coin = Instantiate(coin, gameState.gridManager.gridSquares[CoinSpots[i]] + rampAdjustment, new Quaternion(0, 0, 0, 0));
-
-        //}
-
-        //for (int i = 0; i < FinishSpots.Count; i++)
-        //{
-        //    finish = Instantiate(finish, gameState.gridManager.gridSquares[FinishSpots[i]], new Quaternion(0, 0, 0, 0));
-
-        //}
-        //initBoostPlatforms(boosterPlatformSpots);
+        gameState.collectableManager.InitCollectables(coinPositions, finishPosition);
         initRedZones(RedZoneSpots);
     }
 
@@ -568,7 +597,12 @@ public class PlatformManager : MonoBehaviour
         RedZoneSpots.Add(148);
         RedZoneSpots.Add(149);
         RedZoneSpots.Add(150);
-        //RedZoneSpots.Add(151);
+
+        SetCoinPosition(137);
+        SetCoinPosition(123);
+        SetCoinPosition(187);
+
+        SetfinishPosition(88);
 
 
         //dit moet later anders zijn collectables 
@@ -576,7 +610,7 @@ public class PlatformManager : MonoBehaviour
 
 
         Init_Platforms(RampSpots, PlatformSpots, RampSpotsReversed, PortalSpots, TrampolineSpots, rechthoekSpots, boosterPlatformSpots);
-        //initBoostPlatforms(boosterPlatformSpots);
+        gameState.collectableManager.InitCollectables(coinPositions, finishPosition);
         initRedZones(RedZoneSpots);
     }
 }
