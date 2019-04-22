@@ -42,12 +42,20 @@ public class GridManager : MonoBehaviour
                 }
                 break;
             case SizeType.twoByTwo:
-                Debug.Log("not finished portal filledgridspots");
-                // portal
+                foreach (int gridSpot in gridSpots)
+                {
+                    filledGridSpots[gridSpot - GameState.Instance.gridManager.width] = true;
+                    filledGridSpots[gridSpot + 1 - GameState.Instance.gridManager.width] = true;
+                    filledGridSpots[gridSpot] = true;
+                    filledGridSpots[gridSpot + 1] = true;
+                }
                 break;
             case SizeType.oneByTwo:
-                Debug.Log("not finished flag filledgridspots");
-                // vlag
+                foreach (int gridSpot in gridSpots)
+                {
+                    filledGridSpots[gridSpot - GameState.Instance.gridManager.width] = true;
+                    filledGridSpots[gridSpot] = true;
+                }
                 break;
             default:
                 break;
@@ -200,7 +208,7 @@ public class GridManager : MonoBehaviour
             RedZone redZonebefore = Instantiate(redZone);
             RedZone redZoneAfter = Instantiate(redZone);
             redZonebefore.transform.position = gridStartingPoint + new Vector3(0, -1, 1f);
-            redZoneAfter.transform.position = gridStartingPoint + new Vector3(gameState.gridManager.width , -1, 1f);
+            redZoneAfter.transform.position = gridStartingPoint + new Vector3(gameState.gridManager.width, -1, 1f);
             //for (int i4 = 0; i4 < width; i4++)
             //{
             //    if (i4 == 0)
@@ -227,7 +235,7 @@ public class GridManager : MonoBehaviour
                         cornerredzone.transform.position = new Vector3(width, -heigth - .5f, 1f);
                     }
                     bottemredZone = Instantiate(bottemredZone);
-                    bottemredZone.transform.position = new Vector3(i3+.5f, -heigth - .5f, 1f);
+                    bottemredZone.transform.position = new Vector3(i3 + .5f, -heigth - .5f, 1f);
                 }
             }
 
