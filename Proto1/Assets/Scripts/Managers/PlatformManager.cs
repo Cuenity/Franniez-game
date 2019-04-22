@@ -824,7 +824,7 @@ public class PlatformManager : MonoBehaviour
         RedZoneSpots.Add(148);
         RedZoneSpots.Add(149);
         RedZoneSpots.Add(150);
-        RedZoneSpots.Add(151);
+        //RedZoneSpots.Add(151);
 
 
         //dit moet later anders zijn collectables 
