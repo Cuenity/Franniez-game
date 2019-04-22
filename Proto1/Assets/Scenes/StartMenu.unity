@@ -993,6 +993,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SoundOn: {fileID: 21300000, guid: 8983722b835d80944a864b7f27c5b996, type: 3}
   SoundOff: {fileID: 21300000, guid: a5800c6d45eae3143bdfea6dee9330fd, type: 3}
+  TestButton: {fileID: 710515204}
 --- !u!1 &739306635
 GameObject:
   m_ObjectHideFlags: 0

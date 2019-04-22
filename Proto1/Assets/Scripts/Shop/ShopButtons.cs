@@ -18,7 +18,7 @@ public class ShopButtons : MonoBehaviour
 
     // Voor test alleen, moet nog verwerkt worden naar DataController want daar wilt ie de 
     // ShopCoins niet opslaan
-    private Player player = PlayerDataController.instance.player;
+    private Player player;
 
     public delegate void ClickAction(string name);
     public static event ClickAction ChangeImage;
@@ -28,6 +28,7 @@ public class ShopButtons : MonoBehaviour
         MusicPanel.SetActive(false);
         CoinsPanel.SetActive(false);
         AmountCoinsPlayer.text = PlayerDataController.instance.player.ShopCoins.ToString();
+        player = PlayerDataController.instance.player;
 
         //Start Time for GameAnal
         startTime = Time.time;
@@ -37,7 +38,7 @@ public class ShopButtons : MonoBehaviour
         endTime = Time.time - startTime;
 
         SendTimeAnal();
-        SceneManager.LoadScene("StartMenu");
+        SceneSwitcher.Instance.AsynchronousLoadStart("StartMenu");
     }
 
     private void SendTimeAnal()
