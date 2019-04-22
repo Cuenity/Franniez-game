@@ -27,7 +27,11 @@ public class Finish : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         //playerManager.collectedCoins++;
-        Finished();
-        this.gameObject.SetActive(false);
+        if (!other.isTrigger)
+        {
+            Finished();
+            this.gameObject.SetActive(false);
+        }
+
     }
 }
