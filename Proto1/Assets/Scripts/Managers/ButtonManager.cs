@@ -189,12 +189,7 @@ public class ButtonManager : MonoBehaviour
 
     public void ChangeCannonAngle()
     {
-        //gameState.playerCamera.platformDragActive = true;
-        Debug.Log(GetComponent<Slider>().value);
-        Debug.Log(transform.root.GetChild(0).GetChild(0).right); // transform.root.GetChild(0).GetChild(0).right + value
         transform.root.GetChild(0).GetChild(0).transform.localRotation = Quaternion.Euler(GetComponent<Slider>().value, 0, 0);
-
-        //gameState.playerCamera.platformDragActive = false;
     }
 
     public void CannonSliderOnPointerDown()
