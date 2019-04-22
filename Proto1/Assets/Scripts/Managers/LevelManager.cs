@@ -325,7 +325,7 @@ public class LevelManager : MonoBehaviour
                 PlayerDataController.instance.previousScene = 5;
             }
         }
-        else if (sceneName == "6")
+        else if (sceneName == "7")
         {
             if (!levelIsSpawned)
             {
