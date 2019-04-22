@@ -556,8 +556,7 @@ public class PlatformManager : MonoBehaviour
         {
             for (int i = 0; i < PlatformSpots.Count; i++)
             {
-                Instantiate(PlatformSquare, gameState.gridManager.gridSquares[PlatformSpots[i]] + rampAdjustment, new Quaternion(0, 0, 0, 0));
-                //PlatformSquare.transform.Rotate(new Vector3(-90f, -90f, 0));
+                Instantiate(PlatformSquare, gameState.gridManager.gridSquares[PlatformSpots[i]] + rampAdjustment, PlatformSquare.transform.rotation);
                 gameState.gridManager.AddFilledGridSpots(PlatformSpots, SizeType.oneByOne);
             }
         }
