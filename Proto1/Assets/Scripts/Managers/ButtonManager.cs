@@ -2,6 +2,7 @@
 using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class ButtonManager : MonoBehaviour
 {
@@ -14,11 +15,6 @@ public class ButtonManager : MonoBehaviour
     void Start()
     {
         gameState = GameState.Instance;
-    }
-
-    void Update()
-    {
-
     }
 
     public void StartButton()
@@ -191,4 +187,40 @@ public class ButtonManager : MonoBehaviour
 
     }
 
+    public void ChangeCannonAngle()
+    {
+        Debug.Log(GetComponent<Slider>().value);
+        Debug.Log(transform.root.GetChild(0).GetChild(0).right); // transform.root.GetChild(0).GetChild(0).right + value
+        transform.root.GetChild(0).GetChild(0).transform.localRotation = Quaternion.Euler(GetComponent<Slider>().value, 0, 0);
+
+
+
+        //float direction = 0;
+
+
+
+        // dit werkt voor als ik gewoon twee knoppen neerzet en dan moet er een max aan de rotatie zijn beide kanten op
+        //if (GetComponent<Slider>().value < 0)
+        //{
+        //    direction = -2;
+        //}
+        //else// (GetComponent<Slider>().value > 180.0f)
+        //{
+        //    direction = 2;
+        //}
+
+        //transform.root.GetChild(0).GetChild(0).transform.Rotate(direction, 0, 0, Space.Self);
+
+        //if ()
+        //transform.root.GetChild(0).GetChild(0).transform.RotateAround(
+        //    transform.root.GetChild(0).GetChild(0).transform.position, 
+        //    transform.root.GetChild(0).GetChild(0).transform.right, 
+        //    GetComponent<Slider>().value);
+
+        //transform.root.GetChild(0).GetChild(0).right = new Vector3(GetComponent<Slider>().value, 180, 180);
+        //new Vector3(
+        //transform.root.GetChild(0).GetChild(0).right.x, 
+        //transform.root.GetChild(0).GetChild(0).right.y, 
+        //transform.root.GetChild(0).GetChild(0).right.z); //new Quaternion(transform.root.GetChild(0).GetChild(0).rotation.x, transform.root.GetChild(0).GetChild(0).rotation.y, transform.root.GetChild(0).GetChild(0).rotation.z, transform.root.GetChild(0).GetChild(0).rotation.w); 
+    }
 }

@@ -62,6 +62,7 @@ public class PlayerDataController : MonoBehaviour
     {
         Player playerTest = new Player();
         playerTest.coins = 0;
+        playerTest.ShopCoins = 0;
         playerTest.language = 2;
         playerTest.levels = new Level[1];
         playerTest.stickers = new Sticker[1];
@@ -84,5 +85,30 @@ public class PlayerDataController : MonoBehaviour
     internal void SetLanguage(int languageNumber)
     {
         player.language = languageNumber;
+    }
+
+    public void AddShopCoins(int amount)
+    {
+         player.coins = player.coins + amount;
+    }
+
+    public bool RemoveShopCoins(int amount)
+    {
+        bool enoughCoins = false;
+
+        if(amount >= player.coins)
+        {
+            enoughCoins = true;
+            player.coins = player.coins - amount;
+            return enoughCoins;
+        }
+
+        return enoughCoins;
+        
+    }
+
+    public int ReturnCoins()
+    {
+        return player.ShopCoins;
     }
 }
