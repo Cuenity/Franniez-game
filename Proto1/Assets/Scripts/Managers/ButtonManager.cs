@@ -172,17 +172,19 @@ public class ButtonManager : MonoBehaviour
         {
             Destroy(prev_ball);
             gameState.playerBallManager.InitTypeBall(Bal.Normal);
-
+            //gameObject.GetComponentInChildren<Image>().sprite = gameState.UIManager.normalBallImage;
         }
         else if (prev_ball.name.Contains("Light"))
         {
             Destroy(prev_ball);
             gameState.playerBallManager.InitTypeBall(Bal.BlackHole);
+            //gameObject.GetComponentInChildren<Image>().sprite = gameState.UIManager.blackHoleBallImage;
         }
         else if (prev_ball.name.Contains("Player"))
         {
             Destroy(prev_ball);
             gameState.playerBallManager.InitTypeBall(Bal.Light);
+            //gameObject.GetComponentInChildren<Image>().sprite = gameState.UIManager.lightBallImage;
         }
 
     }
