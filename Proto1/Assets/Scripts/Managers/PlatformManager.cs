@@ -124,7 +124,7 @@ public class PlatformManager : MonoBehaviour
         Vector3 rampAdjustment = new Vector3(0.5f, 0f, 0f);
         for (int i = 0; i < levelPlatformen.tileList.Length; i++)
         {
-            //Conditions broken
+
             if (levelPlatformen.tileList[i] == 0)
             {
 

@@ -282,27 +282,25 @@ public class LevelManager : MonoBehaviour
             {
                 gameState.UIManager.canvas = Instantiate(canvas);
                 gameState.UIManager.newLevelInventoryisRequired = true;
+                GameState.Instance.playerCamera.ManualInit();
+                Vector3 playeradjustment = new Vector3(.5f, 0, 0);
                 levelPlatformen.tileList = level5;
                 levelPlatformen.width = 40;
                 levelPlatformen.heigth = 15;
+                gameState.gridManager.width = 40;
+                gameState.gridManager.heigth = 15;
+                playerPlatforms = new PlayerPlatforms(5, 5, 5, 4, 0);
                 GameState.Instance.gridManager.Build_Grid_FromJSON_Without_Visuals(levelPlatformen.width, levelPlatformen.heigth);
-                gameState.collectableManager.newCollectablesAreRequired = true;
-                //coinPositions.Clear();
-                //coinList.Clear();
-                gameState.playerBallManager.SetSpawnpoint(1);
-                gameState.playerManager.PlayerInit();
-                GameState.Instance.playerCamera.ManualInit();
-                //gameState.playerCamera = Instantiate(gameState.playerCamera);
-                Vector3 playeradjustment = new Vector3(.5f, 0, 0);
                 
-                playerPlatforms = new PlayerPlatforms(4, 4, 1, 0, 0);
+                gameState.playerBallManager.SetSpawnpoint(1);
+                
                 GameState.Instance.platformManager.BuildLevelFromLevelPlatformen(levelPlatformen);
                 SetCoinPositions(19);
                 SetCoinPositions(29);
                 SetCoinPositions(39);
 
                 SetfinishPositions(273);
-
+                gameState.playerManager.PlayerInit();
                 gameState.collectableManager.InitCollectables(coinPositions, finishPosition);
                 gameState.BuildingPhaseActive = true;
                 GameState.Instance.PreviousLevel = 5;
