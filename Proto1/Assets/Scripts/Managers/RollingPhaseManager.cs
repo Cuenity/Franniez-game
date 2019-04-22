@@ -1,3 +1,4 @@
+using GameAnalyticsSDK;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -138,7 +139,7 @@ public class RollingPhaseManager : MonoBehaviour
         player = PlayerDataController.instance.player;
         //hier moet een check komen die kijkt of de behaalde sterren hoger zijn(eerder) dan aantal sterren nu behaald
         //voor de duidelijkheid player.level is wat is opgeslagen terwijl level het net behaalde is
-        if (level.countCoins == 3)
+        if (level.countCoins == 3 || PlayerDataController.instance.player.levels[PlayerDataController.instance.previousScene-1].gotSticker==true)
         {
             level.gotSticker = true;
         }
@@ -164,7 +165,11 @@ public class RollingPhaseManager : MonoBehaviour
         PlayerDataController.instance.player = player;
         PlayerDataController.instance.Save();
         PlayerDataController.instance.previousScene = levelNumber;
-        PlayerDataController.instance.previousSceneCoinCount = level.countCoins;
+        if (PlayerDataController.instance.previousSceneCoinCount < level.countCoins)
+        {
+            PlayerDataController.instance.previousSceneCoinCount = level.countCoins;
+        }
+        GameAnalytics.NewProgressionEvent(GAProgressionStatus.Complete, levelNumber.ToString());
         SceneSwitcher.Instance.AsynchronousLoadStartNoLoadingBar("VictoryScreen");
         //DontDestroyOnLoad(gameState.playerManager.player);
         //gameState.UIManager.DeactivateInventoryButtons();
