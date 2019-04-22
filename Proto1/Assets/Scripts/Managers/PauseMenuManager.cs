@@ -21,6 +21,8 @@ public class PauseMenuManager : MonoBehaviour
     public void Close()
     {
         this.GetComponent<Canvas>().enabled = false;
+        //GameState.Instance.UIManager.canvas.enabled = true;
+        GameState.Instance.playerCamera.platformDragActive = false;
     }
 
     public void SelectLevel()

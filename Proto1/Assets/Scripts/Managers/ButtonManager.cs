@@ -206,5 +206,7 @@ public class ButtonManager : MonoBehaviour
     {
         //SceneManager.LoadScene("LevelSelect");
         gameState.UIManager.pauseMenu.enabled = true;
+        //gameState.UIManager.canvas.enabled = false;
+        gameState.playerCamera.platformDragActive = true;
     }
 }
