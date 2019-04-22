@@ -12,5 +12,6 @@ public class SkinObject : ScriptableObject
 
     // Voor het balletje zelf
     public Sprite texture;
+    public Material material;
 
 }

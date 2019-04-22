@@ -134,6 +134,6 @@ public class MainMenu : MonoBehaviour
 
     public void Button_GoToShop()
     {
-        SceneManager.LoadScene("Shop");
+        SceneSwitcher.Instance.AsynchronousLoadStart("Shop");
     }
 }
