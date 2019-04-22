@@ -31,22 +31,22 @@ public class PlayerBallManager : MonoBehaviour
         switch (type)
         {
             case Bal.BlackHole:
-               activePlayer= Instantiate(blackHoleBall).gameObject;
+                activePlayer = Instantiate(blackHoleBall, gameState.playerBallManager.spawnpoint, new Quaternion(0,0,0,0)).gameObject;
                 gameState.playerBallManager.activePlayer = activePlayer;
                 gameState.playerCamera.Target = activePlayer;
                 break;
             case Bal.Light:
-                activePlayer = Instantiate(lightBall).gameObject;
+                activePlayer = Instantiate(lightBall, gameState.playerBallManager.spawnpoint, new Quaternion(0, 0, 0, 0)).gameObject;
                 gameState.playerBallManager.activePlayer = activePlayer;
                 gameState.playerCamera.Target = activePlayer;
                 break;
             case Bal.Normal:
-                activePlayer = Instantiate(normalBall).gameObject;
+                activePlayer = Instantiate(normalBall, gameState.playerBallManager.spawnpoint, new Quaternion(0, 0, 0, 0)).gameObject;
                 gameState.playerBallManager.activePlayer = activePlayer;
                 gameState.playerCamera.Target = activePlayer;
                 break;
             default:
-                activePlayer = Instantiate(normalBall).gameObject;
+                activePlayer = Instantiate(normalBall, gameState.playerBallManager.spawnpoint, new Quaternion(0, 0, 0, 0)).gameObject;
                 gameState.playerBallManager.activePlayer = activePlayer;
                 gameState.playerCamera.Target = activePlayer;
                 break;
