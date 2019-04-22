@@ -95,7 +95,6 @@ public class RollingPhaseManager : MonoBehaviour
 
     private void AddSticker()
     {
-        Handheld.Vibrate();
         pickedSticker = true;
         Debug.Log("Sticker gepakt");
     }
@@ -111,14 +110,12 @@ public class RollingPhaseManager : MonoBehaviour
 
     private void AddCoin()
     {
-        //Handheld.Vibrate();
         amountCoins++;
         Debug.Log("Coin gepakt");
     }
 
     private void ReachedFinish()
     {
-        Handheld.Vibrate();
         //level.gotSticker = pickedSticker;
         level.completed = true;
 
