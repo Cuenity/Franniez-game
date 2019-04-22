@@ -139,8 +139,41 @@ public class LevelManager : MonoBehaviour
 
             gameState.gridManager.Build_Grid_BuildingPhase_With_Visuals();
         }
-        
-        
+
+        else if (sceneName == "9")
+        {
+            if (!levelIsSpawned)
+            {
+                gameState.UIManager.canvas = Instantiate(canvas);
+                gameState.UIManager.newLevelInventoryisRequired = true;
+                gameState.collectableManager.newCollectablesAreRequired = true;
+                GameState.Instance.playerCamera.ManualInit();
+                Vector3 playeradjustment = new Vector3(.5f, 0, 0);
+                gameState.gridManager.width = 8;
+                gameState.gridManager.heigth = 5;
+                playerPlatforms = new PlayerPlatforms(0, 1, 0, 0, 0);
+                gameState.gridManager.Build_Grid_BuildingPhase_Without_Visuals();
+                gameState.playerBallManager.SetSpawnpoint(0);
+                //gameState.playerManager.player.spawnpoint = gameState.gridManager.gridSquares[1] + playeradjustment;
+                gameState.platformManager.BuildTutorial();
+                SetCoinPositions(11);
+                SetCoinPositions(26);
+                SetCoinPositions(29);
+                SetfinishPositions(24);
+
+
+
+                //boolean party voor elk level nu nodig
+
+                gameState.playerManager.PlayerInit();
+                gameState.collectableManager.InitCollectables(coinPositions, finishPosition);
+                gameState.BuildingPhaseActive = true;
+                GameState.Instance.PreviousLevel = 1;
+                PlayerDataController.instance.previousScene = 1;
+                levelIsSpawned = true;
+            }
+        }
+        // was level 1
         else if (sceneName == "1")
         {
             if (!levelIsSpawned)
