@@ -5,18 +5,22 @@ using System.IO;
 
 public class LocalizationManager : MonoBehaviour
 {
+    // Localization Manager is a Singleton
     public static LocalizationManager instance;
 
-    private Dictionary<string, string> localizedText;
+    // Easy acces to get which language is been set
     public Language LanguageChoice { get; set; }
+
+    // Private properties
+    private Dictionary<string, string> localizedText;
     private bool isReady = false;
     private string missingTextString = "Localized text not found";
 
+    // Trigger events for when the player chooses a Language when the game first starts up
     public delegate void ClickAction();
     public static event ClickAction ClickedButton;
 
-
-    // Start is called before the first frame update
+    // Make Singleton
     void Awake()
     {
         if (instance == null)
@@ -30,8 +34,10 @@ public class LocalizationManager : MonoBehaviour
         }
     }
 
+    // Set the language for the entire game
     public void GetLanguageSettings()
     {
+        // Get Language from Player
         Language language = (Language)PlayerDataController.instance.player.language;
         string filePath = "";
 
@@ -48,14 +54,18 @@ public class LocalizationManager : MonoBehaviour
                 break;
         }
 
+        // Load the text from the json file
         LoadLocalizedText(filePath);
     }
 
+    // Method for loading localized text in Dictionary
     public void LoadLocalizedText(string filename)
     {
+        // Make a new dictionary, this will delete previous loaded language
         localizedText = new Dictionary<string, string>();
         string filePath = Path.Combine(Application.streamingAssetsPath, filename);
 
+        // Android uses differnt filepaths
         if (Application.platform == RuntimePlatform.Android)
         {
             filePath = Path.Combine("jar:file://" + Application.dataPath + "!assets/", filename);
@@ -63,6 +73,7 @@ public class LocalizationManager : MonoBehaviour
 
         string dataAsJSON = "";
 
+        // Android can't uses File.ReadAllText. So we need WWWW for reading the file
         if (Application.platform == RuntimePlatform.Android)
         {
             WWW reader = new WWW(filePath);
@@ -76,20 +87,21 @@ public class LocalizationManager : MonoBehaviour
             dataAsJSON = File.ReadAllText(filePath);
         }
 
+        // Convert Json file in LocalizationData object
         LocalizationData loadedData = JsonUtility.FromJson<LocalizationData>(dataAsJSON);
 
+        // Put every text in the dictonary
         for (int i = 0; i < loadedData.items.Length; i++)
         {
             localizedText.Add(loadedData.items[i].key, loadedData.items[i].value);
         }
 
-        //SetLanguage();
-        Debug.Log("Taal is geladen.");
+        // Deze kan als het goed is weg. 
         isReady = true;
-
     }
 
-    public void ReturnLanguage(string filePath)
+    // Set Language for player
+    public void SetLanguageForPlayer(string filePath)
     {
         int languageNumber = 0;
         switch(filePath)
@@ -113,8 +125,8 @@ public class LocalizationManager : MonoBehaviour
         PlayerDataController.instance.SetLanguage(languageNumber);
     }
 
-    // Alleen public voor Debug, weer terug veranderen naar Private
 
+    // Get Language from Player
     public void SetLanguage()
     {
         PlayerDataController.instance.Load();
@@ -137,6 +149,7 @@ public class LocalizationManager : MonoBehaviour
         }
     }
 
+    // Get Text from Value
     public string GetLocalizedValue(string key)
     {
         string result = missingTextString;
@@ -144,16 +157,16 @@ public class LocalizationManager : MonoBehaviour
         {
             result = localizedText[key];
         }
-
         return result;
-
     }
 
+    // Deze kan waarschijnlijk weg
     public bool GetisReady()
     {
         return isReady;
     }
 
+    // Return Language
     public Language GetLanguage()
     {
         return LanguageChoice;

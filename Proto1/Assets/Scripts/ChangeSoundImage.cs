@@ -1,48 +1,49 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
 public class ChangeSoundImage : MonoBehaviour
 {
-    public Sprite SoundOn;
-    public Sprite SoundOff;
-    public Button TestButton;
+    [SerializeField]
+    private Sprite SoundOn, SoundOff;
 
-    private Button button;
+    [SerializeField]
+    private Button SoundButton;
+
     private bool SoundState = true;
 
-    // Start is called before the first frame update
     void Awake()
     {
-        TestButton = GetComponent<Button>();
+        if(this != null)
+        {
+            SoundButton = GetComponent<Button>();
+        }
 
         // Only check if sound is off because the default image is on
         if(PlayerPrefs.GetInt("Sound") == 2)
         {
-            TestButton.GetComponent<Image>().sprite = SoundOff;
+            SoundButton.GetComponent<Image>().sprite = SoundOff;
             SoundState = false;
         }
     }
 
+    // Change image
     public void ChangeImage()
     {
         if (SoundState)
         {
-            TestButton.GetComponent<Image>().sprite = SoundOff;
+            SoundButton.GetComponent<Image>().sprite = SoundOff;
             SoundState = false;
         }
         else
         {
-            TestButton.GetComponent<Image>().sprite = SoundOn;
+            SoundButton.GetComponent<Image>().sprite = SoundOn;
             SoundState = true; ;
         }
-        
     }
 
+    // Add ChangeImage method to Trigger ChangedSound (Main Menu)
     public void OnEnable()
     {
         MainMenu.ChangedSound += ChangeImage;
     }
-
 }

@@ -5,24 +5,26 @@ using UnityEngine.UI;
 
 public class LanguageSettingsImages : MonoBehaviour
 {
-    public Sprite SpanishFlag;
-    public Sprite UKFlag;
-    public Sprite DutchFlag;
+    // Private serializable properties
+    [SerializeField]
+    private Sprite SpanishFlag, UKFlag, DutchFlag;
 
+    // Private properties
     private Button button;
 
-    // Start is called before the first frame update
     void Start()
     {
         button = GetComponent<Button>();
         ChangeFlag();
     }
 
+    // Add ChangeFlag method to ChangeLanguage Trigger (Main Menu)
     private void OnEnable()
     {
         MainMenu.ChangeLanguage += ChangeFlag;
     }
 
+    // Change Flag images on bases of the players language
     public void ChangeFlag()
     {
         switch (PlayerDataController.instance.player.language)
@@ -39,11 +41,5 @@ public class LanguageSettingsImages : MonoBehaviour
             default:
                 break;
         }
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }

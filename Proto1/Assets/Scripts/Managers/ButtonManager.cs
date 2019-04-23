@@ -50,7 +50,7 @@ public class ButtonManager : MonoBehaviour
 
         PlayerDataController.instance.player = player;
         PlayerDataController.instance.Save();
-        LocalizationManager.instance.ReturnLanguage(pathFile);
+        LocalizationManager.instance.SetLanguageForPlayer(pathFile);
 
         string language = LocalizationManager.instance.LanguageChoice.ToString();
         language = "Language:" + language;

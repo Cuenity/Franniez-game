@@ -5,23 +5,35 @@ using UnityEngine.UI;
 
 public class LocalizedText : MonoBehaviour
 {
-    public string key;
+    /*
+        LOCALIZEDTEXT:
 
-    // Use this for initialization
+        Script zit vast aan een Text Component in Editor of Prefab
+        Dit script wordt ook aangeroepen wanneer de speler de taal veranderd in de settings
+    */
+
+
+    [SerializeField]
+    private string key;
+
     public void Start()
     {
-        Text text = GetComponent<Text>();
-        text.text = LocalizationManager.instance.GetLocalizedValue(key);
+        SetLocalizedText();
     }
 
+    // Add to ChangeLanguage (MainMenu.cs) trigger
     private void OnEnable()
     {
-        MainMenu.ChangeLanguage += RefreshText;
+        MainMenu.ChangeLanguage += SetLocalizedText;
     }
 
-    public void RefreshText()
+    // Set the localized text with choosen Language
+    public void SetLocalizedText()
     {
+        // Get Text Component
         Text text = GetComponent<Text>();
+
+        // Set the text of the component with the String from Key value.
         text.text = LocalizationManager.instance.GetLocalizedValue(key);
     }
 }

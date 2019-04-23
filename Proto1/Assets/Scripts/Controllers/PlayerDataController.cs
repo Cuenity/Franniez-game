@@ -58,24 +58,24 @@ public class PlayerDataController : MonoBehaviour
         Debug.Log("Opgeslagen");
     }
 
-    public void MakeNewPlayer()
-    {
-        Player playerTest = new Player();
-        playerTest.coins = 0;
-        playerTest.ShopCoins = 0;
-        playerTest.language = 2;
-        playerTest.levels = new Level[1];
-        playerTest.stickers = new Sticker[1];
-        playerTest.name = "Joris";
+    //public void MakeNewPlayer()
+    //{
+    //    Player playerTest = new Player();
+    //    playerTest.coins = 0;
+    //    playerTest.ShopCoins = 0;
+    //    playerTest.language = 2;
+    //    playerTest.levels = new Level[1];
+    //    playerTest.stickers = new Sticker[1];
+    //    playerTest.name = "Joris";
 
-        player = playerTest;
-        Save();
-    }
+    //    player = playerTest;
+    //    Save();
+    //}
 
-    public Player GetPlayer()
-    {
-        return player;
-    }
+    //public Player GetPlayer()
+    //{
+    //    return player;
+    //}
 
     public void SetPlayer(Player setPlayer)
     {
@@ -90,6 +90,7 @@ public class PlayerDataController : MonoBehaviour
     public void AddShopCoins(int amount)
     {
          player.coins = player.coins + amount;
+        Save();
     }
 
     public bool RemoveShopCoins(int amount)
@@ -100,6 +101,7 @@ public class PlayerDataController : MonoBehaviour
         {
             enoughCoins = true;
             player.coins = player.coins - amount;
+            Save();
             return enoughCoins;
         }
 

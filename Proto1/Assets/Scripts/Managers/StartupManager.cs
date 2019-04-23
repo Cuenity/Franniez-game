@@ -6,14 +6,10 @@ using UnityEngine.SceneManagement;
 public class StartupManager : MonoBehaviour
 {
     public PlayerDataController dataController;
-    // Start is called before the first frame update
+
     public void Start()
     {
-       //while(!LocalizationManager.instance.GetisReady())
-       // {
-       //     // Wacht 1 frame
-       //     yield return null;
-       // }
+
     }
 
     public void OnEnable()
@@ -24,7 +20,7 @@ public class StartupManager : MonoBehaviour
     public void ButtonClicked()
     {
         Player player = new Player();
-        player.name = "Test";
+        player.name = "Player";
         player.language = (int)LocalizationManager.instance.LanguageChoice;
         PlayerDataController.instance.SetPlayer(player);
         PlayerDataController.instance.Save();
