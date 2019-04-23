@@ -63,7 +63,7 @@ public class PlatformManager : MonoBehaviour
             item.gameObject.SetActive(false);
         }
         gameState.levelManager.coinList.Clear();
-        gameState.levelManager.stickerObject.gameObject.SetActive(false);
+        //gameState.levelManager.stickerObject.gameObject.SetActive(false);
         finish.gameObject.SetActive(false);
 
         gameState.collectableManager.RespawnCoins(coinPositions);
