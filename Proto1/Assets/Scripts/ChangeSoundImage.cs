@@ -15,7 +15,7 @@ public class ChangeSoundImage : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
-        button = GetComponent<Button>();
+        TestButton = GetComponent<Button>();
 
         // Only check if sound is off because the default image is on
         if(PlayerPrefs.GetInt("Sound") == 2)
