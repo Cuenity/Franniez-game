@@ -53,4 +53,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Menu/VictoryScreen.unity
     guid: 2e62992d7d06ddb45a0d66fe7f77fa5c
+  - enabled: 1
+    path: Assets/Scenes/Menu/Multiplayer.unity
+    guid: 3a311c0e20c6d7140bb6a3fca2443d6a
   m_configObjects: {}

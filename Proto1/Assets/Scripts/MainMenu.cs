@@ -56,6 +56,11 @@ public class MainMenu : MonoBehaviour
         LanguageCanvas.GetComponent<Canvas>().enabled = false;
     }
 
+    public void Button_StartMultiplayer()
+    {
+        SceneSwitcher.Instance.AsynchronousLoadStartNoLoadingBar("Multiplayer");
+    }
+
     #region Button Actions
 
     // Button Action: Set Setting Canvas on Active
