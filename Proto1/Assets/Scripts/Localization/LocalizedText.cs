@@ -24,7 +24,11 @@ public class LocalizedText : MonoBehaviour
     // Add to ChangeLanguage (MainMenu.cs) trigger
     private void OnEnable()
     {
-        GetComponentInParent<MainMenu>().ChangeLanguage += SetLocalizedText;
+        if (GetComponentInParent<MainMenu>()!= null)
+        {
+            GetComponentInParent<MainMenu>().ChangeLanguage += SetLocalizedText;
+        }
+
     }
 
     // Set the localized text with choosen Language

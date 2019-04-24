@@ -102,8 +102,6 @@ MonoBehaviour:
   TargetLookAtOffset: {x: 0, y: 0, z: 0}
   SpringForce: 10
   SpringDamper: 10
-  perspectiveZoomSpeed: 0.5
-  orthoZoomSpeed: 0.5
 --- !u!54 &2116874778110079020
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -128,4 +126,4 @@ Skybox:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5103629974025486095}
   m_Enabled: 1
-  m_CustomSkybox: {fileID: 2100000, guid: 2bd8959f5fbd3644aa33af1a155fc147, type: 2}
+  m_CustomSkybox: {fileID: 2100000, guid: 617d9be015db68348a623b01ea51a8c5, type: 2}
