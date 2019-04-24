@@ -130,7 +130,7 @@ public class LocalizationManager : MonoBehaviour
     public void SetLanguage()
     {
         PlayerDataController.instance.Load();
-        Player player = PlayerDataController.instance.player;
+        PlayerData player = PlayerDataController.instance.player;
 
         switch (player.language)
         {

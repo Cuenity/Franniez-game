@@ -8,7 +8,7 @@ public class PlayerDataController : MonoBehaviour
 {
     public static PlayerDataController instance;
 
-    public Player player { get; set; }
+    public PlayerData player { get; set; }
     private string fileName = "PlayerData.json";
     private string filePath;
     public int previousScene { get; set; }
@@ -39,7 +39,7 @@ public class PlayerDataController : MonoBehaviour
             fileExist = true;
             BinaryFormatter bf = new BinaryFormatter();
             FileStream file = File.Open(Application.persistentDataPath + "/PlayerInfo.dat", FileMode.Open);
-            Player playerData = (Player)bf.Deserialize(file);
+            PlayerData playerData = (PlayerData)bf.Deserialize(file);
             file.Close();
 
             player = playerData;
@@ -77,7 +77,7 @@ public class PlayerDataController : MonoBehaviour
     //    return player;
     //}
 
-    public void SetPlayer(Player setPlayer)
+    public void SetPlayer(PlayerData setPlayer)
     {
         player = setPlayer;
     }
