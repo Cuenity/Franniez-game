@@ -8,7 +8,7 @@ public class CannonFirePoint : MonoBehaviour
     [SerializeField] private float waitingTimeTillFiring;
     [SerializeField] private float fireSpeed;
 
-    public void FireCannon(Cannon cannon, GameObject playerBall)
+    public void FireCannon(GameObject playerBall)
     {
         //waitingTimeTillFiring = 1;
         //fireSpeed = 10;
@@ -25,7 +25,8 @@ public class CannonFirePoint : MonoBehaviour
         yield return new WaitForSeconds(waitingTimeTillFiring);
 
         StartCoroutine(DisableColliderForTime());
-
+        float transformUp = gameObject.transform.up.x;
+        //transformUp (/15)
         //playerBall.transform.position = transform.position + gameObject.transform.parent.forward;
         playerBall.GetComponent<Rigidbody>().velocity = new Vector3(gameObject.transform.up.x, gameObject.transform.up.y, 0) * -fireSpeed; // + new Vector3(-10, 0, 0)
         //playerBall.GetComponent<Rigidbody>().velocity = new Vector3(gameObject.transform.parent.rotation.x, gameObject.transform.parent.rotation.y, gameObject.transform.parent.rotation.z);

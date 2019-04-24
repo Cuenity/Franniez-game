@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -30,7 +29,27 @@ public class PlayerPlatforms
     public int cannonPlatformsLeftToPlace;
     public bool cannonPlatformButtonInstantiated;
 
-    public int inventoryButtonAmmount;
+    private int inventoryButtonAmmount;
+    public int InventoryButtonAmmount
+    {
+        get
+        {
+            inventoryButtonAmmount = 0;
+
+            if (ramps > 0)
+                inventoryButtonAmmount++;
+            if (platformSquares > 0)
+                inventoryButtonAmmount++;
+            if (trampolines > 0)
+                inventoryButtonAmmount++;
+            if (boostPlatforms > 0)
+                inventoryButtonAmmount++;
+            if (cannonPlatforms > 0)
+                inventoryButtonAmmount++;
+
+            return inventoryButtonAmmount;
+        }
+    }
 
     //private GameObject draggedPlatform;
     public List<GameObject> placedPlatforms = new List<GameObject>();
@@ -50,17 +69,7 @@ public class PlayerPlatforms
         boostPlatformsLeftToPlace = boostPlatforms;
         cannonPlatformsLeftToPlace = cannonPlatforms;
 
-        inventoryButtonAmmount = 0;
-        if (ramps > 0)
-            inventoryButtonAmmount++;
-        if (platformSquares > 0)
-            inventoryButtonAmmount++;
-        if (trampolines > 0)
-            inventoryButtonAmmount++;
-        if (boostPlatforms > 0)
-            inventoryButtonAmmount++;
-        if (cannonPlatforms > 0)
-            inventoryButtonAmmount++;
+
     }
 
     public void UpdateRampsLeft(InventoryButton button)

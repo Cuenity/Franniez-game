@@ -254,6 +254,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6009113651568956608, guid: 7aee2702bf265d143bde2d2a32c648d4,
+        type: 3}
+      propertyPath: Loop
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7aee2702bf265d143bde2d2a32c648d4, type: 3}
 --- !u!1001 &29994160
@@ -2580,7 +2585,7 @@ AudioListener:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1256038642}
-  m_Enabled: 1
+  m_Enabled: 0
 --- !u!20 &1256038645
 Camera:
   m_ObjectHideFlags: 0
