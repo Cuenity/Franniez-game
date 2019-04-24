@@ -69,23 +69,23 @@ public class PlatformManager : MonoBehaviour
         gameState.collectableManager.RespawnCoins(coinPositions);
     }
 
-    public void SetCoinPosition(int i)
+    public void SetCoinPosition(int position)
     {
         Vector3 coinAdjustment = new Vector3(.3f, 0, 0);
-        coinPositions.Add(gameState.gridManager.gridSquares[i] + coinAdjustment);
+        coinPositions.Add(gameState.gridManager.gridSquares[position] + coinAdjustment);
 
         List<int> coinPosition = new List<int>();
-        coinPosition.Add(i);
+        coinPosition.Add(position);
         gameState.gridManager.AddFilledGridSpots(coinPosition, SizeType.oneByOne);
     }
 
-    public void SetfinishPosition(int i)
+    public void SetfinishPosition(int position)
     {
         Vector3 finishAdjustment = new Vector3(.5f, 0, 0);
-        finishPosition = gameState.gridManager.gridSquares[i] + finishAdjustment;
+        finishPosition = gameState.gridManager.gridSquares[position] + finishAdjustment;
 
         List<int> finishPositionFillsGridSpot = new List<int>();
-        finishPositionFillsGridSpot.Add(i);
+        finishPositionFillsGridSpot.Add(position);
         gameState.gridManager.AddFilledGridSpots(finishPositionFillsGridSpot, SizeType.oneByTwo);
     }
 
