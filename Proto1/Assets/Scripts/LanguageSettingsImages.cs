@@ -21,7 +21,7 @@ public class LanguageSettingsImages : MonoBehaviour
     // Add ChangeFlag method to ChangeLanguage Trigger (Main Menu)
     private void OnEnable()
     {
-        MainMenu.ChangeLanguage += ChangeFlag;
+       GetComponentInParent<MainMenu>().ChangeLanguage += ChangeFlag;
     }
 
     // Change Flag images on bases of the players language
