@@ -18,8 +18,8 @@ public class MainMenu : MonoBehaviour
 
     // Event triggers for changing the Language and/or Sound in the setting Canvas
     public delegate void ClickAction();
-    public static event ClickAction ChangedSound;
-    public static event ClickAction ChangeLanguage;
+    public event ClickAction ChangedSound;
+    public event ClickAction ChangeLanguage;
 
     public void Start()
     {
