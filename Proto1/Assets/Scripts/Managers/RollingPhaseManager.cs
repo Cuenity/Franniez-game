@@ -166,6 +166,8 @@ public class RollingPhaseManager : MonoBehaviour
         {
             PlayerDataController.instance.previousSceneCoinCount = level.countCoins;
         }
+        //maybe fix denk dat de progression null logt
+        string stringlevelnumbervoorGA = levelNumber.ToString();
         GameAnalytics.NewProgressionEvent(GAProgressionStatus.Complete, levelNumber.ToString());
         SceneSwitcher.Instance.AsynchronousLoadStartNoLoadingBar("VictoryScreen");
         //DontDestroyOnLoad(gameState.playerManager.player);

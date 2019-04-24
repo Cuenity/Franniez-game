@@ -153,7 +153,7 @@ PlayerSettings:
   m_ColorGamuts: 00000000
   targetPixelDensity: 30
   resolutionScalingMode: 0
-  androidSupportedAspectRatio: 2
+  androidSupportedAspectRatio: 0
   androidMaxAspectRatio: 1.86
   applicationIdentifier:
     Android: com.DerangedDucks.ThisIsHowIRoll
