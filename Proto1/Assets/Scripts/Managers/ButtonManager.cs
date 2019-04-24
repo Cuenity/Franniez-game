@@ -50,7 +50,7 @@ public class ButtonManager : MonoBehaviour
 
         PlayerDataController.instance.player = player;
         PlayerDataController.instance.Save();
-        LocalizationManager.instance.ReturnLanguage(pathFile);
+        LocalizationManager.instance.SetLanguageForPlayer(pathFile);
 
         string language = LocalizationManager.instance.LanguageChoice.ToString();
         language = "Language:" + language;
@@ -172,29 +172,26 @@ public class ButtonManager : MonoBehaviour
         {
             Destroy(prev_ball);
             gameState.playerBallManager.InitTypeBall(Bal.Normal);
-
+            //gameObject.GetComponentInChildren<Image>().sprite = gameState.UIManager.normalBallImage;
         }
         else if (prev_ball.name.Contains("Light"))
         {
             Destroy(prev_ball);
             gameState.playerBallManager.InitTypeBall(Bal.BlackHole);
+            //gameObject.GetComponentInChildren<Image>().sprite = gameState.UIManager.blackHoleBallImage;
         }
         else if (prev_ball.name.Contains("Player"))
         {
             Destroy(prev_ball);
             gameState.playerBallManager.InitTypeBall(Bal.Light);
+            //gameObject.GetComponentInChildren<Image>().sprite = gameState.UIManager.lightBallImage;
         }
 
     }
 
     public void ChangeCannonAngle()
     {
-        //gameState.playerCamera.platformDragActive = true;
-        Debug.Log(GetComponent<Slider>().value);
-        Debug.Log(transform.root.GetChild(0).GetChild(0).right); // transform.root.GetChild(0).GetChild(0).right + value
         transform.root.GetChild(0).GetChild(0).transform.localRotation = Quaternion.Euler(GetComponent<Slider>().value, 0, 0);
-
-        //gameState.playerCamera.platformDragActive = false;
     }
 
     public void CannonSliderOnPointerDown()
@@ -211,5 +208,7 @@ public class ButtonManager : MonoBehaviour
     {
         //SceneManager.LoadScene("LevelSelect");
         gameState.UIManager.pauseMenu.enabled = true;
+        //gameState.UIManager.canvas.enabled = false;
+        gameState.playerCamera.platformDragActive = true;
     }
 }

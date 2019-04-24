@@ -6,13 +6,13 @@ using UnityEngine.SceneManagement;
 
 public class UIRollingManager : MonoBehaviour
 {
-    public Text amountCoinsText;
-    public Text levelNumberText;
-    public Text amountStickersText;
-    public Button startButton;
+    [SerializeField]
+    private Text amountCoinsText, levelNumberText, amountStickersText;
+    [SerializeField]
+    private Button startButton;
 
-    public Sprite startRolling;
-    public Sprite startBuilding;
+    [SerializeField]
+    private Sprite startRolling, startBuilding;
 
     private int amountCoins =0;
     private string levelIndicator;

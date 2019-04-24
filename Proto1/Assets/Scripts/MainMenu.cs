@@ -1,90 +1,72 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.Experimental.UIElements;
-using UnityEngine.SceneManagement;
-using UnityEngine.UI;
-using GameAnalyticsSDK;
-using GameAnalyticsSDK.Events;
+﻿using UnityEngine;
 
 public class MainMenu : MonoBehaviour
 {
-   
-    public Canvas StartMenuCanvas;
-    public Canvas SettingsCanvas;
-    public Canvas LanguageCanvas;
-    public Canvas LevelSelect;
-    public GameObject NormalSettings;
+    /*  
+        Main Menu is het eerste scherm wat de speler te zien krijgt. Wanneer de speler het spel voor het eerst opstart
+        krijgt hij eerst de taal keuze scherm te zien.
+    */
 
+    // Serialize fields
+    [SerializeField]
+    private Canvas StartMenuCanvas, SettingsCanvas, LanguageCanvas;
+
+    // Private properties
     private bool Sound;
     private Player player;
     private int volumeOnOf;
 
+    // Event triggers for changing the Language and/or Sound in the setting Canvas
     public delegate void ClickAction();
     public static event ClickAction ChangedSound;
     public static event ClickAction ChangeLanguage;
 
-    // Start is called before the first frame update
-
     public void Start()
     {
+        // Only show the Main canvas
         SetCanvasDisable();
 
-        // Onthouden in playerprefeb
+        // Get the Sound setting from PlayerPrefs
         volumeOnOf = PlayerPrefs.GetInt("Sound");
         if (volumeOnOf <= 1)
         {
+            // Set volume on
             Sound = true;
         }
         else
         {
+            // Set volume off
             Sound = false;
             AudioListener.volume = 0f;
         }
-
-        GameAnalytics.NewProgressionEvent(GAProgressionStatus.Start, "MainMenu");
-
-
     }
 
-    public void StartGame()
+    // Button Action: Go to Level Select Scene
+    public void Button_StartGame()
     {
-        Debug.Log("Start Game");
-
-        //SceneManager.sceneLoaded += SceneIsLoaded;
         SceneSwitcher.Instance.AsynchronousLoadStartNoLoadingBar("LevelSelect");
     }
 
-    //private void SceneIsLoaded(Scene arg0, LoadSceneMode arg1)
-    //{
-    //    GameState.Instance.levelManager.InitScene(arg0.name);
-    //}
 
-    public void FixedUpdate()
-    {
-        if (Input.GetKey(KeyCode.Escape))
-        {
-            Debug.Log("Exit game");
-            Application.Quit();
-        }
-    }
-
-    public void Button_GoToSettings()
-    {
-        // Change Canvas to Setting Canvas and disable StartMenu Canvas
-        StartMenuCanvas.GetComponent<Canvas>().enabled = false;
-        SettingsCanvas.GetComponent<Canvas>().enabled = true;
-    }
-
+    // In Start Method this functions get called for disabling Settings- and Languagecanvas
     private void SetCanvasDisable()
     {
         // Set all Canvasses on Disabled when the Scene loaded
         SettingsCanvas.GetComponent<Canvas>().enabled = false;
         LanguageCanvas.GetComponent<Canvas>().enabled = false;
-        
     }
 
+    #region Button Actions
+
+    // Button Action: Set Setting Canvas on Active
+    public void Button_GoToSettings()
+    {
+        // Change Canvas to Settings Canvas and disable StartMenu Canvas
+        StartMenuCanvas.GetComponent<Canvas>().enabled = false;
+        SettingsCanvas.GetComponent<Canvas>().enabled = true;
+    }
+
+    // Button Action: Close Settings canvas
     public void Button_ReturnMenu()
     {
         // Return to Start Menu Canvas
@@ -92,12 +74,15 @@ public class MainMenu : MonoBehaviour
         SettingsCanvas.GetComponent<Canvas>().enabled = false;
     }
 
+    // Button Action: Close Language canvas
     public void Button_ReturnSettings()
     {
+        // Return to Settings Canvas
         LanguageCanvas.GetComponent<Canvas>().enabled = false;
         SettingsCanvas.GetComponent<Canvas>().enabled = true;
     }
 
+    // Button Action: Switch between on and off for sound
     public void Button_ChangeSound()
     {
         // Check if the user already silenced the music
@@ -117,23 +102,39 @@ public class MainMenu : MonoBehaviour
         ChangedSound();
     }
 
+    // Button Action: Change Language
     public void Button_ChangeLanguage(int language)
     {
-
+        // Set new language for player
         PlayerDataController.instance.SetLanguage(language);
+
+        // Save the settings to the player file
         PlayerDataController.instance.Save();
+
+        // Get language data for game
         LocalizationManager.instance.GetLanguageSettings();
+
+        /*  
+            Trigger Event Listneners:
+                ChangeTextColor - ChangeColorTextLanguage.cs
+                ChangeFlag - LanguageSettingsImages.cs
+                RefreshText - LocalizedText.cs
+        */
         ChangeLanguage();
     }
 
+    // Button Action: Set LanguageCanvas on active
     public void Button_GetLanguageCanvas()
     {
         SettingsCanvas.GetComponent<Canvas>().enabled = false;
         LanguageCanvas.GetComponent<Canvas>().enabled = true;
     }
 
+    // Button Action: Go to Shop Scene
     public void Button_GoToShop()
     {
-        SceneManager.LoadScene("Shop");
+        SceneSwitcher.Instance.AsynchronousLoadStartNoLoadingBar("Shop");
     }
+
+    #endregion
 }

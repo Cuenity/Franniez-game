@@ -8,17 +8,18 @@ using System.Timers;
 
 public class ShopButtons : MonoBehaviour
 {
-    public GameObject SkinsPanel;
-    public GameObject MusicPanel;
-    public GameObject CoinsPanel;
+    [SerializeField]
+    private GameObject SkinsPanel, MusicPanel, CoinsPanel;
+    [SerializeField]
     public Text AmountCoinsPlayer;
 
+    // Private properties for GameAnalytics
     private float startTime;
     private float endTime;
 
     // Voor test alleen, moet nog verwerkt worden naar DataController want daar wilt ie de 
     // ShopCoins niet opslaan
-    private Player player = PlayerDataController.instance.player;
+    private Player player;
 
     public delegate void ClickAction(string name);
     public static event ClickAction ChangeImage;
@@ -28,6 +29,7 @@ public class ShopButtons : MonoBehaviour
         MusicPanel.SetActive(false);
         CoinsPanel.SetActive(false);
         AmountCoinsPlayer.text = PlayerDataController.instance.player.ShopCoins.ToString();
+        player = PlayerDataController.instance.player;
 
         //Start Time for GameAnal
         startTime = Time.time;
@@ -35,20 +37,8 @@ public class ShopButtons : MonoBehaviour
     public void ReturnMainMenu()
     {
         endTime = Time.time - startTime;
-
-        SendTimeAnal();
-        SceneManager.LoadScene("StartMenu");
-    }
-
-    private void SendTimeAnal()
-    {
-        // Verstuur hoelang de gebruiker in de shop was
-        // Misschien andere naam verzinnen
-        //string seconds = durationShop.ToString();
-
-        int castTimeToInt = (int)endTime;
-        Debug.Log(castTimeToInt);
-        GameAnalytics.NewDesignEvent("Shop:Time", castTimeToInt);
+        GameAnalytics.NewDesignEvent("Shop:Time", (int)endTime);
+        SceneSwitcher.Instance.AsynchronousLoadStart("StartMenu");
     }
 
     public void ShowSkinsPanel(string buttonName)
@@ -72,7 +62,6 @@ public class ShopButtons : MonoBehaviour
                 break;
         }
         ChangeImage(buttonName);
-
     }
 
     private void ChangeButton()
@@ -85,17 +74,17 @@ public class ShopButtons : MonoBehaviour
         PlayerDataController.instance.AddShopCoins(amount);
         player.ShopCoins = player.ShopCoins + amount;
         PlayerDataController.instance.player = player;
-        PlayerDataController.instance.Save();
         UpdateCoins();
     }
 
     public void BuySkin(int amount)
     {
+
+        // Check morgen (24 april) welke hij pakt - 23 April
         if (amount <= player.ShopCoins)
         {
             player.ShopCoins -= amount;
             PlayerDataController.instance.player = player;
-            PlayerDataController.instance.Save();
             UpdateCoins();
         }
 
@@ -112,6 +101,7 @@ public class ShopButtons : MonoBehaviour
 
     private void UpdateCoins()
     {
+        // Check morgen (24 april) welke hij pakt - 23 April
         AmountCoinsPlayer.text = PlayerDataController.instance.ReturnCoins().ToString();
         AmountCoinsPlayer.text = player.ShopCoins.ToString();
     }

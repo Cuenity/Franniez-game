@@ -14,6 +14,7 @@ public class UIManager : MonoBehaviour
     public Sprite trampolineImage;
     public Sprite boostPlatformImage;
     public Sprite cannonPlatformImage;
+    public Sprite normalBallImage;
 
     public InventoryButton[] instantiatedInventoryButtons;
 

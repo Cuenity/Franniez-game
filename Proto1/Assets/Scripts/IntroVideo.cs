@@ -10,9 +10,11 @@ using GameAnalyticsSDK;
 [RequireComponent (typeof(AudioSource))]
 public class IntroVideo : MonoBehaviour
 {
+    [SerializeField]
     public RawImage rawImage;
+    [SerializeField]
     public VideoPlayer videoPlayer;
-    private AudioSource audio;
+
 
     // Start is called before the first frame update
     void Start()
@@ -39,12 +41,9 @@ public class IntroVideo : MonoBehaviour
             yield return wait;
             break;
         }
-
-        
-        bool test = PlayerDataController.instance.Load();
+  
         if (PlayerDataController.instance.Load())
         {
-
             LocalizationManager.instance.GetLanguageSettings();
             SceneManager.LoadScene("StartMenu");
         }

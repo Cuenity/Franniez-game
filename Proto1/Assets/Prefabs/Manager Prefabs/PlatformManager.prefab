@@ -56,7 +56,7 @@ MonoBehaviour:
   trampoline: {fileID: 4755417564985550153, guid: 8d6f88143f60d1a4a90a93381baa5782,
     type: 3}
   bigRamp: {fileID: 7030363388737609308, guid: de84970bd124bbc46a21c24d6ccfb070, type: 3}
-  finish: {fileID: 2032823587391776419, guid: c85261ac462ef85448b10b92e43df3f9, type: 3}
+  finish: {fileID: 4821019684288923326, guid: d81a13527a9f68b49a8c2fba61955c94, type: 3}
   platformBreekbaar: {fileID: 3859311413686586849, guid: 3e0da72abecab7f46a4d5c49b7722f20,
     type: 3}
   redZone: {fileID: 4725783322653570780, guid: a5768f07423815a49ad9b24b4634fde6, type: 3}
