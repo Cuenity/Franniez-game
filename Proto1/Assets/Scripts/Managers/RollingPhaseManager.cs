@@ -8,7 +8,7 @@ public class RollingPhaseManager : MonoBehaviour
     private bool pickedSticker = false;
 
     private int levelNumber;
-    private Player player;
+    private PlayerData player;
     private Level level;
 
 

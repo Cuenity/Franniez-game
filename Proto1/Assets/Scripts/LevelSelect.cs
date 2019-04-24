@@ -62,7 +62,7 @@ public class LevelSelect : MonoBehaviour
 
     int stickersCollectedCount;
     List<Button> LevelSelectButtons = new List<Button>();
-    Player player;
+    PlayerData player;
     bool textIsUpdated = false;
 
     // Start is called before the first frame update

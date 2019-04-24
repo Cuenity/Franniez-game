@@ -19,7 +19,7 @@ public class StartupManager : MonoBehaviour
 
     public void ButtonClicked()
     {
-        Player player = new Player();
+        PlayerData player = new PlayerData();
         player.name = "Player";
         player.language = (int)LocalizationManager.instance.LanguageChoice;
         PlayerDataController.instance.SetPlayer(player);

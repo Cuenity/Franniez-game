@@ -42,7 +42,7 @@ public class ButtonManager : MonoBehaviour
     {
         LocalizationManager.instance.LoadLocalizedText(pathFile);
 
-        Player player = new Player { name = "" };
+        PlayerData player = new PlayerData { name = "" };
         for (int i = 0; i < player.levels.Length; i++)
         {
             player.levels[i] = new Level();

@@ -13,7 +13,7 @@ public class MainMenu : MonoBehaviour
 
     // Private properties
     private bool Sound;
-    private Player player;
+    private PlayerData player;
     private int volumeOnOf;
 
     // Event triggers for changing the Language and/or Sound in the setting Canvas
