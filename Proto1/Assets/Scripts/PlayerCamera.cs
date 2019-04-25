@@ -25,6 +25,12 @@ public class PlayerCamera : MonoBehaviour
         null
     };
 
+    Vector3 startPos, endPos, direction;
+    float touchTimeStart, touchTimeFinish, timeInterval;
+
+    public float throwForce = 3f;
+
+
     private void Awake()
     {
 
@@ -34,7 +40,7 @@ public class PlayerCamera : MonoBehaviour
     }
     private void Start()
     {
-        PlayAnimation();
+        StartCoroutine(PlayAnimation());
         if (Target != null)
         {
             transform.LookAt(Target.transform.position + TargetLookAtOffset);
@@ -42,7 +48,7 @@ public class PlayerCamera : MonoBehaviour
     }
     private void OnAnimatorIK(int layerIndex)
     {
-        
+
     }
 
     internal void InitCamera()
@@ -61,7 +67,7 @@ public class PlayerCamera : MonoBehaviour
             transform.LookAt(Target.transform.position + TargetLookAtOffset);
         }
         this.transform.rotation = new Quaternion(0, 0, 0, 0);
-       
+
     }
 
     void FixedUpdate()
@@ -82,6 +88,27 @@ public class PlayerCamera : MonoBehaviour
         }
         if (gameState.BuildingPhaseActive == true)
         {
+            if (this.transform.position.y < gameState.gridManager.heigth * -1)
+            {
+                this.transform.position = new Vector3(this.transform.position.x, gameState.gridManager.heigth * -1 + .1f, this.transform.position.z);
+                this.GetComponent<Rigidbody>().velocity = new Vector3(0, 0, 0);
+            }
+            if (this.transform.position.y > 0)
+            {
+                this.transform.position = new Vector3(this.transform.position.x, -.1f, this.transform.position.z);
+                this.GetComponent<Rigidbody>().velocity = new Vector3(0, 0, 0);
+            }
+            if (this.transform.position.x < 0)
+            {
+                this.transform.position = new Vector3(.1f, this.transform.position.y, this.transform.position.z);
+                this.GetComponent<Rigidbody>().velocity = new Vector3(0, 0, 0);
+            }
+            if (this.transform.position.x > gameState.gridManager.width)
+            {
+                this.transform.position = new Vector3(gameState.gridManager.width - .1f, this.transform.position.y, this.transform.position.z);
+                this.GetComponent<Rigidbody>().velocity = new Vector3(0, 0, 0);
+            }
+
             if (Application.platform != RuntimePlatform.Android)
             {
                 Vector3 mousedata = Input.mouseScrollDelta;
@@ -245,36 +272,46 @@ public class PlayerCamera : MonoBehaviour
             {
                 oldTouchPositions[0] = Input.GetTouch(0).position;
                 oldTouchPositions[1] = null;
+                this.GetComponent<Rigidbody>().velocity = new Vector3(0, 0, 0);
             }
             else
             {
+
+                this.GetComponent<Rigidbody>().velocity = new Vector3(0, 0, 0);
                 Vector2 newTouchPosition = Input.GetTouch(0).position;
                 Vector3 outsideGrid = transform.position + transform.TransformDirection((Vector3)((oldTouchPositions[0] - newTouchPosition) * GetComponent<Camera>().orthographicSize / GetComponent<Camera>().pixelHeight * 2f));
+
                 bool nope = true;
                 if (outsideGrid.y < gameState.gridManager.heigth * -1)
                 {
                     transform.position = new Vector3(outsideGrid.x, gameState.gridManager.heigth * -1 + .1f, outsideGrid.z);
+                    this.GetComponent<Rigidbody>().velocity = new Vector3(0, 0, 0);
                     nope = false;
                 }
                 if (outsideGrid.y > 0)
                 {
                     transform.position = new Vector3(outsideGrid.x, -.1f, outsideGrid.z);
+                    this.GetComponent<Rigidbody>().velocity = new Vector3(0, 0, 0);
                     nope = false;
                 }
                 if (outsideGrid.x < 0)
                 {
                     transform.position = new Vector3(.1f, outsideGrid.y, outsideGrid.z);
+                    this.GetComponent<Rigidbody>().velocity = new Vector3(0, 0, 0);
                     nope = false;
                 }
                 if (outsideGrid.x > gameState.gridManager.width)
                 {
                     transform.position = new Vector3(gameState.gridManager.width - .1f, outsideGrid.y, outsideGrid.z);
+                    this.GetComponent<Rigidbody>().velocity = new Vector3(0, 0, 0);
                     nope = false;
                 }
                 if (nope)
                 {
                     transform.position = outsideGrid;
                 }
+                Vector2 diffrence = newTouchPosition - (Vector2)oldTouchPositions[0];
+                this.GetComponent<Rigidbody>().AddForce(-diffrence * 3);
 
                 oldTouchPositions[0] = newTouchPosition;
             }
@@ -303,32 +340,56 @@ public class PlayerCamera : MonoBehaviour
         gameState = GameState.Instance;
         gameState.playerCamera.transform.position = gameState.levelManager.finish.transform.position + TargetMovementOffset;
         camera = gameState.playerCamera.GetComponent<Camera>();
-        gameState.playerCamera.Target = gameState.levelManager.finish.gameObject;
+
         camera.transform.LookAt(gameState.levelManager.finish.transform.position);
-        zoomout();
+        StartCoroutine(zoomout());
         index = 0;
-        zoomin();
-    }
-    public void zoomout()
-    {
 
-        while (index <= 10)
+
+        // StartCoroutine(zoomin());
+
+    }
+    public IEnumerator zoomout()
+    {
+        while (index < 50)
         {
-            this.transform.position = this.transform.position + new Vector3(0, 0, -1);
-            System.Threading.Thread.Sleep(1000);
+            this.transform.position = this.transform.position + new Vector3(0, 0, -.1f);
+            yield return new WaitForEndOfFrame();
             index++;
         }
-    }
-    public void zoomin()
-    {
-        while (index <= 10)
-        {
-            this.transform.position = this.transform.position + new Vector3(0, 0, 1);
-            new WaitForEndOfFrame();
-            index++;
+        StartCoroutine(finishtostart());
 
-        }
     }
+    public IEnumerator zoomin()
+    {
+        this.transform.position = this.Target.transform.position + TargetMovementOffset + new Vector3(0, 0, -5);
+        camera.transform.LookAt(this.Target.transform.position);
+        while (index < 50)
+        {
+            this.transform.position = this.transform.position + new Vector3(0, 0, .1f);
+            yield return new WaitForEndOfFrame();           
+            index++;
+        }
+        gameState.BuildingPhaseActive = true;
+    }
+    public IEnumerator finishtostart()
+    {
+        index = 0;
+        Vector3 cameraPos = this.transform.position;
+        Vector3 targetPos = this.Target.transform.position + TargetMovementOffset;
+        Vector3 difference = (targetPos - cameraPos) / 100;
+        difference.z = 0;
+        while (index <= 100)
+        {
+            this.transform.position = this.transform.position + difference;
+            yield return new WaitForEndOfFrame();         
+            index++;
+        }
+        index = 0;
+        StartCoroutine(zoomin());
+
+    }
+
 
 }
 
