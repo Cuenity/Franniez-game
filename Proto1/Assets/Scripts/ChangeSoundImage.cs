@@ -44,6 +44,6 @@ public class ChangeSoundImage : MonoBehaviour
     // Add ChangeImage method to Trigger ChangedSound (Main Menu)
     public void OnEnable()
     {
-        MainMenu.ChangedSound += ChangeImage;
+        GetComponentInParent<MainMenu>().ChangedSound += ChangeImage;
     }
 }

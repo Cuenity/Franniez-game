@@ -24,7 +24,7 @@ namespace Assets.Scripts
 
         void OnEnable()
         {
-            MainMenu.ChangeLanguage += ChangeTextColor;
+            GetComponentInParent<MainMenu>().ChangeLanguage += ChangeTextColor;
         }
 
         private void SetColor()

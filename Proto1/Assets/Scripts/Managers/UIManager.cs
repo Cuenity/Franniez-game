@@ -26,11 +26,11 @@ public class UIManager : MonoBehaviour
 
         // Dit moet nog veranderd worden naar niet een Tag. Maar dat deed het niet. Dus nu maar 
         // op deze manier gedaan.
-        GameObject canvasTest = GameObject.FindGameObjectWithTag("PauseMenu");
-        pauseMenu = canvasTest.GetComponent<Canvas>();
-        pauseMenu.enabled = false;
+        //GameObject canvasTest = GameObject.FindGameObjectWithTag("PauseMenu");
+        //pauseMenu = canvasTest.GetComponent<Canvas>();
+        //pauseMenu.enabled = false;
 
-        InstantiateInventoryButtonsCheck(playerPlatforms.inventoryButtonAmmount);
+        InstantiateInventoryButtonsCheck(playerPlatforms.InventoryButtonAmmount);
 
         //bool instantiatedInventoryButtonsArrayNotInstantiated = instantiatedInventoryButtons[0] == null;
         if (instantiatedInventoryButtons[0] == null)
@@ -38,10 +38,10 @@ public class UIManager : MonoBehaviour
             //GameObject uiCanvas = GameObject.FindGameObjectWithTag("UICanvas");
             // Canvas uiCanvas = canvas;
 
-            int buttonDistance = Screen.width / (playerPlatforms.inventoryButtonAmmount + 1);
+            int buttonDistance = Screen.width / (playerPlatforms.InventoryButtonAmmount + 1);
             int buttonHeight = Screen.height / 8;
 
-            for (int i = 0; i < playerPlatforms.inventoryButtonAmmount; i++)
+            for (int i = 0; i < playerPlatforms.InventoryButtonAmmount; i++)
             {
                 InventoryButton buttonForWidth = Instantiate(inventoryButton);
                 //buttonForWidth.GetComponent<RectTransform>().sizeDelta = new Vector2(Screen.width / 8, Screen.width / 8);

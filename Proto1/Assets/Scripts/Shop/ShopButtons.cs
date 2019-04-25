@@ -19,7 +19,7 @@ public class ShopButtons : MonoBehaviour
 
     // Voor test alleen, moet nog verwerkt worden naar DataController want daar wilt ie de 
     // ShopCoins niet opslaan
-    private Player player;
+    private PlayerData player;
 
     public delegate void ClickAction(string name);
     public static event ClickAction ChangeImage;

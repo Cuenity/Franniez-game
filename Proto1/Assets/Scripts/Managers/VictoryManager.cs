@@ -20,7 +20,7 @@ public class VictoryManager : MonoBehaviour
     public Sprite ribbon_English;
     public Sprite ribbon_Spanish;
 
-    private Player player;
+    private PlayerData player;
 
 
     private void Awake()

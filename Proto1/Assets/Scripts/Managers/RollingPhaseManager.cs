@@ -8,7 +8,7 @@ public class RollingPhaseManager : MonoBehaviour
     private bool pickedSticker = false;
 
     private int levelNumber;
-    private Player player;
+    private PlayerData player;
     private Level level;
 
 
@@ -166,6 +166,8 @@ public class RollingPhaseManager : MonoBehaviour
         {
             PlayerDataController.instance.previousSceneCoinCount = level.countCoins;
         }
+        //maybe fix denk dat de progression null logt
+        string stringlevelnumbervoorGA = levelNumber.ToString();
         GameAnalytics.NewProgressionEvent(GAProgressionStatus.Complete, levelNumber.ToString());
         SceneSwitcher.Instance.AsynchronousLoadStartNoLoadingBar("VictoryScreen");
         //DontDestroyOnLoad(gameState.playerManager.player);

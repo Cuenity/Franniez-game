@@ -13,13 +13,13 @@ public class MainMenu : MonoBehaviour
 
     // Private properties
     private bool Sound;
-    private Player player;
+    private PlayerData player;
     private int volumeOnOf;
 
     // Event triggers for changing the Language and/or Sound in the setting Canvas
     public delegate void ClickAction();
-    public static event ClickAction ChangedSound;
-    public static event ClickAction ChangeLanguage;
+    public event ClickAction ChangedSound;
+    public event ClickAction ChangeLanguage;
 
     public void Start()
     {
@@ -54,6 +54,11 @@ public class MainMenu : MonoBehaviour
         // Set all Canvasses on Disabled when the Scene loaded
         SettingsCanvas.GetComponent<Canvas>().enabled = false;
         LanguageCanvas.GetComponent<Canvas>().enabled = false;
+    }
+
+    public void Button_StartMultiplayer()
+    {
+        SceneSwitcher.Instance.AsynchronousLoadStartNoLoadingBar("Multiplayer");
     }
 
     #region Button Actions

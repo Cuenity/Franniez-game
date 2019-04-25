@@ -21,7 +21,7 @@ public class Cannon : Platform
         if (collision.gameObject.GetComponent<PlayerBallManager>())
         {
             GameObject playerBall = collision.gameObject;
-            gameObject.GetComponentInChildren<CannonFirePoint>().FireCannon(this, playerBall);
+            gameObject.GetComponentInChildren<CannonFirePoint>().FireCannon(playerBall);
         }
     }
 }
