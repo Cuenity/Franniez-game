@@ -13,13 +13,16 @@ public class MainMenu : MonoBehaviour
 
     // Private properties
     private bool Sound;
+    private bool Vibration;
     private PlayerData player;
     private int volumeOnOf;
+    private int vibrateOf;
 
     // Event triggers for changing the Language and/or Sound in the setting Canvas
     public delegate void ClickAction();
     public event ClickAction ChangedSound;
     public event ClickAction ChangeLanguage;
+    public event ClickAction ChangedVibration;
 
     public void Start()
     {
@@ -32,11 +35,27 @@ public class MainMenu : MonoBehaviour
         {
             // Set volume on
             Sound = true;
+            PlayerPrefs.SetInt("Sound", 1);
         }
         else
         {
             // Set volume off
             Sound = false;
+            AudioListener.volume = 0f;
+        }
+
+        // Get the Sound setting from PlayerPrefs
+        volumeOnOf = PlayerPrefs.GetInt("Vibration");
+        if (volumeOnOf <= 1)
+        {
+            // Set volume on
+            Vibration = true;
+            PlayerPrefs.SetInt("Vibration", 1);
+        }
+        else
+        {
+            // Set volume off
+            Vibration = false;
             AudioListener.volume = 0f;
         }
     }
@@ -139,6 +158,24 @@ public class MainMenu : MonoBehaviour
     public void Button_GoToShop()
     {
         SceneSwitcher.Instance.AsynchronousLoadStartNoLoadingBar("Shop");
+    }
+
+    public void Button_ChangeVibration()
+    {
+        // Check if the user already silenced the music
+        vibrateOf = PlayerPrefs.GetInt("Vibration");
+        if (vibrateOf == 1)
+        {
+            PlayerPrefs.SetInt("Vibration", 2);
+        }
+        else
+        {
+            PlayerPrefs.SetInt("Vibration", 1);
+        }
+
+        // Eventlistner for changing Sound Button Image
+        ChangedVibration();
+
     }
 
     #endregion
