@@ -98,13 +98,13 @@ public class PlatformDragManager : MonoBehaviour
 
                 if (platformDraggedToButton)
                 {
-                    RemoveFilledGridSpots();
+                    RemoveOldFilledGridSpots();
                     GameState.Instance.buttonManager.UpdatePlayerPlatforms(draggedPlatformInScene);
                     // dragactive = false;?
                 }
                 else
                 {
-                    RemoveFilledGridSpots();
+                    RemoveOldFilledGridSpots();
                     GameState.Instance.platformManager.spawnPlatformOnGrid(draggedPlatformInScene.transform.position, draggedPlatformInScene);
                     GameState.Instance.playerCamera.platformDragActive = false;
                 }
@@ -124,7 +124,7 @@ public class PlatformDragManager : MonoBehaviour
 
         if (results.Count > 0)
         {
-            RemoveFilledGridSpots();
+            RemoveOldFilledGridSpots();
             GameState.Instance.buttonManager.UpdatePlayerPlatforms(draggedPlatformInScene.gameObject);
             return true;
         }
@@ -137,7 +137,7 @@ public class PlatformDragManager : MonoBehaviour
         return false;
     }
 
-    private void RemoveFilledGridSpots()
+    private void RemoveOldFilledGridSpots()
     {
         int filledGridSpotToRemove = draggedPlatformInScene.GetComponent<Platform>().fillsGridSpot;
         if (!draggedPlatformInScene.GetComponent<Cannon>())
@@ -146,7 +146,7 @@ public class PlatformDragManager : MonoBehaviour
         }
         else
         {
-            GameState.Instance.gridManager.RemoveFilledGridSpots(filledGridSpotToRemove, SizeType.oneByOne);
+            GameState.Instance.gridManager.RemoveFilledGridSpots(filledGridSpotToRemove, SizeType.twoByTwo);
         }
     }
 }

@@ -2,8 +2,8 @@
 
 public class Cannon : Platform
 {
-    public Canvas sliderCanvas;
-    private Canvas slider;
+    //public Canvas sliderCanvas;
+    //private Canvas slider;
 
     private void Start()
     {
@@ -21,7 +21,7 @@ public class Cannon : Platform
         if (collision.gameObject.GetComponent<PlayerBallManager>())
         {
             GameObject playerBall = collision.gameObject;
-            gameObject.GetComponentInChildren<CannonFirePoint>().FireCannon(playerBall);
+            gameObject.GetComponentInChildren<CannonFirePoint>().FireCannon(playerBall, this);
         }
     }
 }

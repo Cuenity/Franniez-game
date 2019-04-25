@@ -94,8 +94,8 @@ public class PlatformManager : MonoBehaviour
         //als deze methode alleen is voor speler blokjes kunnen we hier die glow doen
         //GameObject gameObjectGeneric = gameObject;
         Vector3 rampAdjustment = new Vector3(1f, 0f, 0f);
-        Vector3 cannonAdjustment = new Vector3(0.5f, 0f, 0f);
-        Vector3 gridAdjustment = new Vector3(0.5f, 0, 0);
+        Vector3 cannonAdjustment = new Vector3(1f, 0.3f, 0f);
+        Vector3 gridAdjustment = new Vector3(1f, 0, 0);
         List<float> distances = new List<float>();
         if (gameState.gridManager.gridSquares.Count > 0)
         {
@@ -111,23 +111,54 @@ public class PlatformManager : MonoBehaviour
         {
             minimumValueIndex--;
         }
-
-        List<int> gridSpots = new List<int>();
-        gridSpots.Add(minimumValueIndex);
-
-        if (!gameObject.GetComponent<Cannon>() && !gameState.gridManager.filledGridSpots[minimumValueIndex] && !gameState.gridManager.filledGridSpots[minimumValueIndex + 1])
+        if (minimumValueIndex < gameState.gridManager.width)
         {
-            gameObject.transform.position = gameState.gridManager.gridSquares[minimumValueIndex] + rampAdjustment;
-            gameObject.GetComponent<Platform>().fillsGridSpot = minimumValueIndex;
-            gameState.gridManager.AddFilledGridSpots(gridSpots, SizeType.twoByOne);
+            minimumValueIndex = minimumValueIndex + gameState.gridManager.width;
         }
-        else if (gameObject.GetComponent<Cannon>() && !gameState.gridManager.filledGridSpots[minimumValueIndex])
+
+        bool cantPlacePlaform = false;
+
+        List<int> newFilledGridSPots = new List<int>();
+        newFilledGridSPots.Add(minimumValueIndex);
+
+        if (!gameObject.GetComponent<Cannon>())
         {
-            gameObject.transform.position = gameState.gridManager.gridSquares[minimumValueIndex] + cannonAdjustment;
-            gameObject.GetComponent<Platform>().fillsGridSpot = minimumValueIndex;
-            gameState.gridManager.AddFilledGridSpots(gridSpots, SizeType.oneByOne);
+            if (!gameState.gridManager.filledGridSpots[minimumValueIndex] &&
+            !gameState.gridManager.filledGridSpots[minimumValueIndex + 1])
+            {
+                gameObject.transform.position = gameState.gridManager.gridSquares[minimumValueIndex] + rampAdjustment;
+                gameObject.GetComponent<Platform>().fillsGridSpot = minimumValueIndex;
+                gameState.gridManager.AddFilledGridSpots(newFilledGridSPots, SizeType.twoByOne);
+            }
+            else
+            {
+                int newMinimumValueIndex = CheckForEmptyAreaAroundWrongPlacement(minimumValueIndex);
+
+                gameObject.transform.position = gameState.gridManager.gridSquares[newMinimumValueIndex] + rampAdjustment;
+                gameObject.GetComponent<Platform>().fillsGridSpot = newMinimumValueIndex;
+                gameState.gridManager.AddFilledGridSpots(newFilledGridSPots, SizeType.twoByOne);
+
+            }
         }
         else
+        {
+            if (!gameState.gridManager.filledGridSpots[minimumValueIndex + 1] &&
+            !gameState.gridManager.filledGridSpots[minimumValueIndex - gameState.gridManager.width] &&
+            !gameState.gridManager.filledGridSpots[minimumValueIndex - gameState.gridManager.width + 1])
+            {
+                gameObject.transform.position = gameState.gridManager.gridSquares[minimumValueIndex] + cannonAdjustment;
+                gameObject.GetComponent<Platform>().fillsGridSpot = minimumValueIndex;
+                gameState.gridManager.AddFilledGridSpots(newFilledGridSPots, SizeType.twoByTwo);
+            }
+            else
+            {
+                // check empty plaatsen voor cannon
+            }
+        }
+
+
+        // platform kan helmaal niet geplaatst worden
+        if (cantPlacePlaform)
         {
             gameObject.GetComponent<Platform>().fillsGridSpot = minimumValueIndex;
             GameState.Instance.buttonManager.UpdatePlayerPlatforms(gameObject);
@@ -148,7 +179,22 @@ public class PlatformManager : MonoBehaviour
         }
     }
 
-    internal void BuildLevelFromLevelPlatformen(LevelPlatformen levelPlatformen,int[] coins, int finish)
+    private int CheckForEmptyAreaAroundWrongPlacement(int minimumValueIndex)
+    {
+        Debug.Log("CheckForEmptyAreaAroundWrongPlacement totaal niet af");
+
+        if (minimumValueIndex % gameState.gridManager.width == gameState.gridManager.width - 2)
+        {
+            if (!gameState.gridManager.filledGridSpots[minimumValueIndex - 2])
+            {
+
+            }
+        }
+
+        return 0;
+    }
+
+    internal void BuildLevelFromLevelPlatformen(LevelPlatformen levelPlatformen, int[] coins, int finish)
     {
         foreach (int item in coins)
         {

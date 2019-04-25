@@ -10,7 +10,7 @@ public class GridManager : MonoBehaviour
     public List<Vector3> gridSquares = new List<Vector3>();
 
     public int width;
-    public int heigth;
+    public int height;
 
     public List<Vector3> secretGridSquares = new List<Vector3>();
 
@@ -74,12 +74,14 @@ public class GridManager : MonoBehaviour
                 filledGridSpots[gridSpot + 1] = false;
                 break;
             case SizeType.twoByTwo:
-                Debug.Log("not finished portal filledgridspots");
-                // portal
+                filledGridSpots[gridSpot - GameState.Instance.gridManager.width] = false;
+                filledGridSpots[gridSpot + 1 - GameState.Instance.gridManager.width] = false;
+                filledGridSpots[gridSpot] = false;
+                filledGridSpots[gridSpot + 1] = false;
                 break;
             case SizeType.oneByTwo:
-                Debug.Log("not finished flag filledgridspots");
-                // vlag
+                filledGridSpots[gridSpot - GameState.Instance.gridManager.width] = false;
+                filledGridSpots[gridSpot] = false;
                 break;
             default:
                 break;
@@ -180,7 +182,7 @@ public class GridManager : MonoBehaviour
         Vector3 gridStartingPoint = new Vector3(0f, 0f, 0f);
 
 
-        for (int i = 0; i < heigth; i++)
+        for (int i = 0; i < height; i++)
         {
             gridStartingPoint.x = 0f;
             gridStartingPoint = gridStartingPoint + moveDown;
@@ -192,8 +194,8 @@ public class GridManager : MonoBehaviour
                 gridStartingPoint = gridStartingPoint + moveRight;
             }
         }
-        gameState.levelManager.levelPlatformen.tileList = new int[heigth * width];
-        filledGridSpots = new bool[heigth * width];
+        gameState.levelManager.levelPlatformen.tileList = new int[height * width];
+        filledGridSpots = new bool[height * width];
     }
     internal void Build_Grid_BuildingPhase_Without_Visuals()
     {
@@ -202,7 +204,7 @@ public class GridManager : MonoBehaviour
         Vector3 gridStartingPoint = new Vector3(0f, 0f, 0f);
 
 
-        for (int i = 0; i < heigth; i++)
+        for (int i = 0; i < height; i++)
         {
             gridStartingPoint.x = 0f;
             RedZone redZonebefore = Instantiate(redZone);
@@ -223,19 +225,19 @@ public class GridManager : MonoBehaviour
             //}
 
             gridStartingPoint = gridStartingPoint + moveDown;
-            if (i == heigth - 1)
+            if (i == height - 1)
             {
                 for (int i3 = 0; i3 < width; i3++)
                 {
                     if (i3 == 0)
                     {
                         cornerredzone = Instantiate(cornerredzone);
-                        cornerredzone.transform.position = new Vector3(i3, -heigth - .5f, 1f);
+                        cornerredzone.transform.position = new Vector3(i3, -height - .5f, 1f);
                         cornerredzone = Instantiate(cornerredzone);
-                        cornerredzone.transform.position = new Vector3(width, -heigth - .5f, 1f);
+                        cornerredzone.transform.position = new Vector3(width, -height - .5f, 1f);
                     }
                     bottemredZone = Instantiate(bottemredZone);
-                    bottemredZone.transform.position = new Vector3(i3 + .5f, -heigth - .5f, 1f);
+                    bottemredZone.transform.position = new Vector3(i3 + .5f, -height - .5f, 1f);
                 }
             }
 
@@ -246,8 +248,8 @@ public class GridManager : MonoBehaviour
                 gridStartingPoint = gridStartingPoint + moveRight;
             }
         }
-        gameState.levelManager.levelPlatformen.tileList = new int[heigth * width];
-        filledGridSpots = new bool[heigth * width];
+        gameState.levelManager.levelPlatformen.tileList = new int[height * width];
+        filledGridSpots = new bool[height * width];
     }
 
     internal void Build_SquareBest(Vector3 startingPoint)
@@ -289,7 +291,7 @@ public class GridManager : MonoBehaviour
             }
         }
         filledGridSpots = new bool[heigth * width];
-        this.heigth = heigth;
+        this.height = heigth;
         this.width = width;
         //onnodige balllllshit
         //LevelEditorState.Instance.levelPlatformen.tileList = new int[heigth * width];
@@ -315,7 +317,7 @@ public class GridManager : MonoBehaviour
             }
         }
         filledGridSpots = new bool[heigth * width];
-        this.heigth = heigth;
+        this.height = heigth;
         this.width = width;
         //onnodige balllllshit
         //LevelEditorState.Instance.levelPlatformen.tileList = new int[heigth * width];

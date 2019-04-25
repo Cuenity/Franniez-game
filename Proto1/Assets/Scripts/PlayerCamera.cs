@@ -77,9 +77,9 @@ public class PlayerCamera : MonoBehaviour
         if (gameState.BuildingPhaseActive == true)
         {
             // controleren of de camera niet buiten het grid zit en zo ja dan terug zetten en de snelheid op 0 zetten.
-            if (this.transform.position.y < gameState.gridManager.heigth * -1)
+            if (this.transform.position.y < gameState.gridManager.height * -1)
             {
-                this.transform.position = new Vector3(this.transform.position.x, gameState.gridManager.heigth * -1 + .1f, this.transform.position.z);
+                this.transform.position = new Vector3(this.transform.position.x, gameState.gridManager.height * -1 + .1f, this.transform.position.z);
                 this.GetComponent<Rigidbody>().velocity = new Vector3(0, 0, 0);
             }
             if (this.transform.position.y > 0)
@@ -203,9 +203,9 @@ public class PlayerCamera : MonoBehaviour
     // check if the position is outside of the grid and place it just inside it if that is the case
     public void CorrectCamera(Vector3 outsideGrid)
     {
-        if (outsideGrid.y < gameState.gridManager.heigth * -1)
+        if (outsideGrid.y < gameState.gridManager.height * -1)
         {
-            this.transform.position = new Vector3(this.transform.position.x, gameState.gridManager.heigth * -1 + .1f, this.transform.position.z);
+            this.transform.position = new Vector3(this.transform.position.x, gameState.gridManager.height * -1 + .1f, this.transform.position.z);
         }
         if (outsideGrid.y > 0)
         {
@@ -281,9 +281,9 @@ public class PlayerCamera : MonoBehaviour
 
                 // checken of de positie buiten het grid is en zo ja dan op het randje plaatsen
                 bool nope = true;
-                if (outsideGrid.y < gameState.gridManager.heigth * -1)
+                if (outsideGrid.y < gameState.gridManager.height * -1)
                 {
-                    transform.position = new Vector3(outsideGrid.x, gameState.gridManager.heigth * -1 + .1f, outsideGrid.z);
+                    transform.position = new Vector3(outsideGrid.x, gameState.gridManager.height * -1 + .1f, outsideGrid.z);
                     this.GetComponent<Rigidbody>().velocity = new Vector3(0, 0, 0);
                     nope = false;
                 }
