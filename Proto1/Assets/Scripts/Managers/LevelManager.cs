@@ -412,7 +412,7 @@ public class LevelManager : MonoBehaviour
             {
                 balknop.gameObject.SetActive(true);
             }
-
+            gameState.platformManager.lift.ResetPlatform();
             gameState.BuildingPhaseActive = true;
             gameState.playerBallManager.activePlayer.GetComponent<Rigidbody>().isKinematic = true;
         }
