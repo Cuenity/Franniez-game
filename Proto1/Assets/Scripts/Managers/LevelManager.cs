@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GameAnalyticsSDK;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
@@ -106,6 +107,7 @@ public class LevelManager : MonoBehaviour
 
     public void InitScene(string sceneName)
     {
+        GameAnalytics.NewProgressionEvent(GAProgressionStatus.Start, sceneName.ToString());
         this.sceneName = sceneName;
         currentScene = SceneManager.GetActiveScene();
 
