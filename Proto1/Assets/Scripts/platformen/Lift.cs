@@ -16,14 +16,9 @@ public class Lift : MonoBehaviour
         gameState = GameState.Instance;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
     private void OnCollisionEnter(Collision collision)
     {
+        // check of de lift al gebruikt is
         if (!used)
         {
             GameObject bal = gameState.playerBallManager.activePlayer;
@@ -35,18 +30,15 @@ public class Lift : MonoBehaviour
             coroutineLift = Move(oldVelocity, body, bal);
             StartCoroutine(coroutineLift);
         }
-
     }
-    public void GoToEnd()
-    {
 
-
-
-    }
 
     private IEnumerator Move(Vector3 velocity, Rigidbody body, GameObject ball)
     {
+        // bereken de verandering in 100 stapjes
         Vector3 diffrence = (this.endPoint - this.startPoint) / 100;
+
+        // voer de transform uit in 100 stapjes zodat het smooth lijkt. en neem het balletje mee
         while (index <= 100)
         {
             this.transform.position = this.transform.position + diffrence;
@@ -54,8 +46,9 @@ public class Lift : MonoBehaviour
             index++;
             yield return new WaitForEndOfFrame();
         }
-        body.velocity = velocity;
-        //body.rotation = rotation;
+
+        // geef hem zijn oude snelheid weermee laat de rotatie weer verdergaan
+        body.velocity = velocity;       
         body.freezeRotation = false;
         index = 0;
         this.used = true;
@@ -68,6 +61,7 @@ public class Lift : MonoBehaviour
         this.endPoint = gameState.gridManager.gridSquares[end] + new Vector3(1f, 0, 0);
     }
 
+    // reset het platform naar zijn startpositie en zorg dat de coroutine gestopt word.
     public void ResetPlatform()
     {
         GameObject ball = gameState.playerBallManager.activePlayer;
