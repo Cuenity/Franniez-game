@@ -77,9 +77,9 @@ public class PlayerCamera : MonoBehaviour
         if (gameState.BuildingPhaseActive == true)
         {
             // controleren of de camera niet buiten het grid zit en zo ja dan terug zetten en de snelheid op 0 zetten.
-            if (this.transform.position.y < gameState.gridManager.heigth * -1)
+            if (this.transform.position.y < gameState.gridManager.height * -1)
             {
-                this.transform.position = new Vector3(this.transform.position.x, gameState.gridManager.heigth * -1 + .1f, this.transform.position.z);
+                this.transform.position = new Vector3(this.transform.position.x, gameState.gridManager.height * -1 + .1f, this.transform.position.z);
                 this.GetComponent<Rigidbody>().velocity = new Vector3(0, 0, 0);
             }
             if (this.transform.position.y > 0)
