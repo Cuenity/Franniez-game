@@ -100,8 +100,8 @@ MonoBehaviour:
   platformDragActive: 0
   TargetMovementOffset: {x: 0, y: 0, z: -10}
   TargetLookAtOffset: {x: 0, y: 0, z: 0}
-  SpringForce: 10
-  SpringDamper: 10
+  SpringForce: 15
+  SpringDamper: 15
 --- !u!54 &2116874778110079020
 Rigidbody:
   m_ObjectHideFlags: 0
