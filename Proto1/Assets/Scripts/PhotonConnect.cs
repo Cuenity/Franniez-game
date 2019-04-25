@@ -70,7 +70,7 @@ public class PhotonConnect : MonoBehaviourPunCallbacks
 
     public void onClickStartGame()
     {
-        PhotonNetwork.LoadLevel(1);
+        PhotonNetwork.LoadLevel(6);
     }
 
     //private void OnFailedToConnectToMasterServer(NetworkConnectionError error)
