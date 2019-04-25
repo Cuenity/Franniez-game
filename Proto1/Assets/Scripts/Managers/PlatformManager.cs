@@ -23,6 +23,7 @@ public class PlatformManager : MonoBehaviour
     public BoostPlatform boostPlatform;
     public PlatformSquare levelEditorPlatform;
     public Ramp levelEditorRampReversed;
+    public Lift lift;
 
     GameState gameState;
 
@@ -327,6 +328,7 @@ public class PlatformManager : MonoBehaviour
         List<int> CoinSpots = new List<int>();
         List<int> RedZoneSpots = new List<int>();
         List<int> boosterPlatformSpots = new List<int>();
+        List<Lift> liftList = new List<Lift>();
 
         RedZoneSpots.Add(15);
         RedZoneSpots.Add(gameState.gridManager.width + 15);
@@ -368,7 +370,7 @@ public class PlatformManager : MonoBehaviour
 
         //dit moet later anders zijn collectables 
 
-        Init_Platforms(RampSpots, PlatformSpots, RampSpotsReversed, PortalSpots, TrampolineSpots, rechthoekSpots, boosterPlatformSpots);
+        Init_Platforms(RampSpots, PlatformSpots, RampSpotsReversed, PortalSpots, TrampolineSpots, rechthoekSpots, boosterPlatformSpots, liftList);
         gameState.collectableManager.InitCollectables(coinPositions, finishPosition);
         initRedZones(RedZoneSpots);
     }
@@ -388,6 +390,7 @@ public class PlatformManager : MonoBehaviour
         List<int> CoinSpots = new List<int>();
         List<int> RedZoneSpots = new List<int>();
         List<int> boosterPlatformSpots = new List<int>();
+        List<Lift> liftList = new List<Lift>();
         RampSpots.Add(8);
         //rechthoekSpots.Add(16);
         rechthoekSpots.Add(20);
@@ -403,7 +406,7 @@ public class PlatformManager : MonoBehaviour
 
         //dit moet later anders zijn collectables 
 
-        Init_Platforms(RampSpots, PlatformSpots, RampSpotsReversed, PortalSpots, TrampolineSpots, rechthoekSpots, boosterPlatformSpots);
+        Init_Platforms(RampSpots, PlatformSpots, RampSpotsReversed, PortalSpots, TrampolineSpots, rechthoekSpots, boosterPlatformSpots, liftList);
         gameState.collectableManager.InitCollectables(coinPositions, finishPosition);
         initRedZones(RedZoneSpots);
     }
@@ -421,7 +424,10 @@ public class PlatformManager : MonoBehaviour
         List<int> CoinSpots = new List<int>();
         List<int> RedZoneSpots = new List<int>();
         List<int> boosterPlatformSpots = new List<int>();
+        List<Lift> liftList = new List<Lift>();
         RampSpots.Add(21);
+        lift.SetStartAndEndPoints(43, 85);
+        liftList.Add(lift);
         //RampSpots.Add(43);
         //RampSpots.Add(65);
         //RampSpots.Add(87);
@@ -441,7 +447,7 @@ public class PlatformManager : MonoBehaviour
 
 
 
-        Init_Platforms(RampSpots, PlatformSpots, RampSpotsReversed, PortalSpots, TrampolineSpots, rechthoekSpots, boosterPlatformSpots);
+        Init_Platforms(RampSpots, PlatformSpots, RampSpotsReversed, PortalSpots, TrampolineSpots, rechthoekSpots, boosterPlatformSpots, liftList);
 
         gameState.collectableManager.InitCollectables(coinPositions, finishPosition);
         initRedZones(RedZoneSpots);
@@ -460,7 +466,7 @@ public class PlatformManager : MonoBehaviour
         List<int> CoinSpots = new List<int>();
         List<int> RedZoneSpots = new List<int>();
         List<int> boosterPlatformSpots = new List<int>();
-
+        List<Lift> liftList = new List<Lift>();
         RampSpots.Add(20);
         TrampolineSpots.Add(124);
 
@@ -468,7 +474,7 @@ public class PlatformManager : MonoBehaviour
 
 
 
-        Init_Platforms(RampSpots, PlatformSpots, RampSpotsReversed, PortalSpots, TrampolineSpots, rechthoekSpots, boosterPlatformSpots);
+        Init_Platforms(RampSpots, PlatformSpots, RampSpotsReversed, PortalSpots, TrampolineSpots, rechthoekSpots, boosterPlatformSpots, liftList);
 
         for (int i = 0; i < CoinSpots.Count; i++)
         {
@@ -497,12 +503,13 @@ public class PlatformManager : MonoBehaviour
         List<int> CoinSpots = new List<int>();
         List<int> RedZoneSpots = new List<int>();
         List<int> boosterPlatformSpots = new List<int>();
+        List<Lift> liftList = new List<Lift>();
 
         RampSpots.Add(21);
         TrampolineSpots.Add(144);
         CoinSpots.Add(107);
         RedZoneSpots.Add(5);
-        Init_Platforms(RampSpots, PlatformSpots, RampSpotsReversed, PortalSpots, TrampolineSpots, rechthoekSpots, boosterPlatformSpots);
+        Init_Platforms(RampSpots, PlatformSpots, RampSpotsReversed, PortalSpots, TrampolineSpots, rechthoekSpots, boosterPlatformSpots, liftList);
 
         for (int i = 0; i < CoinSpots.Count; i++)
         {
@@ -526,6 +533,7 @@ public class PlatformManager : MonoBehaviour
         List<int> CoinSpots = new List<int>();
         List<int> RedZoneSpots = new List<int>();
         List<int> boosterPlatformSpots = new List<int>();
+        List<Lift> liftList = new List<Lift>();
         RampSpots.Add(21);
         boosterPlatformSpots.Add(124);
 
@@ -548,7 +556,7 @@ public class PlatformManager : MonoBehaviour
         SetCoinPosition(190);
         SetfinishPosition(188);
 
-        Init_Platforms(RampSpots, PlatformSpots, RampSpotsReversed, PortalSpots, TrampolineSpots, rechthoekSpots, boosterPlatformSpots);
+        Init_Platforms(RampSpots, PlatformSpots, RampSpotsReversed, PortalSpots, TrampolineSpots, rechthoekSpots, boosterPlatformSpots, liftList);
         gameState.collectableManager.InitCollectables(coinPositions, finishPosition);
 
         //for (int i = 0; i < CoinSpots.Count; i++)
@@ -578,6 +586,7 @@ public class PlatformManager : MonoBehaviour
         List<int> CoinSpots = new List<int>();
         List<int> RedZoneSpots = new List<int>();
         List<int> boosterPlatformSpots = new List<int>();
+        List<Lift> liftList = new List<Lift>();
 
 
         RampSpots.Add(21);
@@ -623,12 +632,12 @@ public class PlatformManager : MonoBehaviour
         SetCoinPosition(196);
         SetfinishPosition(254);
 
-        Init_Platforms(RampSpots, PlatformSpots, RampSpotsReversed, PortalSpots, TrampolineSpots, rechthoekSpots, boosterPlatformSpots);
+        Init_Platforms(RampSpots, PlatformSpots, RampSpotsReversed, PortalSpots, TrampolineSpots, rechthoekSpots, boosterPlatformSpots, liftList);
         gameState.collectableManager.InitCollectables(coinPositions, finishPosition);
         initRedZones(RedZoneSpots);
     }
 
-    internal void Init_Platforms(List<int> RampSpots, List<int> PlatformSpots, List<int> RampSpotsReversed, List<int> PortalSpots, List<int> TrampolineSpots, List<int> rechthoekSpots, List<int> boosterPlatformSpots)
+    internal void Init_Platforms(List<int> RampSpots, List<int> PlatformSpots, List<int> RampSpotsReversed, List<int> PortalSpots, List<int> TrampolineSpots, List<int> rechthoekSpots, List<int> boosterPlatformSpots, List<Lift> liftList)
     {
         Vector3 rampAdjustment = new Vector3(0.5f, 0f, 0f);
         if (RampSpots.Count > 0)
@@ -688,6 +697,15 @@ public class PlatformManager : MonoBehaviour
                 gameState.gridManager.AddFilledGridSpots(boosterPlatformSpots, SizeType.twoByOne);
             }
         }
+        if (liftList.Count > 0)
+        {
+            for (int i = 0; i < liftList.Count; i++)
+            {
+                lift = Instantiate(liftList[i]);
+                lift.transform.position = lift.startPoint;
+            }
+
+        }
     }
 
     public void initRedZones(List<int> redZones)
@@ -726,6 +744,7 @@ public class PlatformManager : MonoBehaviour
         List<int> CoinSpots = new List<int>();
         List<int> RedZoneSpots = new List<int>();
         List<int> boosterPlatformSpots = new List<int>();
+        List<Lift> liftList = new List<Lift>();
         RampSpots.Add(80);
         PortalSpots.Add(91);
         PortalSpots.Add(34);
@@ -756,8 +775,10 @@ public class PlatformManager : MonoBehaviour
 
 
 
-        Init_Platforms(RampSpots, PlatformSpots, RampSpotsReversed, PortalSpots, TrampolineSpots, rechthoekSpots, boosterPlatformSpots);
+        Init_Platforms(RampSpots, PlatformSpots, RampSpotsReversed, PortalSpots, TrampolineSpots, rechthoekSpots, boosterPlatformSpots, liftList);
         gameState.collectableManager.InitCollectables(coinPositions, finishPosition);
         initRedZones(RedZoneSpots);
     }
+
+
 }

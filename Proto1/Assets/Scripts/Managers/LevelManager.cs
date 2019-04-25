@@ -357,6 +357,34 @@ public class LevelManager : MonoBehaviour
                 PlayerDataController.instance.previousScene = 6;
             }
         }
+        else if (sceneName == "MultiplayerLevel1")
+        {
+            if (!levelIsSpawned)
+            {
+                gameState.UIManager.canvas = Instantiate(canvas);
+                gameState.UIManager.newLevelInventoryisRequired = true;
+                GameState.Instance.playerCamera.ManualInit();
+                Vector3 playeradjustment = new Vector3(.5f, 0, 0);
+                levelPlatformen.tileList = levelDom;
+                levelPlatformen.width = 20;
+                levelPlatformen.heigth = 10;
+                gameState.gridManager.width = 20;
+                gameState.gridManager.height = 10;
+                playerPlatforms = new PlayerPlatforms(7, 7, 4, 3, 0);
+                GameState.Instance.gridManager.Build_Grid_FromJSON_Without_Visuals(levelPlatformen.width, levelPlatformen.heigth);
+
+                gameState.playerBallManager.SetSpawnpoint(41);
+                int[] coinarray = new int[] { 46, 127, 133 };
+                int finishPosition = 39;
+                GameState.Instance.platformManager.BuildLevelFromLevelPlatformen(levelPlatformen, coinarray, finishPosition);
+
+                gameState.playerManager.PlayerInit();
+
+                gameState.BuildingPhaseActive = true;
+                GameState.Instance.PreviousLevel = 6;
+                PlayerDataController.instance.previousScene = 6;
+            }
+        }
     }
     public void SetRollingPhase()
     {
@@ -382,7 +410,7 @@ public class LevelManager : MonoBehaviour
             {
                 balknop.gameObject.SetActive(true);
             }
-
+            gameState.platformManager.lift.ResetPlatform();
             gameState.BuildingPhaseActive = true;
             gameState.playerBallManager.activePlayer.GetComponent<Rigidbody>().isKinematic = true;
         }
