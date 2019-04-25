@@ -9,6 +9,7 @@ public class Lift : MonoBehaviour
     GameState gameState;
     int index = 0;
     bool used = false;
+    public IEnumerator coroutineLift;
     // Start is called before the first frame update
     void Start()
     {
@@ -29,10 +30,10 @@ public class Lift : MonoBehaviour
             Rigidbody body = bal.GetComponent<Rigidbody>();
             Vector3 oldVelocity = body.velocity;
             body.velocity = new Vector3(0, 0, 0);
-            Quaternion oldRotation = body.rotation;
             body.freezeRotation = true;
             bal.transform.position = this.transform.position + new Vector3(0, 1, 0);
-            StartCoroutine(Move(oldVelocity, oldRotation, body, bal));
+            coroutineLift = Move(oldVelocity, body, bal);
+            StartCoroutine(coroutineLift);
         }
 
     }
@@ -43,7 +44,7 @@ public class Lift : MonoBehaviour
 
     }
 
-    private IEnumerator Move(Vector3 velocity, Quaternion rotation, Rigidbody body, GameObject ball)
+    private IEnumerator Move(Vector3 velocity, Rigidbody body, GameObject ball)
     {
         Vector3 diffrence = (this.endPoint - this.startPoint) / 100;
         while (index <= 100)
@@ -69,6 +70,8 @@ public class Lift : MonoBehaviour
 
     public void ResetPlatform()
     {
+        GameObject ball = gameState.playerBallManager.activePlayer;
+        StopCoroutine(coroutineLift);
         this.transform.position = this.startPoint;
         this.used = false;
     }
