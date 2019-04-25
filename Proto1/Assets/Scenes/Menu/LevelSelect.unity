@@ -3017,7 +3017,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc6d2a230847dbc459ed333eeb622ace, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  key: StickersCollected_Text
+  key: stickersCollected_Text
 --- !u!1 &1304564831
 GameObject:
   m_ObjectHideFlags: 0
