@@ -1740,7 +1740,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc6d2a230847dbc459ed333eeb622ace, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  key: StickersCollected_World2
+  key: stickersNeeded_Text
 --- !u!1 &818813156
 GameObject:
   m_ObjectHideFlags: 0
@@ -3017,7 +3017,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc6d2a230847dbc459ed333eeb622ace, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  key: StickersCollected_World1
+  key: StickersCollected_Text
 --- !u!1 &1304564831
 GameObject:
   m_ObjectHideFlags: 0
@@ -4626,7 +4626,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc6d2a230847dbc459ed333eeb622ace, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  key: Level_Select
+  key: level_Select_Text
 --- !u!1 &1822616683
 GameObject:
   m_ObjectHideFlags: 0
@@ -4793,7 +4793,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc6d2a230847dbc459ed333eeb622ace, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  key: StickersCollected_World3
+  key: stickersNeeded_Text
 --- !u!1 &1866632892
 GameObject:
   m_ObjectHideFlags: 0
@@ -5310,7 +5310,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc6d2a230847dbc459ed333eeb622ace, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  key: Stage_Select
+  key: stage_Select_Text
 --- !u!1 &2034661320
 GameObject:
   m_ObjectHideFlags: 0

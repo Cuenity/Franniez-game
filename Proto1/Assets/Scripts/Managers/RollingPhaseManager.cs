@@ -51,13 +51,6 @@ public class RollingPhaseManager : MonoBehaviour
         level.playedLevel = true;
     }
 
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
     public void Init()
     {
         foreach (GameObject placedPlatform in GameState.Instance.levelManager.playerPlatforms.placedPlatforms)
@@ -110,12 +103,20 @@ public class RollingPhaseManager : MonoBehaviour
 
     private void AddCoin()
     {
+        if (PlayerPrefs.GetInt("Vibration") == 1)
+        {
+            Handheld.Vibrate();
+        }
         amountCoins++;
         Debug.Log("Coin gepakt");
     }
 
     private void ReachedFinish()
     {
+        if (PlayerPrefs.GetInt("Vibration") == 1)
+        {
+            Handheld.Vibrate();
+        }
         //level.gotSticker = pickedSticker;
         level.completed = true;
 

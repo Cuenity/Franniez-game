@@ -95,6 +95,7 @@ public class LevelSelect : MonoBehaviour
     {
         if (!textIsUpdated)
         {
+            // Dit moet nog afgemaakt worden
             stickersCollectedText.text = stickersCollectedText.text +" " + stickersCollectedCount.ToString();
             stickersCollectedTextWorld2.text = stickersCollectedTextWorld2.text +" " +stickersCollectedCount.ToString() + "/5";
             stickersCollectedTextWorld3.text = stickersCollectedTextWorld3.text +" " +stickersCollectedCount.ToString() + "/10";

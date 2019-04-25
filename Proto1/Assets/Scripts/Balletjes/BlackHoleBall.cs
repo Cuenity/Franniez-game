@@ -36,7 +36,10 @@ public class BlackHoleBall : MonoBehaviour
     {
         if (this.transform.position.y < gameState.gridManager.height * -1 || this.transform.position.x < 0 || this.transform.position.x > gameState.gridManager.width)
         {
-            Handheld.Vibrate();
+            if(PlayerPrefs.GetInt("Vibration") == 1)
+            {
+                Handheld.Vibrate();
+            }
             gameState.levelManager.SetBuildingPhase();
         }
     }
