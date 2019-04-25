@@ -8,7 +8,7 @@ public class CannonFirePoint : MonoBehaviour
     [SerializeField] private float waitingTimeTillFiring;
     [SerializeField] private float fireSpeed;
 
-    public void FireCannon(GameObject playerBall)
+    public void FireCannon(GameObject playerBall, Cannon gameObject)
     {
         //waitingTimeTillFiring = 1;
         //fireSpeed = 10;

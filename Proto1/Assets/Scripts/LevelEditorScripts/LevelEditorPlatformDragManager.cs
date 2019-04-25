@@ -153,7 +153,7 @@ public class LevelEditorPlatformDragManager : MonoBehaviour
         }
         else
         {
-            GameState.Instance.gridManager.RemoveFilledGridSpots(filledGridSpotToRemove, SizeType.oneByOne);
+            GameState.Instance.gridManager.RemoveFilledGridSpots(filledGridSpotToRemove, SizeType.twoByTwo);
         }
     }
 }

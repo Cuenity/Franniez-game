@@ -112,11 +112,11 @@ public class LevelManager : MonoBehaviour
         if (sceneName == "LevelEditor")
         {
             gameState.gridManager.width = 11;
-            gameState.gridManager.heigth = 12;
+            gameState.gridManager.height = 12;
 
             playerPlatforms = new PlayerPlatforms(2, 3, 1, 0, 0);
 
-            levelPlatformen.tileList = new int[gameState.gridManager.width * gameState.gridManager.heigth];
+            levelPlatformen.tileList = new int[gameState.gridManager.width * gameState.gridManager.height];
 
             gameState.gridManager.Build_Grid_BuildingPhase_With_Visuals();
         }
@@ -131,7 +131,7 @@ public class LevelManager : MonoBehaviour
                 GameState.Instance.playerCamera.ManualInit();
                 Vector3 playeradjustment = new Vector3(.5f, 0, 0);
                 gameState.gridManager.width = 8;
-                gameState.gridManager.heigth = 5;
+                gameState.gridManager.height = 5;
                 playerPlatforms = new PlayerPlatforms(0, 1, 0, 0, 0);
                 gameState.gridManager.Build_Grid_BuildingPhase_Without_Visuals();
                 gameState.playerBallManager.SetSpawnpoint(0);
@@ -164,7 +164,7 @@ public class LevelManager : MonoBehaviour
                 GameState.Instance.playerCamera.ManualInit();
                 Vector3 playeradjustment = new Vector3(.5f, 0, 0);
                 gameState.gridManager.width = 20;
-                gameState.gridManager.heigth = 11;
+                gameState.gridManager.height = 11;
                 playerPlatforms = new PlayerPlatforms(6, 6, 0, 0, 0);
                 gameState.gridManager.Build_Grid_BuildingPhase_Without_Visuals();
                 gameState.playerBallManager.SetSpawnpoint(1);
@@ -195,7 +195,7 @@ public class LevelManager : MonoBehaviour
                 //gameState.playerCamera = Instantiate(gameState.playerCamera);
                 Vector3 playeradjustment = new Vector3(.5f, 0, 0);
                 gameState.gridManager.width = 20;
-                gameState.gridManager.heigth = 11;
+                gameState.gridManager.height = 11;
                 playerPlatforms = new PlayerPlatforms(8, 8, 1, 0, 0);
                 gameState.gridManager.Build_Grid_BuildingPhase_Without_Visuals();
                 gameState.playerBallManager.SetSpawnpoint(1);
@@ -222,7 +222,7 @@ public class LevelManager : MonoBehaviour
                 levelPlatformen.width = 20;
                 levelPlatformen.heigth = 10;
                 gameState.gridManager.width = 20;
-                gameState.gridManager.heigth = 10;
+                gameState.gridManager.height = 10;
                 playerPlatforms = new PlayerPlatforms(5, 5, 5, 4, 0);
                 GameState.Instance.gridManager.Build_Grid_FromJSON_Without_Visuals(levelPlatformen.width, levelPlatformen.heigth);
 
@@ -252,7 +252,7 @@ public class LevelManager : MonoBehaviour
                 //gameState.playerCamera = Instantiate(gameState.playerCamera);
                 Vector3 playeradjustment = new Vector3(.5f, 0, 0);
                 gameState.gridManager.width = 40;
-                gameState.gridManager.heigth = 12;
+                gameState.gridManager.height = 12;
                 playerPlatforms = new PlayerPlatforms(3, 4, 0, 0, 2);
                 gameState.gridManager.Build_Grid_BuildingPhase_Without_Visuals();
                 gameState.playerBallManager.SetSpawnpoint(41);
@@ -279,7 +279,7 @@ public class LevelManager : MonoBehaviour
                 GameState.Instance.playerCamera.ManualInit();
                 Vector3 playeradjustment = new Vector3(.5f, 0, 0);
                 gameState.gridManager.width = 20;
-                gameState.gridManager.heigth = 14;
+                gameState.gridManager.height = 14;
                 //Array.Clear(gameState.UIManager.instantiatedInventoryButtons, 0, gameState.UIManager.instantiatedInventoryButtons.Length);
                 //playerPlatforms = null;
                 playerPlatforms = new PlayerPlatforms(6, 2, 1, 0, 0);
@@ -313,7 +313,7 @@ public class LevelManager : MonoBehaviour
                 //gameState.playerCamera = Instantiate(gameState.playerCamera);
                 Vector3 playeradjustment = new Vector3(.5f, 0, 0);
                 gameState.gridManager.width = 20;
-                gameState.gridManager.heigth = 11;
+                gameState.gridManager.height = 11;
                 playerPlatforms = new PlayerPlatforms(4, 4, 1, 0, 0);
                 gameState.gridManager.Build_Grid_BuildingPhase_Without_Visuals();
                 gameState.playerBallManager.SetSpawnpoint(60);
@@ -341,7 +341,7 @@ public class LevelManager : MonoBehaviour
                 levelPlatformen.width = 20;
                 levelPlatformen.heigth = 10;
                 gameState.gridManager.width = 20;
-                gameState.gridManager.heigth = 10;
+                gameState.gridManager.height = 10;
                 playerPlatforms = new PlayerPlatforms(7, 7, 4, 3, 0);
                 GameState.Instance.gridManager.Build_Grid_FromJSON_Without_Visuals(levelPlatformen.width, levelPlatformen.heigth);
 

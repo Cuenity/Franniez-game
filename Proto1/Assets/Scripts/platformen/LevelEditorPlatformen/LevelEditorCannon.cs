@@ -12,7 +12,7 @@ public class LevelEditorCannon : Cannon
             GameObject playerBall = collision.gameObject;
 
 
-            gameObject.GetComponentInChildren<CannonFirePoint>().FireCannon(playerBall);
+            gameObject.GetComponentInChildren<CannonFirePoint>().FireCannon(playerBall, this);
         }
     }
 }

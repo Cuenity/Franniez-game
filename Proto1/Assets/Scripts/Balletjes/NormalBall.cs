@@ -34,7 +34,7 @@ public class NormalBall : MonoBehaviour
     }
     private void FixedUpdate()
     {
-        if (this.transform.position.y < gameState.gridManager.heigth * -1 || this.transform.position.x < 0 || this.transform.position.x > gameState.gridManager.width)
+        if (this.transform.position.y < gameState.gridManager.height * -1 || this.transform.position.x < 0 || this.transform.position.x > gameState.gridManager.width)
         {
             Handheld.Vibrate();
             gameState.levelManager.SetBuildingPhase();

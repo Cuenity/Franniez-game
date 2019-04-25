@@ -180,9 +180,9 @@ public class PlayerCamera : MonoBehaviour
     }
     public void CorrectCamera(Vector3 outsideGrid)
     {
-        if (outsideGrid.y < gameState.gridManager.heigth * -1)
+        if (outsideGrid.y < gameState.gridManager.height * -1)
         {
-            this.transform.position = new Vector3(this.transform.position.x, gameState.gridManager.heigth * -1 + .1f, this.transform.position.z);
+            this.transform.position = new Vector3(this.transform.position.x, gameState.gridManager.height * -1 + .1f, this.transform.position.z);
         }
         if (outsideGrid.y > 0)
         {
@@ -251,9 +251,9 @@ public class PlayerCamera : MonoBehaviour
                 Vector2 newTouchPosition = Input.GetTouch(0).position;
                 Vector3 outsideGrid = transform.position + transform.TransformDirection((Vector3)((oldTouchPositions[0] - newTouchPosition) * GetComponent<Camera>().orthographicSize / GetComponent<Camera>().pixelHeight * 2f));
                 bool nope = true;
-                if (outsideGrid.y < gameState.gridManager.heigth * -1)
+                if (outsideGrid.y < gameState.gridManager.height * -1)
                 {
-                    transform.position = new Vector3(outsideGrid.x, gameState.gridManager.heigth * -1 + .1f, outsideGrid.z);
+                    transform.position = new Vector3(outsideGrid.x, gameState.gridManager.height * -1 + .1f, outsideGrid.z);
                     nope = false;
                 }
                 if (outsideGrid.y > 0)
