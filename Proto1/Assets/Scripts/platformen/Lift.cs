@@ -18,7 +18,7 @@ public class Lift : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        // check of de lift al gebruikt is
+        // check of de lift al gebruikt is, freeze lift, en start coroutine
         if (!used)
         {
             GameObject bal = gameState.playerBallManager.activePlayer;
