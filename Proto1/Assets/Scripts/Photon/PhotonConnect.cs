@@ -46,7 +46,7 @@ public class PhotonConnect : MonoBehaviourPunCallbacks
     public void CheckRoom()
     {
         Debug.Log(PhotonNetwork.CurrentRoom);
-        Debug.Log(PhotonNetwork.CurrentLobby);
+        //Debug.Log(PhotonNetwork.CurrentLobby);
     }
 
     private void OnConnectedToServer()

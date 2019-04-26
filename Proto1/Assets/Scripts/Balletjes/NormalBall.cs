@@ -1,8 +1,9 @@
-﻿using System.Collections;
+﻿using Photon.Pun;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NormalBall : MonoBehaviour
+public class NormalBall : MonoBehaviourPun
 {
     // Start is called before the first frame update
     GameState gameState = GameState.Instance;
