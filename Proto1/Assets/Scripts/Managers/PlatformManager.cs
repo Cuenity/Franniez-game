@@ -112,10 +112,7 @@ public class PlatformManager : MonoBehaviour
         {
             minimumValueIndex--;
         }
-        if (minimumValueIndex < gameState.gridManager.width)
-        {
-            minimumValueIndex = minimumValueIndex + gameState.gridManager.width;
-        }
+
 
         bool cantPlacePlaform = false;
 
@@ -124,6 +121,7 @@ public class PlatformManager : MonoBehaviour
 
         if (!gameObject.GetComponent<Cannon>())
         {
+            // check of platform hier geplaatst kan worden
             if (!gameState.gridManager.filledGridSpots[minimumValueIndex] &&
             !gameState.gridManager.filledGridSpots[minimumValueIndex + 1])
             {
@@ -133,33 +131,64 @@ public class PlatformManager : MonoBehaviour
                 gameObject.GetComponent<Platform>().fillsGridSpot = minimumValueIndex;
                 gameState.gridManager.AddFilledGridSpots(newFilledGridSPots, SizeType.twoByOne);
             }
+            // check of platform anders in een gebied van een square hier omheen geplaatst kan worden
             else
             {
                 int newMinimumValueIndex = CheckForEmptyAreaAroundWrongPlacement(minimumValueIndex);
-                newFilledGridSPots.Add(newMinimumValueIndex);
+                if (newMinimumValueIndex < 0)
+                {
+                    cantPlacePlaform = true;
+                }
+                else
+                {
+                    newFilledGridSPots.Add(newMinimumValueIndex);
 
-                gameObject.transform.position = gameState.gridManager.gridSquares[newMinimumValueIndex] + rampAdjustment;
-                gameObject.GetComponent<Platform>().fillsGridSpot = newMinimumValueIndex;
-                gameState.gridManager.AddFilledGridSpots(newFilledGridSPots, SizeType.twoByOne);
+                    gameObject.transform.position = gameState.gridManager.gridSquares[newMinimumValueIndex] + rampAdjustment;
+                    gameObject.GetComponent<Platform>().fillsGridSpot = newMinimumValueIndex;
+                    gameState.gridManager.AddFilledGridSpots(newFilledGridSPots, SizeType.twoByOne);
+                }
             }
         }
         // als het cannon is
         else
         {
-            if (!gameState.gridManager.filledGridSpots[minimumValueIndex + 1] &&
-            !gameState.gridManager.filledGridSpots[minimumValueIndex - gameState.gridManager.width] &&
-            !gameState.gridManager.filledGridSpots[minimumValueIndex - gameState.gridManager.width + 1])
+            // check of cannon hier geplaatst kan worden
+            if (minimumValueIndex < gameState.gridManager.width)
             {
+                minimumValueIndex = minimumValueIndex + gameState.gridManager.width;
+            }
+            if (!gameState.gridManager.filledGridSpots[minimumValueIndex] &&
+                !gameState.gridManager.filledGridSpots[minimumValueIndex + 1] &&
+                !gameState.gridManager.filledGridSpots[minimumValueIndex - gameState.gridManager.width] &&
+                !gameState.gridManager.filledGridSpots[minimumValueIndex - gameState.gridManager.width + 1])
+            {
+                newFilledGridSPots.Add(minimumValueIndex);
+
                 gameObject.transform.position = gameState.gridManager.gridSquares[minimumValueIndex] + cannonAdjustment;
                 gameObject.GetComponent<Platform>().fillsGridSpot = minimumValueIndex;
                 gameState.gridManager.AddFilledGridSpots(newFilledGridSPots, SizeType.twoByTwo);
             }
+            // check of cannon anders in een gebied van een square hier omheen geplaatst kan worden
             else
             {
-                // check empty plaatsen voor cannon
+                cantPlacePlaform = true;
+                Debug.Log("Cannon op 1 square in de buurt plaatsen kan (nog) niet");
+
+                //int newMinimumValueIndex = CheckForEmptyAreaAroundWrongPlacement(minimumValueIndex);
+                //if (newMinimumValueIndex < 0)
+                //{
+                //    cantPlacePlaform = true;
+                //}
+                //else
+                //{
+                //    newFilledGridSPots.Add(newMinimumValueIndex); 
+
+                //    gameObject.transform.position = gameState.gridManager.gridSquares[newMinimumValueIndex] + rampAdjustment;
+                //    gameObject.GetComponent<Platform>().fillsGridSpot = newMinimumValueIndex;
+                //    gameState.gridManager.AddFilledGridSpots(newFilledGridSPots, SizeType.twoByOne);
+                //}
             }
         }
-
 
         // platform kan helmaal niet geplaatst worden
         if (cantPlacePlaform)
@@ -191,10 +220,33 @@ public class PlatformManager : MonoBehaviour
 
         int newSpot;
 
-        // een rij naar links checken
-        if (minimumValueIndex % gameState.gridManager.width == gameState.gridManager.width - 2)
+        bool[,] replaceArrayLaterWithRealTwoDimentionalArray = new bool[gameState.gridManager.height, gameState.gridManager.width];
+        int column = 0;
+        int row = 0;
+        int minimumValueIndexRow = 0;
+        int minimumValueIndexColumn = 0;
+        for (int filledGridSpotsIndex = 0; filledGridSpotsIndex < gameState.gridManager.filledGridSpots.Length; filledGridSpotsIndex++)
         {
-            newSpot = minimumValueIndex - 2;
+            if (column == gameState.gridManager.width)
+            {
+                column = 0;
+                row++;
+            }
+            if (minimumValueIndex == filledGridSpotsIndex)
+            {
+                minimumValueIndexRow = row;
+                minimumValueIndexColumn = column;
+                break;
+            }
+
+            //replaceArrayLaterWithRealTwoDimentionalArray[row, column] = gameState.gridManager.filledGridSpots[filledGridSpotsIndex];
+            column++;
+        }
+
+        // een rij naar links checken
+        if (minimumValueIndexColumn - 1 >= 0)
+        {
+            newSpot = minimumValueIndex - 1;
             if (!gameState.gridManager.filledGridSpots[newSpot] && !gameState.gridManager.filledGridSpots[newSpot + 1])
             {
                 return newSpot;
@@ -202,9 +254,9 @@ public class PlatformManager : MonoBehaviour
         }
 
         // een rij naar rechts checken
-        if (minimumValueIndex % gameState.gridManager.width == gameState.gridManager.width + 2)
+        if (minimumValueIndexColumn + 1 < gameState.gridManager.width - 1)
         {
-            newSpot = minimumValueIndex + 2;
+            newSpot = minimumValueIndex + 1;
             if (!gameState.gridManager.filledGridSpots[newSpot] && !gameState.gridManager.filledGridSpots[newSpot + 1])
             {
                 return newSpot;
@@ -212,7 +264,7 @@ public class PlatformManager : MonoBehaviour
         }
 
         // een rij naar boven checken
-        if (minimumValueIndex > gameState.gridManager.width)
+        if (minimumValueIndexRow > 0)
         {
             newSpot = minimumValueIndex - gameState.gridManager.width;
             if (!gameState.gridManager.filledGridSpots[newSpot] && !gameState.gridManager.filledGridSpots[newSpot + 1])
@@ -221,8 +273,8 @@ public class PlatformManager : MonoBehaviour
             }
         }
 
-        // een rij naar beneden checken
-        if (minimumValueIndex < gameState.gridManager.width && minimumValueIndex > gameState.gridManager.width * (gameState.gridManager.height - 1))
+        // een rij naar beneden checken, niet af
+        if (minimumValueIndexRow < gameState.gridManager.height - 1)
         {
             newSpot = minimumValueIndex + gameState.gridManager.width;
             if (!gameState.gridManager.filledGridSpots[newSpot] && !gameState.gridManager.filledGridSpots[newSpot + 1])
@@ -232,8 +284,8 @@ public class PlatformManager : MonoBehaviour
         }
 
 
-
-        return 0;
+        // if no empty nearby spot can be found
+        return -1;
     }
 
     internal void BuildLevelFromLevelPlatformen(LevelPlatformen levelPlatformen, int[] coins, int finish)
