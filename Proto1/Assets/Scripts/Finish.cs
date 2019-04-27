@@ -13,7 +13,7 @@ public class Finish : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        gameState = GameObject.Find("GameState").GetComponent<GameState>();
+        gameState = GameState.Instance;
         playerManager = gameState.GetComponent<PlayerManager>();
         gameState.levelManager.finish = this;
     }

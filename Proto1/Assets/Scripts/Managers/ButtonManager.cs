@@ -1,4 +1,5 @@
 ﻿using GameAnalyticsSDK;
+using Photon.Pun;
 using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -147,7 +148,10 @@ public class ButtonManager : MonoBehaviour
         }
 
         GameState.Instance.levelManager.playerPlatforms.placedPlatforms.Remove(playerPlatform);
-        Destroy(playerPlatform);
+        if (!PhotonNetwork.IsConnected)
+            Destroy(playerPlatform);
+        else if (PhotonNetwork.IsConnected)
+            PhotonNetwork.Destroy(playerPlatform);
         GameState.Instance.playerCamera.platformDragActive = false;
 
     }

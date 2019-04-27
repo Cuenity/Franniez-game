@@ -64,8 +64,16 @@ public class Lift : MonoBehaviour
     // reset het platform naar zijn startpositie en zorg dat de coroutine gestopt word.
     public void ResetPlatform()
     {
-        GameObject ball = gameState.playerBallManager.activePlayer;
-        StopCoroutine(coroutineLift);
+        //dit is broken en wordt vaker aangeroepen dan nodig is?
+        GameObject ball = GameState.Instance.playerBallManager.activePlayer;
+        try
+        {
+            StopCoroutine(coroutineLift);
+        }
+        catch
+        {
+
+        }
         this.transform.position = this.startPoint;
         this.used = false;
     }
