@@ -1,4 +1,5 @@
 ﻿using GameAnalyticsSDK;
+using Photon.Pun;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -376,12 +377,11 @@ public class LevelManager : MonoBehaviour
                 playerPlatforms = new PlayerPlatforms(7, 7, 4, 3, 0);
                 GameState.Instance.gridManager.Build_Grid_FromJSON_Without_Visuals(levelPlatformen.width, levelPlatformen.heigth);
 
-                gameState.playerBallManager.SetSpawnpoint(45);
-                int[] coinarray = new int[] { 75, 127, 133 };
+                
+                int[] coinarray = new int[] { 131, 132, 133 };
                 int finishPosition = 39;
                 GameState.Instance.platformManager.BuildLevelFromLevelPlatformen(levelPlatformen, coinarray, finishPosition);
-
-                gameState.playerManager.PlayerInit();
+                gameState.playerManager.MultiPlayerBallInit(45,55);
 
                 gameState.BuildingPhaseActive = true;
                 //dit is wel poep moet echt es anders
@@ -399,8 +399,27 @@ public class LevelManager : MonoBehaviour
         {
             balknop.gameObject.SetActive(false);
         }
-
-        gameState.playerBallManager.activePlayer.GetComponent<Rigidbody>().isKinematic = false;
+        if (PhotonNetwork.IsConnected)
+        {
+            //deze oplossing is zo smerig wil niet eens een comment schrijven
+            //de bal van de andere speler wordt altijd als een prefabnaam(Clone) gespawnd en zo kan ik ervoor zorgen dat ie op de client die dit uitvoert niet verplaatst wordt
+            //ENIGE manier die tot nu toe werkt
+            if (PhotonNetwork.IsMasterClient)
+            {
+                GameObject.Find("player1ball").GetComponent<Rigidbody>().isKinematic = false;
+                GameObject.Find("Photon BlackHoleBall(Clone)").GetComponent<Rigidbody>().isKinematic = true;
+                
+            }
+            else
+            {
+                GameObject.Find("player2ball").GetComponent<Rigidbody>().isKinematic = false;
+                GameObject.Find("Photon BlackHoleBall(Clone)").GetComponent<Rigidbody>().isKinematic = true;
+            }
+        }
+        else
+        {
+            gameState.playerBallManager.activePlayer.GetComponent<Rigidbody>().isKinematic = false;
+        }
     }
     public void SetBuildingPhase()
     {

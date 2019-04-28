@@ -45,8 +45,8 @@ public class PhotonConnect : MonoBehaviourPunCallbacks
     }
     public void CheckRoom()
     {
+        Debug.Log(PhotonNetwork.CountOfRooms);
         Debug.Log(PhotonNetwork.CurrentRoom);
-        //Debug.Log(PhotonNetwork.CurrentLobby);
     }
 
     private void OnConnectedToServer()
@@ -55,6 +55,14 @@ public class PhotonConnect : MonoBehaviourPunCallbacks
         Debug.Log("Connected to photon");
     }
     //Room methodes
+    public void onClickJoinOrCreateRandomRoom()
+    {
+        //super vies maar is voor testen
+        if(PhotonNetwork.CountOfRooms==0)
+            PhotonNetwork.CreateRoom("randomRoom", new RoomOptions() { MaxPlayers = 2} ,null);
+        else
+            PhotonNetwork.JoinRandomRoom();
+    }
     public void onClickCreateRoom()
     {
         
