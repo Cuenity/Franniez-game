@@ -55,6 +55,7 @@ public class ShopButtons : MonoBehaviour
         SkinsPanel.SetActive(false);
         MusicPanel.SetActive(false);
         CoinsPanel.SetActive(false);
+        warningPanel.SetActive(false);
 
         switch (buttonName)
         {
@@ -98,7 +99,7 @@ public class ShopButtons : MonoBehaviour
         }
         else
         {
-            BuySkinEvent(amount.ToString());
+            //BuySkinEvent(amount.ToString());
             warningPanel.SetActive(true);
         }
 

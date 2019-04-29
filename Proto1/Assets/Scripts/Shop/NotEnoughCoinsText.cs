@@ -21,10 +21,10 @@ public class NotEnoughCoinsText : MonoBehaviour
 
     private void OnEnable()
     {
-        GetComponentInParent<ShopButtons>().BuySkinEvent += SetText;
+        GetComponentInParent<ShopFillSkins>().ButtonClicked += SetText;
     }
 
-    public void SetText(string amount)
+    public void SetText(int amount)
     {
         text.text = PlayerDataController.instance.player.ShopCoins.ToString() + "/" + amount;
     }

@@ -10,6 +10,6 @@ public class PlayerData
     public int coins;
     public Sticker[] stickers;
     public int language;
-    public int ShopCoins;
+    public int ShopCoins = 0;
 }
 
