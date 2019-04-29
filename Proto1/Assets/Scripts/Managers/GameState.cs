@@ -22,6 +22,8 @@ public class GameState : MonoBehaviour
     public UIManager UIManager;
     public UIRollingManager uIRollingManager;
 
+    public TutorialManager tutorialManager;
+
     // Privates
     private bool buildingPhaseActive = true;
     private bool rollingPhaseActive = false;
@@ -110,8 +112,9 @@ public class GameState : MonoBehaviour
         uIRollingManager = Instantiate(uIRollingManager, instance.transform);
         uIRollingManager.transform.parent = this.transform;
 
-       
-        
+        tutorialManager = Instantiate(tutorialManager, instance.transform);
+        tutorialManager.transform.parent = this.transform;
+
         Scene scene = SceneManager.GetActiveScene();
         levelManager.InitScene(scene.name);
     }

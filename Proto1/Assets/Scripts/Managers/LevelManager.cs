@@ -34,6 +34,8 @@ public class LevelManager : MonoBehaviour
 
     public PlayerPlatforms playerPlatforms;
 
+    public bool bigLevel;
+
     private void Start()
     {
         balknop = gameState.UIManager.canvas.GetComponentInChildren<BallKnop>();
@@ -129,6 +131,9 @@ public class LevelManager : MonoBehaviour
         {
             if (!levelIsSpawned)
             {
+                bigLevel = false;
+                //gameState.tutoral.SpawnTutorialArrow();
+
                 gameState.UIManager.canvas = Instantiate(canvas);
                 gameState.UIManager.newLevelInventoryisRequired = true;
                 gameState.collectableManager.newCollectablesAreRequired = true;
@@ -158,6 +163,8 @@ public class LevelManager : MonoBehaviour
         {
             if (!levelIsSpawned)
             {
+                bigLevel = true;
+
                 gameState.UIManager.canvas = Instantiate(canvas);
                 gameState.UIManager.newLevelInventoryisRequired = true;
                 //gameState.collectableManager.newCollectablesAreRequired = true;
@@ -190,6 +197,8 @@ public class LevelManager : MonoBehaviour
         {
             if (!levelIsSpawned)
             {
+                bigLevel = true;
+
                 gameState.UIManager.canvas = Instantiate(canvas);
                 gameState.UIManager.newLevelInventoryisRequired = true;
                 //gameState.collectableManager.newCollectablesAreRequired = true;
@@ -218,6 +227,8 @@ public class LevelManager : MonoBehaviour
         {
             if (!levelIsSpawned)
             {
+                bigLevel = true;
+
                 gameState.UIManager.canvas = Instantiate(canvas);
                 gameState.UIManager.newLevelInventoryisRequired = true;
                 GameState.Instance.playerCamera.ManualInit();
@@ -247,6 +258,8 @@ public class LevelManager : MonoBehaviour
         {
             if (!levelIsSpawned)
             {
+                bigLevel = true;
+
                 gameState.UIManager.canvas = Instantiate(canvas);
                 gameState.UIManager.newLevelInventoryisRequired = true;
                 //gameState.collectableManager.newCollectablesAreRequired = true;
@@ -275,6 +288,8 @@ public class LevelManager : MonoBehaviour
         {
             if (!levelIsSpawned)
             {
+                bigLevel = true;
+
                 gameState.UIManager.canvas = Instantiate(canvas);
                 gameState.UIManager.newLevelInventoryisRequired = true;
                 //gameState.collectableManager.newCollectablesAreRequired = true;
@@ -308,6 +323,8 @@ public class LevelManager : MonoBehaviour
         {
             if (!levelIsSpawned)
             {
+                bigLevel = true;
+
                 gameState.UIManager.canvas = Instantiate(canvas);
                 gameState.UIManager.newLevelInventoryisRequired = true;
                 //gameState.collectableManager.newCollectablesAreRequired = true;
@@ -337,6 +354,8 @@ public class LevelManager : MonoBehaviour
         {
             if (!levelIsSpawned)
             {
+                bigLevel = true;
+
                 gameState.UIManager.canvas = Instantiate(canvas);
                 gameState.UIManager.newLevelInventoryisRequired = true;
                 GameState.Instance.playerCamera.ManualInit();
@@ -365,6 +384,8 @@ public class LevelManager : MonoBehaviour
         {
             if (!levelIsSpawned)
             {
+                bigLevel = true;
+
                 gameState.UIManager.canvas = Instantiate(canvas);
                 gameState.UIManager.newLevelInventoryisRequired = true;
                 GameState.Instance.playerCamera.ManualInit();
