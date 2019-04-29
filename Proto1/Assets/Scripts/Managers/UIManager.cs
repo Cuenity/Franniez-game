@@ -24,12 +24,8 @@ public class UIManager : MonoBehaviour
     public void InventoryButtons(PlayerPlatforms playerPlatforms)
     {
 
-        // Dit moet nog veranderd worden naar niet een Tag. Maar dat deed het niet. Dus nu maar 
-        // op deze manier gedaan.
-        //GameObject canvasTest = GameObject.FindGameObjectWithTag("PauseMenu");
-        //pauseMenu = canvasTest.GetComponent<Canvas>();
-        //pauseMenu.enabled = false;
-
+        pauseMenu = Instantiate(pauseMenuCanvas);
+        pauseMenu.enabled = false;
         InstantiateInventoryButtonsCheck(playerPlatforms.InventoryButtonAmmount);
 
         //bool instantiatedInventoryButtonsArrayNotInstantiated = instantiatedInventoryButtons[0] == null;

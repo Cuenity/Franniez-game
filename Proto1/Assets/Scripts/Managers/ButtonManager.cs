@@ -210,9 +210,7 @@ public class ButtonManager : MonoBehaviour
 
     public void MenuButton()
     {
-        //SceneManager.LoadScene("LevelSelect");
-        gameState.UIManager.pauseMenu.enabled = true;
-        //gameState.UIManager.canvas.enabled = false;
+        gameState.UIManager.pauseMenu.enabled = true;      
         gameState.playerCamera.platformDragActive = true;
     }
 }
