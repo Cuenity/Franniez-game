@@ -10,10 +10,13 @@ public class Lift : MonoBehaviour
     int index = 0;
     bool used = false;
     public IEnumerator coroutineLift;
+    public GameObject invisLift;
     // Start is called before the first frame update
     void Start()
     {
         gameState = GameState.Instance;
+        invisLift = Instantiate(invisLift);
+        invisLift.transform.position = this.endPoint;
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -48,7 +51,7 @@ public class Lift : MonoBehaviour
         }
 
         // geef hem zijn oude snelheid weermee laat de rotatie weer verdergaan
-        body.velocity = velocity;       
+        body.velocity = velocity;
         body.freezeRotation = false;
         index = 0;
         this.used = true;
