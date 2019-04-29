@@ -22,7 +22,7 @@ public class UIManager : MonoBehaviour
     public bool newLevelInventoryisRequired = false;
     public Canvas pauseMenu;
 
-    public void InventoryButtons(PlayerPlatforms playerPlatforms)
+    public void InitInventoryButtons(PlayerPlatforms playerPlatforms)
     {
 
         pauseMenu = Instantiate(pauseMenuCanvas);

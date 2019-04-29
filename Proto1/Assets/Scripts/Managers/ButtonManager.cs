@@ -13,6 +13,7 @@ public class ButtonManager : MonoBehaviour
     public delegate void ClickAction();
     public static event ClickAction ChangeEnvironment;
 
+    public bool tutorialActive;
 
     void Start()
     {
@@ -21,6 +22,11 @@ public class ButtonManager : MonoBehaviour
 
     public void StartButton()
     {
+        if (tutorialActive)
+        {
+            gameState.tutorialManager.TurnTutorialMaskOff();
+        }
+
         if (gameState.BuildingPhaseActive == true)
         {
             gameState.levelManager.SetRollingPhase();

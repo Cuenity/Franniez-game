@@ -431,10 +431,10 @@ public class LevelManager : MonoBehaviour
         gameState.BuildingPhaseActive = false;
         gameState.RollingPhaseActive = true;
 
-        if (sceneName != "1"||!PhotonNetwork.IsConnected)
-        {
-            balknop.gameObject.SetActive(false);
-        }
+        //if (sceneName != "1" || !PhotonNetwork.IsConnected)
+        //{
+        //    balknop.gameObject.SetActive(false);
+        //}
         if (PhotonNetwork.IsConnected)
         {
             //deze oplossing is zo smerig wil niet eens een comment schrijven
@@ -470,16 +470,21 @@ public class LevelManager : MonoBehaviour
     }
     public void SetBuildingPhase()
     {
+        if (sceneName == "1")
+        {
+            gameState.tutorialManager.RollingFinished = true;
+        }
+
         if (sceneName != "VictoryScreen")
         {
             gameState.RollingPhaseActive = false;
             gameState.playerBallManager.respawnBal();
             gameState.platformManager.RespawnCollectables();
 
-            if (sceneName != "1"||!PhotonNetwork.IsConnected)
-            {
-                balknop.gameObject.SetActive(true);
-            }
+            //if (sceneName != "1"||!PhotonNetwork.IsConnected)
+            //{
+            //    balknop.gameObject.SetActive(true);
+            //}
             gameState.platformManager.lift.ResetPlatform();
             gameState.BuildingPhaseActive = true;
             gameState.playerBallManager.activePlayer.GetComponent<Rigidbody>().isKinematic = true;

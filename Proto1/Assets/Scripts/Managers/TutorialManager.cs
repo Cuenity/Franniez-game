@@ -4,13 +4,20 @@ using UnityEngine;
 public class TutorialManager : MonoBehaviour
 {
     public GameObject tutorialArrow;
+
+    private GameObject arrow;
+
+    private bool rollingFinished;
     public bool RollingFinished
     {
-        get { return RollingFinished; }
+        get
+        {
+            return rollingFinished;
+        }
         set
         {
-            RollingFinished = value;
-            if (RollingFinished)
+            rollingFinished = value;
+            if (rollingFinished)
             {
                 SpawnTutorialArrow();
             }
@@ -21,8 +28,15 @@ public class TutorialManager : MonoBehaviour
         }
     }
 
+    public void TurnTutorialMaskOff()
+    {
+        GameState.Instance.UIManager.canvas.GetComponentInChildren<TutorialMask>(true).gameObject.SetActive(false);
+    }
+
     public void StartTutorial()
     {
+
+        GameState.Instance.UIManager.canvas.gameObject.transform.Find("StartButton").GetComponent<ButtonManager>().tutorialActive = true;
 
         StartCoroutine(SpawnTutorialMaskAfterSecond());
     }
@@ -31,15 +45,15 @@ public class TutorialManager : MonoBehaviour
     {
         yield return new WaitForSeconds(1);
         GameState.Instance.UIManager.canvas.GetComponentInChildren<TutorialMask>(true).gameObject.SetActive(true);
+        GameState.Instance.UIManager.instantiatedInventoryButtons[0].gameObject.SetActive(false);
     }
 
     private void SpawnTutorialArrow()
     {
-        if (tutorialArrow != null)
+        if (arrow != null)
         {
-            Instantiate(tutorialArrow, new Vector3(3.5f, -4, -4), new Quaternion(0, 0, 45, 0));
+            arrow = Instantiate(tutorialArrow, new Vector3(3.5f, -4, -4), new Quaternion(0, 0, 0, 0));
         }
-        //}
     }
 
     private void RemoveTutorialArrow()

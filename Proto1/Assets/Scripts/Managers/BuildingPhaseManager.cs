@@ -27,7 +27,7 @@ public class BuildingPhaseManager : MonoBehaviour
         if (SceneManager.GetActiveScene().name != "VictoryScreen" && SceneManager.GetActiveScene().name != "MainMenu")
         {
             PlayerPlatforms platforms = gameState.levelManager.playerPlatforms;
-            gameState.UIManager.InventoryButtons(platforms); // InventoryButtons moet meegeven welke platformen en hoeveel van elk, elk verschillend type krijgt één knop met daarin een platform (als afbeelding of wat dan ook) met het aantal weergegeven.
+            gameState.UIManager.InitInventoryButtons(platforms); // InventoryButtons moet meegeven welke platformen en hoeveel van elk, elk verschillend type krijgt één knop met daarin een platform (als afbeelding of wat dan ook) met het aantal weergegeven.
             foreach (GameObject placedPlatform in platforms.placedPlatforms)
             {
                 placedPlatform.AddComponent<PlatformDragManager>();
