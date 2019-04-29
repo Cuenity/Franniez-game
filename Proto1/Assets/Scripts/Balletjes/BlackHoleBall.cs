@@ -45,33 +45,6 @@ public class BlackHoleBall : MonoBehaviourPun
         }
     }
 
-    private IEnumerator respawnballinternal()
-    {
-        yield return new WaitForEndOfFrame();
-        gameState = GameState.Instance;
-        Camera actualcamera = gameState.GetComponent<Camera>();
-        PlayerCamera camera = gameState.playerCamera;
-        this.transform.position = gameState.playerBallManager.spawnpoint;
-        this.GetComponent<Rigidbody>().angularVelocity = new Vector3(0, 0, 0);
-        this.GetComponent<Rigidbody>().velocity = new Vector3(0, 0, 0);
-        //this.GetComponent<Rigidbody>().rotation = new Quaternion(0, 0, 0, 0);
-        camera.transform.position = new Vector3(gameState.playerBallManager.spawnpoint.x + camera.TargetMovementOffset.x, gameState.playerBallManager.spawnpoint.y + camera.TargetMovementOffset.y, gameState.playerBallManager.spawnpoint.z + camera.TargetMovementOffset.z);
-        camera.transform.LookAt(camera.Target.transform.position);
-        camera.GetComponent<Rigidbody>().velocity = new Vector3(0, 0, 0);
-        this.GetComponent<Rigidbody>().Sleep();
-    }
-
-    public void respawnBal()
-    {
-        StartCoroutine(respawnballinternal());
-    }
-    private void OnTriggerEnter(Collider other)
-    {
-        //Debug.Log(other);
-        if(other.name.Contains("Star"))
-        {
-            //Debug.Log("JE MOEDER");
-        }
-    }
+  
 
 }

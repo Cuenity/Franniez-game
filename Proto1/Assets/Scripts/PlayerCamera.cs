@@ -30,7 +30,11 @@ public class PlayerCamera : MonoBehaviour
     }
     private void Start()
     {
-        StartCoroutine(PlayAnimation());
+        if (gameState.levelManager.bigLevel)
+        {
+            StartCoroutine(PlayAnimation());
+        }
+
         if (Target != null)
         {
             transform.LookAt(Target.transform.position + TargetLookAtOffset);
@@ -74,7 +78,7 @@ public class PlayerCamera : MonoBehaviour
             mobileZoom();
         }
         // if building phase dan mag je de camera bewegen. 
-        if (gameState.BuildingPhaseActive == true)
+        if (gameState.BuildingPhaseActive == true && gameState.levelManager.bigLevel)
         {
             // controleren of de camera niet buiten het grid zit en zo ja dan terug zetten en de snelheid op 0 zetten.
             if (this.transform.position.y < gameState.gridManager.height * -1)
@@ -153,7 +157,7 @@ public class PlayerCamera : MonoBehaviour
     // lateupdate want anders was er een frame tussen de drag active en het locken van de camera
     private void LateUpdate()
     {
-        if (gameState.RollingPhaseActive == false)
+        if (gameState.RollingPhaseActive == false && gameState.levelManager.bigLevel)
         {
             if (platformDragActive == false)
             {

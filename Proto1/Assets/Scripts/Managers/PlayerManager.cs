@@ -1,6 +1,4 @@
 ﻿using Photon.Pun;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerManager : MonoBehaviour
@@ -17,7 +15,7 @@ public class PlayerManager : MonoBehaviour
     }
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
@@ -26,14 +24,25 @@ public class PlayerManager : MonoBehaviour
 
     }
 
-    internal void PlayerInit()
+    internal void PlayerInit(Bal type)
     {
         if (newPlayerBallIsRequired)
         {
-            gameState.playerBallManager.InitTypeBall(Bal.Normal);
+            gameState.playerBallManager.InitTypeBall(type);
 
             gameState.playerBallManager.activePlayer.transform.position = gameState.playerBallManager.spawnpoint;
-            gameState.playerCamera.Target = gameState.playerBallManager.activePlayer;
+
+            if (gameState.levelManager.bigLevel)
+            {
+                gameState.playerCamera.Target = gameState.playerBallManager.activePlayer;
+            }
+            else
+            {
+                GameObject targetObject = new GameObject("CenterCameraTarget");
+                targetObject.transform.position = new Vector3(gameState.gridManager.width / 2, -gameState.gridManager.height / 2);
+                gameState.playerCamera.Target = targetObject;
+            }
+
             gameState.playerCamera.transform.position = gameState.playerCamera.Target.transform.position + gameState.playerCamera.TargetMovementOffset;
             gameState.playerCamera.transform.LookAt(gameState.playerCamera.Target.transform.position);
 
@@ -48,7 +57,7 @@ public class PlayerManager : MonoBehaviour
     }
 
     internal void MultiPlayerBallInit(int spawn1, int spawn2)
-    { 
+    {
         //geeft de mogelijkheid 2 spawnpoints mee te geven 
         ///eeeh dis ook wel beetje vies als het werkt
         if (PhotonNetwork.IsMasterClient)

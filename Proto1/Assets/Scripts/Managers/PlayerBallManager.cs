@@ -16,6 +16,8 @@ public class PlayerBallManager : MonoBehaviour
     public GameObject tempMultiBall;
     public GameObject MultiActivePlayer1;
     public GameObject MultiActivePlayer2;
+    public List<Bal> ballList = new List<Bal>();
+    public int activeplayerIndex;
 
 
 
@@ -43,22 +45,25 @@ public class PlayerBallManager : MonoBehaviour
             {
                 case Bal.BlackHole:
                     tempMultiBall = PhotonNetwork.Instantiate("Photon BlackHoleBall", gameState.playerBallManager.spawnpoint, new Quaternion(0, 0, 0, 0)).gameObject;
-                    
+
                     gameState.playerCamera.Target = tempMultiBall;
                     break;
                 case Bal.Light:
-                    tempMultiBall = PhotonNetwork.Instantiate("Photon LightBall", gameState.playerBallManager.spawnpoint, new Quaternion(0, 0, 0, 0)).gameObject;
                     
+                    tempMultiBall = PhotonNetwork.Instantiate("Photon LightBall", gameState.playerBallManager.spawnpoint, new Quaternion(0, 0, 0, 0)).gameObject;
+
                     gameState.playerCamera.Target = tempMultiBall;
                     break;
                 case Bal.Normal:
-                    tempMultiBall = PhotonNetwork.Instantiate("Photon Player Ball", gameState.playerBallManager.spawnpoint, new Quaternion(0, 0, 0, 0)).gameObject;
                     
+                    tempMultiBall = PhotonNetwork.Instantiate("Photon Player Ball", gameState.playerBallManager.spawnpoint, new Quaternion(0, 0, 0, 0)).gameObject;
+
                     gameState.playerCamera.Target = tempMultiBall;
                     break;
                 default:
-                    tempMultiBall = PhotonNetwork.Instantiate("Photon Player Ball", gameState.playerBallManager.spawnpoint, new Quaternion(0, 0, 0, 0)).gameObject;
                     
+                    tempMultiBall = PhotonNetwork.Instantiate("Photon Player Ball", gameState.playerBallManager.spawnpoint, new Quaternion(0, 0, 0, 0)).gameObject;
+
                     gameState.playerCamera.Target = tempMultiBall;
                     break;
             }
@@ -104,17 +109,44 @@ public class PlayerBallManager : MonoBehaviour
             }
         }
     }
+
+    public void WhatBalls(bool normalball, bool blackholeball, bool lightball)
+    {
+        //kijken welke ballen er in het level mogen en dan de knop disablen als dit er maar 1 is
+        ballList.Clear();
+        if (normalball)
+        {
+            ballList.Add(Bal.Normal);
+        }
+        if (blackholeball)
+        {
+            ballList.Add(Bal.BlackHole);
+        }
+        if (lightball)
+        {
+            ballList.Add(Bal.Light);
+        }
+        BallKnop ballknop = gameState.UIManager.canvas.GetComponentInChildren<BallKnop>(true);
+        if (ballList.Count > 1)
+        {
+            ballknop.gameObject.SetActive(true);
+        }
+
+    }
     private IEnumerator respawnballinternal()
     {
         yield return new WaitForEndOfFrame();
         gameState = GameState.Instance;
         Camera actualcamera = gameState.GetComponent<Camera>();
         PlayerCamera camera = gameState.playerCamera;
-        this.activePlayer.transform.position = gameState.playerBallManager.spawnpoint;
-        this.activePlayer.GetComponent<Rigidbody>().angularVelocity = new Vector3(0, 0, 0);
-        this.activePlayer.GetComponent<Rigidbody>().velocity = new Vector3(0, 0, 0);
-        //this.GetComponent<Rigidbody>().rotation = new Quaternion(0, 0, 0, 0);
-        camera.transform.position = new Vector3(gameState.playerBallManager.spawnpoint.x + camera.TargetMovementOffset.x, gameState.playerBallManager.spawnpoint.y + camera.TargetMovementOffset.y, gameState.playerBallManager.spawnpoint.z + camera.TargetMovementOffset.z);
+        activePlayer.transform.position = gameState.playerBallManager.spawnpoint;
+        activePlayer.GetComponent<Rigidbody>().angularVelocity = new Vector3(0, 0, 0);
+        activePlayer.GetComponent<Rigidbody>().velocity = new Vector3(0, 0, 0);
+        if (gameState.levelManager.bigLevel)
+        {
+            camera.transform.position = gameState.playerBallManager.spawnpoint + camera.TargetMovementOffset;
+        }
+        
         camera.transform.LookAt(camera.Target.transform.position);
         camera.GetComponent<Rigidbody>().velocity = new Vector3(0, 0, 0);
         this.GetComponent<Rigidbody>().Sleep();
