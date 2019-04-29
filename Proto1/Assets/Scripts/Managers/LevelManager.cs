@@ -132,7 +132,7 @@ public class LevelManager : MonoBehaviour
             if (!levelIsSpawned)
             {
                 bigLevel = false;
-                //gameState.tutoral.SpawnTutorialArrow();
+                gameState.tutorialManager.StartTutorial();
 
                 gameState.UIManager.canvas = Instantiate(canvas);
                 gameState.UIManager.newLevelInventoryisRequired = true;
@@ -141,7 +141,7 @@ public class LevelManager : MonoBehaviour
                 Vector3 playeradjustment = new Vector3(.5f, 0, 0);
                 gameState.gridManager.width = 8;
                 gameState.gridManager.height = 5;
-                playerPlatforms = new PlayerPlatforms(0, 1, 0, 0, 0);
+                playerPlatforms = new PlayerPlatforms(0, 2, 0, 0, 0);
                 gameState.gridManager.Build_Grid_BuildingPhase_Without_Visuals();
                 gameState.playerBallManager.SetSpawnpoint(0);
                 //gameState.playerManager.player.spawnpoint = gameState.gridManager.gridSquares[1] + playeradjustment;

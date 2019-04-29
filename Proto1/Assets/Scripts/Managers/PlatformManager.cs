@@ -442,7 +442,7 @@ public class PlatformManager : MonoBehaviour
         //rechthoekSpots.Add(16);
         rechthoekSpots.Add(20);
         rechthoekSpots.Add(32);
-        rechthoekSpots.Add(34);
+        //rechthoekSpots.Add(34);
         rechthoekSpots.Add(36);
         RampSpotsReversed.Add(30);
 
