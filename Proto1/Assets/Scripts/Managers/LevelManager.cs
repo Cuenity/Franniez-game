@@ -4,6 +4,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -366,6 +367,15 @@ public class LevelManager : MonoBehaviour
             if (!levelIsSpawned)
             {
                 gameState.UIManager.canvas = Instantiate(canvas);
+                //fuck die button shit see if i give a shit fuckboi
+                //Button[] canvasButtons = gameState.UIManager.canvas.GetComponentsInChildren<Button>();
+                //for (int i = 0; i < canvasButtons.Length; i++)
+                //{
+                //    if (canvasButtons[i].name == "BallKnop")
+                //    {
+                //        canvasButtons[i].gameObject.SetActive(true);
+                //    }
+                //}
                 gameState.UIManager.newLevelInventoryisRequired = true;
                 GameState.Instance.playerCamera.ManualInit();
                 Vector3 playeradjustment = new Vector3(.5f, 0, 0);
@@ -377,11 +387,11 @@ public class LevelManager : MonoBehaviour
                 playerPlatforms = new PlayerPlatforms(7, 7, 4, 3, 0);
                 GameState.Instance.gridManager.Build_Grid_FromJSON_Without_Visuals(levelPlatformen.width, levelPlatformen.heigth);
 
-                
+
                 int[] coinarray = new int[] { 131, 132, 133 };
-                int finishPosition = 39;
+                int finishPosition = 250;
                 GameState.Instance.platformManager.BuildLevelFromLevelPlatformen(levelPlatformen, coinarray, finishPosition);
-                gameState.playerManager.MultiPlayerBallInit(45,55);
+                gameState.playerManager.MultiPlayerBallInit(45, 55);
 
                 gameState.BuildingPhaseActive = true;
                 //dit is wel poep moet echt es anders
@@ -395,7 +405,7 @@ public class LevelManager : MonoBehaviour
         gameState.BuildingPhaseActive = false;
         gameState.RollingPhaseActive = true;
 
-        if (sceneName != "1")
+        if (sceneName != "1"||!PhotonNetwork.IsConnected)
         {
             balknop.gameObject.SetActive(false);
         }
@@ -407,13 +417,13 @@ public class LevelManager : MonoBehaviour
             if (PhotonNetwork.IsMasterClient)
             {
                 GameObject.Find("player1ball").GetComponent<Rigidbody>().isKinematic = false;
-                GameObject.Find("Photon BlackHoleBall(Clone)").GetComponent<Rigidbody>().isKinematic = true;
+                GameObject.Find("Photon Player Ball(Clone)").GetComponent<Rigidbody>().isKinematic = true;
 
             }
             else
             {
                 GameObject.Find("player2ball").GetComponent<Rigidbody>().isKinematic = false;
-                GameObject.Find("Photon BlackHoleBall(Clone)").GetComponent<Rigidbody>().isKinematic = true;
+                GameObject.Find("Photon Player Ball(Clone)").GetComponent<Rigidbody>().isKinematic = true;
             }
             //ik wil hetlater toch echt zo doen dit hierboven zo WACK
             //if (gameState.playerBallManager.activePlayer.GetPhotonView().IsMine)
@@ -440,7 +450,7 @@ public class LevelManager : MonoBehaviour
             gameState.playerBallManager.respawnBal();
             gameState.platformManager.RespawnCollectables();
 
-            if (sceneName != "1")
+            if (sceneName != "1"||!PhotonNetwork.IsConnected)
             {
                 balknop.gameObject.SetActive(true);
             }
@@ -460,13 +470,13 @@ public class LevelManager : MonoBehaviour
 
 
     ///////////////////////////////////////////
-    //////dit hieronder kan allemaal weg??///// idk, you tell me
+    //////dit hieronder kan allemaal weg??///// idk, you tell me Denk t wel zal het uitcommenten voor de zekerheid
     ///////////////////////////////////////////
 
 
-    //SceneLoading and generals
-    //https://www.alanzucconi.com/2016/03/30/loading-bar-in-unity/
-    //
+    ////SceneLoading and generals
+    ////https://www.alanzucconi.com/2016/03/30/loading-bar-in-unity/
+    ////
     internal void AsynchronousLoadStart(string scene)
     {
         //coinList.Clear();
@@ -506,6 +516,7 @@ public class LevelManager : MonoBehaviour
         }
     }
 }
+//}
 //scheit voor scheit mensen
 //if (sceneName == "lol1")
 //        {

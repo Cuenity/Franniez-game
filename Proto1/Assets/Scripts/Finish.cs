@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using Photon.Pun;
 
 public class Finish : MonoBehaviour
 {
@@ -30,6 +31,7 @@ public class Finish : MonoBehaviour
         if (!other.isTrigger)
         {
             Finished();
+            if(!PhotonNetwork.InRoom)
             this.gameObject.SetActive(false);
         }
 

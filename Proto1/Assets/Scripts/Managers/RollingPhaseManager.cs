@@ -1,4 +1,5 @@
 using GameAnalyticsSDK;
+using Photon.Pun;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -113,70 +114,95 @@ public class RollingPhaseManager : MonoBehaviour
 
     private void ReachedFinish()
     {
-        if (PlayerPrefs.GetInt("Vibration") == 1)
+        if (PhotonNetwork.InRoom)
         {
-            Handheld.Vibrate();
-        }
-        //level.gotSticker = pickedSticker;
-        level.completed = true;
-
-
-
-        int amountOfCoinsLevel = level.countCoins;
-        if (amountCoins > amountOfCoinsLevel)
-        {
-            level.countCoins = amountCoins;
-        }
-
-
-
-        if (player.levels == null)
-        {
-            player.levels = new Level[50];
-        }
-        player = PlayerDataController.instance.player;
-        //hier moet een check komen die kijkt of de behaalde sterren hoger zijn(eerder) dan aantal sterren nu behaald
-        //voor de duidelijkheid player.level is wat is opgeslagen terwijl level het net behaalde is
-        if (level.countCoins == 3 || PlayerDataController.instance.player.levels[PlayerDataController.instance.previousScene-1].gotSticker==true)
-        {
-            level.gotSticker = true;
-        }
-        if (levelNumber != 0)
-        {
-
-            if (player.levels.Length > 0 && player.levels[0] != null)
+            //finish is geraakt door 1 speler
+            //zet een variabel op true voor deze speler alleen
+            if (PhotonNetwork.IsMasterClient)
             {
-                player.levels[levelNumber - 1].completed = level.completed;
-                if (player.levels[levelNumber - 1].countCoins <= level.countCoins)
-                {
-                    player.levels[levelNumber - 1].countCoins = level.countCoins;
-                }
-                player.levels[levelNumber - 1].gotSticker = level.gotSticker;
+                PhotonDataOpslag.Instance.FlagHitPlayer1 = true;
+                Debug.Log("Player 1 vlag hit");
             }
             else
             {
-                player.levels[0] = level;
+                PhotonDataOpslag.Instance.FlagHitPlayer2 = true;
+                Debug.Log("player 2 vlag hit");
+            }
+            //check of de andere variabel is getruet
+            //
+            if (PhotonDataOpslag.Instance.FlagHitPlayer1 && PhotonDataOpslag.Instance.FlagHitPlayer2)
+            {
+                //Go to victoty
+                Debug.Log("VICTORY voor beiden");
             }
         }
-
-        player.coins += amountCoins;
-        PlayerDataController.instance.player = player;
-        PlayerDataController.instance.Save();
-        PlayerDataController.instance.previousScene = levelNumber;
-        if (PlayerDataController.instance.previousSceneCoinCount < level.countCoins)
+        else
         {
-            PlayerDataController.instance.previousSceneCoinCount = level.countCoins;
+            if (PlayerPrefs.GetInt("Vibration") == 1)
+            {
+                Handheld.Vibrate();
+            }
+            //level.gotSticker = pickedSticker;
+            level.completed = true;
+
+
+
+            int amountOfCoinsLevel = level.countCoins;
+            if (amountCoins > amountOfCoinsLevel)
+            {
+                level.countCoins = amountCoins;
+            }
+
+
+
+            if (player.levels == null)
+            {
+                player.levels = new Level[50];
+            }
+            player = PlayerDataController.instance.player;
+            //hier moet een check komen die kijkt of de behaalde sterren hoger zijn(eerder) dan aantal sterren nu behaald
+            //voor de duidelijkheid player.level is wat is opgeslagen terwijl level het net behaalde is
+            if (level.countCoins == 3 || PlayerDataController.instance.player.levels[PlayerDataController.instance.previousScene - 1].gotSticker == true)
+            {
+                level.gotSticker = true;
+            }
+            if (levelNumber != 0)
+            {
+
+                if (player.levels.Length > 0 && player.levels[0] != null)
+                {
+                    player.levels[levelNumber - 1].completed = level.completed;
+                    if (player.levels[levelNumber - 1].countCoins <= level.countCoins)
+                    {
+                        player.levels[levelNumber - 1].countCoins = level.countCoins;
+                    }
+                    player.levels[levelNumber - 1].gotSticker = level.gotSticker;
+                }
+                else
+                {
+                    player.levels[0] = level;
+                }
+            }
+
+            player.coins += amountCoins;
+            PlayerDataController.instance.player = player;
+            PlayerDataController.instance.Save();
+            PlayerDataController.instance.previousScene = levelNumber;
+            if (PlayerDataController.instance.previousSceneCoinCount < level.countCoins)
+            {
+                PlayerDataController.instance.previousSceneCoinCount = level.countCoins;
+            }
+            //maybe fix denk dat de progression null logt
+            string stringlevelnumbervoorGA = levelNumber.ToString();
+            GameAnalytics.NewProgressionEvent(GAProgressionStatus.Complete, levelNumber.ToString());
+            SceneSwitcher.Instance.AsynchronousLoadStartNoLoadingBar("VictoryScreen");
+            //DontDestroyOnLoad(gameState.playerManager.player);
+            //gameState.UIManager.DeactivateInventoryButtons();
+            //GameState.Instance.levelManager.AsynchronousLoadStart("VictoryScreen");
+            //gameState.playerCamera.gameObject.SetActive(false);
+            //gameState.levelManager.levelIsSpawned = false;
+            //SceneManager.LoadScene("VictoryScreen");
         }
-        //maybe fix denk dat de progression null logt
-        string stringlevelnumbervoorGA = levelNumber.ToString();
-        GameAnalytics.NewProgressionEvent(GAProgressionStatus.Complete, levelNumber.ToString());
-        SceneSwitcher.Instance.AsynchronousLoadStartNoLoadingBar("VictoryScreen");
-        //DontDestroyOnLoad(gameState.playerManager.player);
-        //gameState.UIManager.DeactivateInventoryButtons();
-        //GameState.Instance.levelManager.AsynchronousLoadStart("VictoryScreen");
-        //gameState.playerCamera.gameObject.SetActive(false);
-        //gameState.levelManager.levelIsSpawned = false;
-        //SceneManager.LoadScene("VictoryScreen");
     }
 
 }
