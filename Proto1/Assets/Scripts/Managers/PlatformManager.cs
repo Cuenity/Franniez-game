@@ -424,8 +424,6 @@ public class PlatformManager : MonoBehaviour
 
     public void BuildTutorial()
     {
-        gameState.UIManager.canvas.transform.GetChild(7).gameObject.SetActive(false);
-
         Vector3 rampAdjustment = new Vector3(0.5f, 0f, 0f);
         List<int> RampSpots = new List<int>();
         List<int> PlatformSpots = new List<int>();

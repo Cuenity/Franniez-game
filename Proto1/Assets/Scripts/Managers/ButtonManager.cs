@@ -171,6 +171,7 @@ public class ButtonManager : MonoBehaviour
 
     public void ChangeBall()
     {
+        // check of active bal in de lijst voorkomt en dan de volgende in de lijst spawnen
         gameState = GameState.Instance;
         GameObject prev_ball = gameState.playerBallManager.activePlayer;
         List<Bal> list = gameState.playerBallManager.ballList;
