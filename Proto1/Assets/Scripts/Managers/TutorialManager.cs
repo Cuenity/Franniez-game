@@ -6,6 +6,7 @@ public class TutorialManager : MonoBehaviour
     public GameObject tutorialArrow;
 
     private GameObject arrow;
+    private GameObject arrow2;
 
     private bool rollingFinished;
     public bool RollingFinished
@@ -19,7 +20,7 @@ public class TutorialManager : MonoBehaviour
             rollingFinished = value;
             if (rollingFinished)
             {
-                SpawnTutorialArrow();
+                SpawnTutorialArrows();
             }
             else
             {
@@ -66,15 +67,19 @@ public class TutorialManager : MonoBehaviour
 
     IEnumerator SpawnTutorialMaskAfterSecond()
     {
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(0.2f);
         GameState.Instance.UIManager.canvas.GetComponentInChildren<TutorialMask>(true).gameObject.SetActive(true);
     }
 
-    private void SpawnTutorialArrow()
+    private void SpawnTutorialArrows()
     {
         if (arrow == null)
         {
             arrow = Instantiate(tutorialArrow, new Vector3(3.5f, -4, -4), Quaternion.Euler(0, 0, 45));
+        }
+        if (arrow2 == null)
+        {
+            arrow2 = Instantiate(tutorialArrow, new Vector3(3.5f, -0, -4), Quaternion.Euler(0, 0, 0));
         }
     }
 
