@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[CreateAssetMenu(fileName = "New Skin", menuName = "Skin")]
 [System.Serializable]
 public class SkinObject : ScriptableObject
 {
@@ -9,9 +10,9 @@ public class SkinObject : ScriptableObject
     public string skinName = "Skin Name";
     public int cost = 50;
     public string description;
+    public Sprite shopImage;
 
     // Voor het balletje zelf
-    public Sprite texture;
     public Material material;
 
 }

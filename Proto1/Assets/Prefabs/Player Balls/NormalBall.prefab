@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 8951874512824316334}
   - component: {fileID: 4045212194601171583}
   m_Layer: 0
-  m_Name: Player Ball
+  m_Name: NormalBall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -61,7 +61,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 8ac041fdb5b95b543a98945f574ddfb7, type: 2}
+  - {fileID: 2100000, guid: 3edc1256ddfba7e47b9c845137f793b7, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -111,6 +111,11 @@ MonoBehaviour:
   normalBall: {fileID: 0}
   lightBall: {fileID: 0}
   activePlayer: {fileID: 0}
+  tempMultiBall: {fileID: 0}
+  MultiActivePlayer1: {fileID: 0}
+  MultiActivePlayer2: {fileID: 0}
+  ballList: 
+  activeplayerIndex: 0
 --- !u!54 &8951874512824316334
 Rigidbody:
   m_ObjectHideFlags: 0

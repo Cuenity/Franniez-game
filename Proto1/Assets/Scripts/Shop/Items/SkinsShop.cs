@@ -50,7 +50,7 @@ namespace Assets.Scripts.Shop.Items
             {
                 cost = 20,
                 skinName = LocalizationManager.instance.GetLocalizedValue("skin_World"),
-                texture = texture_World,
+                shopImage = texture_World,
                 material = mat_World
             };
             skins.Add(world);
@@ -60,7 +60,7 @@ namespace Assets.Scripts.Shop.Items
             {
                 cost = 20,
                 skinName = LocalizationManager.instance.GetLocalizedValue("skin_Basketball"),
-                texture = texture_Basketball,
+                shopImage = texture_Basketball,
                 material = mat_Basketball
             };
             skins.Add(basketBall);
@@ -70,7 +70,7 @@ namespace Assets.Scripts.Shop.Items
             {
                 cost = 20,
                 skinName = LocalizationManager.instance.GetLocalizedValue("skin_Tennisball"),
-                texture = texture_Tennisball,
+                shopImage = texture_Tennisball,
                 material = mat_Tennisball
             };
             skins.Add(tennisball);
@@ -80,7 +80,7 @@ namespace Assets.Scripts.Shop.Items
             {
                 cost = 20,
                 skinName = "Blue",
-                texture = texture_Tennisball,
+                shopImage = texture_Tennisball,
                 material = mat_Tennisball
             };
             skins.Add(blue);

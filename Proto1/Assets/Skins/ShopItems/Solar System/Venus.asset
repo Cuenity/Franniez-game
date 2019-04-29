@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 99486fa78c3716449954b1221c009225, type: 3}
+  m_Name: Venus
+  m_EditorClassIdentifier: 
+  skinName: Venus
+  cost: 50
+  description: 
+  shopImage: {fileID: 21300000, guid: 2ef110d6066927144a6b2ed7a40a4931, type: 3}
+  material: {fileID: 2100000, guid: 77f128b7d119b0c40acc70421d3ea364, type: 2}

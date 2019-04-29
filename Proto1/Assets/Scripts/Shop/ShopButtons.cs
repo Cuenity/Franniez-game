@@ -12,6 +12,8 @@ public class ShopButtons : MonoBehaviour
     private GameObject SkinsPanel, MusicPanel, CoinsPanel;
     [SerializeField]
     public Text AmountCoinsPlayer;
+    [SerializeField]
+    private GameObject warningPanel;
 
     // Private properties for GameAnalytics
     private float startTime;
@@ -23,6 +25,7 @@ public class ShopButtons : MonoBehaviour
 
     public delegate void ClickAction(string name);
     public static event ClickAction ChangeImage;
+    public event ClickAction BuySkinEvent;
 
     public void Awake()
     {
@@ -34,6 +37,12 @@ public class ShopButtons : MonoBehaviour
         //Start Time for GameAnal
         startTime = Time.time;
     }
+
+    public void OnEnable()
+    {
+        GetComponentInParent<ShopFillSkins>().ButtonClicked += BuySkin;
+    }
+
     public void ReturnMainMenu()
     {
         endTime = Time.time - startTime;
@@ -87,6 +96,11 @@ public class ShopButtons : MonoBehaviour
             PlayerDataController.instance.player = player;
             UpdateCoins();
         }
+        else
+        {
+            BuySkinEvent(amount.ToString());
+            warningPanel.SetActive(true);
+        }
 
         if (PlayerDataController.instance.RemoveShopCoins(amount))
         {
@@ -95,6 +109,8 @@ public class ShopButtons : MonoBehaviour
         }
         else
         {
+            BuySkinEvent(amount.ToString());
+            warningPanel.SetActive(true);
             // Geef melding dat gebruiker niet genoeg punten heeft.
         }
     }
@@ -104,6 +120,11 @@ public class ShopButtons : MonoBehaviour
         // Check morgen (24 april) welke hij pakt - 23 April
         AmountCoinsPlayer.text = PlayerDataController.instance.ReturnCoins().ToString();
         AmountCoinsPlayer.text = player.ShopCoins.ToString();
+    }
+
+    public void Button_CloseWarningPanel()
+    {
+        warningPanel.SetActive(false);
     }
 
 }

@@ -23,7 +23,7 @@ public class ShopSkinButton : MonoBehaviour
         skinObject = skin;
         title.text = skinObject.skinName;
         cost.text = skinObject.cost.ToString();
-        image.sprite = skinObject.texture;
+        image.sprite = skinObject.shopImage;
     }
 
 }
