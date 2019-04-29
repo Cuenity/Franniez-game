@@ -435,6 +435,18 @@ public class LevelManager : MonoBehaviour
         //{
         //    balknop.gameObject.SetActive(false);
         //}
+        if (sceneName != "1"||!PhotonNetwork.InRoom)
+        {
+            //idk man fucking error bullshit magic spell try catch
+            try
+            {
+                balknop.gameObject.SetActive(false);
+            }
+            catch
+            {
+
+            }
+        }
         if (PhotonNetwork.IsConnected)
         {
             //deze oplossing is zo smerig wil niet eens een comment schrijven
@@ -475,6 +487,17 @@ public class LevelManager : MonoBehaviour
             gameState.tutorialManager.RollingFinished = true;
         }
 
+        if (PhotonNetwork.InRoom)
+        {
+            if (PhotonNetwork.IsMasterClient)
+            {
+                PhotonDataOpslag.Instance.FlagHitPlayer1 = false;
+            }
+            else
+            {
+                PhotonDataOpslag.Instance.FlagHitPlayer2 = false;
+            }
+        }
         if (sceneName != "VictoryScreen")
         {
             gameState.RollingPhaseActive = false;
@@ -485,6 +508,18 @@ public class LevelManager : MonoBehaviour
             //{
             //    balknop.gameObject.SetActive(true);
             //}
+            if (sceneName != "1"||!PhotonNetwork.InRoom)
+            {
+                //idk man fucking error bullshit magic spell try catch
+                try
+                {
+                    balknop.gameObject.SetActive(true);
+                }
+                catch
+                {
+
+                }
+            }
             gameState.platformManager.lift.ResetPlatform();
             gameState.BuildingPhaseActive = true;
             gameState.playerBallManager.activePlayer.GetComponent<Rigidbody>().isKinematic = true;
