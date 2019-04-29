@@ -214,13 +214,9 @@ public class PlatformManager : MonoBehaviour
 
     private int CheckForEmptyAreaAroundWrongPlacement(int minimumValueIndex)
     {
-        Debug.Log("CheckForEmptyAreaAroundWrongPlacement totaal niet af");
-
-        Debug.Log(minimumValueIndex % gameState.gridManager.width);
-
         int newSpot;
 
-        bool[,] replaceArrayLaterWithRealTwoDimentionalArray = new bool[gameState.gridManager.height, gameState.gridManager.width];
+        //bool[,] replaceArrayLaterWithRealTwoDimentionalArray = new bool[gameState.gridManager.height, gameState.gridManager.width];
         int column = 0;
         int row = 0;
         int minimumValueIndexRow = 0;
@@ -263,6 +259,16 @@ public class PlatformManager : MonoBehaviour
             }
         }
 
+        // een rij naar beneden checken
+        if (minimumValueIndexRow < gameState.gridManager.height - 1)
+        {
+            newSpot = minimumValueIndex + gameState.gridManager.width;
+            if (!gameState.gridManager.filledGridSpots[newSpot] && !gameState.gridManager.filledGridSpots[newSpot + 1])
+            {
+                return newSpot;
+            }
+        }
+
         // een rij naar boven checken
         if (minimumValueIndexRow > 0)
         {
@@ -273,18 +279,7 @@ public class PlatformManager : MonoBehaviour
             }
         }
 
-        // een rij naar beneden checken, niet af
-        if (minimumValueIndexRow < gameState.gridManager.height - 1)
-        {
-            newSpot = minimumValueIndex + gameState.gridManager.width;
-            if (!gameState.gridManager.filledGridSpots[newSpot] && !gameState.gridManager.filledGridSpots[newSpot + 1])
-            {
-                return newSpot;
-            }
-        }
-
-
-        // if no empty nearby spot can be found
+        // als er geen lege plek gevonden kan worden
         return -1;
     }
 

@@ -15,6 +15,7 @@ public class UIManager : MonoBehaviour
     public Sprite boostPlatformImage;
     public Sprite cannonPlatformImage;
     public Sprite normalBallImage;
+    public GameObject tutorialArrow;
 
     public InventoryButton[] instantiatedInventoryButtons;
 
