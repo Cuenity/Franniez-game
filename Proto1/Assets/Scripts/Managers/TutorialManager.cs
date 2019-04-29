@@ -36,23 +36,45 @@ public class TutorialManager : MonoBehaviour
     public void StartTutorial()
     {
 
-        GameState.Instance.UIManager.canvas.gameObject.transform.Find("StartButton").GetComponent<ButtonManager>().tutorialActive = true;
+        StartCoroutine(SetTutorialActiveAsSoonAsPossible());
+
 
         StartCoroutine(SpawnTutorialMaskAfterSecond());
+    }
+
+    IEnumerator SetTutorialActiveAsSoonAsPossible()
+    {
+        bool done = false;
+        while (!done)
+        {
+            if (GameState.Instance.UIManager.canvas != null)
+            {
+                GameState.Instance.UIManager.canvas.gameObject.transform.Find("StartButton").GetComponent<ButtonManager>().tutorialActive = true;
+
+                if (GameState.Instance.UIManager.instantiatedInventoryButtons.Length > 0)
+                {
+                    if (GameState.Instance.UIManager.instantiatedInventoryButtons[0] != null)
+                    {
+                        GameState.Instance.UIManager.instantiatedInventoryButtons[0].gameObject.SetActive(false);
+                        done = true;
+                    }
+                }
+            }
+            yield return null;
+        }
     }
 
     IEnumerator SpawnTutorialMaskAfterSecond()
     {
         yield return new WaitForSeconds(1);
         GameState.Instance.UIManager.canvas.GetComponentInChildren<TutorialMask>(true).gameObject.SetActive(true);
-        GameState.Instance.UIManager.instantiatedInventoryButtons[0].gameObject.SetActive(false);
     }
 
     private void SpawnTutorialArrow()
     {
-        if (arrow != null)
+        if (arrow == null)
         {
-            arrow = Instantiate(tutorialArrow, new Vector3(3.5f, -4, -4), new Quaternion(0, 0, 0, 0));
+            arrow = Instantiate(tutorialArrow, new Vector3(3.5f, -4, -4), Quaternion.Euler(0, 0, 45));
         }
     }
 
