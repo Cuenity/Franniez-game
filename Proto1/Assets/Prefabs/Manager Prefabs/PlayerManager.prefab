@@ -44,7 +44,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2667f91b448687141bc7e417ef6e2a73, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 5237722401397529735, guid: 286c6364973fb564e93ab31e3f148acf, type: 3}
+  playerManager: {fileID: 4434333893575981518, guid: 4a9522ed322e4684ea798a5e9edce5f5,
+    type: 3}
   collectedCoins: 0
   collectedSticker: 0
 --- !u!54 &7553527090302569682

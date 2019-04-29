@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using Photon.Pun;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 [RequireComponent(typeof(Rigidbody))]
@@ -10,6 +11,11 @@ public class PlayerBallManager : MonoBehaviour
     public NormalBall normalBall;
     public LightBall lightBall;
     public GameObject activePlayer;
+
+    //Multiplayervariablen
+    public GameObject tempMultiBall;
+    public GameObject MultiActivePlayer1;
+    public GameObject MultiActivePlayer2;
 
 
 
@@ -28,28 +34,74 @@ public class PlayerBallManager : MonoBehaviour
 
     public void InitTypeBall(Bal type)
     {
-        switch (type)
+        //Photon instantiate
+        // instantiate de photon manier en geeft het object een andere naam(zodat deze niet fuckt)
+        // alle rare assignemt zooi(tempmultiball en multiball) hoeft wss niet meer maar staat er nog 
+        if (PhotonNetwork.IsConnected)
         {
-            case Bal.BlackHole:
-                activePlayer = Instantiate(blackHoleBall, gameState.playerBallManager.spawnpoint, new Quaternion(0,0,0,0)).gameObject;
-                gameState.playerBallManager.activePlayer = activePlayer;
-                gameState.playerCamera.Target = activePlayer;
-                break;
-            case Bal.Light:
-                activePlayer = Instantiate(lightBall, gameState.playerBallManager.spawnpoint, new Quaternion(0, 0, 0, 0)).gameObject;
-                gameState.playerBallManager.activePlayer = activePlayer;
-                gameState.playerCamera.Target = activePlayer;
-                break;
-            case Bal.Normal:
-                activePlayer = Instantiate(normalBall, gameState.playerBallManager.spawnpoint, new Quaternion(0, 0, 0, 0)).gameObject;
-                gameState.playerBallManager.activePlayer = activePlayer;
-                gameState.playerCamera.Target = activePlayer;
-                break;
-            default:
-                activePlayer = Instantiate(normalBall, gameState.playerBallManager.spawnpoint, new Quaternion(0, 0, 0, 0)).gameObject;
-                gameState.playerBallManager.activePlayer = activePlayer;
-                gameState.playerCamera.Target = activePlayer;
-                break;
+            switch (type)
+            {
+                case Bal.BlackHole:
+                    tempMultiBall = PhotonNetwork.Instantiate("Photon BlackHoleBall", gameState.playerBallManager.spawnpoint, new Quaternion(0, 0, 0, 0)).gameObject;
+                    
+                    gameState.playerCamera.Target = tempMultiBall;
+                    break;
+                case Bal.Light:
+                    tempMultiBall = PhotonNetwork.Instantiate("Photon BlackHoleBall", gameState.playerBallManager.spawnpoint, new Quaternion(0, 0, 0, 0)).gameObject;
+                    
+                    gameState.playerCamera.Target = tempMultiBall;
+                    break;
+                case Bal.Normal:
+                    tempMultiBall = PhotonNetwork.Instantiate("Photon BlackHoleBall", gameState.playerBallManager.spawnpoint, new Quaternion(0, 0, 0, 0)).gameObject;
+                    
+                    gameState.playerCamera.Target = tempMultiBall;
+                    break;
+                default:
+                    tempMultiBall = PhotonNetwork.Instantiate("Photon BlackHoleBall", gameState.playerBallManager.spawnpoint, new Quaternion(0, 0, 0, 0)).gameObject;
+                    
+                    gameState.playerCamera.Target = tempMultiBall;
+                    break;
+            }
+            if (PhotonNetwork.IsMasterClient)
+            {
+                MultiActivePlayer1 = tempMultiBall;
+                MultiActivePlayer1.name = "player1ball";
+                activePlayer = tempMultiBall;
+                tempMultiBall = null;
+            }
+            else
+            {
+                MultiActivePlayer2 = tempMultiBall;
+                MultiActivePlayer2.name = "player2ball";
+                activePlayer = tempMultiBall;
+                tempMultiBall = null;
+            }
+        }
+        else
+        {
+            switch (type)
+            {
+                case Bal.BlackHole:
+                    activePlayer = Instantiate(blackHoleBall, gameState.playerBallManager.spawnpoint, new Quaternion(0, 0, 0, 0)).gameObject;
+                    gameState.playerBallManager.activePlayer = activePlayer;
+                    gameState.playerCamera.Target = activePlayer;
+                    break;
+                case Bal.Light:
+                    activePlayer = Instantiate(lightBall, gameState.playerBallManager.spawnpoint, new Quaternion(0, 0, 0, 0)).gameObject;
+                    gameState.playerBallManager.activePlayer = activePlayer;
+                    gameState.playerCamera.Target = activePlayer;
+                    break;
+                case Bal.Normal:
+                    activePlayer = Instantiate(normalBall, gameState.playerBallManager.spawnpoint, new Quaternion(0, 0, 0, 0)).gameObject;
+                    gameState.playerBallManager.activePlayer = activePlayer;
+                    gameState.playerCamera.Target = activePlayer;
+                    break;
+                default:
+                    activePlayer = Instantiate(normalBall, gameState.playerBallManager.spawnpoint, new Quaternion(0, 0, 0, 0)).gameObject;
+                    gameState.playerBallManager.activePlayer = activePlayer;
+                    gameState.playerCamera.Target = activePlayer;
+                    break;
+            }
         }
     }
     private IEnumerator respawnballinternal()

@@ -17,7 +17,7 @@ public class Coin : MonoBehaviour
     
     void Start()
     {
-        gameState = GameObject.Find("GameState").GetComponent<GameState>();
+        gameState = GameState.Instance;
         playerManager = gameState.GetComponent<PlayerManager>();
         gameState.levelManager.coinList.Add(this);
     }

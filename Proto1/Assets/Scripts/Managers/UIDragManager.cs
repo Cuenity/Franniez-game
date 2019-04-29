@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using Photon.Pun;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -55,98 +56,202 @@ public class UIDragManager : MonoBehaviour, IDragHandler, IBeginDragHandler, IEn
         playercamera.platformDragActive = true;
 
         InventoryButton correctButton = FindInventoryButton(data);
-        if (correctButton != null)
+        if (!PhotonNetwork.IsConnected)
         {
-            if (correctButton.InventoryButtonAllowed)
+            if (correctButton != null)
             {
-                if (correctButton.name == InventoryButtonName.platformSquareButton.ToString())
+                if (correctButton.InventoryButtonAllowed)
                 {
-                    type = PlatformType.platformSquare;
-                    draggedPlatform = Instantiate(platformSquare);
-
-                    GameState.Instance.levelManager.playerPlatforms.platformSquaresLeftToPlace--;
-                    if (GameState.Instance.levelManager.playerPlatforms.platformSquaresLeftToPlace == 0)
+                    if (correctButton.name == InventoryButtonName.platformSquareButton.ToString())
                     {
-                        correctButton.InventoryButtonAllowed = false;
-                    }
-                    GameState.Instance.levelManager.playerPlatforms.UpdatePlatformSquaresLeft(correctButton);
-                }
-                else if (correctButton.name == InventoryButtonName.rampInventoryButton.ToString())
-                {
-                    type = PlatformType.ramp;
-                    draggedPlatform = Instantiate(ramp);
-                    GameState.Instance.levelManager.playerPlatforms.rampsLeftToPlace--;
+                        type = PlatformType.platformSquare;
+                        draggedPlatform = Instantiate(platformSquare);
 
-                    if (GameState.Instance.levelManager.playerPlatforms.rampsLeftToPlace == 0)
+                        GameState.Instance.levelManager.playerPlatforms.platformSquaresLeftToPlace--;
+                        if (GameState.Instance.levelManager.playerPlatforms.platformSquaresLeftToPlace == 0)
+                        {
+                            correctButton.InventoryButtonAllowed = false;
+                        }
+                        GameState.Instance.levelManager.playerPlatforms.UpdatePlatformSquaresLeft(correctButton);
+                    }
+                    else if (correctButton.name == InventoryButtonName.rampInventoryButton.ToString())
                     {
-                        correctButton.InventoryButtonAllowed = false;
+                        type = PlatformType.ramp;
+                        draggedPlatform = Instantiate(ramp);
+                        GameState.Instance.levelManager.playerPlatforms.rampsLeftToPlace--;
+
+                        if (GameState.Instance.levelManager.playerPlatforms.rampsLeftToPlace == 0)
+                        {
+                            correctButton.InventoryButtonAllowed = false;
+                        }
+
+                        GameState.Instance.levelManager.playerPlatforms.UpdateRampsLeft(correctButton);
                     }
-
-                    GameState.Instance.levelManager.playerPlatforms.UpdateRampsLeft(correctButton);
-                }
-                else if (correctButton.name == InventoryButtonName.trampolineButton.ToString())
-                {
-                    type = PlatformType.trampoline;
-
-                    draggedPlatform = Instantiate(trampoline);
-                    GameState.Instance.levelManager.playerPlatforms.trampolinesLeftToPlace--;
-
-                    if (GameState.Instance.levelManager.playerPlatforms.trampolinesLeftToPlace == 0)
+                    else if (correctButton.name == InventoryButtonName.trampolineButton.ToString())
                     {
-                        correctButton.InventoryButtonAllowed = false;
+                        type = PlatformType.trampoline;
+
+                        draggedPlatform = Instantiate(trampoline);
+                        GameState.Instance.levelManager.playerPlatforms.trampolinesLeftToPlace--;
+
+                        if (GameState.Instance.levelManager.playerPlatforms.trampolinesLeftToPlace == 0)
+                        {
+                            correctButton.InventoryButtonAllowed = false;
+                        }
+
+                        GameState.Instance.levelManager.playerPlatforms.UpdateTrampolinesLeft(correctButton);
                     }
-
-                    GameState.Instance.levelManager.playerPlatforms.UpdateTrampolinesLeft(correctButton);
-                }
-                else if (correctButton.name == InventoryButtonName.boostPlatformButton.ToString())
-                {
-                    type = PlatformType.boostPlatform;
-
-                    draggedPlatform = Instantiate(boostPlatform);
-                    GameState.Instance.levelManager.playerPlatforms.boostPlatformsLeftToPlace--;
-
-                    if (GameState.Instance.levelManager.playerPlatforms.boostPlatformsLeftToPlace == 0)
+                    else if (correctButton.name == InventoryButtonName.boostPlatformButton.ToString())
                     {
-                        correctButton.InventoryButtonAllowed = false;
+                        type = PlatformType.boostPlatform;
+
+                        draggedPlatform = Instantiate(boostPlatform);
+                        GameState.Instance.levelManager.playerPlatforms.boostPlatformsLeftToPlace--;
+
+                        if (GameState.Instance.levelManager.playerPlatforms.boostPlatformsLeftToPlace == 0)
+                        {
+                            correctButton.InventoryButtonAllowed = false;
+                        }
+
+                        GameState.Instance.levelManager.playerPlatforms.UpdateBoostPlatformsLeft(correctButton);
                     }
-
-                    GameState.Instance.levelManager.playerPlatforms.UpdateBoostPlatformsLeft(correctButton);
-                }
-                else if (correctButton.name == InventoryButtonName.cannonPlatformButton.ToString())
-                {
-                    type = PlatformType.cannon;
-
-                    draggedPlatform = Instantiate(cannon);
-                    GameState.Instance.levelManager.playerPlatforms.cannonPlatformsLeftToPlace--;
-
-                    if (GameState.Instance.levelManager.playerPlatforms.cannonPlatformsLeftToPlace == 0)
+                    else if (correctButton.name == InventoryButtonName.cannonPlatformButton.ToString())
                     {
-                        correctButton.InventoryButtonAllowed = false;
+                        type = PlatformType.cannon;
+
+                        draggedPlatform = Instantiate(cannon);
+                        GameState.Instance.levelManager.playerPlatforms.cannonPlatformsLeftToPlace--;
+
+                        if (GameState.Instance.levelManager.playerPlatforms.cannonPlatformsLeftToPlace == 0)
+                        {
+                            correctButton.InventoryButtonAllowed = false;
+                        }
+
+                        GameState.Instance.levelManager.playerPlatforms.UpdateCannonPlatformsLeft(correctButton);
+
+                        //draggedPlatform.transform.GetChild(0).transform.GetChild(0).gameObject.AddComponent<PlatformDragManager>();
+                        //draggedPlatform.transform.GetChild(1).gameObject.AddComponent<PlatformDragManager>();
+                        //draggedPlatform.transform.GetChild(2).gameObject.AddComponent<PlatformDragManager>();
+                        //draggedPlatform.transform.GetChild(3).gameObject.AddComponent<PlatformDragManager>();
                     }
 
-                    GameState.Instance.levelManager.playerPlatforms.UpdateCannonPlatformsLeft(correctButton);
+                    if (!draggedPlatform.GetComponent<Cannon>())
+                    {
+                        var outline = draggedPlatform.AddComponent<Outline>();
+                        outline.OutlineMode = Outline.Mode.OutlineAll;
+                        outline.OutlineColor = Color.blue;
+                        outline.OutlineWidth = 10f;
+                    }
 
-                    //draggedPlatform.transform.GetChild(0).transform.GetChild(0).gameObject.AddComponent<PlatformDragManager>();
-                    //draggedPlatform.transform.GetChild(1).gameObject.AddComponent<PlatformDragManager>();
-                    //draggedPlatform.transform.GetChild(2).gameObject.AddComponent<PlatformDragManager>();
-                    //draggedPlatform.transform.GetChild(3).gameObject.AddComponent<PlatformDragManager>();
+                    draggedPlatform.AddComponent<PlatformDragManager>();
+
                 }
-
-                if (!draggedPlatform.GetComponent<Cannon>())
+                else
                 {
-                    var outline = draggedPlatform.AddComponent<Outline>();
-                    outline.OutlineMode = Outline.Mode.OutlineAll;
-                    outline.OutlineColor = Color.blue;
-                    outline.OutlineWidth = 10f;
+                    draggingAllowed = false;
+                    playercamera.platformDragActive = false;
                 }
-
-                draggedPlatform.AddComponent<PlatformDragManager>();
-
             }
-            else
+        }
+        //photon Instantiates want dat moet blijkbaar 
+        else if(PhotonNetwork.IsConnected)
+        {
+            if (correctButton != null)
             {
-                draggingAllowed = false;
-                playercamera.platformDragActive = false;
+                if (correctButton.InventoryButtonAllowed)
+                {
+                    if (correctButton.name == InventoryButtonName.platformSquareButton.ToString())
+                    {
+                        type = PlatformType.platformSquare;
+                        draggedPlatform = PhotonNetwork.Instantiate("Photon PlatformSquare",new Vector3(0,0,0),new Quaternion(0,0,0,0));
+                        draggedPlatform.transform.Rotate(new Vector3(-90, 0, 0));
+                        GameState.Instance.levelManager.playerPlatforms.platformSquaresLeftToPlace--;
+                        if (GameState.Instance.levelManager.playerPlatforms.platformSquaresLeftToPlace == 0)
+                        {
+                            correctButton.InventoryButtonAllowed = false;
+                        }
+                        GameState.Instance.levelManager.playerPlatforms.UpdatePlatformSquaresLeft(correctButton);
+                    }
+                    else if (correctButton.name == InventoryButtonName.rampInventoryButton.ToString())
+                    {
+                        type = PlatformType.ramp;
+                        draggedPlatform = PhotonNetwork.Instantiate("Photon RampSmall2", new Vector3(0, 0, 0), new Quaternion(0, 0, 0, 0));
+                        draggedPlatform.transform.Rotate(new Vector3(270, 270, 0));
+                        GameState.Instance.levelManager.playerPlatforms.rampsLeftToPlace--;
+
+                        if (GameState.Instance.levelManager.playerPlatforms.rampsLeftToPlace == 0)
+                        {
+                            correctButton.InventoryButtonAllowed = false;
+                        }
+
+                        GameState.Instance.levelManager.playerPlatforms.UpdateRampsLeft(correctButton);
+                    }
+                    else if (correctButton.name == InventoryButtonName.trampolineButton.ToString())
+                    {
+                        type = PlatformType.trampoline;
+
+                        draggedPlatform = PhotonNetwork.Instantiate("Photon Trampoline", new Vector3(0, 0, 0), new Quaternion(0, 0, 0, 0));
+
+                        GameState.Instance.levelManager.playerPlatforms.trampolinesLeftToPlace--;
+
+                        if (GameState.Instance.levelManager.playerPlatforms.trampolinesLeftToPlace == 0)
+                        {
+                            correctButton.InventoryButtonAllowed = false;
+                        }
+
+                        GameState.Instance.levelManager.playerPlatforms.UpdateTrampolinesLeft(correctButton);
+                    }
+                    else if (correctButton.name == InventoryButtonName.boostPlatformButton.ToString())
+                    {
+                        type = PlatformType.boostPlatform;
+
+                        draggedPlatform = PhotonNetwork.Instantiate("Photon Booster", new Vector3(0, 0, 0), new Quaternion(0, 0, 0, 0));
+
+                        GameState.Instance.levelManager.playerPlatforms.boostPlatformsLeftToPlace--;
+
+                        if (GameState.Instance.levelManager.playerPlatforms.boostPlatformsLeftToPlace == 0)
+                        {
+                            correctButton.InventoryButtonAllowed = false;
+                        }
+
+                        GameState.Instance.levelManager.playerPlatforms.UpdateBoostPlatformsLeft(correctButton);
+                    }
+                    else if (correctButton.name == InventoryButtonName.cannonPlatformButton.ToString())
+                    {
+                        type = PlatformType.cannon;
+
+                        draggedPlatform = Instantiate(cannon);
+                        GameState.Instance.levelManager.playerPlatforms.cannonPlatformsLeftToPlace--;
+
+                        if (GameState.Instance.levelManager.playerPlatforms.cannonPlatformsLeftToPlace == 0)
+                        {
+                            correctButton.InventoryButtonAllowed = false;
+                        }
+
+                        GameState.Instance.levelManager.playerPlatforms.UpdateCannonPlatformsLeft(correctButton);
+
+                        //draggedPlatform.transform.GetChild(0).transform.GetChild(0).gameObject.AddComponent<PlatformDragManager>();
+                        //draggedPlatform.transform.GetChild(1).gameObject.AddComponent<PlatformDragManager>();
+                        //draggedPlatform.transform.GetChild(2).gameObject.AddComponent<PlatformDragManager>();
+                        //draggedPlatform.transform.GetChild(3).gameObject.AddComponent<PlatformDragManager>();
+                    }
+
+                    if (!draggedPlatform.GetComponent<Cannon>())
+                    {
+                        var outline = draggedPlatform.AddComponent<Outline>();
+                        outline.OutlineMode = Outline.Mode.OutlineAll;
+                        outline.OutlineColor = Color.blue;
+                        outline.OutlineWidth = 10f;
+                    }
+
+                    draggedPlatform.AddComponent<PlatformDragManager>();
+
+                }
+                else
+                {
+                    draggingAllowed = false;
+                    playercamera.platformDragActive = false;
+                }
             }
         }
     }
