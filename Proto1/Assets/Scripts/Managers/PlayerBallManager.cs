@@ -84,26 +84,31 @@ public class PlayerBallManager : MonoBehaviour
         }
         else
         {
+            
             switch (type)
             {
                 case Bal.BlackHole:
                     activePlayer = Instantiate(blackHoleBall, gameState.playerBallManager.spawnpoint, new Quaternion(0, 0, 0, 0)).gameObject;
                     gameState.playerBallManager.activePlayer = activePlayer;
+                    activePlayer.GetComponent<Renderer>().material = PlayerDataController.instance.ballMaterial;
                     gameState.playerCamera.Target = activePlayer;
                     break;
                 case Bal.Light:
                     activePlayer = Instantiate(lightBall, gameState.playerBallManager.spawnpoint, new Quaternion(0, 0, 0, 0)).gameObject;
                     gameState.playerBallManager.activePlayer = activePlayer;
+                    activePlayer.GetComponent<Renderer>().material = PlayerDataController.instance.ballMaterial;
                     gameState.playerCamera.Target = activePlayer;
                     break;
                 case Bal.Normal:
                     activePlayer = Instantiate(normalBall, gameState.playerBallManager.spawnpoint, new Quaternion(0, 0, 0, 0)).gameObject;
                     gameState.playerBallManager.activePlayer = activePlayer;
+                    activePlayer.GetComponent<Renderer>().material = PlayerDataController.instance.ballMaterial;
                     gameState.playerCamera.Target = activePlayer;
                     break;
                 default:
                     activePlayer = Instantiate(normalBall, gameState.playerBallManager.spawnpoint, new Quaternion(0, 0, 0, 0)).gameObject;
                     gameState.playerBallManager.activePlayer = activePlayer;
+                    activePlayer.GetComponent<Renderer>().material = PlayerDataController.instance.ballMaterial;
                     gameState.playerCamera.Target = activePlayer;
                     break;
             }

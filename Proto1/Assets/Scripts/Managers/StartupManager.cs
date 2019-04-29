@@ -22,6 +22,7 @@ public class StartupManager : MonoBehaviour
         PlayerData player = new PlayerData();
         player.name = "Player";
         player.language = (int)LocalizationManager.instance.LanguageChoice;
+        player.materialsByName.Add("Default");
         PlayerDataController.instance.SetPlayer(player);
         PlayerDataController.instance.Save();
 

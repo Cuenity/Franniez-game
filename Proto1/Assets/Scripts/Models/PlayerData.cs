@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -11,5 +12,6 @@ public class PlayerData
     public Sticker[] stickers;
     public int language;
     public int ShopCoins = 0;
+    public List<string> materialsByName = new List<string>();
 }
 

@@ -24,8 +24,8 @@ public class NotEnoughCoinsText : MonoBehaviour
         GetComponentInParent<ShopFillSkins>().ButtonClicked += SetText;
     }
 
-    public void SetText(int amount)
+    public void SetText(SkinObject skin)
     {
-        text.text = PlayerDataController.instance.player.ShopCoins.ToString() + "/" + amount;
+        text.text = PlayerDataController.instance.player.ShopCoins.ToString() + "/" + skin.cost;
     }
 }

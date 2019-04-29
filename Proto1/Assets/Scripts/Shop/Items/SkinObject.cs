@@ -11,8 +11,8 @@ public class SkinObject : ScriptableObject
     public int cost = 50;
     public string description;
     public Sprite shopImage;
+    public bool owned = false;
 
     // Voor het balletje zelf
     public Material material;
-
 }

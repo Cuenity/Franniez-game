@@ -82,45 +82,35 @@ public class ShopButtons : MonoBehaviour
     public void BuyCoins(int amount)
     {
         PlayerDataController.instance.AddShopCoins(amount);
-        player.ShopCoins = player.ShopCoins + amount;
-        PlayerDataController.instance.player = player;
+        //player.ShopCoins = player.ShopCoins + amount;
+        //PlayerDataController.instance.player = player;
         UpdateCoins();
     }
 
-    public void BuySkin(int amount)
+    public void BuySkin(SkinObject skin)
     {
 
-        // Check morgen (24 april) welke hij pakt - 23 April
-        if (amount <= player.ShopCoins)
+        if(PlayerDataController.instance.player.materialsByName.Contains(skin.skinName))
         {
-            player.ShopCoins -= amount;
-            PlayerDataController.instance.player = player;
-            UpdateCoins();
-        }
-        else
-        {
-            //BuySkinEvent(amount.ToString());
-            warningPanel.SetActive(true);
-        }
 
-        if (PlayerDataController.instance.RemoveShopCoins(amount))
+        }
+        else if (PlayerDataController.instance.RemoveShopCoins(skin.cost))
         {
             UpdateCoins();
+
+            PlayerDataController.instance.AddMaterial(skin);
+            PlayerDataController.instance.ballMaterial = skin.material;
             return;
         }
         else
         {
-            BuySkinEvent(amount.ToString());
             warningPanel.SetActive(true);
-            // Geef melding dat gebruiker niet genoeg punten heeft.
         }
     }
 
     private void UpdateCoins()
     {
-        // Check morgen (24 april) welke hij pakt - 23 April
         AmountCoinsPlayer.text = PlayerDataController.instance.ReturnCoins().ToString();
-        AmountCoinsPlayer.text = player.ShopCoins.ToString();
     }
 
     public void Button_CloseWarningPanel()

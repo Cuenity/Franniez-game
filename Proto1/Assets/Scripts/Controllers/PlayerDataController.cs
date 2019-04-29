@@ -14,6 +14,8 @@ public class PlayerDataController : MonoBehaviour
     public int previousScene { get; set; }
     public int previousSceneCoinCount { get; set; }
 
+    public Material ballMaterial;
+
     // Use this for initialization
     private void Awake()
     {
@@ -89,7 +91,9 @@ public class PlayerDataController : MonoBehaviour
 
     public void AddShopCoins(int amount)
     {
-         player.coins = player.coins + amount;
+        Debug.Log("Parameter amound: " + amount);
+        Debug.Log("Player coins van te voren: " + player.ShopCoins);
+        player.ShopCoins = player.ShopCoins + amount;
         Save();
     }
 
@@ -97,11 +101,10 @@ public class PlayerDataController : MonoBehaviour
     {
         bool enoughCoins = false;
 
-        if(amount >= player.coins)
+        if(amount <= player.ShopCoins)
         {
             enoughCoins = true;
-            player.coins = player.coins - amount;
-            Save();
+            player.ShopCoins = player.ShopCoins - amount;
             return enoughCoins;
         }
 
@@ -112,5 +115,39 @@ public class PlayerDataController : MonoBehaviour
     public int ReturnCoins()
     {
         return player.ShopCoins;
+    }
+
+    public void GetBallMaterial()
+    {
+        // Alleen voor Debug
+        if(player.materialsByName.Count > 1)
+        {
+            foreach(string name in player.materialsByName)
+            {
+                Debug.Log(name);
+            }
+        }
+
+    }
+
+
+    public void AddMaterial(SkinObject skin)
+    {
+        //PlayerBallMaterial newSkin = new PlayerBallMaterial
+        //{
+        //    Material = skin.material,
+        //    Name = skin.skinName
+        //};
+        //player.materials.Add(newSkin);
+        player.materialsByName.Add(skin.skinName);
+        Save();
+    }
+
+    private void setMaterials()
+    {
+        foreach (string skinName in player.materialsByName)
+        {
+
+        }
     }
 }

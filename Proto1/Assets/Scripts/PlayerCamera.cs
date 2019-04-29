@@ -137,7 +137,7 @@ public class PlayerCamera : MonoBehaviour
             {
                 //zoomin
                 Vector3 cameraposition = camera.transform.position;
-                if (cameraposition.z <= -10)
+                if (cameraposition.z <= -2)
                 {
                     camera.transform.position = new Vector3(cameraposition.x, cameraposition.y, cameraposition.z + 1);
                 }

@@ -22,7 +22,24 @@ public class ShopSkinButton : MonoBehaviour
     {
         skinObject = skin;
         title.text = skinObject.skinName;
-        cost.text = skinObject.cost.ToString();
+
+        if(PlayerDataController.instance.player.materialsByName.Contains(skin.skinName))
+        {
+            if( PlayerDataController.instance.ballMaterial == skin.material)
+            {
+                cost.text = "Gekozen";
+            }
+            else
+            {
+                cost.text = "Gekocht";
+            }
+            
+        }
+        else
+        {
+            cost.text = skinObject.cost.ToString();
+        }
+
         image.sprite = skinObject.shopImage;
     }
 
