@@ -431,9 +431,17 @@ public class LevelManager : MonoBehaviour
         gameState.BuildingPhaseActive = false;
         gameState.RollingPhaseActive = true;
 
-        if (sceneName != "1"||!PhotonNetwork.IsConnected)
+        if (sceneName != "1"||!PhotonNetwork.InRoom)
         {
-            balknop.gameObject.SetActive(false);
+            //idk man fucking error bullshit magic spell try catch
+            try
+            {
+                balknop.gameObject.SetActive(false);
+            }
+            catch
+            {
+
+            }
         }
         if (PhotonNetwork.IsConnected)
         {
@@ -470,15 +478,34 @@ public class LevelManager : MonoBehaviour
     }
     public void SetBuildingPhase()
     {
+        if (PhotonNetwork.InRoom)
+        {
+            if (PhotonNetwork.IsMasterClient)
+            {
+                PhotonDataOpslag.Instance.FlagHitPlayer1 = false;
+            }
+            else
+            {
+                PhotonDataOpslag.Instance.FlagHitPlayer2 = false;
+            }
+        }
         if (sceneName != "VictoryScreen")
         {
             gameState.RollingPhaseActive = false;
             gameState.playerBallManager.respawnBal();
             gameState.platformManager.RespawnCollectables();
 
-            if (sceneName != "1"||!PhotonNetwork.IsConnected)
+            if (sceneName != "1"||!PhotonNetwork.InRoom)
             {
-                balknop.gameObject.SetActive(true);
+                //idk man fucking error bullshit magic spell try catch
+                try
+                {
+                    balknop.gameObject.SetActive(true);
+                }
+                catch
+                {
+
+                }
             }
             gameState.platformManager.lift.ResetPlatform();
             gameState.BuildingPhaseActive = true;

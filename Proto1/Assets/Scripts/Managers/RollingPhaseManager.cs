@@ -133,7 +133,8 @@ public class RollingPhaseManager : MonoBehaviour
             if (PhotonDataOpslag.Instance.FlagHitPlayer1 && PhotonDataOpslag.Instance.FlagHitPlayer2)
             {
                 //Go to victoty
-                Debug.Log("VICTORY voor beiden");
+                Debug.Log("VICTORY VOOR BEIDEN");
+                SceneSwitcher.Instance.AsynchronousLoadStartNoLoadingBar("VictoryScreen");
             }
         }
         else
