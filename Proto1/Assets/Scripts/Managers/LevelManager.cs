@@ -429,13 +429,24 @@ public class LevelManager : MonoBehaviour
             {
                 GameObject.Find("player1ball").GetComponent<Rigidbody>().isKinematic = false;
                 GameObject.Find("Photon BlackHoleBall(Clone)").GetComponent<Rigidbody>().isKinematic = true;
-                
+
             }
             else
             {
                 GameObject.Find("player2ball").GetComponent<Rigidbody>().isKinematic = false;
                 GameObject.Find("Photon BlackHoleBall(Clone)").GetComponent<Rigidbody>().isKinematic = true;
             }
+            //ik wil hetlater toch echt zo doen dit hierboven zo WACK
+            //if (gameState.playerBallManager.activePlayer.GetPhotonView().IsMine)
+            //{
+            //    GameObject mijnBal = gameState.playerBallManager.activePlayer;
+            //    mijnBal.GetComponent<Rigidbody>().isKinematic = false;
+            //}
+            //else if (gameState.playerBallManager.activePlayer.GetPhotonView().IsMine)
+            //{
+            //    GameObject andereBal = gameState.playerBallManager.activePlayer;
+            //    andereBal.GetComponent<Rigidbody>().isKinematic = true;
+            //}
         }
         else
         {
