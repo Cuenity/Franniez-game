@@ -29,7 +29,7 @@ public class LevelManager : MonoBehaviour
     public StickerObject stickerObject;
     public Finish finish;
     public Canvas canvas;
-    BallKnop balknop;
+    public BallKnop balknop;
     private string sceneName;
 
     public PlayerPlatforms playerPlatforms;
@@ -149,8 +149,8 @@ public class LevelManager : MonoBehaviour
 
 
                 //boolean party voor elk level nu nodig
-
-                gameState.playerManager.PlayerInit();
+                gameState.playerBallManager.WhatBalls(true, false, false);
+                gameState.playerManager.PlayerInit(gameState.playerBallManager.ballList[0]);
                 //gameState.collectableManager.InitCollectables(coinPositions, finishPosition);
                 gameState.BuildingPhaseActive = true;
                 GameState.Instance.PreviousLevel = 1;
@@ -184,8 +184,8 @@ public class LevelManager : MonoBehaviour
 
 
                 //boolean party voor elk level nu nodig
-
-                gameState.playerManager.PlayerInit();
+                gameState.playerBallManager.WhatBalls(true, true, true);
+                gameState.playerManager.PlayerInit(gameState.playerBallManager.ballList[0]);
                 gameState.BuildingPhaseActive = true;
                 GameState.Instance.PreviousLevel = 1;
                 PlayerDataController.instance.previousScene = 1;
@@ -214,8 +214,8 @@ public class LevelManager : MonoBehaviour
                 gameState.playerBallManager.SetSpawnpoint(1);
                 gameState.platformManager.Build_Vertical_Slice_LevelBoost();
 
-
-                gameState.playerManager.PlayerInit();
+                gameState.playerBallManager.WhatBalls(true, true, false);
+                gameState.playerManager.PlayerInit(gameState.playerBallManager.ballList[0]);
                 gameState.BuildingPhaseActive = true;
                 GameState.Instance.PreviousLevel = 3;
                 PlayerDataController.instance.previousScene = 3;
@@ -246,7 +246,8 @@ public class LevelManager : MonoBehaviour
                 int finishPosition = 171;
                 GameState.Instance.platformManager.BuildLevelFromLevelPlatformen(levelPlatformen, coinarray, finishPosition);
 
-                gameState.playerManager.PlayerInit();
+                gameState.playerBallManager.WhatBalls(false, true, true);
+                gameState.playerManager.PlayerInit(gameState.playerBallManager.ballList[0]);
 
                 gameState.BuildingPhaseActive = true;
                 GameState.Instance.PreviousLevel = 5;
@@ -276,7 +277,8 @@ public class LevelManager : MonoBehaviour
                 gameState.platformManager.BuildLevel6();
 
 
-                gameState.playerManager.PlayerInit();
+                gameState.playerBallManager.WhatBalls(true, true, true);
+                gameState.playerManager.PlayerInit(gameState.playerBallManager.ballList[0]);
 
                 gameState.BuildingPhaseActive = true;
                 GameState.Instance.PreviousLevel = 4;
@@ -308,7 +310,8 @@ public class LevelManager : MonoBehaviour
                 gameState.platformManager.BuildLevelCoen();
 
 
-                gameState.playerManager.PlayerInit();
+                gameState.playerBallManager.WhatBalls(true, true, true);
+                gameState.playerManager.PlayerInit(gameState.playerBallManager.ballList[0]);
 
                 //hier dan een vieze boolean
 
@@ -342,7 +345,8 @@ public class LevelManager : MonoBehaviour
                 gameState.platformManager.Build_Vertical_Slice_Level7();
 
 
-                gameState.playerManager.PlayerInit();
+                gameState.playerBallManager.WhatBalls(true, true, true);
+                gameState.playerManager.PlayerInit(gameState.playerBallManager.ballList[0]);
 
                 gameState.BuildingPhaseActive = true;
                 GameState.Instance.PreviousLevel = 4;
@@ -373,7 +377,8 @@ public class LevelManager : MonoBehaviour
                 int finishPosition = 39;
                 GameState.Instance.platformManager.BuildLevelFromLevelPlatformen(levelPlatformen, coinarray, finishPosition);
 
-                gameState.playerManager.PlayerInit();
+                gameState.playerBallManager.WhatBalls(true, true, true);
+                gameState.playerManager.PlayerInit(gameState.playerBallManager.ballList[0]);
 
                 gameState.BuildingPhaseActive = true;
                 GameState.Instance.PreviousLevel = 6;
@@ -468,6 +473,7 @@ public class LevelManager : MonoBehaviour
             gameState.platformManager.lift.ResetPlatform();
             gameState.BuildingPhaseActive = true;
             gameState.playerBallManager.activePlayer.GetComponent<Rigidbody>().isKinematic = true;
+                   
         }
         else
         {

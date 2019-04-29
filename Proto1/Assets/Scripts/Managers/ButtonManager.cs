@@ -1,6 +1,7 @@
 ﻿using GameAnalyticsSDK;
 using Photon.Pun;
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -172,24 +173,28 @@ public class ButtonManager : MonoBehaviour
     {
         gameState = GameState.Instance;
         GameObject prev_ball = gameState.playerBallManager.activePlayer;
-        if (prev_ball.name.Contains("BlackHole"))
+        List<Bal> list = gameState.playerBallManager.ballList;
+        int index = 0 ;
+        foreach (Bal item in list)
         {
-            Destroy(prev_ball);
-            gameState.playerBallManager.InitTypeBall(Bal.Normal);
-            //gameObject.GetComponentInChildren<Image>().sprite = gameState.UIManager.normalBallImage;
+            if (index == list.Count - 1)
+            {
+                index = 0;
+            }
+            else
+            {
+                index++;
+            }
+            if (prev_ball.name.Contains(item.ToString()))
+            {
+                Destroy(prev_ball);
+                gameState.playerBallManager.InitTypeBall(list[index]);
+                break;
+            }     
         }
-        else if (prev_ball.name.Contains("Light"))
-        {
-            Destroy(prev_ball);
-            gameState.playerBallManager.InitTypeBall(Bal.BlackHole);
-            //gameObject.GetComponentInChildren<Image>().sprite = gameState.UIManager.blackHoleBallImage;
-        }
-        else if (prev_ball.name.Contains("Player"))
-        {
-            Destroy(prev_ball);
-            gameState.playerBallManager.InitTypeBall(Bal.Light);
-            //gameObject.GetComponentInChildren<Image>().sprite = gameState.UIManager.lightBallImage;
-        }
+
+       
+
 
     }
 

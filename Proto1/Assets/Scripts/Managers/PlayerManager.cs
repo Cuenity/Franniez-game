@@ -24,11 +24,11 @@ public class PlayerManager : MonoBehaviour
 
     }
 
-    internal void PlayerInit()
+    internal void PlayerInit(Bal type)
     {
         if (newPlayerBallIsRequired)
         {
-            gameState.playerBallManager.InitTypeBall(Bal.Normal);
+            gameState.playerBallManager.InitTypeBall(type);
 
             gameState.playerBallManager.activePlayer.transform.position = gameState.playerBallManager.spawnpoint;
 

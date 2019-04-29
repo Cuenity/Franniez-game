@@ -1321,6 +1321,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: BallKnop
       objectReference: {fileID: 0}
+    - target: {fileID: 9101002502854603151, guid: 686812cb9611dea499684f6186f2fd70,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7378801114310047703, guid: 686812cb9611dea499684f6186f2fd70,
         type: 3}
       propertyPath: m_LocalPosition.x

@@ -16,6 +16,8 @@ public class PlayerBallManager : MonoBehaviour
     public GameObject tempMultiBall;
     public GameObject MultiActivePlayer1;
     public GameObject MultiActivePlayer2;
+    public List<Bal> ballList = new List<Bal>();
+    public int activeplayerIndex;
 
 
 
@@ -43,22 +45,22 @@ public class PlayerBallManager : MonoBehaviour
             {
                 case Bal.BlackHole:
                     tempMultiBall = PhotonNetwork.Instantiate("Photon BlackHoleBall", gameState.playerBallManager.spawnpoint, new Quaternion(0, 0, 0, 0)).gameObject;
-                    
+
                     gameState.playerCamera.Target = tempMultiBall;
                     break;
                 case Bal.Light:
                     tempMultiBall = PhotonNetwork.Instantiate("Photon BlackHoleBall", gameState.playerBallManager.spawnpoint, new Quaternion(0, 0, 0, 0)).gameObject;
-                    
+
                     gameState.playerCamera.Target = tempMultiBall;
                     break;
                 case Bal.Normal:
                     tempMultiBall = PhotonNetwork.Instantiate("Photon BlackHoleBall", gameState.playerBallManager.spawnpoint, new Quaternion(0, 0, 0, 0)).gameObject;
-                    
+
                     gameState.playerCamera.Target = tempMultiBall;
                     break;
                 default:
                     tempMultiBall = PhotonNetwork.Instantiate("Photon BlackHoleBall", gameState.playerBallManager.spawnpoint, new Quaternion(0, 0, 0, 0)).gameObject;
-                    
+
                     gameState.playerCamera.Target = tempMultiBall;
                     break;
             }
@@ -123,6 +125,29 @@ public class PlayerBallManager : MonoBehaviour
     public void respawnBal()
     {
         StartCoroutine(respawnballinternal());
+    }
+
+    public void WhatBalls(bool normalball, bool blackholeball, bool lightball)
+    {
+        ballList.Clear();
+        if (normalball)
+        {
+            ballList.Add(Bal.Normal);
+        }
+        if (blackholeball)
+        {
+            ballList.Add(Bal.BlackHole);
+        }
+        if (lightball)
+        {
+            ballList.Add(Bal.Light);
+        }
+        BallKnop ballknop = gameState.UIManager.canvas.GetComponentInChildren<BallKnop>(true);
+        if (ballList.Count > 1)
+        {
+            ballknop.gameObject.SetActive(true);
+        }
+
     }
 
 }
