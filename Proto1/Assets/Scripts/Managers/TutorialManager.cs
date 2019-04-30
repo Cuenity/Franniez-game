@@ -24,7 +24,7 @@ public class TutorialManager : MonoBehaviour
             }
             else
             {
-                RemoveTutorialArrow();
+                RemoveTutorialArrows();
             }
         }
     }
@@ -79,15 +79,19 @@ public class TutorialManager : MonoBehaviour
         }
         if (arrow2 == null)
         {
-            arrow2 = Instantiate(tutorialArrow, new Vector3(3.5f, -0, -4), Quaternion.Euler(0, 0, 0));
+            arrow2 = Instantiate(tutorialArrow, new Vector3(3.5f, -2.8f, -4), Quaternion.Euler(0, 0, 20));
         }
     }
 
-    private void RemoveTutorialArrow()
+    public void RemoveTutorialArrows()
     {
-        if (tutorialArrow != null)
+        if (arrow != null)
         {
-            Destroy(tutorialArrow);
+            Destroy(arrow);
+        }
+        if (arrow2 != null)
+        {
+            Destroy(arrow2);
         }
     }
 }

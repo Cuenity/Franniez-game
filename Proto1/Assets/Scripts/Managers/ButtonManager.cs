@@ -25,6 +25,7 @@ public class ButtonManager : MonoBehaviour
         if (tutorialActive)
         {
             gameState.tutorialManager.TurnTutorialMaskOff();
+            gameState.tutorialManager.RollingFinished = false;
         }
 
         if (gameState.BuildingPhaseActive == true)

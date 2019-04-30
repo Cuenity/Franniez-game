@@ -456,6 +456,42 @@ public class PlatformManager : MonoBehaviour
         initRedZones(RedZoneSpots);
     }
 
+    public void BuildLevel2RampsEasy()
+    {
+        Vector3 rampAdjustment = new Vector3(0.5f, 0f, 0f);
+        List<int> RampSpots = new List<int>();
+        List<int> PlatformSpots = new List<int>();
+        List<int> FinishSpots = new List<int>();
+        List<int> TrampolineSpots = new List<int>();
+        List<int> PortalSpots = new List<int>();
+        List<int> rechthoekSpots = new List<int>();
+        List<int> RampSpotsReversed = new List<int>();
+        List<int> CoinSpots = new List<int>();
+        List<int> RedZoneSpots = new List<int>();
+        List<int> boosterPlatformSpots = new List<int>();
+        List<Lift> liftList = new List<Lift>();
+        RampSpots.Add(8);
+        //rechthoekSpots.Add(16);
+        rechthoekSpots.Add(20);
+        rechthoekSpots.Add(32);
+        //rechthoekSpots.Add(34);
+        rechthoekSpots.Add(36);
+        RampSpotsReversed.Add(30);
+
+        SetCoinPosition(11);
+        SetCoinPosition(26);
+        SetCoinPosition(29);
+        SetfinishPosition(24);
+
+        //dit moet later anders zijn collectables 
+
+        Init_Platforms(RampSpots, PlatformSpots, RampSpotsReversed, PortalSpots, TrampolineSpots, rechthoekSpots, boosterPlatformSpots, liftList);
+        gameState.collectableManager.InitCollectables(coinPositions, finishPosition);
+        initRedZones(RedZoneSpots);
+
+        //List <> 0,0,0,0,0,0,0,0,0,0,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,0,2,0,0,0,0,0,2,0,0,0,0,0,3,0,3,0,2,2,2,0
+    }
+
     internal void Build_Vertical_Slice_Level6()
     {
         Vector3 rampAdjustment = new Vector3(0.5f, 0f, 0f);

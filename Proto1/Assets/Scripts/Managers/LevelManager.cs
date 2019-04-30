@@ -139,7 +139,7 @@ public class LevelManager : MonoBehaviour
                 gameState.UIManager.newLevelInventoryisRequired = true;
                 gameState.collectableManager.newCollectablesAreRequired = true;
                 GameState.Instance.playerCamera.ManualInit();
-                Vector3 playeradjustment = new Vector3(.5f, 0, 0);
+                //Vector3 playeradjustment = new Vector3(.5f, 0, 0);
                 gameState.gridManager.width = 8;
                 gameState.gridManager.height = 5;
                 playerPlatforms = new PlayerPlatforms(0, 2, 0, 0, 0);
@@ -160,7 +160,38 @@ public class LevelManager : MonoBehaviour
             }
         }
 
+        // niet af, maak apparte methode voor alle standaard shit aan het begin van elke level
         else if (sceneName == "2")
+        {
+            if (!levelIsSpawned)
+            {
+                bigLevel = false;
+                gameState.UIManager.canvas = Instantiate(canvas);
+                gameState.UIManager.newLevelInventoryisRequired = true;
+                gameState.collectableManager.newCollectablesAreRequired = true;
+                GameState.Instance.playerCamera.ManualInit();
+                Vector3 playeradjustment = new Vector3(.5f, 0, 0);
+                gameState.gridManager.width = 10;
+                gameState.gridManager.height = 8;
+                playerPlatforms = new PlayerPlatforms(0, 2, 0, 0, 0);
+                gameState.gridManager.Build_Grid_BuildingPhase_Without_Visuals();
+                gameState.playerBallManager.SetSpawnpoint(0);
+                //gameState.playerManager.player.spawnpoint = gameState.gridManager.gridSquares[1] + playeradjustment;
+                gameState.platformManager.BuildLevel2RampsEasy();
+
+
+                //boolean party voor elk level nu nodig
+                gameState.playerBallManager.WhatBalls(true, false, false);
+                gameState.playerManager.PlayerInit(gameState.playerBallManager.ballList[0]);
+                //gameState.collectableManager.InitCollectables(coinPositions, finishPosition);
+                gameState.BuildingPhaseActive = true;
+                GameState.Instance.PreviousLevel = 1;
+                PlayerDataController.instance.previousScene = 1;
+                levelIsSpawned = true;
+            }
+        }
+
+        else if (sceneName == "12")
         {
             if (!levelIsSpawned)
             {
@@ -194,7 +225,7 @@ public class LevelManager : MonoBehaviour
             }
         }
 
-        else if (sceneName == "3")
+        else if (sceneName == "13")
         {
             if (!levelIsSpawned)
             {
@@ -224,7 +255,7 @@ public class LevelManager : MonoBehaviour
             }
         }
 
-        else if (sceneName == "4")
+        else if (sceneName == "14")
         {
             if (!levelIsSpawned)
             {
@@ -256,7 +287,7 @@ public class LevelManager : MonoBehaviour
             }
         }
 
-        else if (sceneName == "5" || sceneName == "9" || sceneName == "10") // missen dus twee levels
+        else if (sceneName == "15")
         {
             if (!levelIsSpawned)
             {
@@ -287,7 +318,7 @@ public class LevelManager : MonoBehaviour
             }
         }
 
-        else if (sceneName == "6")
+        else if (sceneName == "16")
         {
             if (!levelIsSpawned)
             {
@@ -323,7 +354,7 @@ public class LevelManager : MonoBehaviour
             }
         }
 
-        else if (sceneName == "7")
+        else if (sceneName == "17")
         {
             if (!levelIsSpawned)
             {
@@ -355,7 +386,7 @@ public class LevelManager : MonoBehaviour
             }
         }
 
-        else if (sceneName == "8")
+        else if (sceneName == "18")
         {
             if (!levelIsSpawned)
             {
