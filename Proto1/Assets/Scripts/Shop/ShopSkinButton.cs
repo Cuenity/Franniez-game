@@ -9,6 +9,10 @@ public class ShopSkinButton : MonoBehaviour
     public Text title;
     public Text cost;
     public Image image;
+    public Sprite owned;
+    public Sprite active;
+    public Sprite buyWithCoins;
+    public Image buttonImage;
 
     private SkinObject skinObject;
 
@@ -27,20 +31,31 @@ public class ShopSkinButton : MonoBehaviour
         {
             if( PlayerDataController.instance.ballMaterial == skin.material)
             {
+                TransformText();
+                buttonImage.sprite = active;
                 cost.text = "Gekozen";
             }
             else
             {
+                TransformText();
+                buttonImage.sprite = owned;
                 cost.text = "Gekocht";
             }
             
         }
         else
         {
+            buttonImage.sprite = buyWithCoins;
             cost.text = skinObject.cost.ToString();
         }
 
         image.sprite = skinObject.shopImage;
+    }
+
+    private void TransformText()
+    {
+        cost.GetComponent<RectTransform>().localPosition = new Vector3(0, 6);
+        cost.resizeTextMaxSize = 46;
     }
 
 }

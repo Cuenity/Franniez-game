@@ -82,8 +82,6 @@ public class ShopButtons : MonoBehaviour
     public void BuyCoins(int amount)
     {
         PlayerDataController.instance.AddShopCoins(amount);
-        //player.ShopCoins = player.ShopCoins + amount;
-        //PlayerDataController.instance.player = player;
         UpdateCoins();
     }
 
@@ -92,7 +90,7 @@ public class ShopButtons : MonoBehaviour
 
         if(PlayerDataController.instance.player.materialsByName.Contains(skin.skinName))
         {
-
+            PlayerDataController.instance.ballMaterial = skin.material;
         }
         else if (PlayerDataController.instance.RemoveShopCoins(skin.cost))
         {

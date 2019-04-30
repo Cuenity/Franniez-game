@@ -22,6 +22,7 @@ public class ShopFillSkins : MonoBehaviour
     public delegate void ClickAction(SkinObject cost);
     public event ClickAction ButtonClicked;
 
+
     // Start is called before the first frame update
     void Start()
     {
@@ -43,7 +44,7 @@ public class ShopFillSkins : MonoBehaviour
 
             ShopSkinButton skinButton = newButton.GetComponent<ShopSkinButton>();
             skinButton.Setup(skin);
-            skinButton.skinButton.onClick.AddListener(delegate { BuySkin(skin); });
+            skinButton.skinButton.onClick.AddListener(delegate { BuySkin(skin, skinButton); });
         }
 
         marginRight = (GameObject)GameObject.Instantiate(marginRight);
@@ -51,7 +52,7 @@ public class ShopFillSkins : MonoBehaviour
         marginRight.transform.SetParent(contentPanel);
     }
 
-    void BuySkin(SkinObject skin)
+    void BuySkin(SkinObject skin, ShopSkinButton button)
     {
         ButtonClicked(skin);
     }
