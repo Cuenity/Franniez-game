@@ -73,8 +73,6 @@ public class PlayerDataController : MonoBehaviour
 
     public void AddShopCoins(int amount)
     {
-        Debug.Log("Parameter amound: " + amount);
-        Debug.Log("Player coins van te voren: " + player.ShopCoins);
         player.ShopCoins = player.ShopCoins + amount;
         Save();
     }
@@ -98,20 +96,6 @@ public class PlayerDataController : MonoBehaviour
     {
         return player.ShopCoins;
     }
-
-    public void GetBallMaterial()
-    {
-        // Alleen voor Debug
-        if(player.materialsByName.Count > 1)
-        {
-            foreach(string name in player.materialsByName)
-            {
-                Debug.Log(name);
-            }
-        }
-
-    }
-
 
     public void AddMaterial(SkinObject skin)
     {

@@ -68,10 +68,6 @@ public class LevelSelect : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
-        //Test voor Materials
-        PlayerDataController.instance.GetBallMaterial();
-
         stickerIndicators = new Image[] { stickerIndicationLevel1, stickerIndicationLevel2, stickerIndicationLevel3, stickerIndicationLevel4, stickerIndicationLevel5, stickerIndicationLevel6, stickerIndicationLevel7, stickerIndicationLevel8, stickerIndicationLevel9, stickerIndicationLevel10 };
         levelSelectCanvas.gameObject.SetActive(false);
         

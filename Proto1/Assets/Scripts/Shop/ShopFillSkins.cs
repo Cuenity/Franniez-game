@@ -31,12 +31,6 @@ public class ShopFillSkins : MonoBehaviour
         MakeButtons();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     private void MakeButtons()
     {
         foreach (SkinObject skin in shopCategory.skins)
