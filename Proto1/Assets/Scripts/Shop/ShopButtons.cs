@@ -85,12 +85,13 @@ public class ShopButtons : MonoBehaviour
         UpdateCoins();
     }
 
-    public void BuySkin(SkinObject skin)
+    public void BuySkin(SkinObject skin, ShopSkinButton button)
     {
 
         if(PlayerDataController.instance.player.materialsByName.Contains(skin.skinName))
         {
             PlayerDataController.instance.ballMaterial = skin.material;
+            button.ChangeImage(skin);
         }
         else if (PlayerDataController.instance.RemoveShopCoins(skin.cost))
         {
@@ -98,6 +99,7 @@ public class ShopButtons : MonoBehaviour
 
             PlayerDataController.instance.AddMaterial(skin);
             PlayerDataController.instance.ballMaterial = skin.material;
+            button.ChangeImage(skin);
             return;
         }
         else
