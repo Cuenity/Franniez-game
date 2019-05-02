@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using Photon.Pun;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class GridManager : MonoBehaviour
@@ -18,6 +19,9 @@ public class GridManager : MonoBehaviour
     public RedZone redZone;
     public RedZone bottemredZone;
     public RedZone cornerredzone;
+
+    [SerializeField]
+    GameObject playerGridRed, playerGridGreen;
 
     private void Awake()
     {
@@ -322,5 +326,66 @@ public class GridManager : MonoBehaviour
         //onnodige balllllshit
         //LevelEditorState.Instance.levelPlatformen.tileList = new int[heigth * width];
 
+    }
+    
+    internal void InitPlayerGridMultiLevel1()
+    {
+        List<int> player1Grid = new List<int>();
+        List<int> player2Grid = new List<int>(); 
+        //grid 1 is 0 tot 9 width
+        //grid 1 is 0 tot 9 heigth
+        //grid 2 is 10 tot 19 width
+        //grid 2 is 0 tot 9 height
+        for (int i = 0; i < 10; i++)
+        {
+            player1Grid.Add(i);
+            player1Grid.Add(i + 20);
+            player1Grid.Add(i + 40);
+            player1Grid.Add(i + 60);
+            player1Grid.Add(i + 80);
+            player1Grid.Add(i + 100);
+            player1Grid.Add(i + 120);
+            player1Grid.Add(i + 140);
+            player1Grid.Add(i + 160);
+            player1Grid.Add(i + 180);
+            player1Grid.Add(i + 200);
+        }
+        for (int i = 10; i < 20; i++)
+        {
+            player2Grid.Add(i);
+            player2Grid.Add(i + 20);
+            player2Grid.Add(i + 40);
+            player2Grid.Add(i + 60);
+            player2Grid.Add(i + 80);
+            player2Grid.Add(i + 100);
+            player2Grid.Add(i + 120);
+            player2Grid.Add(i + 140);
+            player2Grid.Add(i + 160);
+            player2Grid.Add(i + 180);
+            player2Grid.Add(i + 200);
+        }
+        if (PhotonNetwork.IsMasterClient)
+        {
+            AddPlayerGridToFilledGridSpots(player2Grid);
+        }
+        else
+        {
+            AddPlayerGridToFilledGridSpots(player1Grid);
+        }
+        showPlayerGrids();
+    }
+
+    internal void AddPlayerGridToFilledGridSpots(List<int> playergrid)
+    {
+        
+        foreach (int spot in playergrid)
+        {
+            filledGridSpots[spot] = true;
+        }
+    }
+    internal void showPlayerGrids()
+    {
+        Instantiate(playerGridRed,new Vector3(5.05f,-6.34f,0.44f),new Quaternion()).transform.Rotate(new Vector3(-90,0,0));
+        Instantiate(playerGridGreen,new Vector3(14.47f,-6.34f,0.44f),new Quaternion()).transform.Rotate(new Vector3(-90, 0, 0));
     }
 }
