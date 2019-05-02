@@ -41,7 +41,6 @@ public class ShopSkinButton : MonoBehaviour
                 buttonImage.sprite = owned;
                 cost.text = "Gekocht";
             }
-            
         }
         else
         {
@@ -56,6 +55,30 @@ public class ShopSkinButton : MonoBehaviour
     {
         cost.GetComponent<RectTransform>().localPosition = new Vector3(0, 6);
         cost.resizeTextMaxSize = 46;
+    }
+
+    public void ChangeImage(SkinObject skin)
+    {
+        if (PlayerDataController.instance.player.materialsByName.Contains(skin.skinName))
+        {
+            if (PlayerDataController.instance.ballMaterial == skin.material)
+            {
+                TransformText();
+                buttonImage.sprite = active;
+                cost.text = "Gekozen";
+            }
+            else
+            {
+                TransformText();
+                buttonImage.sprite = owned;
+                cost.text = "Gekocht";
+            }
+        }
+        else
+        {
+            buttonImage.sprite = buyWithCoins;
+            cost.text = skin.cost.ToString();
+        }
     }
 
 }

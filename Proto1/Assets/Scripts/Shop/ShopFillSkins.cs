@@ -17,22 +17,18 @@ public class ShopFillSkins : MonoBehaviour
     [SerializeField]
     private GameObject marginRight;
 
-    private List<Button> buttons;
+    private List<ShopSkinButton> skinButtons;
+    private List<SkinObject> skins;
 
-    public delegate void ClickAction(SkinObject cost);
+    public delegate void ClickAction(SkinObject cost, ShopSkinButton button);
     public event ClickAction ButtonClicked;
 
 
     // Start is called before the first frame update
     void Start()
     {
+        skinButtons = new List<ShopSkinButton>();
         MakeButtons();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 
     private void MakeButtons()
@@ -45,6 +41,7 @@ public class ShopFillSkins : MonoBehaviour
             ShopSkinButton skinButton = newButton.GetComponent<ShopSkinButton>();
             skinButton.Setup(skin);
             skinButton.skinButton.onClick.AddListener(delegate { BuySkin(skin, skinButton); });
+            skinButtons.Add(skinButton);
         }
 
         marginRight = (GameObject)GameObject.Instantiate(marginRight);
@@ -54,6 +51,17 @@ public class ShopFillSkins : MonoBehaviour
 
     void BuySkin(SkinObject skin, ShopSkinButton button)
     {
-        ButtonClicked(skin);
+        ButtonClicked(skin, button);
+        RefreshButtons();
+    }
+
+    private void RefreshButtons()
+    {
+        int i = 0;
+        foreach (ShopSkinButton button in skinButtons)
+        {
+            button.ChangeImage(shopCategory.skins[i]);
+            i++;
+        }
     }
 }

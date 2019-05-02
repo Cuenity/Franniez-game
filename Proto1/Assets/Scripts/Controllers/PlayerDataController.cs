@@ -45,6 +45,7 @@ public class PlayerDataController : MonoBehaviour
             file.Close();
 
             player = playerData;
+            SetMaterial();
         }
         return fileExist;
     }
@@ -60,25 +61,6 @@ public class PlayerDataController : MonoBehaviour
         Debug.Log("Opgeslagen");
     }
 
-    //public void MakeNewPlayer()
-    //{
-    //    Player playerTest = new Player();
-    //    playerTest.coins = 0;
-    //    playerTest.ShopCoins = 0;
-    //    playerTest.language = 2;
-    //    playerTest.levels = new Level[1];
-    //    playerTest.stickers = new Sticker[1];
-    //    playerTest.name = "Joris";
-
-    //    player = playerTest;
-    //    Save();
-    //}
-
-    //public Player GetPlayer()
-    //{
-    //    return player;
-    //}
-
     public void SetPlayer(PlayerData setPlayer)
     {
         player = setPlayer;
@@ -91,8 +73,6 @@ public class PlayerDataController : MonoBehaviour
 
     public void AddShopCoins(int amount)
     {
-        Debug.Log("Parameter amound: " + amount);
-        Debug.Log("Player coins van te voren: " + player.ShopCoins);
         player.ShopCoins = player.ShopCoins + amount;
         Save();
     }
@@ -117,37 +97,30 @@ public class PlayerDataController : MonoBehaviour
         return player.ShopCoins;
     }
 
-    public void GetBallMaterial()
-    {
-        // Alleen voor Debug
-        if(player.materialsByName.Count > 1)
-        {
-            foreach(string name in player.materialsByName)
-            {
-                Debug.Log(name);
-            }
-        }
-
-    }
-
-
     public void AddMaterial(SkinObject skin)
     {
-        //PlayerBallMaterial newSkin = new PlayerBallMaterial
-        //{
-        //    Material = skin.material,
-        //    Name = skin.skinName
-        //};
-        //player.materials.Add(newSkin);
         player.materialsByName.Add(skin.skinName);
         Save();
     }
 
-    private void setMaterials()
+    public void SetActiveMaterial(Material skinMaterial)
     {
-        foreach (string skinName in player.materialsByName)
-        {
+        ballMaterial = skinMaterial;
+        player.activeMaterial = skinMaterial.name;
+        Save();
+    }
 
+    private void SetMaterial()
+    {
+        if(player.activeMaterial == null)
+        {
+            ballMaterial = Resources.Load("Skins/DefaultSkin", typeof(Material)) as Material;
         }
+        else
+        {
+            string path = "Skins/" + player.activeMaterial;
+            ballMaterial = Resources.Load(path, typeof(Material)) as Material;
+        }
+
     }
 }
