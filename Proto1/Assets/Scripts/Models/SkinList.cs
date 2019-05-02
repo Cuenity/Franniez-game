@@ -5,8 +5,12 @@ using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
 
-class SkinList
+class SkinList : MonoBehaviour
 {
 
+    private void Start()
+    {
+        
+    }
 }
 
