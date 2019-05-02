@@ -371,7 +371,7 @@ public class LevelManager : MonoBehaviour
             }
         }
 
-        else if (sceneName == "11")
+        else if (sceneName == "11") // moet 11 zijn
         {
             if (!levelIsSpawned)
             {
@@ -441,7 +441,7 @@ public class LevelManager : MonoBehaviour
             }
         }
 
-        else if (sceneName == "15")
+        else if (sceneName == "10")
         {
             if (!levelIsSpawned)
             {
