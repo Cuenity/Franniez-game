@@ -122,6 +122,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b55a09c58707ef4288108bbf13412e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  lightballEffect: {fileID: 1844191813266838, guid: 968c924d2be019d4b9e67647551eec3e,
+    type: 3}
 --- !u!114 &4981866996501244047
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -141,3 +143,8 @@ MonoBehaviour:
     type: 3}
   lightBall: {fileID: 3487010160076124655}
   activePlayer: {fileID: 0}
+  tempMultiBall: {fileID: 0}
+  MultiActivePlayer1: {fileID: 0}
+  MultiActivePlayer2: {fileID: 0}
+  ballList: 
+  activeplayerIndex: 0

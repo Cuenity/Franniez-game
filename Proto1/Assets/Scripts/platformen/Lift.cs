@@ -39,10 +39,10 @@ public class Lift : MonoBehaviour
     private IEnumerator Move(Vector3 velocity, Rigidbody body, GameObject ball)
     {
         // bereken de verandering in 100 stapjes
-        Vector3 diffrence = (this.endPoint - this.startPoint) / 100;
+        Vector3 diffrence = (this.endPoint - this.startPoint) / 60;
 
         // voer de transform uit in 100 stapjes zodat het smooth lijkt. en neem het balletje mee
-        while (index <= 100)
+        while (index <= 60)
         {
             this.transform.position = this.transform.position + diffrence;
             ball.transform.position = this.transform.position + new Vector3(0, .75f, 0);
@@ -72,6 +72,11 @@ public class Lift : MonoBehaviour
         try
         {
             StopCoroutine(coroutineLift);
+            index = 0;
+            if( ball.GetComponent<Rigidbody>().freezeRotation== true)
+            {
+                ball.GetComponent<Rigidbody>().freezeRotation = false;
+            }
         }
         catch
         {

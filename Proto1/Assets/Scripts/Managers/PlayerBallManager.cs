@@ -39,7 +39,7 @@ public class PlayerBallManager : MonoBehaviour
         //Photon instantiate
         // instantiate de photon manier en geeft het object een andere naam(zodat deze niet fuckt)
         // alle rare assignemt zooi(tempmultiball en multiball) hoeft wss niet meer maar staat er nog 
-        if (PhotonNetwork.IsConnected)
+        if (PhotonNetwork.InRoom)
         {
             switch (type)
             {
@@ -70,14 +70,14 @@ public class PlayerBallManager : MonoBehaviour
             if (PhotonNetwork.IsMasterClient)
             {
                 MultiActivePlayer1 = tempMultiBall;
-                MultiActivePlayer1.name = "player1ball";
+                MultiActivePlayer1.name = "player1Ball";
                 activePlayer = tempMultiBall;
                 tempMultiBall = null;
             }
             else
             {
                 MultiActivePlayer2 = tempMultiBall;
-                MultiActivePlayer2.name = "player2ball";
+                MultiActivePlayer2.name = "player2Ball";
                 activePlayer = tempMultiBall;
                 tempMultiBall = null;
             }
