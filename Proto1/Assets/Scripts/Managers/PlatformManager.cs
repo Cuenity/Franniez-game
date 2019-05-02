@@ -311,8 +311,8 @@ public class PlatformManager : MonoBehaviour
             }
             else if (levelPlatformen.tileList[i] == 1)
             {
-                BigRamp ramp = Instantiate(bigRamp, GameState.Instance.gridManager.gridSquares[i + 1], new Quaternion(0, 0, 0, 0));
-                ramp.transform.Rotate(new Vector3(-90f, -90f, 0));
+                Ramp rampNormal = Instantiate(ramp, GameState.Instance.gridManager.gridSquares[i + 1], new Quaternion(0, 0, 0, 0));
+                rampNormal.transform.Rotate(new Vector3(-90f, -90f, 0));
                 List<int> gridSpots = new List<int>();
                 gridSpots.Add(i);
                 GameState.Instance.gridManager.AddFilledGridSpots(gridSpots, SizeType.twoByOne);
