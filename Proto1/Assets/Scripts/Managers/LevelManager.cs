@@ -79,6 +79,28 @@ public class LevelManager : MonoBehaviour
         balknop = gameState.UIManager.canvas.GetComponentInChildren<BallKnop>();
     }
     public Boolean levelIsSpawned = false;
+
+    //deze update is zo vies maar is nodig voor MP
+    private void Update()
+    {
+        if (PhotonNetwork.InRoom)
+        {
+            if (PhotonNetwork.IsMasterClient)
+            {
+                try
+                {
+                    if ((bool)PhotonNetwork.PlayerList[0].CustomProperties["hitflag"] && (bool)PhotonNetwork.PlayerList[1].CustomProperties["hitflag"])
+                    {
+                        PhotonNetwork.LoadLevel(16);
+                    }
+                }
+                catch
+                {
+                    Debug.Log("Je speelt multiplayer in je 1tje wat een loser ben jij");
+                }
+            }
+        }
+    }
     //public PlayerPlatforms PlayerPlatforms
     //{
     //    get
@@ -544,15 +566,12 @@ public class LevelManager : MonoBehaviour
                 bigLevel = true;
 
                 gameState.UIManager.canvas = Instantiate(canvas);
-                //fuck die button shit see if i give a shit fuckboi
-                //Button[] canvasButtons = gameState.UIManager.canvas.GetComponentsInChildren<Button>();
-                //for (int i = 0; i < canvasButtons.Length; i++)
-                //{
-                //    if (canvasButtons[i].name == "BallKnop")
-                //    {
-                //        canvasButtons[i].gameObject.SetActive(true);
-                //    }
-                //}
+                //doe gekke initshit voor localproperties
+                bool hitflag = false;
+                Hashtable hash = new Hashtable();
+                hash.Add("hitflag", hitflag);
+                PhotonNetwork.LocalPlayer.SetCustomProperties(hash);
+                //einde gekke shit
                 gameState.UIManager.newLevelInventoryisRequired = true;
                 GameState.Instance.playerCamera.ManualInit();
                 Vector3 playeradjustment = new Vector3(.5f, 0, 0);
@@ -645,7 +664,6 @@ public class LevelManager : MonoBehaviour
             Hashtable hash = new Hashtable();
             hash.Add("hitflag", hitflag);
             PhotonNetwork.LocalPlayer.SetCustomProperties(hash);
-            Debug.Log(PhotonNetwork.LocalPlayer.CustomProperties["hitflag"]);
         }
         if (sceneName != "VictoryScreen")
         {
