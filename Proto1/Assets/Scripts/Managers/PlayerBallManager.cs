@@ -151,7 +151,7 @@ public class PlayerBallManager : MonoBehaviour
         {
             camera.transform.position = gameState.playerBallManager.spawnpoint + camera.TargetMovementOffset;
         }
-        
+
         camera.transform.LookAt(camera.Target.transform.position);
         camera.GetComponent<Rigidbody>().velocity = new Vector3(0, 0, 0);
         this.GetComponent<Rigidbody>().Sleep();

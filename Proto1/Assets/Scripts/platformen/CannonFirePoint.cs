@@ -4,7 +4,7 @@ using UnityEngine;
 public class CannonFirePoint : MonoBehaviour
 {
     private GameObject playerBall;
-
+    public GameObject poofEffect;
     [SerializeField] private float waitingTimeTillFiring;
     [SerializeField] private float fireSpeed;
 
@@ -28,6 +28,9 @@ public class CannonFirePoint : MonoBehaviour
         float transformUp = gameObject.transform.up.x;
         //transformUp (/15)
         //playerBall.transform.position = transform.position + gameObject.transform.parent.forward;
+        GameObject effect = poofEffect;
+        effect=Instantiate(effect);
+         effect.transform.position=this.transform.position;
         playerBall.GetComponent<Rigidbody>().velocity = new Vector3(gameObject.transform.up.x, gameObject.transform.up.y, 0) * -fireSpeed; // + new Vector3(-10, 0, 0)
         //playerBall.GetComponent<Rigidbody>().velocity = new Vector3(gameObject.transform.parent.rotation.x, gameObject.transform.parent.rotation.y, gameObject.transform.parent.rotation.z);
         playerBall.SetActive(true);
