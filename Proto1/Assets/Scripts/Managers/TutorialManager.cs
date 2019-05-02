@@ -75,11 +75,11 @@ public class TutorialManager : MonoBehaviour
     {
         if (arrow == null)
         {
-            arrow = Instantiate(tutorialArrow, new Vector3(3.5f, -4, -4), Quaternion.Euler(0, 0, 45));
+            arrow = Instantiate(tutorialArrow, new Vector3(3.5f, -4.3f, -4), Quaternion.Euler(0, 0, 45));
         }
         if (arrow2 == null)
         {
-            arrow2 = Instantiate(tutorialArrow, new Vector3(3.5f, -2.8f, -4), Quaternion.Euler(0, 0, 20));
+            arrow2 = Instantiate(tutorialArrow, new Vector3(3.5f, -3.3f, -4), Quaternion.Euler(0, 0, 20));
         }
     }
 

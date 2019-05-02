@@ -287,13 +287,49 @@ public class LevelManager : MonoBehaviour
                 levelPlatformen.heigth = 15;
                 gameState.gridManager.width = 40;
                 gameState.gridManager.height = 15;
-                playerPlatforms = new PlayerPlatforms(0, 0, 5, 0, 0);
+                playerPlatforms = new PlayerPlatforms(0, 0, 7, 0, 0);
                 gameState.gridManager.Build_Grid_FromJSON_Without_Visuals(levelPlatformen.width, levelPlatformen.heigth);
                 gameState.playerBallManager.SetSpawnpoint(0);
                 //gameState.playerManager.player.spawnpoint = gameState.gridManager.gridSquares[1] + playeradjustment;
                 //gameState.platformManager.BuildLevel2RampsEasy();
 
-                int[] coinarray = new int[] { 456, 370, 155 };
+                int[] coinarray = new int[] { 294, 464, 556 };
+                int finishPosition = 559;
+                GameState.Instance.platformManager.BuildLevelFromLevelPlatformen(levelPlatformen, coinarray, finishPosition);
+
+                //boolean party voor elk level nu nodig
+                gameState.playerBallManager.WhatBalls(true, false, false);
+                gameState.playerManager.PlayerInit(gameState.playerBallManager.ballList[0]);
+                //gameState.collectableManager.InitCollectables(coinPositions, finishPosition);
+                gameState.BuildingPhaseActive = true;
+                GameState.Instance.PreviousLevel = 1;
+                PlayerDataController.instance.previousScene = 1;
+                levelIsSpawned = true;
+            }
+        }
+
+        else if (sceneName == "5")
+        {
+            if (!levelIsSpawned)
+            {
+                bigLevel = true;
+                gameState.UIManager.canvas = Instantiate(canvas);
+                gameState.UIManager.newLevelInventoryisRequired = true;
+                gameState.collectableManager.newCollectablesAreRequired = true;
+                GameState.Instance.playerCamera.ManualInit();
+                Vector3 playeradjustment = new Vector3(.5f, 0, 0);
+                levelPlatformen.tileList = level4JumpHard;
+                levelPlatformen.width = 40;
+                levelPlatformen.heigth = 15;
+                gameState.gridManager.width = 40;
+                gameState.gridManager.height = 15;
+                playerPlatforms = new PlayerPlatforms(0, 0, 7, 0, 0);
+                gameState.gridManager.Build_Grid_FromJSON_Without_Visuals(levelPlatformen.width, levelPlatformen.heigth);
+                gameState.playerBallManager.SetSpawnpoint(0);
+                //gameState.playerManager.player.spawnpoint = gameState.gridManager.gridSquares[1] + playeradjustment;
+                //gameState.platformManager.BuildLevel2RampsEasy();
+
+                int[] coinarray = new int[] { 294, 464, 556 };
                 int finishPosition = 559;
                 GameState.Instance.platformManager.BuildLevelFromLevelPlatformen(levelPlatformen, coinarray, finishPosition);
 

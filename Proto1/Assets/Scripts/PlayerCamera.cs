@@ -67,7 +67,7 @@ public class PlayerCamera : MonoBehaviour
         {
             Rigidbody Body = this.GetComponent<Rigidbody>();
 
-            Vector3 Diff = transform.position - (Target.transform.position + TargetMovementOffset / 2);
+            Vector3 Diff = transform.position - (Target.transform.position + TargetMovementOffset * 0.75f);
             Vector3 Vel = Body.velocity;
 
             Vector3 force = (Diff * -SpringForce) - (Vel * SpringDamper);
