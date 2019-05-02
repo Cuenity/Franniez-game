@@ -11,6 +11,8 @@ public class PhotonConnect : MonoBehaviourPunCallbacks
     //Menustuff
     [SerializeField]
     InputField inputFieldConnect, inputFieldCreate;
+    [SerializeField]
+    Text debugText;
 
     //PhotonStuff
     public string versionName = "0.1";
@@ -30,11 +32,10 @@ public class PhotonConnect : MonoBehaviourPunCallbacks
 
    
 
-    private void connectToPhoton()
+    public void connectToPhoton()
     {
         PhotonNetwork.AddCallbackTarget(PhotonNetwork.ConnectUsingSettings());
-        //PhotonNetwork.ConnectToBestCloudServer();
-        //PhotonNetwork.ConnectToRegion("EU");
+        PhotonNetwork.ConnectToBestCloudServer();
         Debug.Log("Connecting to photon...");
     }
     //Check methods
@@ -42,11 +43,14 @@ public class PhotonConnect : MonoBehaviourPunCallbacks
     public void CheckConnection()
     {
         Debug.Log(PhotonNetwork.IsConnected);
+        debugText.text = PhotonNetwork.IsConnected.ToString();
+        debugText.text = debugText.text + " location: " +PhotonNetwork.CloudRegion;
     }
     public void CheckRoom()
     {
-        Debug.Log(PhotonNetwork.CountOfRooms);
+        Debug.Log(PhotonNetwork.CountOfPlayers);
         Debug.Log(PhotonNetwork.CurrentRoom);
+        debugText.text = PhotonNetwork.CurrentRoom.ToString();
     }
 
     private void OnConnectedToServer()

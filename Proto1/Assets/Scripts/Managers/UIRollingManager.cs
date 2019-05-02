@@ -23,7 +23,7 @@ public class UIRollingManager : MonoBehaviour
     void Start()
     {
         //omdat ik niet prefabs van al die dingetjes wil maken doe ik de assignment hier mischien dat erwin een slimme oplossing 
-        Canvas canvas  = GameObject.FindGameObjectWithTag("UICanvas").GetComponent<Canvas>();
+        Canvas canvas = GameState.Instance.UIManager.canvas; //GameObject.FindGameObjectWithTag("UICanvas").GetComponent<Canvas>();
         amountCoinsText = canvas.gameObject.transform.Find("CoinsText").GetComponent<Text>();
         levelNumberText = canvas.gameObject.transform.Find("Level Text").GetComponent<Text>();
         amountStickersText = canvas.gameObject.transform.Find("Sticker Text").GetComponent<Text>();

@@ -1,7 +1,9 @@
 using GameAnalyticsSDK;
 using Photon.Pun;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using Hashtable = ExitGames.Client.Photon.Hashtable;
 
 public class RollingPhaseManager : MonoBehaviour
 {
@@ -116,26 +118,45 @@ public class RollingPhaseManager : MonoBehaviour
     {
         if (PhotonNetwork.InRoom)
         {
-            //finish is geraakt door 1 speler
-            //zet een variabel op true voor deze speler alleen
-            if (PhotonNetwork.IsMasterClient)
+            //bool hitflag = (bool)PhotonNetwork.LocalPlayer.CustomProperties["hitflag"];
+            //zet je eigen shizzle op true
+            bool hitflag = true;
+            Hashtable hash = new Hashtable();
+            hash.Add("hitflag", hitflag);
+            PhotonNetwork.LocalPlayer.SetCustomProperties(hash);
+            
+            //ok dan volgende stap is het checken of beide true zijn
+            //PhotonNetwork.PlayerList[i].CustomProperties["hitflag"]
+            if((bool)PhotonNetwork.PlayerList[0].CustomProperties["hitflag"]&& (bool)PhotonNetwork.PlayerList[1].CustomProperties["hitflag"])
             {
-                PhotonDataOpslag.Instance.FlagHitPlayer1 = true;
-                Debug.Log("Player 1 vlag hit");
+                Debug.Log("WINNAAR");
             }
             else
             {
-                PhotonDataOpslag.Instance.FlagHitPlayer2 = true;
-                Debug.Log("player 2 vlag hit");
+                Debug.Log("GEEN WINNAAR");
             }
-            //check of de andere variabel is getruet
-            //
-            if (PhotonDataOpslag.Instance.FlagHitPlayer1 && PhotonDataOpslag.Instance.FlagHitPlayer2)
-            {
-                //Go to victoty
-                Debug.Log("VICTORY VOOR BEIDEN");
-                SceneSwitcher.Instance.AsynchronousLoadStartNoLoadingBar("VictoryScreen");
-            }
+
+            //niet weggooien wil erwin vragen of het ook op deze manier kan en waarom dit soort shit niet werkt
+            ////finish is geraakt door 1 speler
+            ////zet een variabel op true voor deze speler alleen
+            //if (PhotonNetwork.IsMasterClient)
+            //{
+            //    PhotonDataOpslag.Instance.FlagHitPlayer1 = true;
+            //    Debug.Log("Player 1 vlag hit");
+            //}
+            //else
+            //{
+            //    PhotonDataOpslag.Instance.FlagHitPlayer2 = true;
+            //    Debug.Log("player 2 vlag hit");
+            //}
+            ////check of de andere variabel is getruet
+            ////
+            //if (PhotonDataOpslag.Instance.FlagHitPlayer1 && PhotonDataOpslag.Instance.FlagHitPlayer2)
+            //{
+            //    //Go to victoty
+            //    Debug.Log("VICTORY VOOR BEIDEN");
+            //    SceneSwitcher.Instance.AsynchronousLoadStartNoLoadingBar("VictoryScreen");
+            //}
         }
         else
         {

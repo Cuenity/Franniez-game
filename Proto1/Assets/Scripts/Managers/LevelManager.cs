@@ -7,6 +7,7 @@ using System.IO;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using Hashtable = ExitGames.Client.Photon.Hashtable;
 
 public class LevelManager : MonoBehaviour
 {
@@ -205,7 +206,7 @@ public class LevelManager : MonoBehaviour
             }
         }
 
-        else if (sceneName == "12")
+        else if (sceneName == "3")
         {
             if (!levelIsSpawned)
             {
@@ -239,7 +240,7 @@ public class LevelManager : MonoBehaviour
             }
         }
 
-        else if (sceneName == "13")
+        else if (sceneName == "4")
         {
             if (!levelIsSpawned)
             {
@@ -269,7 +270,7 @@ public class LevelManager : MonoBehaviour
             }
         }
 
-        else if (sceneName == "14")
+        else if (sceneName == "5")
         {
             if (!levelIsSpawned)
             {
@@ -301,7 +302,7 @@ public class LevelManager : MonoBehaviour
             }
         }
 
-        else if (sceneName == "15")
+        else if (sceneName == "6")
         {
             if (!levelIsSpawned)
             {
@@ -534,14 +535,12 @@ public class LevelManager : MonoBehaviour
 
         if (PhotonNetwork.InRoom)
         {
-            if (PhotonNetwork.IsMasterClient)
-            {
-                PhotonDataOpslag.Instance.FlagHitPlayer1 = false;
-            }
-            else
-            {
-                PhotonDataOpslag.Instance.FlagHitPlayer2 = false;
-            }
+            //zet vlag geraakt op false voor multi
+            bool hitflag = false;
+            Hashtable hash = new Hashtable();
+            hash.Add("hitflag", hitflag);
+            PhotonNetwork.LocalPlayer.SetCustomProperties(hash);
+            Debug.Log(PhotonNetwork.LocalPlayer.CustomProperties["hitflag"]);
         }
         if (sceneName != "VictoryScreen")
         {
