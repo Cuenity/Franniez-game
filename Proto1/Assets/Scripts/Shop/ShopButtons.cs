@@ -90,16 +90,15 @@ public class ShopButtons : MonoBehaviour
 
         if(PlayerDataController.instance.player.materialsByName.Contains(skin.skinName))
         {
-            PlayerDataController.instance.ballMaterial = skin.material;
+            PlayerDataController.instance.SetActiveMaterial(skin.material);
             button.ChangeImage(skin);
         }
         else if (PlayerDataController.instance.RemoveShopCoins(skin.cost))
         {
-            UpdateCoins();
-
             PlayerDataController.instance.AddMaterial(skin);
-            PlayerDataController.instance.ballMaterial = skin.material;
+            PlayerDataController.instance.SetActiveMaterial(skin.material);
             button.ChangeImage(skin);
+            UpdateCoins();
             return;
         }
         else

@@ -45,6 +45,7 @@ public class PlayerDataController : MonoBehaviour
             file.Close();
 
             player = playerData;
+            SetMaterial();
         }
         return fileExist;
     }
@@ -59,25 +60,6 @@ public class PlayerDataController : MonoBehaviour
         file.Close();
         Debug.Log("Opgeslagen");
     }
-
-    //public void MakeNewPlayer()
-    //{
-    //    Player playerTest = new Player();
-    //    playerTest.coins = 0;
-    //    playerTest.ShopCoins = 0;
-    //    playerTest.language = 2;
-    //    playerTest.levels = new Level[1];
-    //    playerTest.stickers = new Sticker[1];
-    //    playerTest.name = "Joris";
-
-    //    player = playerTest;
-    //    Save();
-    //}
-
-    //public Player GetPlayer()
-    //{
-    //    return player;
-    //}
 
     public void SetPlayer(PlayerData setPlayer)
     {
@@ -133,21 +115,28 @@ public class PlayerDataController : MonoBehaviour
 
     public void AddMaterial(SkinObject skin)
     {
-        //PlayerBallMaterial newSkin = new PlayerBallMaterial
-        //{
-        //    Material = skin.material,
-        //    Name = skin.skinName
-        //};
-        //player.materials.Add(newSkin);
         player.materialsByName.Add(skin.skinName);
         Save();
     }
 
-    private void setMaterials()
+    public void SetActiveMaterial(Material skinMaterial)
     {
-        foreach (string skinName in player.materialsByName)
-        {
+        ballMaterial = skinMaterial;
+        player.activeMaterial = skinMaterial.name;
+        Save();
+    }
 
+    private void SetMaterial()
+    {
+        if(player.activeMaterial == null)
+        {
+            ballMaterial = Resources.Load("Skins/DefaultSkin", typeof(Material)) as Material;
         }
+        else
+        {
+            string path = "Skins/" + player.activeMaterial;
+            ballMaterial = Resources.Load(path, typeof(Material)) as Material;
+        }
+
     }
 }
