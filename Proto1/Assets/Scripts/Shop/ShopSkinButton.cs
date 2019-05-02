@@ -16,12 +16,6 @@ public class ShopSkinButton : MonoBehaviour
 
     private SkinObject skinObject;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
     public void Setup(SkinObject skin)
     {
         skinObject = skin;

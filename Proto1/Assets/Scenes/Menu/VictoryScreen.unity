@@ -646,7 +646,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: SHARE ON FB
+  m_Text: SHARE ON TWITTAH
 --- !u!222 &515320079
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1113,6 +1113,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ea40de148d73ba4baaed44dcace93e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ballMaterial: {fileID: 0}
 --- !u!4 &1724149329
 Transform:
   m_ObjectHideFlags: 0
@@ -1432,6 +1433,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45d50a01dcef27d4f9851899cc694e70, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tutorialActive: 0
 --- !u!4 &1879856416
 Transform:
   m_ObjectHideFlags: 0

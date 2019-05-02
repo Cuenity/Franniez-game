@@ -2,36 +2,19 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Facebook.Unity;
+using TwitterKit.Unity;
+using System;
 
 public class FaceBookScript : MonoBehaviour
 {
     private void Awake()
     {
-        if (!FB.IsInitialized)
-        {
-            FB.Init(() =>
-            {
-                if (FB.IsInitialized)
-                    FB.ActivateApp();
-                else
-                    Debug.LogError("Couldn't initialize");
-            },
-            isGameShown =>
-            {
-                if (!isGameShown)
-                    Time.timeScale = 0;
-                else
-                    Time.timeScale = 1;
-            });
-        }
-        else
-            FB.ActivateApp();
+        Twitter.Init();
     }
 
     public void FacebookLogin()
     {
-        var permissions = new List<string>() { "public_profile", "email", "user_friends" };
-        FB.LogInWithReadPermissions(permissions);
+        StartLogin();
     }
 
     public void FacebookLogout()
@@ -41,10 +24,48 @@ public class FaceBookScript : MonoBehaviour
 
     public void FacebookShare()
     {
-        string test = "Level " + PlayerDataController.instance.previousScene.ToString() + " behaald!";
-
-        FB.ShareLink(new System.Uri("http://franniez.nl"),"This Is How I Roll",
-            test,
-            new System.Uri("https://franniez.nl/themes/franniez/assets/images/header.jpg"));
+        String path = "https://franniez.nl/themes/franniez/assets/images/header.jpg";
+        string message = "Yeah ik heb level " + GameState.Instance.PreviousLevel.ToString() + " gehaald met " + PlayerDataController.instance.player.levels[GameState.Instance.PreviousLevel].countCoins + "!";
+        Twitter.Compose(Twitter.Session, path, message, new string[] { "#Franniez", "#ThisIsHowIRoll", "#TIHIR" },
+                (string tweetId) => { UnityEngine.Debug.Log("Tweet Success, tweetId = " + tweetId); },
+                (ApiError error) => { UnityEngine.Debug.Log("Tweet Failed " + error.message); },
+                () => { Debug.Log("Compose cancelled"); }
+        );
     }
+
+    public void StartLogin()
+    {
+        TwitterSession session = Twitter.Session;
+        if (session == null)
+        {
+            Twitter.LogIn(LoginComplete, LoginFailure);
+        }
+        else
+        {
+            LoginComplete(session);
+        }
+    }
+
+    public void LoginComplete(TwitterSession session)
+    {
+        StartComposer(Twitter.Session, "https://franniez.nl/themes/franniez/assets/images/header.jpg");
+    }
+
+    public void LoginFailure(ApiError error)
+    {
+        UnityEngine.Debug.Log("code=" + error.code + " msg=" + error.message);
+    }
+
+    public void StartComposer(TwitterSession session, String imageUri)
+    {
+        
+
+        Twitter.Compose(session, imageUri, "My new high score!", new string[] { "#SpaceShooter" },
+                (string tweetId) => { UnityEngine.Debug.Log("Tweet Success, tweetId = " + tweetId); },
+                (ApiError error) => { UnityEngine.Debug.Log("Tweet Failed " + error.message); },
+                () => { Debug.Log("Compose cancelled"); }
+        );
+    }
+
+
 }

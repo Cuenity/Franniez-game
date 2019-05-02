@@ -200,8 +200,8 @@ public class LevelManager : MonoBehaviour
                 gameState.playerManager.PlayerInit(gameState.playerBallManager.ballList[0]);
                 //gameState.collectableManager.InitCollectables(coinPositions, finishPosition);
                 gameState.BuildingPhaseActive = true;
-                GameState.Instance.PreviousLevel = 1;
-                PlayerDataController.instance.previousScene = 1;
+                GameState.Instance.PreviousLevel = 2;
+                PlayerDataController.instance.previousScene = 2;
                 levelIsSpawned = true;
             }
         }
@@ -234,8 +234,8 @@ public class LevelManager : MonoBehaviour
                 gameState.playerBallManager.WhatBalls(true, true, true);
                 gameState.playerManager.PlayerInit(gameState.playerBallManager.ballList[0]);
                 gameState.BuildingPhaseActive = true;
-                GameState.Instance.PreviousLevel = 1;
-                PlayerDataController.instance.previousScene = 1;
+                GameState.Instance.PreviousLevel = 3;
+                PlayerDataController.instance.previousScene = 3;
                 levelIsSpawned = true;
             }
         }
@@ -264,8 +264,8 @@ public class LevelManager : MonoBehaviour
                 gameState.playerBallManager.WhatBalls(true, true, false);
                 gameState.playerManager.PlayerInit(gameState.playerBallManager.ballList[0]);
                 gameState.BuildingPhaseActive = true;
-                GameState.Instance.PreviousLevel = 3;
-                PlayerDataController.instance.previousScene = 3;
+                GameState.Instance.PreviousLevel = 4;
+                PlayerDataController.instance.previousScene = 4;
                 levelIsSpawned = true;
             }
         }
