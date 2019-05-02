@@ -39,7 +39,7 @@ public class PlayerManager : MonoBehaviour
             else
             {
                 GameObject targetObject = new GameObject("CenterCameraTarget");
-                targetObject.transform.position = new Vector3(gameState.gridManager.width / 2, -gameState.gridManager.height / 2);
+                targetObject.transform.position = new Vector3(gameState.gridManager.width / 2, -gameState.gridManager.height / 2 - 1);
                 gameState.playerCamera.Target = targetObject;
             }
 

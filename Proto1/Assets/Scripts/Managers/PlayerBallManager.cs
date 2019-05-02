@@ -39,45 +39,45 @@ public class PlayerBallManager : MonoBehaviour
         //Photon instantiate
         // instantiate de photon manier en geeft het object een andere naam(zodat deze niet fuckt)
         // alle rare assignemt zooi(tempmultiball en multiball) hoeft wss niet meer maar staat er nog 
-        if (PhotonNetwork.IsConnected)
+        if (PhotonNetwork.InRoom)
         {
             switch (type)
             {
                 case Bal.BlackHole:
                     tempMultiBall = PhotonNetwork.Instantiate("Photon BlackHoleBall", gameState.playerBallManager.spawnpoint, new Quaternion(0, 0, 0, 0)).gameObject;
-                    activePlayer.GetComponent<Renderer>().material = PlayerDataController.instance.ballMaterial;
+                    tempMultiBall.GetComponent<Renderer>().material = PlayerDataController.instance.ballMaterial;
                     gameState.playerCamera.Target = tempMultiBall;
                     break;
                 case Bal.Light:
                     
                     tempMultiBall = PhotonNetwork.Instantiate("Photon LightBall", gameState.playerBallManager.spawnpoint, new Quaternion(0, 0, 0, 0)).gameObject;
-                    activePlayer.GetComponent<Renderer>().material = PlayerDataController.instance.ballMaterial;
+                    tempMultiBall.GetComponent<Renderer>().material = PlayerDataController.instance.ballMaterial;
                     gameState.playerCamera.Target = tempMultiBall;
                     break;
                 case Bal.Normal:
                     
                     tempMultiBall = PhotonNetwork.Instantiate("Photon Player Ball", gameState.playerBallManager.spawnpoint, new Quaternion(0, 0, 0, 0)).gameObject;
-                    activePlayer.GetComponent<Renderer>().material = PlayerDataController.instance.ballMaterial;
+                    tempMultiBall.GetComponent<Renderer>().material = PlayerDataController.instance.ballMaterial;
                     gameState.playerCamera.Target = tempMultiBall;
                     break;
                 default:
                     
                     tempMultiBall = PhotonNetwork.Instantiate("Photon Player Ball", gameState.playerBallManager.spawnpoint, new Quaternion(0, 0, 0, 0)).gameObject;
-                    activePlayer.GetComponent<Renderer>().material = PlayerDataController.instance.ballMaterial;
+                    tempMultiBall.GetComponent<Renderer>().material = PlayerDataController.instance.ballMaterial;
                     gameState.playerCamera.Target = tempMultiBall;
                     break;
             }
             if (PhotonNetwork.IsMasterClient)
             {
                 MultiActivePlayer1 = tempMultiBall;
-                MultiActivePlayer1.name = "player1ball";
+                MultiActivePlayer1.name = "player1Ball";
                 activePlayer = tempMultiBall;
                 tempMultiBall = null;
             }
             else
             {
                 MultiActivePlayer2 = tempMultiBall;
-                MultiActivePlayer2.name = "player2ball";
+                MultiActivePlayer2.name = "player2Ball";
                 activePlayer = tempMultiBall;
                 tempMultiBall = null;
             }
@@ -151,7 +151,7 @@ public class PlayerBallManager : MonoBehaviour
         {
             camera.transform.position = gameState.playerBallManager.spawnpoint + camera.TargetMovementOffset;
         }
-        
+
         camera.transform.LookAt(camera.Target.transform.position);
         camera.GetComponent<Rigidbody>().velocity = new Vector3(0, 0, 0);
         this.GetComponent<Rigidbody>().Sleep();

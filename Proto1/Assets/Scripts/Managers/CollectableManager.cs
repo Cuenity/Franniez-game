@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using Photon.Pun;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class CollectableManager : MonoBehaviour
@@ -56,13 +57,28 @@ public class CollectableManager : MonoBehaviour
 
     public void InitCoins()
     {
-        foreach (Vector3 coinPosition in coinPositions)
+        if (PhotonNetwork.InRoom)
         {
-            Coin coin2 = Instantiate(coin);
-            coin2.spawnpoint = coinPosition;
-            coin2.transform.position = coin2.spawnpoint;
-            coin2.gameObject.SetActive(true);
-            gameState.levelManager.coinList.Add(coin2);
+            if (PhotonNetwork.IsMasterClient)
+            {
+                foreach (Vector3 coinPosition in coinPositions)
+                {
+                    Coin coin2 = PhotonNetwork.Instantiate("Photon Star", coinPosition, new Quaternion(0, 0, 0, 0)).GetComponent<Coin>();
+                    coin2.gameObject.SetActive(true);
+                    gameState.levelManager.coinList.Add(coin2);
+                }
+            }
+        }
+        else
+        {
+            foreach (Vector3 coinPosition in coinPositions)
+            {
+                Coin coin2 = Instantiate(coin);
+                coin2.spawnpoint = coinPosition;
+                coin2.transform.position = coin2.spawnpoint;
+                coin2.gameObject.SetActive(true);
+                gameState.levelManager.coinList.Add(coin2);
+            }
         }
     }
 

@@ -7,6 +7,7 @@ public class LightBall : MonoBehaviourPun
 {
     // Start is called before the first frame update
     GameState gameState = GameState.Instance;
+    public GameObject lightballEffect;
     private void Awake()
     {
         gameState = GameState.Instance;
@@ -15,6 +16,9 @@ public class LightBall : MonoBehaviourPun
     }
     void Start()
     {
+        lightballEffect = Instantiate(lightballEffect);
+        lightballEffect.transform.SetParent(this.transform);
+        lightballEffect.transform.position = this.transform.position;
         this.GetComponent<Rigidbody>().maxAngularVelocity = 99;
 
     }
@@ -22,6 +26,7 @@ public class LightBall : MonoBehaviourPun
     // Update is called once per frame
     void Update()
     {
+        lightballEffect.transform.position = this.transform.position;
         if (gameState.RollingPhaseActive)
         {
             this.GetComponent<Rigidbody>().useGravity = true;

@@ -882,6 +882,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45d50a01dcef27d4f9851899cc694e70, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tutorialActive: 0
 --- !u!114 &8453823918981681069
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -966,7 +967,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 80, y: 20}
+  m_AnchoredPosition: {x: 80, y: 12}
   m_SizeDelta: {x: 1920, y: 1080}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &3722558686292009453
@@ -1103,5 +1104,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 60d3697b9044e384fb1387b4d92b69b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  poofEffect: {fileID: 100000, guid: 83cd9cc9f9c88824ba18dc59b05ae328, type: 3}
   waitingTimeTillFiring: 1
   fireSpeed: 15
