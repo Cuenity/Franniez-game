@@ -7,6 +7,7 @@ using System.IO;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using Hashtable = ExitGames.Client.Photon.Hashtable;
 
 public class LevelManager : MonoBehaviour
 {
@@ -534,14 +535,12 @@ public class LevelManager : MonoBehaviour
 
         if (PhotonNetwork.InRoom)
         {
-            if (PhotonNetwork.IsMasterClient)
-            {
-                PhotonDataOpslag.Instance.FlagHitPlayer1 = false;
-            }
-            else
-            {
-                PhotonDataOpslag.Instance.FlagHitPlayer2 = false;
-            }
+            //zet vlag geraakt op false voor multi
+            bool hitflag = false;
+            Hashtable hash = new Hashtable();
+            hash.Add("hitflag", hitflag);
+            PhotonNetwork.LocalPlayer.SetCustomProperties(hash);
+            Debug.Log(PhotonNetwork.LocalPlayer.CustomProperties["hitflag"]);
         }
         if (sceneName != "VictoryScreen")
         {
