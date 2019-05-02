@@ -9,6 +9,8 @@ public class TutorialManager : MonoBehaviour
     private GameObject arrow2;
 
     private bool rollingFinished;
+    public bool changeBallTutorial;
+
     public bool RollingFinished
     {
         get
@@ -31,15 +33,20 @@ public class TutorialManager : MonoBehaviour
 
     public void TurnTutorialMaskOff()
     {
-        GameState.Instance.UIManager.canvas.GetComponentInChildren<TutorialMask>(true).gameObject.SetActive(false);
+        if (!changeBallTutorial)
+        {
+            GameState.Instance.UIManager.canvas.GetComponentsInChildren<TutorialMask>(true)[0].gameObject.SetActive(false);
+        }
+        else
+        {
+            GameState.Instance.UIManager.canvas.GetComponentsInChildren<TutorialMask>(true)[1].gameObject.SetActive(false);
+        }
     }
 
     public void StartTutorial()
     {
 
         StartCoroutine(SetTutorialActiveAsSoonAsPossible());
-
-
         StartCoroutine(SpawnTutorialMaskAfterSecond());
     }
 
@@ -68,7 +75,14 @@ public class TutorialManager : MonoBehaviour
     IEnumerator SpawnTutorialMaskAfterSecond()
     {
         yield return new WaitForSeconds(0.2f);
-        GameState.Instance.UIManager.canvas.GetComponentInChildren<TutorialMask>(true).gameObject.SetActive(true);
+        if (!changeBallTutorial)
+        {
+            GameState.Instance.UIManager.canvas.GetComponentsInChildren<TutorialMask>(true)[0].gameObject.SetActive(true);
+        }
+        else
+        {
+            GameState.Instance.UIManager.canvas.GetComponentsInChildren<TutorialMask>(true)[1].gameObject.SetActive(true);
+        }
     }
 
     private void SpawnTutorialArrows()

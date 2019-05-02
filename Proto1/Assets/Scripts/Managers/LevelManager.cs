@@ -54,6 +54,17 @@ public class LevelManager : MonoBehaviour
         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 0 };
+    int[] level5BlackHoleBallTutorial = new int[] {
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
     /// </summary>
     #endregion
 
@@ -313,28 +324,29 @@ public class LevelManager : MonoBehaviour
             if (!levelIsSpawned)
             {
                 bigLevel = true;
+                gameState.tutorialManager.changeBallTutorial = true;
+                gameState.tutorialManager.StartTutorial();
+
                 gameState.UIManager.canvas = Instantiate(canvas);
                 gameState.UIManager.newLevelInventoryisRequired = true;
                 gameState.collectableManager.newCollectablesAreRequired = true;
                 GameState.Instance.playerCamera.ManualInit();
                 Vector3 playeradjustment = new Vector3(.5f, 0, 0);
-                levelPlatformen.tileList = level4JumpHard;
-                levelPlatformen.width = 40;
-                levelPlatformen.heigth = 15;
-                gameState.gridManager.width = 40;
-                gameState.gridManager.height = 15;
-                playerPlatforms = new PlayerPlatforms(0, 0, 7, 0, 0);
+                levelPlatformen.tileList = level5BlackHoleBallTutorial;
+                levelPlatformen.width = 14;
+                levelPlatformen.heigth = 10;
+                gameState.gridManager.width = 14;
+                gameState.gridManager.height = 10;
+                playerPlatforms = new PlayerPlatforms(3, 1, 0, 0, 0);
                 gameState.gridManager.Build_Grid_FromJSON_Without_Visuals(levelPlatformen.width, levelPlatformen.heigth);
                 gameState.playerBallManager.SetSpawnpoint(0);
-                //gameState.playerManager.player.spawnpoint = gameState.gridManager.gridSquares[1] + playeradjustment;
-                //gameState.platformManager.BuildLevel2RampsEasy();
 
-                int[] coinarray = new int[] { 294, 464, 556 };
-                int finishPosition = 559;
+                int[] coinarray = new int[] { 45, 61, 120 };
+                int finishPosition = 111;
                 GameState.Instance.platformManager.BuildLevelFromLevelPlatformen(levelPlatformen, coinarray, finishPosition);
 
                 //boolean party voor elk level nu nodig
-                gameState.playerBallManager.WhatBalls(true, false, false);
+                gameState.playerBallManager.WhatBalls(true, true, false);
                 gameState.playerManager.PlayerInit(gameState.playerBallManager.ballList[0]);
                 //gameState.collectableManager.InitCollectables(coinPositions, finishPosition);
                 gameState.BuildingPhaseActive = true;
