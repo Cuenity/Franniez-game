@@ -7,6 +7,7 @@ public class BlackHoleBall : MonoBehaviourPun
 {
     // Start is called before the first frame update
     GameState gameState = GameState.Instance;
+    private Quaternion effectRotation=new Quaternion(0,0,0,0);
     public GameObject BHEffect;
     private void Awake()
     {
@@ -20,6 +21,7 @@ public class BlackHoleBall : MonoBehaviourPun
         BHEffect = Instantiate(BHEffect);
         BHEffect.gameObject.transform.SetParent(this.gameObject.transform);
         BHEffect.transform.position = this.transform.position;
+        BHEffect.GetComponent<Rigidbody>().freezeRotation = true;
     }
 
     // Update is called once per frame

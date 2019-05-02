@@ -196,11 +196,6 @@ public class ButtonManager : MonoBehaviour
             if (prev_ball.name.Contains(item.ToString()))
             {
                 Destroy(prev_ball);
-                //if(prev_ball.GetComponent<BlackHoleBall>())
-                //{
-                //    GameObject effect= prev_ball.GetComponent<BlackHoleBall>().BHEffect;
-                //    Destroy(effect);
-                //}
                 gameState.playerBallManager.InitTypeBall(list[index]);
                 break;
             }     

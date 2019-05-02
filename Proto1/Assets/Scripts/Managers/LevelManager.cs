@@ -360,7 +360,7 @@ public class LevelManager : MonoBehaviour
             }
         }
 
-        else if (sceneName == "12")
+        else if (sceneName == "6")
         {
             if (!levelIsSpawned)
             {
