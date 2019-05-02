@@ -45,25 +45,25 @@ public class PlayerBallManager : MonoBehaviour
             {
                 case Bal.BlackHole:
                     tempMultiBall = PhotonNetwork.Instantiate("Photon BlackHoleBall", gameState.playerBallManager.spawnpoint, new Quaternion(0, 0, 0, 0)).gameObject;
-
+                    activePlayer.GetComponent<Renderer>().material = PlayerDataController.instance.ballMaterial;
                     gameState.playerCamera.Target = tempMultiBall;
                     break;
                 case Bal.Light:
                     
                     tempMultiBall = PhotonNetwork.Instantiate("Photon LightBall", gameState.playerBallManager.spawnpoint, new Quaternion(0, 0, 0, 0)).gameObject;
-
+                    activePlayer.GetComponent<Renderer>().material = PlayerDataController.instance.ballMaterial;
                     gameState.playerCamera.Target = tempMultiBall;
                     break;
                 case Bal.Normal:
                     
                     tempMultiBall = PhotonNetwork.Instantiate("Photon Player Ball", gameState.playerBallManager.spawnpoint, new Quaternion(0, 0, 0, 0)).gameObject;
-
+                    activePlayer.GetComponent<Renderer>().material = PlayerDataController.instance.ballMaterial;
                     gameState.playerCamera.Target = tempMultiBall;
                     break;
                 default:
                     
                     tempMultiBall = PhotonNetwork.Instantiate("Photon Player Ball", gameState.playerBallManager.spawnpoint, new Quaternion(0, 0, 0, 0)).gameObject;
-
+                    activePlayer.GetComponent<Renderer>().material = PlayerDataController.instance.ballMaterial;
                     gameState.playerCamera.Target = tempMultiBall;
                     break;
             }
