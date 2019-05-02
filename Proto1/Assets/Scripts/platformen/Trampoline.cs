@@ -16,7 +16,8 @@ public class Trampoline : Platform
     {
 
     }
-    private void OnCollisionEnter(Collision collision)
+
+    private void OnTriggerEnter(Collider collision)
     {
         GameObject player = gamestate.playerBallManager.activePlayer;
         Vector3 velocity = player.GetComponent<Rigidbody>().velocity;
@@ -80,6 +81,6 @@ public class Trampoline : Platform
             velocityx = velocity.x;
         }
        
-        player.GetComponent<Rigidbody>().AddForce(velocityx, velocityY * 7f, 0, ForceMode.Impulse);
+        player.GetComponent<Rigidbody>().AddForce(velocityx, velocityY * 6f, 0, ForceMode.Impulse);
     }
 }

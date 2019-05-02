@@ -124,17 +124,6 @@ public class RollingPhaseManager : MonoBehaviour
             Hashtable hash = new Hashtable();
             hash.Add("hitflag", hitflag);
             PhotonNetwork.LocalPlayer.SetCustomProperties(hash);
-            
-            //ok dan volgende stap is het checken of beide true zijn
-            //PhotonNetwork.PlayerList[i].CustomProperties["hitflag"]
-            if((bool)PhotonNetwork.PlayerList[0].CustomProperties["hitflag"]&& (bool)PhotonNetwork.PlayerList[1].CustomProperties["hitflag"])
-            {
-                Debug.Log("WINNAAR");
-            }
-            else
-            {
-                Debug.Log("GEEN WINNAAR");
-            }
 
             //niet weggooien wil erwin vragen of het ook op deze manier kan en waarom dit soort shit niet werkt
             ////finish is geraakt door 1 speler
