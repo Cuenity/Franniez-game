@@ -205,7 +205,7 @@ public class LevelManager : MonoBehaviour
             }
         }
 
-        else if (sceneName == "12")
+        else if (sceneName == "3")
         {
             if (!levelIsSpawned)
             {
@@ -239,7 +239,7 @@ public class LevelManager : MonoBehaviour
             }
         }
 
-        else if (sceneName == "13")
+        else if (sceneName == "4")
         {
             if (!levelIsSpawned)
             {
@@ -269,7 +269,7 @@ public class LevelManager : MonoBehaviour
             }
         }
 
-        else if (sceneName == "14")
+        else if (sceneName == "5")
         {
             if (!levelIsSpawned)
             {
@@ -301,7 +301,7 @@ public class LevelManager : MonoBehaviour
             }
         }
 
-        else if (sceneName == "15")
+        else if (sceneName == "6")
         {
             if (!levelIsSpawned)
             {
