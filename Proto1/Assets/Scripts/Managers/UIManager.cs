@@ -24,7 +24,6 @@ public class UIManager : MonoBehaviour
 
     public void InitInventoryButtons(PlayerPlatforms playerPlatforms)
     {
-
         pauseMenu = Instantiate(pauseMenuCanvas);
         pauseMenu.enabled = false;
         InstantiateInventoryButtonsCheck(playerPlatforms.InventoryButtonAmmount);
