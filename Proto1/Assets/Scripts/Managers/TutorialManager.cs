@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class TutorialManager : MonoBehaviour
 {
@@ -54,24 +55,31 @@ public class TutorialManager : MonoBehaviour
         bool done = false;
         while (!done)
         {
-            if (GameState.Instance.UIManager.canvas != null)
+            if (SceneManager.GetActiveScene().name == "1" || SceneManager.GetActiveScene().name == "5")
             {
-                GameState.Instance.UIManager.canvas.gameObject.transform.Find("StartButton").GetComponent<ButtonManager>().tutorialActive = true;
-                GameState.Instance.UIManager.canvas.gameObject.transform.Find("BallKnop").GetComponent<ButtonManager>().tutorialActive = true;
-
-                if (GameState.Instance.UIManager.instantiatedInventoryButtons.Length > 0)
+                if (GameState.Instance.UIManager.canvas != null)
                 {
-                    //if (GameState.Instance.UIManager.instantiatedInventoryButtons[0] != null)
-                    //{
+                    GameState.Instance.UIManager.canvas.gameObject.transform.Find("StartButton").GetComponent<ButtonManager>().tutorialActive = true;
+                    GameState.Instance.UIManager.canvas.gameObject.transform.Find("BallKnop").GetComponent<ButtonManager>().tutorialActive = true;
+
+                    if (GameState.Instance.UIManager.instantiatedInventoryButtons.Length > 0)
+                    {
+                        //if (GameState.Instance.UIManager.instantiatedInventoryButtons[0] != null)
+                        //{
                         GameState.Instance.UIManager.instantiatedInventoryButtons[0].gameObject.SetActive(false);
                         done = true;
-                    //}
-                    if (changeBallTutorial)
-                    {
-                        GameState.Instance.UIManager.instantiatedInventoryButtons[1].gameObject.SetActive(false);
-                        done = true;
+                        //}
+                        if (changeBallTutorial)
+                        {
+                            GameState.Instance.UIManager.instantiatedInventoryButtons[1].gameObject.SetActive(false);
+                            done = true;
+                        }
                     }
                 }
+            }
+            else
+            {
+                done = true;
             }
             yield return null;
         }
@@ -80,13 +88,16 @@ public class TutorialManager : MonoBehaviour
     IEnumerator SpawnTutorialMaskAfterSecond()
     {
         yield return new WaitForSeconds(0.2f);
-        if (!changeBallTutorial)
+        if (SceneManager.GetActiveScene().name == "1" || SceneManager.GetActiveScene().name == "5")
         {
-            GameState.Instance.UIManager.canvas.GetComponentsInChildren<TutorialMask>(true)[0].gameObject.SetActive(true);
-        }
-        else
-        {
-            GameState.Instance.UIManager.canvas.GetComponentsInChildren<TutorialMask>(true)[1].gameObject.SetActive(true);
+            if (!changeBallTutorial)
+            {
+                GameState.Instance.UIManager.canvas.GetComponentsInChildren<TutorialMask>(true)[0].gameObject.SetActive(true);
+            }
+            else
+            {
+                GameState.Instance.UIManager.canvas.GetComponentsInChildren<TutorialMask>(true)[1].gameObject.SetActive(true);
+            }
         }
     }
 
@@ -113,4 +124,5 @@ public class TutorialManager : MonoBehaviour
             Destroy(arrow2);
         }
     }
+
 }
