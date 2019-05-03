@@ -283,7 +283,7 @@ public class PlatformManager : MonoBehaviour
         return -1;
     }
 
-    internal void BuildLevelFromLevelPlatformen(LevelPlatformen levelPlatformen, int[] coins, int finish)
+    internal void BuildLevelFromLevelPlatformen(LevelPlatformen levelPlatformen)
     {
         //foreach (int item in coins)
         //{
