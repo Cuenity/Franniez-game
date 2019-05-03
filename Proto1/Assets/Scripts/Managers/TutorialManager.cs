@@ -64,11 +64,11 @@ public class TutorialManager : MonoBehaviour
 
                     if (GameState.Instance.UIManager.instantiatedInventoryButtons.Length > 0)
                     {
-                        //if (GameState.Instance.UIManager.instantiatedInventoryButtons[0] != null)
-                        //{
-                        GameState.Instance.UIManager.instantiatedInventoryButtons[0].gameObject.SetActive(false);
-                        done = true;
-                        //}
+                        if (GameState.Instance.UIManager.instantiatedInventoryButtons[0] != null)
+                        {
+                            GameState.Instance.UIManager.instantiatedInventoryButtons[0].gameObject.SetActive(false);
+                            done = true;
+                        }
                         if (changeBallTutorial)
                         {
                             GameState.Instance.UIManager.instantiatedInventoryButtons[1].gameObject.SetActive(false);
