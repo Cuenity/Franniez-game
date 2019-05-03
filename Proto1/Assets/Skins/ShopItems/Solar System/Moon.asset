@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: Moon
   m_EditorClassIdentifier: 
   skinName: Moon
-  cost: 50
+  cost: 30
   description: 
   shopImage: {fileID: 21300000, guid: d4eb94b48d25c6848b45bd6ea9c4ccab, type: 3}
+  owned: 0
   material: {fileID: 2100000, guid: 57c3d198a52ff6b409ecd5aaeddaad4e, type: 2}

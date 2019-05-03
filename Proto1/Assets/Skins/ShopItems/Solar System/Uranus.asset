@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: Uranus
   m_EditorClassIdentifier: 
   skinName: Uranus
-  cost: 50
+  cost: 30
   description: 
   shopImage: {fileID: 21300000, guid: 61ca41811d2ceb74d9328ff934d18180, type: 3}
+  owned: 0
   material: {fileID: 2100000, guid: a57f82cf400ffd441adb4c465f094a55, type: 2}

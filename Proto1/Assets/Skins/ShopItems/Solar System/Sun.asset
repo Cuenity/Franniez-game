@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: Sun
   m_EditorClassIdentifier: 
   skinName: Sun
-  cost: 50
+  cost: 30
   description: 
   shopImage: {fileID: 21300000, guid: 787e942cbce2169468637019b4ed6a7d, type: 3}
+  owned: 0
   material: {fileID: 2100000, guid: 3edc1256ddfba7e47b9c845137f793b7, type: 2}

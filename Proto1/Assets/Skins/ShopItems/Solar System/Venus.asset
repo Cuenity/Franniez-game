@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: Venus
   m_EditorClassIdentifier: 
   skinName: Venus
-  cost: 50
+  cost: 30
   description: 
   shopImage: {fileID: 21300000, guid: 2ef110d6066927144a6b2ed7a40a4931, type: 3}
+  owned: 0
   material: {fileID: 2100000, guid: 77f128b7d119b0c40acc70421d3ea364, type: 2}
