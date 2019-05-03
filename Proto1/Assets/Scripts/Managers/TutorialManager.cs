@@ -45,7 +45,6 @@ public class TutorialManager : MonoBehaviour
 
     public void StartTutorial()
     {
-
         StartCoroutine(SetTutorialActiveAsSoonAsPossible());
         StartCoroutine(SpawnTutorialMaskAfterSecond());
     }
@@ -58,12 +57,18 @@ public class TutorialManager : MonoBehaviour
             if (GameState.Instance.UIManager.canvas != null)
             {
                 GameState.Instance.UIManager.canvas.gameObject.transform.Find("StartButton").GetComponent<ButtonManager>().tutorialActive = true;
+                GameState.Instance.UIManager.canvas.gameObject.transform.Find("BallKnop").GetComponent<ButtonManager>().tutorialActive = true;
 
                 if (GameState.Instance.UIManager.instantiatedInventoryButtons.Length > 0)
                 {
-                    if (GameState.Instance.UIManager.instantiatedInventoryButtons[0] != null)
-                    {
+                    //if (GameState.Instance.UIManager.instantiatedInventoryButtons[0] != null)
+                    //{
                         GameState.Instance.UIManager.instantiatedInventoryButtons[0].gameObject.SetActive(false);
+                        done = true;
+                    //}
+                    if (changeBallTutorial)
+                    {
+                        GameState.Instance.UIManager.instantiatedInventoryButtons[1].gameObject.SetActive(false);
                         done = true;
                     }
                 }
