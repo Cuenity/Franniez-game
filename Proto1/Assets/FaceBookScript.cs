@@ -5,35 +5,14 @@ using Facebook.Unity;
 using TwitterKit.Unity;
 using System;
 
-public class FaceBookScript : MonoBehaviour
+public class TwitterScript : MonoBehaviour
 {
     private void Awake()
     {
         Twitter.Init();
     }
 
-    public void FacebookLogin()
-    {
-        StartLogin();
-    }
-
-    public void FacebookLogout()
-    {
-        FB.LogOut();
-    }
-
-    public void FacebookShare()
-    {
-        String path = "https://franniez.nl/themes/franniez/assets/images/header.jpg";
-        string message = "Yeah ik heb level " + GameState.Instance.PreviousLevel.ToString() + " gehaald met " + PlayerDataController.instance.player.levels[GameState.Instance.PreviousLevel].countCoins + "!";
-        Twitter.Compose(Twitter.Session, path, message, new string[] { "#Franniez", "#ThisIsHowIRoll", "#TIHIR" },
-                (string tweetId) => { UnityEngine.Debug.Log("Tweet Success, tweetId = " + tweetId); },
-                (ApiError error) => { UnityEngine.Debug.Log("Tweet Failed " + error.message); },
-                () => { Debug.Log("Compose cancelled"); }
-        );
-    }
-
-    public void StartLogin()
+    public void TwitterShare()
     {
         TwitterSession session = Twitter.Session;
         if (session == null)
@@ -46,26 +25,40 @@ public class FaceBookScript : MonoBehaviour
         }
     }
 
-    public void LoginComplete(TwitterSession session)
+    public void FacebookLogout()
     {
-        StartComposer(Twitter.Session, "https://franniez.nl/themes/franniez/assets/images/header.jpg");
+        FB.LogOut();
     }
 
-    public void LoginFailure(ApiError error)
+    public void ComposeMessage()
     {
-        UnityEngine.Debug.Log("code=" + error.code + " msg=" + error.message);
-    }
+        string level = GameState.Instance.PreviousLevel.ToString();
+        string amountStars = PlayerDataController.instance.player.levels[GameState.Instance.PreviousLevel].countCoins.ToString();
+        string stars = "sterren";
 
-    public void StartComposer(TwitterSession session, String imageUri)
-    {
-        
+        if (PlayerDataController.instance.player.levels[GameState.Instance.PreviousLevel].countCoins == 1)
+        {
+            stars = "ster";
+        }
 
-        Twitter.Compose(session, imageUri, "My new high score!", new string[] { "#SpaceShooter" },
+        string substitution = $"Yeah, ik heb level {level} gehaald met {amountStars} {stars}!";
+
+        String path = "https://franniez.nl/themes/franniez/assets/images/header.jpg";
+        string message = "Yeah ik heb level " + GameState.Instance.PreviousLevel.ToString() + " gehaald met " + PlayerDataController.instance.player.levels[GameState.Instance.PreviousLevel].countCoins + " sterren!";
+        Twitter.Compose(Twitter.Session, path, substitution, new string[] { "#Franniez", "#ThisIsHowIRoll", "#TIHIR" },
                 (string tweetId) => { UnityEngine.Debug.Log("Tweet Success, tweetId = " + tweetId); },
                 (ApiError error) => { UnityEngine.Debug.Log("Tweet Failed " + error.message); },
                 () => { Debug.Log("Compose cancelled"); }
         );
     }
 
+    public void LoginComplete(TwitterSession session)
+    {
+        ComposeMessage();
+    }
 
+    public void LoginFailure(ApiError error)
+    {
+        UnityEngine.Debug.Log("code=" + error.code + " msg=" + error.message);
+    }
 }

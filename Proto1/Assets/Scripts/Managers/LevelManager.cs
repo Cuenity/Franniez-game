@@ -191,8 +191,8 @@ public class LevelManager : MonoBehaviour
                 gameState.playerManager.PlayerInit(gameState.playerBallManager.ballList[0]);
                 //gameState.collectableManager.InitCollectables(coinPositions, finishPosition);
                 gameState.BuildingPhaseActive = true;
-                GameState.Instance.PreviousLevel = 1;
-                PlayerDataController.instance.previousScene = 1;
+                GameState.Instance.PreviousLevel = Int32.Parse(sceneName);
+                PlayerDataController.instance.previousScene = Int32.Parse(sceneName);
                 levelIsSpawned = true;
             }
         }
@@ -228,8 +228,8 @@ public class LevelManager : MonoBehaviour
                 gameState.playerManager.PlayerInit(gameState.playerBallManager.ballList[0]);
                 //gameState.collectableManager.InitCollectables(coinPositions, finishPosition);
                 gameState.BuildingPhaseActive = true;
-                GameState.Instance.PreviousLevel = 2;
-                PlayerDataController.instance.previousScene = 2;
+                GameState.Instance.PreviousLevel = Int32.Parse(sceneName);
+                PlayerDataController.instance.previousScene = Int32.Parse(sceneName);
                 levelIsSpawned = true;
             }
         }
@@ -265,8 +265,8 @@ public class LevelManager : MonoBehaviour
                 gameState.playerManager.PlayerInit(gameState.playerBallManager.ballList[0]);
                 //gameState.collectableManager.InitCollectables(coinPositions, finishPosition);
                 gameState.BuildingPhaseActive = true;
-                GameState.Instance.PreviousLevel = 3;
-                PlayerDataController.instance.previousScene = 3;
+                GameState.Instance.PreviousLevel = Int32.Parse(sceneName);
+                PlayerDataController.instance.previousScene = Int32.Parse(sceneName);
                 levelIsSpawned = true;
             }
         }
@@ -302,8 +302,8 @@ public class LevelManager : MonoBehaviour
                 gameState.playerManager.PlayerInit(gameState.playerBallManager.ballList[0]);
                 //gameState.collectableManager.InitCollectables(coinPositions, finishPosition);
                 gameState.BuildingPhaseActive = true;
-                GameState.Instance.PreviousLevel = 1;
-                PlayerDataController.instance.previousScene = 1;
+                GameState.Instance.PreviousLevel = Int32.Parse(sceneName);
+                PlayerDataController.instance.previousScene = Int32.Parse(sceneName);
                 levelIsSpawned = true;
             }
         }
@@ -332,8 +332,8 @@ public class LevelManager : MonoBehaviour
                 gameState.playerBallManager.WhatBalls(true, true, false);
                 gameState.playerManager.PlayerInit(gameState.playerBallManager.ballList[0]);
                 gameState.BuildingPhaseActive = true;
-                GameState.Instance.PreviousLevel = 4;
-                PlayerDataController.instance.previousScene = 4;
+                GameState.Instance.PreviousLevel = Int32.Parse(sceneName);
+                PlayerDataController.instance.previousScene = Int32.Parse(sceneName);
                 levelIsSpawned = true;
             }
         }
@@ -366,8 +366,8 @@ public class LevelManager : MonoBehaviour
                 gameState.playerManager.PlayerInit(gameState.playerBallManager.ballList[0]);
 
                 gameState.BuildingPhaseActive = true;
-                GameState.Instance.PreviousLevel = 5;
-                PlayerDataController.instance.previousScene = 5;
+                GameState.Instance.PreviousLevel = Int32.Parse(sceneName);
+                PlayerDataController.instance.previousScene = Int32.Parse(sceneName);
             }
         }
 
@@ -401,8 +401,8 @@ public class LevelManager : MonoBehaviour
                 //hier dan een vieze boolean
 
                 gameState.BuildingPhaseActive = true;
-                GameState.Instance.PreviousLevel = 2;
-                PlayerDataController.instance.previousScene = 2;
+                GameState.Instance.PreviousLevel = Int32.Parse(sceneName);
+                PlayerDataController.instance.previousScene = Int32.Parse(sceneName);
                 levelIsSpawned = true;
             }
         }
@@ -435,8 +435,8 @@ public class LevelManager : MonoBehaviour
                 gameState.playerBallManager.WhatBalls(true, true, true);
                 gameState.playerManager.PlayerInit(gameState.playerBallManager.ballList[0]);
                 gameState.BuildingPhaseActive = true;
-                GameState.Instance.PreviousLevel = 1;
-                PlayerDataController.instance.previousScene = 1;
+                GameState.Instance.PreviousLevel = Int32.Parse(sceneName);
+                PlayerDataController.instance.previousScene = Int32.Parse(sceneName);
                 levelIsSpawned = true;
             }
         }
@@ -467,8 +467,8 @@ public class LevelManager : MonoBehaviour
                 gameState.playerManager.PlayerInit(gameState.playerBallManager.ballList[0]);
 
                 gameState.BuildingPhaseActive = true;
-                GameState.Instance.PreviousLevel = 4;
-                PlayerDataController.instance.previousScene = 4;
+                GameState.Instance.PreviousLevel = Int32.Parse(sceneName);
+                PlayerDataController.instance.previousScene = Int32.Parse(sceneName);
             }
         }
 
