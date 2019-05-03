@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: Mercury
   m_EditorClassIdentifier: 
   skinName: Mercury
-  cost: 50
+  cost: 30
   description: 
   shopImage: {fileID: 21300000, guid: 13afe8fa7fe0aa94fa50774eaa8f9016, type: 3}
+  owned: 0
   material: {fileID: 2100000, guid: b5f8f924adcdb4f4681ad90febf60277, type: 2}

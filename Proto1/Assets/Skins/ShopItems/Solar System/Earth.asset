@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: Earth
   m_EditorClassIdentifier: 
   skinName: Earth
-  cost: 50
+  cost: 30
   description: Earth
   shopImage: {fileID: 21300000, guid: 1daa31540b2fc3d4dba4720fd23e067d, type: 3}
+  owned: 0
   material: {fileID: 2100000, guid: 73f5a59a5f8a0d8488d5f31673b86535, type: 2}
