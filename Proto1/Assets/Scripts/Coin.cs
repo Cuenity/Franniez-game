@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using Photon.Pun;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -51,6 +52,10 @@ public class Coin : MonoBehaviour
             gameState = GameState.Instance;
             GameState.Instance.playerManager.collectedCoins++;
             PickedCoin();
+            if (PhotonNetwork.InRoom)
+            {
+                PhotonNetwork.Destroy(this.gameObject);
+            }
             this.gameObject.SetActive(false);
             firework = Instantiate(firework);
             firework.transform.position = gameState.playerBallManager.activePlayer.transform.position;
