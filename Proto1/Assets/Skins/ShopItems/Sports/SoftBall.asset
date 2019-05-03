@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: SoftBall
   m_EditorClassIdentifier: 
   skinName: SoftBall
-  cost: 50
+  cost: 30
   description: 
   shopImage: {fileID: 21300000, guid: d60ae151ddb18614d97fd13e7f9f62b4, type: 3}
+  owned: 0
   material: {fileID: 2100000, guid: cbf415881b23647418d313b5543676a7, type: 2}
