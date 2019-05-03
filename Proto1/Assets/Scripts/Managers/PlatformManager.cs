@@ -285,13 +285,13 @@ public class PlatformManager : MonoBehaviour
 
     internal void BuildLevelFromLevelPlatformen(LevelPlatformen levelPlatformen, int[] coins, int finish)
     {
-        foreach (int item in coins)
-        {
-            SetCoinPosition(item);
-        }
+        //foreach (int item in coins)
+        //{
+        //    SetCoinPosition(item);
+        //}
 
-        SetfinishPosition(finish);
-        gameState.collectableManager.InitCollectables(coinPositions, finishPosition);
+        //SetfinishPosition(finish);
+        //gameState.collectableManager.InitCollectables(coinPositions, finishPosition);
         // code voor opslaan/laden van levels
         // 0 = leeg;
         // 1 = rampsmall
@@ -359,7 +359,18 @@ public class PlatformManager : MonoBehaviour
                 gridSpots.Add(i);
                 GameState.Instance.gridManager.AddFilledGridSpots(gridSpots, SizeType.oneByOne);
             }
+            else if (levelPlatformen.tileList[i] == 8)
+            {
+                SetCoinPosition(i);
+            }
+            else if (levelPlatformen.tileList[i] == 9)
+            {
+                SetfinishPosition(i);
+            }
+
+
         }
+        gameState.collectableManager.InitCollectables(coinPositions, finishPosition);
     }
 
     public void BuildLevel6()
