@@ -669,6 +669,7 @@ public class LevelManager : MonoBehaviour
     {
         gameState.BuildingPhaseActive = false;
         gameState.RollingPhaseActive = true;
+        gameState.uIRollingManager.ChangeEnviroment();
 
         //if (sceneName != "1" || !PhotonNetwork.IsConnected)
         //{
@@ -739,7 +740,7 @@ public class LevelManager : MonoBehaviour
             gameState.RollingPhaseActive = false;
             gameState.playerBallManager.respawnBal();
             gameState.platformManager.RespawnCollectables();
-
+            
             //if (sceneName != "1"||!PhotonNetwork.IsConnected)
             //{
             //    balknop.gameObject.SetActive(true);
@@ -758,6 +759,7 @@ public class LevelManager : MonoBehaviour
             }
             gameState.platformManager.lift.ResetPlatform();
             gameState.BuildingPhaseActive = true;
+            gameState.uIRollingManager.ChangeEnviroment();
             gameState.playerBallManager.activePlayer.GetComponent<Rigidbody>().isKinematic = true;
 
         }

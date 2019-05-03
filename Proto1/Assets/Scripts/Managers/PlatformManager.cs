@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using Photon.Pun;
+using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -59,9 +60,16 @@ public class PlatformManager : MonoBehaviour
 
     public void RespawnCollectables()
     {
-        foreach (Coin item in gameState.levelManager.coinList)
+        if (PhotonNetwork.InRoom)
         {
-            item.gameObject.SetActive(false);
+            //we willen niet die setactive false doen in photon
+        }
+        else
+        {
+            foreach (Coin item in gameState.levelManager.coinList)
+            {
+                item.gameObject.SetActive(false);
+            }
         }
         gameState.levelManager.coinList.Clear();
         //gameState.levelManager.stickerObject.gameObject.SetActive(false);
