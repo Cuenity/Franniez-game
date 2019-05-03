@@ -14,9 +14,9 @@ public class UIRollingManager : MonoBehaviour
     [SerializeField]
     private Sprite startRolling, startBuilding;
 
-    private int amountCoins =0;
+    private int amountCoins = 0;
     private string levelIndicator;
-    private int amountStickers =0;
+    private int amountStickers = 0;
     private Scene currentScene;
 
     // Use this for initialization
@@ -41,6 +41,14 @@ public class UIRollingManager : MonoBehaviour
         {
             levelNumberText.text = "NIVEL " + levelIndicator;
         }
+        if (GameState.Instance.BuildingPhaseActive)
+        {
+            startButton.GetComponent<Image>().sprite = startBuilding;
+        }
+        else
+        {
+            startButton.GetComponent<Image>().sprite = startRolling;
+        }
     }
 
     private void OnEnable()
@@ -58,15 +66,14 @@ public class UIRollingManager : MonoBehaviour
         ButtonManager.ChangeEnvironment -= ChangeEnviroment;
     }
 
-    private void ChangeEnviroment()
+    public void ChangeEnviroment()
     {
         amountCoins = 0;
         amountCoinsText.text = "0/3";
 
         amountStickers = 0;
         amountStickersText.text = "0/1";
-
-        if(GameState.Instance.BuildingPhaseActive)
+        if (GameState.Instance.BuildingPhaseActive)
         {
             startButton.GetComponent<Image>().sprite = startBuilding;
         }
@@ -86,11 +93,5 @@ public class UIRollingManager : MonoBehaviour
     {
         amountCoins++;
         amountCoinsText.text = amountCoins + "/3";
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
     }
 }
