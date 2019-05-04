@@ -86,11 +86,19 @@ public class PhotonStartMenu : MonoBehaviourPunCallbacks
     public void onClickJoinRoom()
     {
         //TODO maak iets als room niet bestaat of vol zit
-        PhotonNetwork.JoinRoom(RoomToJoin.text);
+        if (RoomToJoin.text == "")
+        {
+            Debug.Log("wat een dum dum geen roomnaam gekozen");
+            RoomToJoin.text = "-.- geen naam";
+        }
+        else
+        {
+            PhotonNetwork.JoinRoom(RoomToJoin.text);
 
-        //view switch
-        CustomRoom.gameObject.GetComponent<Canvas>().enabled = false;
-        ClientWait.gameObject.GetComponent<Canvas>().enabled = true;
+            //view switch
+            CustomRoom.gameObject.GetComponent<Canvas>().enabled = false;
+            ClientWait.gameObject.GetComponent<Canvas>().enabled = true;
+        }
     }
 
     public void onClickCreateRoom()

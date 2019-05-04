@@ -84,7 +84,7 @@ public class MainMenu : MonoBehaviour
 
     public void Button_StartMultiplayer()
     {
-        SceneSwitcher.Instance.AsynchronousLoadStartNoLoadingBar("Multiplayer");
+        SceneSwitcher.Instance.AsynchronousLoadStartNoLoadingBar("MultiplayerStart");
     }
 
     #region Button Actions
