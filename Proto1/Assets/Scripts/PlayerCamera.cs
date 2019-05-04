@@ -174,7 +174,7 @@ public class PlayerCamera : MonoBehaviour
         }
     }
 
-    //computer dingen voor het dev team
+    //computer dingen voor het dev team // wat? welk dev team? waar hebben we het over?
     private void Transfrom_YZ()
     {
         if (Input.GetMouseButtonDown(0))
@@ -224,6 +224,7 @@ public class PlayerCamera : MonoBehaviour
             this.transform.position = new Vector3(gameState.gridManager.width - .1f, this.transform.position.y, this.transform.position.z);
         }
     }
+
     // heb ik online gevonden alleen de fov aangepast
     public void mobileZoom()
     {
@@ -255,6 +256,7 @@ public class PlayerCamera : MonoBehaviour
             camera.fieldOfView = Mathf.Clamp(camera.fieldOfView, 40.1f, 89.9f);
         }
     }
+
     // het draggen van de camera
     public void mobileScroll()
     {
@@ -395,12 +397,7 @@ public class PlayerCamera : MonoBehaviour
         }
         platformDragActive = false;
         gameState.BuildingPhaseActive = true;
+        
+        gameState.tutorialManager.StartTutorial();
     }
-
-
 }
-
-
-
-
-

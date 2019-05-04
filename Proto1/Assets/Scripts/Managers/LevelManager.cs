@@ -15,7 +15,15 @@ public class LevelManager : MonoBehaviour
     /// <summary > Arrays voor het bouwen van levels
     int[] level5 = new int[] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0, 0, 0, 0, 0, 0, 3, 0, 1, 0, 0, 0, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
     int[] levelTeGroot = new int[] { 0, 0, 0, 0, 0, 0, 7, 0, 0, 0, 7, 7, 7, 7, 7, 7, 7, 0, 0, 0, 7, 0, 0, 0, 0, 0, 0, 0, 0, 7, 7, 7, 7, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 7, 0, 0, 0, 7, 0, 0, 0, 0, 0, 7, 7, 7, 7, 7, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 7, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 7, 0, 0, 0, 7, 0, 0, 0, 0, 0, 7, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 7, 0, 0, 0, 0, 0, 0, 0, 0, 5, 0, 0, 0, 0, 7, 0, 0, 0, 7, 0, 0, 0, 0, 0, 7, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 7, 7, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 7, 0, 0, 0, 7, 0, 0, 0, 0, 0, 7, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 7, 7, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 7, 0, 0, 0, 7, 0, 0, 0, 0, 0, 7, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 7, 0, 0, 7, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 5, 0, 0, 0, 0, 0, 0, 0, 0, 3, 0, 0, 0, 1, 0, 0, 0, 0, 0, 7, 0, 7, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 7, 7, 4, 0, 7, 7, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 3, 0, 7, 7, 7, 7, 1, 0, 0, 0, 0, 7, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 0, 0, 0, 0, 0, 7, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 7, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 0, 0, 7, 0, 7, 0, 7, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 7, 7, 0, 7, 0, 0, 0, 0, 0, 0, 0, 0, 7, 7, 0, 0, 0, 0, 0, 0, 0, 0, 7, 0, 0, 0, 0, 0, 0, 0, 7, 0, 0, 0, 3, 0, 3, 0, 4, 0, 7, 0, 7, 0, 0, 0, 0, 0, 0, 0, 0, 7, 0, 0, 7, 7, 7, 0, 0, 0, 2, 0, 3, 0, 7, 0, 0, 0, 7, 0, 0, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 0, 0, 7, 0, 0, 0, 0, 0, 0, 7, 0, 0, 0, 0, 0, 0, 0, 2, 0, 3, 0, 3, 0, 0, 7, 7, 7, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 7, 7, 7, 7, 7, 7, 0, 0, 0, 0, 0, 0, 2, 0, 3, 0, 3, 0, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 5, 0, 3, 0, 3, 0, 3, 0, 3, 0 };
-    int[] levelTeGrootMaarDanKlein = new int[] { 7, 7, 7, 7, 7, 7, 0, 0, 0, 0, 7, 7, 7, 7, 7, 7, 7, 7, 7, 0, 0, 0, 0, 0, 0, 7, 0, 0, 0, 7, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 7, 0, 0, 7, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 7, 0, 7, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 7, 7, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 7, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 7, 0, 0, 0, 0, 0, 0, 0, 0, 0, 7, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 7, 0, 0, 0, 0, 0, 7, 0, 0, 0, 0, 0, 0, 3, 0, 0, 0, 0, 0, 0, 0, 7, 7, 7, 7, 7, 0, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 0 };
+    int[] levelTeGrootMaarDanKlein = new int[] {
+        7, 7, 7, 7, 7, 7, 0, 0, 0, 0, 7, 7, 7, 7, 7, 7, 7, 7, 7, 0, 0, 0, 0, 0, 0, 7, 0, 0, 0, 7, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 7, 0, 0, 7, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 7, 0, 7, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 7, 7, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 7, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 7, 0, 8, 0, 0, 0, 0, 0, 0, 0, 7, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 7, 0, 0, 0, 0, 0, 7, 0, 0, 0, 0, 0, 0, 3, 0, 0, 0, 0, 0, 0, 0, 7, 7, 7, 7, 7, 0, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 0 };
+    //int[] coinarray = new int[] { 71, 103, 136 };
+    //int finishPosition = 171;
+
     int[] levelDom = new int[] { 0, 0, 0, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 0, 0, 0, 0, 7, 7, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 7, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 7, 0, 0, 0, 0, 0, 0, 3, 0, 0, 0, 0, 0, 0, 0, 7, 0, 0, 0, 0, 7, 0, 0, 0, 0, 0, 0, 7, 0, 7, 7, 7, 7, 7, 7, 0, 0, 0, 0, 7, 0, 0, 0, 0, 0, 0, 7, 0, 0, 0, 0, 0, 0, 7, 0, 0, 0, 0, 7, 0, 0, 0, 0, 0, 0, 7, 0, 0, 0, 0, 0, 0, 7, 0, 0, 0, 0, 7, 0, 0, 0, 0, 0, 0, 7, 0, 0, 0, 0, 0, 0, 0, 7, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 7, 0, 0, 0, 0, 0, 0, 0, 0, 0, 7, 0, 0, 0, 0, 0, 0, 0, 0, 7, 0, 0, 0, 0, 0, 0 };
     int[] levelMulti = new int[] {
         7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 0,
@@ -69,26 +77,40 @@ public class LevelManager : MonoBehaviour
         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-        0, 0, 0, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 4, 0, 0, 0, 0, 8, 0, 0, 0, 0, 0, 0, 0, 0, 0, 8, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 8, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 9,
         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 0 };
     int[] level5BlackHoleBallTutorial = new int[] {
         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
         1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
         0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-        0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-        0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 8, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 8, 1, 0, 0, 0, 0, 0, 0, 0,
         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 9,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 8, 0, 0, 3, 0,
         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
+    int[] level6BlackHoleBallEnJump = new int[] {
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 3, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 8, 0, 3, 0, 3, 0, 3, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 8, 0,
+        1, 0, 9, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 3, 0, 0, 0, 0, 0, 8, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};    
     /// </summary>
     #endregion
 
@@ -201,6 +223,25 @@ public class LevelManager : MonoBehaviour
 
         //gameState = GameObject.Find("GameState").GetComponent<GameState>();
     }
+
+    private void DefaultSceneInit()
+    {
+        bigLevel = true;
+        gameState.UIManager.canvas = Instantiate(canvas);
+        gameState.UIManager.newLevelInventoryisRequired = true;
+        gameState.collectableManager.newCollectablesAreRequired = true;
+        GameState.Instance.playerCamera.ManualInit();
+    }
+
+    private void DefaultSceneEndInit()
+    {
+        gameState.playerManager.PlayerInit(gameState.playerBallManager.ballList[0]);
+        //gameState.collectableManager.InitCollectables(coinPositions, finishPosition);
+        gameState.BuildingPhaseActive = true;
+        GameState.Instance.PreviousLevel = Int32.Parse(sceneName);
+        PlayerDataController.instance.previousScene = Int32.Parse(sceneName);
+        levelIsSpawned = true;
+    }
     #endregion
 
     public void InitScene(string sceneName)
@@ -221,36 +262,24 @@ public class LevelManager : MonoBehaviour
             gameState.gridManager.Build_Grid_BuildingPhase_With_Visuals();
         }
 
-        // af
+        // niet af, moet nog mask bij om de knop te zien en daar platformen uit te slepen (of een animatie van een platform dat gesleept wordt?)
         else if (sceneName == "1")
         {
             if (!levelIsSpawned)
             {
+                DefaultSceneInit();
                 bigLevel = false;
                 gameState.tutorialManager.StartTutorial();
 
-                gameState.UIManager.canvas = Instantiate(canvas);
-                gameState.UIManager.newLevelInventoryisRequired = true;
-                gameState.collectableManager.newCollectablesAreRequired = true;
-                GameState.Instance.playerCamera.ManualInit();
-                //Vector3 playeradjustment = new Vector3(.5f, 0, 0);
                 gameState.gridManager.width = 8;
                 gameState.gridManager.height = 5;
                 playerPlatforms = new PlayerPlatforms(0, 2, 0, 0, 0);
                 gameState.gridManager.Build_Grid_BuildingPhase_Without_Visuals();
                 gameState.playerBallManager.SetSpawnpoint(0);
-                //gameState.playerManager.player.spawnpoint = gameState.gridManager.gridSquares[1] + playeradjustment;
                 gameState.platformManager.BuildTutorial();
 
-
-                //boolean party voor elk level nu nodig
                 gameState.playerBallManager.WhatBalls(true, false, false);
-                gameState.playerManager.PlayerInit(gameState.playerBallManager.ballList[0]);
-                //gameState.collectableManager.InitCollectables(coinPositions, finishPosition);
-                gameState.BuildingPhaseActive = true;
-                GameState.Instance.PreviousLevel = Int32.Parse(sceneName);
-                PlayerDataController.instance.previousScene = Int32.Parse(sceneName);
-                levelIsSpawned = true;
+                DefaultSceneEndInit();
             }
         }
 
@@ -259,12 +288,9 @@ public class LevelManager : MonoBehaviour
         {
             if (!levelIsSpawned)
             {
+                DefaultSceneInit();
                 bigLevel = false;
-                gameState.UIManager.canvas = Instantiate(canvas);
-                gameState.UIManager.newLevelInventoryisRequired = true;
-                gameState.collectableManager.newCollectablesAreRequired = true;
-                GameState.Instance.playerCamera.ManualInit();
-                Vector3 playeradjustment = new Vector3(.5f, 0, 0);
+
                 levelPlatformen.tileList = level2RampsEasy;
                 levelPlatformen.width = 12;
                 levelPlatformen.heigth = 8;
@@ -273,19 +299,11 @@ public class LevelManager : MonoBehaviour
                 playerPlatforms = new PlayerPlatforms(2, 1, 0, 0, 0);
                 gameState.gridManager.Build_Grid_FromJSON_Without_Visuals(levelPlatformen.width, levelPlatformen.heigth);
                 gameState.playerBallManager.SetSpawnpoint(0);
-                //gameState.playerManager.player.spawnpoint = gameState.gridManager.gridSquares[1] + playeradjustment;
-                //gameState.platformManager.BuildLevel2RampsEasy();
 
                 GameState.Instance.platformManager.BuildLevelFromLevelPlatformen(levelPlatformen);
 
-                //boolean party voor elk level nu nodig
                 gameState.playerBallManager.WhatBalls(true, false, false);
-                gameState.playerManager.PlayerInit(gameState.playerBallManager.ballList[0]);
-                //gameState.collectableManager.InitCollectables(coinPositions, finishPosition);
-                gameState.BuildingPhaseActive = true;
-                GameState.Instance.PreviousLevel = Int32.Parse(sceneName);
-                PlayerDataController.instance.previousScene = Int32.Parse(sceneName);
-                levelIsSpawned = true;
+                DefaultSceneEndInit();
             }
         }
 
@@ -294,12 +312,8 @@ public class LevelManager : MonoBehaviour
         {
             if (!levelIsSpawned)
             {
-                bigLevel = true;
-                gameState.UIManager.canvas = Instantiate(canvas);
-                gameState.UIManager.newLevelInventoryisRequired = true;
-                gameState.collectableManager.newCollectablesAreRequired = true;
-                GameState.Instance.playerCamera.ManualInit();
-                Vector3 playeradjustment = new Vector3(.5f, 0, 0);
+                DefaultSceneInit();
+
                 levelPlatformen.tileList = level3JumpEasy;
                 levelPlatformen.width = 15;
                 levelPlatformen.heigth = 14;
@@ -308,33 +322,21 @@ public class LevelManager : MonoBehaviour
                 playerPlatforms = new PlayerPlatforms(1, 1, 0, 0, 0);
                 gameState.gridManager.Build_Grid_FromJSON_Without_Visuals(levelPlatformen.width, levelPlatformen.heigth);
                 gameState.playerBallManager.SetSpawnpoint(0);
-                //gameState.playerManager.player.spawnpoint = gameState.gridManager.gridSquares[1] + playeradjustment;
-                //gameState.platformManager.BuildLevel2RampsEasy();
 
                 GameState.Instance.platformManager.BuildLevelFromLevelPlatformen(levelPlatformen);
 
-                //boolean party voor elk level nu nodig
                 gameState.playerBallManager.WhatBalls(true, false, false);
-                gameState.playerManager.PlayerInit(gameState.playerBallManager.ballList[0]);
-                //gameState.collectableManager.InitCollectables(coinPositions, finishPosition);
-                gameState.BuildingPhaseActive = true;
-                GameState.Instance.PreviousLevel = Int32.Parse(sceneName);
-                PlayerDataController.instance.previousScene = Int32.Parse(sceneName);
-                levelIsSpawned = true;
+                DefaultSceneEndInit();
             }
         }
 
-        // niet af
+        // af
         else if (sceneName == "4")
         {
             if (!levelIsSpawned)
             {
-                bigLevel = true;
-                gameState.UIManager.canvas = Instantiate(canvas);
-                gameState.UIManager.newLevelInventoryisRequired = true;
-                gameState.collectableManager.newCollectablesAreRequired = true;
-                GameState.Instance.playerCamera.ManualInit();
-                Vector3 playeradjustment = new Vector3(.5f, 0, 0);
+                DefaultSceneInit();
+
                 levelPlatformen.tileList = level4JumpHard;
                 levelPlatformen.width = 40;
                 levelPlatformen.heigth = 15;
@@ -343,87 +345,75 @@ public class LevelManager : MonoBehaviour
                 playerPlatforms = new PlayerPlatforms(0, 0, 7, 0, 0);
                 gameState.gridManager.Build_Grid_FromJSON_Without_Visuals(levelPlatformen.width, levelPlatformen.heigth);
                 gameState.playerBallManager.SetSpawnpoint(0);
-                //gameState.playerManager.player.spawnpoint = gameState.gridManager.gridSquares[1] + playeradjustment;
-                //gameState.platformManager.BuildLevel2RampsEasy();
 
-                //int[] coinarray = new int[] { 294, 464, 556 };
-                //int finishPosition = 559;
-                //GameState.Instance.platformManager.BuildLevelFromLevelPlatformen(levelPlatformen, coinarray, finishPosition);
+                GameState.Instance.platformManager.BuildLevelFromLevelPlatformen(levelPlatformen);
 
-                //boolean party voor elk level nu nodig
                 gameState.playerBallManager.WhatBalls(true, false, false);
-                gameState.playerManager.PlayerInit(gameState.playerBallManager.ballList[0]);
-                //gameState.collectableManager.InitCollectables(coinPositions, finishPosition);
-                gameState.BuildingPhaseActive = true;
-                GameState.Instance.PreviousLevel = Int32.Parse(sceneName);
-                PlayerDataController.instance.previousScene = Int32.Parse(sceneName);
-                levelIsSpawned = true;
+                DefaultSceneEndInit();
             }
         }
 
+        // niet af, moet nog start knop mask bij en misschien mask om de bal te zien veranderen
         else if (sceneName == "5")
         {
             if (!levelIsSpawned)
             {
-                bigLevel = true;
-                gameState.tutorialManager.changeBallTutorial = true;
-                gameState.tutorialManager.StartTutorial();
+                DefaultSceneInit();
+                gameState.tutorialManager.changeBallTutorial = true; // tutorial wordt gestart in de camera na de animatie
 
-                gameState.UIManager.canvas = Instantiate(canvas);
-                gameState.UIManager.newLevelInventoryisRequired = true;
-                gameState.collectableManager.newCollectablesAreRequired = true;
-                GameState.Instance.playerCamera.ManualInit();
-                Vector3 playeradjustment = new Vector3(.5f, 0, 0);
                 levelPlatformen.tileList = level5BlackHoleBallTutorial;
                 levelPlatformen.width = 14;
                 levelPlatformen.heigth = 10;
-                gameState.gridManager.width = 14;
-                gameState.gridManager.height = 10;
+                gameState.gridManager.width = levelPlatformen.width;
+                gameState.gridManager.height = levelPlatformen.heigth;
                 playerPlatforms = new PlayerPlatforms(3, 1, 0, 0, 0);
                 gameState.gridManager.Build_Grid_FromJSON_Without_Visuals(levelPlatformen.width, levelPlatformen.heigth);
                 gameState.playerBallManager.SetSpawnpoint(0);
 
-
                 GameState.Instance.platformManager.BuildLevelFromLevelPlatformen(levelPlatformen);
 
-                //boolean party voor elk level nu nodig
                 gameState.playerBallManager.WhatBalls(true, true, false);
-                gameState.playerManager.PlayerInit(gameState.playerBallManager.ballList[0]);
-                //gameState.collectableManager.InitCollectables(coinPositions, finishPosition);
-                gameState.BuildingPhaseActive = true;
-                GameState.Instance.PreviousLevel = 1;
-                PlayerDataController.instance.previousScene = 1;
-                levelIsSpawned = true;
+                DefaultSceneEndInit();
             }
         }
 
+        // niet af
+        else if (sceneName == "6")
+        {
+            if (!levelIsSpawned)
+            {
+                DefaultSceneInit();
+                levelPlatformen.tileList = level6BlackHoleBallEnJump;
+                levelPlatformen.width = 14;
+                levelPlatformen.heigth = 13;
+                gameState.gridManager.width = levelPlatformen.width;
+                gameState.gridManager.height = levelPlatformen.heigth;
+                playerPlatforms = new PlayerPlatforms(2, 2, 1, 0, 0);
+                gameState.gridManager.Build_Grid_FromJSON_Without_Visuals(levelPlatformen.width, levelPlatformen.heigth);
+                gameState.playerBallManager.SetSpawnpoint(0);
+
+                GameState.Instance.platformManager.BuildLevelFromLevelPlatformen(levelPlatformen);
+
+                gameState.playerBallManager.WhatBalls(true, true, false);
+                DefaultSceneEndInit();
+            }
+        }
+
+        // niet af, moet aangepast worden zodat er aan de rechterkant geen leeg gedeelte is maar een ster om te halen met de jump en eventueel een boost
         else if (sceneName == "7")
         {
             if (!levelIsSpawned)
             {
-                bigLevel = true;
-
-                gameState.UIManager.canvas = Instantiate(canvas);
-                gameState.UIManager.newLevelInventoryisRequired = true;
-                //gameState.collectableManager.newCollectablesAreRequired = true;
-                //coinPositions.Clear();
-                //coinList.Clear();
-                GameState.Instance.playerCamera.ManualInit();
-                //gameState.playerCamera = Instantiate(gameState.playerCamera);
-                Vector3 playeradjustment = new Vector3(.5f, 0, 0);
+                DefaultSceneInit();
                 gameState.gridManager.width = 20;
                 gameState.gridManager.height = 11;
-                playerPlatforms = new PlayerPlatforms(8, 8, 1, 0, 0);
+                playerPlatforms = new PlayerPlatforms(3, 2, 1, 1, 0);
                 gameState.gridManager.Build_Grid_BuildingPhase_Without_Visuals();
                 gameState.playerBallManager.SetSpawnpoint(1);
                 gameState.platformManager.Build_Vertical_Slice_LevelBoost();
 
                 gameState.playerBallManager.WhatBalls(true, true, false);
-                gameState.playerManager.PlayerInit(gameState.playerBallManager.ballList[0]);
-                gameState.BuildingPhaseActive = true;
-                GameState.Instance.PreviousLevel = Int32.Parse(sceneName);
-                PlayerDataController.instance.previousScene = Int32.Parse(sceneName);
-                levelIsSpawned = true;
+                DefaultSceneEndInit();
             }
         }
 
@@ -432,31 +422,20 @@ public class LevelManager : MonoBehaviour
         {
             if (!levelIsSpawned)
             {
-                bigLevel = true;
-
-                gameState.UIManager.canvas = Instantiate(canvas);
-                gameState.UIManager.newLevelInventoryisRequired = true;
-                GameState.Instance.playerCamera.ManualInit();
-                Vector3 playeradjustment = new Vector3(.5f, 0, 0);
+                DefaultSceneInit();
                 levelPlatformen.tileList = levelTeGrootMaarDanKlein;
                 levelPlatformen.width = 20;
                 levelPlatformen.heigth = 10;
-                gameState.gridManager.width = 20;
-                gameState.gridManager.height = 10;
+                gameState.gridManager.width = levelPlatformen.width;
+                gameState.gridManager.height = levelPlatformen.heigth;
                 playerPlatforms = new PlayerPlatforms(5, 5, 5, 4, 0);
                 GameState.Instance.gridManager.Build_Grid_FromJSON_Without_Visuals(levelPlatformen.width, levelPlatformen.heigth);
-
                 gameState.playerBallManager.SetSpawnpoint(41);
-                //int[] coinarray = new int[] { 71, 103, 136 };
-                //int finishPosition = 171;
-                //GameState.Instance.platformManager.BuildLevelFromLevelPlatformen(levelPlatformen, coinarray, finishPosition);
+
+                GameState.Instance.platformManager.BuildLevelFromLevelPlatformen(levelPlatformen);
 
                 gameState.playerBallManager.WhatBalls(false, true, true);
-                gameState.playerManager.PlayerInit(gameState.playerBallManager.ballList[0]);
-
-                gameState.BuildingPhaseActive = true;
-                GameState.Instance.PreviousLevel = Int32.Parse(sceneName);
-                PlayerDataController.instance.previousScene = Int32.Parse(sceneName);
+                DefaultSceneEndInit();
             }
         }
 
@@ -496,7 +475,7 @@ public class LevelManager : MonoBehaviour
             }
         }
 
-        else if (sceneName == "6")
+        else if (sceneName == "20")
         {
             if (!levelIsSpawned)
             {
@@ -740,7 +719,7 @@ public class LevelManager : MonoBehaviour
             gameState.RollingPhaseActive = false;
             gameState.playerBallManager.respawnBal();
             gameState.platformManager.RespawnCollectables();
-            
+
             //if (sceneName != "1"||!PhotonNetwork.IsConnected)
             //{
             //    balknop.gameObject.SetActive(true);

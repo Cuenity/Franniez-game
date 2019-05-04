@@ -22,7 +22,7 @@ public class ButtonManager : MonoBehaviour
 
     public void StartButton()
     {
-        if (tutorialActive)
+        if (tutorialActive && !gameState.tutorialManager.changeBallTutorial)
         {
             gameState.tutorialManager.TurnTutorialMaskOff();
             gameState.tutorialManager.RollingFinished = false;
@@ -93,7 +93,6 @@ public class ButtonManager : MonoBehaviour
 
     public void RemoveAllPlayerPlatformsFromScene()
     {
-
         int placedPlatformsAmount = gameState.levelManager.playerPlatforms.placedPlatforms.Count;
 
         while (placedPlatformsAmount > 0)
@@ -178,7 +177,7 @@ public class ButtonManager : MonoBehaviour
 
     public void ChangeBall()
     {
-        if (tutorialActive)
+        if (tutorialActive && gameState.tutorialManager.changeBallTutorial)
         {
             gameState.tutorialManager.TurnTutorialMaskOff();
             gameState.tutorialManager.RollingFinished = false;
