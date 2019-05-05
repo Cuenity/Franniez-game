@@ -9,7 +9,6 @@ namespace Assets.Scripts.Shop.Items
 {
     class ListShopItems : MonoBehaviour
     {
-        [SerializeField]
-        List<ShopCategory> items;
+        [SerializeField] List<ShopCategory> items;
     }
 }

@@ -5,8 +5,7 @@ using UnityEngine.UI;
 
 public class NotEnoughCoinsText : MonoBehaviour
 {
-    [SerializeField]
-    private Text text;
+    [SerializeField] private Text text;
 
     private void OnEnable()
     {

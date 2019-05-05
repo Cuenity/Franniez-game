@@ -10,14 +10,10 @@ namespace Assets.Scripts.Shop.Items
     public class ShopCategory : MonoBehaviour
     {
         // Voor UI, dit ziet de speler
-        [SerializeField]
-        public string Name;
-        [SerializeField]
-        public int cost;
-        [SerializeField]
-        public ShopCategoryEnum categoryEnum;
-        [SerializeField]
-        public SkinObject[] skins;
+        [SerializeField] public string Name;
+        [SerializeField] public int cost;
+        [SerializeField] public ShopCategoryEnum categoryEnum;
+        [SerializeField] public SkinObject[] skins;
 
 
         public void Start()

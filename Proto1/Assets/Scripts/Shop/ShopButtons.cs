@@ -8,12 +8,9 @@ using System.Timers;
 
 public class ShopButtons : MonoBehaviour
 {
-    [SerializeField]
-    private GameObject SkinsPanel, MusicPanel, CoinsPanel;
-    [SerializeField]
-    public Text AmountCoinsPlayer;
-    [SerializeField]
-    private GameObject warningPanel;
+    [SerializeField] private GameObject SkinsPanel, MusicPanel, CoinsPanel;
+    [SerializeField] public Text AmountCoinsPlayer;
+    [SerializeField] private GameObject warningPanel;
 
     // Private properties for GameAnalytics
     private float startTime;
@@ -72,11 +69,6 @@ public class ShopButtons : MonoBehaviour
                 break;
         }
         ChangeImage(buttonName);
-    }
-
-    private void ChangeButton()
-    {
-
     }
 
     public void BuyCoins(int amount)

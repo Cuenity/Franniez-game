@@ -6,16 +6,11 @@ using UnityEngine.UI;
 
 public class ShopFillSkins : MonoBehaviour
 {
-    [SerializeField]
-    private ShopCategory shopCategory;
-    [SerializeField]
-    private Button button;
-    [SerializeField]
-    private SimpleObjectPool simpleObjectPool;
-    [SerializeField]
-    private Transform contentPanel;
-    [SerializeField]
-    private GameObject marginRight;
+    [SerializeField] private ShopCategory shopCategory;
+    [SerializeField] private Button button;
+    [SerializeField] private SimpleObjectPool simpleObjectPool;
+    [SerializeField] private Transform contentPanel;
+    [SerializeField] private GameObject marginRight;
 
     private List<ShopSkinButton> skinButtons;
     private List<SkinObject> skins;

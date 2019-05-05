@@ -5,14 +5,10 @@ using UnityEngine.UI;
 
 public class ShopSkinButton : MonoBehaviour
 {
-    public Button skinButton;
-    public Text title;
-    public Text cost;
-    public Image image;
-    public Sprite owned;
-    public Sprite active;
-    public Sprite buyWithCoins;
-    public Image buttonImage;
+    [SerializeField] public Button skinButton;
+    [SerializeField] private Text title, cost;
+    [SerializeField] private Image skinImage, coinImage;
+    [SerializeField] private Sprite owned, active, buyWithCoins;
 
     private SkinObject skinObject;
 
@@ -26,23 +22,23 @@ public class ShopSkinButton : MonoBehaviour
             if( PlayerDataController.instance.ballMaterial == skin.material)
             {
                 TransformText();
-                buttonImage.sprite = active;
+                coinImage.sprite = active;
                 cost.text = "Gekozen";
             }
             else
             {
                 TransformText();
-                buttonImage.sprite = owned;
+                coinImage.sprite = owned;
                 cost.text = "Gekocht";
             }
         }
         else
         {
-            buttonImage.sprite = buyWithCoins;
+            coinImage.sprite = buyWithCoins;
             cost.text = skinObject.cost.ToString();
         }
 
-        image.sprite = skinObject.shopImage;
+        skinImage.sprite = skinObject.shopImage;
     }
 
     private void TransformText()
@@ -58,19 +54,19 @@ public class ShopSkinButton : MonoBehaviour
             if (PlayerDataController.instance.ballMaterial == skin.material)
             {
                 TransformText();
-                buttonImage.sprite = active;
+                coinImage.sprite = active;
                 cost.text = "Gekozen";
             }
             else
             {
                 TransformText();
-                buttonImage.sprite = owned;
+                coinImage.sprite = owned;
                 cost.text = "Gekocht";
             }
         }
         else
         {
-            buttonImage.sprite = buyWithCoins;
+            coinImage.sprite = buyWithCoins;
             cost.text = skin.cost.ToString();
         }
     }

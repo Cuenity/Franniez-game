@@ -3,11 +3,9 @@ using UnityEngine.UI;
 
 public class ChangeSoundImage : MonoBehaviour
 {
-    [SerializeField]
-    private Sprite SoundOn, SoundOff;
+    [SerializeField] private Sprite SoundOn, SoundOff;
 
-    [SerializeField]
-    private Button SoundButton;
+    [SerializeField] private Button SoundButton;
 
     private bool SoundState = true;
 
