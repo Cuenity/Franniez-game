@@ -124,6 +124,17 @@ public class RollingPhaseManager : MonoBehaviour
             Hashtable hash = new Hashtable();
             hash.Add("hitflag", hitflag);
             PhotonNetwork.LocalPlayer.SetCustomProperties(hash);
+            //de echte check zit in levelmanager update methode(hebben we gehaald?)
+
+            //plaatjes aanpassen voor feedback
+            if ((bool)PhotonNetwork.PlayerList[0].CustomProperties["hitflag"])
+            {
+                gameState.UIManager.ChangeFlagHitTrue(gameState.UIManager.p1FlagHit);
+            }
+            if ((bool)PhotonNetwork.PlayerList[0].CustomProperties["hitflag"])
+            {
+                gameState.UIManager.ChangeFlagHitTrue(gameState.UIManager.p2FlagHit);
+            }
 
             //niet weggooien wil erwin vragen of het ook op deze manier kan en waarom dit soort shit niet werkt
             ////finish is geraakt door 1 speler

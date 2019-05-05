@@ -22,6 +22,13 @@ public class UIManager : MonoBehaviour
     public bool newLevelInventoryisRequired = false;
     public Canvas pauseMenu;
 
+    //multiPrefabs
+    public Image p1FlagHit, p2FlagHit;
+    [SerializeField]
+    Canvas multiplayerCanvas;
+    [SerializeField]
+    Sprite flagIsHit, flagIsNotHit;
+
     public void InitInventoryButtons(PlayerPlatforms playerPlatforms)
     {
         pauseMenu = Instantiate(pauseMenuCanvas);
@@ -145,5 +152,27 @@ public class UIManager : MonoBehaviour
 
             playerPlatforms.cannonPlatformButtonInstantiated = true;
         }
+    }
+    public void AddMultiplayerUI()
+    {
+        multiplayerCanvas.gameObject.SetActive(true);
+        foreach (Button button in GameState.Instance.levelManager.canvas.GetComponentsInChildren<Button>())
+        {
+            if(button.name == "MenuButton")
+            {
+                button.gameObject.SetActive(false);
+            }
+        } 
+        Image[] flaghitImages = multiplayerCanvas.GetComponentsInChildren<Image>();
+        p1FlagHit = flaghitImages[0];
+        p2FlagHit = flaghitImages[1];
+    }
+    public void ChangeFlagHitTrue(Image flagtoChange)
+    {
+        flagtoChange.sprite = flagIsHit;
+    }
+    public void ChangeFlagHitFalse(Image flagtoChange)
+    {
+        flagtoChange.sprite = flagIsNotHit;
     }
 }

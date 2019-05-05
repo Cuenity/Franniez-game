@@ -374,6 +374,61 @@ public class GridManager : MonoBehaviour
         }
         showPlayerGrids();
     }
+    //race
+    internal void InitPlayerGridMultiLevel2()
+    {
+        List<int> player1Grid = new List<int>();
+        List<int> player2Grid = new List<int>();
+        //grid 1 is 0 tot 74 width
+        //grid 1 is 0 tot 14 heigth
+        //grid 2 is 75 tot 150 width
+        //grid 2 is 0 tot 14 height
+        for (int i = 0; i < 75; i++)
+        {
+            player1Grid.Add(i);
+            player1Grid.Add(i + 151);
+            player1Grid.Add(i + 302);
+            player1Grid.Add(i + 453);
+            player1Grid.Add(i + 604);
+            player1Grid.Add(i + 755);
+            player1Grid.Add(i + 906);
+            player1Grid.Add(i + 1057);
+            player1Grid.Add(i + 1208);
+            player1Grid.Add(i + 1359);
+            player1Grid.Add(i + 1510);
+            player1Grid.Add(i + 1661);
+            player1Grid.Add(i + 1812);
+            player1Grid.Add(i + 1963);
+            player1Grid.Add(i + 2114);
+        }
+        for (int i = 75; i < 75; i++)
+        {
+            player1Grid.Add(i);
+            player1Grid.Add(i + 151);
+            player1Grid.Add(i + 302);
+            player1Grid.Add(i + 453);
+            player1Grid.Add(i + 604);
+            player1Grid.Add(i + 755);
+            player1Grid.Add(i + 906);
+            player1Grid.Add(i + 1057);
+            player1Grid.Add(i + 1208);
+            player1Grid.Add(i + 1359);
+            player1Grid.Add(i + 1510);
+            player1Grid.Add(i + 1661);
+            player1Grid.Add(i + 1812);
+            player1Grid.Add(i + 1963);
+            player1Grid.Add(i + 2114);
+        }
+        if (PhotonNetwork.IsMasterClient)
+        {
+            AddPlayerGridToFilledGridSpots(player2Grid);
+        }
+        else
+        {
+            AddPlayerGridToFilledGridSpots(player1Grid);
+        }
+        showPlayerGrids();
+    }
 
     internal void AddPlayerGridToFilledGridSpots(List<int> playergrid)
     {

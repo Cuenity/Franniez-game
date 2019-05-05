@@ -76,6 +76,13 @@ public class PhotonStartMenu : MonoBehaviourPunCallbacks
         selectedLevel = levelnumber;
     }
 
+    //disconnect en ga terug naar mainmenu
+    public void onClickDisconnectAndReturn()
+    {
+        PhotonNetwork.Disconnect();
+        SceneSwitcher.Instance.AsynchronousLoadStartNoLoadingBar("StartMenu");
+    }
+
     //start game
     public void onClickStartGame()
     {
@@ -89,15 +96,11 @@ public class PhotonStartMenu : MonoBehaviourPunCallbacks
         if (RoomToJoin.text == "")
         {
             Debug.Log("wat een dum dum geen roomnaam gekozen");
-            RoomToJoin.text = "-.- geen naam";
+            RoomToJoin.placeholder.GetComponent<Text>().text = "-.- geen naam";
         }
         else
         {
             PhotonNetwork.JoinRoom(RoomToJoin.text);
-
-            //view switch
-            CustomRoom.gameObject.GetComponent<Canvas>().enabled = false;
-            ClientWait.gameObject.GetComponent<Canvas>().enabled = true;
         }
     }
 
@@ -126,6 +129,13 @@ public class PhotonStartMenu : MonoBehaviourPunCallbacks
     }
 
     //callbacks
+    public override void OnJoinRoomFailed(short returnCode, string message)
+    {
+        base.OnJoinRoomFailed(returnCode, message);
+        //zou placeholder.text moeten zijns
+        RoomToJoin.text = "Room bestaat niet";
+    }
+
     override public void OnJoinedRoom()
     {
         RoomNameHost.text = PhotonNetwork.CurrentRoom.Name;
@@ -140,6 +150,7 @@ public class PhotonStartMenu : MonoBehaviourPunCallbacks
             StartMenu.gameObject.GetComponent<Canvas>().enabled = false;
             ClientWait.gameObject.GetComponent<Canvas>().enabled = true;
         }
+
     }
 
     override public void OnConnectedToMaster()

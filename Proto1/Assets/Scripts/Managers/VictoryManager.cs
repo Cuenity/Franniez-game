@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using System;
+using Photon.Pun;
 
 public class VictoryManager : MonoBehaviour
 {
@@ -98,25 +99,46 @@ public class VictoryManager : MonoBehaviour
 
     public void Restart()
     {
-        //previous level
-        string prevlvl = Convert.ToString(PlayerDataController.instance.previousScene);
+        //photon restart
+        if (PhotonNetwork.InRoom)
+        {
+            PhotonNetwork.LoadLevel(PlayerDataController.instance.previousScene);
+        }
+        else
+        {
+            //previous level
+            string prevlvl = Convert.ToString(PlayerDataController.instance.previousScene);
 
-        SceneSwitcher.Instance.AsynchronousLoadStart(prevlvl);
+            SceneSwitcher.Instance.AsynchronousLoadStart(prevlvl);
 
-        //SceneManager.LoadScene(prevlvl);
+            //SceneManager.LoadScene(prevlvl);
+        }
     }
 
     public void NextScene()
     {
+        //geen 2de level maar wel zin om gewoon ff dit te doen(zelfde als restart)
+        if (PhotonNetwork.InRoom)
+        {
+            PhotonNetwork.LoadLevel(PlayerDataController.instance.previousScene);
+        }
         //previous level + 1
-        int prevlvl = PlayerDataController.instance.previousScene;
-        string prevlvlString = Convert.ToString(prevlvl + 1);
-        SceneSwitcher.Instance.AsynchronousLoadStart(prevlvlString);
+        else
+        {
+            int prevlvl = PlayerDataController.instance.previousScene;
+            string prevlvlString = Convert.ToString(prevlvl + 1);
+            SceneSwitcher.Instance.AsynchronousLoadStart(prevlvlString);
+        }
         //SceneManager.LoadScene(prevlvlString);
     }
 
     public void ReturnToMenu()
     {
+        //back to multimenu
+        if (PhotonNetwork.InRoom)
+        {
+            PhotonNetwork.LoadLevel(18);
+        }
         //moet lvl select worden
         //SceneManager.LoadScene("StartMenu");
         SceneSwitcher.Instance.AsynchronousLoadStartNoLoadingBar("LevelSelect");

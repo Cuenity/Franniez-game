@@ -131,6 +131,9 @@ public class LevelManager : MonoBehaviour
 
     public bool bigLevel;
 
+    //multiplayer booleans
+    public bool multiUIRequired;
+
     private void Start()
     {
         balknop = gameState.UIManager.canvas.GetComponentInChildren<BallKnop>();
@@ -148,6 +151,7 @@ public class LevelManager : MonoBehaviour
                 {
                     if ((bool)PhotonNetwork.PlayerList[0].CustomProperties["hitflag"] && (bool)PhotonNetwork.PlayerList[1].CustomProperties["hitflag"])
                     {
+                        //victory scene
                         PhotonNetwork.LoadLevel(16);
                     }
                 }
@@ -249,7 +253,7 @@ public class LevelManager : MonoBehaviour
         GameAnalytics.NewProgressionEvent(GAProgressionStatus.Start, sceneName.ToString());
         this.sceneName = sceneName;
         currentScene = SceneManager.GetActiveScene();
-
+        //deze if else statement is 400 regels lang JONGE
         if (sceneName == "LevelEditor")
         {
             gameState.gridManager.width = 11;
@@ -607,14 +611,16 @@ public class LevelManager : MonoBehaviour
             }
         }
 
-
+        //dit is een super klein multiplayer leveltje coins moeten naar boven en in het midden
         else if (sceneName == "MultiplayerLevel1")
         {
             if (!levelIsSpawned)
             {
                 bigLevel = true;
-
+                multiUIRequired = true;
                 gameState.UIManager.canvas = Instantiate(canvas);
+                //multidingen
+                gameState.UIManager.AddMultiplayerUI();
                 //doe gekke initshit voor localproperties
                 bool hitflag = false;
                 Hashtable hash = new Hashtable();
@@ -632,10 +638,46 @@ public class LevelManager : MonoBehaviour
                 playerPlatforms = new PlayerPlatforms(7, 7, 4, 3, 0);
                 GameState.Instance.gridManager.Build_Grid_FromJSON_Without_Visuals(levelPlatformen.width, levelPlatformen.heigth);
 
+                
+                GameState.Instance.platformManager.BuildLevelFromLevelPlatformen(levelPlatformen);
+                gameState.playerManager.MultiPlayerBallInit(42, 57);
+                gameState.gridManager.InitPlayerGridMultiLevel1();
+                gameState.BuildingPhaseActive = true;
+                //dit is wel poep moet echt es anders
+                GameState.Instance.PreviousLevel = 17;
+                PlayerDataController.instance.previousScene = 17;
+            }
+        }
+        //dit is een placeholder level
+        else if (sceneName == "MultiplayerRace1")
+        {
+            if (!levelIsSpawned)
+            {
+                bigLevel = true;
+
+                gameState.UIManager.canvas = Instantiate(canvas);
+                //doe gekke initshit voor localproperties
+                bool hitflag = false;
+                Hashtable hash = new Hashtable();
+                hash.Add("hitflag", hitflag);
+                PhotonNetwork.LocalPlayer.SetCustomProperties(hash);
+                //einde gekke shit
+                gameState.UIManager.newLevelInventoryisRequired = true;
+                GameState.Instance.playerCamera.ManualInit();
+                Vector3 playeradjustment = new Vector3(.5f, 0, 0);
+                levelPlatformen.width = 151;
+                levelPlatformen.heigth = 15;
+                gameState.gridManager.width = 151;
+                gameState.gridManager.height = 15;
+                playerPlatforms = new PlayerPlatforms(7, 7, 4, 3, 0);
+                GameState.Instance.gridManager.Build_Grid_FromJSON_Without_Visuals(levelPlatformen.width, levelPlatformen.heigth);
+
+                levelPlatformen.tileList = new int[151 * 15];
 
 
                 GameState.Instance.platformManager.BuildLevelFromLevelPlatformen(levelPlatformen);
-                gameState.playerManager.MultiPlayerBallInit(42, 57);
+
+                gameState.playerManager.MultiPlayerBallInit(1, 150);
                 gameState.gridManager.InitPlayerGridMultiLevel1();
                 gameState.BuildingPhaseActive = true;
                 //dit is wel poep moet echt es anders
