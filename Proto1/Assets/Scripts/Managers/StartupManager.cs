@@ -19,12 +19,15 @@ public class StartupManager : MonoBehaviour
 
     public void ButtonClicked()
     {
+        // Maak methode in PlayerDataController
         PlayerData player = new PlayerData();
         player.name = "Player";
         player.language = (int)LocalizationManager.instance.LanguageChoice;
-        player.materialsByName.Add("Default");
+        player.materialsByName.Add("Franniez");
+        player.activeMaterial = "Franniez";
         PlayerDataController.instance.SetPlayer(player);
         PlayerDataController.instance.Save();
+        PlayerDataController.instance.SetMaterial();
 
         SceneManager.LoadScene("StartMenu");
     }
