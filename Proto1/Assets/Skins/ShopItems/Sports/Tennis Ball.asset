@@ -15,6 +15,6 @@ MonoBehaviour:
   skinName: Tennis Ball
   cost: 30
   description: 
-  shopImage: {fileID: 21300000, guid: 4c1801ea821da2044a782b57948cdb75, type: 3}
+  shopImage: {fileID: 21300000, guid: f3dfccf988f15fa45b64087709b96f0e, type: 3}
   owned: 0
   material: {fileID: 2100000, guid: 832dc62e188ca2b4ea82ee5188ec3c76, type: 2}

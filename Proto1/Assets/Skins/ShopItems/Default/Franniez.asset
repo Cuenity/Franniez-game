@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 99486fa78c3716449954b1221c009225, type: 3}
-  m_Name: SoftBall
+  m_Name: Franniez
   m_EditorClassIdentifier: 
-  skinName: SoftBall
-  cost: 30
+  skinName: Franniez
+  cost: 0
   description: 
-  shopImage: {fileID: 21300000, guid: b19d44ece1e552045bc157cd6eabb11b, type: 3}
-  owned: 0
-  material: {fileID: 2100000, guid: cbf415881b23647418d313b5543676a7, type: 2}
+  shopImage: {fileID: 21300000, guid: 4c52e56b9933b7b42a9f5ffda58200d6, type: 3}
+  owned: 1
+  material: {fileID: 2100000, guid: b8f70a958f7ac69479fbcc0184b97c89, type: 2}
