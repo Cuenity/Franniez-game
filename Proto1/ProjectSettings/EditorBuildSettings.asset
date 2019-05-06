@@ -54,6 +54,36 @@ EditorBuildSettings:
     path: Assets/Scenes/Levels/10.unity
     guid: 659f1a136fa3af74d9446b94c076a678
   - enabled: 1
+    path: Assets/Scenes/Levels/11.unity
+    guid: 3f668a6b1d292ae49ba0dbd0a5ea281c
+  - enabled: 1
+    path: Assets/Scenes/Levels/12.unity
+    guid: 2942628f641d00a4da26b4a576719ab8
+  - enabled: 1
+    path: Assets/Scenes/Levels/13.unity
+    guid: 43ad2f5c80e1ac549b1789e919b2e078
+  - enabled: 1
+    path: Assets/Scenes/Levels/14.unity
+    guid: 0adad4e46d2224542a0eedbfb2c2f3c4
+  - enabled: 1
+    path: Assets/Scenes/Levels/15.unity
+    guid: e9c1bc01bfc013c428c12ea5edd169b5
+  - enabled: 1
+    path: Assets/Scenes/Levels/16.unity
+    guid: f15f2285cbf7c4244b1a3d455cef2c5b
+  - enabled: 1
+    path: Assets/Scenes/Levels/17.unity
+    guid: e398b6084f13063459a1985195803460
+  - enabled: 1
+    path: Assets/Scenes/Levels/18.unity
+    guid: c8b38106dbb2cbf4593e3c9d5dcb0c67
+  - enabled: 1
+    path: Assets/Scenes/Levels/19.unity
+    guid: a296aaefe1f27054ca8529e485fff893
+  - enabled: 1
+    path: Assets/Scenes/Levels/20.unity
+    guid: ad15363cac564a94a871df9b7aa685d5
+  - enabled: 1
     path: Assets/Scenes/Menu/VictoryScreen.unity
     guid: 2e62992d7d06ddb45a0d66fe7f77fa5c
   - enabled: 1
