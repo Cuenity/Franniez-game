@@ -90,7 +90,7 @@ public class LevelManager : MonoBehaviour
         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 9,
-        0, 0, 0, 0, 0, 0, 0, 0, 0, 8, 0, 0, 3, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 8, 0, 0, 0, 3, 0,
         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
     int[] level6BlackHoleBallEnJump = new int[] {
         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
@@ -466,12 +466,35 @@ public class LevelManager : MonoBehaviour
 
                 GameState.Instance.platformManager.BuildLevelFromLevelPlatformen(levelPlatformen);
 
-                gameState.playerBallManager.WhatBalls(false, true, true);
+                gameState.playerBallManager.WhatBalls(true, true, false);
                 DefaultSceneEndInit();
             }
         }
 
-        else if (sceneName == "9") // moet 11 zijn
+        // niet af andere maken
+        else if (sceneName == "9")
+        {
+            if (!levelIsSpawned)
+            {
+                DefaultSceneInit();
+                gameState.tutorialManager.changeBallTutorial = true;
+
+                levelPlatformen.tileList = level8BoosterHard;
+                levelPlatformen.width = 20;
+                levelPlatformen.heigth = 10;
+                gameState.gridManager.width = levelPlatformen.width;
+                gameState.gridManager.height = levelPlatformen.heigth;
+                playerPlatforms = new PlayerPlatforms(4, 4, 0, 2, 0);
+                GameState.Instance.gridManager.Build_Grid_FromJSON_Without_Visuals(levelPlatformen.width, levelPlatformen.heigth);
+                gameState.playerBallManager.SetSpawnpoint(80);
+
+                GameState.Instance.platformManager.BuildLevelFromLevelPlatformen(levelPlatformen);
+
+                gameState.playerBallManager.WhatBalls(true, true, false);
+                DefaultSceneEndInit();
+            }
+        }
+        else if (sceneName == "11") 
         {
             if (!levelIsSpawned)
             {
@@ -495,7 +518,7 @@ public class LevelManager : MonoBehaviour
                 gameState.platformManager.BuildLevelCoen();
 
 
-                gameState.playerBallManager.WhatBalls(true, true, true);
+                gameState.playerBallManager.WhatBalls(true, false, true);
                 gameState.playerManager.PlayerInit(gameState.playerBallManager.ballList[0]);
 
                 //hier dan een vieze boolean
