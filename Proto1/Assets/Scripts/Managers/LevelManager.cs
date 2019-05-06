@@ -142,19 +142,19 @@ public class LevelManager : MonoBehaviour
         0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
         10, 0, 0, 0, 5, 0, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
 
-    int[] multiplayerLevel2Kruislinks = new int[] {
+    int[] multiplayerLevel2Cross = new int[] {
         0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
         1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-        0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,0,
-        0,0,3,0,5,0,3,0,3,0,3,0,3,0,3,0,0,0,0,0,
+        0,0,0,0,0,0,0,0,0,0,0,8,0,0,0,0,0,0,2,0,
+        0,0,3,0,5,0,0,0,0,0,3,0,3,0,3,0,0,0,0,0,
         0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-        0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,0,0,0,0,
-        0,0,0,0,0,0,0,0,0,0,0,0,0,2,0,0,0,0,2,0,
-        0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,0,0,0,
+        0,0,0,0,0,0,0,0,0,0,0,0,0,8,0,2,0,0,0,0,
+        0,0,0,0,0,0,0,0,0,0,0,0,0,2,0,0,0,0,0,0,
+        0,0,0,0,0,0,0,0,0,0,0,0,0,0,8,0,2,0,0,0,
         0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,0,0,0,0,0,
-        0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+        0,0,9,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
         0,0,3,0,3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-        0,0,0,0,0,0,0,0,0,4,0,0,0,0,0,0,0,0,0,0,
+        0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
         0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
         0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
         0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 };
@@ -735,18 +735,18 @@ public class LevelManager : MonoBehaviour
                 gameState.UIManager.newLevelInventoryisRequired = true;
                 GameState.Instance.playerCamera.ManualInit();
                 Vector3 playeradjustment = new Vector3(.5f, 0, 0);
-                levelPlatformen.tileList = multiplayerLevel2Kruislinks;
+                levelPlatformen.tileList = multiplayerLevel2Cross;
                 levelPlatformen.width = 20;
                 levelPlatformen.heigth = 15;
                 gameState.gridManager.width = 20;
                 gameState.gridManager.height = 20;
-                playerPlatforms = new PlayerPlatforms(1, 1, 1, 1, 1);
+                playerPlatforms = new PlayerPlatforms(1, 1, 1, 0, 0);
                 GameState.Instance.gridManager.Build_Grid_FromJSON_Without_Visuals(levelPlatformen.width, levelPlatformen.heigth);
 
 
                 GameState.Instance.platformManager.BuildLevelFromLevelPlatformen(levelPlatformen);
-                gameState.playerManager.MultiPlayerBallInit(42, 57);
-                gameState.gridManager.InitPlayerGridMultiLevel1();
+                gameState.playerManager.MultiPlayerBallInit(19, 0);
+                //gameState.gridManager.InitPlayerGridMultiLevel1();
                 gameState.BuildingPhaseActive = true;
                 //dit is wel poep moet echt es anders
                 GameState.Instance.PreviousLevel = 17;
