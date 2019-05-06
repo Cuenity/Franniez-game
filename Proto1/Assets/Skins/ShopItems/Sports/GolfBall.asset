@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 99486fa78c3716449954b1221c009225, type: 3}
-  m_Name: SoftBall
+  m_Name: GolfBall
   m_EditorClassIdentifier: 
-  skinName: SoftBall
+  skinName: GolfBall
   cost: 30
   description: 
-  shopImage: {fileID: 21300000, guid: b19d44ece1e552045bc157cd6eabb11b, type: 3}
+  shopImage: {fileID: 21300000, guid: 839e6ac9172a6a44fb9e22d4ac42908a, type: 3}
   owned: 0
-  material: {fileID: 2100000, guid: cbf415881b23647418d313b5543676a7, type: 2}
+  material: {fileID: 0}
