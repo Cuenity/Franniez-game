@@ -320,10 +320,7 @@ public class PlayerCamera : MonoBehaviour
 
                 // geef de camera een stootje
                 Vector2 diffrence = newTouchPosition - (Vector2)oldTouchPositions[0];
-                if (diffrence.x > 1 || diffrence.x < -1 || diffrence.y > 1 || diffrence.y < -1)
-                {
-                    this.GetComponent<Rigidbody>().AddForce(-diffrence * 3);
-                }
+                this.GetComponent<Rigidbody>().AddForce(-diffrence * 3);
 
                 oldTouchPositions[0] = newTouchPosition;
             }
@@ -376,9 +373,9 @@ public class PlayerCamera : MonoBehaviour
         index = 0;
         Vector3 cameraPos = this.transform.position;
         Vector3 targetPos = this.Target.transform.position + TargetMovementOffset;
-        Vector3 difference = (targetPos - cameraPos) / 100;
+        Vector3 difference = (targetPos - cameraPos) / 60;
         difference.z = 0;
-        while (index <= 100)
+        while (index <= 60)
         {
             this.transform.position = this.transform.position + difference;
             yield return new WaitForEndOfFrame();
@@ -401,7 +398,7 @@ public class PlayerCamera : MonoBehaviour
         }
         platformDragActive = false;
         gameState.BuildingPhaseActive = true;
-
+        
         gameState.tutorialManager.StartTutorial();
     }
 }

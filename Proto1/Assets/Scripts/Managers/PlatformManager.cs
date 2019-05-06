@@ -309,6 +309,10 @@ public class PlatformManager : MonoBehaviour
         // 5 = boostplatform
         // 6 = cannon
         // 7 = redzone
+        // 8 = star
+        // 9 = finish
+        // 10 = portal
+        // 11 = lift
         Vector3 rampAdjustment = new Vector3(0.5f, 0f, 0f);
         for (int i = 0; i < levelPlatformen.tileList.Length; i++)
         {
@@ -374,6 +378,18 @@ public class PlatformManager : MonoBehaviour
             else if (levelPlatformen.tileList[i] == 9)
             {
                 SetfinishPosition(i);
+            }
+            else if(levelPlatformen.tileList[i]== 10)
+            {
+                portal = Instantiate(portal, GameState.Instance.gridManager.gridSquares[i] + new Vector3(1, .5f, 0), new Quaternion(0, 0, 0, 0));
+                List<int> gridSpots = new List<int>();
+                allPortals.Add(portal);
+                gameState.gridManager.AddFilledGridSpots(gridSpots, SizeType.twoByTwo);
+            }
+            else if (levelPlatformen.tileList[i] == 11)
+            {
+                lift = Instantiate(lift);
+                lift.transform.position = lift.startPoint;
             }
 
 

@@ -45,3 +45,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tutorialArrow: {fileID: 3923973708274401129, guid: 21b89a07c1cf3a24897fda2fec73e3ed,
     type: 3}
+  changeBallTutorial: 0

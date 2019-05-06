@@ -57,8 +57,12 @@ public class ButtonManager : MonoBehaviour
             player.levels[i] = new Level();
         }
 
+        player.materialsByName.Add("Franniez");
+        player.activeMaterial = "Franniez";
+
         PlayerDataController.instance.player = player;
         PlayerDataController.instance.Save();
+        PlayerDataController.instance.SetMaterial();
         LocalizationManager.instance.SetLanguageForPlayer(pathFile);
 
         string language = LocalizationManager.instance.LanguageChoice.ToString();

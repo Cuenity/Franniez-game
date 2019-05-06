@@ -110,11 +110,11 @@ public class PlayerDataController : MonoBehaviour
         Save();
     }
 
-    private void SetMaterial()
+    public void SetMaterial()
     {
         if(player.activeMaterial == null)
         {
-            ballMaterial = Resources.Load("Skins/DefaultSkin", typeof(Material)) as Material;
+            ballMaterial = Resources.Load("Skins/Franniez", typeof(Material)) as Material;
         }
         else
         {
