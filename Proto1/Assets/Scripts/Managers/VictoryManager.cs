@@ -23,6 +23,8 @@ public class VictoryManager : MonoBehaviour
 
     private PlayerData player;
 
+    [SerializeField]
+    Canvas VictoryCanvas;
 
     private void Awake()
     {
@@ -35,7 +37,18 @@ public class VictoryManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        //zet buttons uit in MP voor niet host
+        if (PhotonNetwork.InRoom)
+        {
+            if (!PhotonNetwork.IsMasterClient)
+            {
+                Button[] buttons = VictoryCanvas.GetComponentsInChildren<Button>();
+                foreach (Button button in buttons)
+                {
+                    button.interactable = false;
+                }
+            }
+        }
     }
 
     // Update is called once per frame
@@ -139,8 +152,11 @@ public class VictoryManager : MonoBehaviour
         {
             PhotonNetwork.LoadLevel(18);
         }
-        //moet lvl select worden
-        //SceneManager.LoadScene("StartMenu");
-        SceneSwitcher.Instance.AsynchronousLoadStartNoLoadingBar("LevelSelect");
+        else
+        {
+            //moet lvl select worden
+            //SceneManager.LoadScene("StartMenu");
+            SceneSwitcher.Instance.AsynchronousLoadStartNoLoadingBar("LevelSelect");
+        }
     }
 }
