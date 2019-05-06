@@ -90,6 +90,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Multiplayer Levels/MultiplayerLevel1.unity
     guid: a519f9ddcc2e8da4b8f590e95d3d71d7
   - enabled: 1
+    path: Assets/Scenes/Multiplayer Levels/MultiplayerLevel2.unity
+    guid: c1d71b4bbbe59b84da50ca3235356465
+  - enabled: 1
     path: Assets/Scenes/Menu/MultiplayerStart.unity
     guid: 2b75e9fc3db1b5147bdcd0e62c31944c
   m_configObjects: {}
