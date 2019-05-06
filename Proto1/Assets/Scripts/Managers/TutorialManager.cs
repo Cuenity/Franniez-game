@@ -41,6 +41,8 @@ public class TutorialManager : MonoBehaviour
         else
         {
             GameState.Instance.UIManager.canvas.GetComponentsInChildren<TutorialMask>(true)[1].gameObject.SetActive(false);
+            GameState.Instance.UIManager.instantiatedInventoryButtons[0].gameObject.SetActive(true);
+            GameState.Instance.UIManager.instantiatedInventoryButtons[1].gameObject.SetActive(true);
         }
     }
 
