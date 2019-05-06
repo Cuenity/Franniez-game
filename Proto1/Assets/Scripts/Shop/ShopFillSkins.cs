@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class ShopFillSkins : MonoBehaviour
 {
-    [SerializeField] private ShopCategory shopCategory;
+    [SerializeField] private ShopCategory[] shopCategories;
     [SerializeField] private Button button;
     [SerializeField] private SimpleObjectPool simpleObjectPool;
     [SerializeField] private Transform contentPanel;
@@ -18,27 +18,29 @@ public class ShopFillSkins : MonoBehaviour
     public delegate void ClickAction(SkinObject cost, ShopSkinButton button);
     public event ClickAction ButtonClicked;
 
-
-    // Start is called before the first frame update
     void Start()
     {
+        skins = new List<SkinObject>();
         skinButtons = new List<ShopSkinButton>();
         MakeButtons();
     }
 
     private void MakeButtons()
     {
-        foreach (SkinObject skin in shopCategory.skins)
+        foreach (ShopCategory shopCategory in shopCategories)
         {
-            GameObject newButton = simpleObjectPool.GetObject();
-            newButton.transform.SetParent(contentPanel);
+            foreach (SkinObject skin in shopCategory.skins)
+            {
+                GameObject newButton = simpleObjectPool.GetObject();
+                newButton.transform.SetParent(contentPanel);
 
-            ShopSkinButton skinButton = newButton.GetComponent<ShopSkinButton>();
-            skinButton.Setup(skin);
-            skinButton.skinButton.onClick.AddListener(delegate { BuySkin(skin, skinButton); });
-            skinButtons.Add(skinButton);
+                ShopSkinButton skinButton = newButton.GetComponent<ShopSkinButton>();
+                skinButton.Setup(skin);
+                skinButton.skinButton.onClick.AddListener(delegate { BuySkin(skin, skinButton); });
+                skinButtons.Add(skinButton);
+                skins.Add(skin);
+            }
         }
-
         marginRight = (GameObject)GameObject.Instantiate(marginRight);
         marginRight.SetActive(true);
         marginRight.transform.SetParent(contentPanel);
@@ -52,11 +54,12 @@ public class ShopFillSkins : MonoBehaviour
 
     private void RefreshButtons()
     {
-        int i = 0;
+        int index = 0;
+
         foreach (ShopSkinButton button in skinButtons)
         {
-            button.ChangeImage(shopCategory.skins[i]);
-            i++;
+                button.ChangeImage(skins[index]);
+                index++;
         }
     }
 }

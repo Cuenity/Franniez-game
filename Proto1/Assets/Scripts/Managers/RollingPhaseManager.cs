@@ -131,7 +131,7 @@ public class RollingPhaseManager : MonoBehaviour
             {
                 gameState.UIManager.ChangeFlagHitTrue(gameState.UIManager.p1FlagHit);
             }
-            if ((bool)PhotonNetwork.PlayerList[0].CustomProperties["hitflag"])
+            if ((bool)PhotonNetwork.PlayerList[1].CustomProperties["hitflag"])
             {
                 gameState.UIManager.ChangeFlagHitTrue(gameState.UIManager.p2FlagHit);
             }

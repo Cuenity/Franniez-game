@@ -12,11 +12,12 @@ public class PhotonStartMenu : MonoBehaviourPunCallbacks
     [SerializeField]
     InputField RoomToJoin, RoomToCreate;
     [SerializeField]
-    Button StartGame;
+    Button StartGame, CreateJoinButton;
     [SerializeField]
     Text RoomNameHost,RoomNameClient, ConnectedStatus,  WaitingForPlayers, TitleText;
 
     private int selectedLevel=1;
+    private bool isCreator;
 
     void Awake()
     {
@@ -51,10 +52,21 @@ public class PhotonStartMenu : MonoBehaviourPunCallbacks
         PhotonNetwork.ConnectUsingSettings();
     }
     //switch panel methodes
-    public void onClickSwitchToCustomRoom()
+    public void onClickSwitchToCustomRoomJoin()
     {
+        isCreator = false;
         StartMenu.gameObject.SetActive(false);
         CustomRoom.gameObject.SetActive(true);
+        CreateJoinButton.GetComponentInChildren<Text>().text = "Join Room";
+        RoomToCreate.placeholder.GetComponent<Text>().text = "Enter room name to join....";
+    }
+    public void onClickSwitchToCustomRoomCreate()
+    {
+        isCreator = true;
+        StartMenu.gameObject.SetActive(false);
+        CustomRoom.gameObject.SetActive(true);
+        CreateJoinButton.GetComponentInChildren<Text>().text = "Create Room";
+        RoomToCreate.placeholder.GetComponent<Text>().text = "Enter room name to create....";
     }
     public void onClickSwitchToRoomCreate()
     {
@@ -96,7 +108,7 @@ public class PhotonStartMenu : MonoBehaviourPunCallbacks
         if (RoomToJoin.text == "")
         {
             Debug.Log("wat een dum dum geen roomnaam gekozen");
-            RoomToJoin.placeholder.GetComponent<Text>().text = "No Room Chosen";
+            RoomToCreate.placeholder.GetComponent<Text>().text = "No Room Chosen";
         }
         else
         {
@@ -106,12 +118,27 @@ public class PhotonStartMenu : MonoBehaviourPunCallbacks
 
     public void onClickCreateRoom()
     {
-        //TODO maak iets als room al bestaat
-        PhotonNetwork.CreateRoom(RoomToCreate.text, new RoomOptions() { MaxPlayers = 2 }, null);
+        if (isCreator)
+        {
+            //TODO maak iets als room al bestaat
+            PhotonNetwork.CreateRoom(RoomToCreate.text, new RoomOptions() { MaxPlayers = 2 }, null);
 
-        //switch naar juiste view
-        CustomRoom.gameObject.SetActive(false);
-        HostWait.gameObject.SetActive(true);
+            //switch naar juiste view
+            //CustomRoom.gameObject.SetActive(false);
+            //HostWait.gameObject.SetActive(true);
+        }
+        else
+        {
+            if (RoomToCreate.text == "")
+            {
+                Debug.Log("wat een dum dum geen roomnaam gekozen");
+                RoomToCreate.placeholder.GetComponent<Text>().text = "No Room Chosen";
+            }
+            else
+            {
+                PhotonNetwork.JoinRoom(RoomToCreate.text);
+            }
+        }
     }
     
 
@@ -133,7 +160,9 @@ public class PhotonStartMenu : MonoBehaviourPunCallbacks
     {
         base.OnJoinRoomFailed(returnCode, message);
         //zou placeholder.text moeten zijns
-        RoomToJoin.text = "Room bestaat niet";
+        RoomToCreate.text = "";
+        RoomToCreate.placeholder.GetComponent<Text>().text = "Room bestaat niet";
+
     }
 
     override public void OnJoinedRoom()
@@ -144,11 +173,13 @@ public class PhotonStartMenu : MonoBehaviourPunCallbacks
         if (PhotonNetwork.IsMasterClient)
         {
             StartMenu.gameObject.SetActive(false);
+            CustomRoom.gameObject.SetActive(false);
             HostWait.gameObject.SetActive(true);
         }
         else
         {
             StartMenu.gameObject.SetActive(false);
+            CustomRoom.gameObject.SetActive(false);
             ClientWait.gameObject.SetActive(true);
         }
 
