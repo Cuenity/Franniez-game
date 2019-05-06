@@ -11,6 +11,7 @@ public class Lift : MonoBehaviour
     bool used = false;
     public IEnumerator coroutineLift;
     public GameObject invisLift;
+    public GameObject poof;
     // Start is called before the first frame update
     void Start()
     {
@@ -29,7 +30,10 @@ public class Lift : MonoBehaviour
             Vector3 oldVelocity = body.velocity;
             body.velocity = new Vector3(0, 0, 0);
             body.freezeRotation = true;
+            GameObject poof2 = poof;
+            Instantiate(poof2, bal.transform.position, new Quaternion(0, 0, 0, 0));
             bal.transform.position = this.transform.position + new Vector3(0, 1, 0);
+            Instantiate(poof2, bal.transform.position, new Quaternion(0, 0, 0, 0));
             coroutineLift = Move(oldVelocity, body, bal);
             StartCoroutine(coroutineLift);
         }
@@ -40,11 +44,11 @@ public class Lift : MonoBehaviour
     {
         this.used = true;
         // bereken de verandering in 100 stapjes
-        Vector3 diffrence = (this.endPoint - this.startPoint) / 100;
+        Vector3 diffrence = (this.endPoint - this.startPoint) / 60;
         body.useGravity = false;
         body.isKinematic = true;
         // voer de transform uit in 100 stapjes zodat het smooth lijkt. en neem het balletje mee
-        while (index <= 100)
+        while (index <= 60)
         {
             this.transform.position = this.transform.position + diffrence;
             ball.transform.position = this.transform.position + new Vector3(0, .8f, 0);

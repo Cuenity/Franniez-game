@@ -95,6 +95,7 @@ MonoBehaviour:
   endPoint: {x: 0, y: 0, z: 0}
   invisLift: {fileID: 6306853578708674632, guid: 6b489c004202ed2469264250a3d5099d,
     type: 3}
+  poof: {fileID: 100000, guid: 83cd9cc9f9c88824ba18dc59b05ae328, type: 3}
 --- !u!65 &4107892968453861339
 BoxCollider:
   m_ObjectHideFlags: 0
