@@ -38,7 +38,10 @@ public class UIDragManager : MonoBehaviour, IDragHandler, IBeginDragHandler, IEn
         camera = GameState.Instance.playerCamera.GetComponent<Camera>();
         platformManager = GameState.Instance.platformManager.GetComponent<PlatformManager>();
 
-        zAxis = transform.position.z;
+        SetWorldMaterials();
+
+
+         zAxis = transform.position.z;
     }
 
     private Vector3 ScreenPointToWorldOnPlane(Vector3 screenPosition, float zPosition)
@@ -65,6 +68,7 @@ public class UIDragManager : MonoBehaviour, IDragHandler, IBeginDragHandler, IEn
                     if (correctButton.name == InventoryButtonName.platformSquareButton.ToString())
                     {
                         type = PlatformType.platformSquare;
+                        
                         draggedPlatform = Instantiate(platformSquare);
 
                         GameState.Instance.levelManager.playerPlatforms.platformSquaresLeftToPlace--;
@@ -328,5 +332,16 @@ public class UIDragManager : MonoBehaviour, IDragHandler, IBeginDragHandler, IEn
     {
         yield return new WaitForEndOfFrame();
         GameState.Instance.playerCamera.platformDragActive = false;
+    }
+
+    private void SetWorldMaterials()
+    {
+        if (GameState.Instance.PreviousLevel >= 11 && GameState.Instance.PreviousLevel <= 20)
+        {
+            ramp.GetComponent<Renderer>().material = Resources.Load("PlatformMat/RampSpace", typeof(Material)) as Material;
+            platformSquare.GetComponent<Renderer>().material = Resources.Load("PlatformMat/RechthoekSpace", typeof(Material)) as Material;
+            camera.GetComponent<Skybox>().material = Resources.Load("SkyBox/Space", typeof(Material)) as Material;
+
+        }
     }
 }

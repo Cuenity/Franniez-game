@@ -29,15 +29,28 @@ public class PhotonStartMenu : MonoBehaviourPunCallbacks
     // Start is called before the first frame update
     void Start()
     {
-
-        StartMenu.gameObject.SetActive(true);
-        if (!PhotonNetwork.IsConnectedAndReady)
+        if (!PhotonNetwork.IsConnected)
         {
-            connectToPhoton();
+            StartMenu.gameObject.SetActive(true);
+            if (!PhotonNetwork.IsConnectedAndReady)
+            {
+                connectToPhoton();
+            }
+            else
+            {
+                OnConnectedToMaster();
+            }
         }
         else
         {
-            OnConnectedToMaster();
+            if (PhotonNetwork.IsMasterClient)
+            {
+                HostWait.gameObject.SetActive(true);
+            }
+            else
+            {
+                ClientWait.gameObject.SetActive(true);
+            }
         }
     }
 
@@ -175,6 +188,7 @@ public class PhotonStartMenu : MonoBehaviourPunCallbacks
             StartMenu.gameObject.SetActive(false);
             CustomRoom.gameObject.SetActive(false);
             HostWait.gameObject.SetActive(true);
+            
         }
         else
         {
@@ -215,6 +229,8 @@ public class PhotonStartMenu : MonoBehaviourPunCallbacks
         base.OnPlayerEnteredRoom(newPlayer);
         WaitingForPlayers.text = "Other Player Found Start Level" + selectedLevel.ToString();
         StartGame.interactable = true;
+        StartGame.GetComponent<Text>().text = "Start Game";
+        StartGame.GetComponent<Text>().color = Color.green;
     }
     public override void OnPlayerLeftRoom(Player otherPlayer)
     {
