@@ -154,7 +154,7 @@ public class LevelManager : MonoBehaviour
         0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,0,0,0,0,0,
         0,0,9,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
         0,0,3,0,3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-        0,0,0,0,0,0,0,0,0,4,0,0,0,0,0,0,0,0,0,0,
+        0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
         0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
         0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
         0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 };
@@ -740,7 +740,7 @@ public class LevelManager : MonoBehaviour
                 levelPlatformen.heigth = 15;
                 gameState.gridManager.width = 20;
                 gameState.gridManager.height = 20;
-                playerPlatforms = new PlayerPlatforms(2, 2, 1, 0, 0);
+                playerPlatforms = new PlayerPlatforms(1, 1, 1, 0, 0);
                 GameState.Instance.gridManager.Build_Grid_FromJSON_Without_Visuals(levelPlatformen.width, levelPlatformen.heigth);
 
 
