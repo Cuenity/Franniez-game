@@ -21,9 +21,6 @@ public class LevelManager : MonoBehaviour
         0, 0, 0, 0, 0, 7, 7, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 7, 0, 0, 0, 0, 0, 0, 0, 0, 0,
         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 7, 0, 8, 0, 0, 0, 0, 0, 0, 0, 7, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
         0, 7, 0, 0, 0, 0, 0, 7, 0, 0, 0, 0, 0, 0, 3, 0, 0, 0, 0, 0, 0, 0, 7, 7, 7, 7, 7, 0, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 0 };
-    //int[] coinarray = new int[] { 71, 103, 136 };
-    //int finishPosition = 171;
-
     int[] levelDom = new int[] { 0, 0, 0, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 0, 0, 0, 0, 7, 7, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 7, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 7, 0, 0, 0, 0, 0, 0, 3, 0, 0, 0, 0, 0, 0, 0, 7, 0, 0, 0, 0, 7, 0, 0, 0, 0, 0, 0, 7, 0, 7, 7, 7, 7, 7, 7, 0, 0, 0, 0, 7, 0, 0, 0, 0, 0, 0, 7, 0, 0, 0, 0, 0, 0, 7, 0, 0, 0, 0, 7, 0, 0, 0, 0, 0, 0, 7, 0, 0, 0, 0, 0, 0, 7, 0, 0, 0, 0, 7, 0, 0, 0, 0, 0, 0, 7, 0, 0, 0, 0, 0, 0, 0, 7, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 7, 0, 0, 0, 0, 0, 0, 0, 0, 0, 7, 0, 0, 0, 0, 0, 0, 0, 0, 7, 0, 0, 0, 0, 0, 0 };
     int[] levelMulti = new int[] {
         7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 0,
@@ -110,18 +107,29 @@ public class LevelManager : MonoBehaviour
         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
     int[] level7BoosterEasy = new int[] {
-        0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0,
-        2, 0, 0, 0, 7, 7, 7, 7, 0, 0, 0, 0,
-        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-        0, 0, 5, 0, 2, 0, 0, 0, 0, 0, 0, 0,
-        0, 0, 0, 0, 7, 7, 7, 7, 0, 0, 0, 0,
-        0, 0, 0, 2, 0, 3, 0, 0, 0, 0, 0, 0,
-        0, 0, 0, 0, 5, 0, 0, 0, 0, 0, 0, 0,
-        0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0,
-        0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0,
-        0, 0, 1, 0, 0, 0, 0, 0, 2, 0, 0, 0,
-        0, 0, 0, 0, 0, 8, 9, 0, 0, 0, 0, 0,
-        0, 0, 0, 3, 0, 3, 0, 3, 0, 0, 0, 0};
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        1, 0, 0, 0, 0, 0, 0, 7, 7, 7, 7, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 8, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 3, 0, 5, 0, 0, 7, 7, 7, 7, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 8, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 9, 0, 0, 0, 0, 8, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 3, 0, 3, 0, 3, 0, 0, 0, 0, 0, 0, 0, 0 };
+    int[] level8BoosterHard = new int[] {
+        7, 7, 7, 7, 7, 7, 0, 0, 0, 0, 7, 7, 7, 7, 7, 7, 7, 7, 7, 0,
+        0, 0, 0, 0, 0, 7, 0, 0, 0, 7, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 7, 0, 0, 7, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 7, 0, 7, 0, 0, 8, 0, 0, 0, 0, 0, 0, 0, 8, 0,
+        0, 0, 0, 0, 0, 7, 7, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 7, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 7, 0, 0, 8, 0, 0, 0, 0, 0, 0,
+        7, 7, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 9, 0, 0, 0, 0,
+        0, 0, 7, 0, 0, 0, 0, 7, 0, 0, 0, 0, 0, 0, 3, 0, 0, 0, 0, 0,
+        0, 0, 0, 7, 7, 7, 7, 0, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 0 };
     /// </summary>
     #endregion
 
@@ -408,18 +416,18 @@ public class LevelManager : MonoBehaviour
             }
         }
 
-        // niet af, moet aangepast worden zodat er aan de rechterkant geen leeg gedeelte is maar een ster om te halen met de jump en eventueel een boost
+        // af
         else if (sceneName == "7")
         {
             if (!levelIsSpawned)
             {
                 DefaultSceneInit();
                 levelPlatformen.tileList = level7BoosterEasy;
-                levelPlatformen.width = 12;
+                levelPlatformen.width = 16;
                 levelPlatformen.heigth = 12;
                 gameState.gridManager.width = levelPlatformen.width;
                 gameState.gridManager.height = levelPlatformen.heigth;                
-                playerPlatforms = new PlayerPlatforms(3, 2, 0, 0, 0);
+                playerPlatforms = new PlayerPlatforms(2, 2, 0, 0, 0);
                 gameState.gridManager.Build_Grid_FromJSON_Without_Visuals(levelPlatformen.width, levelPlatformen.heigth);
                 gameState.playerBallManager.SetSpawnpoint(0);
 
@@ -436,14 +444,14 @@ public class LevelManager : MonoBehaviour
             if (!levelIsSpawned)
             {
                 DefaultSceneInit();
-                levelPlatformen.tileList = levelTeGrootMaarDanKlein;
+                levelPlatformen.tileList = level8BoosterHard;
                 levelPlatformen.width = 20;
                 levelPlatformen.heigth = 10;
                 gameState.gridManager.width = levelPlatformen.width;
                 gameState.gridManager.height = levelPlatformen.heigth;
-                playerPlatforms = new PlayerPlatforms(5, 5, 5, 4, 0);
+                playerPlatforms = new PlayerPlatforms(4, 4, 0, 2, 0);
                 GameState.Instance.gridManager.Build_Grid_FromJSON_Without_Visuals(levelPlatformen.width, levelPlatformen.heigth);
-                gameState.playerBallManager.SetSpawnpoint(41);
+                gameState.playerBallManager.SetSpawnpoint(20);
 
                 GameState.Instance.platformManager.BuildLevelFromLevelPlatformen(levelPlatformen);
 
