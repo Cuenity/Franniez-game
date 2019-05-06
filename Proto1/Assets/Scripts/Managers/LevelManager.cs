@@ -749,8 +749,8 @@ public class LevelManager : MonoBehaviour
                 //gameState.gridManager.InitPlayerGridMultiLevel1();
                 gameState.BuildingPhaseActive = true;
                 //dit is wel poep moet echt es anders
-                GameState.Instance.PreviousLevel = 17;
-                PlayerDataController.instance.previousScene = 17;
+                GameState.Instance.PreviousLevel = 28;
+                PlayerDataController.instance.previousScene = 28;
             }
         }
 

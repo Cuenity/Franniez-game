@@ -150,7 +150,7 @@ public class VictoryManager : MonoBehaviour
         //back to multimenu
         if (PhotonNetwork.InRoom)
         {
-            PhotonNetwork.LoadLevel(28);
+            PhotonNetwork.LoadLevel(29);
         }
         else
         {

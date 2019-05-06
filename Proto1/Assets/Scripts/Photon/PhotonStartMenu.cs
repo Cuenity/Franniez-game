@@ -112,7 +112,11 @@ public class PhotonStartMenu : MonoBehaviourPunCallbacks
     //start game
     public void onClickStartGame()
     {
-        PhotonNetwork.LoadLevel(28);    }
+        if(selectedLevel ==1)
+            PhotonNetwork.LoadLevel(27);
+        if (selectedLevel == 2)
+            PhotonNetwork.LoadLevel(28);
+    }
 
     //click joining and creating rooms
     public void onClickJoinRoom()
