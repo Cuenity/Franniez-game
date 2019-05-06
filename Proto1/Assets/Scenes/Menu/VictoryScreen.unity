@@ -1758,6 +1758,7 @@ MonoBehaviour:
   ribbon_Dutch: {fileID: 21300000, guid: 75c2e9a055e0ab54bb51726377f3cc08, type: 3}
   ribbon_English: {fileID: 21300000, guid: 7d93eea15fd1be7478bf0f09fd6d22c6, type: 3}
   ribbon_Spanish: {fileID: 21300000, guid: 628490bc3930ae14f8b9e1bcb86144c7, type: 3}
+  VictoryCanvas: {fileID: 462083520}
 --- !u!4 &2110971194
 Transform:
   m_ObjectHideFlags: 0
