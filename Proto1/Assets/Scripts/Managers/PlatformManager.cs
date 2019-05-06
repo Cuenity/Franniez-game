@@ -46,12 +46,15 @@ public class PlatformManager : MonoBehaviour
     private List<Vector3> coinPositions = new List<Vector3>();
     private Vector3 finishPosition;
 
+    private int SceneNumber = 0;
+
 
     private void Awake()
     {
         //platformPositions = new List<Vector3>();
 
         gameState = GameState.Instance;
+        SceneNumber = int.Parse(SceneManager.GetActiveScene().name);
     }
     void Start()
     {
@@ -324,6 +327,10 @@ public class PlatformManager : MonoBehaviour
             else if (levelPlatformen.tileList[i] == 1)
             {
                 Ramp rampNormal = Instantiate(ramp, GameState.Instance.gridManager.gridSquares[i + 1], new Quaternion(0, 0, 0, 0));
+                if (SceneNumber >= 11)
+                {
+                    rampNormal.GetComponent<Renderer>().material = Resources.Load("PlatformMat/RampSpace", typeof(Material)) as Material;
+                }
                 rampNormal.transform.Rotate(new Vector3(-90f, -90f, 0));
                 List<int> gridSpots = new List<int>();
                 gridSpots.Add(i);
@@ -333,6 +340,11 @@ public class PlatformManager : MonoBehaviour
             else if (levelPlatformen.tileList[i] == 2)
             {
                 Ramp ramp = Instantiate(levelEditorRampReversed, GameState.Instance.gridManager.gridSquares[i + 1], new Quaternion(0, 0, 0, 0));
+                if (SceneNumber >= 11)
+                {
+                    ramp.GetComponent<Renderer>().material = Resources.Load("PlatformMat/RampSpace", typeof(Material)) as Material;
+                }
+
                 ramp.transform.Rotate(new Vector3(-90f, 90f, 0));
                 List<int> gridSpots = new List<int>();
                 gridSpots.Add(i);
@@ -340,6 +352,11 @@ public class PlatformManager : MonoBehaviour
             }
             else if (levelPlatformen.tileList[i] == 3)
             {
+
+                if(SceneNumber >= 11)
+                {
+                    levelEditorPlatform.GetComponent<Renderer>().material = Resources.Load("PlatformMat/RechthoekSpace", typeof(Material)) as Material;
+                }
                 Instantiate(levelEditorPlatform, GameState.Instance.gridManager.gridSquares[i + 1], new Quaternion(0, 0, 0, 0)).transform.Rotate(new Vector3(-90, 90, 0));
                 List<int> gridSpots = new List<int>();
                 gridSpots.Add(i);
@@ -758,14 +775,24 @@ public class PlatformManager : MonoBehaviour
         Vector3 rampAdjustment = new Vector3(0.5f, 0f, 0f);
         if (RampSpots.Count > 0)
         {
+            if (SceneNumber >= 11)
+            {
+                ramp.GetComponent<Renderer>().material = Resources.Load("PlatformMat/RampSpace", typeof(Material)) as Material;
+            }
             for (int i = 0; i < RampSpots.Count; i++)
             {
+                
                 ramp.SpawnRamp(gameState.gridManager.gridSquares[RampSpots[i]] + new Vector3(.5f, 0, 0));
                 gameState.gridManager.AddFilledGridSpots(RampSpots, SizeType.twoByOne);
             }
         }
         if (PlatformSpots.Count > 0)
         {
+            if (SceneNumber >= 11)
+            {
+                PlatformSquare.GetComponent<Renderer>().material = Resources.Load("PlatformMat/RampSpace", typeof(Material)) as Material;
+            }
+
             for (int i = 0; i < PlatformSpots.Count; i++)
             {
                 Instantiate(PlatformSquare, gameState.gridManager.gridSquares[PlatformSpots[i]] + rampAdjustment, PlatformSquare.transform.rotation);
@@ -774,6 +801,10 @@ public class PlatformManager : MonoBehaviour
         }
         if (RampSpotsReversed.Count > 0)
         {
+            if (SceneNumber >= 11)
+            {
+                ramp.GetComponent<Renderer>().material = Resources.Load("PlatformMat/RampSpace", typeof(Material)) as Material;
+            }
             for (int i = 0; i < RampSpotsReversed.Count; i++)
             {
                 ramp.SpawnRampReversed(gameState.gridManager.gridSquares[RampSpotsReversed[i]] + rampAdjustment);
@@ -799,9 +830,15 @@ public class PlatformManager : MonoBehaviour
         }
         if (rechthoekSpots.Count > 0)
         {
+            if (SceneNumber >= 11)
+            {
+                rechthoek.GetComponent<Renderer>().material = Resources.Load("PlatformMat/RampSpace", typeof(Material)) as Material;
+            }
             for (int i = 0; i < rechthoekSpots.Count; i++)
             {
+                
                 rechthoek = Instantiate(rechthoek, gameState.gridManager.gridSquares[rechthoekSpots[i]] + new Vector3(1, 0, 0), rechthoek.transform.rotation);
+                rechthoek.GetComponent<Renderer>().material = Resources.Load("PlatformMat/RechthoekSpace", typeof(Material)) as Material;
                 gameState.gridManager.AddFilledGridSpots(rechthoekSpots, SizeType.twoByOne);
             }
         }
