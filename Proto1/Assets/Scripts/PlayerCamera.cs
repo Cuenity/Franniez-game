@@ -314,12 +314,16 @@ public class PlayerCamera : MonoBehaviour
                 //als het niet buiten het grid zit ga naar die positie
                 if (nope)
                 {
+                    //if (outsideGrid.x > start positie draggen x + aantal pixels || outsideGrid.y > start positie draggen y + aantal pixels)
                     transform.position = outsideGrid;
                 }
 
                 // geef de camera een stootje
                 Vector2 diffrence = newTouchPosition - (Vector2)oldTouchPositions[0];
-                this.GetComponent<Rigidbody>().AddForce(-diffrence * 3);
+                if (diffrence.x > 1 || diffrence.x < -1 || diffrence.y > 1 || diffrence.y < -1)
+                {
+                    this.GetComponent<Rigidbody>().AddForce(-diffrence * 3);
+                }
 
                 oldTouchPositions[0] = newTouchPosition;
             }
@@ -397,7 +401,7 @@ public class PlayerCamera : MonoBehaviour
         }
         platformDragActive = false;
         gameState.BuildingPhaseActive = true;
-        
+
         gameState.tutorialManager.StartTutorial();
     }
 }

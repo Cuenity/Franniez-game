@@ -1511,7 +1511,7 @@ GameObject:
   - component: {fileID: 565277425}
   - component: {fileID: 565277424}
   m_Layer: 5
-  m_Name: Text
+  m_Name: Title
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4600,6 +4600,7 @@ MonoBehaviour:
   RoomNameClient: {fileID: 915139880}
   ConnectedStatus: {fileID: 980376165}
   WaitingForPlayers: {fileID: 1711591826}
+  TitleText: {fileID: 565277424}
 --- !u!4 &1751398312
 Transform:
   m_ObjectHideFlags: 0
