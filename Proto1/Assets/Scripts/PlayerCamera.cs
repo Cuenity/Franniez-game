@@ -314,6 +314,7 @@ public class PlayerCamera : MonoBehaviour
                 //als het niet buiten het grid zit ga naar die positie
                 if (nope)
                 {
+                    // if (outsideGrid.x > start positie draggen x + aantal pixels || outsideGrid.y > start positie draggen y + aantal pixels)
                     transform.position = outsideGrid;
                 }
 
