@@ -14,7 +14,7 @@ public class PhotonStartMenu : MonoBehaviourPunCallbacks
     [SerializeField]
     Button StartGame;
     [SerializeField]
-    Text RoomNameHost,RoomNameClient, ConnectedStatus,  WaitingForPlayers;
+    Text RoomNameHost,RoomNameClient, ConnectedStatus,  WaitingForPlayers, TitleText;
 
     private int selectedLevel=1;
 
@@ -29,7 +29,7 @@ public class PhotonStartMenu : MonoBehaviourPunCallbacks
     void Start()
     {
 
-        StartMenu.gameObject.GetComponent<Canvas>().enabled = true ;
+        StartMenu.gameObject.SetActive(true);
         if (!PhotonNetwork.IsConnectedAndReady)
         {
             connectToPhoton();
@@ -53,18 +53,18 @@ public class PhotonStartMenu : MonoBehaviourPunCallbacks
     //switch panel methodes
     public void onClickSwitchToCustomRoom()
     {
-        StartMenu.gameObject.GetComponent<Canvas>().enabled = false;
-        CustomRoom.gameObject.GetComponent<Canvas>().enabled = true;
+        StartMenu.gameObject.SetActive(false);
+        CustomRoom.gameObject.SetActive(true);
     }
     public void onClickSwitchToRoomCreate()
     {
-        StartMenu.gameObject.GetComponent<Canvas>().enabled = false;
-        CreateRoom.gameObject.GetComponent<Canvas>().enabled = true;
+        StartMenu.gameObject.SetActive(false);
+        CreateRoom.gameObject.SetActive(true);
     }
     public void onClickSwitchToRoomJoin()
     {
-        StartMenu.gameObject.GetComponent<Canvas>().enabled = false;
-        JoinRoom.gameObject.GetComponent<Canvas>().enabled = true;
+        StartMenu.gameObject.SetActive(false);
+        JoinRoom.gameObject.SetActive(true);
     }
     
 
@@ -96,7 +96,7 @@ public class PhotonStartMenu : MonoBehaviourPunCallbacks
         if (RoomToJoin.text == "")
         {
             Debug.Log("wat een dum dum geen roomnaam gekozen");
-            RoomToJoin.placeholder.GetComponent<Text>().text = "-.- geen naam";
+            RoomToJoin.placeholder.GetComponent<Text>().text = "No Room Chosen";
         }
         else
         {
@@ -110,8 +110,8 @@ public class PhotonStartMenu : MonoBehaviourPunCallbacks
         PhotonNetwork.CreateRoom(RoomToCreate.text, new RoomOptions() { MaxPlayers = 2 }, null);
 
         //switch naar juiste view
-        CustomRoom.gameObject.GetComponent<Canvas>().enabled = false;
-        HostWait.gameObject.GetComponent<Canvas>().enabled = true;
+        CustomRoom.gameObject.SetActive(false);
+        HostWait.gameObject.SetActive(true);
     }
     
 
@@ -123,7 +123,7 @@ public class PhotonStartMenu : MonoBehaviourPunCallbacks
         }
         else
         {
-            PhotonNetwork.CreateRoom("", new RoomOptions() { MaxPlayers = 2 }, null);
+            PhotonNetwork.CreateRoom(PhotonNetwork.CountOfRooms.ToString(), new RoomOptions() { MaxPlayers = 2 }, null);
         }
         
     }
@@ -140,15 +140,16 @@ public class PhotonStartMenu : MonoBehaviourPunCallbacks
     {
         RoomNameHost.text = PhotonNetwork.CurrentRoom.Name;
         RoomNameClient.text = PhotonNetwork.CurrentRoom.Name;
+        TitleText.text = "Room Name:"+PhotonNetwork.CurrentRoom.Name;
         if (PhotonNetwork.IsMasterClient)
         {
-            StartMenu.gameObject.GetComponent<Canvas>().enabled = false;
-            HostWait.gameObject.GetComponent<Canvas>().enabled = true;
+            StartMenu.gameObject.SetActive(false);
+            HostWait.gameObject.SetActive(true);
         }
         else
         {
-            StartMenu.gameObject.GetComponent<Canvas>().enabled = false;
-            ClientWait.gameObject.GetComponent<Canvas>().enabled = true;
+            StartMenu.gameObject.SetActive(false);
+            ClientWait.gameObject.SetActive(true);
         }
 
     }
@@ -181,13 +182,14 @@ public class PhotonStartMenu : MonoBehaviourPunCallbacks
     public override void OnPlayerEnteredRoom(Player newPlayer)
     {
         base.OnPlayerEnteredRoom(newPlayer);
-        WaitingForPlayers.text = "Andere Speler Gevonden Start level:" + selectedLevel.ToString();
+        WaitingForPlayers.text = "Other Player Found Start Level" + selectedLevel.ToString();
         StartGame.interactable = true;
     }
     public override void OnPlayerLeftRoom(Player otherPlayer)
     {
         base.OnPlayerLeftRoom(otherPlayer);
-        WaitingForPlayers.text = "Wachten op vrienden....";
+        WaitingForPlayers.text = "Waiting On Friends....";
+        StartGame.interactable = false;
     }
     //public override void room //OnRoomListUpdate(List<RoomInfo> roomList)
     //{
