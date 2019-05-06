@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 
 [RequireComponent(typeof(Camera))]
@@ -399,6 +400,7 @@ public class PlayerCamera : MonoBehaviour
         platformDragActive = false;
         gameState.BuildingPhaseActive = true;
         
-        gameState.tutorialManager.StartTutorial();
+            gameState.tutorialManager.StartTutorial();
+        
     }
 }

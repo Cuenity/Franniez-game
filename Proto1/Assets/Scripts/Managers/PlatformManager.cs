@@ -572,7 +572,7 @@ public class PlatformManager : MonoBehaviour
         PlatformSpots.Add(198);
 
         SetCoinPosition(67);
-        SetCoinPosition(90);
+        SetCoinPosition(111);
         SetCoinPosition(115);
         SetfinishPosition(178);
 
