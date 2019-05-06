@@ -90,7 +90,7 @@ public class LevelManager : MonoBehaviour
         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 9,
-        0, 0, 0, 0, 0, 0, 0, 0, 0, 8, 0, 0, 3, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 8, 0, 0, 0, 3, 0,
         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
     int[] level6BlackHoleBallEnJump = new int[] {
         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
@@ -141,6 +141,23 @@ public class LevelManager : MonoBehaviour
         0, 8, 0 , 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
         0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
         10, 0, 0, 0, 5, 0, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
+
+    int[] multiplayerLevel2Cross = new int[] {
+        0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+        1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+        0,0,0,0,0,0,0,0,0,0,0,8,0,0,0,0,0,0,2,0,
+        0,0,3,0,5,0,0,0,0,0,3,0,3,0,3,0,0,0,0,0,
+        0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+        0,0,0,0,0,0,0,0,0,0,0,0,0,8,0,2,0,0,0,0,
+        0,0,0,0,0,0,0,0,0,0,0,0,0,2,0,0,0,0,0,0,
+        0,0,0,0,0,0,0,0,0,0,0,0,0,0,8,0,2,0,0,0,
+        0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,0,0,0,0,0,
+        0,0,9,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+        0,0,3,0,3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+        0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+        0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+        0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+        0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 };
     /// </summary>
     #endregion
 
@@ -182,7 +199,7 @@ public class LevelManager : MonoBehaviour
                     if ((bool)PhotonNetwork.PlayerList[0].CustomProperties["hitflag"] && (bool)PhotonNetwork.PlayerList[1].CustomProperties["hitflag"])
                     {
                         //victory scene
-                        PhotonNetwork.LoadLevel(16);
+                        PhotonNetwork.LoadLevel(26);
                     }
                 }
                 catch
@@ -466,12 +483,13 @@ public class LevelManager : MonoBehaviour
 
                 GameState.Instance.platformManager.BuildLevelFromLevelPlatformen(levelPlatformen);
 
-                gameState.playerBallManager.WhatBalls(false, true, true);
+                gameState.playerBallManager.WhatBalls(true, true, false);
                 DefaultSceneEndInit();
             }
         }
 
-        else if (sceneName == "9") // moet 11 zijn
+        // niet af andere maken
+        else if (sceneName == "10") // moet 11 zijn
         {
             if (!levelIsSpawned)
             {
@@ -495,7 +513,7 @@ public class LevelManager : MonoBehaviour
                 gameState.platformManager.BuildLevelCoen();
 
 
-                gameState.playerBallManager.WhatBalls(true, true, true);
+                gameState.playerBallManager.WhatBalls(true, false, true);
                 gameState.playerManager.PlayerInit(gameState.playerBallManager.ballList[0]);
 
                 //hier dan een vieze boolean
@@ -507,41 +525,7 @@ public class LevelManager : MonoBehaviour
             }
         }
 
-        else if (sceneName == "20")
-        {
-            if (!levelIsSpawned)
-            {
-                bigLevel = true;
-
-                gameState.UIManager.canvas = Instantiate(canvas);
-                gameState.UIManager.newLevelInventoryisRequired = true;
-                //gameState.collectableManager.newCollectablesAreRequired = true;
-                //coinPositions.Clear();
-                //coinList.Clear();
-                //GameState.Instance.playerCamera.ManualInit();
-                gameState.collectableManager.newCollectablesAreRequired = true;
-                GameState.Instance.playerCamera.ManualInit();
-                Vector3 playeradjustment = new Vector3(.5f, 0, 0);
-                gameState.gridManager.width = 20;
-                gameState.gridManager.height = 11;
-                playerPlatforms = new PlayerPlatforms(6, 6, 0, 0, 0);
-                gameState.gridManager.Build_Grid_BuildingPhase_Without_Visuals();
-                gameState.playerBallManager.SetSpawnpoint(1);
-                //gameState.playerManager.player.spawnpoint = gameState.gridManager.gridSquares[1] + playeradjustment;
-                gameState.platformManager.Build_Vertical_Slice_Level6();
-
-
-                //boolean party voor elk level nu nodig
-                gameState.playerBallManager.WhatBalls(true, true, true);
-                gameState.playerManager.PlayerInit(gameState.playerBallManager.ballList[0]);
-                gameState.BuildingPhaseActive = true;
-                GameState.Instance.PreviousLevel = Int32.Parse(sceneName);
-                PlayerDataController.instance.previousScene = Int32.Parse(sceneName);
-                levelIsSpawned = true;
-            }
-        }
-
-        else if (sceneName == "10")
+        else if (sceneName == "12" || sceneName == "13" || sceneName == "14" || sceneName == "15" || sceneName == "16" || sceneName == "17" || sceneName == "18" || sceneName == "19" || sceneName == "20") // niet af, nog aanpassen (cannon level)
         {
             if (!levelIsSpawned)
             {
@@ -571,7 +555,43 @@ public class LevelManager : MonoBehaviour
                 PlayerDataController.instance.previousScene = Int32.Parse(sceneName);
             }
         }
-        else if (sceneName == "12")
+
+        else if (sceneName == "11") // moet  later pas
+        {
+            if (!levelIsSpawned)
+            {
+                bigLevel = true;
+
+                gameState.UIManager.canvas = Instantiate(canvas);
+                gameState.UIManager.newLevelInventoryisRequired = true;
+                //gameState.collectableManager.newCollectablesAreRequired = true;
+                //coinPositions.Clear();
+                //coinList.Clear();
+                //GameState.Instance.playerCamera.ManualInit();
+                gameState.collectableManager.newCollectablesAreRequired = true;
+                GameState.Instance.playerCamera.ManualInit();
+                Vector3 playeradjustment = new Vector3(.5f, 0, 0);
+                gameState.gridManager.width = 20;
+                gameState.gridManager.height = 11;
+                playerPlatforms = new PlayerPlatforms(3, 3, 0, 0, 0);
+                gameState.gridManager.Build_Grid_BuildingPhase_Without_Visuals();
+                gameState.playerBallManager.SetSpawnpoint(1);
+                //gameState.playerManager.player.spawnpoint = gameState.gridManager.gridSquares[1] + playeradjustment;
+                gameState.platformManager.Build_Vertical_Slice_Level6();
+
+
+                //boolean party voor elk level nu nodig
+                gameState.playerBallManager.WhatBalls(true, true, true);
+                gameState.playerManager.PlayerInit(gameState.playerBallManager.ballList[0]);
+                gameState.BuildingPhaseActive = true;
+                GameState.Instance.PreviousLevel = Int32.Parse(sceneName);
+                PlayerDataController.instance.previousScene = Int32.Parse(sceneName);
+                levelIsSpawned = true;
+            }
+        }
+
+
+        else if (sceneName == "9")
         {
             if (!levelIsSpawned)
             {
@@ -692,10 +712,48 @@ public class LevelManager : MonoBehaviour
                 gameState.gridManager.InitPlayerGridMultiLevel1();
                 gameState.BuildingPhaseActive = true;
                 //dit is wel poep moet echt es anders
+                GameState.Instance.PreviousLevel = 27;
+                PlayerDataController.instance.previousScene = 27;
+            }
+        }
+
+        else if (sceneName == "MultiplayerLevel2")
+        {
+            if (!levelIsSpawned)
+            {
+                bigLevel = true;
+                multiUIRequired = true;
+                gameState.UIManager.canvas = Instantiate(canvas);
+                //multidingen
+                gameState.UIManager.AddMultiplayerUI();
+                //doe gekke initshit voor localproperties
+                bool hitflag = false;
+                Hashtable hash = new Hashtable();
+                hash.Add("hitflag", hitflag);
+                PhotonNetwork.LocalPlayer.SetCustomProperties(hash);
+                //einde gekke shit
+                gameState.UIManager.newLevelInventoryisRequired = true;
+                GameState.Instance.playerCamera.ManualInit();
+                Vector3 playeradjustment = new Vector3(.5f, 0, 0);
+                levelPlatformen.tileList = multiplayerLevel2Cross;
+                levelPlatformen.width = 20;
+                levelPlatformen.heigth = 15;
+                gameState.gridManager.width = 20;
+                gameState.gridManager.height = 20;
+                playerPlatforms = new PlayerPlatforms(1, 1, 1, 0, 0);
+                GameState.Instance.gridManager.Build_Grid_FromJSON_Without_Visuals(levelPlatformen.width, levelPlatformen.heigth);
+
+
+                GameState.Instance.platformManager.BuildLevelFromLevelPlatformen(levelPlatformen);
+                gameState.playerManager.MultiPlayerBallInit(19, 0);
+                //gameState.gridManager.InitPlayerGridMultiLevel1();
+                gameState.BuildingPhaseActive = true;
+                //dit is wel poep moet echt es anders
                 GameState.Instance.PreviousLevel = 17;
                 PlayerDataController.instance.previousScene = 17;
             }
         }
+
         //dit is een placeholder level
         else if (sceneName == "MultiplayerRace1")
         {

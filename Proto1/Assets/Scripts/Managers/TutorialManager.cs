@@ -57,7 +57,7 @@ public class TutorialManager : MonoBehaviour
         bool done = false;
         while (!done)
         {
-            if (SceneManager.GetActiveScene().name == "1" || SceneManager.GetActiveScene().name == "5")
+            if (SceneManager.GetActiveScene().name == "1" || SceneManager.GetActiveScene().name == "5" || SceneManager.GetActiveScene().name == "5")
             {
                 if (GameState.Instance.UIManager.canvas != null)
                 {
