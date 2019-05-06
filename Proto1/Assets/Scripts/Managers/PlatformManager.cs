@@ -54,7 +54,10 @@ public class PlatformManager : MonoBehaviour
         //platformPositions = new List<Vector3>();
 
         gameState = GameState.Instance;
-        SceneNumber = int.Parse(SceneManager.GetActiveScene().name);
+        if (PhotonNetwork.IsConnected)
+        {
+            SceneNumber = int.Parse(SceneManager.GetActiveScene().name);
+        }
     }
     void Start()
     {

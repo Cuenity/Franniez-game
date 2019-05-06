@@ -46,6 +46,7 @@ public class PhotonStartMenu : MonoBehaviourPunCallbacks
             if (PhotonNetwork.IsMasterClient)
             {
                 HostWait.gameObject.SetActive(true);
+                StartGame.interactable = true;
             }
             else
             {
@@ -111,7 +112,7 @@ public class PhotonStartMenu : MonoBehaviourPunCallbacks
     //start game
     public void onClickStartGame()
     {
-        PhotonNetwork.LoadLevel(28);
+        PhotonNetwork.LoadLevel(27);
     }
 
     //click joining and creating rooms

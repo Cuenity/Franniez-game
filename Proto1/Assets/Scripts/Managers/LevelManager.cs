@@ -199,7 +199,7 @@ public class LevelManager : MonoBehaviour
                     if ((bool)PhotonNetwork.PlayerList[0].CustomProperties["hitflag"] && (bool)PhotonNetwork.PlayerList[1].CustomProperties["hitflag"])
                     {
                         //victory scene
-                        PhotonNetwork.LoadLevel(16);
+                        PhotonNetwork.LoadLevel(26);
                     }
                 }
                 catch
@@ -712,8 +712,8 @@ public class LevelManager : MonoBehaviour
                 gameState.gridManager.InitPlayerGridMultiLevel1();
                 gameState.BuildingPhaseActive = true;
                 //dit is wel poep moet echt es anders
-                GameState.Instance.PreviousLevel = 17;
-                PlayerDataController.instance.previousScene = 17;
+                GameState.Instance.PreviousLevel = 27;
+                PlayerDataController.instance.previousScene = 27;
             }
         }
 
