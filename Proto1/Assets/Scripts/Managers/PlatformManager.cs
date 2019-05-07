@@ -841,7 +841,7 @@ public class PlatformManager : MonoBehaviour
             {
                 
                 rechthoek = Instantiate(rechthoek, gameState.gridManager.gridSquares[rechthoekSpots[i]] + new Vector3(1, 0, 0), rechthoek.transform.rotation);
-                rechthoek.GetComponent<Renderer>().material = Resources.Load("PlatformMat/RechthoekSpace", typeof(Material)) as Material;
+                //rechthoek.GetComponent<Renderer>().material = Resources.Load("PlatformMat/RechthoekSpace", typeof(Material)) as Material;
                 gameState.gridManager.AddFilledGridSpots(rechthoekSpots, SizeType.twoByOne);
             }
         }
