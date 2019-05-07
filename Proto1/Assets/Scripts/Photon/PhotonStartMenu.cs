@@ -47,10 +47,14 @@ public class PhotonStartMenu : MonoBehaviourPunCallbacks
             {
                 HostWait.gameObject.SetActive(true);
                 StartGame.interactable = true;
+                ConnectedStatus.text = "Connected";
+                ConnectedStatus.color = Color.green;
             }
             else
             {
                 ClientWait.gameObject.SetActive(true);
+                ConnectedStatus.text = "Connected";
+                ConnectedStatus.color = Color.green;
             }
         }
     }
