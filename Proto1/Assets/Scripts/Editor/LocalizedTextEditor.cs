@@ -8,6 +8,7 @@ public class LocalizedTextEditor : EditorWindow
 {
     public LocalizationData localizationData;
     private string FilePath;
+    private Vector2 scrollPos;
 
     // Maak de window aan
     [MenuItem("Window/Localized Text Editor")]
@@ -21,11 +22,14 @@ public class LocalizedTextEditor : EditorWindow
         
         if (localizationData != null)
         {
+            EditorGUILayout.BeginVertical();
+            scrollPos = EditorGUILayout.BeginScrollView(scrollPos, GUILayout.Width(400), GUILayout.Height(700));
             // Label zodat je weet in welke taal je bezig bent.
             string language = localizationData.items[0].value;
             EditorGUILayout.LabelField(("Input for " + language).ToUpper(), EditorStyles.boldLabel);
             EditorGUILayout.Space();
             this.Repaint();
+
 
             SerializedObject serializedObject = new SerializedObject(this);
             SerializedProperty serializedProperty = serializedObject.FindProperty("localizationData");
@@ -34,15 +38,18 @@ public class LocalizedTextEditor : EditorWindow
             EditorGUILayout.PropertyField(serializedProperty, true);
             serializedObject.ApplyModifiedProperties();
 
-            
 
 
-            if (GUILayout.Button("Save data"))
-            {
-                SaveGameData();
-            }
+
+
+            EditorGUILayout.EndScrollView();
+            EditorGUILayout.EndVertical();
         }
 
+        if (GUILayout.Button("Save data"))
+        {
+            SaveGameData();
+        }
         if (GUILayout.Button("Load data"))
         {
             LoadGameData();
@@ -52,6 +59,7 @@ public class LocalizedTextEditor : EditorWindow
         {
             CreateNewData();
         }
+
     }
 
 

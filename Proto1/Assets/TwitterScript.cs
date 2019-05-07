@@ -26,36 +26,46 @@ public class TwitterScript : MonoBehaviour
         {
             Twitter.LogIn(LoginComplete, LoginFailure);
         }
-        else
-        {
-            LoginComplete(session);
-        }
+        else { LoginComplete(session); }
     }
 
 
     public void ComposeMessage()
     {
-        
-        string level = GameState.Instance.PreviousLevel.ToString();
-        string amountStars = PlayerDataController.instance.player.levels[GameState.Instance.PreviousLevel - 1].countCoins.ToString();
-
-        // TODO: Make Localized
-        string stars = "sterren";
-
-        if (PlayerDataController.instance.player.levels[GameState.Instance.PreviousLevel - 1].countCoins == 1)
-        {
-            stars = "ster";
-        }
-        string substitutionDescription = $"Yeah, ik heb level {level} gehaald met {amountStars} {stars}!";
-
-        // TODO: Make own image
         string imagePath = "https://i.imgur.com/ww25JFA.jpg";
 
-        Twitter.Compose(Twitter.Session, imagePath, substitutionDescription, hashtags,
+        Twitter.Compose(Twitter.Session, imagePath, LocalizedText(), hashtags,
                 (string tweetId) => { Debug.Log("Tweet Success, tweetId = " + tweetId); },
                 (ApiError error) => { Debug.Log("Tweet Failed " + error.message); },    // API error from Twitter
                 () => { Debug.Log("Compose cancelled"); }                               // Interne error, geen Twitter session bijv.
         );
+    }
+
+    private string LocalizedText()
+    {
+        /*
+         *  Omdat je niet een localized text direct een substition van kan maken hebben we
+         *  het verdeelt in 3 segmenten. Waardoor in de volgende talen het volgende komt te staan:
+         *  
+         *  Nederlands:     "Yeah, ik heb level 3 behaald met 3 sterren!"
+         *  Engels:         "Yeah, I completed level 3 with 3 stars!"
+         *  Spaans:         "¡He alcanzado el nivel 3 con 3 estrellas!"
+         */
+
+        string levelCompleted = LocalizationManager.instance.GetLocalizedValue("twitter_Level");
+        string with = LocalizationManager.instance.GetLocalizedValue("twitter_With");
+        string stars = LocalizationManager.instance.GetLocalizedValue("twitter_Stars");
+
+        if (PlayerDataController.instance.player.levels[GameState.Instance.PreviousLevel - 1].countCoins == 1)
+        {
+            stars = LocalizationManager.instance.GetLocalizedValue("twitter_star");
+        }
+
+        string level = GameState.Instance.PreviousLevel.ToString();
+        string amountStars = PlayerDataController.instance.player.levels[GameState.Instance.PreviousLevel - 1].countCoins.ToString();
+
+        string substitutionDescription = $"{levelCompleted} {level} {with} {amountStars} {stars}!";
+        return substitutionDescription;
     }
 
     public void LoginComplete(TwitterSession session)
