@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using Photon.Pun;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -24,13 +25,27 @@ public class PauseMenuManager : MonoBehaviour
     // Button Action: Go to Level Select
     public void SelectLevel()
     {
-        SceneManager.LoadScene("LevelSelect");
+        if (PhotonNetwork.InRoom)
+        {
+            PhotonNetwork.LoadLevel(29);
+        }
+        else
+        {
+            SceneManager.LoadScene("LevelSelect");
+        }
     }
 
     // Button Action: Return to Main Menu
     public void Exit()
     {
-        SceneManager.LoadScene("StartMenu");
+        if (PhotonNetwork.InRoom)
+        {
+            PhotonNetwork.LoadLevel(29);
+        }
+        else
+        {
+            SceneManager.LoadScene("StartMenu");
+        }
     }
 
     // Button Action: Show Settings canvas
