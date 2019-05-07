@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.4465782, g: 0.49641252, b: 0.5748167, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2399,7 +2399,8 @@ MonoBehaviour:
   worldSelectCanvas: {fileID: 1508333966}
   levelSelectCanvas: {fileID: 1304564834}
   levelSelectCanvasWorld2: {fileID: 1687850658}
-  world1Image: {fileID: 21300000, guid: e4d3c1eaee5eade47a32e7257fa3f0ee, type: 3}
+  world1Image: {fileID: 21300000, guid: 39213e953d302b943a5988254b2ad9c4, type: 3}
+  world2Image: {fileID: 21300000, guid: ae32e9ce25d2fe54bb9459b5d97a382f, type: 3}
   stars0: {fileID: 21300000, guid: 9648c38e071654a4fa35f0b48e0b50ee, type: 3}
   stars1: {fileID: 21300000, guid: 3aaf297dd6491ab42944a140dcde5ab7, type: 3}
   stars2: {fileID: 21300000, guid: 16a55f6aa24772545a438d06dec514e9, type: 3}
@@ -4165,7 +4166,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: e4d3c1eaee5eade47a32e7257fa3f0ee, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 39213e953d302b943a5988254b2ad9c4, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
