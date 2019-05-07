@@ -1929,6 +1929,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8655081728976250830}
     m_Modifications:
+    - target: {fileID: 3576696363250414103, guid: b96ff8a7218017e409c92cbdc7e22b9a,
+        type: 3}
+      propertyPath: m_Name
+      value: MultiplayerCanvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 3576696363250414103, guid: b96ff8a7218017e409c92cbdc7e22b9a,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 9072822206528964734, guid: b96ff8a7218017e409c92cbdc7e22b9a,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2034,16 +2044,6 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
-    - target: {fileID: 3576696363250414103, guid: b96ff8a7218017e409c92cbdc7e22b9a,
-        type: 3}
-      propertyPath: m_Name
-      value: MultiplayerCanvas
-      objectReference: {fileID: 0}
-    - target: {fileID: 3576696363250414103, guid: b96ff8a7218017e409c92cbdc7e22b9a,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b96ff8a7218017e409c92cbdc7e22b9a, type: 3}
 --- !u!224 &3183399475973831231 stripped
@@ -2073,26 +2073,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_TagString
       value: PauseMenu
-      objectReference: {fileID: 0}
-    - target: {fileID: 1360243621057727504, guid: eba6051e33294284f873e5c190aa82fe,
-        type: 3}
-      propertyPath: m_PixelPerfect
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1360243621057727504, guid: eba6051e33294284f873e5c190aa82fe,
-        type: 3}
-      propertyPath: m_OverridePixelPerfect
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1360243621057727504, guid: eba6051e33294284f873e5c190aa82fe,
-        type: 3}
-      propertyPath: m_OverrideSorting
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1360243621057727504, guid: eba6051e33294284f873e5c190aa82fe,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1360243621057727503, guid: eba6051e33294284f873e5c190aa82fe,
         type: 3}
@@ -2213,6 +2193,26 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 0.41666663
+      objectReference: {fileID: 0}
+    - target: {fileID: 1360243621057727504, guid: eba6051e33294284f873e5c190aa82fe,
+        type: 3}
+      propertyPath: m_PixelPerfect
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1360243621057727504, guid: eba6051e33294284f873e5c190aa82fe,
+        type: 3}
+      propertyPath: m_OverridePixelPerfect
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1360243621057727504, guid: eba6051e33294284f873e5c190aa82fe,
+        type: 3}
+      propertyPath: m_OverrideSorting
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1360243621057727504, guid: eba6051e33294284f873e5c190aa82fe,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1360243621057727505, guid: eba6051e33294284f873e5c190aa82fe,
         type: 3}

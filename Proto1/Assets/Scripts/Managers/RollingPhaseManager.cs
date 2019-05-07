@@ -126,6 +126,8 @@ public class RollingPhaseManager : MonoBehaviour
             PhotonNetwork.LocalPlayer.SetCustomProperties(hash);
             //de echte check zit in levelmanager update methode(hebben we gehaald?)
 
+            //RPC gebruiken hier voor de code assesment
+
             //plaatjes aanpassen voor feedback
             if ((bool)PhotonNetwork.PlayerList[0].CustomProperties["hitflag"])
             {
