@@ -705,7 +705,7 @@ public class LevelManager : MonoBehaviour
                 levelPlatformen.heigth = 20;
                 gameState.gridManager.width = 20;
                 gameState.gridManager.height = 20;
-                playerPlatforms = new PlayerPlatforms(7, 7, 4, 3, 0);
+                playerPlatforms = new PlayerPlatforms(7, 7, 2, 1, 0);
                 GameState.Instance.gridManager.Build_Grid_FromJSON_Without_Visuals(levelPlatformen.width, levelPlatformen.heigth);
 
 
