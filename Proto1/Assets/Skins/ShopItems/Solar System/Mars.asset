@@ -14,7 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   skinName: Mars
   cost: 30
-  description: 
-  shopImage: {fileID: 21300000, guid: 9fb92faf650bca54c98dffeb13b87661, type: 3}
+  shopImage: {fileID: 21300000, guid: 7e59ad573f720724b86c2f0ee1561998, type: 3}
   owned: 0
   material: {fileID: 2100000, guid: b9c53ef075756f849a35ab78c5b8d2cd, type: 2}

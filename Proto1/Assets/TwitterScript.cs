@@ -4,6 +4,7 @@ using UnityEngine;
 using Facebook.Unity;
 using TwitterKit.Unity;
 using System;
+using GameAnalyticsSDK;
 
 public class TwitterScript : MonoBehaviour
 {
@@ -35,9 +36,9 @@ public class TwitterScript : MonoBehaviour
         string imagePath = "https://i.imgur.com/ww25JFA.jpg";
 
         Twitter.Compose(Twitter.Session, imagePath, LocalizedText(), hashtags,
-                (string tweetId) => { Debug.Log("Tweet Success, tweetId = " + tweetId); },
-                (ApiError error) => { Debug.Log("Tweet Failed " + error.message); },    // API error from Twitter
-                () => { Debug.Log("Compose cancelled"); }                               // Interne error, geen Twitter session bijv.
+                (string tweetId) => { GameAnalytics.NewDesignEvent("Twitter:Succeeded"); }, // Tweet verstuurtd, stuur naar GA
+                (ApiError error) => { Debug.Log("Tweet Failed " + error.message); },        // API error from Twitter
+                () => { GameAnalytics.NewDesignEvent("Twitter:Cancelled"); }                // Gebruiker heeft tweet gecancelled, stuur naar GA
         );
     }
 
