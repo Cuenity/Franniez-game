@@ -15,7 +15,7 @@ public class LevelSelect : MonoBehaviour
     [SerializeField]
     Canvas levelSelectCanvasWorld2;
     [SerializeField]
-    Sprite world1Image;
+    Sprite world1Image, world2Image;
 
     [SerializeField]
     Sprite stars0;
@@ -98,7 +98,7 @@ public class LevelSelect : MonoBehaviour
             if (stickersCollectedCount > 4)
             {
                 Button[] worldbutton = this.worldSelectCanvas.GetComponentsInChildren<Button>();
-                worldbutton[1].GetComponent<Image>().sprite = world1Image;
+                worldbutton[1].GetComponent<Image>().sprite = world2Image;
             }
             stickersCollectedTextWorld3.text = stickersCollectedTextWorld3.text + " " + stickersCollectedCount.ToString() + "/10";
             textIsUpdated = true;
@@ -185,7 +185,7 @@ public class LevelSelect : MonoBehaviour
 
     public void World2()
     {
-        if (stickersCollectedCount >= 4)
+        if (stickersCollectedCount > 4)
         {
             ShowLevelSelectWorld2();
         }
