@@ -194,6 +194,8 @@ public class LevelManager : MonoBehaviour
         {
             if (PhotonNetwork.IsMasterClient)
             {
+                Debug.Log((bool)PhotonNetwork.PlayerList[0].CustomProperties["hitflag"]);
+                Debug.Log((bool)PhotonNetwork.PlayerList[1].CustomProperties["hitflag"]);
                 try
                 {
                     if ((bool)PhotonNetwork.PlayerList[0].CustomProperties["hitflag"] & (bool)PhotonNetwork.PlayerList[1].CustomProperties["hitflag"])
