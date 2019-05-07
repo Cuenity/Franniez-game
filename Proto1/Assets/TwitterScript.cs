@@ -34,6 +34,7 @@ public class TwitterScript : MonoBehaviour
     public void ComposeMessage()
     {
         string imagePath = "https://i.imgur.com/ww25JFA.jpg";
+        GameAnalytics.NewDesignEvent("Twitter:ButtonPressed");
 
         Twitter.Compose(Twitter.Session, imagePath, LocalizedText(), hashtags,
                 (string tweetId) => { GameAnalytics.NewDesignEvent("Twitter:Succeeded"); }, // Tweet verstuurtd, stuur naar GA
