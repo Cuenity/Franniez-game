@@ -18,12 +18,7 @@ namespace Assets.Scripts.Shop.Items
 
         public void Start()
         {
-            // Voor localication zet alle teksten goed, key komt vanuit de inspector
-
-            //foreach(SkinObject skin in skins)
-            //{
-            //    skin.skinName = LocalizationManager.instance.GetLocalizedValue(skin.skinName);
-            //}
+            // Pakket, moet nog implementeren
         }
     }
 }

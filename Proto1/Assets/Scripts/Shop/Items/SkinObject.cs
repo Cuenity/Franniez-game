@@ -9,7 +9,6 @@ public class SkinObject : ScriptableObject
     // Voor UI, dit ziet de speler
     public string skinName = "Skin Name";
     public int cost = 50;
-    public string description;
     public Sprite shopImage;
     public bool owned = false;
 

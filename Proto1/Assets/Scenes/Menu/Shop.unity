@@ -799,8 +799,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e77dbce836752b24db7caef625e79243, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PanelOn: {fileID: 21300000, guid: b50b6b43afcf4924a9d7286eac11ba40, type: 3}
-  PanelOff: {fileID: 21300000, guid: 3e322698d8bc8db44be1e5a39985ea47, type: 3}
+  panel_On: {fileID: 21300000, guid: b50b6b43afcf4924a9d7286eac11ba40, type: 3}
+  panel_Off: {fileID: 21300000, guid: 3e322698d8bc8db44be1e5a39985ea47, type: 3}
 --- !u!1 &406794282
 GameObject:
   m_ObjectHideFlags: 0
@@ -2021,10 +2021,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 536b175ea6ac1944eb46b4a88587a04c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SkinsPanel: {fileID: 447193060}
-  MusicPanel: {fileID: 1045291669}
-  CoinsPanel: {fileID: 1913517070}
-  AmountCoinsPlayer: {fileID: 1972826512}
+  skinsPanel: {fileID: 447193060}
+  musicPanel: {fileID: 1045291669}
+  coinsPanel: {fileID: 1913517070}
+  amountCoinsPlayer: {fileID: 1972826512}
   warningPanel: {fileID: 249524853}
 --- !u!114 &798503371
 MonoBehaviour:
@@ -3016,9 +3016,9 @@ RectTransform:
   m_Father: {fileID: 1220290215}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 27.885008, y: -50}
   m_SizeDelta: {x: 55.77, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1202171336
@@ -3498,8 +3498,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e77dbce836752b24db7caef625e79243, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PanelOn: {fileID: 21300000, guid: 7bf23e0cb47c66348a6e12faa6e6e76d, type: 3}
-  PanelOff: {fileID: 21300000, guid: b67c01dbf36d4954f8ef088433031581, type: 3}
+  panel_On: {fileID: 21300000, guid: 7bf23e0cb47c66348a6e12faa6e6e76d, type: 3}
+  panel_Off: {fileID: 21300000, guid: b67c01dbf36d4954f8ef088433031581, type: 3}
 --- !u!1 &1385983634
 GameObject:
   m_ObjectHideFlags: 0
@@ -3866,8 +3866,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e77dbce836752b24db7caef625e79243, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PanelOn: {fileID: 21300000, guid: 4400d741670f12649a09f2b72aa6be97, type: 3}
-  PanelOff: {fileID: 21300000, guid: ca3f4db6fc8b45f4e9c7e0e405e3739a, type: 3}
+  panel_On: {fileID: 21300000, guid: 4400d741670f12649a09f2b72aa6be97, type: 3}
+  panel_Off: {fileID: 21300000, guid: ca3f4db6fc8b45f4e9c7e0e405e3739a, type: 3}
 --- !u!1 &1575218465
 GameObject:
   m_ObjectHideFlags: 0

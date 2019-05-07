@@ -114,6 +114,7 @@ public class PlayerDataController : MonoBehaviour
     {
         if(player.activeMaterial == null)
         {
+            // Load Async
             ballMaterial = Resources.Load("Skins/Franniez", typeof(Material)) as Material;
         }
         else

@@ -5,8 +5,7 @@ using UnityEngine.UI;
 
 public class SkinsButtonImage : MonoBehaviour
 {
-    public Sprite PanelOn;
-    public Sprite PanelOff;
+    public Sprite panel_On, panel_Off;
 
     private void OnEnable()
     {
@@ -22,11 +21,11 @@ public class SkinsButtonImage : MonoBehaviour
     {
         if(gameObject.name == name)
         {
-            gameObject.GetComponent<Image>().sprite = PanelOn;
+            gameObject.GetComponent<Image>().sprite = panel_On;
         }
         else
         {
-            gameObject.GetComponent<Image>().sprite = PanelOff;
+            gameObject.GetComponent<Image>().sprite = panel_Off;
         }
     }
 }

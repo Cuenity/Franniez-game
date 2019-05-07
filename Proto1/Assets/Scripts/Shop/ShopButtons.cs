@@ -8,28 +8,24 @@ using System.Timers;
 
 public class ShopButtons : MonoBehaviour
 {
-    [SerializeField] private GameObject SkinsPanel, MusicPanel, CoinsPanel;
-    [SerializeField] public Text AmountCoinsPlayer;
+    [SerializeField] private GameObject skinsPanel, musicPanel, coinsPanel;
+    [SerializeField] public Text amountCoinsPlayer;
     [SerializeField] private GameObject warningPanel;
 
     // Private properties for GameAnalytics
     private float startTime;
     private float endTime;
 
-    // Voor test alleen, moet nog verwerkt worden naar DataController want daar wilt ie de 
-    // ShopCoins niet opslaan
-    private PlayerData player;
-
+    // Verander naar niet static events: Kijk naar Settings sound button voor voorbeeld
     public delegate void ClickAction(string name);
     public static event ClickAction ChangeImage;
     public event ClickAction BuySkinEvent;
 
     public void Awake()
     {
-        MusicPanel.SetActive(false);
-        CoinsPanel.SetActive(false);
-        AmountCoinsPlayer.text = PlayerDataController.instance.player.ShopCoins.ToString();
-        player = PlayerDataController.instance.player;
+        musicPanel.SetActive(false);
+        coinsPanel.SetActive(false);
+        amountCoinsPlayer.text = PlayerDataController.instance.player.ShopCoins.ToString();
 
         //Start Time for GameAnal
         startTime = Time.time;
@@ -49,21 +45,21 @@ public class ShopButtons : MonoBehaviour
 
     public void ShowSkinsPanel(string buttonName)
     {
-        SkinsPanel.SetActive(false);
-        MusicPanel.SetActive(false);
-        CoinsPanel.SetActive(false);
+        skinsPanel.SetActive(false);
+        musicPanel.SetActive(false);
+        coinsPanel.SetActive(false);
         warningPanel.SetActive(false);
 
         switch (buttonName)
         {
             case "Skins Button":
-                SkinsPanel.SetActive(true);
+                skinsPanel.SetActive(true);
                 break;
             case "Music Button":
-                MusicPanel.SetActive(true);
+                musicPanel.SetActive(true);
                 break;
             case "Coins Button":
-                CoinsPanel.SetActive(true);
+                coinsPanel.SetActive(true);
                 break;
             default:
                 break;
@@ -101,7 +97,7 @@ public class ShopButtons : MonoBehaviour
 
     private void UpdateCoins()
     {
-        AmountCoinsPlayer.text = PlayerDataController.instance.ReturnCoins().ToString();
+        amountCoinsPlayer.text = PlayerDataController.instance.ReturnCoins().ToString();
     }
 
     public void Button_CloseWarningPanel()
