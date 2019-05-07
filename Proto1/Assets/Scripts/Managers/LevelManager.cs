@@ -196,7 +196,7 @@ public class LevelManager : MonoBehaviour
             {
                 try
                 {
-                    if ((bool)PhotonNetwork.PlayerList[0].CustomProperties["hitflag"] && (bool)PhotonNetwork.PlayerList[1].CustomProperties["hitflag"])
+                    if ((bool)PhotonNetwork.PlayerList[0].CustomProperties["hitflag"] & (bool)PhotonNetwork.PlayerList[1].CustomProperties["hitflag"])
                     {
                         //victory scene
                         PhotonNetwork.LoadLevel(26);
