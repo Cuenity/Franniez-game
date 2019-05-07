@@ -49,7 +49,7 @@ public class TwitterScript : MonoBehaviour
         string substitutionDescription = $"Yeah, ik heb level {level} gehaald met {amountStars} {stars}!";
 
         // TODO: Make own image
-        string imagePath = "https://franniez.nl/themes/franniez/assets/images/header.jpg";
+        string imagePath = "https://i.imgur.com/ww25JFA.jpg";
 
         Twitter.Compose(Twitter.Session, imagePath, substitutionDescription, hashtags,
                 (string tweetId) => { Debug.Log("Tweet Success, tweetId = " + tweetId); },
