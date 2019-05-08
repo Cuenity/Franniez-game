@@ -47,18 +47,19 @@ public class PlatformManager : MonoBehaviour
     private Vector3 finishPosition;
 
     private int SceneNumber = 0;
+    private int themeWorld2 = 10;
+    private int themeWorld3 = 20;
+
+    private Material rampMaterialWorld2;
+    private Material squareMaterialWorld2;
 
 
     private void Awake()
     {
-        //platformPositions = new List<Vector3>();
-
         gameState = GameState.Instance;
-        if (PhotonNetwork.IsConnected)
-        {
-            SceneNumber = int.Parse(SceneManager.GetActiveScene().name);
-        }
+        SceneNumber = int.Parse(SceneManager.GetActiveScene().name);
     }
+
     void Start()
     {
         currentScene = SceneManager.GetActiveScene();
@@ -84,7 +85,7 @@ public class PlatformManager : MonoBehaviour
         gameState.collectableManager.RespawnCoins(coinPositions);
     }
 
-    public void SetCoinPosition(int position)
+    public void SetStarPosition(int position)
     {
         Vector3 coinAdjustment = new Vector3(.3f, 0, 0);
         coinPositions.Add(gameState.gridManager.gridSquares[position] + coinAdjustment);
@@ -299,122 +300,141 @@ public class PlatformManager : MonoBehaviour
 
     internal void BuildLevelFromLevelPlatformen(LevelPlatformen levelPlatformen)
     {
-        //foreach (int item in coins)
-        //{
-        //    SetCoinPosition(item);
-        //}
+        /* 
+         *      Code voor opslaan en laden van levels
+         *      Kijk even of we dit in een enum kunnen gooien ipv cijfers
+           
+            0 = leeg;
+            1 = rampsmall
+            2 = rampsmallReversed
+            3 = platformSqaure
+            4 = trampoline
+            5 = boostplatform
+            6 = cannon
+            7 = redzone
+            8 = star
+            9 = finish
+            10 = portal
+            11 = lift
+        */
 
-        //SetfinishPosition(finish);
-        //gameState.collectableManager.InitCollectables(coinPositions, finishPosition);
-        // code voor opslaan/laden van levels
-        // 0 = leeg;
-        // 1 = rampsmall
-        // 2 = rampsmallReversed
-        // 3 = platformSwaure
-        // 4 = trampoline
-        // 5 = boostplatform
-        // 6 = cannon
-        // 7 = redzone
-        // 8 = star
-        // 9 = finish
-        // 10 = portal
-        // 11 = lift
         Vector3 rampAdjustment = new Vector3(0.5f, 0f, 0f);
+
+        // Get materials for worlds
+
+        if(SceneNumber > themeWorld2)
+        {
+            rampMaterialWorld2 = Resources.Load("PlatformMat/RampSpace", typeof(Material)) as Material;
+            squareMaterialWorld2 = Resources.Load("PlatformMat/RechthoekSpace", typeof(Material)) as Material;
+        }
+
         for (int i = 0; i < levelPlatformen.tileList.Length; i++)
         {
+            // Leeg - doe niks
+            if(levelPlatformen.tileList[i] == 0) {}
 
-            if (levelPlatformen.tileList[i] == 0)
-            {
-
-            }
+            // Ramp Small
             else if (levelPlatformen.tileList[i] == 1)
             {
                 Ramp rampNormal = Instantiate(ramp, GameState.Instance.gridManager.gridSquares[i + 1], new Quaternion(0, 0, 0, 0));
-                if (SceneNumber >= 11)
+
+                if (SceneNumber > themeWorld2)
                 {
-                    rampNormal.GetComponent<Renderer>().material = Resources.Load("PlatformMat/RampSpace", typeof(Material)) as Material;
+                    rampNormal.GetComponent<Renderer>().material = rampMaterialWorld2;
                 }
+
                 rampNormal.transform.Rotate(new Vector3(-90f, -90f, 0));
-                List<int> gridSpots = new List<int>();
-                gridSpots.Add(i);
-                GameState.Instance.gridManager.AddFilledGridSpots(gridSpots, SizeType.twoByOne);
-                //bigRampClass.SpawnRamp(LevelEditorState.Instance.gridManager.gridSquares[i]);
+                GameState.Instance.gridManager.AddFilledGridSpots(new List<int> { i }, SizeType.twoByOne);
             }
+
+            // Ramp Small Reverserd
             else if (levelPlatformen.tileList[i] == 2)
             {
                 Ramp ramp = Instantiate(levelEditorRampReversed, GameState.Instance.gridManager.gridSquares[i + 1], new Quaternion(0, 0, 0, 0));
-                if (SceneNumber >= 11)
+
+                if (SceneNumber > themeWorld2)
                 {
-                    ramp.GetComponent<Renderer>().material = Resources.Load("PlatformMat/RampSpace", typeof(Material)) as Material;
+                    ramp.GetComponent<Renderer>().material = rampMaterialWorld2;
                 }
 
                 ramp.transform.Rotate(new Vector3(-90f, 90f, 0));
-                List<int> gridSpots = new List<int>();
-                gridSpots.Add(i);
-                GameState.Instance.gridManager.AddFilledGridSpots(gridSpots, SizeType.twoByOne);
+                GameState.Instance.gridManager.AddFilledGridSpots(new List<int> { i }, SizeType.twoByOne);
             }
+
+            // Platform Square
             else if (levelPlatformen.tileList[i] == 3)
             {
-
-                if(SceneNumber >= 11)
+                if(SceneNumber > themeWorld2)
                 {
-                    levelEditorPlatform.GetComponent<Renderer>().material = Resources.Load("PlatformMat/RechthoekSpace", typeof(Material)) as Material;
+                    levelEditorPlatform.GetComponent<Renderer>().material = squareMaterialWorld2;
                 }
                 Instantiate(levelEditorPlatform, GameState.Instance.gridManager.gridSquares[i + 1], new Quaternion(0, 0, 0, 0)).transform.Rotate(new Vector3(-90, 90, 0));
-                List<int> gridSpots = new List<int>();
-                gridSpots.Add(i);
-                GameState.Instance.gridManager.AddFilledGridSpots(gridSpots, SizeType.twoByOne);
+                GameState.Instance.gridManager.AddFilledGridSpots(new List<int> { i }, SizeType.twoByOne);
             }
+
+            // Trampoline
             else if (levelPlatformen.tileList[i] == 4)
             {
                 Instantiate(trampoline, GameState.Instance.gridManager.gridSquares[i + 1], new Quaternion(0, 0, 0, 0));
-                List<int> gridSpots = new List<int>();
-                gridSpots.Add(i);
-                GameState.Instance.gridManager.AddFilledGridSpots(gridSpots, SizeType.twoByOne);
+                GameState.Instance.gridManager.AddFilledGridSpots(new List<int> { i }, SizeType.twoByOne);
             }
+
+            // Boosplatform
             else if (levelPlatformen.tileList[i] == 5)
             {
                 Instantiate(boostPlatform, GameState.Instance.gridManager.gridSquares[i + 1], new Quaternion(0, 0, 0, 0));
-                List<int> gridSpots = new List<int>();
-                gridSpots.Add(i);
-                GameState.Instance.gridManager.AddFilledGridSpots(gridSpots, SizeType.twoByOne);
+                GameState.Instance.gridManager.AddFilledGridSpots(new List<int> { i }, SizeType.twoByOne);
             }
+
+            // Canon
             else if (levelPlatformen.tileList[i] == 6)
             {
                 //faka cannon
                 //Instantiate(cannon, LevelEditorState.Instance.gridManager.gridSquares[i], new Quaternion(0, 0, 0, 0));
             }
+
+            // Redzone
             else if (levelPlatformen.tileList[i] == 7)
             {
                 Instantiate(redZone, GameState.Instance.gridManager.gridSquares[i] + rampAdjustment, new Quaternion(0, 0, 0, 0));
-                List<int> gridSpots = new List<int>();
-                gridSpots.Add(i);
-                GameState.Instance.gridManager.AddFilledGridSpots(gridSpots, SizeType.oneByOne);
+                GameState.Instance.gridManager.AddFilledGridSpots(new List<int> { i }, SizeType.oneByOne);
             }
+
+            // Stars
             else if (levelPlatformen.tileList[i] == 8)
             {
-                SetCoinPosition(i);
+                SetStarPosition(i);
             }
+
+            // Finsh
             else if (levelPlatformen.tileList[i] == 9)
             {
                 SetfinishPosition(i);
             }
+
+            // Portal
             else if(levelPlatformen.tileList[i]== 10)
             {
                 portal = Instantiate(portal, GameState.Instance.gridManager.gridSquares[i] + new Vector3(1, .5f, 0), new Quaternion(0, 0, 0, 0));
-                List<int> gridSpots = new List<int>();
                 allPortals.Add(portal);
-                gameState.gridManager.AddFilledGridSpots(gridSpots, SizeType.twoByTwo);
+                gameState.gridManager.AddFilledGridSpots(new List<int>(), SizeType.twoByTwo);
             }
+
+            // Lift
             else if (levelPlatformen.tileList[i] == 11)
             {
                 lift = Instantiate(lift);
                 lift.transform.position = lift.startPoint;
             }
-
-
         }
+
         gameState.collectableManager.InitCollectables(coinPositions, finishPosition);
+    }
+
+    private GameObject setMaterialForWorld2(GameObject gameplatform, Material material)
+    {
+        gameplatform.GetComponent<Renderer>().material = material;
+        return gameplatform;
     }
 
     public void BuildLevel6()
@@ -457,9 +477,9 @@ public class PlatformManager : MonoBehaviour
         RedZoneSpots.Add(gameState.gridManager.width * 10 + 30);
         RedZoneSpots.Add(gameState.gridManager.width * 11 + 30);
 
-        SetCoinPosition(gameState.gridManager.width * 6 + 15);
-        SetCoinPosition(gameState.gridManager.width * 10 + 25);
-        SetCoinPosition(gameState.gridManager.width + 39);
+        SetStarPosition(gameState.gridManager.width * 6 + 15);
+        SetStarPosition(gameState.gridManager.width * 10 + 25);
+        SetStarPosition(gameState.gridManager.width + 39);
 
 
         RedZoneSpots.Add(gameState.gridManager.width * 9 - 3);
@@ -499,9 +519,9 @@ public class PlatformManager : MonoBehaviour
         rechthoekSpots.Add(36);
         RampSpotsReversed.Add(30);
 
-        SetCoinPosition(11);
-        SetCoinPosition(26);
-        SetCoinPosition(29);
+        SetStarPosition(11);
+        SetStarPosition(26);
+        SetStarPosition(29);
         SetfinishPosition(24);
 
         //dit moet later anders zijn collectables 
@@ -533,9 +553,9 @@ public class PlatformManager : MonoBehaviour
         rechthoekSpots.Add(36);
         RampSpotsReversed.Add(30);
 
-        SetCoinPosition(11);
-        SetCoinPosition(26);
-        SetCoinPosition(29);
+        SetStarPosition(11);
+        SetStarPosition(26);
+        SetStarPosition(29);
         SetfinishPosition(24);
 
         //dit moet later anders zijn collectables 
@@ -574,9 +594,9 @@ public class PlatformManager : MonoBehaviour
         PlatformSpots.Add(197);
         PlatformSpots.Add(198);
 
-        SetCoinPosition(67);
-        SetCoinPosition(111);
-        SetCoinPosition(115);
+        SetStarPosition(67);
+        SetStarPosition(111);
+        SetStarPosition(115);
         SetfinishPosition(178);
 
         //dit moet later anders zijn collectables 
@@ -687,9 +707,9 @@ public class PlatformManager : MonoBehaviour
         PlatformSpots.Add(209);
         PlatformSpots.Add(207);
 
-        SetCoinPosition(104);
-        SetCoinPosition(90);
-        SetCoinPosition(190);
+        SetStarPosition(104);
+        SetStarPosition(90);
+        SetStarPosition(190);
         SetfinishPosition(188);
 
         Init_Platforms(RampSpots, PlatformSpots, RampSpotsReversed, PortalSpots, TrampolineSpots, rechthoekSpots, boosterPlatformSpots, liftList);
@@ -763,9 +783,9 @@ public class PlatformManager : MonoBehaviour
         RedZoneSpots.Add(233);
         RedZoneSpots.Add(253);
 
-        SetCoinPosition(110);
-        SetCoinPosition(138);
-        SetCoinPosition(196);
+        SetStarPosition(110);
+        SetStarPosition(138);
+        SetStarPosition(196);
         SetfinishPosition(254);
 
         Init_Platforms(RampSpots, PlatformSpots, RampSpotsReversed, PortalSpots, TrampolineSpots, rechthoekSpots, boosterPlatformSpots, liftList);
@@ -920,9 +940,9 @@ public class PlatformManager : MonoBehaviour
         RedZoneSpots.Add(149);
         RedZoneSpots.Add(150);
 
-        SetCoinPosition(137);
-        SetCoinPosition(123);
-        SetCoinPosition(187);
+        SetStarPosition(137);
+        SetStarPosition(123);
+        SetStarPosition(187);
 
         SetfinishPosition(88);
 

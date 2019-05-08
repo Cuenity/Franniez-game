@@ -63,11 +63,10 @@ public class TwitterScript : MonoBehaviour
             stars = LocalizationManager.instance.GetLocalizedValue("twitter_star");
         }
 
-        string level = GameState.Instance.PreviousLevel.ToString();
+        string level = GameState.Instance.PreviousLevel.ToString(); // Level number
         string amountStars = PlayerDataController.instance.player.levels[GameState.Instance.PreviousLevel - 1].countCoins.ToString();
 
-        string substitutionDescription = $"{levelCompleted} {level} {with} {amountStars} {stars}!";
-        return substitutionDescription;
+        return $"{levelCompleted} {level} {with} {amountStars} {stars}!";
     }
 
     public void LoginComplete(TwitterSession session)
