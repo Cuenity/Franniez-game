@@ -29,7 +29,7 @@ public class BuildingPhaseManager : MonoBehaviour
             gameState.UIManager.InitInventoryButtons(platforms);
             foreach (GameObject placedPlatform in platforms.placedPlatforms)
             {
-                placedPlatform.AddComponent<PlatformDragManager>();
+                placedPlatform.AddComponent<PlatformDragHandler>();
                 if (!placedPlatform.GetComponent<Cannon>())
                 {
                     placedPlatform.GetComponent<Outline>().enabled = true;

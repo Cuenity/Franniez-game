@@ -3,7 +3,7 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class UIDragManager : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHandler//, IPointerDownHandler
+public class UIDragHandler : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHandler//, IPointerDownHandler
 {
     //deze fields later verwijderen
     public GameObject platformSquare;
@@ -147,7 +147,7 @@ public class UIDragManager : MonoBehaviour, IDragHandler, IBeginDragHandler, IEn
                         outline.OutlineWidth = 10f;
                     }
 
-                    draggedPlatform.AddComponent<PlatformDragManager>();
+                    draggedPlatform.AddComponent<PlatformDragHandler>();
 
                 }
                 else
@@ -248,7 +248,7 @@ public class UIDragManager : MonoBehaviour, IDragHandler, IBeginDragHandler, IEn
                         outline.OutlineWidth = 10f;
                     }
 
-                    draggedPlatform.AddComponent<PlatformDragManager>();
+                    draggedPlatform.AddComponent<PlatformDragHandler>();
 
                 }
                 else
