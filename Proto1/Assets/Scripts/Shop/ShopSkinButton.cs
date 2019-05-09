@@ -11,6 +11,7 @@ public class ShopSkinButton : MonoBehaviour
     [SerializeField] private Sprite owned, active, buyWithCoins;
 
     private SkinObject skinObject;
+    private SkinObject[] listSkins;
     private string textActive = LocalizationManager.instance.GetLocalizedValue("shop_Active");
     private string textOwned = LocalizationManager.instance.GetLocalizedValue("shop_Owned");
 
@@ -20,7 +21,15 @@ public class ShopSkinButton : MonoBehaviour
         title.text = skinObject.skinName;
         skinImage.sprite = skinObject.shopImage;
 
-        changeText(skin);
+        ChangeSkinCostText(skin);
+    }
+
+    public void SetupCat(ShopCategory category)
+    {
+        title.text = category.Name;
+        listSkins = category.skins;
+        skinImage.sprite = category.Image;
+        ChangeBundleCostImage(category);
     }
 
     private void TransformText()
@@ -31,13 +40,23 @@ public class ShopSkinButton : MonoBehaviour
         cost.resizeTextMaxSize = 46;
     }
 
-    // Kijk even waar deze wordt aangeroepen, want dit is nu alleen een doorlink methode
-    public void ChangeImage(SkinObject skin)
+
+    public void ChangeBundleCostImage(ShopCategory category)
     {
-        changeText(skin);
+        if(PlayerDataController.instance.player.categoriesByName.Contains(category.Name))
+        {
+            TransformText();
+            coinImage.sprite = owned;
+            cost.text = textOwned;
+        }
+        else
+        {
+            coinImage.sprite = buyWithCoins;
+            cost.text = category.cost.ToString();
+        }
     }
 
-    private void changeText(SkinObject skin)
+    public void ChangeSkinCostText(SkinObject skin)
     {
         if (PlayerDataController.instance.player.materialsByName.Contains(skin.skinName))
         {

@@ -43,7 +43,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b2ff43490cd0c54593cf03a930223da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Name: SolarSystem
+  Name: Solar System
+  cost: 250
   categoryEnum: 1
   skins:
   - {fileID: 11400000, guid: 7f6fe8d0c2e53764282479f853fa0a2f, type: 2}
@@ -56,3 +57,4 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 5571e0aa3b4e70a41acce2ccd137d366, type: 2}
   - {fileID: 11400000, guid: 492a0101a10c344419740278e1cfe287, type: 2}
   - {fileID: 11400000, guid: 53b808ed070f964479f537a33452da17, type: 2}
+  Image: {fileID: 21300000, guid: 4259d24fd31395e43b48e76aac3015f9, type: 3}

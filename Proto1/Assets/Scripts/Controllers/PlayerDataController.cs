@@ -35,7 +35,7 @@ public class PlayerDataController : MonoBehaviour
     public bool Load()
     {
         bool fileExist = false;
-        
+
         if (File.Exists(Application.persistentDataPath + "/PlayerInfo.dat"))
         {
             fileExist = true;
@@ -81,7 +81,7 @@ public class PlayerDataController : MonoBehaviour
     {
         bool enoughCoins = false;
 
-        if(amount <= player.ShopCoins)
+        if (amount <= player.ShopCoins)
         {
             enoughCoins = true;
             player.ShopCoins = player.ShopCoins - amount;
@@ -89,7 +89,7 @@ public class PlayerDataController : MonoBehaviour
         }
 
         return enoughCoins;
-        
+
     }
 
     public int ReturnCoins()
@@ -103,6 +103,12 @@ public class PlayerDataController : MonoBehaviour
         Save();
     }
 
+    public void AddBundle(ShopCategory category)
+    {
+        player.categoriesByName.Add(category.Name);
+        Save();
+    }
+
     public void SetActiveMaterial(Material skinMaterial)
     {
         ballMaterial = skinMaterial;
@@ -112,7 +118,7 @@ public class PlayerDataController : MonoBehaviour
 
     public void SetMaterial()
     {
-        if(player.activeMaterial == null)
+        if (player.activeMaterial == null)
         {
             // Load Async
             ballMaterial = Resources.Load("Skins/Franniez", typeof(Material)) as Material;

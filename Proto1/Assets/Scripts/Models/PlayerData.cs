@@ -13,6 +13,7 @@ public class PlayerData
     public int language;
     public int ShopCoins = 0;
     public List<string> materialsByName = new List<string>();
+    public List<string> categoriesByName = new List<string>();
     public string activeMaterial;
 }
 

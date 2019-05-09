@@ -9,7 +9,7 @@ using System.Timers;
 public class ShopButtons : MonoBehaviour
 {
     [SerializeField] private GameObject skinsPanel, musicPanel, coinsPanel;
-    [SerializeField] public Text amountCoinsPlayer;
+    [SerializeField] public Text amountCoinsPlayer, notEnoughCoins;
     [SerializeField] private GameObject warningPanel;
 
     // Private properties for GameAnalytics
@@ -33,7 +33,8 @@ public class ShopButtons : MonoBehaviour
 
     public void OnEnable()
     {
-        GetComponentInParent<ShopFillSkins>().ButtonClicked += BuySkin;
+        GetComponentInParent<ShopFillSkins>().SkinButtonClicked += BuySkin;
+        GetComponentInParent<ShopFillSkins>().BundleButtonClicked += BuyBundle;
     }
 
     public void ReturnMainMenu()
@@ -75,23 +76,47 @@ public class ShopButtons : MonoBehaviour
 
     public void BuySkin(SkinObject skin, ShopSkinButton button)
     {
-
         if(PlayerDataController.instance.player.materialsByName.Contains(skin.skinName))
         {
             PlayerDataController.instance.SetActiveMaterial(skin.material);
-            button.ChangeImage(skin);
+            button.ChangeSkinCostText(skin);
         }
         else if (PlayerDataController.instance.RemoveShopCoins(skin.cost))
         {
             PlayerDataController.instance.AddMaterial(skin);
             PlayerDataController.instance.SetActiveMaterial(skin.material);
-            button.ChangeImage(skin);
+            button.ChangeSkinCostText(skin);
             UpdateCoins();
-            return;
         }
         else
         {
+            SetWarningCoins(skin.cost);
             warningPanel.SetActive(true);
+        }
+    }
+
+    public void BuyBundle(ShopCategory category, ShopSkinButton button)
+    {
+        if (!PlayerDataController.instance.player.categoriesByName.Contains(category.Name))
+        {
+            if(PlayerDataController.instance.RemoveShopCoins(category.cost))
+            {
+                PlayerDataController.instance.AddBundle(category);
+
+                foreach (SkinObject skin in category.skins)
+                {
+                    PlayerDataController.instance.AddMaterial(skin);
+                    button.ChangeSkinCostText(skin);
+                }
+
+                button.ChangeBundleCostImage(category);
+                UpdateCoins();
+            }
+            else
+            {
+                SetWarningCoins(category.cost);
+                warningPanel.SetActive(true);
+            }
         }
     }
 
@@ -105,4 +130,8 @@ public class ShopButtons : MonoBehaviour
         warningPanel.SetActive(false);
     }
 
+    private void SetWarningCoins(int cost)
+    {
+        notEnoughCoins.text = PlayerDataController.instance.player.ShopCoins.ToString() + "/" + cost;
+    }
 }
