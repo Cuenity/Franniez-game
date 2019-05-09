@@ -27,7 +27,7 @@ public class LanguageSettingsImages : MonoBehaviour
     // Change Flag images on bases of the players language
     public void ChangeFlag()
     {
-        switch (PlayerDataController.instance.player.language)
+        switch (PlayerDataController.instance.Player.language)
         {
             case 0:
                 button.GetComponent<Image>().sprite = DutchFlag;

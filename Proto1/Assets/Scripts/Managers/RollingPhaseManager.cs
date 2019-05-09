@@ -31,7 +31,7 @@ public class RollingPhaseManager : MonoBehaviour
         int.TryParse(scene.name, out levelNumber);
 
         if (levelNumber == 0) { return; }
-        player = PlayerDataController.instance.player;
+        player = PlayerDataController.instance.Player;
 
         if (player == null) { return; }
         //INDEX OUT OF RANGE BIJ LEVELSWITCH
@@ -183,10 +183,10 @@ public class RollingPhaseManager : MonoBehaviour
             {
                 player.levels = new Level[50];
             }
-            player = PlayerDataController.instance.player;
+            player = PlayerDataController.instance.Player;
             //hier moet een check komen die kijkt of de behaalde sterren hoger zijn(eerder) dan aantal sterren nu behaald
             //voor de duidelijkheid player.level is wat is opgeslagen terwijl level het net behaalde is
-            if (level.countCoins == 3 || PlayerDataController.instance.player.levels[PlayerDataController.instance.previousScene - 1].gotSticker == true)
+            if (level.countCoins == 3 || PlayerDataController.instance.Player.levels[PlayerDataController.instance.PreviousScene - 1].gotSticker == true)
             {
                 level.gotSticker = true;
             }
@@ -209,12 +209,12 @@ public class RollingPhaseManager : MonoBehaviour
             }
 
             player.coins += amountCoins;
-            PlayerDataController.instance.player = player;
+            PlayerDataController.instance.Player = player;
             PlayerDataController.instance.Save();
-            PlayerDataController.instance.previousScene = levelNumber;
-            if (PlayerDataController.instance.previousSceneCoinCount < level.countCoins)
+            PlayerDataController.instance.PreviousScene = levelNumber;
+            if (PlayerDataController.instance.PreviousSceneCoinCount < level.countCoins)
             {
-                PlayerDataController.instance.previousSceneCoinCount = level.countCoins;
+                PlayerDataController.instance.PreviousSceneCoinCount = level.countCoins;
             }
             //maybe fix denk dat de progression null logt
             string stringlevelnumbervoorGA = levelNumber.ToString();

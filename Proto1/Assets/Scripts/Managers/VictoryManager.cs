@@ -28,7 +28,7 @@ public class VictoryManager : MonoBehaviour
 
     private void Awake()
     {
-        player = PlayerDataController.instance.player;
+        player = PlayerDataController.instance.Player;
         SetLanguage();
         sticker.enabled = false;
         GetData();
@@ -80,15 +80,15 @@ public class VictoryManager : MonoBehaviour
     {
         //ok? hij doet dit 2 keer
         //Onderstaande code toepassen wanneer Anne klaar is met Gamestate
-        int previousScene = PlayerDataController.instance.previousScene;
+        int previousScene = PlayerDataController.instance.PreviousScene;
 
-        player = PlayerDataController.instance.player;
+        player = PlayerDataController.instance.Player;
         //hij pakt nu de level zoals het is opgeslagen (dus niet wat daadwerkelijk is behaald)
         Level level = player.levels[previousScene - 1];
 
         //nu pakt hij de coincount van previousscene die wordt opgeslagen bij het einde van previousSceneCoinCount
         
-        switch (PlayerDataController.instance.previousSceneCoinCount)
+        switch (PlayerDataController.instance.PreviousSceneCoinCount)
         {
             case 1:
                 starImage.sprite = star1;
@@ -115,12 +115,12 @@ public class VictoryManager : MonoBehaviour
         //photon restart
         if (PhotonNetwork.InRoom)
         {
-            PhotonNetwork.LoadLevel(PlayerDataController.instance.previousScene);
+            PhotonNetwork.LoadLevel(PlayerDataController.instance.PreviousScene);
         }
         else
         {
             //previous level
-            string prevlvl = Convert.ToString(PlayerDataController.instance.previousScene);
+            string prevlvl = Convert.ToString(PlayerDataController.instance.PreviousScene);
 
             SceneSwitcher.Instance.AsynchronousLoadStart(prevlvl);
 
@@ -133,12 +133,12 @@ public class VictoryManager : MonoBehaviour
         //geen 2de level maar wel zin om gewoon ff dit te doen(zelfde als restart)
         if (PhotonNetwork.InRoom)
         {
-            PhotonNetwork.LoadLevel(PlayerDataController.instance.previousScene);
+            PhotonNetwork.LoadLevel(PlayerDataController.instance.PreviousScene);
         }
         //previous level + 1
         else
         {
-            int prevlvl = PlayerDataController.instance.previousScene;
+            int prevlvl = PlayerDataController.instance.PreviousScene;
             string prevlvlString = Convert.ToString(prevlvl + 1);
             SceneSwitcher.Instance.AsynchronousLoadStart(prevlvlString);
         }

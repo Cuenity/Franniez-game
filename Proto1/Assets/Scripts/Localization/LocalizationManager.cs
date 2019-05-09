@@ -38,7 +38,7 @@ public class LocalizationManager : MonoBehaviour
     public void GetLanguageSettings()
     {
         // Get Language from Player
-        Language language = (Language)PlayerDataController.instance.player.language;
+        Language language = (Language)PlayerDataController.instance.Player.language;
         string filePath = "";
 
         switch (language)
@@ -130,7 +130,7 @@ public class LocalizationManager : MonoBehaviour
     public void SetLanguage()
     {
         PlayerDataController.instance.Load();
-        PlayerData player = PlayerDataController.instance.player;
+        PlayerData player = PlayerDataController.instance.Player;
 
         switch (player.language)
         {

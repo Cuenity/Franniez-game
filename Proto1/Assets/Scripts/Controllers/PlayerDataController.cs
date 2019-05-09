@@ -8,13 +8,15 @@ public class PlayerDataController : MonoBehaviour
 {
     public static PlayerDataController instance;
 
-    public PlayerData player { get; set; }
-    private string fileName = "PlayerData.json";
-    private string filePath;
-    public int previousScene { get; set; }
-    public int previousSceneCoinCount { get; set; }
+    public PlayerData Player { get; set; }
+    public int PreviousScene { get; set; }
+    public int PreviousSceneCoinCount { get; set; }
 
     public Material ballMaterial;
+
+    // Localization
+    private readonly string fileName = "PlayerData.json";
+
 
     // Use this for initialization
     private void Awake()
@@ -27,10 +29,32 @@ public class PlayerDataController : MonoBehaviour
         {
             Destroy(gameObject);
         }
-
         DontDestroyOnLoad(this.gameObject);
     }
 
+
+    #region Saving and Loading
+
+    public void MakeNewPlayer()
+    {
+        PlayerData player = new PlayerData();
+        player.language = (int)LocalizationManager.instance.LanguageChoice;
+        player.materialsByName.Add("Franniez");
+        player.activeMaterial = "Franniez";
+        Player = player;
+        SetMaterial();
+        Save();
+    }
+
+    public void Save()
+    {
+        BinaryFormatter bf = new BinaryFormatter();
+        FileStream file = File.Create(Application.persistentDataPath + "/PlayerInfo.dat");
+
+        bf.Serialize(file, Player);
+        file.Close();
+        Debug.Log("Opgeslagen");
+    }
 
     public bool Load()
     {
@@ -44,36 +68,29 @@ public class PlayerDataController : MonoBehaviour
             PlayerData playerData = (PlayerData)bf.Deserialize(file);
             file.Close();
 
-            player = playerData;
+            Player = playerData;
             SetMaterial();
         }
         return fileExist;
     }
-
-    public void Save()
-    {
-        BinaryFormatter bf = new BinaryFormatter();
-
-        FileStream file = File.Create(Application.persistentDataPath + "/PlayerInfo.dat");
-
-        bf.Serialize(file, player);
-        file.Close();
-        Debug.Log("Opgeslagen");
-    }
+    #endregion
 
     public void SetPlayer(PlayerData setPlayer)
     {
-        player = setPlayer;
+        Player = setPlayer;
+        Save();
     }
 
     internal void SetLanguage(int languageNumber)
     {
-        player.language = languageNumber;
+        Player.language = languageNumber;
+        Save();
     }
 
+    #region Shop Methods
     public void AddShopCoins(int amount)
     {
-        player.ShopCoins = player.ShopCoins + amount;
+        Player.ShopCoins = Player.ShopCoins + amount;
         Save();
     }
 
@@ -81,53 +98,50 @@ public class PlayerDataController : MonoBehaviour
     {
         bool enoughCoins = false;
 
-        if (amount <= player.ShopCoins)
+        if (amount <= Player.ShopCoins)
         {
             enoughCoins = true;
-            player.ShopCoins = player.ShopCoins - amount;
+            Player.ShopCoins = Player.ShopCoins - amount;
             return enoughCoins;
         }
-
         return enoughCoins;
-
     }
 
     public int ReturnCoins()
     {
-        return player.ShopCoins;
+        return Player.ShopCoins;
     }
 
     public void AddMaterial(SkinObject skin)
     {
-        player.materialsByName.Add(skin.skinName);
+        Player.materialsByName.Add(skin.skinName);
         Save();
     }
 
     public void AddBundle(ShopCategory category)
     {
-        player.categoriesByName.Add(category.Name);
+        Player.categoriesByName.Add(category.Name);
         Save();
     }
 
     public void SetActiveMaterial(Material skinMaterial)
     {
         ballMaterial = skinMaterial;
-        player.activeMaterial = skinMaterial.name;
+        Player.activeMaterial = skinMaterial.name;
         Save();
     }
 
     public void SetMaterial()
     {
-        if (player.activeMaterial == null)
+        if (Player.activeMaterial == null)
         {
-            // Load Async
             ballMaterial = Resources.Load("Skins/Franniez", typeof(Material)) as Material;
         }
         else
         {
-            string path = "Skins/" + player.activeMaterial;
+            string path = "Skins/" + Player.activeMaterial;
             ballMaterial = Resources.Load(path, typeof(Material)) as Material;
         }
-
     }
+    #endregion
 }

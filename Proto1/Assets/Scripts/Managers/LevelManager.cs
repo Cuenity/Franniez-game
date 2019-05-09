@@ -292,7 +292,7 @@ public class LevelManager : MonoBehaviour
         //gameState.collectableManager.InitCollectables(coinPositions, finishPosition);
         gameState.BuildingPhaseActive = true;
         GameState.Instance.PreviousLevel = Int32.Parse(sceneName);
-        PlayerDataController.instance.previousScene = Int32.Parse(sceneName);
+        PlayerDataController.instance.PreviousScene = Int32.Parse(sceneName);
         levelIsSpawned = true;
     }
     #endregion
@@ -522,7 +522,7 @@ public class LevelManager : MonoBehaviour
 
                 gameState.BuildingPhaseActive = true;
                 GameState.Instance.PreviousLevel = Int32.Parse(sceneName);
-                PlayerDataController.instance.previousScene = Int32.Parse(sceneName);
+                PlayerDataController.instance.PreviousScene = Int32.Parse(sceneName);
                 levelIsSpawned = true;
             }
         }
@@ -554,7 +554,7 @@ public class LevelManager : MonoBehaviour
 
                 gameState.BuildingPhaseActive = true;
                 GameState.Instance.PreviousLevel = Int32.Parse(sceneName);
-                PlayerDataController.instance.previousScene = Int32.Parse(sceneName);
+                PlayerDataController.instance.PreviousScene = Int32.Parse(sceneName);
             }
         }
 
@@ -587,7 +587,7 @@ public class LevelManager : MonoBehaviour
                 gameState.playerManager.PlayerInit(gameState.playerBallManager.ballList[0]);
                 gameState.BuildingPhaseActive = true;
                 GameState.Instance.PreviousLevel = Int32.Parse(sceneName);
-                PlayerDataController.instance.previousScene = Int32.Parse(sceneName);
+                PlayerDataController.instance.PreviousScene = Int32.Parse(sceneName);
                 levelIsSpawned = true;
             }
         }
@@ -644,7 +644,7 @@ public class LevelManager : MonoBehaviour
 
                 gameState.BuildingPhaseActive = true;
                 GameState.Instance.PreviousLevel = 4;
-                PlayerDataController.instance.previousScene = 4;
+                PlayerDataController.instance.PreviousScene = 4;
             }
         }
 
@@ -677,7 +677,7 @@ public class LevelManager : MonoBehaviour
 
                 gameState.BuildingPhaseActive = true;
                 GameState.Instance.PreviousLevel = 6;
-                PlayerDataController.instance.previousScene = 6;
+                PlayerDataController.instance.PreviousScene = 6;
             }
         }
 
@@ -715,7 +715,7 @@ public class LevelManager : MonoBehaviour
                 gameState.BuildingPhaseActive = true;
                 //dit is wel poep moet echt es anders
                 GameState.Instance.PreviousLevel = 27;
-                PlayerDataController.instance.previousScene = 27;
+                PlayerDataController.instance.PreviousScene = 27;
             }
         }
 
@@ -752,7 +752,7 @@ public class LevelManager : MonoBehaviour
                 gameState.BuildingPhaseActive = true;
                 //dit is wel poep moet echt es anders
                 GameState.Instance.PreviousLevel = 28;
-                PlayerDataController.instance.previousScene = 28;
+                PlayerDataController.instance.PreviousScene = 28;
             }
         }
 
@@ -790,7 +790,7 @@ public class LevelManager : MonoBehaviour
                 gameState.BuildingPhaseActive = true;
                 //dit is wel poep moet echt es anders
                 GameState.Instance.PreviousLevel = 6;
-                PlayerDataController.instance.previousScene = 6;
+                PlayerDataController.instance.PreviousScene = 6;
             }
         }
     }

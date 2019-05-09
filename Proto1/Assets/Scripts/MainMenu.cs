@@ -60,7 +60,7 @@ public class MainMenu : MonoBehaviour
         }
 
         // Test kut coins
-        string coins = PlayerDataController.instance.player.ShopCoins.ToString();
+        string coins = PlayerDataController.instance.Player.ShopCoins.ToString();
         Debug.Log(coins);
         int coins2 = PlayerDataController.instance.ReturnCoins();
         Debug.Log(coins2);

@@ -122,7 +122,7 @@ public class GameState : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        PlayerDataController.instance.previousSceneCoinCount = 0;
+        PlayerDataController.instance.PreviousSceneCoinCount = 0;
     }
 
 }

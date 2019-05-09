@@ -43,7 +43,7 @@ public class ShopSkinButton : MonoBehaviour
 
     public void ChangeBundleCostImage(ShopCategory category)
     {
-        if(PlayerDataController.instance.player.categoriesByName.Contains(category.Name))
+        if(PlayerDataController.instance.Player.categoriesByName.Contains(category.Name))
         {
             TransformText();
             coinImage.sprite = owned;
@@ -58,7 +58,7 @@ public class ShopSkinButton : MonoBehaviour
 
     public void ChangeSkinCostText(SkinObject skin)
     {
-        if (PlayerDataController.instance.player.materialsByName.Contains(skin.skinName))
+        if (PlayerDataController.instance.Player.materialsByName.Contains(skin.skinName))
         {
             if (PlayerDataController.instance.ballMaterial == skin.material)
             {

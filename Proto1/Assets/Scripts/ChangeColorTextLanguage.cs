@@ -30,7 +30,7 @@ namespace Assets.Scripts
         private void SetColor()
         {
             
-            switch (PlayerDataController.instance.player.language)
+            switch (PlayerDataController.instance.Player.language)
             {
                 case 0:
                     DutchText.color = SelectedColor;

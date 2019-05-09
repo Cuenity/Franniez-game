@@ -60,7 +60,7 @@ public class LevelSelect : MonoBehaviour
         levelSelectCanvas.gameObject.SetActive(false);
         levelSelectCanvasWorld2.gameObject.SetActive(false);
 
-        player = PlayerDataController.instance.player;
+        player = PlayerDataController.instance.Player;
         //DIT IS NIET ZUIVER REKEN HIER NIET OP 
         //maar je krijgt wel al je buttons in een lijstje zonder dat je 10 buttons moet declareren en slepen in editor
         //MAAR HET IS NIET ZUIVER JE KRIJGT OOK BACK BUTTON ENZO HOU HIER REKENING MEE

@@ -25,7 +25,7 @@ public class ShopButtons : MonoBehaviour
     {
         musicPanel.SetActive(false);
         coinsPanel.SetActive(false);
-        amountCoinsPlayer.text = PlayerDataController.instance.player.ShopCoins.ToString();
+        amountCoinsPlayer.text = PlayerDataController.instance.Player.ShopCoins.ToString();
 
         //Start Time for GameAnal
         startTime = Time.time;
@@ -76,7 +76,7 @@ public class ShopButtons : MonoBehaviour
 
     public void BuySkin(SkinObject skin, ShopSkinButton button)
     {
-        if(PlayerDataController.instance.player.materialsByName.Contains(skin.skinName))
+        if(PlayerDataController.instance.Player.materialsByName.Contains(skin.skinName))
         {
             PlayerDataController.instance.SetActiveMaterial(skin.material);
             button.ChangeSkinCostText(skin);
@@ -97,7 +97,7 @@ public class ShopButtons : MonoBehaviour
 
     public void BuyBundle(ShopCategory category, ShopSkinButton button)
     {
-        if (!PlayerDataController.instance.player.categoriesByName.Contains(category.Name))
+        if (!PlayerDataController.instance.Player.categoriesByName.Contains(category.Name))
         {
             if(PlayerDataController.instance.RemoveShopCoins(category.cost))
             {
@@ -132,6 +132,6 @@ public class ShopButtons : MonoBehaviour
 
     private void SetWarningCoins(int cost)
     {
-        notEnoughCoins.text = PlayerDataController.instance.player.ShopCoins.ToString() + "/" + cost;
+        notEnoughCoins.text = PlayerDataController.instance.Player.ShopCoins.ToString() + "/" + cost;
     }
 }

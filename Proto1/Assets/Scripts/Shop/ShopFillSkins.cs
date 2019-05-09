@@ -81,11 +81,11 @@ public class ShopFillSkins : MonoBehaviour
 
     void BuyBundle(ShopCategory category, ShopSkinButton button)
     {
-        int aantal = PlayerDataController.instance.player.categoriesByName.Count;
+        int aantal = PlayerDataController.instance.Player.categoriesByName.Count;
 
         BundleButtonClicked(category, button);
 
-        if (aantal < PlayerDataController.instance.player.categoriesByName.Count)
+        if (aantal < PlayerDataController.instance.Player.categoriesByName.Count)
         {
             int index = 0;
             foreach (ShopSkinButton singleButton in skinButtons)
