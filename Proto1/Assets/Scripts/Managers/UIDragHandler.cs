@@ -32,7 +32,6 @@ public class UIDragHandler : MonoBehaviour, IDragHandler, IBeginDragHandler, IEn
 
         SetWorldMaterials();
 
-
         zAxis = transform.position.z;
     }
 
@@ -55,75 +54,70 @@ public class UIDragHandler : MonoBehaviour, IDragHandler, IBeginDragHandler, IEn
         {
             if (correctButton.InventoryButtonAllowed)
             {
-                if (correctButton.name == InventoryButtonName.platformSquareButton.ToString())
-                {
-                    draggedPlatform = Instantiate(platformSquare);
+                draggedPlatform = correctButton.SpawnPlatformFromInventoryButton();
 
-                    GameState.Instance.levelManager.playerPlatforms.platformSquaresLeftToPlace--;
-                    if (GameState.Instance.levelManager.playerPlatforms.platformSquaresLeftToPlace == 0)
-                    {
-                        correctButton.InventoryButtonAllowed = false;
-                    }
-                    GameState.Instance.levelManager.playerPlatforms.UpdatePlatformSquaresLeft(correctButton);
-                }
-                else if (correctButton.name == InventoryButtonName.rampInventoryButton.ToString())
-                {
-                    draggedPlatform = Instantiate(ramp);
+                //if (correctButton.name == InventoryButtonName.platformSquareButton.ToString())
+                //{
+                //    draggedPlatform = correctButton.SpawnPlatformFromInventoryButton(); //Instantiate(platformSquare);
 
-                    RotateSprite sprite = Instantiate(rotateSprite);
-                    sprite.type = PlatformType.ramp;
+                //    //GameState.Instance.levelManager.playerPlatforms.platformSquaresLeftToPlace--;
+                //    //if (GameState.Instance.levelManager.playerPlatforms.platformSquaresLeftToPlace == 0)
+                //    //{
+                //    //    correctButton.InventoryButtonAllowed = false;
+                //    //}
+                //    //GameState.Instance.levelManager.playerPlatforms.UpdatePlatformSquaresLeft(correctButton);
+                //}
+                //else if (correctButton.name == InventoryButtonName.rampInventoryButton.ToString())
+                //{
+                //    draggedPlatform = correctButton.SpawnPlatformFromInventoryButton();//Instantiate(ramp);
 
-                    sprite.transform.SetParent(draggedPlatform.transform);
-                    sprite.transform.localScale = new Vector3(0.0015f, 0.00075f, 0);
-                    sprite.transform.position = draggedPlatform.transform.position + new Vector3(0, -0.9f, -0.51f);
 
-                    sprite.transform.rotation = Quaternion.Euler(new Vector3(0, 0, 90));
 
-                    GameState.Instance.levelManager.playerPlatforms.rampsLeftToPlace--;
+                //    //GameState.Instance.levelManager.playerPlatforms.rampsLeftToPlace--;
 
-                    if (GameState.Instance.levelManager.playerPlatforms.rampsLeftToPlace == 0)
-                    {
-                        correctButton.InventoryButtonAllowed = false;
-                    }
+                //    //if (GameState.Instance.levelManager.playerPlatforms.rampsLeftToPlace == 0)
+                //    //{
+                //    //    correctButton.InventoryButtonAllowed = false;
+                //    //}
 
-                    GameState.Instance.levelManager.playerPlatforms.UpdateRampsLeft(correctButton);
-                }
-                else if (correctButton.name == InventoryButtonName.trampolineButton.ToString())
-                {
-                    draggedPlatform = Instantiate(trampoline);
-                    GameState.Instance.levelManager.playerPlatforms.trampolinesLeftToPlace--;
+                //    //GameState.Instance.levelManager.playerPlatforms.UpdateRampsLeft(correctButton);
+                //}
+                //else if (correctButton.name == InventoryButtonName.trampolineButton.ToString())
+                //{
+                //    draggedPlatform = Instantiate(trampoline);
+                //    GameState.Instance.levelManager.playerPlatforms.trampolinesLeftToPlace--;
 
-                    if (GameState.Instance.levelManager.playerPlatforms.trampolinesLeftToPlace == 0)
-                    {
-                        correctButton.InventoryButtonAllowed = false;
-                    }
+                //    if (GameState.Instance.levelManager.playerPlatforms.trampolinesLeftToPlace == 0)
+                //    {
+                //        correctButton.InventoryButtonAllowed = false;
+                //    }
 
-                    GameState.Instance.levelManager.playerPlatforms.UpdateTrampolinesLeft(correctButton);
-                }
-                else if (correctButton.name == InventoryButtonName.boostPlatformButton.ToString())
-                {
-                    draggedPlatform = Instantiate(boostPlatform);
-                    GameState.Instance.levelManager.playerPlatforms.boostPlatformsLeftToPlace--;
+                //    GameState.Instance.levelManager.playerPlatforms.UpdateTrampolinesLeft(correctButton);
+                //}
+                //else if (correctButton.name == InventoryButtonName.boostPlatformButton.ToString())
+                //{
+                //    draggedPlatform = Instantiate(boostPlatform);
+                //    GameState.Instance.levelManager.playerPlatforms.boostPlatformsLeftToPlace--;
 
-                    if (GameState.Instance.levelManager.playerPlatforms.boostPlatformsLeftToPlace == 0)
-                    {
-                        correctButton.InventoryButtonAllowed = false;
-                    }
+                //    if (GameState.Instance.levelManager.playerPlatforms.boostPlatformsLeftToPlace == 0)
+                //    {
+                //        correctButton.InventoryButtonAllowed = false;
+                //    }
 
-                    GameState.Instance.levelManager.playerPlatforms.UpdateBoostPlatformsLeft(correctButton);
-                }
-                else if (correctButton.name == InventoryButtonName.cannonPlatformButton.ToString())
-                {
-                    draggedPlatform = Instantiate(cannon);
-                    GameState.Instance.levelManager.playerPlatforms.cannonPlatformsLeftToPlace--;
+                //    GameState.Instance.levelManager.playerPlatforms.UpdateBoostPlatformsLeft(correctButton);
+                //}
+                //else if (correctButton.name == InventoryButtonName.cannonPlatformButton.ToString())
+                //{
+                //    draggedPlatform = Instantiate(cannon);
+                //    GameState.Instance.levelManager.playerPlatforms.cannonPlatformsLeftToPlace--;
 
-                    if (GameState.Instance.levelManager.playerPlatforms.cannonPlatformsLeftToPlace == 0)
-                    {
-                        correctButton.InventoryButtonAllowed = false;
-                    }
+                //    if (GameState.Instance.levelManager.playerPlatforms.cannonPlatformsLeftToPlace == 0)
+                //    {
+                //        correctButton.InventoryButtonAllowed = false;
+                //    }
 
-                    GameState.Instance.levelManager.playerPlatforms.UpdateCannonPlatformsLeft(correctButton);
-                }
+                //    GameState.Instance.levelManager.playerPlatforms.UpdateCannonPlatformsLeft(correctButton);
+                //}
 
                 if (!draggedPlatform.GetComponent<Cannon>())
                 {

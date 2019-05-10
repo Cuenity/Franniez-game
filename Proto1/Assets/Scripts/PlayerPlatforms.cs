@@ -4,6 +4,8 @@ using UnityEngine.UI;
 
 public class PlayerPlatforms
 {
+    private GameState gameState;
+
     public GameObject platformSquare;
     public int platformSquares;
     public int platformSquaresLeftToPlace;
@@ -69,37 +71,37 @@ public class PlayerPlatforms
         boostPlatformsLeftToPlace = boostPlatforms;
         cannonPlatformsLeftToPlace = cannonPlatforms;
 
-
+        gameState = GameState.Instance;
     }
 
     public void UpdateRampsLeft(InventoryButton button)
     {
-        Text buttonText = button.transform.GetChild(3).gameObject.GetComponent<Text>();
-        buttonText.text = GameState.Instance.levelManager.playerPlatforms.rampsLeftToPlace.ToString();
+        Text buttonText = button.transform.Find("PlatformAmmount").GetComponent<Text>();
+        buttonText.text = gameState.levelManager.playerPlatforms.rampsLeftToPlace.ToString();
     }
 
     public void UpdatePlatformSquaresLeft(InventoryButton button)
     {
-        Text buttonText = button.transform.GetChild(3).gameObject.GetComponent<Text>();
-        buttonText.text = GameState.Instance.levelManager.playerPlatforms.platformSquaresLeftToPlace.ToString();
+        Text buttonText = button.transform.Find("PlatformAmmount").GetComponent<Text>();
+        buttonText.text = gameState.levelManager.playerPlatforms.platformSquaresLeftToPlace.ToString();
     }
 
     public void UpdateTrampolinesLeft(InventoryButton button)
     {
-        Text buttonText = button.transform.GetChild(3).gameObject.GetComponent<Text>();
-        buttonText.text = GameState.Instance.levelManager.playerPlatforms.trampolinesLeftToPlace.ToString();
+        Text buttonText = button.transform.Find("PlatformAmmount").GetComponent<Text>();
+        buttonText.text = gameState.levelManager.playerPlatforms.trampolinesLeftToPlace.ToString();
     }
 
     public void UpdateBoostPlatformsLeft(InventoryButton button)
     {
-        Text buttonText = button.transform.GetChild(3).gameObject.GetComponent<Text>();
-        buttonText.text = GameState.Instance.levelManager.playerPlatforms.boostPlatformsLeftToPlace.ToString();
+        Text buttonText = button.transform.Find("PlatformAmmount").GetComponent<Text>();
+        buttonText.text = gameState.levelManager.playerPlatforms.boostPlatformsLeftToPlace.ToString();
     }
 
     public void UpdateCannonPlatformsLeft(InventoryButton button)
     {
-        Text buttonText = button.transform.GetChild(3).gameObject.GetComponent<Text>();
-        buttonText.text = GameState.Instance.levelManager.playerPlatforms.cannonPlatformsLeftToPlace.ToString();
+        Text buttonText = button.transform.Find("PlatformAmmount").GetComponent<Text>();
+        buttonText.text = gameState.levelManager.playerPlatforms.cannonPlatformsLeftToPlace.ToString();
     }
 
     //public GameObject InstantiatePlayerPlatform(GameObject inventoryButton)
