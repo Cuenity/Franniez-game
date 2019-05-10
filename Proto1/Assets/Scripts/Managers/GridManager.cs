@@ -9,6 +9,7 @@ public class GridManager : MonoBehaviour
 
     public GameObject gridSquare;
     public List<Vector3> gridSquares = new List<Vector3>();
+    public int[,] gridSquares2;
 
     public int width;
     public int height;
@@ -308,10 +309,42 @@ public class GridManager : MonoBehaviour
         Vector3 gridStartingPoint = new Vector3(0f, 0f, 0f);
 
 
-        for (int i = 0; i < heigth; i++)
+        for (int i = 0; i < height; i++)
         {
             gridStartingPoint.x = 0f;
+            RedZone redZonebefore = Instantiate(redZone);
+            RedZone redZoneAfter = Instantiate(redZone);
+            redZonebefore.transform.position = gridStartingPoint + new Vector3(0, -1, 1f);
+            redZoneAfter.transform.position = gridStartingPoint + new Vector3(gameState.gridManager.width, -1, 1f);
+            //for (int i4 = 0; i4 < width; i4++)
+            //{
+            //    if (i4 == 0)
+            //    {
+            //        cornerredzone = Instantiate(cornerredzone);
+            //        cornerredzone.transform.position = new Vector3(i4, -0.5f, 1f);
+            //        cornerredzone = Instantiate(cornerredzone);
+            //        cornerredzone.transform.position = new Vector3(width, -0.5f, 1f);
+            //    }
+            //    bottemredZone = Instantiate(bottemredZone);
+            //    bottemredZone.transform.position = new Vector3(i4+.5f , -0.5f, 1f);
+            //}
+
             gridStartingPoint = gridStartingPoint + moveDown;
+            if (i == height - 1)
+            {
+                for (int i3 = 0; i3 < width; i3++)
+                {
+                    if (i3 == 0)
+                    {
+                        cornerredzone = Instantiate(cornerredzone);
+                        cornerredzone.transform.position = new Vector3(i3, -height - .5f, 1f);
+                        cornerredzone = Instantiate(cornerredzone);
+                        cornerredzone.transform.position = new Vector3(width, -height - .5f, 1f);
+                    }
+                    bottemredZone = Instantiate(bottemredZone);
+                    bottemredZone.transform.position = new Vector3(i3 + .5f, -height - .5f, 1f);
+                }
+            }
 
             for (int i2 = 0; i2 < width; i2++)
             {
