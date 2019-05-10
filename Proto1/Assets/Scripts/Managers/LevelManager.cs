@@ -141,7 +141,6 @@ public class LevelManager : MonoBehaviour
         0, 8, 0 , 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
         0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
         10, 0, 0, 0, 5, 0, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
-
     int[] multiplayerLevel2Cross = new int[] {
         0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
         1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
@@ -360,7 +359,7 @@ public class LevelManager : MonoBehaviour
             }
         }
 
-        // af
+        // bal lager en meer bij trampoline. Trampoline en bal allebij zichtbaar in bouwscherm
         else if (sceneName == "3")
         {
             if (!levelIsSpawned)
@@ -380,7 +379,7 @@ public class LevelManager : MonoBehaviour
             }
         }
 
-        // af
+        // vervang deze met ander jump level
         else if (sceneName == "4")
         {
             if (!levelIsSpawned)
