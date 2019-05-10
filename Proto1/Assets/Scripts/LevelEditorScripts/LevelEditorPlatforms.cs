@@ -45,7 +45,7 @@ public class LevelEditorPlatforms
     //private GameObject draggedPlatform;
     public List<GameObject> placedPlatforms = new List<GameObject>();
 
-    public LevelEditorPlatforms(int rampsReversed,int ramps, int platformSquares, int trampolines, int boostPlatforms, int cannonPlatforms,int redZones)
+    public LevelEditorPlatforms(int rampsReversed,int ramps, int platformSquares, int trampolines, int boostPlatforms,int redZones)
     {
         placedPlatforms = new List<GameObject>();
 

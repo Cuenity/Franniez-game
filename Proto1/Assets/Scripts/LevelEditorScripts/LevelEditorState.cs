@@ -42,7 +42,7 @@ public class LevelEditorState : MonoBehaviour
     void Start()
     {
         instance = this;
-        playerPlatforms = new LevelEditorPlatforms(999,999, 999, 999, 999, 999,999);
+        playerPlatforms = new LevelEditorPlatforms(999,999, 999, 999, 999, 999);
         UIManager.InventoryButtons(playerPlatforms);
         // And God said, “Let there be light,” and there was light.  God saw that the light was good, and he separated the light from the darkness. 
             
@@ -109,35 +109,42 @@ public class LevelEditorState : MonoBehaviour
         //moet doen wat rollingphase starter ook doet en dat is nutteloze shit van die kankerplatforms afhalen
         //outline uit en 
         //leveleditorDragmanager verwijderen
-        foreach (GameObject placedPlatform in playerPlatforms.placedPlatforms)
+        try
         {
-            if (!placedPlatform.GetComponent<Cannon>())
+            foreach (GameObject placedPlatform in playerPlatforms.placedPlatforms)
             {
-                Destroy(placedPlatform.GetComponent<LevelEditorPlatformDragManager>());
-                placedPlatform.GetComponent<Outline>().enabled = false;
-                // voor welk platform wordt onderstaande code uitgevoerd?
-                if (placedPlatform.gameObject.transform.childCount > 0 && !placedPlatform.GetComponent<Cannon>())
+                if (!placedPlatform.GetComponent<Cannon>())
                 {
-                    placedPlatform.gameObject.transform.GetChild(0).gameObject.SetActive(false);
+                    Destroy(placedPlatform.GetComponent<LevelEditorPlatformDragManager>());
+                    placedPlatform.GetComponent<Outline>().enabled = false;
+                    // voor welk platform wordt onderstaande code uitgevoerd?
+                    if (placedPlatform.gameObject.transform.childCount > 0 && !placedPlatform.GetComponent<Cannon>())
+                    {
+                        placedPlatform.gameObject.transform.GetChild(0).gameObject.SetActive(false);
+                    }
                 }
-            }
-            else if (placedPlatform.GetComponent<RedZone>())
-            {
-                placedPlatform.GetComponent<MeshCollider>().isTrigger = false;
-            }
-            else if (!placedPlatform.name.Contains("Ramp"))
-            {
-                Destroy(placedPlatform.transform.GetChild(0).GetComponent<LevelEditorPlatformDragManager>());
-            }
+                else if (placedPlatform.GetComponent<RedZone>())
+                {
+                    placedPlatform.GetComponent<MeshCollider>().isTrigger = false;
+                }
+                else if (!placedPlatform.name.Contains("Ramp"))
+                {
+                    Destroy(placedPlatform.transform.GetChild(0).GetComponent<LevelEditorPlatformDragManager>());
+                }
 
-            else
-            {
-                Destroy(placedPlatform.transform.GetChild(0).transform.GetChild(0).GetComponent<LevelEditorPlatformDragManager>());
-                Destroy(placedPlatform.transform.GetChild(1).GetComponent<LevelEditorPlatformDragManager>());
-                Destroy(placedPlatform.transform.GetChild(2).GetComponent<LevelEditorPlatformDragManager>());
-                Destroy(placedPlatform.transform.GetChild(3).GetComponent<LevelEditorPlatformDragManager>());
-                // hier nog de outline op false als dat er nog bij cannon bij komt
+                else
+                {
+                    Destroy(placedPlatform.transform.GetChild(0).transform.GetChild(0).GetComponent<LevelEditorPlatformDragManager>());
+                    Destroy(placedPlatform.transform.GetChild(1).GetComponent<LevelEditorPlatformDragManager>());
+                    Destroy(placedPlatform.transform.GetChild(2).GetComponent<LevelEditorPlatformDragManager>());
+                    Destroy(placedPlatform.transform.GetChild(3).GetComponent<LevelEditorPlatformDragManager>());
+                    // hier nog de outline op false als dat er nog bij cannon bij komt
+                }
+
             }
+        }
+        catch
+        {
 
         }
         levelEditorBall.Roll();
@@ -149,25 +156,31 @@ public class LevelEditorState : MonoBehaviour
        // InventoryButtons moet meegeven welke platformen en hoeveel van elk, elk verschillend type krijgt één knop met daarin een platform (als afbeelding of wat dan ook) met het aantal weergegeven.
         foreach (GameObject placedPlatform in playerPlatforms.placedPlatforms)
         {
-            if (!placedPlatform.GetComponent<Cannon>())
-            {
-                placedPlatform.AddComponent<LevelEditorPlatformDragManager>();
-                placedPlatform.GetComponent<Outline>().enabled = true;
-                // voor welk platform wordt onderstaande code uitgevoerd?
-                if (placedPlatform.gameObject.transform.childCount > 0)
+            try
+            { 
+                if (!placedPlatform.GetComponent<Cannon>())
                 {
-                    placedPlatform.gameObject.transform.GetChild(0).gameObject.SetActive(true);
+                    placedPlatform.AddComponent<LevelEditorPlatformDragManager>();
+                    placedPlatform.GetComponent<Outline>().enabled = true;
+                    // voor welk platform wordt onderstaande code uitgevoerd?
+                    if (placedPlatform.gameObject.transform.childCount > 0)
+                    {
+                        placedPlatform.gameObject.transform.GetChild(0).gameObject.SetActive(true);
+                    }
+                }
+                else
+                {
+                    placedPlatform.transform.GetChild(0).transform.GetChild(0).gameObject.AddComponent<LevelEditorPlatformDragManager>();
+                    placedPlatform.transform.GetChild(1).gameObject.AddComponent<LevelEditorPlatformDragManager>();
+                    placedPlatform.transform.GetChild(2).gameObject.AddComponent<LevelEditorPlatformDragManager>();
+                    placedPlatform.transform.GetChild(3).gameObject.AddComponent<LevelEditorPlatformDragManager>();
+                    // hier nog de outline op true als dat er nog bij cannon bij komt
                 }
             }
-            else
+            catch
             {
-                placedPlatform.transform.GetChild(0).transform.GetChild(0).gameObject.AddComponent<LevelEditorPlatformDragManager>();
-                placedPlatform.transform.GetChild(1).gameObject.AddComponent<LevelEditorPlatformDragManager>();
-                placedPlatform.transform.GetChild(2).gameObject.AddComponent<LevelEditorPlatformDragManager>();
-                placedPlatform.transform.GetChild(3).gameObject.AddComponent<LevelEditorPlatformDragManager>();
-                // hier nog de outline op true als dat er nog bij cannon bij komt
-            }
 
+            }
             //placedPlatform.GetComponent<PlatformDragManager>().enabled = true;
         }
     }

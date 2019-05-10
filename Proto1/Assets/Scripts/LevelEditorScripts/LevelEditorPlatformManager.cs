@@ -144,17 +144,22 @@ public class LevelEditorPlatformManager : MonoBehaviour
             else if (levelPlatformen.tileList[i] == 1)
             {
                 BigRamp ramp = Instantiate(bigRampClass, LevelEditorState.Instance.gridManager.gridSquares[i+1], new Quaternion(0, 0, 0, 0));
+                ramp.gameObject.AddComponent<LevelEditorPlatformDragManager>();
                 ramp.transform.Rotate(new Vector3(-90f, -90f, 0));
 
             }
             else if (levelPlatformen.tileList[i] == 2)
             {
                 Ramp ramp = Instantiate(rampReversedClass, LevelEditorState.Instance.gridManager.gridSquares[i + 1], new Quaternion(0, 0, 0, 0));
+                ramp.gameObject.AddComponent<LevelEditorPlatformDragManager>();
                 ramp.transform.Rotate(new Vector3(-90f, 90f, 0));
             }
             else if (levelPlatformen.tileList[i] == 3)
             {
-                Instantiate(platformSquareClass, LevelEditorState.Instance.gridManager.gridSquares[i+1] , new Quaternion(0, 0, 0, 0)).transform.Rotate(new Vector3(-90,90,0));
+                PlatformSquare square = Instantiate(platformSquareClass, LevelEditorState.Instance.gridManager.gridSquares[i+1] , new Quaternion(0, 0, 0, 0));
+                square.gameObject.AddComponent<LevelEditorPlatformDragManager>();
+                square.transform.Rotate(new Vector3(-90, 90, 0));
+
             }
             else if (levelPlatformen.tileList[i] == 4)
             {
