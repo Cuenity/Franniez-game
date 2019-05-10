@@ -9,51 +9,29 @@ public class PlayerPlatforms
     public GameObject platformSquare;
     public int platformSquares;
     public int platformSquaresLeftToPlace;
-    public bool platformSquaresButtonInstantated;
 
     public GameObject ramp;
     public int ramps;
     public int rampsLeftToPlace;
-    public bool rampButtonInstantiated;
 
     public GameObject trampoline;
     public int trampolines;
     public int trampolinesLeftToPlace;
-    public bool trampolineButtonInstantiated;
 
     public GameObject boostPlatform;
     public int boostPlatforms;
     public int boostPlatformsLeftToPlace;
-    public bool boostPlatformButtonInstantiated;
 
     public GameObject cannonPlatform;
     public int cannonPlatforms;
     public int cannonPlatformsLeftToPlace;
-    public bool cannonPlatformButtonInstantiated;
 
     private int inventoryButtonAmmount;
     public int InventoryButtonAmmount
     {
-        get
-        {
-            inventoryButtonAmmount = 0;
-
-            if (ramps > 0)
-                inventoryButtonAmmount++;
-            if (platformSquares > 0)
-                inventoryButtonAmmount++;
-            if (trampolines > 0)
-                inventoryButtonAmmount++;
-            if (boostPlatforms > 0)
-                inventoryButtonAmmount++;
-            if (cannonPlatforms > 0)
-                inventoryButtonAmmount++;
-
-            return inventoryButtonAmmount;
-        }
+        get { return inventoryButtonAmmount; }
     }
-
-    //private GameObject draggedPlatform;
+    
     public List<GameObject> placedPlatforms = new List<GameObject>();
 
     public PlayerPlatforms(int ramps, int platformSquares, int trampolines, int boostPlatforms, int cannonPlatforms)
@@ -71,7 +49,39 @@ public class PlayerPlatforms
         boostPlatformsLeftToPlace = boostPlatforms;
         cannonPlatformsLeftToPlace = cannonPlatforms;
 
+        CalculateAndSetInventoryButtonAmmount();
+
         gameState = GameState.Instance;
+    }
+
+    private void CalculateAndSetInventoryButtonAmmount()
+    {
+        inventoryButtonAmmount = 0;
+
+        if (ramps > 0)
+        {
+            inventoryButtonAmmount++;
+        }
+
+        if (platformSquares > 0)
+        {
+            inventoryButtonAmmount++;
+        }
+
+        if (trampolines > 0)
+        {
+            inventoryButtonAmmount++;
+        }
+
+        if (boostPlatforms > 0)
+        {
+            inventoryButtonAmmount++;
+        }
+
+        if (cannonPlatforms > 0)
+        {
+            inventoryButtonAmmount++;
+        }
     }
 
     public void UpdateRampsLeft(InventoryButton button)
@@ -103,18 +113,4 @@ public class PlayerPlatforms
         Text buttonText = button.transform.Find("PlatformAmmount").GetComponent<Text>();
         buttonText.text = gameState.levelManager.playerPlatforms.cannonPlatformsLeftToPlace.ToString();
     }
-
-    //public GameObject InstantiatePlayerPlatform(GameObject inventoryButton)
-    //{
-    //    if (inventoryButton.name == "platformSquareButton")
-    //    {
-    //        draggedPlatform = Instantiate(platformSquare);
-    //    }
-    //    else if (inventoryButton.name == "rampInventoryButton")
-    //    {
-    //        Instantiate(ramp);
-    //    }
-
-    //    return draggedPlatform;
-    //}
 }

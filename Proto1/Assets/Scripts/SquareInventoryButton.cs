@@ -15,6 +15,11 @@ public class SquareInventoryButton : InventoryButton
         gameObject.GetComponentInChildren<Text>().text = platformAmmount;
     }
 
+    public override GameObject SpawnPhotonPlatformFromInventoryButton()
+    {
+        throw new System.NotImplementedException();
+    }
+
     public override GameObject SpawnPlatformFromInventoryButton()
     {
         GameObject draggedPlatform = Instantiate(platformSquare);
