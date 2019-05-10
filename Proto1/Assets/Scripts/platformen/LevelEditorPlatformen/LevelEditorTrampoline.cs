@@ -5,71 +5,25 @@ using UnityEngine;
 public class LevelEditorTrampoline : MonoBehaviour
 {
 
+    private void OnTriggerEnter(Collider collision)
+    {
+        if (!collision.isTrigger)
+        {
+            LevelEditorBall player = LevelEditorState.Instance.levelEditorBall;
+            Rigidbody body = player.GetComponent<Rigidbody>();
+            Vector3 velocity = body.velocity;
+            body.velocity = new Vector3(velocity.x, 0, 0);
+
+            body.AddForce(velocity.x, 36, 0, ForceMode.Impulse);
+        }
+    }
     private void OnCollisionEnter(Collision collision)
     {
-        Debug.Log("Collided Trampoline");
         GameObject player = collision.other.gameObject;
-        Vector3 velocity = player.GetComponent<Rigidbody>().velocity;
-        float velocityY;
-        float velocityx;
-        if (velocity.y > 0)
-        {
-            velocityY = velocity.y;
-        }
-        else
-        {
-            velocityY = velocity.y * -1;
-        }
-        if ((velocityY < 4 && velocityY > 0) || velocityY == 0)
-        {
-            if (player.name.Contains("Light"))
-            {
-                velocityY = 2;
-            }
-            else
-            {
-                velocityY = 4;
-            }
-        }
-        else if (velocityY > -4 && velocityY < 0)
-        {
-            if (player.name.Contains("Light"))
-            {
-                velocityY = -2;
-            }
-            else
-            {
-                velocityY = -4;
-            }
-        }
+        Rigidbody body = player.GetComponent<Rigidbody>();
+        Vector3 velocity = body.velocity;
+        body.velocity = new Vector3(velocity.x, 0, 0);
 
-        if (velocity.x < 1 && velocity.x > 0)
-        {
-            if (player.name.Contains("Light"))
-            {
-                velocityx = 1;
-            }
-            else
-            {
-                velocityx = 2;
-            }
-        }
-        else if ((velocity.x > -1 && velocity.x < 0) || velocity.x == 0)
-        {
-            if (player.name.Contains("Light"))
-            {
-                velocityx = -1;
-            }
-            else
-            {
-                velocityx = -2;
-            }
-        }
-        else
-        {
-            velocityx = velocity.x;
-        }
-
-        player.GetComponent<Rigidbody>().AddForce(velocityx, velocityY * 7f, 0, ForceMode.Impulse);
+        body.AddForce(velocity.x, 36, 0, ForceMode.Impulse);
     }
 }

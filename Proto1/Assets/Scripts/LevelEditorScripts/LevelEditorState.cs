@@ -184,4 +184,10 @@ public class LevelEditorState : MonoBehaviour
             //placedPlatform.GetComponent<PlatformDragManager>().enabled = true;
         }
     }
+    
+    public void SetSpawnBallPosition()
+    {
+        InputField spawnballinput = GameObject.Find("BallPositionInput").GetComponent<InputField>() ;
+        SpawnBallPosition = Convert.ToInt32(spawnballinput.text);
+    }
 }
