@@ -4,7 +4,6 @@ using UnityEngine.SceneManagement;
 
 public class GameState : MonoBehaviour
 {
-
     // Serialize deze dingen nog
     public RollingPhaseManager rollingPhaseManager;
     public BuildingPhaseManager buildingPhaseManager;

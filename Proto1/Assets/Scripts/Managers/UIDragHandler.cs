@@ -24,8 +24,6 @@ public class UIDragHandler : MonoBehaviour, IDragHandler, IBeginDragHandler, IEn
 
     float zAxis = 0;
 
-    PlatformType type;
-
     private void Start()
     {
         playercamera = GameState.Instance.playerCamera;
@@ -59,8 +57,6 @@ public class UIDragHandler : MonoBehaviour, IDragHandler, IBeginDragHandler, IEn
             {
                 if (correctButton.name == InventoryButtonName.platformSquareButton.ToString())
                 {
-                    type = PlatformType.platformSquare;
-
                     draggedPlatform = Instantiate(platformSquare);
 
                     GameState.Instance.levelManager.playerPlatforms.platformSquaresLeftToPlace--;
@@ -72,8 +68,17 @@ public class UIDragHandler : MonoBehaviour, IDragHandler, IBeginDragHandler, IEn
                 }
                 else if (correctButton.name == InventoryButtonName.rampInventoryButton.ToString())
                 {
-                    type = PlatformType.ramp;
                     draggedPlatform = Instantiate(ramp);
+
+                    RotateSprite sprite = Instantiate(rotateSprite);
+                    sprite.type = PlatformType.ramp;
+
+                    sprite.transform.SetParent(draggedPlatform.transform);
+                    sprite.transform.localScale = new Vector3(0.0015f, 0.00075f, 0);
+                    sprite.transform.position = draggedPlatform.transform.position + new Vector3(0, -0.9f, -0.51f);
+
+                    sprite.transform.rotation = Quaternion.Euler(new Vector3(0, 0, 90));
+
                     GameState.Instance.levelManager.playerPlatforms.rampsLeftToPlace--;
 
                     if (GameState.Instance.levelManager.playerPlatforms.rampsLeftToPlace == 0)
@@ -85,8 +90,6 @@ public class UIDragHandler : MonoBehaviour, IDragHandler, IBeginDragHandler, IEn
                 }
                 else if (correctButton.name == InventoryButtonName.trampolineButton.ToString())
                 {
-                    type = PlatformType.trampoline;
-
                     draggedPlatform = Instantiate(trampoline);
                     GameState.Instance.levelManager.playerPlatforms.trampolinesLeftToPlace--;
 
@@ -99,8 +102,6 @@ public class UIDragHandler : MonoBehaviour, IDragHandler, IBeginDragHandler, IEn
                 }
                 else if (correctButton.name == InventoryButtonName.boostPlatformButton.ToString())
                 {
-                    type = PlatformType.boostPlatform;
-
                     draggedPlatform = Instantiate(boostPlatform);
                     GameState.Instance.levelManager.playerPlatforms.boostPlatformsLeftToPlace--;
 
@@ -113,8 +114,6 @@ public class UIDragHandler : MonoBehaviour, IDragHandler, IBeginDragHandler, IEn
                 }
                 else if (correctButton.name == InventoryButtonName.cannonPlatformButton.ToString())
                 {
-                    type = PlatformType.cannon;
-
                     draggedPlatform = Instantiate(cannon);
                     GameState.Instance.levelManager.playerPlatforms.cannonPlatformsLeftToPlace--;
 
@@ -150,7 +149,6 @@ public class UIDragHandler : MonoBehaviour, IDragHandler, IBeginDragHandler, IEn
             {
                 if (correctButton.name == InventoryButtonName.platformSquareButton.ToString())
                 {
-                    type = PlatformType.platformSquare;
                     draggedPlatform = PhotonNetwork.Instantiate("Photon PlatformSquare", new Vector3(0, 0, 0), new Quaternion(0, 0, 0, 0));
                     draggedPlatform.transform.Rotate(new Vector3(-90, 0, 0));
                     GameState.Instance.levelManager.playerPlatforms.platformSquaresLeftToPlace--;
@@ -162,7 +160,6 @@ public class UIDragHandler : MonoBehaviour, IDragHandler, IBeginDragHandler, IEn
                 }
                 else if (correctButton.name == InventoryButtonName.rampInventoryButton.ToString())
                 {
-                    type = PlatformType.ramp;
                     draggedPlatform = PhotonNetwork.Instantiate("Photon RampSmall2", new Vector3(0, 0, 0), new Quaternion(0, 0, 0, 0));
                     draggedPlatform.transform.Rotate(new Vector3(270, 270, 0));
                     GameState.Instance.levelManager.playerPlatforms.rampsLeftToPlace--;
@@ -176,8 +173,6 @@ public class UIDragHandler : MonoBehaviour, IDragHandler, IBeginDragHandler, IEn
                 }
                 else if (correctButton.name == InventoryButtonName.trampolineButton.ToString())
                 {
-                    type = PlatformType.trampoline;
-
                     draggedPlatform = PhotonNetwork.Instantiate("Photon Trampoline", new Vector3(0, 0, 0), new Quaternion(0, 0, 0, 0));
 
                     GameState.Instance.levelManager.playerPlatforms.trampolinesLeftToPlace--;
@@ -191,8 +186,6 @@ public class UIDragHandler : MonoBehaviour, IDragHandler, IBeginDragHandler, IEn
                 }
                 else if (correctButton.name == InventoryButtonName.boostPlatformButton.ToString())
                 {
-                    type = PlatformType.boostPlatform;
-
                     draggedPlatform = PhotonNetwork.Instantiate("Photon Booster", new Vector3(0, 0, 0), new Quaternion(0, 0, 0, 0));
 
                     GameState.Instance.levelManager.playerPlatforms.boostPlatformsLeftToPlace--;
@@ -206,8 +199,6 @@ public class UIDragHandler : MonoBehaviour, IDragHandler, IBeginDragHandler, IEn
                 }
                 else if (correctButton.name == InventoryButtonName.cannonPlatformButton.ToString())
                 {
-                    type = PlatformType.cannon;
-
                     draggedPlatform = Instantiate(cannon);
                     GameState.Instance.levelManager.playerPlatforms.cannonPlatformsLeftToPlace--;
 
@@ -249,28 +240,13 @@ public class UIDragHandler : MonoBehaviour, IDragHandler, IBeginDragHandler, IEn
 
     public void OnEndDrag(PointerEventData eventData)
     {
-        if (draggingAllowed) // replace this with the if above when there is an abstract parent class for platforms
+        if (draggingAllowed)
         {
-            if (type == PlatformType.ramp)
-            {
-                RotateSprite sprite = Instantiate(rotateSprite);
-                sprite.type = PlatformType.ramp;
-
-                sprite.transform.SetParent(draggedPlatform.transform); //x positie: 0,0200 (202) scale: 0.001 bij 0.0005
-                sprite.transform.localScale = new Vector3(0.0015f, 0.00075f, 0);
-                sprite.transform.position = draggedPlatform.transform.position + new Vector3(0, -0.9f, -0.51f); //new Vector3(1, 0, -2);
-
-                sprite.transform.rotation = Quaternion.Euler(new Vector3(0, 0, 90));
-            }
-
             GameState.Instance.levelManager.playerPlatforms.placedPlatforms.Add(draggedPlatform);
-
-            Vector3 pos = camera.ScreenToWorldPoint(Input.mousePosition);
 
             platformManager.spawnPlatformOnGrid(draggedPlatform.transform.position, draggedPlatform);
 
             StartCoroutine(CorutineDragActive());
-            //coroutine wacht een frame
         }
     }
 
@@ -282,7 +258,6 @@ public class UIDragHandler : MonoBehaviour, IDragHandler, IBeginDragHandler, IEn
 
     private void SetWorldMaterials()
     {
-
         // World 2
         if (GameState.Instance.PreviousLevel > 10 && GameState.Instance.PreviousLevel < 21)
         {
