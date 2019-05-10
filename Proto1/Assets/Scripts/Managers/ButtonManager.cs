@@ -36,15 +36,8 @@ public class ButtonManager : MonoBehaviour
         {
             gameState.levelManager.SetBuildingPhase();
         }
+
         ChangeEnvironment();
-    }
-
-
-    public void InventoryButton(GameObject platformSquare)
-    {
-        //Instantiate(platformSquare);
-        //var pos = Input.mousePosition;
-
     }
 
     public void ChooseLanguage(string pathFile)
@@ -159,12 +152,12 @@ public class ButtonManager : MonoBehaviour
         }
 
         GameState.Instance.levelManager.playerPlatforms.placedPlatforms.Remove(playerPlatform);
+
         if (!PhotonNetwork.IsConnected)
             Destroy(playerPlatform);
         else if (PhotonNetwork.IsConnected)
             PhotonNetwork.Destroy(playerPlatform);
         GameState.Instance.playerCamera.platformDragActive = false;
-
     }
 
     private InventoryButton FindCorrectInventoryButton(InventoryButtonName inventoryButtonName)

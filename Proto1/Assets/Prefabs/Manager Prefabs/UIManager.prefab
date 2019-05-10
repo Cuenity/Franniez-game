@@ -46,7 +46,16 @@ MonoBehaviour:
   canvas: {fileID: 5378894420974302099, guid: da83d1c688dacde4a824218a9b65e098, type: 3}
   pauseMenuCanvas: {fileID: 1360243621057727504, guid: eba6051e33294284f873e5c190aa82fe,
     type: 3}
-  inventoryButton: {fileID: 4106794643439255396, guid: ec46b2a2eb4814e44a4f05858e3a45e8,
+  inventoryButton: {fileID: 0}
+  squareInventoryButton: {fileID: 4950077461847648957, guid: 26e065a4abc982c4a853d120fa22a66c,
+    type: 3}
+  rampInventoryButton: {fileID: 8661837813380929372, guid: cfb27c4b38a6a27469e839750af227a7,
+    type: 3}
+  trampolineInventoryButton: {fileID: 9030863771138646015, guid: 5d9a9d21faaf2e3459fd2f7c48171332,
+    type: 3}
+  boosterInventoryButton: {fileID: 372762848793523829, guid: 55150da3a10316043a75f46332138b63,
+    type: 3}
+  cannonInventoryButton: {fileID: 3378125390107006783, guid: b579a9ad7c861204f920d3e6c882c6d2,
     type: 3}
   rampImage: {fileID: 21300000, guid: 58658af157b87a944893f2ab562031e5, type: 3}
   platformSquareImage: {fileID: 21300000, guid: cf81ca485854bc1499be3537b667dd5b,

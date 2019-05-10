@@ -1,10 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 
-
-
-[RequireComponent(typeof(GameObject))]
-public class InventoryButton : MonoBehaviour
+public abstract class InventoryButton : MonoBehaviour
 {
     private bool inventoryButtonAllowed;
     public bool InventoryButtonAllowed
@@ -36,7 +33,7 @@ public class InventoryButton : MonoBehaviour
     {
         inventoryButtonAllowed = true;
     }
-    public void Update()
-    {
-    }
+
+    public abstract void SetCorrectTextAndImageForInventoryButton(string platformAmmount);
+    public abstract GameObject SpawnPlatformFromInventoryButton();
 }

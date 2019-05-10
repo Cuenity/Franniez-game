@@ -8,7 +8,18 @@ public class UIManager : MonoBehaviour
 
     [SerializeField]
     private InventoryButton inventoryButton;
+    [SerializeField]
+    private SquareInventoryButton squareInventoryButton;
+    [SerializeField]
+    private RampInventoryButton rampInventoryButton;
+    [SerializeField]
+    private TrampolineInventoryButton trampolineInventoryButton;
+    [SerializeField]
+    private BoosterInventoryButton boosterInventoryButton;
+    [SerializeField]
+    private CannonInventoryButton cannonInventoryButton;
 
+    // deze kunnen weg als het goed is
     public Sprite rampImage;
     public Sprite platformSquareImage;
     public Sprite trampolineImage;
@@ -16,6 +27,7 @@ public class UIManager : MonoBehaviour
     public Sprite cannonPlatformImage;
     public Sprite normalBallImage;
     public GameObject tutorialArrow;
+    // tot hier
 
     public InventoryButton[] instantiatedInventoryButtons;
 
@@ -44,17 +56,68 @@ public class UIManager : MonoBehaviour
             int buttonDistance = Screen.width / (playerPlatforms.InventoryButtonAmmount + 1);
             int buttonHeight = Screen.height / 8;
 
-            for (int i = 0; i < playerPlatforms.InventoryButtonAmmount; i++)
+            int index = 0;
+            if (playerPlatforms.platformSquares > 0)
             {
-                InventoryButton buttonForWidth = Instantiate(inventoryButton);
-                //buttonForWidth.GetComponent<RectTransform>().sizeDelta = new Vector2(Screen.width / 8, Screen.width / 8);
-                instantiatedInventoryButtons[i] = buttonForWidth;
-                instantiatedInventoryButtons[i].transform.SetParent(canvas.transform);
+                instantiatedInventoryButtons[index] = Instantiate(squareInventoryButton);
+                instantiatedInventoryButtons[index].transform.SetParent(canvas.transform);
+                instantiatedInventoryButtons[index].transform.position = new Vector3(buttonDistance * (index + 1), buttonHeight, 0);
+                instantiatedInventoryButtons[index].SetCorrectTextAndImageForInventoryButton(playerPlatforms.platformSquares.ToString());
 
-                ChangeInventoryButtonImageAndText(i, playerPlatforms);
-
-                instantiatedInventoryButtons[i].transform.position = new Vector3(buttonDistance * (i + 1), buttonHeight, 0);
+                index++;
             }
+
+            if (playerPlatforms.ramps > 0)
+            {
+                instantiatedInventoryButtons[index] = Instantiate(rampInventoryButton);
+                instantiatedInventoryButtons[index].transform.SetParent(canvas.transform);
+                instantiatedInventoryButtons[index].transform.position = new Vector3(buttonDistance * (index + 1), buttonHeight, 0);
+                instantiatedInventoryButtons[index].SetCorrectTextAndImageForInventoryButton(playerPlatforms.ramps.ToString());
+
+                index++;
+            }
+
+            if (playerPlatforms.trampolines > 0)
+            {
+                instantiatedInventoryButtons[index] = Instantiate(trampolineInventoryButton);
+                instantiatedInventoryButtons[index].transform.SetParent(canvas.transform);
+                instantiatedInventoryButtons[index].transform.position = new Vector3(buttonDistance * (index + 1), buttonHeight, 0);
+                instantiatedInventoryButtons[index].SetCorrectTextAndImageForInventoryButton(playerPlatforms.trampolines.ToString());
+
+                index++;
+            }
+
+            if (playerPlatforms.boostPlatforms > 0)
+            {
+                instantiatedInventoryButtons[index] = Instantiate(boosterInventoryButton);
+                instantiatedInventoryButtons[index].transform.SetParent(canvas.transform);
+                instantiatedInventoryButtons[index].transform.position = new Vector3(buttonDistance * (index + 1), buttonHeight, 0);
+                instantiatedInventoryButtons[index].SetCorrectTextAndImageForInventoryButton(playerPlatforms.boostPlatforms.ToString());
+
+                index++;
+            }
+
+            if (playerPlatforms.cannonPlatforms > 0)
+            {
+                instantiatedInventoryButtons[index] = Instantiate(cannonInventoryButton);
+                instantiatedInventoryButtons[index].transform.SetParent(canvas.transform);
+                instantiatedInventoryButtons[index].transform.position = new Vector3(buttonDistance * (index + 1), buttonHeight, 0);
+                instantiatedInventoryButtons[index].SetCorrectTextAndImageForInventoryButton(playerPlatforms.cannonPlatforms.ToString());
+
+                index++;
+            }
+
+            //for (int i = 0; i < playerPlatforms.InventoryButtonAmmount; i++)
+            //{
+            //    InventoryButton buttonForWidth = Instantiate(inventoryButton);
+            //    //buttonForWidth.GetComponent<RectTransform>().sizeDelta = new Vector2(Screen.width / 8, Screen.width / 8);
+            //    instantiatedInventoryButtons[i] = buttonForWidth;
+            //    instantiatedInventoryButtons[i].transform.SetParent(canvas.transform);
+
+            //    ChangeInventoryButtonImageAndText(i, playerPlatforms);
+
+            //    instantiatedInventoryButtons[i].transform.position = new Vector3(buttonDistance * (i + 1), buttonHeight, 0);
+            //}
         }
 
         else
@@ -107,52 +170,52 @@ public class UIManager : MonoBehaviour
         canvas.gameObject.transform.GetChild(6).gameObject.SetActive(false);
     }
 
-    public void ChangeInventoryButtonImageAndText(int currentButton, PlayerPlatforms playerPlatforms)
-    {
-        GameObject buttonImage = instantiatedInventoryButtons[currentButton].transform.GetChild(0).gameObject;
-        GameObject buttonText = instantiatedInventoryButtons[currentButton].transform.GetChild(3).gameObject;
+    //public void ChangeInventoryButtonImageAndText(int currentButton, PlayerPlatforms playerPlatforms)
+    //{
+    //    GameObject buttonImage = instantiatedInventoryButtons[currentButton].transform.GetChild(0).gameObject;
+    //    GameObject buttonText = instantiatedInventoryButtons[currentButton].transform.GetChild(3).gameObject;
 
-        if (playerPlatforms.ramps > 0 && !playerPlatforms.rampButtonInstantiated)
-        {
-            buttonImage.GetComponent<Image>().sprite = rampImage;
-            instantiatedInventoryButtons[currentButton].name = InventoryButtonName.rampInventoryButton.ToString();
-            buttonText.GetComponent<Text>().text = playerPlatforms.ramps.ToString();
+    //    if (playerPlatforms.ramps > 0 && !playerPlatforms.rampButtonInstantiated)
+    //    {
+    //        buttonImage.GetComponent<Image>().sprite = rampImage;
+    //        instantiatedInventoryButtons[currentButton].name = InventoryButtonName.rampInventoryButton.ToString();
+    //        buttonText.GetComponent<Text>().text = playerPlatforms.ramps.ToString();
 
-            playerPlatforms.rampButtonInstantiated = true;
-        }
-        else if (playerPlatforms.platformSquares > 0 && !playerPlatforms.platformSquaresButtonInstantated)
-        {
-            buttonImage.GetComponent<Image>().sprite = platformSquareImage;
-            instantiatedInventoryButtons[currentButton].name = InventoryButtonName.platformSquareButton.ToString();
-            buttonText.GetComponent<Text>().text = playerPlatforms.platformSquares.ToString();
+    //        playerPlatforms.rampButtonInstantiated = true;
+    //    }
+    //    else if (playerPlatforms.platformSquares > 0 && !playerPlatforms.platformSquaresButtonInstantated)
+    //    {
+    //        buttonImage.GetComponent<Image>().sprite = platformSquareImage;
+    //        instantiatedInventoryButtons[currentButton].name = InventoryButtonName.platformSquareButton.ToString();
+    //        buttonText.GetComponent<Text>().text = playerPlatforms.platformSquares.ToString();
 
-            playerPlatforms.platformSquaresButtonInstantated = true;
-        }
-        else if (playerPlatforms.trampolines > 0 && !playerPlatforms.trampolineButtonInstantiated)
-        {
-            buttonImage.GetComponent<Image>().sprite = trampolineImage;
-            instantiatedInventoryButtons[currentButton].name = InventoryButtonName.trampolineButton.ToString();
-            buttonText.GetComponent<Text>().text = playerPlatforms.trampolines.ToString();
+    //        playerPlatforms.platformSquaresButtonInstantated = true;
+    //    }
+    //    else if (playerPlatforms.trampolines > 0 && !playerPlatforms.trampolineButtonInstantiated)
+    //    {
+    //        buttonImage.GetComponent<Image>().sprite = trampolineImage;
+    //        instantiatedInventoryButtons[currentButton].name = InventoryButtonName.trampolineButton.ToString();
+    //        buttonText.GetComponent<Text>().text = playerPlatforms.trampolines.ToString();
 
-            playerPlatforms.trampolineButtonInstantiated = true;
-        }
-        else if (playerPlatforms.boostPlatforms > 0 && !playerPlatforms.boostPlatformButtonInstantiated)
-        {
-            buttonImage.GetComponent<Image>().sprite = boostPlatformImage;
-            instantiatedInventoryButtons[currentButton].name = InventoryButtonName.boostPlatformButton.ToString();
-            buttonText.GetComponent<Text>().text = playerPlatforms.boostPlatforms.ToString();
+    //        playerPlatforms.trampolineButtonInstantiated = true;
+    //    }
+    //    else if (playerPlatforms.boostPlatforms > 0 && !playerPlatforms.boostPlatformButtonInstantiated)
+    //    {
+    //        buttonImage.GetComponent<Image>().sprite = boostPlatformImage;
+    //        instantiatedInventoryButtons[currentButton].name = InventoryButtonName.boostPlatformButton.ToString();
+    //        buttonText.GetComponent<Text>().text = playerPlatforms.boostPlatforms.ToString();
 
-            playerPlatforms.boostPlatformButtonInstantiated = true;
-        }
-        else if (playerPlatforms.cannonPlatforms > 0 && !playerPlatforms.cannonPlatformButtonInstantiated)
-        {
-            buttonImage.GetComponent<Image>().sprite = cannonPlatformImage;
-            instantiatedInventoryButtons[currentButton].name = InventoryButtonName.cannonPlatformButton.ToString();
-            buttonText.GetComponent<Text>().text = playerPlatforms.cannonPlatforms.ToString();
+    //        playerPlatforms.boostPlatformButtonInstantiated = true;
+    //    }
+    //    else if (playerPlatforms.cannonPlatforms > 0 && !playerPlatforms.cannonPlatformButtonInstantiated)
+    //    {
+    //        buttonImage.GetComponent<Image>().sprite = cannonPlatformImage;
+    //        instantiatedInventoryButtons[currentButton].name = InventoryButtonName.cannonPlatformButton.ToString();
+    //        buttonText.GetComponent<Text>().text = playerPlatforms.cannonPlatforms.ToString();
 
-            playerPlatforms.cannonPlatformButtonInstantiated = true;
-        }
-    }
+    //        playerPlatforms.cannonPlatformButtonInstantiated = true;
+    //    }
+    //}
     public void AddMultiplayerUI()
     {
         multiplayerCanvas.gameObject.SetActive(true);
