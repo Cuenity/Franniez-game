@@ -26,6 +26,8 @@ public class LevelEditorState : MonoBehaviour
     public int heigth;
     [SerializeField]
     public int SpawnBallPosition;
+    [SerializeField]
+    public Text Instructies;
 
     //opslagplek voor levelEigenschappen
     [SerializeField]
@@ -189,5 +191,17 @@ public class LevelEditorState : MonoBehaviour
     {
         InputField spawnballinput = GameObject.Find("BallPositionInput").GetComponent<InputField>() ;
         SpawnBallPosition = Convert.ToInt32(spawnballinput.text);
+    }
+
+    public void ToggleInstruction()
+    {
+        if (Instructies.gameObject.activeSelf)
+        {
+            Instructies.gameObject.SetActive(false);
+        }
+        else
+        {
+            Instructies.gameObject.SetActive(true);
+        }
     }
 }
