@@ -17,7 +17,7 @@ public class CannonInventoryButton : InventoryButton
 
     public override GameObject SpawnPhotonPlatformFromInventoryButton()
     {
-        throw new System.NotImplementedException();
+        throw new System.NotImplementedException(); // Cannon wordt niet gebruikt in multiplayer, er worden geen knoppen voor aangemaakt dus we kunnen nooit in deze methode komen
     }
 
     public override GameObject SpawnPlatformFromInventoryButton()
