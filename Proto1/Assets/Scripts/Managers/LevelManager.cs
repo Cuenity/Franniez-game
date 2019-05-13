@@ -469,7 +469,7 @@ public class LevelManager : MonoBehaviour
             }
         }
 
-        // niet af (collectables in array zetten) moet met minder platformen en makkelijker haalbaar
+        // af
         else if (sceneName == "8")
         {
             if (!levelIsSpawned)
@@ -486,7 +486,7 @@ public class LevelManager : MonoBehaviour
 
                 GameState.Instance.platformManager.BuildLevelFromLevelPlatformen(levelPlatformen);
 
-                gameState.playerBallManager.WhatBalls(true, true, false);
+                gameState.playerBallManager.WhatBalls(false, true, false);
                 DefaultSceneEndInit();
             }
         }

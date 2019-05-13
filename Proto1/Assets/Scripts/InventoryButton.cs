@@ -36,4 +36,5 @@ public abstract class InventoryButton : MonoBehaviour
 
     public abstract void SetCorrectTextAndImageForInventoryButton(string platformAmmount);
     public abstract GameObject SpawnPlatformFromInventoryButton();
+    public abstract GameObject SpawnPhotonPlatformFromInventoryButton();
 }

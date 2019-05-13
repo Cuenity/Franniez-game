@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Photon.Pun;
+using UnityEngine;
 using UnityEngine.UI;
 
 public class TrampolineInventoryButton : InventoryButton
@@ -24,6 +25,22 @@ public class TrampolineInventoryButton : InventoryButton
         {
             InventoryButtonAllowed = false;
         }
+        GameState.Instance.levelManager.playerPlatforms.UpdateTrampolinesLeft(gameObject.GetComponent<InventoryButton>());
+
+        return draggedPlatform;
+    }
+
+    public override GameObject SpawnPhotonPlatformFromInventoryButton()
+    {
+        GameObject draggedPlatform = PhotonNetwork.Instantiate("Photon Trampoline", new Vector3(0, 0, 0), new Quaternion(0, 0, 0, 0));
+
+        GameState.Instance.levelManager.playerPlatforms.trampolinesLeftToPlace--;
+
+        if (GameState.Instance.levelManager.playerPlatforms.trampolinesLeftToPlace == 0)
+        {
+            InventoryButtonAllowed = false;
+        }
+
         GameState.Instance.levelManager.playerPlatforms.UpdateTrampolinesLeft(gameObject.GetComponent<InventoryButton>());
 
         return draggedPlatform;

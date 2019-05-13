@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Photon.Pun;
+using UnityEngine;
 using UnityEngine.UI;
 
 public class SquareInventoryButton : InventoryButton
@@ -13,6 +14,21 @@ public class SquareInventoryButton : InventoryButton
         gameObject.transform.Find("PlatformImage").GetComponent<Image>().sprite = squareImage;
         gameObject.name = InventoryButtonName.platformSquareButton.ToString();
         gameObject.GetComponentInChildren<Text>().text = platformAmmount;
+    }
+
+    public override GameObject SpawnPhotonPlatformFromInventoryButton()
+    {
+        GameObject draggedPlatform = PhotonNetwork.Instantiate("Photon PlatformSquare", new Vector3(0, 0, 0), new Quaternion(0, 0, 0, 0));
+
+        draggedPlatform.transform.Rotate(new Vector3(-90, 0, 0));
+        GameState.Instance.levelManager.playerPlatforms.platformSquaresLeftToPlace--;
+        if (GameState.Instance.levelManager.playerPlatforms.platformSquaresLeftToPlace == 0)
+        {
+            InventoryButtonAllowed = false;
+        }
+        GameState.Instance.levelManager.playerPlatforms.UpdatePlatformSquaresLeft(gameObject.GetComponent<InventoryButton>());
+
+        return draggedPlatform;
     }
 
     public override GameObject SpawnPlatformFromInventoryButton()
