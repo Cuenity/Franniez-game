@@ -40,8 +40,8 @@ public class PlatformDragHandler : MonoBehaviour
     {
         if (!rotateSpriteHit)
         {
-            Vector3 curScreenPoint = new Vector3(Input.mousePosition.x, Input.mousePosition.y, screenPoint.z);
-            Vector3 curPosition = camera.ScreenToWorldPoint(curScreenPoint);// + offset;
+            Vector3 currentScreenPoint = new Vector3(Input.mousePosition.x, Input.mousePosition.y, screenPoint.z);
+            Vector3 curPosition = camera.ScreenToWorldPoint(currentScreenPoint);
             draggedPlatformInScene.transform.position = curPosition;
         }
     }

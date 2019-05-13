@@ -5,13 +5,14 @@ using UnityEngine.EventSystems;
 
 public class UIDragHandler : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHandler
 {
-    //deze fields later verwijderen
-    public GameObject platformSquare;
-    public GameObject ramp;
-    public GameObject trampoline;
-    public GameObject boostPlatform;
-    public GameObject cannon;
-    //tot hier
+    [SerializeField]
+    private GameObject platformSquare;
+    [SerializeField]
+    private GameObject ramp;
+    //public GameObject trampoline;
+    //public GameObject boostPlatform;
+    //public GameObject cannon;
+
     public RotateSprite rotateSprite;
 
 
@@ -93,11 +94,11 @@ public class UIDragHandler : MonoBehaviour, IDragHandler, IBeginDragHandler, IEn
 
             platformManager.spawnPlatformOnGrid(draggedPlatform.transform.position, draggedPlatform);
 
-            StartCoroutine(CorutineDragActive());
+            StartCoroutine(SetDragActiveFalseAfterEndOfFrame());
         }
     }
 
-    public IEnumerator CorutineDragActive()
+    public IEnumerator SetDragActiveFalseAfterEndOfFrame()
     {
         yield return new WaitForEndOfFrame();
         GameState.Instance.playerCamera.platformDragActive = false;
