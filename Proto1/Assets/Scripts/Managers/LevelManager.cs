@@ -53,20 +53,13 @@ public class LevelManager : MonoBehaviour
         1, 0, 9, 0, 0, 0, 0, 0, 0, 0, 0, 0,
         0, 0, 3, 0, 3, 0, 0, 0, 0, 0, 0, 0, };
     int[] level3JumpEasy = new int[] {
-        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 8, 0, 0, 0,
         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
         0, 0, 8, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 8, 0, 0,
-        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-        0, 0, 0, 0, 0, 0, 0, 8, 0, 0, 0, 0, 0, 0, 9,
-        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 0,
-        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-        0, 0, 0, 0, 0, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
+        0, 0, 0, 0, 0, 8, 0, 0, 0, 0, 0, 0, 0, 0, 9,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 0, 3, 0,
+        0, 0, 0, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
     int[] level4JumpHard = new int[] {
         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
         1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
@@ -359,7 +352,7 @@ public class LevelManager : MonoBehaviour
             }
         }
 
-        // bal lager en meer bij trampoline. Trampoline en bal allebij zichtbaar in bouwscherm
+        // af
         else if (sceneName == "3")
         {
             if (!levelIsSpawned)
@@ -367,7 +360,7 @@ public class LevelManager : MonoBehaviour
                 DefaultSceneInit();
                 levelPlatformen.tileList = level3JumpEasy;
                 levelPlatformen.width = 15;
-                levelPlatformen.heigth = 14;
+                levelPlatformen.heigth = 7;
                 gameState.gridManager.width = levelPlatformen.width;
                 gameState.gridManager.height = levelPlatformen.heigth;
                 playerPlatforms = new PlayerPlatforms(1, 1, 0, 0, 0);
