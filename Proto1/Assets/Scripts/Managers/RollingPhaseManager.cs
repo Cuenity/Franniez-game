@@ -127,7 +127,11 @@ public class RollingPhaseManager : MonoBehaviour
             //de echte check zit in levelmanager update methode(hebben we gehaald?)
 
             //RPC gebruiken hier voor de code assesment
-
+            PhotonView view = gameState.playerBallManager.activePlayer.GetComponent<PhotonView>();
+            if(PhotonNetwork.IsMasterClient)
+                view.RPC("rpcTest", RpcTarget.All,"masterhit");
+            else
+                view.RPC("rpcTest", RpcTarget.All, "clienthit");
             //plaatjes aanpassen voor feedback
             if ((bool)PhotonNetwork.PlayerList[0].CustomProperties["hitflag"])
             {

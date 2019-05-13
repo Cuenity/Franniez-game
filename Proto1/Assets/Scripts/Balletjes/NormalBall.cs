@@ -42,5 +42,20 @@ public class NormalBall : MonoBehaviourPun
         }
     }
 
-  
+    [PunRPC]
+    void rpcTest(string hitter)
+    {
+        Debug.Log(hitter);
+        if(hitter == "masterhit")
+        {
+            gameState.UIManager.ChangeFlagHitTrue(gameState.UIManager.p1FlagHit);
+            gameState.levelManager.p1Finish = true;
+        }
+        else
+        {
+            gameState.UIManager.ChangeFlagHitTrue(gameState.UIManager.p2FlagHit);
+            gameState.levelManager.p2Finish = true;
+        }
+    }
+
 }
