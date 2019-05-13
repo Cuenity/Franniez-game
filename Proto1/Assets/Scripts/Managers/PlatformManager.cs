@@ -89,23 +89,17 @@ public class PlatformManager : MonoBehaviour
     {
         Vector3 coinAdjustment = new Vector3(.3f, 0, 0);
         coinPositions.Add(gameState.gridManager.gridSquares[position] + coinAdjustment);
-
-        List<int> coinPosition = new List<int>();
-        coinPosition.Add(position);
-        gameState.gridManager.AddFilledGridSpots(coinPosition, SizeType.oneByOne);
+        gameState.gridManager.AddFilledGridSpots(new List<int> { position }, SizeType.oneByOne);
     }
 
     public void SetfinishPosition(int position)
     {
         Vector3 finishAdjustment = new Vector3(.5f, 0, 0);
         finishPosition = gameState.gridManager.gridSquares[position] + finishAdjustment;
-
-        List<int> finishPositionFillsGridSpot = new List<int>();
-        finishPositionFillsGridSpot.Add(position);
-        gameState.gridManager.AddFilledGridSpots(finishPositionFillsGridSpot, SizeType.oneByTwo);
+        gameState.gridManager.AddFilledGridSpots(new List<int> { position }, SizeType.oneByTwo);
     }
 
-    public void spawnPlatformOnGrid(Vector3 position, GameObject gameObject)
+    public void spawnPlatformOnGrid(Vector3 position, Platform platformToPlace)
     {
         //als deze methode alleen is voor speler blokjes kunnen we hier die glow doen
         //GameObject gameObjectGeneric = gameObject;
@@ -128,27 +122,14 @@ public class PlatformManager : MonoBehaviour
             minimumValueIndex--;
         }
 
-
         bool cantPlacePlaform = false;
 
-        List<int> newFilledGridSPots = new List<int>();
-        //newFilledGridSPots.Add(minimumValueIndex);
-
-        if (!gameObject.GetComponent<Cannon>())
+        if (!platformToPlace.GetComponent<Cannon>())
         {
             // check of platform hier geplaatst kan worden
-            if (!gameState.gridManager.filledGridSpots[minimumValueIndex] &&
-            !gameState.gridManager.filledGridSpots[minimumValueIndex + 1])
+            if (!PlacePlatformInExactSpot(platformToPlace.GetComponent<Platform>(), minimumValueIndex, rampAdjustment))
             {
-                newFilledGridSPots.Add(minimumValueIndex);
-
-                gameObject.transform.position = gameState.gridManager.gridSquares[minimumValueIndex] + rampAdjustment;
-                gameObject.GetComponent<Platform>().fillsGridSpot = minimumValueIndex;
-                gameState.gridManager.AddFilledGridSpots(newFilledGridSPots, SizeType.twoByOne);
-            }
-            // check of platform anders in een gebied van een square hier omheen geplaatst kan worden
-            else
-            {
+                // zo niet kijk dan of platform in de buurt geplaatst kan worden
                 int newMinimumValueIndex = CheckForEmptyAreaAroundWrongPlacement(minimumValueIndex);
                 if (newMinimumValueIndex < 0)
                 {
@@ -156,11 +137,9 @@ public class PlatformManager : MonoBehaviour
                 }
                 else
                 {
-                    newFilledGridSPots.Add(newMinimumValueIndex);
-
-                    gameObject.transform.position = gameState.gridManager.gridSquares[newMinimumValueIndex] + rampAdjustment;
-                    gameObject.GetComponent<Platform>().fillsGridSpot = newMinimumValueIndex;
-                    gameState.gridManager.AddFilledGridSpots(newFilledGridSPots, SizeType.twoByOne);
+                    platformToPlace.transform.position = gameState.gridManager.gridSquares[newMinimumValueIndex] + rampAdjustment;
+                    platformToPlace.GetComponent<Platform>().fillsGridSpot = newMinimumValueIndex;
+                    gameState.gridManager.AddFilledGridSpots(new List<int> { newMinimumValueIndex }, SizeType.twoByOne);
                 }
             }
         }
@@ -168,74 +147,75 @@ public class PlatformManager : MonoBehaviour
         else
         {
             // check of cannon hier geplaatst kan worden
-            if (minimumValueIndex < gameState.gridManager.width)
-            {
-                minimumValueIndex = minimumValueIndex + gameState.gridManager.width;
-            }
-            if (!gameState.gridManager.filledGridSpots[minimumValueIndex] &&
-                !gameState.gridManager.filledGridSpots[minimumValueIndex + 1] &&
-                !gameState.gridManager.filledGridSpots[minimumValueIndex - gameState.gridManager.width] &&
-                !gameState.gridManager.filledGridSpots[minimumValueIndex - gameState.gridManager.width + 1])
-            {
-                newFilledGridSPots.Add(minimumValueIndex);
-
-                gameObject.transform.position = gameState.gridManager.gridSquares[minimumValueIndex] + cannonAdjustment;
-                gameObject.GetComponent<Platform>().fillsGridSpot = minimumValueIndex;
-                gameState.gridManager.AddFilledGridSpots(newFilledGridSPots, SizeType.twoByTwo);
-            }
-            // check of cannon anders in een gebied van een square hier omheen geplaatst kan worden
-            else
-            {
-                cantPlacePlaform = true;
-                Debug.Log("Cannon op 1 square in de buurt plaatsen kan (nog) niet");
-
-                //int newMinimumValueIndex = CheckForEmptyAreaAroundWrongPlacement(minimumValueIndex);
-                //if (newMinimumValueIndex < 0)
-                //{
-                //    cantPlacePlaform = true;
-                //}
-                //else
-                //{
-                //    newFilledGridSPots.Add(newMinimumValueIndex); 
-
-                //    gameObject.transform.position = gameState.gridManager.gridSquares[newMinimumValueIndex] + rampAdjustment;
-                //    gameObject.GetComponent<Platform>().fillsGridSpot = newMinimumValueIndex;
-                //    gameState.gridManager.AddFilledGridSpots(newFilledGridSPots, SizeType.twoByOne);
-                //}
-            }
+            cantPlacePlaform = TryToPlaceCannonInExactSpot(platformToPlace.GetComponent<Cannon>(), minimumValueIndex, cannonAdjustment);
         }
 
         // platform kan helmaal niet geplaatst worden
         if (cantPlacePlaform)
         {
-            gameObject.GetComponent<Platform>().fillsGridSpot = minimumValueIndex;
-            GameState.Instance.buttonManager.UpdatePlayerPlatforms(gameObject);
+            platformToPlace.GetComponent<Platform>().fillsGridSpot = minimumValueIndex;
+            GameState.Instance.buttonManager.UpdatePlayerPlatforms(platformToPlace.gameObject);
             Handheld.Vibrate();
         }
 
         // code voor opslaan van levels
         if (gameState.levelManager.levelPlatformen.tileList != null)
         {
-            if (gameObject.name.Contains("PlatformSquare"))
+            if (platformToPlace.name.Contains("PlatformSquare"))
             {
                 gameState.levelManager.levelPlatformen.tileList[minimumValueIndex] = 3;
             }
-            else if (gameObject.name.Contains("RampSmall"))
+            else if (platformToPlace.name.Contains("RampSmall"))
             {
                 gameState.levelManager.levelPlatformen.tileList[minimumValueIndex] = 1;
             }
         }
     }
 
+    private bool PlacePlatformInExactSpot(Platform platformToPlace, int minimumValueIndex, Vector3 rampAdjustment)
+    {
+        if (!gameState.gridManager.filledGridSpots[minimumValueIndex] &&
+            !gameState.gridManager.filledGridSpots[minimumValueIndex + 1])
+        {
+            platformToPlace.transform.position = gameState.gridManager.gridSquares[minimumValueIndex] + rampAdjustment;
+            platformToPlace.fillsGridSpot = minimumValueIndex;
+            gameState.gridManager.AddFilledGridSpots(new List<int> { minimumValueIndex }, SizeType.twoByOne);
+            return true;
+        }
+        return false;
+    }
+
+    private bool TryToPlaceCannonInExactSpot(Cannon cannonToPlace, int minimumValueIndex, Vector3 cannonAdjustment)
+    {
+        // if the top half of the cannon sticks out of the grid, try to place it on the row beneath that
+        if (minimumValueIndex < gameState.gridManager.width)
+        {
+            minimumValueIndex = minimumValueIndex + gameState.gridManager.width;
+        }
+
+        if (!gameState.gridManager.filledGridSpots[minimumValueIndex] &&
+            !gameState.gridManager.filledGridSpots[minimumValueIndex + 1] &&
+            !gameState.gridManager.filledGridSpots[minimumValueIndex - gameState.gridManager.width] &&
+            !gameState.gridManager.filledGridSpots[minimumValueIndex - gameState.gridManager.width + 1])
+        {
+            cannonToPlace.transform.position = gameState.gridManager.gridSquares[minimumValueIndex] + cannonAdjustment;
+            cannonToPlace.fillsGridSpot = minimumValueIndex;
+            gameState.gridManager.AddFilledGridSpots(new List<int> { minimumValueIndex }, SizeType.twoByTwo);
+            return false;
+        }
+        return true;
+    }
+
+
     private int CheckForEmptyAreaAroundWrongPlacement(int minimumValueIndex)
     {
         int newSpot;
 
-        //bool[,] replaceArrayLaterWithRealTwoDimentionalArray = new bool[gameState.gridManager.height, gameState.gridManager.width];
         int column = 0;
         int row = 0;
         int minimumValueIndexRow = 0;
         int minimumValueIndexColumn = 0;
+        // deze for loop bepaalt welke row het platform op is los gelaten en welke plek in de column om elke mogelijke out of bounds error te vermijden.
         for (int filledGridSpotsIndex = 0; filledGridSpotsIndex < gameState.gridManager.filledGridSpots.Length; filledGridSpotsIndex++)
         {
             if (column == gameState.gridManager.width)
@@ -249,8 +229,6 @@ public class PlatformManager : MonoBehaviour
                 minimumValueIndexColumn = column;
                 break;
             }
-
-            //replaceArrayLaterWithRealTwoDimentionalArray[row, column] = gameState.gridManager.filledGridSpots[filledGridSpotsIndex];
             column++;
         }
 
@@ -322,7 +300,7 @@ public class PlatformManager : MonoBehaviour
 
         // Get materials for worlds
 
-        if(SceneNumber > themeWorld2)
+        if (SceneNumber > themeWorld2)
         {
             rampMaterialWorld2 = Resources.Load("PlatformMat/RampSpace", typeof(Material)) as Material;
             squareMaterialWorld2 = Resources.Load("PlatformMat/RechthoekSpace", typeof(Material)) as Material;
@@ -331,7 +309,7 @@ public class PlatformManager : MonoBehaviour
         for (int i = 0; i < levelPlatformen.tileList.Length; i++)
         {
             // Leeg - doe niks
-            if(levelPlatformen.tileList[i] == 0) {}
+            if (levelPlatformen.tileList[i] == 0) { }
 
             // Ramp Small
             else if (levelPlatformen.tileList[i] == 1)
@@ -364,7 +342,7 @@ public class PlatformManager : MonoBehaviour
             // Platform Square
             else if (levelPlatformen.tileList[i] == 3)
             {
-                if(SceneNumber > themeWorld2)
+                if (SceneNumber > themeWorld2)
                 {
                     levelEditorPlatform.GetComponent<Renderer>().material = squareMaterialWorld2;
                 }
@@ -413,7 +391,7 @@ public class PlatformManager : MonoBehaviour
             }
 
             // Portal
-            else if(levelPlatformen.tileList[i]== 10)
+            else if (levelPlatformen.tileList[i] == 10)
             {
                 portal = Instantiate(portal, GameState.Instance.gridManager.gridSquares[i] + new Vector3(1, .5f, 0), new Quaternion(0, 0, 0, 0));
                 allPortals.Add(portal);
@@ -804,7 +782,7 @@ public class PlatformManager : MonoBehaviour
             }
             for (int i = 0; i < RampSpots.Count; i++)
             {
-                
+
                 ramp.SpawnRamp(gameState.gridManager.gridSquares[RampSpots[i]] + new Vector3(.5f, 0, 0));
                 gameState.gridManager.AddFilledGridSpots(RampSpots, SizeType.twoByOne);
             }
@@ -859,7 +837,7 @@ public class PlatformManager : MonoBehaviour
             }
             for (int i = 0; i < rechthoekSpots.Count; i++)
             {
-                
+
                 rechthoek = Instantiate(rechthoek, gameState.gridManager.gridSquares[rechthoekSpots[i]] + new Vector3(1, 0, 0), rechthoek.transform.rotation);
                 //rechthoek.GetComponent<Renderer>().material = Resources.Load("PlatformMat/RechthoekSpace", typeof(Material)) as Material;
                 gameState.gridManager.AddFilledGridSpots(rechthoekSpots, SizeType.twoByOne);

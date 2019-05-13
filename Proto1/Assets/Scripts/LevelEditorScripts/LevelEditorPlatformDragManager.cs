@@ -132,7 +132,7 @@ public class LevelEditorPlatformDragManager : MonoBehaviour
         if (results.Count > 0)
         {
             RemoveFilledGridSpots();
-            GameState.Instance.buttonManager.UpdatePlayerPlatforms(draggedPlatformInScene.gameObject);
+            GameState.Instance.buttonManager.UpdatePlayerPlatforms(draggedPlatformInScene);
             return true;
         }
 

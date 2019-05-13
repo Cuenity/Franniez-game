@@ -37,7 +37,7 @@ public class LevelEditorPlatformManager : MonoBehaviour
     {
         
     }
-    public void spawnPlatformOnGrid(Vector3 position, GameObject gameObject)
+    public void spawnPlatformOnGrid(Vector3 position, GameObject platformToPlace)
     {
         //als deze methode alleen is voor speler blokjes kunnen we hier die glow doen
         //GameObject gameObjectGeneric = gameObject;
@@ -60,22 +60,22 @@ public class LevelEditorPlatformManager : MonoBehaviour
             minimumValueIndex--;
         }
         //gridspot shit uitgecomment
-        if (!gameObject.GetComponent<Cannon>())// && !LevelEditorState.Instance.gridManager.filledGridSpots[minimumValueIndex] && !LevelEditorState.Instance.gridManager.filledGridSpots[minimumValueIndex + 1])
+        if (!platformToPlace.GetComponent<Cannon>())// && !LevelEditorState.Instance.gridManager.filledGridSpots[minimumValueIndex] && !LevelEditorState.Instance.gridManager.filledGridSpots[minimumValueIndex + 1])
         {
-            gameObject.transform.position = LevelEditorState.Instance.gridManager.gridSquares[minimumValueIndex] + rampAdjustment;
+            platformToPlace.transform.position = LevelEditorState.Instance.gridManager.gridSquares[minimumValueIndex] + rampAdjustment;
             //gameObject.GetComponent<Platform>().fillsGridSpot = minimumValueIndex;
             //AddFilledGridSpots(minimumValueIndex);
         }
-        else if (gameObject.GetComponent<Cannon>())// && !LevelEditorState.Instance.gridManager.filledGridSpots[minimumValueIndex])
+        else if (platformToPlace.GetComponent<Cannon>())// && !LevelEditorState.Instance.gridManager.filledGridSpots[minimumValueIndex])
         {
-            gameObject.transform.position = LevelEditorState.Instance.gridManager.gridSquares[minimumValueIndex] + rampAdjustment;
+            platformToPlace.transform.position = LevelEditorState.Instance.gridManager.gridSquares[minimumValueIndex] + rampAdjustment;
             //gameObject.GetComponent<Platform>().fillsGridSpot = minimumValueIndex;
             //AddFilledGridSpots(minimumValueIndex);
         }
         else
         {
-            gameObject.GetComponent<Platform>().fillsGridSpot = minimumValueIndex;
-            GameState.Instance.buttonManager.UpdatePlayerPlatforms(gameObject);
+            platformToPlace.GetComponent<Platform>().fillsGridSpot = minimumValueIndex;
+            GameState.Instance.buttonManager.UpdatePlayerPlatforms(platformToPlace);
             Handheld.Vibrate();
         }
 
@@ -90,34 +90,34 @@ public class LevelEditorPlatformManager : MonoBehaviour
         // 7 = redzone
         if (LevelEditorState.Instance.levelPlatformen.tileList != null)
         {
-            if (gameObject.name.Contains("RampSmall"))
+            if (platformToPlace.name.Contains("RampSmall"))
             {
                 LevelEditorState.Instance.levelPlatformen.tileList[minimumValueIndex] = 1;
             }
-            else if (gameObject.name.Contains("RampReversed"))
+            else if (platformToPlace.name.Contains("RampReversed"))
             {
                 LevelEditorState.Instance.levelPlatformen.tileList[minimumValueIndex] = 2;
             }
-            else if (gameObject.name.Contains("LevelEditorPlatform"))
+            else if (platformToPlace.name.Contains("LevelEditorPlatform"))
             {
                 LevelEditorState.Instance.levelPlatformen.tileList[minimumValueIndex] = 3;
             }
-            else if (gameObject.name.Contains("Trampoline"))
+            else if (platformToPlace.name.Contains("Trampoline"))
             {
                 LevelEditorState.Instance.levelPlatformen.tileList[minimumValueIndex] = 4;
             }
-            else if (gameObject.name.Contains("Booster"))
+            else if (platformToPlace.name.Contains("Booster"))
             {
                 LevelEditorState.Instance.levelPlatformen.tileList[minimumValueIndex] = 5;
             }
-            else if (gameObject.name.Contains("Cannon"))
+            else if (platformToPlace.name.Contains("Cannon"))
             {
                 LevelEditorState.Instance.levelPlatformen.tileList[minimumValueIndex] = 6;
             }
-            else if (gameObject.name.Contains("RedZone"))
+            else if (platformToPlace.name.Contains("RedZone"))
             {
                 LevelEditorState.Instance.levelPlatformen.tileList[minimumValueIndex] = 7;
-                gameObject.transform.position += new Vector3(-0.5f,0,0);
+                platformToPlace.transform.position += new Vector3(-0.5f,0,0);
             }
         }
     }
