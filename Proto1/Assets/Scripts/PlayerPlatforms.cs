@@ -59,29 +59,15 @@ public class PlayerPlatforms
         inventoryButtonAmmount = 0;
 
         if (ramps > 0)
-        {
             inventoryButtonAmmount++;
-        }
-
         if (platformSquares > 0)
-        {
             inventoryButtonAmmount++;
-        }
-
         if (trampolines > 0)
-        {
             inventoryButtonAmmount++;
-        }
-
         if (boostPlatforms > 0)
-        {
             inventoryButtonAmmount++;
-        }
-
         if (cannonPlatforms > 0)
-        {
             inventoryButtonAmmount++;
-        }
     }
 
     public void UpdateRampsLeft(InventoryButton button)

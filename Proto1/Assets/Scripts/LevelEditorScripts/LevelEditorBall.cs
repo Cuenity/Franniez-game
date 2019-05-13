@@ -18,10 +18,7 @@ public class LevelEditorBall : MonoBehaviour
     {
         Vector3 playeradjustment = new Vector3(.5f, 0, 0);
         spawnpoint = LevelEditorState.Instance.gridManager.gridSquares[i] + playeradjustment;
-
-        List<int> fillsGridSpot = new List<int>();
-        fillsGridSpot.Add(i);
-        GameState.Instance.gridManager.AddFilledGridSpots(fillsGridSpot, SizeType.oneByOne);
+        GameState.Instance.gridManager.AddFilledGridSpots(new List<int> { i }, SizeType.oneByOne);
     }
 
     public void InitTypeBall(Bal type)

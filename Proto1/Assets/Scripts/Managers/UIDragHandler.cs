@@ -92,7 +92,7 @@ public class UIDragHandler : MonoBehaviour, IDragHandler, IBeginDragHandler, IEn
         {
             GameState.Instance.levelManager.playerPlatforms.placedPlatforms.Add(draggedPlatform);
 
-            platformManager.spawnPlatformOnGrid(draggedPlatform.transform.position, draggedPlatform);
+            platformManager.spawnPlatformOnGrid(draggedPlatform.transform.position, draggedPlatform.GetComponent<Platform>());
 
             StartCoroutine(SetDragActiveFalseAfterEndOfFrame());
         }
