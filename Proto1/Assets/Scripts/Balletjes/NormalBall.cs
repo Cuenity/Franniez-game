@@ -43,9 +43,8 @@ public class NormalBall : MonoBehaviourPun
     }
 
     [PunRPC]
-    void rpcTest(string hitter)
+    void FlagHit(string hitter)
     {
-        Debug.Log(hitter);
         if(hitter == "masterhit")
         {
             gameState.UIManager.ChangeFlagHitTrue(gameState.UIManager.p1FlagHit);
@@ -56,6 +55,36 @@ public class NormalBall : MonoBehaviourPun
             gameState.UIManager.ChangeFlagHitTrue(gameState.UIManager.p2FlagHit);
             gameState.levelManager.p2Finish = true;
         }
-    }
 
+        //checken of we gewonnen hebben 
+
+        if(gameState.levelManager.p1Finish ==true && gameState.levelManager.p2Finish == true)
+        {
+            PhotonView view = this.GetComponent<PhotonView>();
+            view.RPC("WinLevel", RpcTarget.All);
+            Debug.Log("gewonnen in MP fucker");
+        }
+    }
+    [PunRPC]
+    void FlagUnHit(string hitter)
+    {
+        if (hitter == "masterhit")
+        {
+            gameState.UIManager.ChangeFlagHitFalse(gameState.UIManager.p1FlagHit);
+            gameState.levelManager.p1Finish = false;
+        }
+        else
+        {
+            gameState.UIManager.ChangeFlagHitFalse(gameState.UIManager.p2FlagHit);
+            gameState.levelManager.p2Finish = false;
+        }
+    }
+    [PunRPC]
+    void WinLevel()
+    {
+        if (PhotonNetwork.IsMasterClient)
+        {
+            PhotonNetwork.LoadLevel(26);
+        }
+    }
 }

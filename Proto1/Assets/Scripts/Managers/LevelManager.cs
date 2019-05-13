@@ -187,30 +187,10 @@ public class LevelManager : MonoBehaviour
         balknop = gameState.UIManager.canvas.GetComponentInChildren<BallKnop>();
     }
     public Boolean levelIsSpawned = false;
-
-    //deze update is zo vies maar is nodig voor MP
+    
     private void Update()
     {
-        if (PhotonNetwork.InRoom)
-        {
-            if (PhotonNetwork.IsMasterClient)
-            {
-                //Debug.Log((bool)PhotonNetwork.PlayerList[0].CustomProperties["hitflag"]);
-                //Debug.Log((bool)PhotonNetwork.PlayerList[1].CustomProperties["hitflag"]);
-                try
-                {
-                    if ((bool)PhotonNetwork.PlayerList[0].CustomProperties["hitflag"] & (bool)PhotonNetwork.PlayerList[1].CustomProperties["hitflag"])
-                    {
-                        //victory scene
-                        PhotonNetwork.LoadLevel(26);
-                    }
-                }
-                catch
-                {
-                    //Debug.Log("Je speelt multiplayer in je 1tje wat een loser ben jij");
-                }
-            }
-        }
+       //deze is nu leeg kan weg als je wilt was eerst nodig voor MP
     }
     //public PlayerPlatforms PlayerPlatforms
     //{
@@ -692,10 +672,10 @@ public class LevelManager : MonoBehaviour
                 gameState.UIManager.canvas = Instantiate(canvas);
                 //multidingen
                 //doe gekke initshit voor localproperties
-                bool hitflag = false;
-                Hashtable hash = new Hashtable();
-                hash.Add("hitflag", hitflag);
-                PhotonNetwork.LocalPlayer.SetCustomProperties(hash);
+                //bool hitflag = false;
+                //Hashtable hash = new Hashtable();
+                //hash.Add("hitflag", hitflag);
+                //PhotonNetwork.LocalPlayer.SetCustomProperties(hash);
                 //einde gekke shit
                 gameState.UIManager.newLevelInventoryisRequired = true;
                 GameState.Instance.playerCamera.ManualInit();
@@ -729,10 +709,10 @@ public class LevelManager : MonoBehaviour
                 multiUIRequired = true;
                 gameState.UIManager.canvas = Instantiate(canvas);
                 //doe gekke initshit voor localproperties
-                bool hitflag = false;
-                Hashtable hash = new Hashtable();
-                hash.Add("hitflag", hitflag);
-                PhotonNetwork.LocalPlayer.SetCustomProperties(hash);
+                //bool hitflag = false;
+                //Hashtable hash = new Hashtable();
+                //hash.Add("hitflag", hitflag);
+                //PhotonNetwork.LocalPlayer.SetCustomProperties(hash);
                 //einde gekke shit
                 gameState.UIManager.newLevelInventoryisRequired = true;
                 GameState.Instance.playerCamera.ManualInit();
@@ -768,10 +748,10 @@ public class LevelManager : MonoBehaviour
 
                 gameState.UIManager.canvas = Instantiate(canvas);
                 //doe gekke initshit voor localproperties
-                bool hitflag = false;
-                Hashtable hash = new Hashtable();
-                hash.Add("hitflag", hitflag);
-                PhotonNetwork.LocalPlayer.SetCustomProperties(hash);
+                //bool hitflag = false;
+                //Hashtable hash = new Hashtable();
+                //hash.Add("hitflag", hitflag);
+                //PhotonNetwork.LocalPlayer.SetCustomProperties(hash);
                 //einde gekke shit
                 gameState.UIManager.newLevelInventoryisRequired = true;
                 GameState.Instance.playerCamera.ManualInit();
@@ -861,11 +841,11 @@ public class LevelManager : MonoBehaviour
 
         if (PhotonNetwork.InRoom)
         {
-            //zet vlag geraakt op false voor multi
-            bool hitflag = false;
-            Hashtable hash = new Hashtable();
-            hash.Add("hitflag", hitflag);
-            PhotonNetwork.LocalPlayer.SetCustomProperties(hash);
+            PhotonView view = gameState.playerBallManager.activePlayer.GetComponent<PhotonView>();
+            if (PhotonNetwork.IsMasterClient)
+                view.RPC("FlagUnHit", RpcTarget.All, "masterhit");
+            else
+                view.RPC("FlagUnHit", RpcTarget.All, "clienthit");
         }
         if (sceneName != "VictoryScreen")
         {

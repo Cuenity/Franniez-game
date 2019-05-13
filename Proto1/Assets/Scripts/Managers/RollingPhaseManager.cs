@@ -118,51 +118,12 @@ public class RollingPhaseManager : MonoBehaviour
     {
         if (PhotonNetwork.InRoom)
         {
-            //bool hitflag = (bool)PhotonNetwork.LocalPlayer.CustomProperties["hitflag"];
-            //zet je eigen shizzle op true
-            bool hitflag = true;
-            Hashtable hash = new Hashtable();
-            hash.Add("hitflag", hitflag);
-            PhotonNetwork.LocalPlayer.SetCustomProperties(hash);
-            //de echte check zit in levelmanager update methode(hebben we gehaald?)
-
             //RPC gebruiken hier voor de code assesment
             PhotonView view = gameState.playerBallManager.activePlayer.GetComponent<PhotonView>();
             if(PhotonNetwork.IsMasterClient)
-                view.RPC("rpcTest", RpcTarget.All,"masterhit");
+                view.RPC("FlagHit", RpcTarget.All, "masterhit");
             else
-                view.RPC("rpcTest", RpcTarget.All, "clienthit");
-            //plaatjes aanpassen voor feedback
-            if ((bool)PhotonNetwork.PlayerList[0].CustomProperties["hitflag"])
-            {
-                gameState.UIManager.ChangeFlagHitTrue(gameState.UIManager.p1FlagHit);
-            }
-            if ((bool)PhotonNetwork.PlayerList[1].CustomProperties["hitflag"])
-            {
-                gameState.UIManager.ChangeFlagHitTrue(gameState.UIManager.p2FlagHit);
-            }
-
-            //niet weggooien wil erwin vragen of het ook op deze manier kan en waarom dit soort shit niet werkt
-            ////finish is geraakt door 1 speler
-            ////zet een variabel op true voor deze speler alleen
-            //if (PhotonNetwork.IsMasterClient)
-            //{
-            //    PhotonDataOpslag.Instance.FlagHitPlayer1 = true;
-            //    Debug.Log("Player 1 vlag hit");
-            //}
-            //else
-            //{
-            //    PhotonDataOpslag.Instance.FlagHitPlayer2 = true;
-            //    Debug.Log("player 2 vlag hit");
-            //}
-            ////check of de andere variabel is getruet
-            ////
-            //if (PhotonDataOpslag.Instance.FlagHitPlayer1 && PhotonDataOpslag.Instance.FlagHitPlayer2)
-            //{
-            //    //Go to victoty
-            //    Debug.Log("VICTORY VOOR BEIDEN");
-            //    SceneSwitcher.Instance.AsynchronousLoadStartNoLoadingBar("VictoryScreen");
-            //}
+                view.RPC("FlagHit", RpcTarget.All, "clienthit");
         }
         else
         {
