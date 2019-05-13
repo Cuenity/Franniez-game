@@ -172,6 +172,8 @@ public class LevelManager : MonoBehaviour
 
     //multiplayer booleans
     public bool multiUIRequired;
+    public bool p1Finish;
+    public bool p2Finish;
 
     private void Start()
     {
@@ -186,8 +188,8 @@ public class LevelManager : MonoBehaviour
         {
             if (PhotonNetwork.IsMasterClient)
             {
-                Debug.Log((bool)PhotonNetwork.PlayerList[0].CustomProperties["hitflag"]);
-                Debug.Log((bool)PhotonNetwork.PlayerList[1].CustomProperties["hitflag"]);
+                //Debug.Log((bool)PhotonNetwork.PlayerList[0].CustomProperties["hitflag"]);
+                //Debug.Log((bool)PhotonNetwork.PlayerList[1].CustomProperties["hitflag"]);
                 try
                 {
                     if ((bool)PhotonNetwork.PlayerList[0].CustomProperties["hitflag"] & (bool)PhotonNetwork.PlayerList[1].CustomProperties["hitflag"])
@@ -198,7 +200,7 @@ public class LevelManager : MonoBehaviour
                 }
                 catch
                 {
-                    Debug.Log("Je speelt multiplayer in je 1tje wat een loser ben jij");
+                    //Debug.Log("Je speelt multiplayer in je 1tje wat een loser ben jij");
                 }
             }
         }
@@ -682,7 +684,6 @@ public class LevelManager : MonoBehaviour
                 multiUIRequired = true;
                 gameState.UIManager.canvas = Instantiate(canvas);
                 //multidingen
-                gameState.UIManager.AddMultiplayerUI();
                 //doe gekke initshit voor localproperties
                 bool hitflag = false;
                 Hashtable hash = new Hashtable();
@@ -706,6 +707,8 @@ public class LevelManager : MonoBehaviour
                 gameState.gridManager.InitPlayerGridMultiLevel1();
                 gameState.BuildingPhaseActive = true;
                 //dit is wel poep moet echt es anders
+
+                gameState.UIManager.AddMultiplayerUI();
                 GameState.Instance.PreviousLevel = 27;
                 PlayerDataController.instance.PreviousScene = 27;
             }
@@ -718,8 +721,6 @@ public class LevelManager : MonoBehaviour
                 bigLevel = true;
                 multiUIRequired = true;
                 gameState.UIManager.canvas = Instantiate(canvas);
-                //multidingen
-                gameState.UIManager.AddMultiplayerUI();
                 //doe gekke initshit voor localproperties
                 bool hitflag = false;
                 Hashtable hash = new Hashtable();
@@ -745,6 +746,9 @@ public class LevelManager : MonoBehaviour
                 //dit is wel poep moet echt es anders
                 GameState.Instance.PreviousLevel = 28;
                 PlayerDataController.instance.PreviousScene = 28;
+
+                //multidingen
+                gameState.UIManager.AddMultiplayerUI();
             }
         }
 

@@ -9,13 +9,15 @@ public class LevelEditorUIManager : MonoBehaviour
 
     private Canvas canvas;
     [SerializeField]
-    private InventoryButton inventoryButton;
+    private LevelEditorInventoryButton inventoryButton;
     [SerializeField]
-    public InventoryButton[] instantiatedInventoryButtons;
+    public LevelEditorInventoryButton[] instantiatedInventoryButtons;
 
     //plaatjes voor buttons
     [SerializeField]
     Sprite rampImage;
+    [SerializeField]
+    Sprite rampReversed;
     [SerializeField]
     Sprite platformSquareImage;
     [SerializeField]
@@ -24,8 +26,10 @@ public class LevelEditorUIManager : MonoBehaviour
     Sprite boostPlatformImage;
     [SerializeField]
     Sprite cannonPlatformImage;
+    [SerializeField]
+    Sprite spike;
 
-    
+
 
     public void InventoryButtons(LevelEditorPlatforms playerPlatforms)
     {
@@ -43,7 +47,7 @@ public class LevelEditorUIManager : MonoBehaviour
 
             for (int i = 0; i < playerPlatforms.inventoryButtonAmmount; i++)
             {
-                InventoryButton buttonForWidth = Instantiate(inventoryButton,canvas.transform);
+                LevelEditorInventoryButton buttonForWidth = Instantiate(inventoryButton,canvas.transform);
                 //buttonForWidth.GetComponent<RectTransform>().sizeDelta = new Vector2(Screen.width / 8, Screen.width / 8);
                 instantiatedInventoryButtons[i] = buttonForWidth;
 
@@ -55,7 +59,7 @@ public class LevelEditorUIManager : MonoBehaviour
 
         else
         {
-            foreach (InventoryButton buttonToActivate in instantiatedInventoryButtons)
+            foreach (LevelEditorInventoryButton buttonToActivate in instantiatedInventoryButtons)
             {
                 buttonToActivate.gameObject.SetActive(true);
             }
@@ -77,7 +81,7 @@ public class LevelEditorUIManager : MonoBehaviour
         }
         else if (playerPlatforms.rampsReversed > 0 && !playerPlatforms.rampReversedButtonInstantiated)
         {
-            buttonImage.GetComponent<Image>().sprite = rampImage;
+            buttonImage.GetComponent<Image>().sprite = rampReversed;
             instantiatedInventoryButtons[currentButton].name = InventoryButtonName.rampsReversedInventoryButton.ToString();
             buttonText.GetComponent<Text>().text = playerPlatforms.rampsReversed.ToString();
 
@@ -118,7 +122,7 @@ public class LevelEditorUIManager : MonoBehaviour
 
         else if (playerPlatforms.redZones > 0 && !playerPlatforms.redZoneButtonInstantiated)
         {
-            buttonImage.GetComponent<Image>().sprite = cannonPlatformImage;
+            buttonImage.GetComponent<Image>().sprite = spike;
             instantiatedInventoryButtons[currentButton].name = InventoryButtonName.redZoneButton.ToString();
             buttonText.GetComponent<Text>().text = playerPlatforms.redZones.ToString();
 
@@ -130,7 +134,7 @@ public class LevelEditorUIManager : MonoBehaviour
     {
         bool check = instantiatedInventoryButtons.Length > 0;
         
-        instantiatedInventoryButtons = new InventoryButton[inventoryButtonAmmount];
+        instantiatedInventoryButtons = new LevelEditorInventoryButton[inventoryButtonAmmount];
     }
     
 }

@@ -70,7 +70,7 @@ public class LevelEditorDragManager : MonoBehaviour, IDragHandler, IBeginDragHan
         //draggingAllowed = true;
         //playercamera.platformDragActive = true;
 
-        InventoryButton correctButton = FindInventoryButton(data);
+        LevelEditorInventoryButton correctButton = FindInventoryButton(data);
         if (correctButton != null)
         {
             if (correctButton.InventoryButtonAllowed)
@@ -196,7 +196,7 @@ public class LevelEditorDragManager : MonoBehaviour, IDragHandler, IBeginDragHan
         }
     }
 
-    private InventoryButton FindInventoryButton(PointerEventData data)
+    private LevelEditorInventoryButton FindInventoryButton(PointerEventData data)
     {
         GameObject buttonFromRaycast = null;
         if (data.pointerPressRaycast.gameObject.tag == "InventoryButton")
@@ -208,8 +208,8 @@ public class LevelEditorDragManager : MonoBehaviour, IDragHandler, IBeginDragHan
             buttonFromRaycast = data.pointerPressRaycast.gameObject.transform.parent.gameObject;
         }
 
-        InventoryButton correctButton = null;
-        foreach (InventoryButton button in LevelEditorState.Instance.UIManager.instantiatedInventoryButtons)
+        LevelEditorInventoryButton correctButton = null;
+        foreach (LevelEditorInventoryButton button in LevelEditorState.Instance.UIManager.instantiatedInventoryButtons)
         {
             if (button.name == buttonFromRaycast.name)
             {
