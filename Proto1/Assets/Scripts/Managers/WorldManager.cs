@@ -53,5 +53,14 @@ class WorldManager
         }
         return skyBox;
     }
+
+    public bool SetSnow()
+    {
+        if(LEVELNUMBER > NUMBERSTARTWORLD3)
+        {
+            return true;
+        }
+        return false;
+    }
 }
 
