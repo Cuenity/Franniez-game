@@ -106,15 +106,11 @@ public class UIDragHandler : MonoBehaviour, IDragHandler, IBeginDragHandler, IEn
 
     private void SetWorldMaterials()
     {
-        // World 2
-        if (GameState.Instance.PreviousLevel > 10 && GameState.Instance.PreviousLevel < 21)
-        {
-            ramp.GetComponent<Renderer>().material = Resources.Load("PlatformMat/RampSpace", typeof(Material)) as Material;
-            platformSquare.GetComponent<Renderer>().material = Resources.Load("PlatformMat/RechthoekSpace", typeof(Material)) as Material;
-            camera.GetComponent<Skybox>().material = Resources.Load("SkyBox/Space", typeof(Material)) as Material;
-        }
+        WorldManager worldManager = new WorldManager();
+        Material[] materials = worldManager.GetMaterials();
 
-        // World 3
-        // Moet nog gemaakt worden
+        platformSquare.GetComponent<Renderer>().material = materials[0];
+        ramp.GetComponent<Renderer>().material = materials[1];
+        camera.GetComponent<Skybox>().material = worldManager.GetSkyBox();
     }
 }

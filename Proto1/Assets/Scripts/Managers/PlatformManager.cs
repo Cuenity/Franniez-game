@@ -47,11 +47,11 @@ public class PlatformManager : MonoBehaviour
     private Vector3 finishPosition;
 
     private int SceneNumber = 0;
-    private int themeWorld2 = 10;
-    private int themeWorld3 = 20;
+    private readonly int NUMBERSTARTWORLD2 = 10;
+    private readonly int NUMBERSTARTWORLD3 = 20;
 
-    private Material rampMaterialWorld2;
-    private Material squareMaterialWorld2;
+    // Platform materials voor werelden
+    private Material blockMaterial, rampMaterial;
 
 
     private void Awake()
@@ -299,12 +299,7 @@ public class PlatformManager : MonoBehaviour
         Vector3 rampAdjustment = new Vector3(0.5f, 0f, 0f);
 
         // Get materials for worlds
-
-        if (SceneNumber > themeWorld2)
-        {
-            rampMaterialWorld2 = Resources.Load("PlatformMat/RampSpace", typeof(Material)) as Material;
-            squareMaterialWorld2 = Resources.Load("PlatformMat/RechthoekSpace", typeof(Material)) as Material;
-        }
+        SetMaterials();
 
         for (int i = 0; i < levelPlatformen.tileList.Length; i++)
         {
@@ -315,12 +310,7 @@ public class PlatformManager : MonoBehaviour
             else if (levelPlatformen.tileList[i] == 1)
             {
                 Ramp rampNormal = Instantiate(ramp, GameState.Instance.gridManager.gridSquares[i + 1], new Quaternion(0, 0, 0, 0));
-
-                if (SceneNumber > themeWorld2)
-                {
-                    rampNormal.GetComponent<Renderer>().material = rampMaterialWorld2;
-                }
-
+                rampNormal.GetComponent<Renderer>().material = rampMaterial;
                 rampNormal.transform.Rotate(new Vector3(-90f, -90f, 0));
                 GameState.Instance.gridManager.AddFilledGridSpots(new List<int> { i }, SizeType.twoByOne);
             }
@@ -329,12 +319,7 @@ public class PlatformManager : MonoBehaviour
             else if (levelPlatformen.tileList[i] == 2)
             {
                 Ramp ramp = Instantiate(levelEditorRampReversed, GameState.Instance.gridManager.gridSquares[i + 1], new Quaternion(0, 0, 0, 0));
-
-                if (SceneNumber > themeWorld2)
-                {
-                    ramp.GetComponent<Renderer>().material = rampMaterialWorld2;
-                }
-
+                ramp.GetComponent<Renderer>().material = rampMaterial;
                 ramp.transform.Rotate(new Vector3(-90f, 90f, 0));
                 GameState.Instance.gridManager.AddFilledGridSpots(new List<int> { i }, SizeType.twoByOne);
             }
@@ -342,10 +327,7 @@ public class PlatformManager : MonoBehaviour
             // Platform Square
             else if (levelPlatformen.tileList[i] == 3)
             {
-                if (SceneNumber > themeWorld2)
-                {
-                    levelEditorPlatform.GetComponent<Renderer>().material = squareMaterialWorld2;
-                }
+                levelEditorPlatform.GetComponent<Renderer>().material = blockMaterial;
                 Instantiate(levelEditorPlatform, GameState.Instance.gridManager.gridSquares[i + 1], new Quaternion(0, 0, 0, 0)).transform.Rotate(new Vector3(-90, 90, 0));
                 GameState.Instance.gridManager.AddFilledGridSpots(new List<int> { i }, SizeType.twoByOne);
             }
@@ -409,11 +391,15 @@ public class PlatformManager : MonoBehaviour
         gameState.collectableManager.InitCollectables(coinPositions, finishPosition);
     }
 
-    private GameObject setMaterialForWorld2(GameObject gameplatform, Material material)
+    private void SetMaterials()
     {
-        gameplatform.GetComponent<Renderer>().material = material;
-        return gameplatform;
+        WorldManager worldManager = new WorldManager();
+        Material[] materials = worldManager.GetMaterials();
+
+        blockMaterial = materials[0];
+        rampMaterial = materials[1];
     }
+
 
     public void BuildLevel6()
     {
@@ -773,12 +759,14 @@ public class PlatformManager : MonoBehaviour
 
     internal void Init_Platforms(List<int> RampSpots, List<int> PlatformSpots, List<int> RampSpotsReversed, List<int> PortalSpots, List<int> TrampolineSpots, List<int> rechthoekSpots, List<int> boosterPlatformSpots, List<Lift> liftList)
     {
+        SetMaterials();
+
         Vector3 rampAdjustment = new Vector3(0.5f, 0f, 0f);
         if (RampSpots.Count > 0)
         {
             if (SceneNumber >= 11)
             {
-                ramp.GetComponent<Renderer>().material = Resources.Load("PlatformMat/RampSpace", typeof(Material)) as Material;
+                ramp.GetComponent<Renderer>().material = rampMaterial;
             }
             for (int i = 0; i < RampSpots.Count; i++)
             {
@@ -789,11 +777,7 @@ public class PlatformManager : MonoBehaviour
         }
         if (PlatformSpots.Count > 0)
         {
-            if (SceneNumber >= 11)
-            {
-                PlatformSquare.GetComponent<Renderer>().material = Resources.Load("PlatformMat/RampSpace", typeof(Material)) as Material;
-            }
-
+            PlatformSquare.GetComponent<Renderer>().material = blockMaterial;
             for (int i = 0; i < PlatformSpots.Count; i++)
             {
                 Instantiate(PlatformSquare, gameState.gridManager.gridSquares[PlatformSpots[i]] + rampAdjustment, PlatformSquare.transform.rotation);
@@ -802,10 +786,7 @@ public class PlatformManager : MonoBehaviour
         }
         if (RampSpotsReversed.Count > 0)
         {
-            if (SceneNumber >= 11)
-            {
-                ramp.GetComponent<Renderer>().material = Resources.Load("PlatformMat/RampSpace", typeof(Material)) as Material;
-            }
+                ramp.GetComponent<Renderer>().material = rampMaterial;
             for (int i = 0; i < RampSpotsReversed.Count; i++)
             {
                 ramp.SpawnRampReversed(gameState.gridManager.gridSquares[RampSpotsReversed[i]] + rampAdjustment);
@@ -831,13 +812,9 @@ public class PlatformManager : MonoBehaviour
         }
         if (rechthoekSpots.Count > 0)
         {
-            if (SceneNumber >= 11)
-            {
-                rechthoek.GetComponent<Renderer>().material = Resources.Load("PlatformMat/RampSpace", typeof(Material)) as Material;
-            }
+            rechthoek.GetComponent<Renderer>().material = blockMaterial;
             for (int i = 0; i < rechthoekSpots.Count; i++)
             {
-
                 rechthoek = Instantiate(rechthoek, gameState.gridManager.gridSquares[rechthoekSpots[i]] + new Vector3(1, 0, 0), rechthoek.transform.rotation);
                 //rechthoek.GetComponent<Renderer>().material = Resources.Load("PlatformMat/RechthoekSpace", typeof(Material)) as Material;
                 gameState.gridManager.AddFilledGridSpots(rechthoekSpots, SizeType.twoByOne);
