@@ -157,7 +157,8 @@ public class PlatformManager : MonoBehaviour
         if (cantPlacePlaform)
         {
             platformToPlace.GetComponent<Platform>().fillsGridSpot = minimumValueIndex;
-            GameState.Instance.buttonManager.UpdatePlayerPlatforms(platformToPlace.gameObject);
+            //GameState.Instance.buttonManager.UpdatePlayerPlatforms(platformToPlace.gameObject);
+            platformToPlace.GetComponent<Platform>().UpdatePlayerPlatforms();
             Handheld.Vibrate();
         }
 

@@ -31,4 +31,7 @@ public class PlatformBreekbaar : Platform
         spawnPosition = gameObject.transform.position;
         gameObject.transform.position = new Vector3(-100, -100, -100);
     }
+
+    // alleen nodig voor de playerplatforms (dit zijn de enige met knoppen die geupdate kunnen worden)
+    public override void UpdatePlayerPlatforms() { }
 }

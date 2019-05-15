@@ -28,6 +28,10 @@ public class BigRamp : Platform
         BigRamp ramp = Instantiate(this, spawnPosition + rampAdjustment, new Quaternion(0, 0, 0, 0));
         ramp.transform.Rotate(new Vector3(-90f, -90f, -180));
     }
-    
 
+    public override void UpdatePlayerPlatforms()
+    {
+        Debug.Log("fix here");
+        throw new System.NotImplementedException();
+    }
 }
