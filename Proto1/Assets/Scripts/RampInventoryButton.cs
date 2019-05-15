@@ -15,7 +15,8 @@ public class RampInventoryButton : InventoryButton
 
     public override void SetCorrectTextAndImageForInventoryButton(string platformAmmount)
     {
-        gameObject.transform.Find("PlatformImage").GetComponent<Image>().sprite = rampImage;
+        WorldManager worldManager = new WorldManager();
+        gameObject.transform.Find("PlatformImage").GetComponent<Image>().sprite = worldManager.GetRampIcon();
         gameObject.name = InventoryButtonName.rampInventoryButton.ToString();
         gameObject.GetComponentInChildren<Text>().text = platformAmmount;
     }
