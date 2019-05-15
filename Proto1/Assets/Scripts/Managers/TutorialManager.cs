@@ -57,7 +57,7 @@ public class TutorialManager : MonoBehaviour
         bool done = false;
         while (!done)
         {
-            if (SceneManager.GetActiveScene().name == "1" || SceneManager.GetActiveScene().name == "5" || SceneManager.GetActiveScene().name == "5")
+            if (PlayerDataController.instance.PreviousScene == 1 || PlayerDataController.instance.PreviousScene == 5)
             {
                 if (GameState.Instance.UIManager.canvas != null)
                 {
@@ -90,7 +90,7 @@ public class TutorialManager : MonoBehaviour
     IEnumerator SpawnTutorialMaskAfterSecond()
     {
         yield return new WaitForSeconds(0.2f);
-        if (SceneManager.GetActiveScene().name == "1" || SceneManager.GetActiveScene().name == "5")
+        if (PlayerDataController.instance.PreviousScene == 1 || PlayerDataController.instance.PreviousScene == 5)
         {
             if (!changeBallTutorial)
             {
