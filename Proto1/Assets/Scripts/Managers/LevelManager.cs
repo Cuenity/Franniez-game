@@ -294,7 +294,7 @@ public class LevelManager : MonoBehaviour
         //spawnpoint
         gameState.playerBallManager.SetSpawnpoint(levelSetting.spawnPoint);
         //balzooi
-        gameState.playerBallManager.WhatBalls(levelSetting.ballArray[0], levelSetting.ballArray[0], levelSetting.ballArray[0]);
+        gameState.playerBallManager.WhatBalls(levelSetting.ballArray[0], levelSetting.ballArray[1], levelSetting.ballArray[2]);
         
         DefaultSceneEndInit();
     }
