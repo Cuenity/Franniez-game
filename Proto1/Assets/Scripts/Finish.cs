@@ -19,12 +19,6 @@ public class Finish : MonoBehaviour
         gameState.levelManager.finish = this;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
     private void OnTriggerEnter(Collider other)
     {
         //playerManager.collectedCoins++;

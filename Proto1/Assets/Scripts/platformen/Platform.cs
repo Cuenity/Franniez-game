@@ -4,6 +4,19 @@ using UnityEngine;
 
 public abstract class Platform : MonoBehaviour
 {
-    // this position only needs to be set on playerPlatforms
     public int fillsGridSpot;
+
+    public abstract void UpdatePlayerPlatforms();
+
+    protected InventoryButton FindCorrectInventoryButton(InventoryButtonName inventoryButtonName)
+    {
+        foreach (InventoryButton inventoryButton in GameState.Instance.UIManager.instantiatedInventoryButtons)
+        {
+            if (inventoryButton.name == inventoryButtonName.ToString())
+            {
+                return inventoryButton;
+            }
+        }
+        return null;
+    }
 }

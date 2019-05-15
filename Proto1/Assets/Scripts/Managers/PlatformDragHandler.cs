@@ -72,7 +72,8 @@ public class PlatformDragHandler : MonoBehaviour
                 if (platformDraggedToButton)
                 {
                     RemoveOldFilledGridSpots();
-                    gameState.buttonManager.UpdatePlayerPlatforms(draggedPlatformInScene);
+                    //gameState.buttonManager.UpdatePlayerPlatforms(draggedPlatformInScene);
+                    draggedPlatformInScene.GetComponent<Platform>().UpdatePlayerPlatforms();
                     // dragactive = false;?
                 }
                 else
@@ -98,7 +99,8 @@ public class PlatformDragHandler : MonoBehaviour
         if (results.Count > 0)
         {
             RemoveOldFilledGridSpots();
-            gameState.buttonManager.UpdatePlayerPlatforms(draggedPlatformInScene.gameObject);
+            //gameState.buttonManager.UpdatePlayerPlatforms(draggedPlatformInScene);
+            draggedPlatformInScene.GetComponent<Platform>().UpdatePlayerPlatforms();
             return true;
         }
 

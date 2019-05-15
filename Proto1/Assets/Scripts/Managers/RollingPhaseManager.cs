@@ -34,23 +34,12 @@ public class RollingPhaseManager : MonoBehaviour
         player = PlayerDataController.instance.Player;
 
         if (player == null) { return; }
-        //INDEX OUT OF RANGE BIJ LEVELSWITCH
-        //if (player.levels[levelNumber - 1] != null)
-        //{
-        //    // Als hij het niet vind, doet ff iets
 
-        //    level = player.levels[levelNumber - 1];
-        //}
         else
         {
             level = new Level();
         }
 
-
-        if (level.gotSticker)
-        {
-            pickedSticker = true;
-        }
         level.playedLevel = true;
     }
 
@@ -74,7 +63,6 @@ public class RollingPhaseManager : MonoBehaviour
     void OnEnable()
     {
         Coin.PickedCoin += AddCoin;
-        StickerObject.PickedSticker += AddSticker;
         Finish.Finished += ReachedFinish;
         ButtonManager.ChangeEnvironment += ChangeEnvironment;
     }
@@ -84,15 +72,8 @@ public class RollingPhaseManager : MonoBehaviour
     void OnDisable()
     {
         Coin.PickedCoin -= AddCoin;
-        StickerObject.PickedSticker -= AddSticker;
         Finish.Finished -= ReachedFinish;
         ButtonManager.ChangeEnvironment -= ChangeEnvironment;
-    }
-
-    private void AddSticker()
-    {
-        pickedSticker = true;
-        Debug.Log("Sticker gepakt");
     }
 
     private void ChangeEnvironment()
@@ -100,7 +81,6 @@ public class RollingPhaseManager : MonoBehaviour
         if (gameState.RollingPhaseActive)
         {
             amountCoins = 0;
-            pickedSticker = false;
         }
     }
 
@@ -177,10 +157,10 @@ public class RollingPhaseManager : MonoBehaviour
             PlayerDataController.instance.Player = player;
             PlayerDataController.instance.Save();
             PlayerDataController.instance.PreviousScene = levelNumber;
-            if (PlayerDataController.instance.PreviousSceneCoinCount < level.countCoins)
-            {
+            //if (PlayerDataController.instance.PreviousSceneCoinCount < level.countCoins)
+            //{
                 PlayerDataController.instance.PreviousSceneCoinCount = level.countCoins;
-            }
+            //}
             //maybe fix denk dat de progression null logt
             string stringlevelnumbervoorGA = levelNumber.ToString();
             GameAnalytics.NewProgressionEvent(GAProgressionStatus.Complete, levelNumber.ToString());

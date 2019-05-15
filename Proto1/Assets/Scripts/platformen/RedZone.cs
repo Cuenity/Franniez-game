@@ -4,18 +4,13 @@ using UnityEngine;
 
 public class RedZone : Platform
 {
-    GameState gameState;
-    // Start is called before the first frame update
-    void Start()
+    private GameState gameState;
+
+    private void Start()
     {
         gameState = GameState.Instance;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
     private void OnTriggerEnter(Collider other)
     {
         if (other.isTrigger && other.name.Contains("BlackHole"))
@@ -27,6 +22,8 @@ public class RedZone : Platform
             Handheld.Vibrate();
             gameState.levelManager.SetBuildingPhase();
         }
-
     }
+
+    // alleen nodig voor de playerplatforms (dat zijn de enige met knoppen die geupdate kunnen worden)
+    public override void UpdatePlayerPlatforms() { }
 }

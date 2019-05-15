@@ -8,36 +8,28 @@ using Photon.Pun;
 
 public class VictoryManager : MonoBehaviour
 {
-    public Image ribbon;
-    public Image starImage;
-    public Image sticker;
-
-    public Sprite star1;
-    public Sprite stars2;
-    public Sprite stars3;
-    public Sprite stars0;
-
-    public Sprite ribbon_Dutch;
-    public Sprite ribbon_English;
-    public Sprite ribbon_Spanish;
+    [SerializeField] private Image ribbonPlaceHolder, starImagePlaceHolder;
+    [SerializeField] private Sprite star1, stars2, stars3, stars0;
+    [SerializeField] private Sprite ribbon_Dutch, ribbon_English, ribbon_Spanish;
+    [SerializeField] private Canvas VictoryCanvas;
+    [SerializeField] private Text amountCoins;
 
     private PlayerData player;
+    private PlayerDataController playerDataController;
 
-    [SerializeField]
-    Canvas VictoryCanvas;
-
-    private void Awake()
-    {
-        player = PlayerDataController.instance.Player;
-        SetLanguage();
-        sticker.enabled = false;
-        GetData();
-    }
-
-    // Start is called before the first frame update
     void Start()
     {
-        //zet buttons uit in MP voor niet host
+        player = PlayerDataController.instance.Player;
+        playerDataController = PlayerDataController.instance;
+
+        SetLanguage();
+        GetDataFromLevel();
+        SetButtonsForPhoton();
+    }
+
+    private void SetButtonsForPhoton()
+    {
+        // Zet buttons uit in MP voor niet host
         if (PhotonNetwork.InRoom)
         {
             if (!PhotonNetwork.IsMasterClient)
@@ -51,12 +43,6 @@ public class VictoryManager : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     private void SetLanguage()
     {
         LocalizationManager.instance.SetLanguage();
@@ -65,98 +51,67 @@ public class VictoryManager : MonoBehaviour
         switch (LocalizationManager.instance.GetLanguage())
         {
             case Language.Dutch:
-                ribbon.sprite = ribbon_Dutch;
+                ribbonPlaceHolder.sprite = ribbon_Dutch;
                 break;
             case Language.English:
-                ribbon.sprite = ribbon_English;
+                ribbonPlaceHolder.sprite = ribbon_English;
                 break;
             case Language.Spanish:
-                ribbon.sprite = ribbon_Spanish;
+                ribbonPlaceHolder.sprite = ribbon_Spanish;
                 break;
         }
     }
 
-    private void GetData()
+    private void GetDataFromLevel()
     {
-        //ok? hij doet dit 2 keer
-        //Onderstaande code toepassen wanneer Anne klaar is met Gamestate
-        int previousScene = PlayerDataController.instance.PreviousScene;
-
-        player = PlayerDataController.instance.Player;
-        //hij pakt nu de level zoals het is opgeslagen (dus niet wat daadwerkelijk is behaald)
-        Level level = player.levels[previousScene - 1];
-
-        //nu pakt hij de coincount van previousscene die wordt opgeslagen bij het einde van previousSceneCoinCount
-        
-        switch (PlayerDataController.instance.PreviousSceneCoinCount)
+        switch (playerDataController.PreviousSceneCoinCount)
         {
             case 1:
-                starImage.sprite = star1;
+                starImagePlaceHolder.sprite = star1;
                 break;
             case 2:
-                starImage.sprite = stars2;
+                starImagePlaceHolder.sprite = stars2;
                 break;
             case 3:
-                starImage.sprite = stars3;
+                starImagePlaceHolder.sprite = stars3;
                 break;
             default:
-                starImage.sprite = stars0;
+                starImagePlaceHolder.sprite = stars0;
                 break;
         }
 
-        if (level.gotSticker)
-        {
-            sticker.enabled = true;
-        }
+        // Add collected stars to shop coins
+        playerDataController.AddShopCoins(playerDataController.PreviousSceneCoinCount);
+        amountCoins.text = playerDataController.Player.ShopCoins.ToString();
     }
 
     public void Restart()
     {
-        //photon restart
         if (PhotonNetwork.InRoom)
         {
-            PhotonNetwork.LoadLevel(PlayerDataController.instance.PreviousScene);
+            PhotonNetwork.LoadLevel(playerDataController.PreviousScene);
+            return;
         }
-        else
-        {
-            //previous level
-            string prevlvl = Convert.ToString(PlayerDataController.instance.PreviousScene);
-
-            SceneSwitcher.Instance.AsynchronousLoadStart(prevlvl);
-
-            //SceneManager.LoadScene(prevlvl);
-        }
+        SceneSwitcher.Instance.AsynchronousLoadStart(playerDataController.PreviousScene.ToString());
     }
 
     public void NextScene()
     {
-        //geen 2de level maar wel zin om gewoon ff dit te doen(zelfde als restart)
         if (PhotonNetwork.InRoom)
         {
-            PhotonNetwork.LoadLevel(PlayerDataController.instance.PreviousScene);
+            PhotonNetwork.LoadLevel(playerDataController.PreviousScene);
+            return;
         }
-        //previous level + 1
-        else
-        {
-            int prevlvl = PlayerDataController.instance.PreviousScene;
-            string prevlvlString = Convert.ToString(prevlvl + 1);
-            SceneSwitcher.Instance.AsynchronousLoadStart(prevlvlString);
-        }
-        //SceneManager.LoadScene(prevlvlString);
+        SceneSwitcher.Instance.AsynchronousLoadStart((playerDataController.PreviousScene+1).ToString());
     }
 
     public void ReturnToMenu()
     {
-        //back to multimenu
         if (PhotonNetwork.InRoom)
         {
             PhotonNetwork.LoadLevel(29);
+            return;
         }
-        else
-        {
-            //moet lvl select worden
-            //SceneManager.LoadScene("StartMenu");
-            SceneSwitcher.Instance.AsynchronousLoadStartNoLoadingBar("LevelSelect");
-        }
+        SceneSwitcher.Instance.AsynchronousLoadStartNoLoadingBar("LevelSelect");
     }
 }

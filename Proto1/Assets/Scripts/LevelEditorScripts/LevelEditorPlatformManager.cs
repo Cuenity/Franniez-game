@@ -75,7 +75,8 @@ public class LevelEditorPlatformManager : MonoBehaviour
         else
         {
             platformToPlace.GetComponent<Platform>().fillsGridSpot = minimumValueIndex;
-            GameState.Instance.buttonManager.UpdatePlayerPlatforms(platformToPlace);
+            //GameState.Instance.buttonManager.UpdatePlayerPlatforms(platformToPlace);
+            platformToPlace.GetComponent<Platform>().UpdatePlayerPlatforms();
             Handheld.Vibrate();
         }
 

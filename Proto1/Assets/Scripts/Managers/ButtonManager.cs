@@ -90,14 +90,15 @@ public class ButtonManager : MonoBehaviour
 
     public void RemoveAllPlayerPlatformsFromScene()
     {
-        int placedPlatformsAmount = gameState.levelManager.playerPlatforms.placedPlatforms.Count;
+        //int placedPlatformsAmount = gameState.levelManager.playerPlatforms.placedPlatforms.Count;
 
-        while (placedPlatformsAmount > 0)
+        while (gameState.levelManager.playerPlatforms.placedPlatforms.Count > 0)
         {
             RemoveFilledGridSpots(gameState.levelManager.playerPlatforms.placedPlatforms[0]);
-            UpdatePlayerPlatforms(gameState.levelManager.playerPlatforms.placedPlatforms[0]);
-            placedPlatformsAmount--;
-        }
+            //UpdatePlayerPlatforms(gameState.levelManager.playerPlatforms.placedPlatforms[0]);
+            gameState.levelManager.playerPlatforms.placedPlatforms[0].GetComponent<Platform>().UpdatePlayerPlatforms();
+            //placedPlatformsAmount--;
+        } // clear hele lijst of echt zorgen dat hij er uitgehaald wordt
     }
 
     private void RemoveFilledGridSpots(GameObject platform)
@@ -113,52 +114,52 @@ public class ButtonManager : MonoBehaviour
         }
     }
 
-    public void UpdatePlayerPlatforms(GameObject playerPlatform)
-    {
-        if (playerPlatform.tag == "PlatformSquare")
-        {
-            InventoryButton button = FindCorrectInventoryButton(InventoryButtonName.platformSquareButton);
-            GameState.Instance.levelManager.playerPlatforms.platformSquaresLeftToPlace++;
-            GameState.Instance.levelManager.playerPlatforms.UpdatePlatformSquaresLeft(button);
-            button.InventoryButtonAllowed = true;
-        }
-        else if (playerPlatform.tag == "Ramp")
-        {
-            InventoryButton button = FindCorrectInventoryButton(InventoryButtonName.rampInventoryButton);
-            GameState.Instance.levelManager.playerPlatforms.rampsLeftToPlace++;
-            GameState.Instance.levelManager.playerPlatforms.UpdateRampsLeft(button);
-            button.InventoryButtonAllowed = true;
-        }
-        else if (playerPlatform.tag == "Trampoline")
-        {
-            InventoryButton button = FindCorrectInventoryButton(InventoryButtonName.trampolineButton);
-            GameState.Instance.levelManager.playerPlatforms.trampolinesLeftToPlace++;
-            GameState.Instance.levelManager.playerPlatforms.UpdateTrampolinesLeft(button);
-            button.InventoryButtonAllowed = true;
-        }
-        else if (playerPlatform.tag == "Booster")
-        {
-            InventoryButton button = FindCorrectInventoryButton(InventoryButtonName.boostPlatformButton);
-            GameState.Instance.levelManager.playerPlatforms.boostPlatformsLeftToPlace++;
-            GameState.Instance.levelManager.playerPlatforms.UpdateBoostPlatformsLeft(button);
-            button.InventoryButtonAllowed = true;
-        }
-        else if (playerPlatform.tag == "Cannon")
-        {
-            InventoryButton button = FindCorrectInventoryButton(InventoryButtonName.cannonPlatformButton);
-            GameState.Instance.levelManager.playerPlatforms.cannonPlatformsLeftToPlace++;
-            GameState.Instance.levelManager.playerPlatforms.UpdateCannonPlatformsLeft(button);
-            button.InventoryButtonAllowed = true;
-        }
+    //public void UpdatePlayerPlatforms(GameObject playerPlatform)
+    //{
+    //    if (playerPlatform.tag == "PlatformSquare")
+    //    {
+    //        InventoryButton button = FindCorrectInventoryButton(InventoryButtonName.platformSquareButton);
+    //        GameState.Instance.levelManager.playerPlatforms.platformSquaresLeftToPlace++;
+    //        GameState.Instance.levelManager.playerPlatforms.UpdatePlatformSquaresLeft(button);
+    //        button.InventoryButtonAllowed = true;
+    //    }
+    //    else if (playerPlatform.tag == "Ramp")
+    //    {
+    //        InventoryButton button = FindCorrectInventoryButton(InventoryButtonName.rampInventoryButton);
+    //        GameState.Instance.levelManager.playerPlatforms.rampsLeftToPlace++;
+    //        GameState.Instance.levelManager.playerPlatforms.UpdateRampsLeft(button);
+    //        button.InventoryButtonAllowed = true;
+    //    }
+    //    else if (playerPlatform.tag == "Trampoline")
+    //    {
+    //        InventoryButton button = FindCorrectInventoryButton(InventoryButtonName.trampolineButton);
+    //        GameState.Instance.levelManager.playerPlatforms.trampolinesLeftToPlace++;
+    //        GameState.Instance.levelManager.playerPlatforms.UpdateTrampolinesLeft(button);
+    //        button.InventoryButtonAllowed = true;
+    //    }
+    //    //else if (playerPlatform.tag == "Booster")
+    //    //{
+    //    //    InventoryButton button = FindCorrectInventoryButton(InventoryButtonName.boostPlatformButton);
+    //    //    GameState.Instance.levelManager.playerPlatforms.boostPlatformsLeftToPlace++;
+    //    //    GameState.Instance.levelManager.playerPlatforms.UpdateBoostPlatformsLeft(button);
+    //    //    button.InventoryButtonAllowed = true;
+    //    //}
+    //    else if (playerPlatform.tag == "Cannon")
+    //    {
+    //        InventoryButton button = FindCorrectInventoryButton(InventoryButtonName.cannonPlatformButton);
+    //        GameState.Instance.levelManager.playerPlatforms.cannonPlatformsLeftToPlace++;
+    //        GameState.Instance.levelManager.playerPlatforms.UpdateCannonPlatformsLeft(button);
+    //        button.InventoryButtonAllowed = true;
+    //    }
 
-        GameState.Instance.levelManager.playerPlatforms.placedPlatforms.Remove(playerPlatform);
+    //GameState.Instance.levelManager.playerPlatforms.placedPlatforms.Remove(playerPlatform);
 
-        if (!PhotonNetwork.IsConnected)
-            Destroy(playerPlatform);
-        else if (PhotonNetwork.IsConnected)
-            PhotonNetwork.Destroy(playerPlatform);
-        GameState.Instance.playerCamera.platformDragActive = false;
-    }
+    //    if (!PhotonNetwork.IsConnected)
+    //        Destroy(playerPlatform);
+    //    else if (PhotonNetwork.IsConnected)
+    //        PhotonNetwork.Destroy(playerPlatform);
+    //    GameState.Instance.playerCamera.platformDragActive = false;
+    //}
 
     private InventoryButton FindCorrectInventoryButton(InventoryButtonName inventoryButtonName)
     {

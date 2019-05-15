@@ -11,7 +11,8 @@ public class SquareInventoryButton : InventoryButton
 
     public override void SetCorrectTextAndImageForInventoryButton(string platformAmmount)
     {
-        gameObject.transform.Find("PlatformImage").GetComponent<Image>().sprite = squareImage;
+        WorldManager worldManager = new WorldManager();
+        gameObject.transform.Find("PlatformImage").GetComponent<Image>().sprite = worldManager.GetRechthoekIcon();
         gameObject.name = InventoryButtonName.platformSquareButton.ToString();
         gameObject.GetComponentInChildren<Text>().text = platformAmmount;
     }

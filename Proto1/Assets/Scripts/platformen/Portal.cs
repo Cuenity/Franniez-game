@@ -4,19 +4,13 @@ using UnityEngine;
 
 public class Portal : Platform
 {
-    GameState gameState;
+    private GameState gameState;
 
-    // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
         gameState = GameState.Instance;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
     internal void SpawnPortal(Vector3 spawnPosition)
     {
         Vector3 rampAdjustment = new Vector3(0.5f, 0f, 0f);
@@ -24,6 +18,7 @@ public class Portal : Platform
         ramp.transform.localScale = new Vector3(200f, 50f, 50f);
         ramp.transform.Rotate(new Vector3(-90f, -90f, -180));
     }
+
     private void OnTriggerEnter(Collider other)
     {
         if (!other.isTrigger )
@@ -50,5 +45,8 @@ public class Portal : Platform
             }
         }
     }
+
+    // alleen nodig voor de playerplatforms (dat zijn de enige met knoppen die geupdate kunnen worden)
+    public override void UpdatePlayerPlatforms() { }
 }
 
