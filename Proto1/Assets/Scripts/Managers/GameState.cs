@@ -114,6 +114,7 @@ public class GameState : MonoBehaviour
         tutorialManager = Instantiate(tutorialManager, instance.transform);
         tutorialManager.transform.parent = this.transform;
 
+        //dit hoeft niet meer??? maar het zou wel es shit kunnen breken
         Scene scene = SceneManager.GetActiveScene();
         levelManager.InitScene(scene.name);
     }

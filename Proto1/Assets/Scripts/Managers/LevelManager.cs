@@ -601,7 +601,7 @@ public class LevelManager : MonoBehaviour
         }
 
         //dit is een super klein multiplayer leveltje coins moeten naar boven en in het midden
-        else if (sceneName == "MultiplayerLevel1")
+        else if (SceneManager.GetActiveScene().name == "MultiplayerLevel1")
         {
             if (!levelIsSpawned)
             {

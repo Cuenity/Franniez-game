@@ -75,7 +75,7 @@ PrefabInstance:
     - target: {fileID: 1699268937832790775, guid: f2dc3acadd139694bb5fd5033ac7e2a2,
         type: 3}
       propertyPath: levelPlatformenString
-      value: Level3RampEasy
+      value: Level3JumpsEasy
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f2dc3acadd139694bb5fd5033ac7e2a2, type: 3}
