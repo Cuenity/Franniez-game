@@ -17,7 +17,6 @@ public class UIRollingManager : MonoBehaviour
     private int amountCoins = 0;
     private string levelIndicator;
     private int amountStickers = 0;
-    private Scene currentScene;
 
     // Use this for initialization
     void Start()
@@ -34,8 +33,7 @@ public class UIRollingManager : MonoBehaviour
         amountStickersText.text = "0/1";
 
         // Dit wil later uit een Scenemanager halen. 
-        currentScene = SceneManager.GetActiveScene();
-        levelIndicator = currentScene.name;
+        levelIndicator = PlayerDataController.instance.PreviousScene.ToString();
         levelNumberText.text = "LEVEL " + levelIndicator;
         if (LocalizationManager.instance.LanguageChoice == Language.Spanish)
         {

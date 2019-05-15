@@ -30,6 +30,8 @@ public class RollingPhaseManager : MonoBehaviour
         Scene scene = SceneManager.GetActiveScene();
         int.TryParse(scene.name, out levelNumber);
 
+        levelNumber = PlayerDataController.instance.PreviousScene;
+
         if (levelNumber == 0) { return; }
         player = PlayerDataController.instance.Player;
 
