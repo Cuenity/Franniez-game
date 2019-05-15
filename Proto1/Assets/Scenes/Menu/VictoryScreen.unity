@@ -1719,57 +1719,119 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &2110971192
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 2110971194}
-  - component: {fileID: 2110971193}
-  m_Layer: 0
-  m_Name: VictoryManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &2110971193
+--- !u!114 &2110971193 stripped
 MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 3258071836232464073, guid: 00fbeab1ffcab264a8a1e8f8965c5c25,
+    type: 3}
+  m_PrefabInstance: {fileID: 3258071836688509936}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2110971192}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f08ebebb90caffd4f90c2ef32c30d2ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ribbon: {fileID: 708601059}
-  starImage: {fileID: 1716170020}
-  sticker: {fileID: 878047263}
-  star1: {fileID: 21300000, guid: cade273753fc1e84fa1a6425075b99fa, type: 3}
-  stars2: {fileID: 21300000, guid: 6013c18ed44f03c4dadb54f7dc6ad60e, type: 3}
-  stars3: {fileID: 21300000, guid: 33fbfc46460004d4b8f2a6744a009369, type: 3}
-  stars0: {fileID: 21300000, guid: f6846a0b12cff344ea912edd5b6b7ae6, type: 3}
-  ribbon_Dutch: {fileID: 21300000, guid: 75c2e9a055e0ab54bb51726377f3cc08, type: 3}
-  ribbon_English: {fileID: 21300000, guid: 7d93eea15fd1be7478bf0f09fd6d22c6, type: 3}
-  ribbon_Spanish: {fileID: 21300000, guid: 628490bc3930ae14f8b9e1bcb86144c7, type: 3}
-  VictoryCanvas: {fileID: 462083520}
---- !u!4 &2110971194
-Transform:
+--- !u!1001 &3258071836688509936
+PrefabInstance:
   m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2110971192}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1003.83307, y: 426.85486, z: -224.86607}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 4
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 3258071836232464072, guid: 00fbeab1ffcab264a8a1e8f8965c5c25,
+        type: 3}
+      propertyPath: m_Name
+      value: VictoryManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 3258071836232464074, guid: 00fbeab1ffcab264a8a1e8f8965c5c25,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 1003.83307
+      objectReference: {fileID: 0}
+    - target: {fileID: 3258071836232464074, guid: 00fbeab1ffcab264a8a1e8f8965c5c25,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 426.85486
+      objectReference: {fileID: 0}
+    - target: {fileID: 3258071836232464074, guid: 00fbeab1ffcab264a8a1e8f8965c5c25,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -224.86607
+      objectReference: {fileID: 0}
+    - target: {fileID: 3258071836232464074, guid: 00fbeab1ffcab264a8a1e8f8965c5c25,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3258071836232464074, guid: 00fbeab1ffcab264a8a1e8f8965c5c25,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3258071836232464074, guid: 00fbeab1ffcab264a8a1e8f8965c5c25,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3258071836232464074, guid: 00fbeab1ffcab264a8a1e8f8965c5c25,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3258071836232464074, guid: 00fbeab1ffcab264a8a1e8f8965c5c25,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3258071836232464074, guid: 00fbeab1ffcab264a8a1e8f8965c5c25,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3258071836232464074, guid: 00fbeab1ffcab264a8a1e8f8965c5c25,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3258071836232464074, guid: 00fbeab1ffcab264a8a1e8f8965c5c25,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3258071836232464073, guid: 00fbeab1ffcab264a8a1e8f8965c5c25,
+        type: 3}
+      propertyPath: ribbon
+      value: 
+      objectReference: {fileID: 708601059}
+    - target: {fileID: 3258071836232464073, guid: 00fbeab1ffcab264a8a1e8f8965c5c25,
+        type: 3}
+      propertyPath: starImage
+      value: 
+      objectReference: {fileID: 1716170020}
+    - target: {fileID: 3258071836232464073, guid: 00fbeab1ffcab264a8a1e8f8965c5c25,
+        type: 3}
+      propertyPath: sticker
+      value: 
+      objectReference: {fileID: 878047263}
+    - target: {fileID: 3258071836232464073, guid: 00fbeab1ffcab264a8a1e8f8965c5c25,
+        type: 3}
+      propertyPath: VictoryCanvas
+      value: 
+      objectReference: {fileID: 462083520}
+    - target: {fileID: 3258071836232464073, guid: 00fbeab1ffcab264a8a1e8f8965c5c25,
+        type: 3}
+      propertyPath: ribbonPlaceHolder
+      value: 
+      objectReference: {fileID: 708601059}
+    - target: {fileID: 3258071836232464073, guid: 00fbeab1ffcab264a8a1e8f8965c5c25,
+        type: 3}
+      propertyPath: starImagePlaceHolder
+      value: 
+      objectReference: {fileID: 1716170020}
+    - target: {fileID: 3258071836232464073, guid: 00fbeab1ffcab264a8a1e8f8965c5c25,
+        type: 3}
+      propertyPath: stickerPlaceHolder
+      value: 
+      objectReference: {fileID: 878047263}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 00fbeab1ffcab264a8a1e8f8965c5c25, type: 3}
