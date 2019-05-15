@@ -9,23 +9,28 @@ using System.Timers;
 public class ShopButtons : MonoBehaviour
 {
     [SerializeField] private GameObject skinsPanel, musicPanel, coinsPanel;
-    [SerializeField] public Text amountCoinsPlayer, notEnoughCoins;
-    [SerializeField] private GameObject warningPanel;
+    [SerializeField] public Text amountCoinsPlayer, notEnoughCoins, titleWarningPanel, buyCoinsText;
+    [SerializeField] private GameObject warningPanel, notEnoughCoinsObject;
 
     // Private properties for GameAnalytics
     private float startTime;
     private float endTime;
 
+    private int buyAmountCoins = 0;
+    private bool buyNewCoins = false;
+    private PlayerDataController playerDataController;
+
     // Verander naar niet static events: Kijk naar Settings sound button voor voorbeeld
     public delegate void ClickAction(string name);
     public static event ClickAction ChangeImage;
-    public event ClickAction BuySkinEvent;
 
     public void Awake()
     {
         musicPanel.SetActive(false);
         coinsPanel.SetActive(false);
-        amountCoinsPlayer.text = PlayerDataController.instance.Player.ShopCoins.ToString();
+
+        playerDataController = PlayerDataController.instance;
+        amountCoinsPlayer.text = playerDataController.Player.ShopCoins.ToString();
 
         //Start Time for GameAnal
         startTime = Time.time;
@@ -70,21 +75,22 @@ public class ShopButtons : MonoBehaviour
 
     public void BuyCoins(int amount)
     {
-        PlayerDataController.instance.AddShopCoins(amount);
-        UpdateCoins();
+        buyAmountCoins = amount;
+        SetConfirmMessage(amount);
+        warningPanel.SetActive(true);
     }
 
     public void BuySkin(SkinObject skin, ShopSkinButton button)
     {
-        if(PlayerDataController.instance.Player.materialsByName.Contains(skin.skinName))
+        if (playerDataController.Player.materialsByName.Contains(skin.skinName))
         {
-            PlayerDataController.instance.SetActiveMaterial(skin.material);
+            playerDataController.SetActiveMaterial(skin.material);
             button.ChangeSkinCostText(skin);
         }
-        else if (PlayerDataController.instance.RemoveShopCoins(skin.cost))
+        else if (playerDataController.RemoveShopCoins(skin.cost))
         {
-            PlayerDataController.instance.AddMaterial(skin);
-            PlayerDataController.instance.SetActiveMaterial(skin.material);
+            playerDataController.AddMaterial(skin);
+            playerDataController.SetActiveMaterial(skin.material);
             button.ChangeSkinCostText(skin);
             UpdateCoins();
         }
@@ -97,15 +103,15 @@ public class ShopButtons : MonoBehaviour
 
     public void BuyBundle(ShopCategory category, ShopSkinButton button)
     {
-        if (!PlayerDataController.instance.Player.categoriesByName.Contains(category.Name))
+        if (!playerDataController.Player.categoriesByName.Contains(category.Name))
         {
-            if(PlayerDataController.instance.RemoveShopCoins(category.cost))
+            if (playerDataController.RemoveShopCoins(category.cost))
             {
-                PlayerDataController.instance.AddBundle(category);
+                playerDataController.AddBundle(category);
 
                 foreach (SkinObject skin in category.skins)
                 {
-                    PlayerDataController.instance.AddMaterial(skin);
+                    playerDataController.AddMaterial(skin);
                     button.ChangeSkinCostText(skin);
                 }
 
@@ -122,7 +128,7 @@ public class ShopButtons : MonoBehaviour
 
     private void UpdateCoins()
     {
-        amountCoinsPlayer.text = PlayerDataController.instance.ReturnCoins().ToString();
+        amountCoinsPlayer.text = playerDataController.ReturnCoins().ToString();
     }
 
     public void Button_CloseWarningPanel()
@@ -130,8 +136,62 @@ public class ShopButtons : MonoBehaviour
         warningPanel.SetActive(false);
     }
 
+    public void Button_BuyCoins()
+    {
+        /*  
+            Wanneer de panel actief werd door middel van munten kopen wordt de volgende
+            methode uitgevoerd. Als dit niet het geval is kwam de panel tevoorschijn omdat er geen
+            genoeg munten waren om een skin te kopen en wordt de gebruiker naar de Coins panel gestuurd.
+        */
+        if (buyNewCoins)
+        {
+            playerDataController.AddShopCoins(buyAmountCoins);
+            UpdateCoins();
+            warningPanel.SetActive(false);
+        }
+        else
+        {
+            ShowSkinsPanel("Coins Button");
+        }
+    }
+
     private void SetWarningCoins(int cost)
     {
+        buyCoinsText.enabled = false;
+        titleWarningPanel.text = LocalizationManager.instance.GetLocalizedValue("shop_NotEnoughCoins");
+        notEnoughCoinsObject.SetActive(true);
         notEnoughCoins.text = PlayerDataController.instance.Player.ShopCoins.ToString() + "/" + cost;
+        buyNewCoins = false;
+    }
+
+    private void SetConfirmMessage(int coins)
+    {
+        // Set buyNewCoins on true, so the button knows which statement to start in the method Button_BuyCoins
+        buyNewCoins = true;
+        float money = 0.00f;
+
+        switch (coins)
+        {
+            case 30:
+                money = 0.99f;
+                break;
+            case 210:
+                money = 4.99f;
+                break;
+            case 510:
+                money = 9.99f;
+                break;
+            default:
+                break;
+        }
+
+        buyCoinsText.enabled = true;
+
+        // Set text from LocalizationManager in text
+        string coinsLocalText = LocalizationManager.instance.GetLocalizedValue("shop_Coins");
+        string forLocalText = LocalizationManager.instance.GetLocalizedValue("lang_for");
+        buyCoinsText.text = $"€{money} {forLocalText} {coins} {coinsLocalText}?";
+        titleWarningPanel.text = LocalizationManager.instance.GetLocalizedValue("shop_DonationMessage");
+        notEnoughCoinsObject.SetActive(false);
     }
 }

@@ -8,18 +8,14 @@ using Photon.Pun;
 
 public class VictoryManager : MonoBehaviour
 {
-    [SerializeField] private Image ribbonPlaceHolder, starImagePlaceHolder, stickerPlaceHolder;
+    [SerializeField] private Image ribbonPlaceHolder, starImagePlaceHolder;
     [SerializeField] private Sprite star1, stars2, stars3, stars0;
     [SerializeField] private Sprite ribbon_Dutch, ribbon_English, ribbon_Spanish;
     [SerializeField] private Canvas VictoryCanvas;
+    [SerializeField] private Text amountCoins;
 
     private PlayerData player;
     private PlayerDataController playerDataController;
-
-    private void Awake()
-    {
-        stickerPlaceHolder.enabled = false;
-    }
 
     void Start()
     {
@@ -84,13 +80,9 @@ public class VictoryManager : MonoBehaviour
                 break;
         }
 
-        if (player.levels[playerDataController.PreviousScene - 1].gotSticker)
-        {
-            stickerPlaceHolder.enabled = true;
-        }
-
         // Add collected stars to shop coins
         playerDataController.AddShopCoins(playerDataController.PreviousSceneCoinCount);
+        amountCoins.text = playerDataController.Player.ShopCoins.ToString();
     }
 
     public void Restart()
