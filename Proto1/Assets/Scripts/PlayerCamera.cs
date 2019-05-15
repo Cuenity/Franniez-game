@@ -349,9 +349,7 @@ public class PlayerCamera : MonoBehaviour
         platformDragActive = true;
         gameState.RollingPhaseActive = false;
         gameState.BuildingPhaseActive = false;
-        gameState = GameState.Instance;
         gameState.playerCamera.transform.position = gameState.levelManager.finish.transform.position + TargetMovementOffset;
-        camera = gameState.playerCamera.GetComponent<Camera>();
         camera.transform.LookAt(gameState.levelManager.finish.transform.position);
         StartCoroutine(zoomout());
 

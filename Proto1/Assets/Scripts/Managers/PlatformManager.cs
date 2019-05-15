@@ -345,7 +345,7 @@ public class PlatformManager : MonoBehaviour
                 GameState.Instance.gridManager.AddFilledGridSpots(new List<int> { i }, SizeType.twoByOne);
             }
 
-            // Canon
+            // Cannon
             else if (levelPlatformen.tileList[i] == 6)
             {
                 //faka cannon
@@ -376,7 +376,7 @@ public class PlatformManager : MonoBehaviour
             {
                 portal = Instantiate(portal, GameState.Instance.gridManager.gridSquares[i] + new Vector3(1, .5f, 0), new Quaternion(0, 0, 0, 0));
                 allPortals.Add(portal);
-                gameState.gridManager.AddFilledGridSpots(new List<int>(), SizeType.twoByTwo);
+                gameState.gridManager.AddFilledGridSpots(new List<int> { i }, SizeType.twoByTwo);
             }
 
             // Lift
