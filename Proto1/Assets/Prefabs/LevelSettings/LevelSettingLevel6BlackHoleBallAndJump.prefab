@@ -72,5 +72,10 @@ PrefabInstance:
       propertyPath: levelPlatformenString
       value: Level6BlackHoleBallAndJump
       objectReference: {fileID: 0}
+    - target: {fileID: 8318110152065246394, guid: 35e109b3e2940704ebf100921d0822e7,
+        type: 3}
+      propertyPath: bigLevel
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 35e109b3e2940704ebf100921d0822e7, type: 3}

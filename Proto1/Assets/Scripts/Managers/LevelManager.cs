@@ -282,7 +282,7 @@ public class LevelManager : MonoBehaviour
         DefaultSceneInit();
         
         levelSetting.Init();
-
+        bigLevel = levelSetting.bigLevel;
         //dit verhaal moet in levesettings zelf gebeuren
         //playerplatforms
         playerPlatforms = new PlayerPlatforms(levelSetting.playerPlatformsArray[1], levelSetting.playerPlatformsArray[0], levelSetting.playerPlatformsArray[2], levelSetting.playerPlatformsArray[3], levelSetting.playerPlatformsArray[4]);

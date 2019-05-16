@@ -148,7 +148,7 @@ public class LevelSettings : MonoBehaviour
     /// </summary>
     #endregion
     [SerializeField]
-    bool bigLevel,levelInventory,collectables;
+    public bool bigLevel,levelInventory,collectables;
     [SerializeField]
     public int spawnPoint, finishPosition;
     [SerializeField]
