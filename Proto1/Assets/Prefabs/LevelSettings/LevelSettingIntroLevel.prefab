@@ -10,32 +10,32 @@ PrefabInstance:
     - target: {fileID: 7949340701427491737, guid: a6d4731e59cb1bc45bb9fed126fddb70,
         type: 3}
       propertyPath: levelPlatformenString
-      value: IntroLevel
+      value: IntroLevelRevised
       objectReference: {fileID: 0}
     - target: {fileID: 7949340701427491737, guid: a6d4731e59cb1bc45bb9fed126fddb70,
         type: 3}
       propertyPath: sterArray.Array.data[0]
-      value: 11
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 7949340701427491737, guid: a6d4731e59cb1bc45bb9fed126fddb70,
         type: 3}
       propertyPath: sterArray.Array.data[1]
-      value: 26
+      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 7949340701427491737, guid: a6d4731e59cb1bc45bb9fed126fddb70,
         type: 3}
       propertyPath: sterArray.Array.data[2]
-      value: 29
+      value: 27
       objectReference: {fileID: 0}
     - target: {fileID: 7949340701427491737, guid: a6d4731e59cb1bc45bb9fed126fddb70,
         type: 3}
       propertyPath: finishPosition
-      value: 24
+      value: 29
       objectReference: {fileID: 0}
     - target: {fileID: 7949340701427491737, guid: a6d4731e59cb1bc45bb9fed126fddb70,
         type: 3}
       propertyPath: playerPlatformsArray.Array.data[0]
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7949340701427491737, guid: a6d4731e59cb1bc45bb9fed126fddb70,
         type: 3}
@@ -45,6 +45,11 @@ PrefabInstance:
     - target: {fileID: 7949340701427491737, guid: a6d4731e59cb1bc45bb9fed126fddb70,
         type: 3}
       propertyPath: ballArray.Array.data[2]
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7949340701427491737, guid: a6d4731e59cb1bc45bb9fed126fddb70,
+        type: 3}
+      propertyPath: spawnPoint
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4452596467813102313, guid: a6d4731e59cb1bc45bb9fed126fddb70,

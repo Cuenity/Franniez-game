@@ -377,6 +377,7 @@ public class LevelManager : MonoBehaviour
         {
             if (!levelIsSpawned)
             {
+                gameState.tutorialManager.changeBallTutorial = true;
                 SpawnLevel(level5BlackHoleTutorial);
             }
         }
