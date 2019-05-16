@@ -4,10 +4,7 @@ using UnityEngine.UI;
 
 public class SquareInventoryButton : InventoryButton
 {
-    [SerializeField]
-    private GameObject platformSquare;
-    [SerializeField]
-    private Sprite squareImage;
+    [SerializeField] private GameObject platformSquare;
 
     public override void SetCorrectTextAndImageForInventoryButton(string platformAmmount)
     {
