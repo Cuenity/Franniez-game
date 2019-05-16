@@ -410,8 +410,30 @@ public class LevelManager : MonoBehaviour
             }
         }
 
-        // niet af andere maken
-        else if (sceneName == "10") // moet 11 zijn
+        // omzetten naar level op nieuwe manier
+        else if (sceneName == "9")
+        {
+            if (!levelIsSpawned)
+            {
+                DefaultSceneInit();
+                levelPlatformen.tileList = level12AdvancedPortal;
+                levelPlatformen.width = 20;
+                levelPlatformen.heigth = 10;
+                gameState.gridManager.width = levelPlatformen.width;
+                gameState.gridManager.height = levelPlatformen.heigth;
+                playerPlatforms = new PlayerPlatforms(2, 3, 1, 0, 0);
+                gameState.gridManager.Build_Grid_FromJSON_Without_Visuals(levelPlatformen.width, levelPlatformen.heigth);
+                gameState.playerBallManager.SetSpawnpoint(0);
+
+                GameState.Instance.platformManager.BuildLevelFromLevelPlatformen(levelPlatformen);
+
+                gameState.playerBallManager.WhatBalls(true, true, false);
+                DefaultSceneEndInit();
+            }
+        }
+
+        // omzetten naar level op nieuwe manier
+        else if (sceneName == "10")
         {
             if (!levelIsSpawned)
             {
@@ -512,30 +534,6 @@ public class LevelManager : MonoBehaviour
                 levelIsSpawned = true;
             }
         }
-
-
-        else if (sceneName == "9")
-        {
-            if (!levelIsSpawned)
-            {
-                DefaultSceneInit();
-                levelPlatformen.tileList = level12AdvancedPortal;
-                levelPlatformen.width = 20;
-                levelPlatformen.heigth = 10;
-                gameState.gridManager.width = levelPlatformen.width;
-                gameState.gridManager.height = levelPlatformen.heigth;
-                playerPlatforms = new PlayerPlatforms(2, 3, 1, 0, 0);
-                gameState.gridManager.Build_Grid_FromJSON_Without_Visuals(levelPlatformen.width, levelPlatformen.heigth);
-                gameState.playerBallManager.SetSpawnpoint(0);
-
-                GameState.Instance.platformManager.BuildLevelFromLevelPlatformen(levelPlatformen);
-
-                gameState.playerBallManager.WhatBalls(true, true, false);
-                DefaultSceneEndInit();
-            }
-        }
-
-
 
         else if (sceneName == "17")
         {
