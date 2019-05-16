@@ -263,7 +263,7 @@ public class LevelManager : MonoBehaviour
         gameState.UIManager.canvas = Instantiate(canvas);
         gameState.UIManager.newLevelInventoryisRequired = true;
         gameState.collectableManager.newCollectablesAreRequired = true;
-        GameState.Instance.playerCamera.ManualInit();
+        gameState.playerCamera.ManualInit();
     }
 
     private void DefaultSceneEndInit()
@@ -271,8 +271,8 @@ public class LevelManager : MonoBehaviour
         gameState.playerManager.PlayerInit(gameState.playerBallManager.ballList[0]);
         //gameState.collectableManager.InitCollectables(coinPositions, finishPosition);
         gameState.BuildingPhaseActive = true;
-        GameState.Instance.PreviousLevel = Int32.Parse(sceneName);
-        PlayerDataController.instance.PreviousScene = Int32.Parse(sceneName);
+        //gameState.PreviousLevel = Int32.Parse(sceneName);
+        //PlayerDataController.instance.PreviousScene = Int32.Parse(sceneName);
         levelIsSpawned = true;
     }
     #endregion

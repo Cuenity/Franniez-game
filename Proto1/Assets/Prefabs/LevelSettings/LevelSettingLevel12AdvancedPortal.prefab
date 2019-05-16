@@ -72,5 +72,25 @@ PrefabInstance:
       propertyPath: levelPlatformenString
       value: Level12AdvancedPortal
       objectReference: {fileID: 0}
+    - target: {fileID: 4746136531930767534, guid: ebf365cc98c37404f8359e595f60a93e,
+        type: 3}
+      propertyPath: playerPlatformsArray.Array.data[0]
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4746136531930767534, guid: ebf365cc98c37404f8359e595f60a93e,
+        type: 3}
+      propertyPath: playerPlatformsArray.Array.data[1]
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4746136531930767534, guid: ebf365cc98c37404f8359e595f60a93e,
+        type: 3}
+      propertyPath: playerPlatformsArray.Array.data[2]
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4746136531930767534, guid: ebf365cc98c37404f8359e595f60a93e,
+        type: 3}
+      propertyPath: playerPlatformsArray.Array.data[3]
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ebf365cc98c37404f8359e595f60a93e, type: 3}
