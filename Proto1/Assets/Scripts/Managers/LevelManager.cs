@@ -324,7 +324,7 @@ public class LevelManager : MonoBehaviour
             gameState.gridManager.Build_Grid_BuildingPhase_With_Visuals();
         }
 
-        // niet af, moet nog mask bij om de knop te zien en daar platformen uit te slepen (of een animatie van een platform dat gesleept wordt?)
+        // af
         else if (sceneName == "1")
         {
             if (!levelIsSpawned)
@@ -377,6 +377,7 @@ public class LevelManager : MonoBehaviour
         {
             if (!levelIsSpawned)
             {
+                gameState.tutorialManager.StartTutorial();
                 gameState.tutorialManager.changeBallTutorial = true;
                 SpawnLevel(level5BlackHoleTutorial);
             }
