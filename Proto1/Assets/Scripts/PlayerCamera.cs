@@ -67,14 +67,14 @@ public class PlayerCamera : MonoBehaviour
         {
             Rigidbody Body = this.GetComponent<Rigidbody>();
 
-            Vector3 Diff = transform.position - (Target.transform.position + TargetMovementOffset * 0.75f);
+            Vector3 Diff = transform.position - (gameState.playerBallManager.activePlayer.transform.position + TargetMovementOffset * 0.75f);
             Vector3 Vel = Body.velocity;
 
             Vector3 force = (Diff * -SpringForce) - (Vel * SpringDamper);
 
             Body.AddForce(force);
 
-            transform.LookAt(Target.transform.position + TargetLookAtOffset);
+            transform.LookAt(gameState.playerBallManager.activePlayer.transform.position + TargetLookAtOffset);
             mobileZoom();
         }
         // if building phase dan mag je de camera bewegen. 
@@ -349,9 +349,7 @@ public class PlayerCamera : MonoBehaviour
         platformDragActive = true;
         gameState.RollingPhaseActive = false;
         gameState.BuildingPhaseActive = false;
-        gameState = GameState.Instance;
         gameState.playerCamera.transform.position = gameState.levelManager.finish.transform.position + TargetMovementOffset;
-        camera = gameState.playerCamera.GetComponent<Camera>();
         camera.transform.LookAt(gameState.levelManager.finish.transform.position);
         StartCoroutine(zoomout());
 

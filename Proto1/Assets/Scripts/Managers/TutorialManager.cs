@@ -1,13 +1,17 @@
 ﻿using System.Collections;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class TutorialManager : MonoBehaviour
 {
-    public GameObject tutorialArrow;
+    //public GameObject tutorialArrow;
 
-    private GameObject arrow;
-    private GameObject arrow2;
+    //private GameObject arrow;
+    //private GameObject arrow2;
+
+    [SerializeField]
+    private GameObject fingerTap;
+
+    private GameObject fingerTapLocal;
 
     private bool rollingFinished;
     public bool changeBallTutorial;
@@ -23,11 +27,11 @@ public class TutorialManager : MonoBehaviour
             rollingFinished = value;
             if (rollingFinished)
             {
-                SpawnTutorialArrows();
+                PlayFingerTapAnimation();
             }
             else
             {
-                RemoveTutorialArrows();
+                StopFingerTapAnimation();
             }
         }
     }
@@ -57,7 +61,7 @@ public class TutorialManager : MonoBehaviour
         bool done = false;
         while (!done)
         {
-            if (SceneManager.GetActiveScene().name == "1" || SceneManager.GetActiveScene().name == "5" || SceneManager.GetActiveScene().name == "5")
+            if (PlayerDataController.instance.PreviousScene == 1 || PlayerDataController.instance.PreviousScene == 5)
             {
                 if (GameState.Instance.UIManager.canvas != null)
                 {
@@ -90,7 +94,7 @@ public class TutorialManager : MonoBehaviour
     IEnumerator SpawnTutorialMaskAfterSecond()
     {
         yield return new WaitForSeconds(0.2f);
-        if (SceneManager.GetActiveScene().name == "1" || SceneManager.GetActiveScene().name == "5")
+        if (PlayerDataController.instance.PreviousScene == 1 || PlayerDataController.instance.PreviousScene == 5)
         {
             if (!changeBallTutorial)
             {
@@ -103,28 +107,38 @@ public class TutorialManager : MonoBehaviour
         }
     }
 
-    private void SpawnTutorialArrows()
+    private void PlayFingerTapAnimation()
     {
-        if (arrow == null)
+        if (fingerTapLocal == null)
         {
-            arrow = Instantiate(tutorialArrow, new Vector3(3.5f, -4.3f, -4), Quaternion.Euler(0, 0, 45));
+            fingerTapLocal = Instantiate(fingerTap);
+            fingerTapLocal.transform.SetParent(GameState.Instance.UIManager.canvas.transform);
         }
-        if (arrow2 == null)
-        {
-            arrow2 = Instantiate(tutorialArrow, new Vector3(3.5f, -3.3f, -4), Quaternion.Euler(0, 0, 20));
-        }
+
+        //if (arrow == null)
+        //{
+        //    arrow = Instantiate(tutorialArrow, new Vector3(3.5f, -4.3f, -4), Quaternion.Euler(0, 0, 45));
+        //}
+        //if (arrow2 == null)
+        //{
+        //    arrow2 = Instantiate(tutorialArrow, new Vector3(3.5f, -3.3f, -4), Quaternion.Euler(0, 0, 20));
+        //}
     }
 
-    public void RemoveTutorialArrows()
+    public void StopFingerTapAnimation()
     {
-        if (arrow != null)
+        if (fingerTapLocal != null)
         {
-            Destroy(arrow);
+            Destroy(fingerTapLocal);
         }
-        if (arrow2 != null)
-        {
-            Destroy(arrow2);
-        }
+        //if (arrow != null)
+        //{
+        //    Destroy(arrow);
+        //}
+        //if (arrow2 != null)
+        //{
+        //    Destroy(arrow2);
+        //}
     }
 
 }

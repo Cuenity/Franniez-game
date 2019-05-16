@@ -43,11 +43,34 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b4f56cc787365f43a79748a6e3b1793, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  levelSettings: {fileID: 7949340701427491737, guid: a6d4731e59cb1bc45bb9fed126fddb70,
+    type: 3}
+  introLevel: {fileID: 6998243857674861311, guid: 702797ac0b4422e4fab6cc5fda6ea532,
+    type: 3}
+  level2RampEasy: {fileID: 1699268937832790775, guid: f2dc3acadd139694bb5fd5033ac7e2a2,
+    type: 3}
+  level3JumpsEasy: {fileID: 5958821124494672177, guid: 36feee6c32dc36d42bec0dc3710f8a41,
+    type: 3}
+  level5BlackHoleTutorial: {fileID: 8318110152065246394, guid: 35e109b3e2940704ebf100921d0822e7,
+    type: 3}
+  Level6BlackHoleBallAndJump: {fileID: 6263661854211023834, guid: 12b9b6ce696f8c440b1988947100e549,
+    type: 3}
+  Level7BoosterEasy: {fileID: 3290023160388524013, guid: 2e10e1c1db302c9478cdb058b28a4736,
+    type: 3}
+  Level8BoosterHard: {fileID: 4746136531930767534, guid: ebf365cc98c37404f8359e595f60a93e,
+    type: 3}
+  Level12AdvancedPortal: {fileID: 952452105958480305, guid: f7695b3fb36402f4da99d5e8e28ec068,
+    type: 3}
   coinList: []
   stickerObject: {fileID: 7059130672778521763, guid: 383c48a0d6e302541a57c7a33de8e65d,
     type: 3}
   finish: {fileID: 2032823587391776419, guid: c85261ac462ef85448b10b92e43df3f9, type: 3}
   canvas: {fileID: 5378894420974302099, guid: da83d1c688dacde4a824218a9b65e098, type: 3}
+  balknop: {fileID: 0}
+  bigLevel: 0
+  multiUIRequired: 0
+  p1Finish: 0
+  p2Finish: 0
   levelIsSpawned: 0
   levelPlatformen:
     width: 0

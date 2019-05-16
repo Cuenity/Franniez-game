@@ -36,9 +36,7 @@ public class PlatformManager : MonoBehaviour
     public GameObject gridDot;
     public GameObject gridSquare;
     //public List<Vector3[]> gridPunten = new List<Vector3[]>();
-
-
-    Scene currentScene;
+    
 
     //List<Vector3> platformPositions;
 
@@ -49,9 +47,7 @@ public class PlatformManager : MonoBehaviour
     private List<Vector3> coinPositions = new List<Vector3>();
     private Vector3 finishPosition;
 
-    private int SceneNumber = 0;
-    private readonly int NUMBERSTARTWORLD2 = 10;
-    private readonly int NUMBERSTARTWORLD3 = 20;
+    
 
     // Platform materials voor werelden
     private Material blockMaterial, rampMaterial;
@@ -60,12 +56,11 @@ public class PlatformManager : MonoBehaviour
     private void Awake()
     {
         gameState = GameState.Instance;
-        SceneNumber = int.Parse(SceneManager.GetActiveScene().name);
     }
 
     void Start()
     {
-        currentScene = SceneManager.GetActiveScene();
+
     }
 
     public void RespawnCollectables()
@@ -350,7 +345,7 @@ public class PlatformManager : MonoBehaviour
                 GameState.Instance.gridManager.AddFilledGridSpots(new List<int> { i }, SizeType.twoByOne);
             }
 
-            // Canon
+            // Cannon
             else if (levelPlatformen.tileList[i] == 6)
             {
                 //faka cannon
@@ -381,7 +376,7 @@ public class PlatformManager : MonoBehaviour
             {
                 portal = Instantiate(portal, GameState.Instance.gridManager.gridSquares[i] + new Vector3(1, .5f, 0), new Quaternion(0, 0, 0, 0));
                 allPortals.Add(portal);
-                gameState.gridManager.AddFilledGridSpots(new List<int>(), SizeType.twoByTwo);
+                gameState.gridManager.AddFilledGridSpots(new List<int> { i }, SizeType.twoByTwo);
             }
 
             // Lift
@@ -775,10 +770,6 @@ public class PlatformManager : MonoBehaviour
         Vector3 rampAdjustment = new Vector3(0.5f, 0f, 0f);
         if (RampSpots.Count > 0)
         {
-            if (SceneNumber >= 11)
-            {
-                ramp.GetComponent<Renderer>().material = rampMaterial;
-            }
             for (int i = 0; i < RampSpots.Count; i++)
             {
 

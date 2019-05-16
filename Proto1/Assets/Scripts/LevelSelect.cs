@@ -160,9 +160,10 @@ public class LevelSelect : MonoBehaviour
 
     public void LaadLevel(string level)
     {
+        PlayerDataController.instance.PreviousScene = Convert.ToInt32(level);
         worldSelectCanvas.gameObject.SetActive(false);
         levelSelectCanvas.gameObject.SetActive(false);
-        SceneSwitcher.Instance.AsynchronousLoadStart(level);
+        SceneSwitcher.Instance.AsynchronousLoadStart("1");
     }
     public void ShowLevelSelect()
     {

@@ -27,22 +27,15 @@ public class LightBall : MonoBehaviourPun
     void Update()
     {
         lightballEffect.transform.position = this.transform.position;
-        if (gameState.RollingPhaseActive)
-        {
-            this.GetComponent<Rigidbody>().useGravity = true;
-            this.GetComponent<SphereCollider>().isTrigger = false;
-        }
-        else
-        {
-            this.GetComponent<Rigidbody>().useGravity = false;
-            this.GetComponent<SphereCollider>().isTrigger = true;
-        }
     }
     private void FixedUpdate()
     {
         if (this.transform.position.y < gameState.gridManager.height * -1 || this.transform.position.x < 0 || this.transform.position.x > gameState.gridManager.width)
         {
-            Handheld.Vibrate();
+            if (PlayerPrefs.GetInt("Vibration") == 1)
+            {
+                Handheld.Vibrate();
+            }
             gameState.levelManager.SetBuildingPhase();
         }
     }
