@@ -16,7 +16,7 @@ public class LevelManager : MonoBehaviour
     public LevelSettings levelSettings;
 
     [SerializeField]
-    LevelSettings introLevel,level2RampEasy,level3JumpsEasy,level5BlackHoleTutorial,Level6BlackHoleBallAndJump,Level7BoosterEasy,Level8BoosterHard,Level12AdvancedPortal;
+    LevelSettings introLevel,level2RampEasy,level3JumpsEasy,level5BlackHoleTutorial,Level6BlackHoleBallAndJump,Level7BoosterEasy,Level8BoosterHard,Level12AdvancedPortal,LevelSettingLevel4TrampolineHard;
     #region levelArrays
     /// <summary > Arrays voor het bouwen van levels
     int[] level5 = new int[] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0, 0, 0, 0, 0, 0, 3, 0, 1, 0, 0, 0, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
@@ -357,18 +357,19 @@ public class LevelManager : MonoBehaviour
         {
             if (!levelIsSpawned)
             {
-                DefaultSceneInit();
-                levelPlatformen.tileList = level4JumpHard;
-                levelPlatformen.width = 30;
-                levelPlatformen.heigth = 13;
-                gameState.gridManager.width = levelPlatformen.width;
-                gameState.gridManager.height = levelPlatformen.heigth;
-                playerPlatforms = new PlayerPlatforms(0, 0, 6, 0, 0);
-                gameState.gridManager.Build_Grid_FromJSON_Without_Visuals(levelPlatformen.width, levelPlatformen.heigth);
-                gameState.playerBallManager.SetSpawnpoint(0);
-                GameState.Instance.platformManager.BuildLevelFromLevelPlatformen(levelPlatformen);
-                gameState.playerBallManager.WhatBalls(true, false, false);
-                DefaultSceneEndInit();
+                //DefaultSceneInit();
+                //levelPlatformen.tileList = level4JumpHard;
+                //levelPlatformen.width = 30;
+                //levelPlatformen.heigth = 13;
+                //gameState.gridManager.width = levelPlatformen.width;
+                //gameState.gridManager.height = levelPlatformen.heigth;
+                //playerPlatforms = new PlayerPlatforms(0, 0, 6, 0, 0);
+                //gameState.gridManager.Build_Grid_FromJSON_Without_Visuals(levelPlatformen.width, levelPlatformen.heigth);
+                //gameState.playerBallManager.SetSpawnpoint(0);
+                //GameState.Instance.platformManager.BuildLevelFromLevelPlatformen(levelPlatformen);
+                //gameState.playerBallManager.WhatBalls(true, false, false);
+                //DefaultSceneEndInit();
+                SpawnLevel(LevelSettingLevel4TrampolineHard);
             }
         }
 

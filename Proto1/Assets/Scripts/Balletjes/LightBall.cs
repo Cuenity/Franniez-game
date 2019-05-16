@@ -12,7 +12,7 @@ public class LightBall : MonoBehaviourPun
     {
         gameState = GameState.Instance;
         this.GetComponent<Rigidbody>().useGravity = false;
-        this.GetComponent<SphereCollider>().isTrigger = true; // verander later ofzo
+        this.GetComponent<SphereCollider>().isTrigger = true; 
     }
     void Start()
     {

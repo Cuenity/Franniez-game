@@ -15,6 +15,9 @@ public class PlayerCamera : MonoBehaviour
     public float SpringDamper;
     private Vector3 dragOrigin;
     Camera camera;
+    [SerializeField]
+    private GameObject snowFalling;
+
     Vector2?[] oldTouchPositions = {
         null,
         null
@@ -38,6 +41,11 @@ public class PlayerCamera : MonoBehaviour
         if (Target != null)
         {
             transform.LookAt(Target.transform.position + TargetLookAtOffset);
+        }
+        WorldManager worldManager = new WorldManager();
+        if (worldManager.SetSnow())
+        {
+            snowFalling = Instantiate(snowFalling, this.transform.position- new Vector3(5,5,0), new Quaternion(0, 0, 0, 0));
         }
     }
 
@@ -398,5 +406,9 @@ public class PlayerCamera : MonoBehaviour
         gameState.BuildingPhaseActive = true;
 
         gameState.tutorialManager.StartTutorial();
+    }
+    private void Update()
+    {
+        snowFalling.transform.position =this.transform.position - new Vector3(0, -3, -2.5f);
     }
 }
