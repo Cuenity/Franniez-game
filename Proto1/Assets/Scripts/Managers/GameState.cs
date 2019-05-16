@@ -16,7 +16,6 @@ public class GameState : MonoBehaviour
     public PlatformManager platformManager;
     public CollectableManager collectableManager;
     public GridManager gridManager;
-    public ButtonManager buttonManager;
 
     public UIManager UIManager;
     public UIRollingManager uIRollingManager;
@@ -101,9 +100,6 @@ public class GameState : MonoBehaviour
 
         gridManager = Instantiate(gridManager, instance.transform);
         gridManager.transform.parent = this.transform;
-
-        buttonManager = Instantiate(buttonManager, instance.transform);
-        buttonManager.transform.parent = this.transform;
 
         levelManager = Instantiate(levelManager, instance.transform);
         levelManager.transform.parent = this.transform;
