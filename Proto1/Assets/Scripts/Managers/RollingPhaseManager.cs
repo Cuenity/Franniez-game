@@ -93,7 +93,7 @@ public class RollingPhaseManager : MonoBehaviour
             Handheld.Vibrate();
         }
         amountCoins++;
-        Debug.Log("Coin gepakt");
+        //Debug.Log("Coin gepakt");
     }
 
     private void ReachedFinish()

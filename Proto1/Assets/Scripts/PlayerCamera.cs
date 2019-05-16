@@ -15,6 +15,9 @@ public class PlayerCamera : MonoBehaviour
     public float SpringDamper;
     private Vector3 dragOrigin;
     Camera camera;
+    [SerializeField]
+    private GameObject snowFalling;
+
     Vector2?[] oldTouchPositions = {
         null,
         null
@@ -38,6 +41,11 @@ public class PlayerCamera : MonoBehaviour
         if (Target != null)
         {
             transform.LookAt(Target.transform.position + TargetLookAtOffset);
+        }
+        WorldManager worldManager = new WorldManager();
+        if (worldManager.SetSnow())
+        {
+            snowFalling = Instantiate(snowFalling, this.transform.position- new Vector3(5,5,0), new Quaternion(0, 0, 0, 0));
         }
     }
 
@@ -67,14 +75,14 @@ public class PlayerCamera : MonoBehaviour
         {
             Rigidbody Body = this.GetComponent<Rigidbody>();
 
-            Vector3 Diff = transform.position - (Target.transform.position + TargetMovementOffset * 0.75f);
+            Vector3 Diff = transform.position - (gameState.playerBallManager.activePlayer.transform.position + TargetMovementOffset * 0.75f);
             Vector3 Vel = Body.velocity;
 
             Vector3 force = (Diff * -SpringForce) - (Vel * SpringDamper);
 
             Body.AddForce(force);
 
-            transform.LookAt(Target.transform.position + TargetLookAtOffset);
+            transform.LookAt(gameState.playerBallManager.activePlayer.transform.position + TargetLookAtOffset);
             mobileZoom();
         }
         // if building phase dan mag je de camera bewegen. 
@@ -398,5 +406,9 @@ public class PlayerCamera : MonoBehaviour
         gameState.BuildingPhaseActive = true;
 
         gameState.tutorialManager.StartTutorial();
+    }
+    private void Update()
+    {
+        snowFalling.transform.position =this.transform.position - new Vector3(0, -3, -2.5f);
     }
 }

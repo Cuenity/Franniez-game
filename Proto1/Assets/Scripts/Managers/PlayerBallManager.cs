@@ -43,25 +43,25 @@ public class PlayerBallManager : MonoBehaviour
                 case Bal.BlackHole:
                     tempMultiBall = PhotonNetwork.Instantiate("Photon BlackHoleBall", gameState.playerBallManager.spawnpoint, new Quaternion(0, 0, 0, 0)).gameObject;
                     tempMultiBall.GetComponent<Renderer>().material = PlayerDataController.instance.ballMaterial;
-                    gameState.playerCamera.Target = tempMultiBall;
+                    //gameState.playerCamera.Target = tempMultiBall;
                     break;
                 case Bal.Light:
                     
                     tempMultiBall = PhotonNetwork.Instantiate("Photon LightBall", gameState.playerBallManager.spawnpoint, new Quaternion(0, 0, 0, 0)).gameObject;
                     tempMultiBall.GetComponent<Renderer>().material = PlayerDataController.instance.ballMaterial;
-                    gameState.playerCamera.Target = tempMultiBall;
+                    //gameState.playerCamera.Target = tempMultiBall;
                     break;
                 case Bal.Normal:
                     
                     tempMultiBall = PhotonNetwork.Instantiate("Photon Player Ball", gameState.playerBallManager.spawnpoint, new Quaternion(0, 0, 0, 0)).gameObject;
                     tempMultiBall.GetComponent<Renderer>().material = PlayerDataController.instance.ballMaterial;
-                    gameState.playerCamera.Target = tempMultiBall;
+                    //gameState.playerCamera.Target = tempMultiBall;
                     break;
                 default:
                     
                     tempMultiBall = PhotonNetwork.Instantiate("Photon Player Ball", gameState.playerBallManager.spawnpoint, new Quaternion(0, 0, 0, 0)).gameObject;
                     tempMultiBall.GetComponent<Renderer>().material = PlayerDataController.instance.ballMaterial;
-                    gameState.playerCamera.Target = tempMultiBall;
+                    //gameState.playerCamera.Target = tempMultiBall;
                     break;
             }
             if (PhotonNetwork.IsMasterClient)
@@ -88,25 +88,25 @@ public class PlayerBallManager : MonoBehaviour
                     activePlayer = Instantiate(blackHoleBall, gameState.playerBallManager.spawnpoint, new Quaternion(0, 0, 0, 0)).gameObject;
                     gameState.playerBallManager.activePlayer = activePlayer;
                     activePlayer.GetComponent<Renderer>().material = PlayerDataController.instance.ballMaterial;
-                    gameState.playerCamera.Target = activePlayer;
+                    //gameState.playerCamera.Target = activePlayer;
                     break;
                 case Bal.Light:
                     activePlayer = Instantiate(lightBall, gameState.playerBallManager.spawnpoint, new Quaternion(0, 0, 0, 0)).gameObject;
                     gameState.playerBallManager.activePlayer = activePlayer;
                     activePlayer.GetComponent<Renderer>().material = PlayerDataController.instance.ballMaterial;
-                    gameState.playerCamera.Target = activePlayer;
+                    //gameState.playerCamera.Target = activePlayer;
                     break;
                 case Bal.Normal:
                     activePlayer = Instantiate(normalBall, gameState.playerBallManager.spawnpoint, new Quaternion(0, 0, 0, 0)).gameObject;
                     gameState.playerBallManager.activePlayer = activePlayer;
                     activePlayer.GetComponent<Renderer>().material = PlayerDataController.instance.ballMaterial;
-                    gameState.playerCamera.Target = activePlayer;
+                    //gameState.playerCamera.Target = activePlayer;
                     break;
                 default:
                     activePlayer = Instantiate(normalBall, gameState.playerBallManager.spawnpoint, new Quaternion(0, 0, 0, 0)).gameObject;
                     gameState.playerBallManager.activePlayer = activePlayer;
                     activePlayer.GetComponent<Renderer>().material = PlayerDataController.instance.ballMaterial;
-                    gameState.playerCamera.Target = activePlayer;
+                    //gameState.playerCamera.Target = activePlayer;
                     break;
             }
         }
@@ -145,11 +145,16 @@ public class PlayerBallManager : MonoBehaviour
         activePlayer.GetComponent<Rigidbody>().angularVelocity = new Vector3(0, 0, 0);
         activePlayer.GetComponent<Rigidbody>().velocity = new Vector3(0, 0, 0);
         if (gameState.levelManager.bigLevel)
-        {
+        {            
             camera.transform.position = gameState.playerBallManager.spawnpoint + camera.TargetMovementOffset;
+            camera.transform.LookAt(activePlayer.transform.position);
         }
-
-        camera.transform.LookAt(camera.Target.transform.position);
+        else
+        {
+            camera.transform.position = camera.Target.transform.position + camera.TargetMovementOffset;
+            camera.transform.LookAt(camera.Target.transform.position);
+        }
+        
         camera.GetComponent<Rigidbody>().velocity = new Vector3(0, 0, 0);
         this.GetComponent<Rigidbody>().Sleep();
     }

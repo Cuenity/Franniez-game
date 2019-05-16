@@ -77,5 +77,20 @@ PrefabInstance:
       propertyPath: bigLevel
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8318110152065246394, guid: 35e109b3e2940704ebf100921d0822e7,
+        type: 3}
+      propertyPath: playerPlatformsArray.Array.data[0]
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8318110152065246394, guid: 35e109b3e2940704ebf100921d0822e7,
+        type: 3}
+      propertyPath: playerPlatformsArray.Array.data[1]
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8318110152065246394, guid: 35e109b3e2940704ebf100921d0822e7,
+        type: 3}
+      propertyPath: playerPlatformsArray.Array.data[2]
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 35e109b3e2940704ebf100921d0822e7, type: 3}

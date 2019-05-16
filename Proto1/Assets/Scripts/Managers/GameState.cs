@@ -31,7 +31,7 @@ public class GameState : MonoBehaviour
     private static GameState instance;
     public static GameState Instance
     {
-        get {  return instance; }
+        get { return instance; }
     }
 
     public bool BuildingPhaseActive
@@ -59,13 +59,21 @@ public class GameState : MonoBehaviour
 
     public bool RollingPhaseActive
     {
-        get {  return rollingPhaseActive; }
+        get { return rollingPhaseActive; }
         set
         {
             rollingPhaseActive = value;
+            GameState gameState = GameState.Instance;
             if (rollingPhaseActive)
             {
                 rollingPhaseManager.Init();
+                gameState.playerBallManager.activePlayer.GetComponent<Rigidbody>().useGravity = true;
+                gameState.playerBallManager.activePlayer.GetComponent<SphereCollider>().isTrigger = false;
+            }
+            else
+            {
+                gameState.playerBallManager.activePlayer.GetComponent<Rigidbody>().useGravity = false;
+                gameState.playerBallManager.activePlayer.GetComponent<SphereCollider>().isTrigger = true;
             }
         }
     }

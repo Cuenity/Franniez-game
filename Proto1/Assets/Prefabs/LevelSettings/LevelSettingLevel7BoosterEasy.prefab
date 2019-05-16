@@ -72,5 +72,10 @@ PrefabInstance:
       propertyPath: levelPlatformenString
       value: Level7BoosterEasy
       objectReference: {fileID: 0}
+    - target: {fileID: 6263661854211023834, guid: 12b9b6ce696f8c440b1988947100e549,
+        type: 3}
+      propertyPath: playerPlatformsArray.Array.data[2]
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 12b9b6ce696f8c440b1988947100e549, type: 3}
