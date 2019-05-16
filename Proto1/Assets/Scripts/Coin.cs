@@ -44,7 +44,7 @@ public class Coin : MonoBehaviour
     {
         if (other.isTrigger && other.name.Contains("Ball"))
         {
-            Debug.Log(other);
+            //Debug.Log(other);
             go_toBall(other);
         }
         else if (other.name.Contains("Ball"))

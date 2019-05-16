@@ -324,7 +324,7 @@ public class LevelManager : MonoBehaviour
             gameState.gridManager.Build_Grid_BuildingPhase_With_Visuals();
         }
 
-        // niet af, moet nog mask bij om de knop te zien en daar platformen uit te slepen (of een animatie van een platform dat gesleept wordt?)
+        // af
         else if (sceneName == "1")
         {
             if (!levelIsSpawned)
@@ -373,17 +373,18 @@ public class LevelManager : MonoBehaviour
             }
         }
 
-        // niet af, moet nog start knop mask bij en misschien mask om de bal te zien veranderen
+        // af
         else if (sceneName == "5")
         {
             if (!levelIsSpawned)
             {
+                gameState.tutorialManager.StartTutorial();
                 gameState.tutorialManager.changeBallTutorial = true;
                 SpawnLevel(level5BlackHoleTutorial);
             }
         }
 
-        // niet af
+        // af
         else if (sceneName == "6")
         {
             if (!levelIsSpawned)
@@ -777,7 +778,7 @@ public class LevelManager : MonoBehaviour
     }
     public void SetBuildingPhase()
     {
-        if (sceneName == "1")
+        if (PlayerDataController.instance.PreviousScene == 1)
         {
             gameState.tutorialManager.RollingFinished = true;
         }

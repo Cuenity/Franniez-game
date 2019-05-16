@@ -78,7 +78,7 @@ public class SceneSwitcher : MonoBehaviour
         {
             // [0, 0.9] > [0, 1]
             float progress = Mathf.Clamp01(ao.progress / 0.9f);
-            Debug.Log("Loading progress: " + (progress * 100) + "%");
+            //Debug.Log("Loading progress: " + (progress * 100) + "%");
             slider.value = (progress * 100);
             //ProgressBar.transform.localScale = new Vector3(progress, 0.12f, 1f);
             // Loading completed
