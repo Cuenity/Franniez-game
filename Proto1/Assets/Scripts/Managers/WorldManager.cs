@@ -10,6 +10,7 @@ using UnityEngine.UI;
 
 class WorldManager
 {
+
     private readonly int NUMBERSTARTWORLD2 = 10;
     private readonly int NUMBERSTARTWORLD3 = 20;
     private readonly int LEVELNUMBER = PlayerDataController.instance.PreviousScene;
