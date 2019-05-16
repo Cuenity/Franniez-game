@@ -26,9 +26,6 @@ public class PlatformManager : MonoBehaviour
     public Ramp levelEditorRampReversed;
     public Lift lift;
 
-    [SerializeField]
-    private GameObject snowFalling;
-
     GameState gameState;
 
 
@@ -397,13 +394,6 @@ public class PlatformManager : MonoBehaviour
 
         blockMaterial = materials[0];
         rampMaterial = materials[1];
-
-        if(worldManager.SetSnow())
-        {
-            // Set snow on middle of the screen
-            int halfWitdh = GameState.Instance.gridManager.width / 2;
-            snowFalling = Instantiate(snowFalling, GameState.Instance.gridManager.gridSquares[halfWitdh], new Quaternion(0, 0, 0, 0));
-        }
     }
 
 

@@ -102,6 +102,7 @@ MonoBehaviour:
   TargetLookAtOffset: {x: 0, y: 0, z: 0}
   SpringForce: 15
   SpringDamper: 15
+  snowFalling: {fileID: 100000, guid: de07bf378e7247444a0715ad2ff509e3, type: 3}
 --- !u!54 &2116874778110079020
 Rigidbody:
   m_ObjectHideFlags: 0
