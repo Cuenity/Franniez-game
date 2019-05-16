@@ -72,5 +72,20 @@ PrefabInstance:
       propertyPath: levelPlatformenString
       value: level8BoosterHard
       objectReference: {fileID: 0}
+    - target: {fileID: 3290023160388524013, guid: 2e10e1c1db302c9478cdb058b28a4736,
+        type: 3}
+      propertyPath: playerPlatformsArray.Array.data[0]
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3290023160388524013, guid: 2e10e1c1db302c9478cdb058b28a4736,
+        type: 3}
+      propertyPath: playerPlatformsArray.Array.data[1]
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3290023160388524013, guid: 2e10e1c1db302c9478cdb058b28a4736,
+        type: 3}
+      propertyPath: playerPlatformsArray.Array.data[3]
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2e10e1c1db302c9478cdb058b28a4736, type: 3}
