@@ -145,15 +145,16 @@ public class PlayerBallManager : MonoBehaviour
         activePlayer.GetComponent<Rigidbody>().angularVelocity = new Vector3(0, 0, 0);
         activePlayer.GetComponent<Rigidbody>().velocity = new Vector3(0, 0, 0);
         if (gameState.levelManager.bigLevel)
-        {
+        {            
             camera.transform.position = gameState.playerBallManager.spawnpoint + camera.TargetMovementOffset;
+            camera.transform.LookAt(activePlayer.transform.position);
         }
         else
         {
             camera.transform.position = camera.Target.transform.position + camera.TargetMovementOffset;
+            camera.transform.LookAt(camera.Target.transform.position);
         }
-
-        camera.transform.LookAt(camera.Target.transform.position);
+        
         camera.GetComponent<Rigidbody>().velocity = new Vector3(0, 0, 0);
         this.GetComponent<Rigidbody>().Sleep();
     }

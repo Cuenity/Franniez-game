@@ -372,7 +372,7 @@ public class LevelManager : MonoBehaviour
             }
         }
 
-        // niet af, moet nog start knop mask bij en misschien mask om de bal te zien veranderen
+        // af
         else if (sceneName == "5")
         {
             if (!levelIsSpawned)
@@ -383,7 +383,7 @@ public class LevelManager : MonoBehaviour
             }
         }
 
-        // niet af
+        // af
         else if (sceneName == "6")
         {
             if (!levelIsSpawned)
