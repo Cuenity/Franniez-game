@@ -776,7 +776,7 @@ public class LevelManager : MonoBehaviour
     }
     public void SetBuildingPhase()
     {
-        if (sceneName == "1")
+        if (PlayerDataController.instance.PreviousScene == 1)
         {
             gameState.tutorialManager.RollingFinished = true;
         }
