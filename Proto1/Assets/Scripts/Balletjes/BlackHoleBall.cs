@@ -36,17 +36,6 @@ public class BlackHoleBall : MonoBehaviourPun
             BHEffect.SetActive(true);
             BHEffect.transform.position = this.transform.position;
         }
-      
-        if (gameState.RollingPhaseActive)
-        {
-            this.GetComponent<Rigidbody>().useGravity = true;
-            this.GetComponent<SphereCollider>().isTrigger = false;
-        }
-        else
-        {
-            this.GetComponent<Rigidbody>().useGravity = false;
-            this.GetComponent<SphereCollider>().isTrigger = true;
-        }
     }
     private void FixedUpdate()
     {
