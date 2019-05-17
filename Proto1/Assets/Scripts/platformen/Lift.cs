@@ -48,7 +48,7 @@ public class Lift : MonoBehaviour
         body.useGravity = false;
         body.isKinematic = true;
         // voer de transform uit in 100 stapjes zodat het smooth lijkt. en neem het balletje mee
-        while (index <= 60)
+        while (index < 60)
         {
             this.transform.position = this.transform.position + diffrence;
             ball.transform.position = this.transform.position + new Vector3(0, .8f, 0);

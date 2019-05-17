@@ -64,6 +64,8 @@ MonoBehaviour:
   LevelSettingLevel4TrampolineHard: {fileID: 0}
   Level9PortalEasy: {fileID: 477021361644002954, guid: 23ba00cef035c964f8749ff841fa7a0b,
     type: 3}
+  LevelSettingLevel12LiftMoeilijk: {fileID: 4691286432663417472, guid: 6792bb8dc3c6b384a84cae2d08ea5d41,
+    type: 3}
   coinList: []
   stickerObject: {fileID: 7059130672778521763, guid: 383c48a0d6e302541a57c7a33de8e65d,
     type: 3}

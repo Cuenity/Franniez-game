@@ -25,7 +25,8 @@ public class LevelManager : MonoBehaviour
         Level8BoosterHard,
         Level12AdvancedPortal,
         LevelSettingLevel4TrampolineHard,
-        Level9PortalEasy;
+        Level9PortalEasy,
+        LevelSettingLevel12LiftMoeilijk;
     #region levelArrays
     /// <summary > Arrays voor het bouwen van levels
     int[] level5 = new int[] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0, 0, 0, 0, 0, 0, 3, 0, 1, 0, 0, 0, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
@@ -196,10 +197,10 @@ public class LevelManager : MonoBehaviour
         balknop = gameState.UIManager.canvas.GetComponentInChildren<BallKnop>();
     }
     public Boolean levelIsSpawned = false;
-    
+
     private void Update()
     {
-       //deze is nu leeg kan weg als je wilt was eerst nodig voor MP
+        //deze is nu leeg kan weg als je wilt was eerst nodig voor MP
     }
     //public PlayerPlatforms PlayerPlatforms
     //{
@@ -290,7 +291,7 @@ public class LevelManager : MonoBehaviour
     public void SpawnLevel(LevelSettings levelSetting)
     {
         DefaultSceneInit();
-        
+
         levelSetting.Init();
         bigLevel = levelSetting.bigLevel;
         //dit verhaal moet in levesettings zelf gebeuren
@@ -305,7 +306,7 @@ public class LevelManager : MonoBehaviour
         gameState.playerBallManager.SetSpawnpoint(levelSetting.spawnPoint);
         //balzooi
         gameState.playerBallManager.WhatBalls(levelSetting.ballArray[0], levelSetting.ballArray[1], levelSetting.ballArray[2]);
-        
+
         DefaultSceneEndInit();
     }
 
@@ -367,6 +368,7 @@ public class LevelManager : MonoBehaviour
         {
             if (!levelIsSpawned)
             {
+                GameState gameState = GameState.Instance;
                 //DefaultSceneInit();
                 //levelPlatformen.tileList = level4JumpHard;
                 //levelPlatformen.width = 30;
@@ -379,7 +381,23 @@ public class LevelManager : MonoBehaviour
                 //GameState.Instance.platformManager.BuildLevelFromLevelPlatformen(levelPlatformen);
                 //gameState.playerBallManager.WhatBalls(true, false, false);
                 //DefaultSceneEndInit();
-                SpawnLevel(LevelSettingLevel4TrampolineHard);
+                Vector3 rampAdjustment = new Vector3(0.5f, 0f, 0f);
+                List<int> RampSpots = new List<int>();
+                List<int> PlatformSpots = new List<int>();
+                List<int> FinishSpots = new List<int>();
+                List<int> TrampolineSpots = new List<int>();
+                List<int> PortalSpots = new List<int>();
+                List<int> rechthoekSpots = new List<int>();
+                List<int> RampSpotsReversed = new List<int>();
+                List<int> CoinSpots = new List<int>();
+                List<int> RedZoneSpots = new List<int>();
+                List<int> boosterPlatformSpots = new List<int>();
+                List<Lift> liftList = new List<Lift>();
+                SpawnLevel(LevelSettingLevel12LiftMoeilijk);
+                gameState.platformManager.lift.SetStartAndEndPoints(263, 43);
+                liftList.Add(gameState.platformManager.lift);
+                gameState.platformManager.Init_Platforms(RampSpots,PlatformSpots,RampSpotsReversed,PortalSpots,TrampolineSpots,rechthoekSpots,boosterPlatformSpots, liftList);
+
             }
         }
 
@@ -729,7 +747,7 @@ public class LevelManager : MonoBehaviour
         }
     }
 
-    
+
 
     public void SetRollingPhase()
     {
