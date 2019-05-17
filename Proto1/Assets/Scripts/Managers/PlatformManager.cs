@@ -122,7 +122,7 @@ public class PlatformManager : MonoBehaviour
         if (!platformToPlace.GetComponent<Cannon>())
         {
             // check of platform hier geplaatst kan worden
-            if (!PlacePlatformInExactSpot(platformToPlace.GetComponent<Platform>(), minimumValueIndex, rampAdjustment))
+            if (!PlacePlatformInExactSpot(platformToPlace, minimumValueIndex, rampAdjustment))
             {
                 // zo niet kijk dan of platform in de buurt geplaatst kan worden
                 int newMinimumValueIndex = CheckForEmptyAreaAroundWrongPlacement(minimumValueIndex);
@@ -133,7 +133,7 @@ public class PlatformManager : MonoBehaviour
                 else
                 {
                     platformToPlace.transform.position = gameState.gridManager.gridSquares[newMinimumValueIndex] + rampAdjustment;
-                    platformToPlace.GetComponent<Platform>().fillsGridSpot = newMinimumValueIndex;
+                    platformToPlace.fillsGridSpot = newMinimumValueIndex;
                     gameState.gridManager.AddFilledGridSpots(new List<int> { newMinimumValueIndex }, SizeType.twoByOne);
                 }
             }
@@ -148,9 +148,9 @@ public class PlatformManager : MonoBehaviour
         // platform kan helmaal niet geplaatst worden
         if (cantPlacePlaform)
         {
-            platformToPlace.GetComponent<Platform>().fillsGridSpot = minimumValueIndex;
+            platformToPlace.fillsGridSpot = minimumValueIndex;
             //GameState.Instance.buttonManager.UpdatePlayerPlatforms(platformToPlace.gameObject);
-            platformToPlace.GetComponent<Platform>().UpdatePlayerPlatforms();
+            platformToPlace.UpdatePlayerPlatforms();
             Handheld.Vibrate();
         }
 
