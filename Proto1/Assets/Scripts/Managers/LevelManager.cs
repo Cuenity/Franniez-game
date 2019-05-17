@@ -26,7 +26,8 @@ public class LevelManager : MonoBehaviour
         Level12AdvancedPortal,
         LevelSettingLevel4TrampolineHard,
         Level9PortalEasy,
-        LevelSettingLevel12LiftMoeilijk;
+        LevelSettingLevel12LiftMoeilijk,
+        Level10TrampolineAdvanced;
     #region levelArrays
     /// <summary > Arrays voor het bouwen van levels
     int[] level5 = new int[] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0, 0, 0, 0, 0, 0, 3, 0, 1, 0, 0, 0, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
@@ -439,64 +440,51 @@ public class LevelManager : MonoBehaviour
             }
         }
 
-        // omzetten naar level op nieuwe manier
+        // af?
         else if (sceneName == "9")
         {
             if (!levelIsSpawned)
             {
                 SpawnLevel(Level9PortalEasy);
-
-                //DefaultSceneInit();
-                //levelPlatformen.tileList = level12AdvancedPortal;
-                //levelPlatformen.width = 20;
-                //levelPlatformen.heigth = 10;
-                //gameState.gridManager.width = levelPlatformen.width;
-                //gameState.gridManager.height = levelPlatformen.heigth;
-                //playerPlatforms = new PlayerPlatforms(2, 3, 1, 0, 0);
-                //gameState.gridManager.Build_Grid_FromJSON_Without_Visuals(levelPlatformen.width, levelPlatformen.heigth);
-                //gameState.playerBallManager.SetSpawnpoint(0);
-
-                //GameState.Instance.platformManager.BuildLevelFromLevelPlatformen(levelPlatformen);
-
-                //gameState.playerBallManager.WhatBalls(true, true, false);
-                //DefaultSceneEndInit();
             }
         }
 
-        // omzetten naar level op nieuwe manier
+        // af?
         else if (sceneName == "10")
         {
             if (!levelIsSpawned)
             {
-                bigLevel = true;
+                SpawnLevel(Level10TrampolineAdvanced);
 
-                gameState.UIManager.canvas = Instantiate(canvas);
-                gameState.UIManager.newLevelInventoryisRequired = true;
-                //gameState.collectableManager.newCollectablesAreRequired = true;
-                //coinPositions.Clear();
-                //coinList.Clear();
-                GameState.Instance.playerCamera.ManualInit();
-                Vector3 playeradjustment = new Vector3(.5f, 0, 0);
-                gameState.gridManager.width = 20;
-                gameState.gridManager.height = 14;
-                //Array.Clear(gameState.UIManager.instantiatedInventoryButtons, 0, gameState.UIManager.instantiatedInventoryButtons.Length);
-                //playerPlatforms = null;
-                playerPlatforms = new PlayerPlatforms(6, 2, 1, 0, 0);
-                gameState.gridManager.Build_Grid_BuildingPhase_Without_Visuals();
+                //bigLevel = true;
 
-                gameState.playerBallManager.SetSpawnpoint(1);
-                gameState.platformManager.BuildLevelCoen();
+                //gameState.UIManager.canvas = Instantiate(canvas);
+                //gameState.UIManager.newLevelInventoryisRequired = true;
+                ////gameState.collectableManager.newCollectablesAreRequired = true;
+                ////coinPositions.Clear();
+                ////coinList.Clear();
+                //GameState.Instance.playerCamera.ManualInit();
+                //Vector3 playeradjustment = new Vector3(.5f, 0, 0);
+                //gameState.gridManager.width = 20;
+                //gameState.gridManager.height = 14;
+                ////Array.Clear(gameState.UIManager.instantiatedInventoryButtons, 0, gameState.UIManager.instantiatedInventoryButtons.Length);
+                ////playerPlatforms = null;
+                //playerPlatforms = new PlayerPlatforms(6, 2, 1, 0, 0);
+                //gameState.gridManager.Build_Grid_BuildingPhase_Without_Visuals();
+
+                //gameState.playerBallManager.SetSpawnpoint(1);
+                //gameState.platformManager.BuildLevelCoen();
 
 
-                gameState.playerBallManager.WhatBalls(true, false, true);
-                gameState.playerManager.PlayerInit(gameState.playerBallManager.ballList[0]);
+                //gameState.playerBallManager.WhatBalls(true, false, true);
+                //gameState.playerManager.PlayerInit(gameState.playerBallManager.ballList[0]);
 
-                //hier dan een vieze boolean
+                ////hier dan een vieze boolean
 
-                gameState.BuildingPhaseActive = true;
-                GameState.Instance.PreviousLevel = Int32.Parse(sceneName);
-                PlayerDataController.instance.PreviousScene = Int32.Parse(sceneName);
-                levelIsSpawned = true;
+                //gameState.BuildingPhaseActive = true;
+                //GameState.Instance.PreviousLevel = Int32.Parse(sceneName);
+                //PlayerDataController.instance.PreviousScene = Int32.Parse(sceneName);
+                //levelIsSpawned = true;
             }
         }
 
