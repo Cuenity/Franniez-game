@@ -6,5 +6,7 @@
     boostPlatformButton,
     cannonPlatformButton,
     redZoneButton,
-    rampsReversedInventoryButton
+    rampsReversedInventoryButton,
+    starButton,
+    finishButton
 }

@@ -24,6 +24,10 @@ public class LevelEditorPlatformManager : MonoBehaviour
     [SerializeField]
     public LevelEditorRedZone redZoneClass;
     [SerializeField]
+    public LevelEditorStar starClass;
+    [SerializeField]
+    public LevelEditorFinish finishClass;
+    [SerializeField]
     public LevelEditorBall ballClass;
 
     // Start is called before the first frame update
@@ -59,8 +63,13 @@ public class LevelEditorPlatformManager : MonoBehaviour
         {
             minimumValueIndex--;
         }
+
+        if (platformToPlace.name.Contains("Vlaggetje"))
+        {
+            platformToPlace.transform.position = LevelEditorState.Instance.gridManager.gridSquares[minimumValueIndex]+ new Vector3(0.5f,-0.5f);
+        }
         //gridspot shit uitgecomment
-        if (!platformToPlace.GetComponent<Cannon>())// && !LevelEditorState.Instance.gridManager.filledGridSpots[minimumValueIndex] && !LevelEditorState.Instance.gridManager.filledGridSpots[minimumValueIndex + 1])
+        else if (!platformToPlace.GetComponent<Cannon>())// && !LevelEditorState.Instance.gridManager.filledGridSpots[minimumValueIndex] && !LevelEditorState.Instance.gridManager.filledGridSpots[minimumValueIndex + 1])
         {
             platformToPlace.transform.position = LevelEditorState.Instance.gridManager.gridSquares[minimumValueIndex] + rampAdjustment;
             //gameObject.GetComponent<Platform>().fillsGridSpot = minimumValueIndex;
@@ -72,6 +81,7 @@ public class LevelEditorPlatformManager : MonoBehaviour
             //gameObject.GetComponent<Platform>().fillsGridSpot = minimumValueIndex;
             //AddFilledGridSpots(minimumValueIndex);
         }
+        
         else
         {
             platformToPlace.GetComponent<Platform>().fillsGridSpot = minimumValueIndex;
@@ -89,9 +99,11 @@ public class LevelEditorPlatformManager : MonoBehaviour
         // 5 = boostplatform
         // 6 = cannon
         // 7 = redzone
+        // 8 = star
+        // 9 = finish
         if (LevelEditorState.Instance.levelPlatformen.tileList != null)
         {
-            if (platformToPlace.name.Contains("RampSmall"))
+            if (platformToPlace.name.Contains("RampSmall")||platformToPlace.name.Contains("BigRamp"))
             {
                 LevelEditorState.Instance.levelPlatformen.tileList[minimumValueIndex] = 1;
             }
@@ -120,6 +132,15 @@ public class LevelEditorPlatformManager : MonoBehaviour
                 LevelEditorState.Instance.levelPlatformen.tileList[minimumValueIndex] = 7;
                 platformToPlace.transform.position += new Vector3(-0.5f,0,0);
             }
+            else if (platformToPlace.name.Contains("Star"))
+            {
+                LevelEditorState.Instance.levelPlatformen.tileList[minimumValueIndex] = 8;
+                platformToPlace.transform.position += new Vector3(-0.5f, 0, 0);
+            }
+            else if (platformToPlace.name.Contains("Vlaggetje"))
+            {
+                LevelEditorState.Instance.levelPlatformen.tileList[minimumValueIndex] = 9;
+            }
         }
     }
 
@@ -134,6 +155,8 @@ public class LevelEditorPlatformManager : MonoBehaviour
         // 5 = boostplatform
         // 6 = cannon
         // 7 = redzone
+        // 8 = star
+        // 9 = finish
         Vector3 rampAdjustment = new Vector3(0.5f, 0f, 0f);
         for (int i = 0; i < levelPlatformen.tileList.Length; i++)
         {
@@ -164,19 +187,33 @@ public class LevelEditorPlatformManager : MonoBehaviour
             }
             else if (levelPlatformen.tileList[i] == 4)
             {
-                Instantiate(trampolineClass, LevelEditorState.Instance.gridManager.gridSquares[i+1],new Quaternion(0, 0, 0, 0));
+                LevelEditorTrampoline tramp = Instantiate(trampolineClass, LevelEditorState.Instance.gridManager.gridSquares[i+1],new Quaternion(0, 0, 0, 0));
+                tramp.gameObject.AddComponent<LevelEditorPlatformDragManager>();
             }
             else if (levelPlatformen.tileList[i] == 5)
             {
-                Instantiate(boostPlatformClass, LevelEditorState.Instance.gridManager.gridSquares[i+1], new Quaternion(0, 0, 0, 0));
+                LevelEditorBoost boost =  Instantiate(boostPlatformClass, LevelEditorState.Instance.gridManager.gridSquares[i+1], new Quaternion(0, 0, 0, 0));
+                boost.gameObject.AddComponent<LevelEditorPlatformDragManager>();
             }
             else if (levelPlatformen.tileList[i] == 6)
             {
-                Instantiate(cannonClass, LevelEditorState.Instance.gridManager.gridSquares[i], new Quaternion(0, 0, 0, 0));
+                LevelEditorCannon cannon = Instantiate(cannonClass, LevelEditorState.Instance.gridManager.gridSquares[i], new Quaternion(0, 0, 0, 0));
+                cannon.gameObject.AddComponent<LevelEditorPlatformDragManager>();
             }
             else if (levelPlatformen.tileList[i] == 7)
             {
-                Instantiate(redZoneClass, LevelEditorState.Instance.gridManager.gridSquares[i]+rampAdjustment, new Quaternion(0, 0, 0, 0));
+                LevelEditorRedZone zone = Instantiate(redZoneClass, LevelEditorState.Instance.gridManager.gridSquares[i]+rampAdjustment, new Quaternion(0, 0, 0, 0));
+                zone.gameObject.AddComponent<LevelEditorPlatformDragManager>();
+            }
+            else if (levelPlatformen.tileList[i] == 8)
+            {
+                LevelEditorStar star = Instantiate(starClass, LevelEditorState.Instance.gridManager.gridSquares[i] + rampAdjustment, new Quaternion(0, 0, 0, 0));
+                star.gameObject.AddComponent<LevelEditorPlatformDragManager>();
+            }
+            else if (levelPlatformen.tileList[i] == 9)
+            {
+                LevelEditorFinish finish = Instantiate(finishClass, LevelEditorState.Instance.gridManager.gridSquares[i] + new Vector3(0.5f,-0.5f), new Quaternion(0, 0, 0, 0));
+                finish.gameObject.AddComponent<LevelEditorPlatformDragManager>();
             }
         }
     }
