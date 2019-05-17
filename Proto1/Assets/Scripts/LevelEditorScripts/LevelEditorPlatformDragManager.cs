@@ -45,6 +45,8 @@ public class LevelEditorPlatformDragManager : MonoBehaviour
             // DUS aparte methodes voor dingen die adjustments hebben
             // eerst:redzones
             // TWEEDS:CANNON
+            //3rde start
+            //4de finish
             screenPoint = camera.WorldToScreenPoint(transform.position);
 
             //GameState.Instance.playerCamera.platformDragActive = true;
@@ -55,12 +57,18 @@ public class LevelEditorPlatformDragManager : MonoBehaviour
                 int tileListIndex = LevelEditorState.Instance.gridManager.gridSquares.FindIndex(x => x == (draggedPlatformInScene.transform.position + new Vector3(0.5f, 0, 0)));
                 LevelEditorState.Instance.levelPlatformen.tileList[tileListIndex - 1] = 0;
             }
-            else if (gameObject.name.Contains("RedZone"))
+            else if (gameObject.name.Contains("RedZone") || gameObject.name.Contains("Star"))
             {
                 draggedPlatformInScene = gameObject;
                 int tileListIndex = LevelEditorState.Instance.gridManager.gridSquares.FindIndex(x => x == (draggedPlatformInScene.transform.position+new Vector3(0.5f,0,0)));
                 LevelEditorState.Instance.levelPlatformen.tileList[tileListIndex - 1] = 0;
                 
+            }
+            else if (gameObject.name.Contains("Vlaggetje"))
+            {
+                draggedPlatformInScene = gameObject;
+                int tileListIndex = LevelEditorState.Instance.gridManager.gridSquares.FindIndex(x => x == (draggedPlatformInScene.transform.position + new Vector3(0.5f, 0.5f, 0)));
+                LevelEditorState.Instance.levelPlatformen.tileList[tileListIndex - 1] = 0;
             }
             else
             {

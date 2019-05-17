@@ -38,17 +38,12 @@ public class LevelEditorState : MonoBehaviour
     {
         get { return instance; }
     }
-
-    //Now the earth was formless and empty, 
-    //darkness was over the surface of the deep, and the Spirit of God was hovering over the waters.
+    
     void Start()
     {
         instance = this;
-        playerPlatforms = new LevelEditorPlatforms(999,999, 999, 999, 999, 999);
+        playerPlatforms = new LevelEditorPlatforms(999,999, 999, 999, 999, 999,999,999);
         UIManager.InventoryButtons(playerPlatforms);
-        // And God said, “Let there be light,” and there was light.  God saw that the light was good, and he separated the light from the darkness. 
-            
-        // God called the light “day,” and the darkness he called “night.” And there was evening, and there was morning—the first day.
         //ReadLevelsFromText("Level1");
     }
     

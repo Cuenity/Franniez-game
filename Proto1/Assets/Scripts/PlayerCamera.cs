@@ -18,6 +18,8 @@ public class PlayerCamera : MonoBehaviour
     [SerializeField]
     private GameObject snowFalling;
 
+    private WorldManager worldManager;
+
     Vector2?[] oldTouchPositions = {
         null,
         null
@@ -42,30 +44,19 @@ public class PlayerCamera : MonoBehaviour
         {
             transform.LookAt(Target.transform.position + TargetLookAtOffset);
         }
-        WorldManager worldManager = new WorldManager();
+        worldManager = new WorldManager();
         if (worldManager.SetSnow())
         {
             snowFalling = Instantiate(snowFalling, this.transform.position- new Vector3(5,5,0), new Quaternion(0, 0, 0, 0));
         }
     }
 
-    internal void InitCamera()
+    private void Update()
     {
-        this.transform.position = gameState.playerManager.playerManager.spawnpoint + TargetMovementOffset;
-    }
-
-    internal void ManualInit()
-    {
-        gameState = GameState.Instance;
-        camera = this.GetComponent<Camera>();
-        camera.gameObject.SetActive(true);
-        this.transform.position = gameState.playerBallManager.spawnpoint + TargetMovementOffset;
-        if (Target != null)
+        if (worldManager.SetSnow())
         {
-            transform.LookAt(Target.transform.position + TargetLookAtOffset);
+            snowFalling.transform.position = this.transform.position - new Vector3(0, -3, -2.5f);
         }
-        this.transform.rotation = new Quaternion(0, 0, 0, 0);
-
     }
 
     void FixedUpdate()
@@ -135,6 +126,24 @@ public class PlayerCamera : MonoBehaviour
             }
         }
     }
+
+    internal void InitCamera()
+    {
+        this.transform.position = gameState.playerManager.playerManager.spawnpoint + TargetMovementOffset;
+    }
+
+    internal void ManualInit()
+    {
+        gameState = GameState.Instance;
+        camera = this.GetComponent<Camera>();
+        camera.gameObject.SetActive(true);
+        this.transform.position = gameState.playerBallManager.spawnpoint + TargetMovementOffset;
+        if (Target != null)
+        {
+            transform.LookAt(Target.transform.position + TargetLookAtOffset);
+        }
+        this.transform.rotation = new Quaternion(0, 0, 0, 0);
+    }    
 
     private void computerzoom()
     {
@@ -406,9 +415,5 @@ public class PlayerCamera : MonoBehaviour
         gameState.BuildingPhaseActive = true;
 
         gameState.tutorialManager.StartTutorial();
-    }
-    private void Update()
-    {
-        snowFalling.transform.position =this.transform.position - new Vector3(0, -3, -2.5f);
     }
 }

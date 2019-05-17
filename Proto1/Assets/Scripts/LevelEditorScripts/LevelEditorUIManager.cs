@@ -28,6 +28,11 @@ public class LevelEditorUIManager : MonoBehaviour
     Sprite cannonPlatformImage;
     [SerializeField]
     Sprite spike;
+    [SerializeField]
+    Sprite star;
+    [SerializeField]
+    Sprite finish;
+
 
 
 
@@ -127,6 +132,22 @@ public class LevelEditorUIManager : MonoBehaviour
             buttonText.GetComponent<Text>().text = playerPlatforms.redZones.ToString();
 
             playerPlatforms.redZoneButtonInstantiated = true;
+        }
+        else if (playerPlatforms.stars > 0 && !playerPlatforms.starButtonInstantiated)
+        {
+            buttonImage.GetComponent<Image>().sprite = star;
+            instantiatedInventoryButtons[currentButton].name = InventoryButtonName.starButton.ToString();
+            buttonText.GetComponent<Text>().text = playerPlatforms.stars.ToString();
+
+            playerPlatforms.starButtonInstantiated = true;
+        }
+        else if (playerPlatforms.finishs > 0 && !playerPlatforms.finishButtonInstantiated)
+        {
+            buttonImage.GetComponent<Image>().sprite = finish;
+            instantiatedInventoryButtons[currentButton].name = InventoryButtonName.finishButton.ToString();
+            buttonText.GetComponent<Text>().text = playerPlatforms.finishs.ToString();
+
+            playerPlatforms.finishButtonInstantiated = true;
         }
     }
 

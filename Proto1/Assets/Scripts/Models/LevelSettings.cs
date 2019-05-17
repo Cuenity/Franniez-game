@@ -195,24 +195,34 @@ public class LevelSettings : MonoBehaviour
     //JSON 
     public void ReadLevelsFromText()
     {
-        
+        //pc filepath
         string filePath = Application.streamingAssetsPath + "/" + levelPlatformenString + ".json";
-
-        if (File.Exists(filePath))
+        
+        //android filepath
+        if (Application.platform == RuntimePlatform.Android)
         {
-            string dataAsJSON = File.ReadAllText(filePath);
-            levelPlatformen = JsonUtility.FromJson<LevelPlatformen>(dataAsJSON);
-
+            levelPlatformenString = levelPlatformenString + ".json";
+            filePath = Path.Combine("jar:file://" + Application.dataPath + "!assets/", levelPlatformenString);
+        }
+        string dataAsJSON;
+        //aparte android laad want dat kan niet met file."iets""
+        if (Application.platform == RuntimePlatform.Android)
+        {
+            WWW reader = new WWW(filePath);
+            while (!reader.isDone)
+            {
+            }
+            dataAsJSON = reader.text;
         }
         else
         {
-            //moet file createn
-            Debug.LogError("Cannot find file!");
+
+            dataAsJSON = File.ReadAllText(filePath);
+            
         }
+        levelPlatformen = JsonUtility.FromJson<LevelPlatformen>(dataAsJSON);
         width = levelPlatformen.width;
         height = levelPlatformen.heigth;
-        //moet later terug
-        //GameState.Instance.platformManager.BuildLevelFromLevelPlatformen(levelPlatformen);
     }
 
 

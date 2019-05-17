@@ -176,7 +176,39 @@ public class LevelEditorDragManager : MonoBehaviour, IDragHandler, IBeginDragHan
 
                     draggedPlatform.transform.gameObject.AddComponent<LevelEditorPlatformDragManager>();
                 }
-                
+                else if (correctButton.name == InventoryButtonName.starButton.ToString())
+                {
+                    type = PlatformType.cannon;
+
+                    draggedPlatform = Instantiate(LevelEditorState.Instance.platformManager.starClass.gameObject);
+                    //LevelEditorState.Instance.playerPlatforms.cannonPlatformsLeftToPlace--;
+
+                    if (LevelEditorState.Instance.playerPlatforms.starsLeftToPlace == 0)
+                    {
+                        correctButton.InventoryButtonAllowed = false;
+                    }
+
+                    //LevelEditorState.Instance.playerPlatforms.UpdateCannonPlatformsLeft(correctButton);
+
+                    draggedPlatform.transform.gameObject.AddComponent<LevelEditorPlatformDragManager>();
+                }
+                else if (correctButton.name == InventoryButtonName.finishButton.ToString())
+                {
+                    type = PlatformType.cannon;
+
+                    draggedPlatform = Instantiate(LevelEditorState.Instance.platformManager.finishClass.gameObject);
+                    //LevelEditorState.Instance.playerPlatforms.cannonPlatformsLeftToPlace--;
+
+                    if (LevelEditorState.Instance.playerPlatforms.finishsLeftToPlace == 0)
+                    {
+                        correctButton.InventoryButtonAllowed = false;
+                    }
+
+                    //LevelEditorState.Instance.playerPlatforms.UpdateCannonPlatformsLeft(correctButton);
+
+                    draggedPlatform.transform.gameObject.AddComponent<LevelEditorPlatformDragManager>();
+                }
+
 
                 if (!draggedPlatform.GetComponent<Cannon>())
                 {

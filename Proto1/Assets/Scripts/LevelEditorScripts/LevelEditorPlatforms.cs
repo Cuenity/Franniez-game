@@ -40,12 +40,22 @@ public class LevelEditorPlatforms
     public int rampsReversedLeftToPlace;
     public bool rampReversedButtonInstantiated;
 
+    public GameObject star;
+    public int stars;
+    public int starsLeftToPlace;
+    public bool starButtonInstantiated;
+
+    public GameObject finish;
+    public int finishs;
+    public int finishsLeftToPlace;
+    public bool finishButtonInstantiated;
+
     public int inventoryButtonAmmount;
 
     //private GameObject draggedPlatform;
     public List<GameObject> placedPlatforms = new List<GameObject>();
 
-    public LevelEditorPlatforms(int rampsReversed,int ramps, int platformSquares, int trampolines, int boostPlatforms,int redZones)
+    public LevelEditorPlatforms(int rampsReversed,int ramps, int platformSquares, int trampolines, int boostPlatforms,int redZones,int stars,int finishs)
     {
         placedPlatforms = new List<GameObject>();
 
@@ -56,6 +66,8 @@ public class LevelEditorPlatforms
         this.cannonPlatforms = cannonPlatforms;
         this.redZones = redZones;
         this.rampsReversed = rampsReversed;
+        this.stars = stars;
+        this.finishs = finishs;
 
         rampsLeftToPlace = ramps;
         platformSquaresLeftToPlace = platformSquares;
@@ -64,6 +76,8 @@ public class LevelEditorPlatforms
         cannonPlatformsLeftToPlace = cannonPlatforms;
         redZonesLeftToPlace = redZones;
         rampsReversedLeftToPlace = rampsReversed;
+        starsLeftToPlace = stars;
+        finishsLeftToPlace = finishs;
 
         inventoryButtonAmmount = 0;
         if (ramps > 0)
@@ -79,6 +93,10 @@ public class LevelEditorPlatforms
         if (redZones > 0)
             inventoryButtonAmmount++;
         if (rampsReversed > 0)
+            inventoryButtonAmmount++;
+        if (stars > 0)
+            inventoryButtonAmmount++;
+        if (finishs > 0)
             inventoryButtonAmmount++;
     }
 
