@@ -3102,12 +3102,14 @@ MonoBehaviour:
     m_LineSpacing: 1
   m_Text: "Nieuw Level:\nStap1: geef grid dimensies en spawn grid\nStap2: maak level\nStap3:
     save level\nBestaand Level\nStap 1: Typ naam en laad level\nStap 2: DO NOT spawn
-    a grid\nStap 3: Pas level aan\nStap 4: Sla level op onder nieuwe naam\n\nTips\nMaximize
-    on play is aan te raden.\nAls je iets anders wilt plaatsen wat niet in editor
-    zit plaats dan een platform dat je niet gebruikt op deze plek (e.g. boost) dan
-    kan je dit nummer opzoeken in je levelarray en dat simpelweg vervangen.\n\nUpcoming
-    features\nSter (en deze spawnen in levelmanager)\nFinish (en deze spawnen in levelmanager)\nBall
-    pawn posities opslaan en meenemen\nCannon \nMultiplayer spawns\n\nOnmogelijk?\nPortals(maybe
+    a grid\nStap 3: Pas level aan\nStap 4: Sla level op onder nieuwe naam\n\n!ERNSTIGE
+    BUG!\nPLATFORMEN DIE 1 BREED ZIJN(e.g. ster) KUNNEN NIET HELEMAAL AAN DE RECHTERKANT
+    DIT KOMT OMDAT ZIJ 1 BREED ZIJN\nOplossing: plan je levels 1 bredere of pas de
+    JSON aan(is vrij simpel 8,0 => 0,8)\n\nTips\nMaximize on play is aan te raden.\nAls
+    je iets anders wilt plaatsen wat niet in editor zit plaats dan een platform dat
+    je niet gebruikt op deze plek (e.g. boost) dan kan je dit nummer opzoeken in je
+    levelarray en dat simpelweg vervangen.\n\nUpcoming features\nBall pawn posities
+    opslaan en meenemen\nCannon \nMultiplayer spawns\n\nOnmogelijk?\nPortals(maybe
     als ik inputvelden gebruik + spawnportal button)\nLiften(same)\n\n\n"
 --- !u!222 &1980658324
 CanvasRenderer:

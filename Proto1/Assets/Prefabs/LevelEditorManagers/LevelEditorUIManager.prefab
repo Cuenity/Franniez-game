@@ -54,3 +54,5 @@ MonoBehaviour:
   boostPlatformImage: {fileID: 21300000, guid: a95d26a4316b334418579ba7dd58dcec, type: 3}
   cannonPlatformImage: {fileID: 0}
   spike: {fileID: 21300000, guid: ab9eafe7626b3b7408581c47f73fc906, type: 3}
+  star: {fileID: 21300000, guid: d9714e388cf6efb4db9989f606f195e7, type: 3}
+  finish: {fileID: 21300000, guid: 1a38fadfee2dbf14e86883872227078f, type: 3}
