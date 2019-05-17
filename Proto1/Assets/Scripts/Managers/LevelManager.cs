@@ -16,7 +16,16 @@ public class LevelManager : MonoBehaviour
     public LevelSettings levelSettings;
 
     [SerializeField]
-    LevelSettings introLevel,level2RampEasy,level3JumpsEasy,level5BlackHoleTutorial,Level6BlackHoleBallAndJump,Level7BoosterEasy,Level8BoosterHard,Level12AdvancedPortal,LevelSettingLevel4TrampolineHard;
+    LevelSettings introLevel,
+        level2RampEasy,
+        level3JumpsEasy,
+        level5BlackHoleTutorial,
+        Level6BlackHoleBallAndJump,
+        Level7BoosterEasy,
+        Level8BoosterHard,
+        Level12AdvancedPortal,
+        LevelSettingLevel4TrampolineHard,
+        Level9PortalEasy;
     #region levelArrays
     /// <summary > Arrays voor het bouwen van levels
     int[] level5 = new int[] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0, 0, 0, 0, 0, 0, 3, 0, 1, 0, 0, 0, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
@@ -156,6 +165,7 @@ public class LevelManager : MonoBehaviour
         0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
         0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
         0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 };
+    //int[] level9PortalEasy = new int[] { 0, 0, 0, 0, 0, 0, 7, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 7, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 7, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 7, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 7, 7, 7, 7, 7, 7, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 7, 7, 7, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 5, 0, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
     /// </summary>
     #endregion
 
@@ -259,7 +269,7 @@ public class LevelManager : MonoBehaviour
 
     private void DefaultSceneInit()
     {
-        bigLevel = true;
+        //bigLevel = true;
         gameState.UIManager.canvas = Instantiate(canvas);
         gameState.UIManager.newLevelInventoryisRequired = true;
         gameState.collectableManager.newCollectablesAreRequired = true;
@@ -416,20 +426,22 @@ public class LevelManager : MonoBehaviour
         {
             if (!levelIsSpawned)
             {
-                DefaultSceneInit();
-                levelPlatformen.tileList = level12AdvancedPortal;
-                levelPlatformen.width = 20;
-                levelPlatformen.heigth = 10;
-                gameState.gridManager.width = levelPlatformen.width;
-                gameState.gridManager.height = levelPlatformen.heigth;
-                playerPlatforms = new PlayerPlatforms(2, 3, 1, 0, 0);
-                gameState.gridManager.Build_Grid_FromJSON_Without_Visuals(levelPlatformen.width, levelPlatformen.heigth);
-                gameState.playerBallManager.SetSpawnpoint(0);
+                SpawnLevel(Level9PortalEasy);
 
-                GameState.Instance.platformManager.BuildLevelFromLevelPlatformen(levelPlatformen);
+                //DefaultSceneInit();
+                //levelPlatformen.tileList = level12AdvancedPortal;
+                //levelPlatformen.width = 20;
+                //levelPlatformen.heigth = 10;
+                //gameState.gridManager.width = levelPlatformen.width;
+                //gameState.gridManager.height = levelPlatformen.heigth;
+                //playerPlatforms = new PlayerPlatforms(2, 3, 1, 0, 0);
+                //gameState.gridManager.Build_Grid_FromJSON_Without_Visuals(levelPlatformen.width, levelPlatformen.heigth);
+                //gameState.playerBallManager.SetSpawnpoint(0);
 
-                gameState.playerBallManager.WhatBalls(true, true, false);
-                DefaultSceneEndInit();
+                //GameState.Instance.platformManager.BuildLevelFromLevelPlatformen(levelPlatformen);
+
+                //gameState.playerBallManager.WhatBalls(true, true, false);
+                //DefaultSceneEndInit();
             }
         }
 

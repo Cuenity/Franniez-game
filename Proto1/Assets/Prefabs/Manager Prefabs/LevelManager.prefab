@@ -61,6 +61,9 @@ MonoBehaviour:
     type: 3}
   Level12AdvancedPortal: {fileID: 952452105958480305, guid: f7695b3fb36402f4da99d5e8e28ec068,
     type: 3}
+  LevelSettingLevel4TrampolineHard: {fileID: 0}
+  Level9PortalEasy: {fileID: 477021361644002954, guid: 23ba00cef035c964f8749ff841fa7a0b,
+    type: 3}
   coinList: []
   stickerObject: {fileID: 7059130672778521763, guid: 383c48a0d6e302541a57c7a33de8e65d,
     type: 3}

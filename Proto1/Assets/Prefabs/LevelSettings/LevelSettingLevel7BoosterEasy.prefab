@@ -12,6 +12,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: LevelSettingLevel7BoosterEasy
       objectReference: {fileID: 0}
+    - target: {fileID: 6263661854211023834, guid: 12b9b6ce696f8c440b1988947100e549,
+        type: 3}
+      propertyPath: levelPlatformenString
+      value: Level7BoosterEasy
+      objectReference: {fileID: 0}
+    - target: {fileID: 6263661854211023834, guid: 12b9b6ce696f8c440b1988947100e549,
+        type: 3}
+      propertyPath: playerPlatformsArray.Array.data[2]
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6263661854211023834, guid: 12b9b6ce696f8c440b1988947100e549,
+        type: 3}
+      propertyPath: ballArray.Array.data[1]
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6263661854211023834, guid: 12b9b6ce696f8c440b1988947100e549,
+        type: 3}
+      propertyPath: ballArray.Array.data[2]
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5780738269203247776, guid: 12b9b6ce696f8c440b1988947100e549,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -65,16 +85,6 @@ PrefabInstance:
     - target: {fileID: 5780738269203247776, guid: 12b9b6ce696f8c440b1988947100e549,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6263661854211023834, guid: 12b9b6ce696f8c440b1988947100e549,
-        type: 3}
-      propertyPath: levelPlatformenString
-      value: Level7BoosterEasy
-      objectReference: {fileID: 0}
-    - target: {fileID: 6263661854211023834, guid: 12b9b6ce696f8c440b1988947100e549,
-        type: 3}
-      propertyPath: playerPlatformsArray.Array.data[2]
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
