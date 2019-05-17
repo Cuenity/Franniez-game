@@ -359,13 +359,24 @@ public class PlatformManager : MonoBehaviour
             // Stars
             else if (levelPlatformen.tileList[i] == 8)
             {
-                SetStarPosition(i);
+                //backwardscompatibility fix
+                if (i == 0)
+                {
+
+                }
+                else
+                    SetStarPosition(i);
             }
 
             // Finsh
             else if (levelPlatformen.tileList[i] == 9)
             {
-                SetfinishPosition(i);
+                //backwardscompatibility fix
+                if (i == 0)
+                {
+
+                }
+                    SetfinishPosition(i);
             }
 
             // Portal
