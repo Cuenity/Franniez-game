@@ -40,7 +40,7 @@ PrefabInstance:
     - target: {fileID: 952452105958480305, guid: f7695b3fb36402f4da99d5e8e28ec068,
         type: 3}
       propertyPath: sterArray.Array.data[1]
-      value: 193
+      value: 192
       objectReference: {fileID: 0}
     - target: {fileID: 952452105958480305, guid: f7695b3fb36402f4da99d5e8e28ec068,
         type: 3}
