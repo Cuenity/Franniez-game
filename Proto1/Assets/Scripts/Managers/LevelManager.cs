@@ -16,7 +16,7 @@ public class LevelManager : MonoBehaviour
     public LevelSettings levelSettings;
 
     [SerializeField]
-    LevelSettings introLevel,level2RampEasy,level3JumpsEasy,level5BlackHoleTutorial,Level6BlackHoleBallAndJump,Level7BoosterEasy,Level8BoosterHard,Level12AdvancedPortal,LevelSettingLevel4TrampolineHard;
+    LevelSettings introLevel,level2RampEasy,level3JumpsEasy,level5BlackHoleTutorial,Level6BlackHoleBallAndJump,Level7BoosterEasy,Level8BoosterHard,Level12AdvancedPortal, LevelSettingLevel12LiftMoeilijk;
     #region levelArrays
     /// <summary > Arrays voor het bouwen van levels
     int[] level5 = new int[] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0, 0, 0, 0, 0, 0, 3, 0, 1, 0, 0, 0, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
@@ -369,7 +369,7 @@ public class LevelManager : MonoBehaviour
                 //GameState.Instance.platformManager.BuildLevelFromLevelPlatformen(levelPlatformen);
                 //gameState.playerBallManager.WhatBalls(true, false, false);
                 //DefaultSceneEndInit();
-                SpawnLevel(LevelSettingLevel4TrampolineHard);
+                SpawnLevel(LevelSettingLevel12LiftMoeilijk);
             }
         }
 
