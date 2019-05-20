@@ -27,7 +27,8 @@ public class LevelManager : MonoBehaviour
         LevelSettingLevel4TrampolineHard,
         Level9PortalEasy,
         LevelSettingLevel12LiftMoeilijk,
-        Level10TrampolineAdvanced;
+        Level10TrampolineAdvanced,
+        Level13;
     #region levelArrays
     /// <summary > Arrays voor het bouwen van levels
     int[] level5 = new int[] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0, 0, 0, 0, 0, 0, 3, 0, 1, 0, 0, 0, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
@@ -488,7 +489,7 @@ public class LevelManager : MonoBehaviour
             }
         }
 
-        else if (sceneName == "12" || sceneName == "13" || sceneName == "14" || sceneName == "15" || sceneName == "16" || sceneName == "17" || sceneName == "18" || sceneName == "19" || sceneName == "20") // niet af, nog aanpassen (cannon level)
+        else if (sceneName == "12") // niet af, nog aanpassen (cannon level)
         {
             if (!levelIsSpawned)
             {
@@ -518,6 +519,11 @@ public class LevelManager : MonoBehaviour
                 //GameState.Instance.PreviousLevel = Int32.Parse(sceneName);
                 //PlayerDataController.instance.PreviousScene = Int32.Parse(sceneName);
             }
+        }
+
+        else if (sceneName == "13")
+        {
+            SpawnLevel(Level13);
         }
 
         else if (sceneName == "11") // moet  later pas
