@@ -43,8 +43,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b4f56cc787365f43a79748a6e3b1793, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelSettings: {fileID: 7949340701427491737, guid: a6d4731e59cb1bc45bb9fed126fddb70,
-    type: 3}
+  levelSettings: {fileID: 0}
   introLevel: {fileID: 6998243857674861311, guid: 702797ac0b4422e4fab6cc5fda6ea532,
     type: 3}
   level2RampEasy: {fileID: 1699268937832790775, guid: f2dc3acadd139694bb5fd5033ac7e2a2,
@@ -61,21 +60,20 @@ MonoBehaviour:
     type: 3}
   Level12AdvancedPortal: {fileID: 952452105958480305, guid: f7695b3fb36402f4da99d5e8e28ec068,
     type: 3}
-  LevelSettingLevel4TrampolineHard: {fileID: 0}
+  LevelSettingLevel4TrampolineHard: {fileID: 6857793499659197117, guid: 6c27f9caf2f52614e8b503286cbb4e8c,
+    type: 3}
   Level9PortalEasy: {fileID: 477021361644002954, guid: 23ba00cef035c964f8749ff841fa7a0b,
     type: 3}
   LevelSettingLevel12LiftMoeilijk: {fileID: 4691286432663417472, guid: 6792bb8dc3c6b384a84cae2d08ea5d41,
     type: 3}
-  Level10TrampolineAdvanced: {fileID: 2598065613682468424, guid: 39b4a6668f6ab7d4c89dab194bba4ddb,
+  Level10TrampolineAdvanced: {fileID: 952452105958480305, guid: f7695b3fb36402f4da99d5e8e28ec068,
     type: 3}
   Level13: {fileID: 889642148942438597, guid: eac6db38ee66d2541aaff93d9087dda8, type: 3}
-smiletTest: {fileID: 6857793499659197117, guid: 6c27f9caf2f52614e8b503286cbb4e8c,
+  smiletTest: {fileID: 6857793499659197117, guid: 6c27f9caf2f52614e8b503286cbb4e8c,
     type: 3}
   coinList: []
-  stickerObject: {fileID: 7059130672778521763, guid: 383c48a0d6e302541a57c7a33de8e65d,
-    type: 3}
-  finish: {fileID: 2032823587391776419, guid: c85261ac462ef85448b10b92e43df3f9, type: 3}
-  canvas: {fileID: 5378894420974302099, guid: da83d1c688dacde4a824218a9b65e098, type: 3}
+  stickerObject: {fileID: 0}
+  finish: {fileID: 0}
   balknop: {fileID: 0}
   bigLevel: 0
   multiUIRequired: 0

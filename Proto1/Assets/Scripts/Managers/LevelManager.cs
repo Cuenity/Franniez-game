@@ -180,7 +180,7 @@ public class LevelManager : MonoBehaviour
     public List<Coin> coinList = new List<Coin>();
     public StickerObject stickerObject;
     public Finish finish;
-    public Canvas canvas;
+    //public Canvas canvas;
     public BallKnop balknop;
     private int currentLevel;
 
@@ -272,7 +272,7 @@ public class LevelManager : MonoBehaviour
     private void DefaultSceneInit()
     {
         //bigLevel = true;
-        gameState.UIManager.canvas = Instantiate(canvas);
+        gameState.UIManager.canvas = Instantiate(gameState.UIManager.UICanvas);
         gameState.UIManager.newLevelInventoryisRequired = true;
         gameState.collectableManager.newCollectablesAreRequired = true;
         gameState.playerCamera.ManualInit();
@@ -469,7 +469,7 @@ public class LevelManager : MonoBehaviour
             {
                 bigLevel = true;
 
-                gameState.UIManager.canvas = Instantiate(canvas);
+                //gameState.UIManager.canvas = Instantiate(canvas);
                 gameState.UIManager.newLevelInventoryisRequired = true;
                 //gameState.collectableManager.newCollectablesAreRequired = true;
                 //coinPositions.Clear();
@@ -565,7 +565,7 @@ public class LevelManager : MonoBehaviour
             {
                 bigLevel = true;
 
-                gameState.UIManager.canvas = Instantiate(canvas);
+                //gameState.UIManager.canvas = Instantiate(canvas);
                 gameState.UIManager.newLevelInventoryisRequired = true;
                 //gameState.collectableManager.newCollectablesAreRequired = true;
                 //coinPositions.Clear();
@@ -598,7 +598,7 @@ public class LevelManager : MonoBehaviour
             {
                 bigLevel = true;
 
-                gameState.UIManager.canvas = Instantiate(canvas);
+                //gameState.UIManager.canvas = Instantiate(canvas);
                 gameState.UIManager.newLevelInventoryisRequired = true;
                 GameState.Instance.playerCamera.ManualInit();
                 Vector3 playeradjustment = new Vector3(.5f, 0, 0);
@@ -631,7 +631,7 @@ public class LevelManager : MonoBehaviour
             {
                 bigLevel = true;
                 multiUIRequired = true;
-                gameState.UIManager.canvas = Instantiate(canvas);
+                //gameState.UIManager.canvas = Instantiate(canvas);
                 //multidingen
                 //doe gekke initshit voor localproperties
                 //bool hitflag = false;
@@ -669,7 +669,7 @@ public class LevelManager : MonoBehaviour
             {
                 bigLevel = true;
                 multiUIRequired = true;
-                gameState.UIManager.canvas = Instantiate(canvas);
+                //gameState.UIManager.canvas = Instantiate(canvas);
                 //doe gekke initshit voor localproperties
                 //bool hitflag = false;
                 //Hashtable hash = new Hashtable();
@@ -708,7 +708,7 @@ public class LevelManager : MonoBehaviour
             {
                 bigLevel = true;
 
-                gameState.UIManager.canvas = Instantiate(canvas);
+                //gameState.UIManager.canvas = Instantiate(canvas);
                 //doe gekke initshit voor localproperties
                 //bool hitflag = false;
                 //Hashtable hash = new Hashtable();
