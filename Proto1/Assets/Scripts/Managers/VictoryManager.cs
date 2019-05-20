@@ -92,17 +92,18 @@ public class VictoryManager : MonoBehaviour
             PhotonNetwork.LoadLevel(playerDataController.PreviousScene);
             return;
         }
-        SceneSwitcher.Instance.AsynchronousLoadStart(playerDataController.PreviousScene.ToString());
+        SceneSwitcher.Instance.AsynchronousLoadStart("1");
     }
 
     public void NextScene()
     {
+        playerDataController.PreviousScene++;
         if (PhotonNetwork.InRoom)
         {
             PhotonNetwork.LoadLevel(playerDataController.PreviousScene);
             return;
         }
-        SceneSwitcher.Instance.AsynchronousLoadStart((playerDataController.PreviousScene+1).ToString());
+        SceneSwitcher.Instance.AsynchronousLoadStart("1");
     }
 
     public void ReturnToMenu()

@@ -70,6 +70,7 @@ public class Lift : MonoBehaviour
         gameState = GameState.Instance;
         this.startPoint = gameState.gridManager.gridSquares[start] + new Vector3(1f, 0, 0);
         this.endPoint = gameState.gridManager.gridSquares[end] + new Vector3(1f, 0, 0);
+        // 
     }
 
     // reset het platform naar zijn startpositie en zorg dat de coroutine gestopt word.
