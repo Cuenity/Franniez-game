@@ -23,7 +23,13 @@ public class PhotonStartMenu : MonoBehaviourPunCallbacks
     {
         // #Critical
         // this makes sure we can use PhotonNetwork.LoadLevel() on the master client and all clients in the same room sync their level automatically
+
         PhotonNetwork.AutomaticallySyncScene = true;
+    }
+
+    void LocalizedTextLoader()
+    {
+
     }
 
     // Start is called before the first frame update
@@ -47,13 +53,13 @@ public class PhotonStartMenu : MonoBehaviourPunCallbacks
             {
                 HostWait.gameObject.SetActive(true);
                 StartGame.interactable = true;
-                ConnectedStatus.text = "Connected";
+                ConnectedStatus.text = LocalizationManager.instance.GetLocalizedValue("multi_status_disconnected");
                 ConnectedStatus.color = Color.green;
             }
             else
             {
                 ClientWait.gameObject.SetActive(true);
-                ConnectedStatus.text = "Connected";
+                ConnectedStatus.text = LocalizationManager.instance.GetLocalizedValue("multi_status_connected");
                 ConnectedStatus.color = Color.green;
             }
         }
@@ -75,16 +81,16 @@ public class PhotonStartMenu : MonoBehaviourPunCallbacks
         isCreator = false;
         StartMenu.gameObject.SetActive(false);
         CustomRoom.gameObject.SetActive(true);
-        CreateJoinButton.GetComponentInChildren<Text>().text = "Join Room";
-        RoomToCreate.placeholder.GetComponent<Text>().text = "Enter room name to join....";
+        CreateJoinButton.GetComponentInChildren<Text>().text = LocalizationManager.instance.GetLocalizedValue("multi_joinroom");
+        RoomToCreate.placeholder.GetComponent<Text>().text = LocalizationManager.instance.GetLocalizedValue("multi_joinroominput");
     }
     public void onClickSwitchToCustomRoomCreate()
     {
         isCreator = true;
         StartMenu.gameObject.SetActive(false);
         CustomRoom.gameObject.SetActive(true);
-        CreateJoinButton.GetComponentInChildren<Text>().text = "Create Room";
-        RoomToCreate.placeholder.GetComponent<Text>().text = "Enter room name to create....";
+        CreateJoinButton.GetComponentInChildren<Text>().text = LocalizationManager.instance.GetLocalizedValue("multi_createroom");
+        RoomToCreate.placeholder.GetComponent<Text>().text = LocalizationManager.instance.GetLocalizedValue("multi_createroominput");
     }
     public void onClickSwitchToRoomCreate()
     {
@@ -128,8 +134,7 @@ public class PhotonStartMenu : MonoBehaviourPunCallbacks
         //TODO maak iets als room niet bestaat of vol zit
         if (RoomToJoin.text == "")
         {
-            Debug.Log("wat een dum dum geen roomnaam gekozen");
-            RoomToCreate.placeholder.GetComponent<Text>().text = "No Room Chosen";
+            RoomToCreate.placeholder.GetComponent<Text>().text = LocalizationManager.instance.GetLocalizedValue("multi_roomjoinfailednoinput");
         }
         else
         {
@@ -152,8 +157,7 @@ public class PhotonStartMenu : MonoBehaviourPunCallbacks
         {
             if (RoomToCreate.text == "")
             {
-                Debug.Log("wat een dum dum geen roomnaam gekozen");
-                RoomToCreate.placeholder.GetComponent<Text>().text = "No Room Chosen";
+                RoomToCreate.placeholder.GetComponent<Text>().text = LocalizationManager.instance.GetLocalizedValue("multi_roomjoinfailednoinput"); 
             }
             else
             {
@@ -182,7 +186,7 @@ public class PhotonStartMenu : MonoBehaviourPunCallbacks
         base.OnJoinRoomFailed(returnCode, message);
         //zou placeholder.text moeten zijns
         RoomToCreate.text = "";
-        RoomToCreate.placeholder.GetComponent<Text>().text = "Room bestaat niet";
+        RoomToCreate.placeholder.GetComponent<Text>().text = LocalizationManager.instance.GetLocalizedValue("multi_roomjoinfailed");
 
     }
 
@@ -210,8 +214,7 @@ public class PhotonStartMenu : MonoBehaviourPunCallbacks
     override public void OnConnectedToMaster()
     {
         base.OnConnectedToMaster();
-        Debug.Log("Connected And Ready");
-        ConnectedStatus.text = "Connected";
+        ConnectedStatus.text = LocalizationManager.instance.GetLocalizedValue("multi_status_connected");
         ConnectedStatus.color = Color.green;
         Button[] startButtons =  StartMenu.GetComponentsInChildren<Button>();
         foreach (Button button in startButtons)
@@ -223,7 +226,7 @@ public class PhotonStartMenu : MonoBehaviourPunCallbacks
     public override void OnDisconnected(DisconnectCause cause)
     {
         base.OnDisconnected(cause);
-        ConnectedStatus.text = "Disconnected";
+        ConnectedStatus.text = LocalizationManager.instance.GetLocalizedValue("multi_status_disconnected");
         ConnectedStatus.color = Color.red;
         Button[] startButtons = StartMenu.GetComponentsInChildren<Button>();
         foreach (Button button in startButtons)
@@ -235,15 +238,15 @@ public class PhotonStartMenu : MonoBehaviourPunCallbacks
     public override void OnPlayerEnteredRoom(Player newPlayer)
     {
         base.OnPlayerEnteredRoom(newPlayer);
-        WaitingForPlayers.text = "Other Player Found Start Level" + selectedLevel.ToString();
+        //WaitingForPlayers.text = "Other Player Found Start Level" + selectedLevel.ToString();
         StartGame.interactable = true;
-        StartGame.GetComponent<Text>().text = "Start Game";
+        StartGame.GetComponent<Text>().text = LocalizationManager.instance.GetLocalizedValue("multi_hoststartgame");
         StartGame.GetComponent<Text>().color = Color.green;
     }
     public override void OnPlayerLeftRoom(Player otherPlayer)
     {
         base.OnPlayerLeftRoom(otherPlayer);
-        WaitingForPlayers.text = "Waiting On Friends....";
+        WaitingForPlayers.text = LocalizationManager.instance.GetLocalizedValue("multi_hostwaittext");
         StartGame.interactable = false;
     }
     //public override void room //OnRoomListUpdate(List<RoomInfo> roomList)
