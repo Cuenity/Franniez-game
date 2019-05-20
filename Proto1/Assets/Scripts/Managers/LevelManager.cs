@@ -17,15 +17,16 @@ public class LevelManager : MonoBehaviour
     LevelSettings introLevel,
         level2RampEasy,
         level3JumpsEasy,
+        LevelSettingLevel4TrampolineHard,
         level5BlackHoleTutorial,
         Level6BlackHoleBallAndJump,
         Level7BoosterEasy,
         Level8BoosterHard,
-        Level12AdvancedPortal,
-        LevelSettingLevel4TrampolineHard,
         Level9PortalEasy,
-        LevelSettingLevel12LiftMoeilijk,
         Level10TrampolineAdvanced,
+        Level11,
+        Level12AdvancedPortal,
+        LevelSettingLevel12LiftMoeilijk,
         Level13,
         smiletTest;
     #region levelArrays
@@ -182,7 +183,7 @@ public class LevelManager : MonoBehaviour
     public Finish finish;
     //public Canvas canvas;
     public BallKnop balknop;
-    private int currentLevel;
+    public int currentLevel;
 
     public PlayerPlatforms playerPlatforms;
 
@@ -429,36 +430,6 @@ public class LevelManager : MonoBehaviour
             if (!levelIsSpawned)
             {
                 SpawnLevel(Level10TrampolineAdvanced);
-
-                //bigLevel = true;
-
-                //gameState.UIManager.canvas = Instantiate(canvas);
-                //gameState.UIManager.newLevelInventoryisRequired = true;
-                ////gameState.collectableManager.newCollectablesAreRequired = true;
-                ////coinPositions.Clear();
-                ////coinList.Clear();
-                //GameState.Instance.playerCamera.ManualInit();
-                //Vector3 playeradjustment = new Vector3(.5f, 0, 0);
-                //gameState.gridManager.width = 20;
-                //gameState.gridManager.height = 14;
-                ////Array.Clear(gameState.UIManager.instantiatedInventoryButtons, 0, gameState.UIManager.instantiatedInventoryButtons.Length);
-                ////playerPlatforms = null;
-                //playerPlatforms = new PlayerPlatforms(6, 2, 1, 0, 0);
-                //gameState.gridManager.Build_Grid_BuildingPhase_Without_Visuals();
-
-                //gameState.playerBallManager.SetSpawnpoint(1);
-                //gameState.platformManager.BuildLevelCoen();
-
-
-                //gameState.playerBallManager.WhatBalls(true, false, true);
-                //gameState.playerManager.PlayerInit(gameState.playerBallManager.ballList[0]);
-
-                ////hier dan een vieze boolean
-
-                //gameState.BuildingPhaseActive = true;
-                //GameState.Instance.PreviousLevel = Int32.Parse(sceneName);
-                //PlayerDataController.instance.PreviousScene = Int32.Parse(sceneName);
-                //levelIsSpawned = true;
             }
         }
 
@@ -467,33 +438,35 @@ public class LevelManager : MonoBehaviour
         {
             if (!levelIsSpawned)
             {
-                bigLevel = true;
+                SpawnLevel(Level11);
+                gameState.platformManager.InitLift(42, 58);
+                //bigLevel = true;
 
-                //gameState.UIManager.canvas = Instantiate(canvas);
-                gameState.UIManager.newLevelInventoryisRequired = true;
+                //gameState.UIManager.canvas = Instantiate(gameState.UIManager.UICanvas);
+                //gameState.UIManager.newLevelInventoryisRequired = true;
+                ////gameState.collectableManager.newCollectablesAreRequired = true;
+                ////coinPositions.Clear();
+                ////coinList.Clear();
+                ////GameState.Instance.playerCamera.ManualInit();
                 //gameState.collectableManager.newCollectablesAreRequired = true;
-                //coinPositions.Clear();
-                //coinList.Clear();
                 //GameState.Instance.playerCamera.ManualInit();
-                gameState.collectableManager.newCollectablesAreRequired = true;
-                GameState.Instance.playerCamera.ManualInit();
-                Vector3 playeradjustment = new Vector3(.5f, 0, 0);
-                gameState.gridManager.width = 20;
-                gameState.gridManager.height = 11;
-                playerPlatforms = new PlayerPlatforms(3, 3, 0, 0, 0);
-                gameState.gridManager.Build_Grid_BuildingPhase_Without_Visuals();
-                gameState.playerBallManager.SetSpawnpoint(1);
-                //gameState.playerManager.player.spawnpoint = gameState.gridManager.gridSquares[1] + playeradjustment;
-                gameState.platformManager.Build_Vertical_Slice_Level6();
+                //Vector3 playeradjustment = new Vector3(.5f, 0, 0);
+                //gameState.gridManager.width = 20;
+                //gameState.gridManager.height = 11;
+                //playerPlatforms = new PlayerPlatforms(3, 3, 0, 0, 0);
+                //gameState.gridManager.Build_Grid_BuildingPhase_Without_Visuals();
+                //gameState.playerBallManager.SetSpawnpoint(1);
+                ////gameState.playerManager.player.spawnpoint = gameState.gridManager.gridSquares[1] + playeradjustment;
+                //gameState.platformManager.Build_Vertical_Slice_Level6();
 
 
-                //boolean party voor elk level nu nodig
-                gameState.playerBallManager.WhatBalls(true, true, true);
-                gameState.playerManager.PlayerInit(gameState.playerBallManager.ballList[0]);
-                gameState.BuildingPhaseActive = true;
-                //GameState.Instance.PreviousLevel = Int32.Parse(currentLevel);
-                //PlayerDataController.instance.PreviousScene = Int32.Parse(currentLevel);
-                levelIsSpawned = true;
+                ////boolean party voor elk level nu nodig
+                //gameState.playerBallManager.WhatBalls(true, true, true);
+                //gameState.playerManager.PlayerInit(gameState.playerBallManager.ballList[0]);
+                //gameState.BuildingPhaseActive = true;
+                ////GameState.Instance.PreviousLevel = Int32.Parse(currentLevel);
+                ////PlayerDataController.instance.PreviousScene = Int32.Parse(currentLevel);
+                //levelIsSpawned = true;
             }
         }
 

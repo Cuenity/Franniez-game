@@ -50,6 +50,8 @@ MonoBehaviour:
     type: 3}
   level3JumpsEasy: {fileID: 5958821124494672177, guid: 36feee6c32dc36d42bec0dc3710f8a41,
     type: 3}
+  LevelSettingLevel4TrampolineHard: {fileID: 6857793499659197117, guid: 6c27f9caf2f52614e8b503286cbb4e8c,
+    type: 3}
   level5BlackHoleTutorial: {fileID: 8318110152065246394, guid: 35e109b3e2940704ebf100921d0822e7,
     type: 3}
   Level6BlackHoleBallAndJump: {fileID: 6263661854211023834, guid: 12b9b6ce696f8c440b1988947100e549,
@@ -58,15 +60,14 @@ MonoBehaviour:
     type: 3}
   Level8BoosterHard: {fileID: 4746136531930767534, guid: ebf365cc98c37404f8359e595f60a93e,
     type: 3}
-  Level12AdvancedPortal: {fileID: 952452105958480305, guid: f7695b3fb36402f4da99d5e8e28ec068,
-    type: 3}
-  LevelSettingLevel4TrampolineHard: {fileID: 6857793499659197117, guid: 6c27f9caf2f52614e8b503286cbb4e8c,
-    type: 3}
   Level9PortalEasy: {fileID: 477021361644002954, guid: 23ba00cef035c964f8749ff841fa7a0b,
     type: 3}
-  LevelSettingLevel12LiftMoeilijk: {fileID: 4691286432663417472, guid: 6792bb8dc3c6b384a84cae2d08ea5d41,
-    type: 3}
   Level10TrampolineAdvanced: {fileID: 952452105958480305, guid: f7695b3fb36402f4da99d5e8e28ec068,
+    type: 3}
+  Level11: {fileID: 8310911898771917436, guid: 4f7b6051b2297124c8ca6d4fb7634ab6, type: 3}
+  Level12AdvancedPortal: {fileID: 952452105958480305, guid: f7695b3fb36402f4da99d5e8e28ec068,
+    type: 3}
+  LevelSettingLevel12LiftMoeilijk: {fileID: 4691286432663417472, guid: 6792bb8dc3c6b384a84cae2d08ea5d41,
     type: 3}
   Level13: {fileID: 889642148942438597, guid: eac6db38ee66d2541aaff93d9087dda8, type: 3}
   smiletTest: {fileID: 6857793499659197117, guid: 6c27f9caf2f52614e8b503286cbb4e8c,
