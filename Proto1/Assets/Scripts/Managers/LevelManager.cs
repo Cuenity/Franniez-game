@@ -439,34 +439,7 @@ public class LevelManager : MonoBehaviour
             if (!levelIsSpawned)
             {
                 SpawnLevel(Level11);
-                gameState.platformManager.InitLift(42, 58);
-                //bigLevel = true;
-
-                //gameState.UIManager.canvas = Instantiate(gameState.UIManager.UICanvas);
-                //gameState.UIManager.newLevelInventoryisRequired = true;
-                ////gameState.collectableManager.newCollectablesAreRequired = true;
-                ////coinPositions.Clear();
-                ////coinList.Clear();
-                ////GameState.Instance.playerCamera.ManualInit();
-                //gameState.collectableManager.newCollectablesAreRequired = true;
-                //GameState.Instance.playerCamera.ManualInit();
-                //Vector3 playeradjustment = new Vector3(.5f, 0, 0);
-                //gameState.gridManager.width = 20;
-                //gameState.gridManager.height = 11;
-                //playerPlatforms = new PlayerPlatforms(3, 3, 0, 0, 0);
-                //gameState.gridManager.Build_Grid_BuildingPhase_Without_Visuals();
-                //gameState.playerBallManager.SetSpawnpoint(1);
-                ////gameState.playerManager.player.spawnpoint = gameState.gridManager.gridSquares[1] + playeradjustment;
-                //gameState.platformManager.Build_Vertical_Slice_Level6();
-
-
-                ////boolean party voor elk level nu nodig
-                //gameState.playerBallManager.WhatBalls(true, true, true);
-                //gameState.playerManager.PlayerInit(gameState.playerBallManager.ballList[0]);
-                //gameState.BuildingPhaseActive = true;
-                ////GameState.Instance.PreviousLevel = Int32.Parse(currentLevel);
-                ////PlayerDataController.instance.PreviousScene = Int32.Parse(currentLevel);
-                //levelIsSpawned = true;
+                gameState.platformManager.InitLift(42, 84);
             }
         }
 
