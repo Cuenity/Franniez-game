@@ -197,7 +197,7 @@ GameObject:
   - component: {fileID: 172132165}
   - component: {fileID: 172132164}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: Twitter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
