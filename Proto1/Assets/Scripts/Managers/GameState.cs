@@ -119,8 +119,9 @@ public class GameState : MonoBehaviour
         tutorialManager.transform.parent = this.transform;
 
         //dit hoeft niet meer??? maar het zou wel es shit kunnen breken
-        Scene scene = SceneManager.GetActiveScene();
-        levelManager.InitScene(scene.name);
+        //Scene scene = SceneManager.GetActiveScene();
+        //levelManager.InitScene(scene.name);
+        levelManager.InitScene();
     }
 
     // Start is called before the first frame update

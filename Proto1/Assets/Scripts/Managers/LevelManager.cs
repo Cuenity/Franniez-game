@@ -183,7 +183,7 @@ public class LevelManager : MonoBehaviour
     public Finish finish;
     public Canvas canvas;
     public BallKnop balknop;
-    private string sceneName;
+    private int currentLevel;
 
     public PlayerPlatforms playerPlatforms;
 
@@ -313,12 +313,12 @@ public class LevelManager : MonoBehaviour
     }
 
 
-    public void InitScene(string sceneName)
+    public void InitScene()
     {
-        GameAnalytics.NewProgressionEvent(GAProgressionStatus.Start, sceneName.ToString());
+        GameAnalytics.NewProgressionEvent(GAProgressionStatus.Start, currentLevel.ToString());
         //this.sceneName = sceneName;
-        sceneName = PlayerDataController.instance.PreviousScene.ToString();
-        Debug.Log(sceneName);
+        currentLevel = PlayerDataController.instance.PreviousScene;
+        Debug.Log(currentLevel);
         string scenestring = SceneManager.GetActiveScene().name;
         //if(scenestring == "1")
         //{
@@ -338,7 +338,7 @@ public class LevelManager : MonoBehaviour
         }
 
         // af
-        else if (sceneName == "1")
+        else if (currentLevel == 1)
         {
             if (!levelIsSpawned)
             {
@@ -348,7 +348,7 @@ public class LevelManager : MonoBehaviour
         }
 
         // af
-        else if (sceneName == "2")
+        else if (currentLevel == 2)
         {
             if (!levelIsSpawned)
             {
@@ -357,7 +357,7 @@ public class LevelManager : MonoBehaviour
         }
 
         // af
-        else if (sceneName == "3")
+        else if (currentLevel == 3)
         {
             if (!levelIsSpawned)
             {
@@ -366,7 +366,7 @@ public class LevelManager : MonoBehaviour
         }
 
         // vervang deze met ander jump level
-        else if (sceneName == "4")
+        else if (currentLevel == 4)
         {
             if (!levelIsSpawned)
             {
@@ -404,7 +404,7 @@ public class LevelManager : MonoBehaviour
         }
 
         // af
-        else if (sceneName == "5")
+        else if (currentLevel == 5)
         {
             if (!levelIsSpawned)
             {
@@ -415,7 +415,7 @@ public class LevelManager : MonoBehaviour
         }
 
         // af
-        else if (sceneName == "6")
+        else if (currentLevel == 6)
         {
             if (!levelIsSpawned)
             {
@@ -424,7 +424,7 @@ public class LevelManager : MonoBehaviour
         }
 
         // af
-        else if (sceneName == "7")
+        else if (currentLevel == 7)
         {
             if (!levelIsSpawned)
             {
@@ -433,7 +433,7 @@ public class LevelManager : MonoBehaviour
         }
 
         // af
-        else if (sceneName == "8")
+        else if (currentLevel == 8)
         {
             if (!levelIsSpawned)
             {
@@ -442,7 +442,7 @@ public class LevelManager : MonoBehaviour
         }
 
         // af?
-        else if (sceneName == "9")
+        else if (currentLevel == 9)
         {
             if (!levelIsSpawned)
             {
@@ -451,7 +451,7 @@ public class LevelManager : MonoBehaviour
         }
 
         // af?
-        else if (sceneName == "10")
+        else if (currentLevel == 10)
         {
             if (!levelIsSpawned)
             {
@@ -489,7 +489,8 @@ public class LevelManager : MonoBehaviour
             }
         }
 
-        else if (sceneName == "12") // niet af, nog aanpassen (cannon level)
+        // niet af, nog aanpassen (cannon level)
+        else if (currentLevel == 12) 
         {
             if (!levelIsSpawned)
             {
@@ -521,12 +522,17 @@ public class LevelManager : MonoBehaviour
             }
         }
 
-        else if (sceneName == "13")
+        else if (currentLevel == 13)
         {
             SpawnLevel(Level13);
         }
 
-        else if (sceneName == "11") // moet  later pas
+        else if (currentLevel == 14)
+        {
+            SpawnLevel(Level13);
+        }
+
+        else if (currentLevel == 11) // moet  later pas
         {
             if (!levelIsSpawned)
             {
@@ -554,13 +560,13 @@ public class LevelManager : MonoBehaviour
                 gameState.playerBallManager.WhatBalls(true, true, true);
                 gameState.playerManager.PlayerInit(gameState.playerBallManager.ballList[0]);
                 gameState.BuildingPhaseActive = true;
-                GameState.Instance.PreviousLevel = Int32.Parse(sceneName);
-                PlayerDataController.instance.PreviousScene = Int32.Parse(sceneName);
+                //GameState.Instance.PreviousLevel = Int32.Parse(currentLevel);
+                //PlayerDataController.instance.PreviousScene = Int32.Parse(currentLevel);
                 levelIsSpawned = true;
             }
         }
 
-        else if (sceneName == "17")
+        else if (currentLevel == 17)
         {
             if (!levelIsSpawned)
             {
@@ -593,7 +599,7 @@ public class LevelManager : MonoBehaviour
         }
 
         // niet af (coins en finish in array zetten)
-        else if (sceneName == "18")
+        else if (currentLevel == 18)
         {
             if (!levelIsSpawned)
             {
@@ -664,7 +670,7 @@ public class LevelManager : MonoBehaviour
             }
         }
 
-        else if (sceneName == "MultiplayerLevel2")
+        else if (SceneManager.GetActiveScene().name == "MultiplayerLevel2")
         {
             if (!levelIsSpawned)
             {
@@ -703,7 +709,7 @@ public class LevelManager : MonoBehaviour
         }
 
         //dit is een placeholder level
-        else if (sceneName == "MultiplayerRace1")
+        else if (SceneManager.GetActiveScene().name == "MultiplayerRace1")
         {
             if (!levelIsSpawned)
             {
@@ -753,7 +759,7 @@ public class LevelManager : MonoBehaviour
         //{
         //    balknop.gameObject.SetActive(false);
         //}
-        if (sceneName != "1" || !PhotonNetwork.InRoom)
+        if (currentLevel != 1 || !PhotonNetwork.InRoom)
         {
             //idk man fucking error bullshit magic spell try catch
             try
@@ -813,7 +819,7 @@ public class LevelManager : MonoBehaviour
             else
                 view.RPC("FlagUnHit", RpcTarget.All, "clienthit");
         }
-        if (sceneName != "VictoryScreen")
+        if (SceneManager.GetActiveScene().name != "VictoryScreen")
         {
             gameState.RollingPhaseActive = false;
             gameState.playerBallManager.respawnBal();
@@ -823,7 +829,7 @@ public class LevelManager : MonoBehaviour
             //{
             //    balknop.gameObject.SetActive(true);
             //}
-            if (sceneName != "1" || !PhotonNetwork.InRoom)
+            if (SceneManager.GetActiveScene().name != "1" || !PhotonNetwork.InRoom)
             {
                 //idk man fucking error bullshit magic spell try catch
                 try
@@ -873,7 +879,8 @@ public class LevelManager : MonoBehaviour
 
     private void SceneIsLoaded(Scene arg0, LoadSceneMode arg1)
     {
-        InitScene(arg0.name);
+        //InitScene(arg0.name);
+        InitScene();
     }
 
     IEnumerator AsynchronousLoad(string scene)
