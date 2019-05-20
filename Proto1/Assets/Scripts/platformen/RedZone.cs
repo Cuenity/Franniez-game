@@ -13,15 +13,10 @@ public class RedZone : Platform
 
     private void OnTriggerEnter(Collider other)
     {
-        //if (other.isTrigger && other.name.Contains("BlackHole"))
-        //{
-
-        //}
-        //else
-        //{
-        //    //Handheld.Vibrate();
-        //    gameState.levelManager.SetBuildingPhase();
-        //}
+        if (!other.isTrigger && !other.name.Contains("BlackHole"))
+        {
+            gameState.levelManager.SetBuildingPhase();
+        }
     }
 
     // alleen nodig voor de playerplatforms (dat zijn de enige met knoppen die geupdate kunnen worden)

@@ -12,6 +12,36 @@ PrefabInstance:
       propertyPath: m_Name
       value: LevelSettingLevel3JumpsEasy
       objectReference: {fileID: 0}
+    - target: {fileID: 1699268937832790775, guid: f2dc3acadd139694bb5fd5033ac7e2a2,
+        type: 3}
+      propertyPath: playerPlatformsArray.Array.data[0]
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1699268937832790775, guid: f2dc3acadd139694bb5fd5033ac7e2a2,
+        type: 3}
+      propertyPath: levelPlatformenString
+      value: Level3JumpsEasy
+      objectReference: {fileID: 0}
+    - target: {fileID: 1699268937832790775, guid: f2dc3acadd139694bb5fd5033ac7e2a2,
+        type: 3}
+      propertyPath: bigLevel
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1699268937832790775, guid: f2dc3acadd139694bb5fd5033ac7e2a2,
+        type: 3}
+      propertyPath: spawnPoint
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1699268937832790775, guid: f2dc3acadd139694bb5fd5033ac7e2a2,
+        type: 3}
+      propertyPath: ballArray.Array.data[2]
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1699268937832790775, guid: f2dc3acadd139694bb5fd5033ac7e2a2,
+        type: 3}
+      propertyPath: ballArray.Array.data[1]
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1243193100110982029, guid: f2dc3acadd139694bb5fd5033ac7e2a2,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -65,26 +95,6 @@ PrefabInstance:
     - target: {fileID: 1243193100110982029, guid: f2dc3acadd139694bb5fd5033ac7e2a2,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1699268937832790775, guid: f2dc3acadd139694bb5fd5033ac7e2a2,
-        type: 3}
-      propertyPath: playerPlatformsArray.Array.data[0]
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1699268937832790775, guid: f2dc3acadd139694bb5fd5033ac7e2a2,
-        type: 3}
-      propertyPath: levelPlatformenString
-      value: Level3JumpsEasy
-      objectReference: {fileID: 0}
-    - target: {fileID: 1699268937832790775, guid: f2dc3acadd139694bb5fd5033ac7e2a2,
-        type: 3}
-      propertyPath: bigLevel
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1699268937832790775, guid: f2dc3acadd139694bb5fd5033ac7e2a2,
-        type: 3}
-      propertyPath: spawnPoint
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

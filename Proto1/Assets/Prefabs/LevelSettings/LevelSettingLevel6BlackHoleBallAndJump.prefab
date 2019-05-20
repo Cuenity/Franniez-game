@@ -12,6 +12,36 @@ PrefabInstance:
       propertyPath: m_Name
       value: LevelSettingLevel6BlackHoleBallAndJump
       objectReference: {fileID: 0}
+    - target: {fileID: 8318110152065246394, guid: 35e109b3e2940704ebf100921d0822e7,
+        type: 3}
+      propertyPath: levelPlatformenString
+      value: Level6BlackHoleBallAndJump
+      objectReference: {fileID: 0}
+    - target: {fileID: 8318110152065246394, guid: 35e109b3e2940704ebf100921d0822e7,
+        type: 3}
+      propertyPath: bigLevel
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8318110152065246394, guid: 35e109b3e2940704ebf100921d0822e7,
+        type: 3}
+      propertyPath: playerPlatformsArray.Array.data[0]
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8318110152065246394, guid: 35e109b3e2940704ebf100921d0822e7,
+        type: 3}
+      propertyPath: playerPlatformsArray.Array.data[1]
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8318110152065246394, guid: 35e109b3e2940704ebf100921d0822e7,
+        type: 3}
+      propertyPath: playerPlatformsArray.Array.data[2]
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8318110152065246394, guid: 35e109b3e2940704ebf100921d0822e7,
+        type: 3}
+      propertyPath: ballArray.Array.data[2]
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8483212203474777536, guid: 35e109b3e2940704ebf100921d0822e7,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -66,31 +96,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8318110152065246394, guid: 35e109b3e2940704ebf100921d0822e7,
-        type: 3}
-      propertyPath: levelPlatformenString
-      value: Level6BlackHoleBallAndJump
-      objectReference: {fileID: 0}
-    - target: {fileID: 8318110152065246394, guid: 35e109b3e2940704ebf100921d0822e7,
-        type: 3}
-      propertyPath: bigLevel
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8318110152065246394, guid: 35e109b3e2940704ebf100921d0822e7,
-        type: 3}
-      propertyPath: playerPlatformsArray.Array.data[0]
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 8318110152065246394, guid: 35e109b3e2940704ebf100921d0822e7,
-        type: 3}
-      propertyPath: playerPlatformsArray.Array.data[1]
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 8318110152065246394, guid: 35e109b3e2940704ebf100921d0822e7,
-        type: 3}
-      propertyPath: playerPlatformsArray.Array.data[2]
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 35e109b3e2940704ebf100921d0822e7, type: 3}

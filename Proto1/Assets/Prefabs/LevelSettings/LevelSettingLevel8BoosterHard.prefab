@@ -12,6 +12,36 @@ PrefabInstance:
       propertyPath: m_Name
       value: LevelSettingLevel8BoosterHard
       objectReference: {fileID: 0}
+    - target: {fileID: 3290023160388524013, guid: 2e10e1c1db302c9478cdb058b28a4736,
+        type: 3}
+      propertyPath: levelPlatformenString
+      value: level8BoosterHard
+      objectReference: {fileID: 0}
+    - target: {fileID: 3290023160388524013, guid: 2e10e1c1db302c9478cdb058b28a4736,
+        type: 3}
+      propertyPath: playerPlatformsArray.Array.data[0]
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3290023160388524013, guid: 2e10e1c1db302c9478cdb058b28a4736,
+        type: 3}
+      propertyPath: playerPlatformsArray.Array.data[1]
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3290023160388524013, guid: 2e10e1c1db302c9478cdb058b28a4736,
+        type: 3}
+      propertyPath: playerPlatformsArray.Array.data[3]
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3290023160388524013, guid: 2e10e1c1db302c9478cdb058b28a4736,
+        type: 3}
+      propertyPath: ballArray.Array.data[1]
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3290023160388524013, guid: 2e10e1c1db302c9478cdb058b28a4736,
+        type: 3}
+      propertyPath: ballArray.Array.data[2]
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3133717210794559127, guid: 2e10e1c1db302c9478cdb058b28a4736,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -66,26 +96,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3290023160388524013, guid: 2e10e1c1db302c9478cdb058b28a4736,
-        type: 3}
-      propertyPath: levelPlatformenString
-      value: level8BoosterHard
-      objectReference: {fileID: 0}
-    - target: {fileID: 3290023160388524013, guid: 2e10e1c1db302c9478cdb058b28a4736,
-        type: 3}
-      propertyPath: playerPlatformsArray.Array.data[0]
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 3290023160388524013, guid: 2e10e1c1db302c9478cdb058b28a4736,
-        type: 3}
-      propertyPath: playerPlatformsArray.Array.data[1]
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 3290023160388524013, guid: 2e10e1c1db302c9478cdb058b28a4736,
-        type: 3}
-      propertyPath: playerPlatformsArray.Array.data[3]
-      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2e10e1c1db302c9478cdb058b28a4736, type: 3}

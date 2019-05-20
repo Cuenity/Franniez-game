@@ -3,6 +3,7 @@ using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
+    public Canvas UICanvas;
     public Canvas canvas;
     public Canvas pauseMenuCanvas;
 
@@ -151,7 +152,7 @@ public class UIManager : MonoBehaviour
     public void AddMultiplayerUI()
     {
         multiplayerCanvas.gameObject.SetActive(true);
-        foreach (Button button in GameState.Instance.levelManager.canvas.GetComponentsInChildren<Button>())
+        foreach (Button button in GameState.Instance.UIManager.canvas.GetComponentsInChildren<Button>())
         {
             if(button.name == "MenuButton")
             {

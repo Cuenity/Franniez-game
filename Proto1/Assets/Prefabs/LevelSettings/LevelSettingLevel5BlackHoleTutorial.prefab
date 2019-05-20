@@ -12,6 +12,31 @@ PrefabInstance:
       propertyPath: m_Name
       value: LevelSettingLevel5BlackHoleTutorial
       objectReference: {fileID: 0}
+    - target: {fileID: 5958821124494672177, guid: 36feee6c32dc36d42bec0dc3710f8a41,
+        type: 3}
+      propertyPath: levelPlatformenString
+      value: Level5BlackHoleBallTutorial
+      objectReference: {fileID: 0}
+    - target: {fileID: 5958821124494672177, guid: 36feee6c32dc36d42bec0dc3710f8a41,
+        type: 3}
+      propertyPath: bigLevel
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5958821124494672177, guid: 36feee6c32dc36d42bec0dc3710f8a41,
+        type: 3}
+      propertyPath: playerPlatformsArray.Array.data[0]
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5958821124494672177, guid: 36feee6c32dc36d42bec0dc3710f8a41,
+        type: 3}
+      propertyPath: ballArray.Array.data[2]
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5958821124494672177, guid: 36feee6c32dc36d42bec0dc3710f8a41,
+        type: 3}
+      propertyPath: ballArray.Array.data[0]
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6081070802074947659, guid: 36feee6c32dc36d42bec0dc3710f8a41,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -66,21 +91,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5958821124494672177, guid: 36feee6c32dc36d42bec0dc3710f8a41,
-        type: 3}
-      propertyPath: levelPlatformenString
-      value: Level5BlackHoleBallTutorial
-      objectReference: {fileID: 0}
-    - target: {fileID: 5958821124494672177, guid: 36feee6c32dc36d42bec0dc3710f8a41,
-        type: 3}
-      propertyPath: bigLevel
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5958821124494672177, guid: 36feee6c32dc36d42bec0dc3710f8a41,
-        type: 3}
-      propertyPath: playerPlatformsArray.Array.data[0]
-      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 36feee6c32dc36d42bec0dc3710f8a41, type: 3}
