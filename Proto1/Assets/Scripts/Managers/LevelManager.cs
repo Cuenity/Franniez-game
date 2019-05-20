@@ -1,13 +1,11 @@
 ﻿using GameAnalyticsSDK;
 using Photon.Pun;
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
-using Hashtable = ExitGames.Client.Photon.Hashtable;
 
 public class LevelManager : MonoBehaviour
 {
@@ -28,7 +26,8 @@ public class LevelManager : MonoBehaviour
         Level9PortalEasy,
         LevelSettingLevel12LiftMoeilijk,
         Level10TrampolineAdvanced,
-        Level13;
+        Level13,
+        smiletTest;
     #region levelArrays
     /// <summary > Arrays voor het bouwen van levels
     int[] level5 = new int[] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0, 0, 0, 0, 0, 0, 3, 0, 1, 0, 0, 0, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
@@ -370,7 +369,10 @@ public class LevelManager : MonoBehaviour
         {
             if (!levelIsSpawned)
             {
-
+                if (!levelIsSpawned)
+                {
+                    SpawnLevel(smiletTest);
+                }
             }
         }
 
@@ -461,7 +463,7 @@ public class LevelManager : MonoBehaviour
         }
 
         // niet af, moet op nieuwe manier (lift level easy)
-        else if (currentLevel == 11) 
+        else if (currentLevel == 11)
         {
             if (!levelIsSpawned)
             {
@@ -806,9 +808,13 @@ public class LevelManager : MonoBehaviour
         {
             PhotonView view = gameState.playerBallManager.activePlayer.GetComponent<PhotonView>();
             if (PhotonNetwork.IsMasterClient)
+            {
                 view.RPC("FlagUnHit", RpcTarget.All, "masterhit");
+            }
             else
+            {
                 view.RPC("FlagUnHit", RpcTarget.All, "clienthit");
+            }
         }
         if (SceneManager.GetActiveScene().name != "VictoryScreen")
         {
@@ -849,14 +855,14 @@ public class LevelManager : MonoBehaviour
 
 
 
-    ///////////////////////////////////////////
-    //////dit hieronder kan allemaal weg??///// idk, you tell me Denk t wel zal het uitcommenten voor de zekerheid
-    ///////////////////////////////////////////
+///////////////////////////////////////////
+//////dit hieronder kan allemaal weg??///// idk, you tell me Denk t wel zal het uitcommenten voor de zekerheid
+///////////////////////////////////////////
 
 
-    ////SceneLoading and generals
-    ////https://www.alanzucconi.com/2016/03/30/loading-bar-in-unity/
-    ////
+////SceneLoading and generals
+////https://www.alanzucconi.com/2016/03/30/loading-bar-in-unity/
+////
 //    internal void AsynchronousLoadStart(string scene)
 //    {
 //        //coinList.Clear();
