@@ -7,51 +7,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 4691286432663417472, guid: 6792bb8dc3c6b384a84cae2d08ea5d41,
-        type: 3}
-      propertyPath: sterArray.Array.size
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4691286432663417472, guid: 6792bb8dc3c6b384a84cae2d08ea5d41,
-        type: 3}
-      propertyPath: levelPlatformenString
-      value: smiletTest
-      objectReference: {fileID: 0}
-    - target: {fileID: 4691286432663417472, guid: 6792bb8dc3c6b384a84cae2d08ea5d41,
-        type: 3}
-      propertyPath: sterArray.Array.data[0]
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4691286432663417472, guid: 6792bb8dc3c6b384a84cae2d08ea5d41,
-        type: 3}
-      propertyPath: sterArray.Array.data[1]
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4691286432663417472, guid: 6792bb8dc3c6b384a84cae2d08ea5d41,
-        type: 3}
-      propertyPath: sterArray.Array.data[2]
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4691286432663417472, guid: 6792bb8dc3c6b384a84cae2d08ea5d41,
-        type: 3}
-      propertyPath: spawnPoint
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4691286432663417472, guid: 6792bb8dc3c6b384a84cae2d08ea5d41,
-        type: 3}
-      propertyPath: finishPosition
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4691286432663417472, guid: 6792bb8dc3c6b384a84cae2d08ea5d41,
-        type: 3}
-      propertyPath: ballArray.Array.data[2]
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4691286432663417472, guid: 6792bb8dc3c6b384a84cae2d08ea5d41,
-        type: 3}
-      propertyPath: ballArray.Array.data[1]
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 1333553131791344624, guid: 6792bb8dc3c6b384a84cae2d08ea5d41,
         type: 3}
       propertyPath: m_Name
@@ -110,6 +65,66 @@ PrefabInstance:
     - target: {fileID: 5174492719803212794, guid: 6792bb8dc3c6b384a84cae2d08ea5d41,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4691286432663417472, guid: 6792bb8dc3c6b384a84cae2d08ea5d41,
+        type: 3}
+      propertyPath: sterArray.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4691286432663417472, guid: 6792bb8dc3c6b384a84cae2d08ea5d41,
+        type: 3}
+      propertyPath: levelPlatformenString
+      value: smiletTest
+      objectReference: {fileID: 0}
+    - target: {fileID: 4691286432663417472, guid: 6792bb8dc3c6b384a84cae2d08ea5d41,
+        type: 3}
+      propertyPath: sterArray.Array.data[0]
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4691286432663417472, guid: 6792bb8dc3c6b384a84cae2d08ea5d41,
+        type: 3}
+      propertyPath: sterArray.Array.data[1]
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4691286432663417472, guid: 6792bb8dc3c6b384a84cae2d08ea5d41,
+        type: 3}
+      propertyPath: sterArray.Array.data[2]
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4691286432663417472, guid: 6792bb8dc3c6b384a84cae2d08ea5d41,
+        type: 3}
+      propertyPath: spawnPoint
+      value: 22
+      objectReference: {fileID: 0}
+    - target: {fileID: 4691286432663417472, guid: 6792bb8dc3c6b384a84cae2d08ea5d41,
+        type: 3}
+      propertyPath: finishPosition
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 4691286432663417472, guid: 6792bb8dc3c6b384a84cae2d08ea5d41,
+        type: 3}
+      propertyPath: ballArray.Array.data[2]
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4691286432663417472, guid: 6792bb8dc3c6b384a84cae2d08ea5d41,
+        type: 3}
+      propertyPath: ballArray.Array.data[1]
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4691286432663417472, guid: 6792bb8dc3c6b384a84cae2d08ea5d41,
+        type: 3}
+      propertyPath: playerPlatformsArray.Array.data[2]
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4691286432663417472, guid: 6792bb8dc3c6b384a84cae2d08ea5d41,
+        type: 3}
+      propertyPath: playerPlatformsArray.Array.data[1]
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4691286432663417472, guid: 6792bb8dc3c6b384a84cae2d08ea5d41,
+        type: 3}
+      propertyPath: playerPlatformsArray.Array.data[0]
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
