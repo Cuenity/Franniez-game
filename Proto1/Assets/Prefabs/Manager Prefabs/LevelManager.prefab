@@ -68,6 +68,8 @@ MonoBehaviour:
     type: 3}
   Level10TrampolineAdvanced: {fileID: 2598065613682468424, guid: 39b4a6668f6ab7d4c89dab194bba4ddb,
     type: 3}
+  smiletTest: {fileID: 6857793499659197117, guid: 6c27f9caf2f52614e8b503286cbb4e8c,
+    type: 3}
   coinList: []
   stickerObject: {fileID: 7059130672778521763, guid: 383c48a0d6e302541a57c7a33de8e65d,
     type: 3}

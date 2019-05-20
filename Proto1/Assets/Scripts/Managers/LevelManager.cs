@@ -27,7 +27,8 @@ public class LevelManager : MonoBehaviour
         LevelSettingLevel4TrampolineHard,
         Level9PortalEasy,
         LevelSettingLevel12LiftMoeilijk,
-        Level10TrampolineAdvanced;
+        Level10TrampolineAdvanced,
+        smiletTest;
     #region levelArrays
     /// <summary > Arrays voor het bouwen van levels
     int[] level5 = new int[] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0, 0, 0, 0, 0, 0, 3, 0, 1, 0, 0, 0, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
@@ -382,23 +383,28 @@ public class LevelManager : MonoBehaviour
                 //GameState.Instance.platformManager.BuildLevelFromLevelPlatformen(levelPlatformen);
                 //gameState.playerBallManager.WhatBalls(true, false, false);
                 //DefaultSceneEndInit();
-                Vector3 rampAdjustment = new Vector3(0.5f, 0f, 0f);
-                List<int> RampSpots = new List<int>();
-                List<int> PlatformSpots = new List<int>();
-                List<int> FinishSpots = new List<int>();
-                List<int> TrampolineSpots = new List<int>();
-                List<int> PortalSpots = new List<int>();
-                List<int> rechthoekSpots = new List<int>();
-                List<int> RampSpotsReversed = new List<int>();
-                List<int> CoinSpots = new List<int>();
-                List<int> RedZoneSpots = new List<int>();
-                List<int> boosterPlatformSpots = new List<int>();
-                List<Lift> liftList = new List<Lift>();
-                SpawnLevel(LevelSettingLevel12LiftMoeilijk);
-                gameState.platformManager.lift.SetStartAndEndPoints(263, 43);
-                liftList.Add(gameState.platformManager.lift);
-                gameState.platformManager.Init_Platforms(RampSpots,PlatformSpots,RampSpotsReversed,PortalSpots,TrampolineSpots,rechthoekSpots,boosterPlatformSpots, liftList);
 
+
+                //Vector3 rampAdjustment = new Vector3(0.5f, 0f, 0f);
+                //List<int> RampSpots = new List<int>();
+                //List<int> PlatformSpots = new List<int>();
+                //List<int> FinishSpots = new List<int>();
+                //List<int> TrampolineSpots = new List<int>();
+                //List<int> PortalSpots = new List<int>();
+                //List<int> rechthoekSpots = new List<int>();
+                //List<int> RampSpotsReversed = new List<int>();
+                //List<int> CoinSpots = new List<int>();
+                //List<int> RedZoneSpots = new List<int>();
+                //List<int> boosterPlatformSpots = new List<int>();
+                //List<Lift> liftList = new List<Lift>();
+                //SpawnLevel(LevelSettingLevel12LiftMoeilijk);
+                //gameState.platformManager.lift.SetStartAndEndPoints(263, 43);
+                //liftList.Add(gameState.platformManager.lift);
+                //gameState.platformManager.Init_Platforms(RampSpots,PlatformSpots,RampSpotsReversed,PortalSpots,TrampolineSpots,rechthoekSpots,boosterPlatformSpots, liftList);
+                if (!levelIsSpawned)
+                {
+                    SpawnLevel(smiletTest);
+                }
             }
         }
 
