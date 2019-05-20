@@ -433,7 +433,7 @@ public class LevelManager : MonoBehaviour
             }
         }
 
-        // niet af, moet op nieuwe manier (lift level easy)
+        // af, lift easy
         else if (currentLevel == 11)
         {
             if (!levelIsSpawned)
@@ -443,27 +443,14 @@ public class LevelManager : MonoBehaviour
             }
         }
 
+        // af, lift hard
         else if (currentLevel == 12)
         {
             if (!levelIsSpawned)
             {
-                Vector3 rampAdjustment = new Vector3(0.5f, 0f, 0f);
-                List<int> RampSpots = new List<int>();
-                List<int> PlatformSpots = new List<int>();
-                List<int> FinishSpots = new List<int>();
-                List<int> TrampolineSpots = new List<int>();
-                List<int> PortalSpots = new List<int>();
-                List<int> rechthoekSpots = new List<int>();
-                List<int> RampSpotsReversed = new List<int>();
-                List<int> CoinSpots = new List<int>();
-                List<int> RedZoneSpots = new List<int>();
-                List<int> boosterPlatformSpots = new List<int>();
-                List<Lift> liftList = new List<Lift>();
                 SpawnLevel(LevelSettingLevel12LiftMoeilijk);
-                gameState.platformManager.lift.SetStartAndEndPoints(263, 43);
-                liftList.Add(gameState.platformManager.lift);
-                gameState.platformManager.Init_Platforms(RampSpots, PlatformSpots, RampSpotsReversed, PortalSpots, TrampolineSpots, rechthoekSpots, boosterPlatformSpots, liftList);
-            }
+                gameState.platformManager.InitLift(263, 43);
+           }
         }
 
         // af, cannon level easy
