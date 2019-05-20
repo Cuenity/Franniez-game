@@ -71,6 +71,7 @@ MonoBehaviour:
   Level13: {fileID: 889642148942438597, guid: eac6db38ee66d2541aaff93d9087dda8, type: 3}
   smiletTest: {fileID: 6857793499659197117, guid: 6c27f9caf2f52614e8b503286cbb4e8c,
     type: 3}
+  house: {fileID: 6330327931917537949, guid: 3f7591ef3a4175d4f9d36e3aade1b938, type: 3}
   coinList: []
   stickerObject: {fileID: 0}
   finish: {fileID: 0}
