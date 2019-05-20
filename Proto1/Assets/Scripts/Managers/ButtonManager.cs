@@ -77,7 +77,7 @@ public class ButtonManager : MonoBehaviour
         int levelNumber = 2;
         levelNumber = GameState.Instance.PreviousLevel + 1;
 
-        GameState.Instance.levelManager.AsynchronousLoadStart(Convert.ToString(levelNumber));
+        //GameState.Instance.levelManager.AsynchronousLoadStart(Convert.ToString(levelNumber));
     }
 
     public void RestartScene()
@@ -85,7 +85,7 @@ public class ButtonManager : MonoBehaviour
         int levelNumber = 1;
         levelNumber = GameState.Instance.PreviousLevel;
 
-        GameState.Instance.levelManager.AsynchronousLoadStart(levelNumber.ToString());
+        //GameState.Instance.levelManager.AsynchronousLoadStart(levelNumber.ToString());
     }
 
     public void RemoveAllPlayerPlatformsFromScene()

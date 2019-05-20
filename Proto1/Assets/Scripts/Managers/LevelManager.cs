@@ -370,35 +370,6 @@ public class LevelManager : MonoBehaviour
         {
             if (!levelIsSpawned)
             {
-                GameState gameState = GameState.Instance;
-                //DefaultSceneInit();
-                //levelPlatformen.tileList = level4JumpHard;
-                //levelPlatformen.width = 30;
-                //levelPlatformen.heigth = 13;
-                //gameState.gridManager.width = levelPlatformen.width;
-                //gameState.gridManager.height = levelPlatformen.heigth;
-                //playerPlatforms = new PlayerPlatforms(0, 0, 6, 0, 0);
-                //gameState.gridManager.Build_Grid_FromJSON_Without_Visuals(levelPlatformen.width, levelPlatformen.heigth);
-                //gameState.playerBallManager.SetSpawnpoint(0);
-                //GameState.Instance.platformManager.BuildLevelFromLevelPlatformen(levelPlatformen);
-                //gameState.playerBallManager.WhatBalls(true, false, false);
-                //DefaultSceneEndInit();
-                Vector3 rampAdjustment = new Vector3(0.5f, 0f, 0f);
-                List<int> RampSpots = new List<int>();
-                List<int> PlatformSpots = new List<int>();
-                List<int> FinishSpots = new List<int>();
-                List<int> TrampolineSpots = new List<int>();
-                List<int> PortalSpots = new List<int>();
-                List<int> rechthoekSpots = new List<int>();
-                List<int> RampSpotsReversed = new List<int>();
-                List<int> CoinSpots = new List<int>();
-                List<int> RedZoneSpots = new List<int>();
-                List<int> boosterPlatformSpots = new List<int>();
-                List<Lift> liftList = new List<Lift>();
-                SpawnLevel(LevelSettingLevel12LiftMoeilijk);
-                gameState.platformManager.lift.SetStartAndEndPoints(263, 43);
-                liftList.Add(gameState.platformManager.lift);
-                gameState.platformManager.Init_Platforms(RampSpots,PlatformSpots,RampSpotsReversed,PortalSpots,TrampolineSpots,rechthoekSpots,boosterPlatformSpots, liftList);
 
             }
         }
@@ -450,7 +421,7 @@ public class LevelManager : MonoBehaviour
             }
         }
 
-        // af?
+        // af? portal & trampoline
         else if (currentLevel == 10)
         {
             if (!levelIsSpawned)
@@ -489,50 +460,8 @@ public class LevelManager : MonoBehaviour
             }
         }
 
-        // niet af, nog aanpassen (cannon level)
-        else if (currentLevel == 12) 
-        {
-            if (!levelIsSpawned)
-            {
-                SpawnLevel(Level12AdvancedPortal);
-                //bigLevel = true;
-
-                //gameState.UIManager.canvas = Instantiate(canvas);
-                //gameState.UIManager.newLevelInventoryisRequired = true;
-                ////gameState.collectableManager.newCollectablesAreRequired = true;
-                ////coinPositions.Clear();
-                ////coinList.Clear();
-                //GameState.Instance.playerCamera.ManualInit();
-                ////gameState.playerCamera = Instantiate(gameState.playerCamera);
-                //Vector3 playeradjustment = new Vector3(.5f, 0, 0);
-                //gameState.gridManager.width = 40;
-                //gameState.gridManager.height = 12;
-                //playerPlatforms = new PlayerPlatforms(3, 4, 0, 0, 2);
-                //gameState.gridManager.Build_Grid_BuildingPhase_Without_Visuals();
-                //gameState.playerBallManager.SetSpawnpoint(41);
-                //gameState.platformManager.BuildLevel6();
-
-
-                //gameState.playerBallManager.WhatBalls(true, true, true);
-                //gameState.playerManager.PlayerInit(gameState.playerBallManager.ballList[0]);
-
-                //gameState.BuildingPhaseActive = true;
-                //GameState.Instance.PreviousLevel = Int32.Parse(sceneName);
-                //PlayerDataController.instance.PreviousScene = Int32.Parse(sceneName);
-            }
-        }
-
-        else if (currentLevel == 13)
-        {
-            SpawnLevel(Level13);
-        }
-
-        else if (currentLevel == 14)
-        {
-            SpawnLevel(Level13);
-        }
-
-        else if (currentLevel == 11) // moet  later pas
+        // niet af, moet op nieuwe manier (lift level easy)
+        else if (currentLevel == 11) 
         {
             if (!levelIsSpawned)
             {
@@ -563,6 +492,68 @@ public class LevelManager : MonoBehaviour
                 //GameState.Instance.PreviousLevel = Int32.Parse(currentLevel);
                 //PlayerDataController.instance.PreviousScene = Int32.Parse(currentLevel);
                 levelIsSpawned = true;
+            }
+        }
+
+        else if (currentLevel == 12)
+        {
+            if (!levelIsSpawned)
+            {
+                Vector3 rampAdjustment = new Vector3(0.5f, 0f, 0f);
+                List<int> RampSpots = new List<int>();
+                List<int> PlatformSpots = new List<int>();
+                List<int> FinishSpots = new List<int>();
+                List<int> TrampolineSpots = new List<int>();
+                List<int> PortalSpots = new List<int>();
+                List<int> rechthoekSpots = new List<int>();
+                List<int> RampSpotsReversed = new List<int>();
+                List<int> CoinSpots = new List<int>();
+                List<int> RedZoneSpots = new List<int>();
+                List<int> boosterPlatformSpots = new List<int>();
+                List<Lift> liftList = new List<Lift>();
+                SpawnLevel(LevelSettingLevel12LiftMoeilijk);
+                gameState.platformManager.lift.SetStartAndEndPoints(263, 43);
+                liftList.Add(gameState.platformManager.lift);
+                gameState.platformManager.Init_Platforms(RampSpots, PlatformSpots, RampSpotsReversed, PortalSpots, TrampolineSpots, rechthoekSpots, boosterPlatformSpots, liftList);
+            }
+        }
+
+        // af, cannon level easy
+        else if (currentLevel == 13)
+        {
+            SpawnLevel(Level13);
+        }
+
+        // niet af (cannon level hard, kaput op moment)
+        else if (currentLevel == 14)
+        {
+            if (!levelIsSpawned)
+            {
+                SpawnLevel(Level12AdvancedPortal);
+                //bigLevel = true;
+
+                //gameState.UIManager.canvas = Instantiate(canvas);
+                //gameState.UIManager.newLevelInventoryisRequired = true;
+                ////gameState.collectableManager.newCollectablesAreRequired = true;
+                ////coinPositions.Clear();
+                ////coinList.Clear();
+                //GameState.Instance.playerCamera.ManualInit();
+                ////gameState.playerCamera = Instantiate(gameState.playerCamera);
+                //Vector3 playeradjustment = new Vector3(.5f, 0, 0);
+                //gameState.gridManager.width = 40;
+                //gameState.gridManager.height = 12;
+                //playerPlatforms = new PlayerPlatforms(3, 4, 0, 0, 2);
+                //gameState.gridManager.Build_Grid_BuildingPhase_Without_Visuals();
+                //gameState.playerBallManager.SetSpawnpoint(41);
+                //gameState.platformManager.BuildLevel6();
+
+
+                //gameState.playerBallManager.WhatBalls(true, true, true);
+                //gameState.playerManager.PlayerInit(gameState.playerBallManager.ballList[0]);
+
+                //gameState.BuildingPhaseActive = true;
+                //GameState.Instance.PreviousLevel = Int32.Parse(sceneName);
+                //PlayerDataController.instance.PreviousScene = Int32.Parse(sceneName);
             }
         }
 
@@ -854,7 +845,7 @@ public class LevelManager : MonoBehaviour
         }
 
     }
-
+}
 
 
 
@@ -866,46 +857,46 @@ public class LevelManager : MonoBehaviour
     ////SceneLoading and generals
     ////https://www.alanzucconi.com/2016/03/30/loading-bar-in-unity/
     ////
-    internal void AsynchronousLoadStart(string scene)
-    {
-        //coinList.Clear();
-        IEnumerator coroutine;
-        //niet vergeten die unsubscribe te doen enzo
-        SceneManager.sceneLoaded += SceneIsLoaded;
-        coroutine = AsynchronousLoad(scene);
-        StartCoroutine(coroutine);
+//    internal void AsynchronousLoadStart(string scene)
+//    {
+//        //coinList.Clear();
+//        IEnumerator coroutine;
+//        //niet vergeten die unsubscribe te doen enzo
+//        SceneManager.sceneLoaded += SceneIsLoaded;
+//        coroutine = AsynchronousLoad(scene);
+//        StartCoroutine(coroutine);
 
-    }
+//    }
 
-    private void SceneIsLoaded(Scene arg0, LoadSceneMode arg1)
-    {
-        //InitScene(arg0.name);
-        InitScene();
-    }
+//    private void SceneIsLoaded(Scene arg0, LoadSceneMode arg1)
+//    {
+//        //InitScene(arg0.name);
+//        InitScene();
+//    }
 
-    IEnumerator AsynchronousLoad(string scene)
-    {
-        yield return null;
+//    IEnumerator AsynchronousLoad(string scene)
+//    {
+//        yield return null;
 
-        AsyncOperation ao = SceneManager.LoadSceneAsync(scene);
-        ao.allowSceneActivation = false;
+//        AsyncOperation ao = SceneManager.LoadSceneAsync(scene);
+//        ao.allowSceneActivation = false;
 
-        while (!ao.isDone)
-        {
-            // [0, 0.9] > [0, 1]
-            float progress = Mathf.Clamp01(ao.progress / 0.9f);
-            Debug.Log("Loading progress: " + (progress * 100) + "%");
+//        while (!ao.isDone)
+//        {
+//            // [0, 0.9] > [0, 1]
+//            float progress = Mathf.Clamp01(ao.progress / 0.9f);
+//            Debug.Log("Loading progress: " + (progress * 100) + "%");
 
-            // Loading completed
-            if (ao.progress == 0.9f)
-            {
-                ao.allowSceneActivation = true;
+//            // Loading completed
+//            if (ao.progress == 0.9f)
+//            {
+//                ao.allowSceneActivation = true;
 
-            }
-            yield return null;
-        }
-    }
-}
+//            }
+//            yield return null;
+//        }
+//    }
+//}
 //}
 //scheit voor scheit mensen
 //if (sceneName == "lol1")
