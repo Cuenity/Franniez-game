@@ -316,28 +316,6 @@ public class LevelManager : MonoBehaviour
         DefaultSceneEndInit();
     }
 
-    public void SpawnMultiLevel(MultiLevelSettings levelSetting)
-    {
-        DefaultSceneInit();
-
-        levelSetting.Init();
-        bigLevel = levelSetting.bigLevel;
-        //dit verhaal moet in levesettings zelf gebeuren
-        //playerplatforms
-        playerPlatforms = new PlayerPlatforms(levelSetting.playerPlatformsArray[1], levelSetting.playerPlatformsArray[0], levelSetting.playerPlatformsArray[2], levelSetting.playerPlatformsArray[3], levelSetting.playerPlatformsArray[4]);
-        //spawngrid
-        gameState.gridManager.Build_Grid_FromJSON_Without_Visuals(gameState.gridManager.width, gameState.gridManager.height);
-        //spawnlevel
-        gameState.platformManager.BuildLevelFromLevelPlatformen(levelSetting.levelPlatformen);
-        //dit is blijkbaar superbelangrijk
-        //spawnpoint
-        gameState.playerManager.MultiPlayerBallInit(levelSetting.spawnPoint1, levelSetting.spawnPoint2);
-        //balzooi
-        gameState.playerBallManager.WhatBalls(levelSetting.ballArray[0], levelSetting.ballArray[1], levelSetting.ballArray[2]);
-
-        DefaultSceneEndInit();
-    }
-
 
     public void InitScene()
     {
