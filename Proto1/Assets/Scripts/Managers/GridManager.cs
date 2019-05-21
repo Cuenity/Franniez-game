@@ -92,94 +92,7 @@ public class GridManager : MonoBehaviour
                 break;
         }
     }
-
-    //internal void Build_Grid1_With_Visuals()
-    //{
-    //    //variablen
-    //    Vector3 moveRight = new Vector3(1f, 0f, 0f);
-    //    Vector3 moveDown = new Vector3(0f, -1f, 0f);
-    //    Vector3 gridStartingPoint = new Vector3(0f, 0f, 0f);
-
-
-    //    for (int i = 0; i < heigth; i++)
-    //    {
-    //        gridStartingPoint.x = 0f;
-    //        gridStartingPoint = gridStartingPoint + moveDown;
-
-    //        for (int i2 = 0; i2 < width; i2++)
-    //        {
-    //            Build_SquareBetter(gridStartingPoint);
-    //            //place 2 the left
-    //            gridStartingPoint = gridStartingPoint + moveRight;
-    //        }
-    //    }
-    //}
-    //private void Build_SquareBetter(Vector3 gridStartingPoint)
-    //{
-    //    GameObject gridSquare1;
-
-    //    gridSquare1 = Instantiate(gridSquare, gridStartingPoint, new Quaternion(0, 0, 0, 0));
-    //    gridSquare1.transform.Rotate(new Vector3(0, -90, 0));
-
-    //    //add alle squares aan een lijstje
-    //    gridSquares.Add(gridSquare1.transform.position);
-
-    //}
-
-    //internal void Build_Grid1_Without_Visuals()
-    //{
-    //    //variablen
-    //    Vector3 moveRight = new Vector3(1f, 0f, 0f);
-    //    Vector3 moveDown = new Vector3(0f, -1f, 0f);
-    //    Vector3 gridStartingPoint = new Vector3(0, 0f, 0f);
-
-
-    //    for (int i = 0; i < heigth; i++)
-    //    {
-    //        gridStartingPoint.x = 0f;
-    //        gridStartingPoint = gridStartingPoint + moveDown;
-
-    //        for (int i2 = 0; i2 < width; i2++)
-    //        {
-    //            gridSquares.Add(gridStartingPoint);
-    //            //place 2 the left
-    //            gridStartingPoint = gridStartingPoint + moveRight;
-    //        }
-    //    }
-    //}
-
-    //public void Build_Grid_Level_Editor_Without_Visuals()
-    //{
-    //    Vector3 moveRight = new Vector3(1f, 0f, 0f);
-    //    Vector3 moveDown = new Vector3(0f, -1f, 0f);
-    //    Vector3 gridStartingPoint = new Vector3(0f, 0f, 0f);
-
-    //    InputField widthObject = GameObject.Find("Width").GetComponent<InputField>();
-    //    InputField heigthObject = GameObject.Find("Heigth").GetComponent<InputField>();
-
-    //    if (widthObject.text != "" && heigthObject.text != "")
-    //    {
-    //        width = Convert.ToInt32(widthObject.text);
-    //        heigth = Convert.ToInt32(heigthObject.text);
-    //    }
-
-
-    //    for (int i = 0; i < heigth; i++)
-    //    {
-    //        gridStartingPoint.x = 0f;
-    //        gridStartingPoint = gridStartingPoint + moveDown;
-
-    //        for (int i2 = 0; i2 < width; i2++)
-    //        {
-    //            gameState.gridManager.gridSquares.Add(gridStartingPoint);
-    //            //place 2 the left
-    //            gridStartingPoint = gridStartingPoint + moveRight;
-
-    //        }
-    //    }
-    //    gameState.levelManager.levelPlatformen.tileList = new int[heigth * width];
-    //}
-
+    
     internal void Build_Grid_BuildingPhase_With_Visuals()
     {
         Vector3 moveRight = new Vector3(1f, 0f, 0f);
@@ -404,119 +317,15 @@ public class GridManager : MonoBehaviour
     internal void showPlayerGrid(List<int> player1Grid,List<int> player2Grid)
     {
         Vector3 gridadjustment = new Vector3(0.5f, 0, 0);
-        if (PhotonNetwork.IsMasterClient)
+       
+        foreach (var spot in player1Grid)
         {
-            foreach (var spot in player1Grid)
-            {
-                Instantiate(playerGridRed, gridSquares[spot] + gridadjustment, new Quaternion(0, 0, 0, 0)).transform.Rotate(new Vector3(-90, 0, 0));
-            }
+            Instantiate(playerGridRed, gridSquares[spot] + gridadjustment, new Quaternion(0, 0, 0, 0)).transform.Rotate(new Vector3(-90, 0, 0));
         }
         foreach (var spot in player2Grid)
         {
             Instantiate(playerGridGreen, gridSquares[spot] + gridadjustment, new Quaternion(0, 0, 0, 0)).transform.Rotate(new Vector3(-90, 0, 0));
         }
-    }
-
-    internal void InitPlayerGridMultiLevel1()
-    {
-        List<int> player1Grid = new List<int>();
-        List<int> player2Grid = new List<int>(); 
-        //grid 1 is 0 tot 9 width
-        //grid 1 is 0 tot 9 heigth
-        //grid 2 is 10 tot 19 width
-        //grid 2 is 0 tot 9 height
-        for (int i = 0; i < 10; i++)
-        {
-            player1Grid.Add(i);
-            player1Grid.Add(i + 20);
-            player1Grid.Add(i + 40);
-            player1Grid.Add(i + 60);
-            player1Grid.Add(i + 80);
-            player1Grid.Add(i + 100);
-            player1Grid.Add(i + 120);
-            player1Grid.Add(i + 140);
-            player1Grid.Add(i + 160);
-            player1Grid.Add(i + 180);
-            player1Grid.Add(i + 200);
-        }
-        for (int i = 10; i < 20; i++)
-        {
-            player2Grid.Add(i);
-            player2Grid.Add(i + 20);
-            player2Grid.Add(i + 40);
-            player2Grid.Add(i + 60);
-            player2Grid.Add(i + 80);
-            player2Grid.Add(i + 100);
-            player2Grid.Add(i + 120);
-            player2Grid.Add(i + 140);
-            player2Grid.Add(i + 160);
-            player2Grid.Add(i + 180);
-            player2Grid.Add(i + 200);
-        }
-        if (PhotonNetwork.IsMasterClient)
-        {
-            AddPlayerGridToFilledGridSpots(player2Grid);
-        }
-        else
-        {
-            AddPlayerGridToFilledGridSpots(player1Grid);
-        }
-        showPlayerGrids();
-    }
-    //race
-    internal void InitPlayerGridMultiLevel2()
-    {
-        List<int> player1Grid = new List<int>();
-        List<int> player2Grid = new List<int>();
-        //grid 1 is 0 tot 74 width
-        //grid 1 is 0 tot 14 heigth
-        //grid 2 is 75 tot 150 width
-        //grid 2 is 0 tot 14 height
-        for (int i = 0; i < 75; i++)
-        {
-            player1Grid.Add(i);
-            player1Grid.Add(i + 151);
-            player1Grid.Add(i + 302);
-            player1Grid.Add(i + 453);
-            player1Grid.Add(i + 604);
-            player1Grid.Add(i + 755);
-            player1Grid.Add(i + 906);
-            player1Grid.Add(i + 1057);
-            player1Grid.Add(i + 1208);
-            player1Grid.Add(i + 1359);
-            player1Grid.Add(i + 1510);
-            player1Grid.Add(i + 1661);
-            player1Grid.Add(i + 1812);
-            player1Grid.Add(i + 1963);
-            player1Grid.Add(i + 2114);
-        }
-        for (int i = 75; i < 75; i++)
-        {
-            player1Grid.Add(i);
-            player1Grid.Add(i + 151);
-            player1Grid.Add(i + 302);
-            player1Grid.Add(i + 453);
-            player1Grid.Add(i + 604);
-            player1Grid.Add(i + 755);
-            player1Grid.Add(i + 906);
-            player1Grid.Add(i + 1057);
-            player1Grid.Add(i + 1208);
-            player1Grid.Add(i + 1359);
-            player1Grid.Add(i + 1510);
-            player1Grid.Add(i + 1661);
-            player1Grid.Add(i + 1812);
-            player1Grid.Add(i + 1963);
-            player1Grid.Add(i + 2114);
-        }
-        if (PhotonNetwork.IsMasterClient)
-        {
-            AddPlayerGridToFilledGridSpots(player2Grid);
-        }
-        else
-        {
-            AddPlayerGridToFilledGridSpots(player1Grid);
-        }
-        showPlayerGrids();
     }
 
     internal void AddPlayerGridToFilledGridSpots(List<int> playergrid)
@@ -525,10 +334,5 @@ public class GridManager : MonoBehaviour
         {
             filledGridSpots[spot] = true;
         }
-    }
-    internal void showPlayerGrids()
-    {
-        Instantiate(playerGridRed,new Vector3(5.05f,-6.34f,0.44f),new Quaternion()).transform.Rotate(new Vector3(-90,0,0));
-        Instantiate(playerGridGreen,new Vector3(14.47f,-6.34f,0.44f),new Quaternion()).transform.Rotate(new Vector3(-90, 0, 0));
     }
 }

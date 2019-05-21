@@ -33,6 +33,7 @@ public class LevelManager : MonoBehaviour
         smiletTest,
         house,
         multiLevel1,
+        multiLevel2,
 		boom;
     #region levelArrays
     /// <summary > Arrays voor het bouwen van levels
@@ -597,37 +598,17 @@ public class LevelManager : MonoBehaviour
         {
             if (!levelIsSpawned)
             {
-                bigLevel = true;
-                multiUIRequired = true;
-                //gameState.UIManager.canvas = Instantiate(canvas);
-                //doe gekke initshit voor localproperties
-                //bool hitflag = false;
-                //Hashtable hash = new Hashtable();
-                //hash.Add("hitflag", hitflag);
-                //PhotonNetwork.LocalPlayer.SetCustomProperties(hash);
-                //einde gekke shit
-                gameState.UIManager.newLevelInventoryisRequired = true;
-                GameState.Instance.playerCamera.ManualInit();
-                Vector3 playeradjustment = new Vector3(.5f, 0, 0);
-                levelPlatformen.tileList = multiplayerLevel2Cross;
-                levelPlatformen.width = 20;
-                levelPlatformen.heigth = 15;
-                gameState.gridManager.width = 20;
-                gameState.gridManager.height = 20;
-                playerPlatforms = new PlayerPlatforms(1, 1, 1, 0, 0);
-                GameState.Instance.gridManager.Build_Grid_FromJSON_Without_Visuals(levelPlatformen.width, levelPlatformen.heigth);
-
-
-                GameState.Instance.platformManager.BuildLevelFromLevelPlatformen(levelPlatformen);
-                gameState.playerManager.MultiPlayerBallInit(19, 0);
-                //gameState.gridManager.InitPlayerGridMultiLevel1();
-                gameState.BuildingPhaseActive = true;
-                //dit is wel poep moet echt es anders
-                GameState.Instance.PreviousLevel = 28;
-                PlayerDataController.instance.PreviousScene = 28;
-
-                //multidingen
+                SpawnLevel(multiLevel2);
+                //vies
+                Destroy(GameObject.Find("player1Ball"));
+                Destroy(GameObject.Find("player2Ball"));
+                //einde vies
+                //naamgeving zo vies bij playergrids
+                //eerste 2 is het begin eindpunt maar die laatste 2 is gewoon de hoogte 
+                gameState.gridManager.InitPlayerGridsMultiPlayer(0, 24, 0, 4, 125, 149, 0, 4);
+                gameState.playerManager.MultiPlayerBallInit(1, 125);
                 gameState.UIManager.AddMultiplayerUI();
+                
             }
         }
 
@@ -661,7 +642,6 @@ public class LevelManager : MonoBehaviour
                 GameState.Instance.platformManager.BuildLevelFromLevelPlatformen(levelPlatformen);
 
                 gameState.playerManager.MultiPlayerBallInit(1, 150);
-                gameState.gridManager.InitPlayerGridMultiLevel1();
                 gameState.BuildingPhaseActive = true;
                 //dit is wel poep moet echt es anders
                 GameState.Instance.PreviousLevel = 6;

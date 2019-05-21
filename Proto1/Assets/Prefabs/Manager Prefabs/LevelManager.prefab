@@ -74,6 +74,10 @@ MonoBehaviour:
   smiletTest: {fileID: 6857793499659197117, guid: 6c27f9caf2f52614e8b503286cbb4e8c,
     type: 3}
   house: {fileID: 6330327931917537949, guid: 3f7591ef3a4175d4f9d36e3aade1b938, type: 3}
+  multiLevel1: {fileID: 6765369781238558511, guid: 7487e89d2cc140345ae0707bbfa41cb0,
+    type: 3}
+  multiLevel2: {fileID: 7330152785019320456, guid: d6f95b7bb5a5c554ca56e876c0c2fdc7,
+    type: 3}
   boom: {fileID: 3249524214490673100, guid: b29b4e25e03b52147ad19084ef0d40a2, type: 3}
   coinList: []
   stickerObject: {fileID: 0}
