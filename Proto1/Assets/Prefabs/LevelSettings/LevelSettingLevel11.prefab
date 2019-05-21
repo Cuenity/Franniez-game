@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1001 &3110902413587929236
+--- !u!1001 &2091905631395899877
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -10,42 +10,7 @@ PrefabInstance:
     - target: {fileID: 4452596467813102313, guid: a6d4731e59cb1bc45bb9fed126fddb70,
         type: 3}
       propertyPath: m_Name
-      value: LevelSettingLevel14
-      objectReference: {fileID: 0}
-    - target: {fileID: 7949340701427491737, guid: a6d4731e59cb1bc45bb9fed126fddb70,
-        type: 3}
-      propertyPath: spawnPoint
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7949340701427491737, guid: a6d4731e59cb1bc45bb9fed126fddb70,
-        type: 3}
-      propertyPath: finishPosition
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7949340701427491737, guid: a6d4731e59cb1bc45bb9fed126fddb70,
-        type: 3}
-      propertyPath: playerPlatformsArray.Array.data[0]
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 7949340701427491737, guid: a6d4731e59cb1bc45bb9fed126fddb70,
-        type: 3}
-      propertyPath: playerPlatformsArray.Array.data[1]
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 7949340701427491737, guid: a6d4731e59cb1bc45bb9fed126fddb70,
-        type: 3}
-      propertyPath: playerPlatformsArray.Array.data[2]
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7949340701427491737, guid: a6d4731e59cb1bc45bb9fed126fddb70,
-        type: 3}
-      propertyPath: playerPlatformsArray.Array.data[3]
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7949340701427491737, guid: a6d4731e59cb1bc45bb9fed126fddb70,
-        type: 3}
-      propertyPath: playerPlatformsArray.Array.data[4]
-      value: 0
+      value: LevelSettingLevel11
       objectReference: {fileID: 0}
     - target: {fileID: 7949340701427491737, guid: a6d4731e59cb1bc45bb9fed126fddb70,
         type: 3}
@@ -54,13 +19,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7949340701427491737, guid: a6d4731e59cb1bc45bb9fed126fddb70,
         type: 3}
-      propertyPath: levelPlatformenString
-      value: Level12AdvancedPortal
+      propertyPath: spawnPoint
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7949340701427491737, guid: a6d4731e59cb1bc45bb9fed126fddb70,
         type: 3}
-      propertyPath: ballArray.Array.data[2]
-      value: 0
+      propertyPath: playerPlatformsArray.Array.data[0]
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7949340701427491737, guid: a6d4731e59cb1bc45bb9fed126fddb70,
+        type: 3}
+      propertyPath: playerPlatformsArray.Array.data[1]
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7949340701427491737, guid: a6d4731e59cb1bc45bb9fed126fddb70,
+        type: 3}
+      propertyPath: levelPlatformenString
+      value: LiftEasy
       objectReference: {fileID: 0}
     - target: {fileID: 7531156369720210147, guid: a6d4731e59cb1bc45bb9fed126fddb70,
         type: 3}

@@ -390,12 +390,21 @@ public class PlatformManager : MonoBehaviour
             // Lift
             else if (levelPlatformen.tileList[i] == 11)
             {
-                lift = Instantiate(lift);
-                lift.transform.position = lift.startPoint;
+                // doet geen zak. Wordt op andere manier gedaan.
+                //lift = Instantiate(lift);
+                //lift.transform.position = lift.startPoint;
             }
         }
 
         gameState.collectableManager.InitCollectables(coinPositions, finishPosition);
+    }
+
+    public void InitLift(int startPosition, int endPosition)
+    {
+        Lift liftLocal = Instantiate(lift);
+        liftLocal.SetStartAndEndPoints(startPosition, endPosition);
+        liftLocal.transform.position = liftLocal.startPoint;
+        gameState.gridManager.AddFilledGridSpots(new List<int> { startPosition, endPosition }, SizeType.twoByOne);
     }
 
     private void SetMaterials()
