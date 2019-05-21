@@ -361,6 +361,62 @@ public class GridManager : MonoBehaviour
 
     }
     
+    //multiplayer grid methodes
+
+    internal void InitPlayerGridsMultiPlayer(int topleftgrid1,int toprightgrid1,int bottomleftgrid1,int bottomrightgrid1,int topleftgrid2,int toprightgrid2,int bottomleftgrid2,int bottomrightgrid2)
+    {
+        //deze method is super logisch
+        List<int> player1Grid = new List<int>();
+        List<int> player2Grid = new List<int>();
+        int widthadjustment = 0 ;
+        for (int i = topleftgrid1; i < toprightgrid1+1; i++)
+        {
+            widthadjustment = 0;
+            for (int i2 = bottomleftgrid1 = 0; i2 < bottomrightgrid1+1; i2++)
+            {
+                
+                player1Grid.Add(i+widthadjustment);
+                widthadjustment = widthadjustment + width;
+            }
+        }
+
+        for (int i = topleftgrid2; i < toprightgrid2 + 1; i++)
+        {
+            widthadjustment = 0;
+            for (int i2 = bottomleftgrid2 = 0; i2 < bottomrightgrid2 + 1; i2++)
+            {
+
+                player2Grid.Add(i + widthadjustment);
+                widthadjustment = widthadjustment + width;
+            }
+        }
+        if (PhotonNetwork.IsMasterClient)
+        {
+            AddPlayerGridToFilledGridSpots(player2Grid);
+        }
+        else
+        {
+            AddPlayerGridToFilledGridSpots(player1Grid);
+        }
+        showPlayerGrid(player1Grid,player2Grid);
+    }
+
+    internal void showPlayerGrid(List<int> player1Grid,List<int> player2Grid)
+    {
+        Vector3 gridadjustment = new Vector3(0.5f, 0, 0);
+        if (PhotonNetwork.IsMasterClient)
+        {
+            foreach (var spot in player1Grid)
+            {
+                Instantiate(playerGridRed, gridSquares[spot] + gridadjustment, new Quaternion(0, 0, 0, 0)).transform.Rotate(new Vector3(-90, 0, 0));
+            }
+        }
+        foreach (var spot in player2Grid)
+        {
+            Instantiate(playerGridGreen, gridSquares[spot] + gridadjustment, new Quaternion(0, 0, 0, 0)).transform.Rotate(new Vector3(-90, 0, 0));
+        }
+    }
+
     internal void InitPlayerGridMultiLevel1()
     {
         List<int> player1Grid = new List<int>();
@@ -465,7 +521,6 @@ public class GridManager : MonoBehaviour
 
     internal void AddPlayerGridToFilledGridSpots(List<int> playergrid)
     {
-        
         foreach (int spot in playergrid)
         {
             filledGridSpots[spot] = true;
