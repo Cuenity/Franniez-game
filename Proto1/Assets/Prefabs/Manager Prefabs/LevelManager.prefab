@@ -65,11 +65,12 @@ MonoBehaviour:
   Level10TrampolineAdvanced: {fileID: 952452105958480305, guid: f7695b3fb36402f4da99d5e8e28ec068,
     type: 3}
   Level11: {fileID: 8310911898771917436, guid: 4f7b6051b2297124c8ca6d4fb7634ab6, type: 3}
-  Level12AdvancedPortal: {fileID: 952452105958480305, guid: f7695b3fb36402f4da99d5e8e28ec068,
-    type: 3}
   LevelSettingLevel12LiftMoeilijk: {fileID: 4691286432663417472, guid: 6792bb8dc3c6b384a84cae2d08ea5d41,
     type: 3}
   Level13: {fileID: 889642148942438597, guid: eac6db38ee66d2541aaff93d9087dda8, type: 3}
+  Level14: {fileID: 5007332098306194189, guid: 9741184ced8e2de4faa7e705887ecb92, type: 3}
+  Level15: {fileID: 1198601027278409110, guid: c9f6962a1e3080f4b98914728cc4b831, type: 3}
+  Level16: {fileID: 7120932647302007747, guid: 283259c5cc240ed43a03f9a2ca6c6b53, type: 3}
   smiletTest: {fileID: 6857793499659197117, guid: 6c27f9caf2f52614e8b503286cbb4e8c,
     type: 3}
   house: {fileID: 6330327931917537949, guid: 3f7591ef3a4175d4f9d36e3aade1b938, type: 3}
@@ -77,6 +78,7 @@ MonoBehaviour:
   stickerObject: {fileID: 0}
   finish: {fileID: 0}
   balknop: {fileID: 0}
+  currentLevel: 0
   bigLevel: 0
   multiUIRequired: 0
   p1Finish: 0
