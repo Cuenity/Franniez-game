@@ -25,9 +25,11 @@ public class LevelManager : MonoBehaviour
         Level9PortalEasy,
         Level10TrampolineAdvanced,
         Level11,
-        Level12AdvancedPortal,
         LevelSettingLevel12LiftMoeilijk,
         Level13,
+        Level14,
+        Level15,
+        Level16,
         smiletTest,
         house;
     #region levelArrays
@@ -451,13 +453,16 @@ public class LevelManager : MonoBehaviour
             {
                 SpawnLevel(LevelSettingLevel12LiftMoeilijk);
                 gameState.platformManager.InitLift(263, 43);
-           }
+            }
         }
 
         // af, cannon level easy
         else if (currentLevel == 13)
         {
-            SpawnLevel(Level13);
+            if (!levelIsSpawned)
+            {
+                SpawnLevel(Level13);
+            }
         }
 
         // niet af (cannon level hard, kaput op moment)
@@ -465,7 +470,7 @@ public class LevelManager : MonoBehaviour
         {
             if (!levelIsSpawned)
             {
-                SpawnLevel(Level12AdvancedPortal);
+                SpawnLevel(Level14);
                 //bigLevel = true;
 
                 //gameState.UIManager.canvas = Instantiate(canvas);
@@ -490,6 +495,14 @@ public class LevelManager : MonoBehaviour
                 //gameState.BuildingPhaseActive = true;
                 //GameState.Instance.PreviousLevel = Int32.Parse(sceneName);
                 //PlayerDataController.instance.PreviousScene = Int32.Parse(sceneName);
+            }
+        }
+
+        else if (currentLevel == 15)
+        {
+            if (!levelIsSpawned)
+            {
+                SpawnLevel(Level15);
             }
         }
 

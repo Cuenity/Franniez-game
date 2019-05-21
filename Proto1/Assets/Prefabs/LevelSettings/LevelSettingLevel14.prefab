@@ -10,7 +10,7 @@ PrefabInstance:
     - target: {fileID: 4452596467813102313, guid: a6d4731e59cb1bc45bb9fed126fddb70,
         type: 3}
       propertyPath: m_Name
-      value: LevelSettingLevel14 Variant
+      value: LevelSettingLevel14
       objectReference: {fileID: 0}
     - target: {fileID: 7949340701427491737, guid: a6d4731e59cb1bc45bb9fed126fddb70,
         type: 3}
@@ -20,7 +20,7 @@ PrefabInstance:
     - target: {fileID: 7949340701427491737, guid: a6d4731e59cb1bc45bb9fed126fddb70,
         type: 3}
       propertyPath: finishPosition
-      value: 35
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7949340701427491737, guid: a6d4731e59cb1bc45bb9fed126fddb70,
         type: 3}
@@ -30,22 +30,22 @@ PrefabInstance:
     - target: {fileID: 7949340701427491737, guid: a6d4731e59cb1bc45bb9fed126fddb70,
         type: 3}
       propertyPath: playerPlatformsArray.Array.data[1]
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 7949340701427491737, guid: a6d4731e59cb1bc45bb9fed126fddb70,
         type: 3}
       propertyPath: playerPlatformsArray.Array.data[2]
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7949340701427491737, guid: a6d4731e59cb1bc45bb9fed126fddb70,
         type: 3}
       propertyPath: playerPlatformsArray.Array.data[3]
-      value: 2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7949340701427491737, guid: a6d4731e59cb1bc45bb9fed126fddb70,
         type: 3}
       propertyPath: playerPlatformsArray.Array.data[4]
-      value: 2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7949340701427491737, guid: a6d4731e59cb1bc45bb9fed126fddb70,
         type: 3}
@@ -55,7 +55,12 @@ PrefabInstance:
     - target: {fileID: 7949340701427491737, guid: a6d4731e59cb1bc45bb9fed126fddb70,
         type: 3}
       propertyPath: levelPlatformenString
-      value: BounceBall
+      value: Level12AdvancedPortal
+      objectReference: {fileID: 0}
+    - target: {fileID: 7949340701427491737, guid: a6d4731e59cb1bc45bb9fed126fddb70,
+        type: 3}
+      propertyPath: ballArray.Array.data[2]
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7531156369720210147, guid: a6d4731e59cb1bc45bb9fed126fddb70,
         type: 3}
