@@ -32,7 +32,8 @@ public class LevelManager : MonoBehaviour
         Level16,
         smiletTest,
         house,
-        boom;
+        multiLevel1,
+		boom;
     #region levelArrays
     /// <summary > Arrays voor het bouwen van levels
     int[] level5 = new int[] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0, 0, 0, 0, 0, 0, 3, 0, 1, 0, 0, 0, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
@@ -316,6 +317,28 @@ public class LevelManager : MonoBehaviour
         DefaultSceneEndInit();
     }
 
+    public void SpawnMultiLevel(MultiLevelSettings levelSetting)
+    {
+        DefaultSceneInit();
+
+        levelSetting.Init();
+        bigLevel = levelSetting.bigLevel;
+        //dit verhaal moet in levesettings zelf gebeuren
+        //playerplatforms
+        playerPlatforms = new PlayerPlatforms(levelSetting.playerPlatformsArray[1], levelSetting.playerPlatformsArray[0], levelSetting.playerPlatformsArray[2], levelSetting.playerPlatformsArray[3], levelSetting.playerPlatformsArray[4]);
+        //spawngrid
+        gameState.gridManager.Build_Grid_FromJSON_Without_Visuals(gameState.gridManager.width, gameState.gridManager.height);
+        //spawnlevel
+        gameState.platformManager.BuildLevelFromLevelPlatformen(levelSetting.levelPlatformen);
+        //dit is blijkbaar superbelangrijk
+        //spawnpoint
+        gameState.playerManager.MultiPlayerBallInit(levelSetting.spawnPoint1, levelSetting.spawnPoint2);
+        //balzooi
+        gameState.playerBallManager.WhatBalls(levelSetting.ballArray[0], levelSetting.ballArray[1], levelSetting.ballArray[2]);
+
+        DefaultSceneEndInit();
+    }
+
 
     public void InitScene()
     {
@@ -578,37 +601,17 @@ public class LevelManager : MonoBehaviour
         {
             if (!levelIsSpawned)
             {
-                bigLevel = true;
-                multiUIRequired = true;
-                //gameState.UIManager.canvas = Instantiate(canvas);
-                //multidingen
-                //doe gekke initshit voor localproperties
-                //bool hitflag = false;
-                //Hashtable hash = new Hashtable();
-                //hash.Add("hitflag", hitflag);
-                //PhotonNetwork.LocalPlayer.SetCustomProperties(hash);
-                //einde gekke shit
-                gameState.UIManager.newLevelInventoryisRequired = true;
-                GameState.Instance.playerCamera.ManualInit();
-                Vector3 playeradjustment = new Vector3(.5f, 0, 0);
-                levelPlatformen.tileList = levelMulti;
-                levelPlatformen.width = 20;
-                levelPlatformen.heigth = 20;
-                gameState.gridManager.width = 20;
-                gameState.gridManager.height = 20;
-                playerPlatforms = new PlayerPlatforms(7, 7, 2, 1, 0);
-                GameState.Instance.gridManager.Build_Grid_FromJSON_Without_Visuals(levelPlatformen.width, levelPlatformen.heigth);
 
-
-                GameState.Instance.platformManager.BuildLevelFromLevelPlatformen(levelPlatformen);
+                SpawnLevel(multiLevel1);
+                //vies
+                Destroy(GameObject.Find("player1Ball"));
+                Destroy(GameObject.Find("player2Ball"));
+                //einde vies
+                gameState.gridManager.InitPlayerGridsMultiPlayer(0, 9, 0, 9,10,19,0,9);
                 gameState.playerManager.MultiPlayerBallInit(42, 57);
-                gameState.gridManager.InitPlayerGridMultiLevel1();
-                gameState.BuildingPhaseActive = true;
-                //dit is wel poep moet echt es anders
-
                 gameState.UIManager.AddMultiplayerUI();
-                GameState.Instance.PreviousLevel = 27;
-                PlayerDataController.instance.PreviousScene = 27;
+                ////GameState.Instance.PreviousLevel = 27;
+                ////PlayerDataController.instance.PreviousScene = 27;
             }
         }
 

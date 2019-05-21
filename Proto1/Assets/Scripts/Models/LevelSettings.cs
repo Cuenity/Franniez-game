@@ -170,11 +170,6 @@ public class LevelSettings : MonoBehaviour
     //}
 
 
-    //zo doen ???
-    public LevelSettings()
-    {
-
-    }
 
 
     //of zo doen??
@@ -224,17 +219,4 @@ public class LevelSettings : MonoBehaviour
         width = levelPlatformen.width;
         height = levelPlatformen.heigth;
     }
-
-
-    private void Start()
-    {
-
-    }
-
-    private void Update()
-    {
-
-
-    }
-
 }
