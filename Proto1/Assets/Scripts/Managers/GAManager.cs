@@ -41,7 +41,7 @@ class GAManager : MonoBehaviour
         GameAnalytics.NewProgressionEvent(GAProgressionStatus.Start, levelNumberToString);
     }
 
-    public static void EndGame(int countRolling)
+    public static void EndGame(int countRolling = 0, bool succeeded)
     {
         // Get info from completed level
         int levelNumber = PlayerDataController.instance.PreviousScene;
@@ -56,14 +56,27 @@ class GAManager : MonoBehaviour
             levelString = levelString + levelNumber.ToString();
         }
 
-        int countStars = PlayerDataController.instance.PreviousSceneCoinCount; ;
         string countPlatformDesignEvent = "Platforms:Levels:" + levelString;
         string coundRolling = "RollingPhase:Levels:" + levelString;
-
-        // Sending data to GA
+        
+        // Amount of platforms
         GameAnalytics.NewDesignEvent(coundRolling, GameState.Instance.levelManager.playerPlatforms.placedPlatforms.Count());
+
+        // Amount of Rollingphases
         GameAnalytics.NewDesignEvent(countPlatformDesignEvent, countRolling);
-        GameAnalytics.NewProgressionEvent(GAProgressionStatus.Complete, levelString.ToString(), countStars);
+
+        if (succeeded)
+        {
+            int countStars = PlayerDataController.instance.PreviousSceneCoinCount;
+            // Send progression with stars
+            GameAnalytics.NewProgressionEvent(GAProgressionStatus.Complete, levelString.ToString(), countStars);
+        }
+        else
+        {
+            GameAnalytics.NewProgressionEvent(GAProgressionStatus.Fail, levelString.ToString());
+        }
+
+
     }
 
     #endregion

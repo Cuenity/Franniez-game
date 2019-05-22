@@ -13,7 +13,7 @@ public class RollingPhaseManager : MonoBehaviour
     private int levelNumber;
     private PlayerData player;
     private Level level;
-    private int countRolling = 0;
+    public int countRolling = 0;
 
 
     private GameState gameState;
@@ -146,9 +146,8 @@ public class RollingPhaseManager : MonoBehaviour
         PlayerDataController.instance.PreviousScene = levelNumber;
         PlayerDataController.instance.PreviousSceneCoinCount = level.countCoins;
 
-        GAManager.EndGame(countRolling);
+        GAManager.EndGame(countRolling, true);
         SceneSwitcher.Instance.AsynchronousLoadStartNoLoadingBar("VictoryScreen");
-
 
     }
 

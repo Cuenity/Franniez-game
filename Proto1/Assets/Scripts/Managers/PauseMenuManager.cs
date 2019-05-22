@@ -41,22 +41,9 @@ public class PauseMenuManager : MonoBehaviour
         if (PhotonNetwork.InRoom)
         {
             PhotonNetwork.LoadLevel(29);
+            return;
         }
-        else
-        {
-            SceneManager.LoadScene("StartMenu");
-        }
-    }
-
-    // Button Action: Show Settings canvas
-    public void Settings()
-    {
-        // Doe iets met settings
-    }
-
-    // Button Action: Show Skin canvas
-    public void SelectSkin()
-    {
-        // Doe iets met skins
+        GAManager.EndGame(GameState.Instance.rollingPhaseManager.countRolling, false);
+        SceneManager.LoadScene("StartMenu");
     }
 }
