@@ -15,6 +15,8 @@ public class TwitterScript : MonoBehaviour
        "#TIHIR"
     };
 
+    private string imageURL = "https://i.imgur.com/ww25JFA.jpg";
+
     private void Awake()
     {
         Twitter.Init();
@@ -33,13 +35,12 @@ public class TwitterScript : MonoBehaviour
 
     public void ComposeMessage()
     {
-        string imagePath = "https://i.imgur.com/ww25JFA.jpg";
         GameAnalytics.NewDesignEvent("Twitter:ButtonPressed");
 
-        Twitter.Compose(Twitter.Session, imagePath, LocalizedText(), hashtags,
-                (string tweetId) => { GameAnalytics.NewDesignEvent("Twitter:Succeeded"); }, // Tweet verstuurtd, stuur naar GA
-                (ApiError error) => { Debug.Log("Tweet Failed " + error.message); },        // API error from Twitter
-                () => { GameAnalytics.NewDesignEvent("Twitter:Cancelled"); }                // Gebruiker heeft tweet gecancelled, stuur naar GA
+        Twitter.Compose(Twitter.Session, imageURL, LocalizedText(), hashtags,
+                (string tweetId) => { GAManager.TwitterSucceededTweet(); }, // Tweet verstuurtd, stuur naar GA
+                (ApiError error) => { GAManager.TwitterAPIError(); },        // API error from Twitter
+                () => { GAManager.TwitterFailedTweet(); }                // Gebruiker heeft tweet gecancelled, stuur naar GA
         );
     }
 

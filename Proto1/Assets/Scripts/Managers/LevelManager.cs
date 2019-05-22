@@ -329,7 +329,7 @@ public class LevelManager : MonoBehaviour
 
     public void InitScene()
     {
-        GameAnalytics.NewProgressionEvent(GAProgressionStatus.Start, currentLevel.ToString());
+        GAManager.StartGame();
         //this.sceneName = sceneName;
         currentLevel = PlayerDataController.instance.PreviousScene;
         Debug.Log(currentLevel);

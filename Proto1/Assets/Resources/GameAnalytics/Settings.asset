@@ -38,8 +38,10 @@ MonoBehaviour:
   SelectedPlatformGameID: 7d190100
   SelectedStudio: 01000000
   SelectedGame: 01000000
-  NewVersion: 
-  Changes: 
+  NewVersion: 5.1.7
+  Changes: '5.1.7
+
+    - bug fix for special events script'
   SignUpOpen: 0
   StudioName: 
   GameName: 
@@ -55,11 +57,13 @@ MonoBehaviour:
   - New (1)
   CustomDimensions02: []
   CustomDimensions03: []
-  ResourceItemTypes: []
-  ResourceCurrencies: []
+  ResourceItemTypes:
+  - SkinsBundle
+  ResourceCurrencies:
+  - Coins
   LastCreatedGamePlatform: -1
   Platforms: 0b000000
-  CurrentInspectorState: 0
+  CurrentInspectorState: 1
   ClosedHints: 
   DisplayHints: 0
   DisplayHintsScrollState: {x: 0, y: 0}
@@ -89,5 +93,5 @@ MonoBehaviour:
   CustomDimensions01FoldOut: 0
   CustomDimensions02FoldOut: 0
   CustomDimensions03FoldOut: 0
-  ResourceItemTypesFoldOut: 0
-  ResourceCurrenciesFoldOut: 0
+  ResourceItemTypesFoldOut: 1
+  ResourceCurrenciesFoldOut: 1

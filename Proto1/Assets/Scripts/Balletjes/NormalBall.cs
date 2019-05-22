@@ -12,6 +12,7 @@ public class NormalBall : MonoBehaviourPun
         gameState = GameState.Instance;
         this.GetComponent<Rigidbody>().useGravity = false;
         this.GetComponent<SphereCollider>().isTrigger = true; // verander later ofzo
+        Debug.Log(this.GetComponent<Rigidbody>().mass);
     }
     void Start()
     {

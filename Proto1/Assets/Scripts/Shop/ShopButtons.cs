@@ -45,7 +45,7 @@ public class ShopButtons : MonoBehaviour
     public void ReturnMainMenu()
     {
         endTime = Time.time - startTime;
-        GameAnalytics.NewDesignEvent("Shop:Time", (int)endTime);
+        GAManager.ShopTime(endTime);
         SceneSwitcher.Instance.AsynchronousLoadStart("StartMenu");
     }
 
@@ -86,6 +86,7 @@ public class ShopButtons : MonoBehaviour
         {
             playerDataController.SetActiveMaterial(skin.material);
             button.ChangeSkinCostText(skin);
+            GAManager.ShopSelectedSkin(skin.skinName);
         }
         else if (playerDataController.RemoveShopCoins(skin.cost))
         {
@@ -93,6 +94,7 @@ public class ShopButtons : MonoBehaviour
             playerDataController.SetActiveMaterial(skin.material);
             button.ChangeSkinCostText(skin);
             UpdateCoins();
+            GAManager.ShopBoughtSkin(skin.skinName);
         }
         else
         {
@@ -117,6 +119,7 @@ public class ShopButtons : MonoBehaviour
 
                 button.ChangeBundleCostImage(category);
                 UpdateCoins();
+                GAManager.ShopBoughtBundle(category);
             }
             else
             {
@@ -148,6 +151,7 @@ public class ShopButtons : MonoBehaviour
             playerDataController.AddShopCoins(buyAmountCoins);
             UpdateCoins();
             warningPanel.SetActive(false);
+            GAManager.ShopDonation(buyAmountCoins);
         }
         else
         {
