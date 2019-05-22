@@ -26,7 +26,7 @@ public class GameState : MonoBehaviour
     private bool buildingPhaseActive = true;
     private bool rollingPhaseActive = false;
 
-    public int PreviousLevel;
+    //public int PreviousLevel;
 
     private static GameState instance;
     public static GameState Instance

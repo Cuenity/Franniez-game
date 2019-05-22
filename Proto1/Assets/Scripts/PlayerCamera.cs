@@ -28,11 +28,11 @@ public class PlayerCamera : MonoBehaviour
 
     private void Awake()
     {
-
         gameState = GameState.Instance;
         camera = this.GetComponent<Camera>();
-
+        worldManager = new WorldManager();
     }
+
     private void Start()
     {
         if (gameState.levelManager.bigLevel)
@@ -44,7 +44,7 @@ public class PlayerCamera : MonoBehaviour
         {
             transform.LookAt(Target.transform.position + TargetLookAtOffset);
         }
-        worldManager = new WorldManager();
+
         if (worldManager.SetSnow())
         {
             snowFalling = Instantiate(snowFalling, this.transform.position- new Vector3(5,5,0), new Quaternion(0, 0, 0, 0));

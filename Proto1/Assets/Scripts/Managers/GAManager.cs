@@ -41,7 +41,7 @@ class GAManager : MonoBehaviour
         GameAnalytics.NewProgressionEvent(GAProgressionStatus.Start, levelNumberToString);
     }
 
-    public static void EndGame(int countRolling = 0, bool succeeded)
+    public static void EndGame(int countRolling, bool succeeded)
     {
         // Get info from completed level
         int levelNumber = PlayerDataController.instance.PreviousScene;
@@ -49,11 +49,11 @@ class GAManager : MonoBehaviour
 
         if (levelNumber < 10)
         {
-            levelString = levelString + "0" + levelNumber.ToString();
+            levelString += "0" + levelNumber.ToString();
         }
         else
         {
-            levelString = levelString + levelNumber.ToString();
+            levelString += levelNumber.ToString();
         }
 
         string countPlatformDesignEvent = "Platforms:Levels:" + levelString;

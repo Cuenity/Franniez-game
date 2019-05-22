@@ -522,7 +522,7 @@ public class LevelManager : MonoBehaviour
                 gameState.playerManager.PlayerInit(gameState.playerBallManager.ballList[0]);
 
                 gameState.BuildingPhaseActive = true;
-                GameState.Instance.PreviousLevel = 4;
+                //GameState.Instance.PreviousLevel = 4;
                 PlayerDataController.instance.PreviousScene = 4;
             }
         }
@@ -555,7 +555,7 @@ public class LevelManager : MonoBehaviour
                 gameState.playerManager.PlayerInit(gameState.playerBallManager.ballList[0]);
 
                 gameState.BuildingPhaseActive = true;
-                GameState.Instance.PreviousLevel = 6;
+                //GameState.Instance.PreviousLevel = 6;
                 PlayerDataController.instance.PreviousScene = 6;
             }
         }
@@ -847,133 +847,3 @@ public class LevelManager : MonoBehaviour
 
     }
 }
-
-
-
-///////////////////////////////////////////
-//////dit hieronder kan allemaal weg??///// idk, you tell me Denk t wel zal het uitcommenten voor de zekerheid
-///////////////////////////////////////////
-
-
-////SceneLoading and generals
-////https://www.alanzucconi.com/2016/03/30/loading-bar-in-unity/
-////
-//    internal void AsynchronousLoadStart(string scene)
-//    {
-//        //coinList.Clear();
-//        IEnumerator coroutine;
-//        //niet vergeten die unsubscribe te doen enzo
-//        SceneManager.sceneLoaded += SceneIsLoaded;
-//        coroutine = AsynchronousLoad(scene);
-//        StartCoroutine(coroutine);
-
-//    }
-
-//    private void SceneIsLoaded(Scene arg0, LoadSceneMode arg1)
-//    {
-//        //InitScene(arg0.name);
-//        InitScene();
-//    }
-
-//    IEnumerator AsynchronousLoad(string scene)
-//    {
-//        yield return null;
-
-//        AsyncOperation ao = SceneManager.LoadSceneAsync(scene);
-//        ao.allowSceneActivation = false;
-
-//        while (!ao.isDone)
-//        {
-//            // [0, 0.9] > [0, 1]
-//            float progress = Mathf.Clamp01(ao.progress / 0.9f);
-//            Debug.Log("Loading progress: " + (progress * 100) + "%");
-
-//            // Loading completed
-//            if (ao.progress == 0.9f)
-//            {
-//                ao.allowSceneActivation = true;
-
-//            }
-//            yield return null;
-//        }
-//    }
-//}
-//}
-//scheit voor scheit mensen
-//if (sceneName == "lol1")
-//        {
-//            gameState.gridManager.width = 11;
-//            gameState.gridManager.heigth = 12;
-//            gameState.gridManager.Build_Grid1_Without_Visuals();
-//            Vector3 playeradjustment = new Vector3(.5f, 0, 0);
-//gameState.playerManager.player.SetSpawnpoint(1);
-//            playerPlatforms = new PlayerPlatforms(2, 3, 1, 0);
-//SetCoinPositions(1);
-//SetCoinPositions(2);
-//SetCoinPositions(3);
-//SetStickerPositions(4);
-//SetfinishPositions(5);
-
-//gameState.collectableManager.InitCollectables(coinPositions, stickerPosition, finishPosition);
-//            gameState.levelManager.SetBuildingPhase();
-//        }
-
-//        else if (sceneName == "TestLevel1")
-//        {
-
-//            //lees level uit Json en vul levelPlatformen
-//            //ReadLevelsFromText("Level1.json");
-
-//            playerPlatforms = new PlayerPlatforms(2, 3, 1, 0);
-
-////Dit moet ergens anders
-//gameState.gridManager.width = 11;
-//            gameState.gridManager.heigth = 12;
-
-//            //deze code is superbelangrijk voor het opslaan van levels
-//            //levelPlatformen.width = 11;
-//            //levelPlatformen.heigth = 12;
-//            //levelPlatformen.tileList = new int[11*12];
-
-//            levelPlatformen.tileList = new int[gameState.gridManager.width * gameState.gridManager.heigth];
-//            gameState.gridManager.Build_Grid1_Without_Visuals();
-
-//            gameState.platformManager.BuildLevelFromText(levelPlatformen);
-//            //gameState.platformManager.Build_Level1(levelPlatformen);
-
-
-
-//            //SaveLevelToText("Level1.json");
-//        }
-//    else if (sceneName == "VerticalSliceLevel2")
-//        {
-//            gameState.gridManager.width = 20;
-//            gameState.gridManager.heigth = 11;
-
-//            playerPlatforms = new PlayerPlatforms(2, 3, 1, 0);
-
-//gameState.gridManager.Build_Grid_BuildingPhase_With_Visuals();
-
-//            gameState.platformManager.Build_Vertical_Slice_Level6();
-//        }else if (sceneName == "VerticalSliceLevel3")
-//        {
-//            Vector3 playeradjustment = new Vector3(.5f, 0, 0);
-//gameState.gridManager.width = 27;
-//            gameState.gridManager.heigth = 17;
-
-//            playerPlatforms = new PlayerPlatforms(2, 3, 1, 0);
-
-//gameState.gridManager.Build_Grid_BuildingPhase_Without_Visuals();
-//            gameState.playerManager.player.spawnpoint = gameState.gridManager.gridSquares[0] + playeradjustment;
-//            gameState.platformManager.Build_Vertical_Slice_Level3();
-//        }
-//        else if (sceneName == "VerticalSliceLevel4")
-//        {
-//            Vector3 playeradjustment = new Vector3(.5f, 0, 0);
-//gameState.gridManager.width = 27;
-//            gameState.gridManager.heigth = 17;
-
-//            playerPlatforms = new PlayerPlatforms(2, 3, 1, 0);
-//gameState.gridManager.Build_Grid_BuildingPhase_With_Visuals();
-//            gameState.playerManager.player.spawnpoint = gameState.gridManager.gridSquares[0] + playeradjustment;
-//        }
