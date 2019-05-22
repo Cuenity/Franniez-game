@@ -18,7 +18,7 @@ public class LevelManager : MonoBehaviour
         level2RampEasy,
         level3JumpsEasy,
         LevelSettingLevel4TrampolineHard,
-        level5BlackHoleTutorial,
+        Level5,
         Level6BlackHoleBallAndJump,
         Level7BoosterEasy,
         Level8BoosterHard,
@@ -399,7 +399,7 @@ public class LevelManager : MonoBehaviour
             {
                 gameState.tutorialManager.StartTutorial();
                 gameState.tutorialManager.changeBallTutorial = true;
-                SpawnLevel(level5BlackHoleTutorial);
+                SpawnLevel(Level5);
             }
         }
 
@@ -477,39 +477,16 @@ public class LevelManager : MonoBehaviour
             }
         }
 
-        // niet af (cannon level hard, kaput op moment)
+        // af, cannon hard
         else if (currentLevel == 14)
         {
             if (!levelIsSpawned)
             {
                 SpawnLevel(Level14);
-                //bigLevel = true;
-
-                //gameState.UIManager.canvas = Instantiate(canvas);
-                //gameState.UIManager.newLevelInventoryisRequired = true;
-                ////gameState.collectableManager.newCollectablesAreRequired = true;
-                ////coinPositions.Clear();
-                ////coinList.Clear();
-                //GameState.Instance.playerCamera.ManualInit();
-                ////gameState.playerCamera = Instantiate(gameState.playerCamera);
-                //Vector3 playeradjustment = new Vector3(.5f, 0, 0);
-                //gameState.gridManager.width = 40;
-                //gameState.gridManager.height = 12;
-                //playerPlatforms = new PlayerPlatforms(3, 4, 0, 0, 2);
-                //gameState.gridManager.Build_Grid_BuildingPhase_Without_Visuals();
-                //gameState.playerBallManager.SetSpawnpoint(41);
-                //gameState.platformManager.BuildLevel6();
-
-
-                //gameState.playerBallManager.WhatBalls(true, true, true);
-                //gameState.playerManager.PlayerInit(gameState.playerBallManager.ballList[0]);
-
-                //gameState.BuildingPhaseActive = true;
-                //GameState.Instance.PreviousLevel = Int32.Parse(sceneName);
-                //PlayerDataController.instance.PreviousScene = Int32.Parse(sceneName);
             }
         }
 
+        // af, cannon pinball
         else if (currentLevel == 15)
         {
             if (!levelIsSpawned)
