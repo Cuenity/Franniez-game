@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
@@ -20,7 +22,6 @@ public class UIManager : MonoBehaviour
     [SerializeField]
     private CannonInventoryButton cannonInventoryButton;
 
-    // deze kunnen weg als het goed is
     public Sprite rampImage;
     public Sprite platformSquareImage;
     public Sprite trampolineImage;
@@ -28,7 +29,6 @@ public class UIManager : MonoBehaviour
     public Sprite cannonPlatformImage;
     public Sprite normalBallImage;
     public GameObject tutorialArrow;
-    // tot hier
 
     public InventoryButton[] instantiatedInventoryButtons;
 
@@ -47,7 +47,7 @@ public class UIManager : MonoBehaviour
         pauseMenu = Instantiate(pauseMenuCanvas);
         pauseMenu.enabled = false;
         InstantiateInventoryButtonsCheck(playerPlatforms.InventoryButtonAmmount);
-        
+
         if (instantiatedInventoryButtons[0] == null)
         {
             int buttonDistance = Screen.width / (playerPlatforms.InventoryButtonAmmount + 1);
@@ -154,11 +154,11 @@ public class UIManager : MonoBehaviour
         multiplayerCanvas.gameObject.SetActive(true);
         foreach (Button button in GameState.Instance.UIManager.canvas.GetComponentsInChildren<Button>())
         {
-            if(button.name == "MenuButton")
+            if (button.name == "MenuButton")
             {
                 button.gameObject.SetActive(false);
             }
-        } 
+        }
         Image[] flaghitImages = multiplayerCanvas.GetComponentsInChildren<Image>();
         p1FlagHit = flaghitImages[0];
         p2FlagHit = flaghitImages[1];
@@ -170,5 +170,61 @@ public class UIManager : MonoBehaviour
     public void ChangeFlagHitFalse(Image flagtoChange)
     {
         flagtoChange.sprite = flagIsNotHit;
+    }
+
+    public bool GarbageBinHit(GameObject draggedPlatformInScene)
+    {
+        EventSystem eventSystem = GetComponent<EventSystem>();
+        List<RaycastResult> results = new List<RaycastResult>();
+
+        GraphicRaycaster ray = canvas.gameObject.transform.GetChild(6).GetComponent<GraphicRaycaster>();
+        PointerEventData pointerEventData = new PointerEventData(eventSystem);
+        pointerEventData.position = Input.mousePosition;
+        ray.Raycast(pointerEventData, results);
+
+        if (results.Count > 0)
+        {
+            RemoveOldFilledGridSpots(draggedPlatformInScene);
+            //gameState.buttonManager.UpdatePlayerPlatforms(draggedPlatformInScene);
+            draggedPlatformInScene.GetComponent<Platform>().UpdatePlayerPlatforms();
+            return true;
+        }
+
+        return false;
+    }
+
+    public void RemoveOldFilledGridSpots(GameObject draggedPlatformInScene)
+    {
+        int filledGridSpotToRemove = draggedPlatformInScene.GetComponent<Platform>().fillsGridSpot;
+        if (!draggedPlatformInScene.GetComponent<Cannon>())
+        {
+            GameState.Instance.gridManager.RemoveFilledGridSpots(filledGridSpotToRemove, SizeType.twoByOne);
+        }
+        else
+        {
+            GameState.Instance.gridManager.RemoveFilledGridSpots(filledGridSpotToRemove, SizeType.twoByTwo);
+        }
+    }
+
+    public bool PlatformDraggedToButton()
+    {
+        EventSystem eventSystem = GetComponent<EventSystem>();
+        List<RaycastResult> results = new List<RaycastResult>();
+        bool platformDraggedToButton = false;
+
+        for (int i = 0; i < instantiatedInventoryButtons.Length; i++)
+        {
+            GraphicRaycaster ray = instantiatedInventoryButtons[i].GetComponent<GraphicRaycaster>();
+            PointerEventData pointerEventData = new PointerEventData(eventSystem);
+            pointerEventData.position = Input.mousePosition;
+            ray.Raycast(pointerEventData, results);
+
+            if (results.Count > 0)
+            {
+                platformDraggedToButton = true;
+            }
+        }
+
+        return platformDraggedToButton;
     }
 }

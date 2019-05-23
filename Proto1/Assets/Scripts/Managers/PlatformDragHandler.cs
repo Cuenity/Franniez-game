@@ -13,7 +13,7 @@ public class PlatformDragHandler : MonoBehaviour
     private GameObject draggedPlatformInScene;
 
 
-    bool rotateSpriteHit;
+    bool draggingAllowed;
 
     private void Awake()
     {
@@ -24,6 +24,14 @@ public class PlatformDragHandler : MonoBehaviour
     void OnMouseDown()
     {
         screenPoint = camera.WorldToScreenPoint(transform.position);
+        if (EventSystem.current.IsPointerOverGameObject())
+        {
+            draggingAllowed = true;
+        }
+        else
+        {
+            draggingAllowed = false;
+        }
         gameState.playerCamera.platformDragActive = true;
 
         if (gameObject.GetComponent<Cannon>())
@@ -38,7 +46,7 @@ public class PlatformDragHandler : MonoBehaviour
 
     void OnMouseDrag()
     {
-        if (!rotateSpriteHit)
+        if (!draggingAllowed)
         {
             Vector3 currentScreenPoint = new Vector3(Input.mousePosition.x, Input.mousePosition.y, screenPoint.z);
             Vector3 curPosition = camera.ScreenToWorldPoint(currentScreenPoint);
@@ -48,37 +56,36 @@ public class PlatformDragHandler : MonoBehaviour
 
     private void OnMouseUp()
     {
-        if (!rotateSpriteHit)
+        if (!draggingAllowed)
         {
-            if (!GarbageBinHit())
+            if (!gameState.UIManager.GarbageBinHit(draggedPlatformInScene))
             {
-                EventSystem eventSystem = GetComponent<EventSystem>();
-                List<RaycastResult> results = new List<RaycastResult>();
-                bool platformDraggedToButton = false;
+                //EventSystem eventSystem = GetComponent<EventSystem>();
+                //List<RaycastResult> results = new List<RaycastResult>();
+                //bool platformDraggedToButton = false;
 
-                for (int i = 0; i < gameState.UIManager.instantiatedInventoryButtons.Length; i++)
+                //for (int i = 0; i < gameState.UIManager.instantiatedInventoryButtons.Length; i++)
+                //{
+                //    GraphicRaycaster ray = gameState.UIManager.instantiatedInventoryButtons[i].GetComponent<GraphicRaycaster>();
+                //    PointerEventData pointerEventData = new PointerEventData(eventSystem);
+                //    pointerEventData.position = Input.mousePosition;
+                //    ray.Raycast(pointerEventData, results);
+
+                //    if (results.Count > 0)
+                //    {
+                //        platformDraggedToButton = true;
+                //    }
+                //}
+
+                if (gameState.UIManager.PlatformDraggedToButton())
                 {
-                    GraphicRaycaster ray = gameState.UIManager.instantiatedInventoryButtons[i].GetComponent<GraphicRaycaster>();
-                    PointerEventData pointerEventData = new PointerEventData(eventSystem);
-                    pointerEventData.position = Input.mousePosition;
-                    ray.Raycast(pointerEventData, results);
-
-                    if (results.Count > 0)
-                    {
-                        platformDraggedToButton = true;
-                    }
-                }
-
-                if (platformDraggedToButton)
-                {
-                    RemoveOldFilledGridSpots();
-                    //gameState.buttonManager.UpdatePlayerPlatforms(draggedPlatformInScene);
+                    gameState.UIManager.RemoveOldFilledGridSpots(draggedPlatformInScene);
                     draggedPlatformInScene.GetComponent<Platform>().UpdatePlayerPlatforms();
                     // dragactive = false;?
                 }
                 else
                 {
-                    RemoveOldFilledGridSpots();
+                    gameState.UIManager.RemoveOldFilledGridSpots(draggedPlatformInScene);
                     gameState.platformManager.spawnPlatformOnGrid(draggedPlatformInScene.transform.position, draggedPlatformInScene.GetComponent<Platform>());
                     gameState.playerCamera.platformDragActive = false;
                 }
@@ -86,37 +93,37 @@ public class PlatformDragHandler : MonoBehaviour
         }
     }
 
-    private bool GarbageBinHit()
-    {
-        EventSystem eventSystem = GetComponent<EventSystem>();
-        List<RaycastResult> results = new List<RaycastResult>();
+    //private bool GarbageBinHit()
+    //{
+    //    EventSystem eventSystem = GetComponent<EventSystem>();
+    //    List<RaycastResult> results = new List<RaycastResult>();
 
-        GraphicRaycaster ray = gameState.UIManager.canvas.gameObject.transform.GetChild(6).GetComponent<GraphicRaycaster>();
-        PointerEventData pointerEventData = new PointerEventData(eventSystem);
-        pointerEventData.position = Input.mousePosition;
-        ray.Raycast(pointerEventData, results);
+    //    GraphicRaycaster ray = gameState.UIManager.canvas.gameObject.transform.GetChild(6).GetComponent<GraphicRaycaster>();
+    //    PointerEventData pointerEventData = new PointerEventData(eventSystem);
+    //    pointerEventData.position = Input.mousePosition;
+    //    ray.Raycast(pointerEventData, results);
 
-        if (results.Count > 0)
-        {
-            RemoveOldFilledGridSpots();
-            //gameState.buttonManager.UpdatePlayerPlatforms(draggedPlatformInScene);
-            draggedPlatformInScene.GetComponent<Platform>().UpdatePlayerPlatforms();
-            return true;
-        }
+    //    if (results.Count > 0)
+    //    {
+    //        RemoveOldFilledGridSpots();
+    //        //gameState.buttonManager.UpdatePlayerPlatforms(draggedPlatformInScene);
+    //        draggedPlatformInScene.GetComponent<Platform>().UpdatePlayerPlatforms();
+    //        return true;
+    //    }
 
-        return false;
-    }
+    //    return false;
+    //}
 
-    private void RemoveOldFilledGridSpots()
-    {
-        int filledGridSpotToRemove = draggedPlatformInScene.GetComponent<Platform>().fillsGridSpot;
-        if (!draggedPlatformInScene.GetComponent<Cannon>())
-        {
-            gameState.gridManager.RemoveFilledGridSpots(filledGridSpotToRemove, SizeType.twoByOne);
-        }
-        else
-        {
-            gameState.gridManager.RemoveFilledGridSpots(filledGridSpotToRemove, SizeType.twoByTwo);
-        }
-    }
+    //private void RemoveOldFilledGridSpots()
+    //{
+    //    int filledGridSpotToRemove = draggedPlatformInScene.GetComponent<Platform>().fillsGridSpot;
+    //    if (!draggedPlatformInScene.GetComponent<Cannon>())
+    //    {
+    //        gameState.gridManager.RemoveFilledGridSpots(filledGridSpotToRemove, SizeType.twoByOne);
+    //    }
+    //    else
+    //    {
+    //        gameState.gridManager.RemoveFilledGridSpots(filledGridSpotToRemove, SizeType.twoByTwo);
+    //    }
+    //}
 }
