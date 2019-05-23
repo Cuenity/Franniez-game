@@ -141,6 +141,7 @@ public class PhotonStartMenu : MonoBehaviourPunCallbacks
     //click joining and creating rooms
     public void onClickJoinRoom()
     {
+        RoomToCreate.text.ToLower();
         //TODO maak iets als room niet bestaat of vol zit
         if (RoomToJoin.text == "")
         {
@@ -154,6 +155,7 @@ public class PhotonStartMenu : MonoBehaviourPunCallbacks
 
     public void onClickCreateRoom()
     {
+        RoomToCreate.text.ToLower();
         if (isCreator)
         {
             //TODO maak iets als room al bestaat
