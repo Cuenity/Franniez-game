@@ -1,5 +1,4 @@
-﻿using GameAnalyticsSDK;
-using Photon.Pun;
+﻿using Photon.Pun;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -46,7 +45,7 @@ public class LevelManager : MonoBehaviour
         multiLevel8,
         multiLevel9,
         multiLevel10,
-        boom; 
+        boom;
 
     #region levelmanagerMethods
     GameState gameState;
@@ -215,13 +214,7 @@ public class LevelManager : MonoBehaviour
         // vervang deze met ander jump level
         else if (currentLevel == 4)
         {
-            if (!levelIsSpawned)
-            {
-                if (!levelIsSpawned)
-                {
-                    SpawnLevel(boom);
-                    
-                }
+            { 
             }
         }
 
@@ -340,16 +333,32 @@ public class LevelManager : MonoBehaviour
         {
             if (!levelIsSpawned)
             {
-                SpawnLevel(Level17);
+                //SpawnLevel(Level17);
             }
         }
 
-        // niet af (coins en finish in array zetten)
         else if (currentLevel == 18)
         {
             if (!levelIsSpawned)
             {
-                SpawnLevel(Level18);
+                //SpawnLevel(Level18);
+            }
+        }
+
+        else if (currentLevel == 19)
+        {
+            if (!levelIsSpawned)
+            {
+                SpawnLevel(house);
+            }
+        }
+
+        // af
+        else if (currentLevel == 20)
+        {
+            if (!levelIsSpawned)
+            {
+                SpawnLevel(boom);
             }
         }
 
@@ -365,7 +374,7 @@ public class LevelManager : MonoBehaviour
                 Destroy(GameObject.Find("player1Ball"));
                 Destroy(GameObject.Find("player2Ball"));
                 //einde vies
-                gameState.gridManager.InitPlayerGridsMultiPlayer(0, 9, 0, 9,10,19,0,9);
+                gameState.gridManager.InitPlayerGridsMultiPlayer(0, 9, 0, 9, 10, 19, 0, 9);
                 gameState.playerManager.MultiPlayerBallInit(42, 57);
                 gameState.UIManager.AddMultiplayerUI();
                 ////GameState.Instance.PreviousLevel = 27;
@@ -387,7 +396,7 @@ public class LevelManager : MonoBehaviour
                 gameState.gridManager.InitPlayerGridsMultiPlayer(0, 24, 0, 4, 125, 149, 0, 4);
                 gameState.playerManager.MultiPlayerBallInit(1, 125);
                 gameState.UIManager.AddMultiplayerUI();
-                
+
             }
         }
         else if (SceneManager.GetActiveScene().name == "MultiplayerLevel3")
@@ -401,7 +410,7 @@ public class LevelManager : MonoBehaviour
                 //einde vies
                 //naamgeving zo slecht/vies bij playergrids
                 //eerste 2 is het begin eindpunt maar die laatste 2 is gewoon de hoogte 
-                //gameState.gridManager.InitPlayerGridsMultiPlayer(0, 24, 0, 4, 125, 149, 0, 4);
+                gameState.gridManager.InitPlayerGridsMultiPlayer(0, 6, 0, 6, 8, 14, 0, 6);
                 gameState.playerManager.MultiPlayerBallInit(1, 13);
                 gameState.UIManager.AddMultiplayerUI();
 
