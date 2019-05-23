@@ -12,11 +12,13 @@ public class LevelManager : MonoBehaviour
     //testing
     public LevelSettings levelSettings;
 
+    #region levelmanagerMethods
     [SerializeField]
     LevelSettings introLevel,
         level2RampEasy,
         level3JumpsEasy,
         LevelSettingLevel4TrampolineHard,
+        Level4,
         Level5,
         Level6BlackHoleBallAndJump,
         Level7BoosterEasy,
@@ -46,6 +48,7 @@ public class LevelManager : MonoBehaviour
         multiLevel9,
         multiLevel10,
         boom;
+    #endregion
 
     #region levelmanagerMethods
     GameState gameState;
@@ -158,7 +161,6 @@ public class LevelManager : MonoBehaviour
         DefaultSceneEndInit();
     }
 
-
     public void InitScene()
     {
         GAManager.StartGame();
@@ -216,10 +218,7 @@ public class LevelManager : MonoBehaviour
         {
             if (!levelIsSpawned)
             {
-                if (!levelIsSpawned)
-                {
-
-                }
+                SpawnLevel(Level4);
             }
         }
 
@@ -326,6 +325,7 @@ public class LevelManager : MonoBehaviour
             }
         }
 
+        // af
         else if (currentLevel == 16)
         {
             if (!levelIsSpawned)
@@ -346,10 +346,11 @@ public class LevelManager : MonoBehaviour
         {
             if (!levelIsSpawned)
             {
-                //SpawnLevel(Level18);
+                SpawnLevel(smiletTest);
             }
         }
 
+        // af
         else if (currentLevel == 19)
         {
             if (!levelIsSpawned)

@@ -79,17 +79,30 @@ public class ButtonManager : MonoBehaviour
         }
     }
 
-    private InventoryButton FindCorrectInventoryButton(InventoryButtonName inventoryButtonName)
+    public void RemoveAllPlayerPlatformsFromScene()
     {
-        foreach (InventoryButton inventoryButton in gameState.UIManager.instantiatedInventoryButtons)
+        //int placedPlatformsAmount = gameState.levelManager.playerPlatforms.placedPlatforms.Count;
+
+        while (gameState.levelManager.playerPlatforms.placedPlatforms.Count > 0)
         {
-            if (inventoryButton.name == inventoryButtonName.ToString())
-            {
-                return inventoryButton;
-            }
-        }
-        return null;
+            RemoveFilledGridSpots(gameState.levelManager.playerPlatforms.placedPlatforms[0]);
+            //UpdatePlayerPlatforms(gameState.levelManager.playerPlatforms.placedPlatforms[0]);
+            gameState.levelManager.playerPlatforms.placedPlatforms[0].GetComponent<Platform>().UpdatePlayerPlatforms();
+            //placedPlatformsAmount--;
+        } // clear hele lijst of echt zorgen dat hij er uitgehaald wordt
     }
+
+    //private InventoryButton FindCorrectInventoryButton(InventoryButtonName inventoryButtonName)
+    //{
+    //    foreach (InventoryButton inventoryButton in gameState.UIManager.instantiatedInventoryButtons)
+    //    {
+    //        if (inventoryButton.name == inventoryButtonName.ToString())
+    //        {
+    //            return inventoryButton;
+    //        }
+    //    }
+    //    return null;
+    //}
 
     public void ChangeBall()
     {
