@@ -384,11 +384,7 @@ public class LevelManager : MonoBehaviour
         {
             if (!levelIsSpawned)
             {
-                if (!levelIsSpawned)
-                {
-                    SpawnLevel(boom);
-                    
-                }
+                SpawnLevel(boom);
             }
         }
 
@@ -608,7 +604,7 @@ public class LevelManager : MonoBehaviour
                 //einde vies
                 //naamgeving zo slecht/vies bij playergrids
                 //eerste 2 is het begin eindpunt maar die laatste 2 is gewoon de hoogte 
-                //gameState.gridManager.InitPlayerGridsMultiPlayer(0, 24, 0, 4, 125, 149, 0, 4);
+                gameState.gridManager.InitPlayerGridsMultiPlayer(0, 6, 0, 6, 8, 14, 0, 6);
                 gameState.playerManager.MultiPlayerBallInit(1, 13);
                 gameState.UIManager.AddMultiplayerUI();
 
