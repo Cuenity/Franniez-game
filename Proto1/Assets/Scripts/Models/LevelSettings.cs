@@ -209,14 +209,11 @@ public class LevelSettings : MonoBehaviour
         if (Application.platform == RuntimePlatform.Android)
         {
             WWW reader = new WWW(filePath);
-            reader.Reset();
             while (!reader.isDone)
             {
             }
 
             dataAsJSON = reader.text;
-            reader.Dispose();
-
         }
         else
         {

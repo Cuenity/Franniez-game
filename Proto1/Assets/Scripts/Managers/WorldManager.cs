@@ -10,8 +10,8 @@ using UnityEngine.UI;
 
 class WorldManager
 {
-    private readonly int NUMBERSTARTWORLD2 = 20;
-    private readonly int NUMBERSTARTWORLD3 = 10;
+    private readonly int NUMBERSTARTWORLD2 = 10;
+    private readonly int NUMBERSTARTWORLD3 = 20;
     private readonly int LEVELNUMBER = PlayerDataController.instance.PreviousScene;
 
     public Material[] GetMaterials()
@@ -25,14 +25,14 @@ class WorldManager
 
         else if (LEVELNUMBER > NUMBERSTARTWORLD2 && LEVELNUMBER < NUMBERSTARTWORLD3)
         {
-            materials[0] = Resources.Load("PlatformMaterial/RechthoekSpace", typeof(Material)) as Material;
-            materials[1] = Resources.Load("PlatformMaterial/RampSpace", typeof(Material)) as Material;
+            materials[0] = Resources.Load("PlatformMaterial/RechthoekWinter", typeof(Material)) as Material;
+            materials[1] = Resources.Load("PlatformMaterial/RampWinter", typeof(Material)) as Material;
         }
 
         else
         {
-            materials[0] = Resources.Load("PlatformMaterial/RechthoekWinter", typeof(Material)) as Material;
-            materials[1] = Resources.Load("PlatformMaterial/RampWinter", typeof(Material)) as Material;
+            materials[0] = Resources.Load("PlatformMaterial/RechthoekSpace", typeof(Material)) as Material;
+            materials[1] = Resources.Load("PlatformMaterial/RampSpace", typeof(Material)) as Material;
         }
 
         return materials;
@@ -44,19 +44,19 @@ class WorldManager
 
         if (LEVELNUMBER > NUMBERSTARTWORLD2 && LEVELNUMBER < NUMBERSTARTWORLD3)
         {
-            skyBox = Resources.Load("SkyBox/Space", typeof(Material)) as Material;
+            skyBox = Resources.Load("SkyBox/Snow", typeof(Material)) as Material;
         }
 
         if (LEVELNUMBER > NUMBERSTARTWORLD3)
         {
-            skyBox = Resources.Load("SkyBox/Snow", typeof(Material)) as Material;
+            skyBox = Resources.Load("SkyBox/Space", typeof(Material)) as Material;
         }
         return skyBox;
     }
 
     public bool SetSnow()
     {
-        if(LEVELNUMBER > NUMBERSTARTWORLD3)
+        if(LEVELNUMBER > NUMBERSTARTWORLD2 && LEVELNUMBER < NUMBERSTARTWORLD3)
         {
             return true;
         }
@@ -74,12 +74,12 @@ class WorldManager
 
         else if (LEVELNUMBER > NUMBERSTARTWORLD2 && LEVELNUMBER < NUMBERSTARTWORLD3)
         {
-            rampIcon = Resources.Load("Icons/RampWorld2Icon", typeof(Sprite)) as Sprite;
+            rampIcon = Resources.Load("Icons/RampWorld3Icon", typeof(Sprite)) as Sprite;
         }
 
         else
         {
-            rampIcon = Resources.Load("Icons/RampWorld3Icon", typeof(Sprite)) as Sprite;
+            rampIcon = Resources.Load("Icons/RampWorld2Icon", typeof(Sprite)) as Sprite;
         }
         return rampIcon;
     }
@@ -95,14 +95,28 @@ class WorldManager
 
         else if (LEVELNUMBER > NUMBERSTARTWORLD2 && LEVELNUMBER < NUMBERSTARTWORLD3)
         {
-            rechthoekIcon = Resources.Load("Icons/RechthoekWorld2Icon", typeof(Sprite)) as Sprite;
+            rechthoekIcon = Resources.Load("Icons/RechthoekWorld3Icon", typeof(Sprite)) as Sprite;
         }
 
         else
         {
-            rechthoekIcon = Resources.Load("Icons/RechthoekWorld3Icon", typeof(Sprite)) as Sprite;
+            rechthoekIcon = Resources.Load("Icons/RechthoekWorld2Icon", typeof(Sprite)) as Sprite;
         }
         return rechthoekIcon;
+    }
+
+    public int SetWorldMusic()
+    {
+        int level = 1;
+        if(LEVELNUMBER > NUMBERSTARTWORLD2 && LEVELNUMBER < NUMBERSTARTWORLD3)
+        {
+            level = 2;
+        }
+        else if(LEVELNUMBER > NUMBERSTARTWORLD3)
+        {
+            level = 3;
+        }
+        return level;
     }
 }
 
