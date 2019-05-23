@@ -65,12 +65,6 @@ public class PhotonStartMenu : MonoBehaviourPunCallbacks
         }
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     public void connectToPhoton()
     {
         PhotonNetwork.ConnectUsingSettings();
@@ -147,6 +141,7 @@ public class PhotonStartMenu : MonoBehaviourPunCallbacks
     //click joining and creating rooms
     public void onClickJoinRoom()
     {
+        RoomToCreate.text.ToLower();
         //TODO maak iets als room niet bestaat of vol zit
         if (RoomToJoin.text == "")
         {
@@ -154,12 +149,13 @@ public class PhotonStartMenu : MonoBehaviourPunCallbacks
         }
         else
         {
-            PhotonNetwork.JoinRoom(RoomToJoin.text);
+            PhotonNetwork.JoinRoom(RoomToJoin.text.ToLower());
         }
     }
 
     public void onClickCreateRoom()
     {
+        RoomToCreate.text.ToLower();
         if (isCreator)
         {
             //TODO maak iets als room al bestaat
@@ -177,7 +173,7 @@ public class PhotonStartMenu : MonoBehaviourPunCallbacks
             }
             else
             {
-                PhotonNetwork.JoinRoom(RoomToCreate.text);
+                PhotonNetwork.JoinRoom(RoomToCreate.text.ToLower());
             }
         }
     }
@@ -210,7 +206,7 @@ public class PhotonStartMenu : MonoBehaviourPunCallbacks
     {
         RoomNameHost.text = PhotonNetwork.CurrentRoom.Name;
         RoomNameClient.text = PhotonNetwork.CurrentRoom.Name;
-        TitleText.text = "Room Name:"+PhotonNetwork.CurrentRoom.Name;
+        TitleText.text = "Room Name: "+PhotonNetwork.CurrentRoom.Name;
         if (PhotonNetwork.IsMasterClient)
         {
             StartMenu.gameObject.SetActive(false);
