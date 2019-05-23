@@ -87,6 +87,7 @@ public class LocalizationManager : MonoBehaviour
             dataAsJSON = File.ReadAllText(filePath);
         }
 
+
         // Convert Json file in LocalizationData object
         LocalizationData loadedData = JsonUtility.FromJson<LocalizationData>(dataAsJSON);
 
