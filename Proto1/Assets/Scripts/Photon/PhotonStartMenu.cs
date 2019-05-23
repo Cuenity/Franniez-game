@@ -204,7 +204,7 @@ public class PhotonStartMenu : MonoBehaviourPunCallbacks
     {
         RoomNameHost.text = PhotonNetwork.CurrentRoom.Name;
         RoomNameClient.text = PhotonNetwork.CurrentRoom.Name;
-        TitleText.text = "Room Name:  "+PhotonNetwork.CurrentRoom.Name;
+        TitleText.text = "Room Name: "+PhotonNetwork.CurrentRoom.Name;
         if (PhotonNetwork.IsMasterClient)
         {
             StartMenu.gameObject.SetActive(false);
