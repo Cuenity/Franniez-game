@@ -148,6 +148,30 @@ class GAManager : MonoBehaviour
     #region Multiplayer
     // -----------------------------     MULTIPLAYER     ----------------------------- \\
 
+    public static void StartMultiplayer()
+    {
+
+    }
+
+    public static void MultiplayerStartLevel()
+    {
+
+    }
+
+    public static void MultiplayerRandomRoom()
+    {
+
+    }
+
+    public static void MultiplayerMakeRoom()
+    {
+
+    }
+
+    public static void MultiplayerJoinRoom()
+    {
+
+    }
     #endregion
 }
 

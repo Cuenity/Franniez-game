@@ -190,31 +190,39 @@ public class LevelSettings : MonoBehaviour
     //JSON 
     public void ReadLevelsFromText()
     {
+        string filePath = "";
         //pc filepath
-        string filePath = Application.streamingAssetsPath + "/" + levelPlatformenString + ".json";
-        
+        if(Application.platform != RuntimePlatform.Android)
+        {
+            filePath = Application.streamingAssetsPath + "/" + levelPlatformenString + ".json";
+        }
+
         //android filepath
         if (Application.platform == RuntimePlatform.Android)
         {
-            levelPlatformenString = levelPlatformenString + ".json";
-            filePath = Path.Combine("jar:file://" + Application.dataPath + "!assets/", levelPlatformenString);
+            // Nieuwe string omdat bij 2de keer er anders 2x json
+            string levelJson = levelPlatformenString + ".json";
+            filePath = Path.Combine("jar:file://" + Application.dataPath + "!assets/", levelJson);
         }
-        string dataAsJSON;
+        string dataAsJSON = "leeg";
         //aparte android laad want dat kan niet met file."iets""
         if (Application.platform == RuntimePlatform.Android)
         {
             WWW reader = new WWW(filePath);
+            reader.Reset();
             while (!reader.isDone)
             {
             }
+
             dataAsJSON = reader.text;
+            reader.Dispose();
+
         }
         else
         {
-
             dataAsJSON = File.ReadAllText(filePath);
-            
         }
+
         levelPlatformen = JsonUtility.FromJson<LevelPlatformen>(dataAsJSON);
         width = levelPlatformen.width;
         height = levelPlatformen.heigth;
