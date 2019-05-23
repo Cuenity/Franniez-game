@@ -141,7 +141,8 @@ public class PhotonStartMenu : MonoBehaviourPunCallbacks
     //click joining and creating rooms
     public void onClickJoinRoom()
     {
-        RoomToCreate.text.ToLower();
+        RoomToCreate.text = RoomToCreate.text.ToLower();
+        RoomToJoin.text = RoomToJoin.text.ToLower();
         //TODO maak iets als room niet bestaat of vol zit
         if (RoomToJoin.text == "")
         {
@@ -155,7 +156,7 @@ public class PhotonStartMenu : MonoBehaviourPunCallbacks
 
     public void onClickCreateRoom()
     {
-        RoomToCreate.text.ToLower();
+        RoomToCreate.text = RoomToCreate.text.ToLower();
         if (isCreator)
         {
             //TODO maak iets als room al bestaat
@@ -204,8 +205,8 @@ public class PhotonStartMenu : MonoBehaviourPunCallbacks
 
     override public void OnJoinedRoom()
     {
-        RoomNameHost.text = PhotonNetwork.CurrentRoom.Name;
-        RoomNameClient.text = PhotonNetwork.CurrentRoom.Name;
+        RoomNameHost.text = PhotonNetwork.CurrentRoom.Name.ToLower();
+        RoomNameClient.text = PhotonNetwork.CurrentRoom.Name.ToLower();
         TitleText.text = "Room Name: "+PhotonNetwork.CurrentRoom.Name;
         if (PhotonNetwork.IsMasterClient)
         {
