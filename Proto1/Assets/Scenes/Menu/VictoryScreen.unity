@@ -376,7 +376,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 9c4808f6890558f4bb5d9eb68cd6aefd, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 6027fbf68cec9a04cbddd95f59851a8b, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -1823,6 +1823,46 @@ PrefabInstance:
       propertyPath: m_Name
       value: VictoryManager
       objectReference: {fileID: 0}
+    - target: {fileID: 3258071836232464073, guid: 00fbeab1ffcab264a8a1e8f8965c5c25,
+        type: 3}
+      propertyPath: ribbon
+      value: 
+      objectReference: {fileID: 708601059}
+    - target: {fileID: 3258071836232464073, guid: 00fbeab1ffcab264a8a1e8f8965c5c25,
+        type: 3}
+      propertyPath: starImage
+      value: 
+      objectReference: {fileID: 1716170020}
+    - target: {fileID: 3258071836232464073, guid: 00fbeab1ffcab264a8a1e8f8965c5c25,
+        type: 3}
+      propertyPath: sticker
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3258071836232464073, guid: 00fbeab1ffcab264a8a1e8f8965c5c25,
+        type: 3}
+      propertyPath: VictoryCanvas
+      value: 
+      objectReference: {fileID: 462083520}
+    - target: {fileID: 3258071836232464073, guid: 00fbeab1ffcab264a8a1e8f8965c5c25,
+        type: 3}
+      propertyPath: ribbonPlaceHolder
+      value: 
+      objectReference: {fileID: 708601059}
+    - target: {fileID: 3258071836232464073, guid: 00fbeab1ffcab264a8a1e8f8965c5c25,
+        type: 3}
+      propertyPath: starImagePlaceHolder
+      value: 
+      objectReference: {fileID: 1716170020}
+    - target: {fileID: 3258071836232464073, guid: 00fbeab1ffcab264a8a1e8f8965c5c25,
+        type: 3}
+      propertyPath: stickerPlaceHolder
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3258071836232464073, guid: 00fbeab1ffcab264a8a1e8f8965c5c25,
+        type: 3}
+      propertyPath: amountCoins
+      value: 
+      objectReference: {fileID: 1892889354}
     - target: {fileID: 3258071836232464074, guid: 00fbeab1ffcab264a8a1e8f8965c5c25,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1878,45 +1918,5 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3258071836232464073, guid: 00fbeab1ffcab264a8a1e8f8965c5c25,
-        type: 3}
-      propertyPath: ribbon
-      value: 
-      objectReference: {fileID: 708601059}
-    - target: {fileID: 3258071836232464073, guid: 00fbeab1ffcab264a8a1e8f8965c5c25,
-        type: 3}
-      propertyPath: starImage
-      value: 
-      objectReference: {fileID: 1716170020}
-    - target: {fileID: 3258071836232464073, guid: 00fbeab1ffcab264a8a1e8f8965c5c25,
-        type: 3}
-      propertyPath: sticker
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 3258071836232464073, guid: 00fbeab1ffcab264a8a1e8f8965c5c25,
-        type: 3}
-      propertyPath: VictoryCanvas
-      value: 
-      objectReference: {fileID: 462083520}
-    - target: {fileID: 3258071836232464073, guid: 00fbeab1ffcab264a8a1e8f8965c5c25,
-        type: 3}
-      propertyPath: ribbonPlaceHolder
-      value: 
-      objectReference: {fileID: 708601059}
-    - target: {fileID: 3258071836232464073, guid: 00fbeab1ffcab264a8a1e8f8965c5c25,
-        type: 3}
-      propertyPath: starImagePlaceHolder
-      value: 
-      objectReference: {fileID: 1716170020}
-    - target: {fileID: 3258071836232464073, guid: 00fbeab1ffcab264a8a1e8f8965c5c25,
-        type: 3}
-      propertyPath: stickerPlaceHolder
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 3258071836232464073, guid: 00fbeab1ffcab264a8a1e8f8965c5c25,
-        type: 3}
-      propertyPath: amountCoins
-      value: 
-      objectReference: {fileID: 1892889354}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 00fbeab1ffcab264a8a1e8f8965c5c25, type: 3}
