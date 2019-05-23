@@ -7,10 +7,15 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4452596467813102313, guid: a6d4731e59cb1bc45bb9fed126fddb70,
+        type: 3}
+      propertyPath: m_Name
+      value: LevelSettingIntroLevel
+      objectReference: {fileID: 0}
     - target: {fileID: 7949340701427491737, guid: a6d4731e59cb1bc45bb9fed126fddb70,
         type: 3}
       propertyPath: levelPlatformenString
-      value: IntroLevelRevised
+      value: introLevelRevised
       objectReference: {fileID: 0}
     - target: {fileID: 7949340701427491737, guid: a6d4731e59cb1bc45bb9fed126fddb70,
         type: 3}
@@ -51,11 +56,6 @@ PrefabInstance:
         type: 3}
       propertyPath: spawnPoint
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4452596467813102313, guid: a6d4731e59cb1bc45bb9fed126fddb70,
-        type: 3}
-      propertyPath: m_Name
-      value: LevelSettingIntroLevel
       objectReference: {fileID: 0}
     - target: {fileID: 7531156369720210147, guid: a6d4731e59cb1bc45bb9fed126fddb70,
         type: 3}
