@@ -57,10 +57,10 @@ class GAManager : MonoBehaviour
         }
 
         string countPlatformDesignEvent = "Platforms:Levels:" + levelString;
-        string coundRolling = "RollingPhase:Levels:" + levelString;
+        string countRollingString = "RollingPhase:Levels:" + levelString;
         
         // Amount of platforms
-        GameAnalytics.NewDesignEvent(coundRolling, GameState.Instance.levelManager.playerPlatforms.placedPlatforms.Count());
+        GameAnalytics.NewDesignEvent(countRollingString, GameState.Instance.levelManager.playerPlatforms.placedPlatforms.Count());
 
         // Amount of Rollingphases
         GameAnalytics.NewDesignEvent(countPlatformDesignEvent, countRolling);
@@ -148,6 +148,30 @@ class GAManager : MonoBehaviour
     #region Multiplayer
     // -----------------------------     MULTIPLAYER     ----------------------------- \\
 
+    public static void StartMultiplayer()
+    {
+
+    }
+
+    public static void MultiplayerStartLevel()
+    {
+
+    }
+
+    public static void MultiplayerRandomRoom()
+    {
+
+    }
+
+    public static void MultiplayerMakeRoom()
+    {
+
+    }
+
+    public static void MultiplayerJoinRoom()
+    {
+
+    }
     #endregion
 }
 
