@@ -15,7 +15,9 @@ public class LevelSelect : MonoBehaviour
     [SerializeField]
     Canvas levelSelectCanvasWorld2;
     [SerializeField]
-    Sprite world1Image, world2Image;
+    Canvas levelSelectCanvasWorld3;
+    [SerializeField]
+    Sprite world1Image, world2Image, world3Image;
 
     [SerializeField]
     Sprite stars0;
@@ -95,12 +97,20 @@ public class LevelSelect : MonoBehaviour
             // Dit moet nog afgemaakt worden
             stickersCollectedText.text = stickersCollectedText.text + " " + stickersCollectedCount.ToString();
             stickersCollectedTextWorld2.text = stickersCollectedTextWorld2.text + " " + stickersCollectedCount.ToString() + "/5";
+            stickersCollectedTextWorld3.text = stickersCollectedTextWorld3.text + " " + stickersCollectedCount.ToString() + "/10";
             if (stickersCollectedCount > 4)
             {
                 Button[] worldbutton = this.worldSelectCanvas.GetComponentsInChildren<Button>();
                 worldbutton[1].GetComponent<Image>().sprite = world2Image;
+                stickersCollectedTextWorld2.gameObject.SetActive( false);
             }
-            stickersCollectedTextWorld3.text = stickersCollectedTextWorld3.text + " " + stickersCollectedCount.ToString() + "/10";
+            if (stickersCollectedCount > 14)
+            {
+                Button[] worldbutton = this.worldSelectCanvas.GetComponentsInChildren<Button>();
+                worldbutton[2].GetComponent<Image>().sprite = world3Image;
+                stickersCollectedTextWorld3.gameObject.SetActive(false);
+            }
+           
             textIsUpdated = true;
         }
     }
