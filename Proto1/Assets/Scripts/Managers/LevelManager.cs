@@ -214,7 +214,8 @@ public class LevelManager : MonoBehaviour
         // vervang deze met ander jump level
         else if (currentLevel == 4)
         {
-                }
+            { 
+            }
         }
 
         // af
