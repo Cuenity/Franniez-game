@@ -45,7 +45,10 @@ public class LevelManager : MonoBehaviour
         multiLevel8,
         multiLevel9,
         multiLevel10,
-        boom;
+        boom,
+        eend,
+        kroon;
+
 
     #region levelmanagerMethods
     GameState gameState;
@@ -207,14 +210,16 @@ public class LevelManager : MonoBehaviour
         {
             if (!levelIsSpawned)
             {
-                SpawnLevel(level3JumpsEasy);
+                SpawnLevel(kroon);
+               // SpawnLevel(level3JumpsEasy);
             }
         }
 
         // vervang deze met ander jump level
         else if (currentLevel == 4)
         {
-            { 
+            {
+                SpawnLevel(eend);
             }
         }
 

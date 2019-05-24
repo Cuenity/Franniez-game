@@ -52,7 +52,6 @@ MonoBehaviour:
     type: 3}
   LevelSettingLevel4TrampolineHard: {fileID: 6857793499659197117, guid: 6c27f9caf2f52614e8b503286cbb4e8c,
     type: 3}
-  Level4: {fileID: 839846711271119275, guid: 87c7ab2fd73a309438b7f2211126ba91, type: 3}
   Level5: {fileID: 3084506684289652319, guid: 69e97c9c89b87ee43860849a80afe99a, type: 3}
   Level6BlackHoleBallAndJump: {fileID: 7417541486990352450, guid: 693c89e3168199341b9122658567a400,
     type: 3}
@@ -99,6 +98,8 @@ MonoBehaviour:
   multiLevel10: {fileID: 5971147215384403517, guid: b6088bedfdae4ba44ada8fdd980851ca,
     type: 3}
   boom: {fileID: 3249524214490673100, guid: b29b4e25e03b52147ad19084ef0d40a2, type: 3}
+  eend: {fileID: 8444939348633585051, guid: 316d2a70c942e6d40886627643c8f34b, type: 3}
+  kroon: {fileID: 7535228416744476494, guid: 4f1d70cb39b40a84b988472e858e8d44, type: 3}
   coinList: []
   stickerObject: {fileID: 0}
   finish: {fileID: 0}
