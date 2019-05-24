@@ -12,6 +12,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: LevelSettingMulti10
       objectReference: {fileID: 0}
+    - target: {fileID: 7419526205154288122, guid: 23dac309a6402fd4280ae07c435e1402,
+        type: 3}
+      propertyPath: levelPlatformenString
+      value: MultiLevel10
+      objectReference: {fileID: 0}
+    - target: {fileID: 7419526205154288122, guid: 23dac309a6402fd4280ae07c435e1402,
+        type: 3}
+      propertyPath: playerPlatformsArray.Array.data[0]
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 7419526205154288122, guid: 23dac309a6402fd4280ae07c435e1402,
+        type: 3}
+      propertyPath: playerPlatformsArray.Array.data[1]
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 7419526205154288122, guid: 23dac309a6402fd4280ae07c435e1402,
+        type: 3}
+      propertyPath: playerPlatformsArray.Array.data[2]
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6927312846470017152, guid: 23dac309a6402fd4280ae07c435e1402,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -66,11 +86,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7419526205154288122, guid: 23dac309a6402fd4280ae07c435e1402,
-        type: 3}
-      propertyPath: levelPlatformenString
-      value: MultiLevel10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 23dac309a6402fd4280ae07c435e1402, type: 3}

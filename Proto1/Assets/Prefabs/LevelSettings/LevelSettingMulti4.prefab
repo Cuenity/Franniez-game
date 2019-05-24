@@ -17,6 +17,21 @@ PrefabInstance:
       propertyPath: levelPlatformenString
       value: MultiLevel4
       objectReference: {fileID: 0}
+    - target: {fileID: 8506943767720712816, guid: 3df664c65f65d7e4691697f15f42c66a,
+        type: 3}
+      propertyPath: playerPlatformsArray.Array.data[0]
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8506943767720712816, guid: 3df664c65f65d7e4691697f15f42c66a,
+        type: 3}
+      propertyPath: playerPlatformsArray.Array.data[1]
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8506943767720712816, guid: 3df664c65f65d7e4691697f15f42c66a,
+        type: 3}
+      propertyPath: playerPlatformsArray.Array.data[3]
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 8132108781313280778, guid: 3df664c65f65d7e4691697f15f42c66a,
         type: 3}
       propertyPath: m_LocalPosition.x

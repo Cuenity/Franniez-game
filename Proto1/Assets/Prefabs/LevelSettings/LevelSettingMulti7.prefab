@@ -12,6 +12,31 @@ PrefabInstance:
       propertyPath: m_Name
       value: LevelSettingMulti7
       objectReference: {fileID: 0}
+    - target: {fileID: 7580471638329746468, guid: b3953a9c2ae91c14cb48bef49ddec2e5,
+        type: 3}
+      propertyPath: levelPlatformenString
+      value: MultiLevel7
+      objectReference: {fileID: 0}
+    - target: {fileID: 7580471638329746468, guid: b3953a9c2ae91c14cb48bef49ddec2e5,
+        type: 3}
+      propertyPath: playerPlatformsArray.Array.data[0]
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7580471638329746468, guid: b3953a9c2ae91c14cb48bef49ddec2e5,
+        type: 3}
+      propertyPath: playerPlatformsArray.Array.data[1]
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7580471638329746468, guid: b3953a9c2ae91c14cb48bef49ddec2e5,
+        type: 3}
+      propertyPath: playerPlatformsArray.Array.data[2]
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7580471638329746468, guid: b3953a9c2ae91c14cb48bef49ddec2e5,
+        type: 3}
+      propertyPath: playerPlatformsArray.Array.data[3]
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 8063289807727850846, guid: b3953a9c2ae91c14cb48bef49ddec2e5,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -66,11 +91,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7580471638329746468, guid: b3953a9c2ae91c14cb48bef49ddec2e5,
-        type: 3}
-      propertyPath: levelPlatformenString
-      value: MultiLevel7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b3953a9c2ae91c14cb48bef49ddec2e5, type: 3}

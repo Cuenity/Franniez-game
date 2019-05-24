@@ -12,6 +12,31 @@ PrefabInstance:
       propertyPath: m_Name
       value: LevelSettingMulti8
       objectReference: {fileID: 0}
+    - target: {fileID: 1952638751836176668, guid: b1854ac6a99321d48816606c1e00cd0d,
+        type: 3}
+      propertyPath: levelPlatformenString
+      value: MultiLevel8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1952638751836176668, guid: b1854ac6a99321d48816606c1e00cd0d,
+        type: 3}
+      propertyPath: playerPlatformsArray.Array.data[0]
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1952638751836176668, guid: b1854ac6a99321d48816606c1e00cd0d,
+        type: 3}
+      propertyPath: playerPlatformsArray.Array.data[1]
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1952638751836176668, guid: b1854ac6a99321d48816606c1e00cd0d,
+        type: 3}
+      propertyPath: playerPlatformsArray.Array.data[2]
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1952638751836176668, guid: b1854ac6a99321d48816606c1e00cd0d,
+        type: 3}
+      propertyPath: playerPlatformsArray.Array.data[3]
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2147261582352027750, guid: b1854ac6a99321d48816606c1e00cd0d,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -66,11 +91,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1952638751836176668, guid: b1854ac6a99321d48816606c1e00cd0d,
-        type: 3}
-      propertyPath: levelPlatformenString
-      value: MultiLevel8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b1854ac6a99321d48816606c1e00cd0d, type: 3}

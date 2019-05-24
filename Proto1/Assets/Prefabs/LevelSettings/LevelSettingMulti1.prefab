@@ -12,6 +12,41 @@ PrefabInstance:
       propertyPath: m_Name
       value: LevelSettingMulti1
       objectReference: {fileID: 0}
+    - target: {fileID: 7949340701427491737, guid: a6d4731e59cb1bc45bb9fed126fddb70,
+        type: 3}
+      propertyPath: bigLevel
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7949340701427491737, guid: a6d4731e59cb1bc45bb9fed126fddb70,
+        type: 3}
+      propertyPath: levelPlatformenString
+      value: Multi_level1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7949340701427491737, guid: a6d4731e59cb1bc45bb9fed126fddb70,
+        type: 3}
+      propertyPath: playerPlatformsArray.Array.data[0]
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7949340701427491737, guid: a6d4731e59cb1bc45bb9fed126fddb70,
+        type: 3}
+      propertyPath: playerPlatformsArray.Array.data[1]
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7949340701427491737, guid: a6d4731e59cb1bc45bb9fed126fddb70,
+        type: 3}
+      propertyPath: playerPlatformsArray.Array.data[2]
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7949340701427491737, guid: a6d4731e59cb1bc45bb9fed126fddb70,
+        type: 3}
+      propertyPath: playerPlatformsArray.Array.data[3]
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7949340701427491737, guid: a6d4731e59cb1bc45bb9fed126fddb70,
+        type: 3}
+      propertyPath: playerPlatformsArray.Array.data[4]
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7531156369720210147, guid: a6d4731e59cb1bc45bb9fed126fddb70,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -66,41 +101,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7949340701427491737, guid: a6d4731e59cb1bc45bb9fed126fddb70,
-        type: 3}
-      propertyPath: bigLevel
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7949340701427491737, guid: a6d4731e59cb1bc45bb9fed126fddb70,
-        type: 3}
-      propertyPath: levelPlatformenString
-      value: Multi_level1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7949340701427491737, guid: a6d4731e59cb1bc45bb9fed126fddb70,
-        type: 3}
-      propertyPath: playerPlatformsArray.Array.data[0]
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 7949340701427491737, guid: a6d4731e59cb1bc45bb9fed126fddb70,
-        type: 3}
-      propertyPath: playerPlatformsArray.Array.data[1]
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 7949340701427491737, guid: a6d4731e59cb1bc45bb9fed126fddb70,
-        type: 3}
-      propertyPath: playerPlatformsArray.Array.data[2]
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 7949340701427491737, guid: a6d4731e59cb1bc45bb9fed126fddb70,
-        type: 3}
-      propertyPath: playerPlatformsArray.Array.data[3]
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 7949340701427491737, guid: a6d4731e59cb1bc45bb9fed126fddb70,
-        type: 3}
-      propertyPath: playerPlatformsArray.Array.data[4]
-      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a6d4731e59cb1bc45bb9fed126fddb70, type: 3}

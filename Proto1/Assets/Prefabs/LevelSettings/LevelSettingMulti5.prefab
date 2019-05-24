@@ -12,6 +12,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: LevelSettingMulti5
       objectReference: {fileID: 0}
+    - target: {fileID: 2722453504651850903, guid: 0ccf1140fe149154e8dee72dbcb20534,
+        type: 3}
+      propertyPath: levelPlatformenString
+      value: MultiLevel5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2722453504651850903, guid: 0ccf1140fe149154e8dee72dbcb20534,
+        type: 3}
+      propertyPath: playerPlatformsArray.Array.data[0]
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2722453504651850903, guid: 0ccf1140fe149154e8dee72dbcb20534,
+        type: 3}
+      propertyPath: playerPlatformsArray.Array.data[1]
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2722453504651850903, guid: 0ccf1140fe149154e8dee72dbcb20534,
+        type: 3}
+      propertyPath: playerPlatformsArray.Array.data[3]
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2530363940341179885, guid: 0ccf1140fe149154e8dee72dbcb20534,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -66,11 +86,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2722453504651850903, guid: 0ccf1140fe149154e8dee72dbcb20534,
-        type: 3}
-      propertyPath: levelPlatformenString
-      value: MultiLevel5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0ccf1140fe149154e8dee72dbcb20534, type: 3}
