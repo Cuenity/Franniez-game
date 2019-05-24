@@ -75,7 +75,7 @@ public class NormalBall : MonoBehaviourPun
     {
         if (PhotonNetwork.IsMasterClient)
         {
-            PhotonNetwork.LoadLevel(26);
+            PhotonNetwork.LoadLevel(7);
         }
     }
 }

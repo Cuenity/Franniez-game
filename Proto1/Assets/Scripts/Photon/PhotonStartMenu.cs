@@ -3,6 +3,7 @@ using Photon.Realtime;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class PhotonStartMenu : MonoBehaviourPunCallbacks
@@ -12,7 +13,7 @@ public class PhotonStartMenu : MonoBehaviourPunCallbacks
     [SerializeField]
     InputField RoomToJoin, RoomToCreate;
     [SerializeField]
-    Button StartGame, CreateJoinButton;
+    Button StartGame, CreateJoinButton,ManualConnect;
     [SerializeField]
     Text RoomNameHost,RoomNameClient, ConnectedStatus,  WaitingForPlayers, TitleText;
 
@@ -25,6 +26,8 @@ public class PhotonStartMenu : MonoBehaviourPunCallbacks
         // this makes sure we can use PhotonNetwork.LoadLevel() on the master client and all clients in the same room sync their level automatically
 
         PhotonNetwork.AutomaticallySyncScene = true;
+        DontDestroyOnLoad(this);
+        
     }
 
     void LocalizedTextLoader()
@@ -68,7 +71,10 @@ public class PhotonStartMenu : MonoBehaviourPunCallbacks
     // Update is called once per frame
     void Update()
     {
-        
+        if (SceneManager.GetActiveScene().name == "StartMenu")
+        {
+            Destroy(this.gameObject);
+        }
     }
 
     public void connectToPhoton()
@@ -101,6 +107,10 @@ public class PhotonStartMenu : MonoBehaviourPunCallbacks
     {
         StartMenu.gameObject.SetActive(false);
         JoinRoom.gameObject.SetActive(true);
+    }
+    public void onClickConnect()
+    {
+        connectToPhoton();
     }
     
 
@@ -260,24 +270,41 @@ public class PhotonStartMenu : MonoBehaviourPunCallbacks
     override public void OnConnectedToMaster()
     {
         base.OnConnectedToMaster();
-        ConnectedStatus.text = LocalizationManager.instance.GetLocalizedValue("multi_status_connected");
+        ConnectedStatus.text = "Connected";
         ConnectedStatus.color = Color.green;
         Button[] startButtons =  StartMenu.GetComponentsInChildren<Button>();
         foreach (Button button in startButtons)
         {
             button.interactable = true;
+            if (button.name == "ManualConnect")
+            {
+                button.gameObject.SetActive(false);
+            }
         }
     }
 
     public override void OnDisconnected(DisconnectCause cause)
     {
         base.OnDisconnected(cause);
-        ConnectedStatus.text = LocalizationManager.instance.GetLocalizedValue("multi_status_disconnected");
-        ConnectedStatus.color = Color.red;
-        Button[] startButtons = StartMenu.GetComponentsInChildren<Button>();
-        foreach (Button button in startButtons)
+        if (SceneManager.GetActiveScene().name == "MultiplayerStart")
         {
-            button.interactable = false;
+            ConnectedStatus.text = "Disconnected";
+            ConnectedStatus.color = Color.red;
+            Button[] startButtons = StartMenu.GetComponentsInChildren<Button>(true);
+            foreach (Button button in startButtons)
+            {
+                button.interactable = false;
+                if (button.name == "ManualConnect") 
+                {
+                    button.interactable = true;
+                    button.gameObject.SetActive(true);
+                }
+            }
+        }
+        else if (cause != DisconnectCause.DisconnectByClientLogic)
+        {
+            PhotonNetwork.LoadLevel(10);
+            Destroy(this.gameObject);
         }
     }
 
