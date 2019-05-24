@@ -63,15 +63,18 @@ public class LevelSelect : MonoBehaviour
         levelSelectCanvasWorld2.gameObject.SetActive(false);
 
         player = PlayerDataController.instance.Player;
-        //DIT IS NIET ZUIVER REKEN HIER NIET OP 
-        //maar je krijgt wel al je buttons in een lijstje zonder dat je 10 buttons moet declareren en slepen in editor
-        //MAAR HET IS NIET ZUIVER JE KRIJGT OOK BACK BUTTON ENZO HOU HIER REKENING MEE
+    
         foreach (var button in levelSelectCanvas.GetComponentsInChildren<Button>())
         {
             if (!button.name.Contains("Back"))
                 LevelSelectButtons.Add(button);
         }
         foreach (var button in levelSelectCanvasWorld2.GetComponentsInChildren<Button>())
+        {
+            if (!button.name.Contains("Back"))
+                LevelSelectButtons.Add(button);
+        }
+        foreach (var button in levelSelectCanvasWorld3.GetComponentsInChildren<Button>())
         {
             if (!button.name.Contains("Back"))
                 LevelSelectButtons.Add(button);
@@ -104,7 +107,7 @@ public class LevelSelect : MonoBehaviour
                 worldbutton[1].GetComponent<Image>().sprite = world2Image;
                 stickersCollectedTextWorld2.gameObject.SetActive( false);
             }
-            if (stickersCollectedCount > 14)
+            if (stickersCollectedCount > 9)
             {
                 Button[] worldbutton = this.worldSelectCanvas.GetComponentsInChildren<Button>();
                 worldbutton[2].GetComponent<Image>().sprite = world3Image;
@@ -117,7 +120,7 @@ public class LevelSelect : MonoBehaviour
 
     void LoadCorrectPicturesForLevels()
     {
-        for (int i = 0; i < 20; i++)
+        for (int i = 0; i < 30; i++)
         {
             switch (player.levels[i].countCoins)
             {
@@ -201,11 +204,24 @@ public class LevelSelect : MonoBehaviour
             ShowLevelSelectWorld2();
         }
     }
+    public void World3()
+    {
+        if (stickersCollectedCount > 9)
+        {
+            ShowLevelSelectWorld3();
+        }
+    }
 
     public void ShowLevelSelectWorld2()
     {
         worldSelectCanvas.gameObject.SetActive(false);
         LoadCorrectPicturesForLevels();
         levelSelectCanvasWorld2.gameObject.SetActive(true);
+    }
+    public void ShowLevelSelectWorld3()
+    {
+        worldSelectCanvas.gameObject.SetActive(false);
+        LoadCorrectPicturesForLevels();
+        levelSelectCanvasWorld3.gameObject.SetActive(true);
     }
 }

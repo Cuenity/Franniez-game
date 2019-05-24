@@ -377,15 +377,7 @@ public class LevelManager : MonoBehaviour
                 gameState.playerManager.MultiPlayerBallInit(42, 57);
                 gameState.UIManager.AddMultiplayerUI();
                 //vieze fix fixen na release candidate
-                Text[] texten = gameState.UIManager.canvas.GetComponentsInChildren<Text>(true);
-                foreach(Text text in texten)
-                {
-                    if (text.name == "Level Text")
-                    {
-                        text.text = "level 1";
-                        text.name = "poepert";
-                    }
-                }
+               
                 ////GameState.Instance.PreviousLevel = 27;
                 ////PlayerDataController.instance.PreviousScene = 27;
             }
@@ -406,15 +398,7 @@ public class LevelManager : MonoBehaviour
                 gameState.playerManager.MultiPlayerBallInit(1, 125);
                 gameState.UIManager.AddMultiplayerUI();
                 //vieze fix fixen na release candidate
-                Text[] texten = gameState.UIManager.canvas.GetComponentsInChildren<Text>(true);
-                foreach (Text text in texten)
-                {
-                    if (text.name == "Level Text")
-                    {
-                        text.text = "level 2";
-                        text.name = "poepert";
-                    }
-                }
+                
 
             }
         }
@@ -433,15 +417,7 @@ public class LevelManager : MonoBehaviour
                 gameState.playerManager.MultiPlayerBallInit(1, 13);
                 gameState.UIManager.AddMultiplayerUI();
                 //vieze fix fixen na release candidate
-                Text[] texten = gameState.UIManager.canvas.GetComponentsInChildren<Text>(true);
-                foreach (Text text in texten)
-                {
-                    if (text.name == "Level Text")
-                    {
-                        text.text = "level 3";
-                        text.name = "poepert";
-                    }
-                }
+                
 
             }
         }
@@ -460,15 +436,7 @@ public class LevelManager : MonoBehaviour
                 gameState.playerManager.MultiPlayerBallInit(0, 1);
                 gameState.UIManager.AddMultiplayerUI();
                 //vieze fix fixen na release candidate
-                Text[] texten = gameState.UIManager.canvas.GetComponentsInChildren<Text>(true);
-                foreach (Text text in texten)
-                {
-                    if (text.name == "Level Text")
-                    {
-                        text.text = "level 4";
-                        text.name = "poepert";
-                    }
-                }
+                
 
             }
         }
@@ -487,15 +455,7 @@ public class LevelManager : MonoBehaviour
                 gameState.playerManager.MultiPlayerBallInit(1, 13);
                 gameState.UIManager.AddMultiplayerUI();
                 //vieze fix fixen na release candidate
-                Text[] texten = gameState.UIManager.canvas.GetComponentsInChildren<Text>(true);
-                foreach (Text text in texten)
-                {
-                    if (text.name == "Level Text")
-                    {
-                        text.text = "level 5";
-                        text.name = "poepert";
-                    }
-                }
+                
 
             }
         }
@@ -514,15 +474,7 @@ public class LevelManager : MonoBehaviour
                 gameState.playerManager.MultiPlayerBallInit(1, 13);
                 gameState.UIManager.AddMultiplayerUI();
                 //vieze fix fixen na release candidate
-                Text[] texten = gameState.UIManager.canvas.GetComponentsInChildren<Text>(true);
-                foreach (Text text in texten)
-                {
-                    if (text.name == "Level Text")
-                    {
-                        text.text = "level 6";
-                        text.name = "poepert";
-                    }
-                }
+                
 
             }
         }
@@ -541,15 +493,7 @@ public class LevelManager : MonoBehaviour
                 gameState.playerManager.MultiPlayerBallInit(1, 23);
                 gameState.UIManager.AddMultiplayerUI();
                 //vieze fix fixen na release candidate
-                Text[] texten = gameState.UIManager.canvas.GetComponentsInChildren<Text>(true);
-                foreach (Text text in texten)
-                {
-                    if (text.name == "Level Text")
-                    {
-                        text.text = "level 7";
-                        text.name = "poepert";
-                    }
-                }
+                
 
             }
         }
@@ -568,15 +512,7 @@ public class LevelManager : MonoBehaviour
                 gameState.playerManager.MultiPlayerBallInit(1, 19);
                 gameState.UIManager.AddMultiplayerUI();
                 //vieze fix fixen na release candidate
-                Text[] texten = gameState.UIManager.canvas.GetComponentsInChildren<Text>(true);
-                foreach (Text text in texten)
-                {
-                    if (text.name == "Level Text")
-                    {
-                        text.text = "level 8";
-                        text.name = "poepert";
-                    }
-                }
+                
 
             }
         }
@@ -595,15 +531,7 @@ public class LevelManager : MonoBehaviour
                 gameState.playerManager.MultiPlayerBallInit(1, 13);
                 gameState.UIManager.AddMultiplayerUI();
                 //vieze fix fixen na release candidate
-                Text[] texten = gameState.UIManager.canvas.GetComponentsInChildren<Text>(true);
-                foreach (Text text in texten)
-                {
-                    if (text.name == "Level Text")
-                    {
-                        text.text = "level 9";
-                        text.name = "poepert";
-                    }
-                }
+                
 
             }
         }
@@ -622,15 +550,7 @@ public class LevelManager : MonoBehaviour
                 gameState.playerManager.MultiPlayerBallInit(1, 19);
                 gameState.UIManager.AddMultiplayerUI();
                 //vieze fix fixen na release candidate
-                Text[] texten = gameState.UIManager.canvas.GetComponentsInChildren<Text>(true);
-                foreach (Text text in texten)
-                {
-                    if (text.name == "Level Text")
-                    {
-                        text.text = "level 10";
-                        text.name = "poepert";
-                    }
-                }
+                
 
             }
         }

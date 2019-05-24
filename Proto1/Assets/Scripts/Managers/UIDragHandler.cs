@@ -5,6 +5,8 @@ using UnityEngine.EventSystems;
 
 public class UIDragHandler : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHandler
 {
+    private GameState gameState;
+
     [SerializeField]
     private GameObject platformSquare;
     [SerializeField]
@@ -27,9 +29,10 @@ public class UIDragHandler : MonoBehaviour, IDragHandler, IBeginDragHandler, IEn
 
     private void Start()
     {
-        playercamera = GameState.Instance.playerCamera;
-        camera = GameState.Instance.playerCamera.GetComponent<Camera>();
-        platformManager = GameState.Instance.platformManager.GetComponent<PlatformManager>();
+        gameState = GameState.Instance;
+        playercamera = gameState.playerCamera;
+        camera = gameState.playerCamera.GetComponent<Camera>();
+        platformManager = gameState.platformManager.GetComponent<PlatformManager>();
 
         SetWorldMaterials();
 
@@ -90,18 +93,28 @@ public class UIDragHandler : MonoBehaviour, IDragHandler, IBeginDragHandler, IEn
     {
         if (draggingAllowed)
         {
-            GameState.Instance.levelManager.playerPlatforms.placedPlatforms.Add(draggedPlatform);
+            if (!gameState.UIManager.GarbageBinHit(draggedPlatform))
+            {
+                bool platformDraggedToButton = gameState.UIManager.PlatformDraggedToButton();
+                if (platformDraggedToButton)
+                {
+                    draggedPlatform.GetComponent<Platform>().UpdatePlayerPlatforms();
+                }
+                else
+                {
+                    gameState.levelManager.playerPlatforms.placedPlatforms.Add(draggedPlatform);
+                    platformManager.spawnPlatformOnGrid(draggedPlatform.transform.position, draggedPlatform.GetComponent<Platform>());
+                    StartCoroutine(SetDragActiveFalseAfterEndOfFrame());
+                }
+            }
 
-            platformManager.spawnPlatformOnGrid(draggedPlatform.transform.position, draggedPlatform.GetComponent<Platform>());
-
-            StartCoroutine(SetDragActiveFalseAfterEndOfFrame());
         }
     }
 
     public IEnumerator SetDragActiveFalseAfterEndOfFrame()
     {
         yield return new WaitForEndOfFrame();
-        GameState.Instance.playerCamera.platformDragActive = false;
+        gameState.playerCamera.platformDragActive = false;
     }
 
     private void SetWorldMaterials()

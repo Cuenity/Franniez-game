@@ -52,6 +52,7 @@ MonoBehaviour:
     type: 3}
   LevelSettingLevel4TrampolineHard: {fileID: 6857793499659197117, guid: 6c27f9caf2f52614e8b503286cbb4e8c,
     type: 3}
+  Level4: {fileID: 839846711271119275, guid: 87c7ab2fd73a309438b7f2211126ba91, type: 3}
   Level5: {fileID: 3084506684289652319, guid: 69e97c9c89b87ee43860849a80afe99a, type: 3}
   Level6BlackHoleBallAndJump: {fileID: 7417541486990352450, guid: 693c89e3168199341b9122658567a400,
     type: 3}
@@ -70,6 +71,10 @@ MonoBehaviour:
   Level14: {fileID: 5007332098306194189, guid: 9741184ced8e2de4faa7e705887ecb92, type: 3}
   Level15: {fileID: 1198601027278409110, guid: c9f6962a1e3080f4b98914728cc4b831, type: 3}
   Level16: {fileID: 7120932647302007747, guid: 283259c5cc240ed43a03f9a2ca6c6b53, type: 3}
+  Level17: {fileID: 0}
+  Level18: {fileID: 0}
+  Level19: {fileID: 0}
+  Level20: {fileID: 0}
   smiletTest: {fileID: 6857793499659197117, guid: 6c27f9caf2f52614e8b503286cbb4e8c,
     type: 3}
   house: {fileID: 6330327931917537949, guid: 3f7591ef3a4175d4f9d36e3aade1b938, type: 3}

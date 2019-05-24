@@ -129,47 +129,47 @@ public class PhotonStartMenu : MonoBehaviourPunCallbacks
         }
         if (selectedLevel == 2)
         {
-            PlayerDataController.instance.PreviousScene = 101;
+            PlayerDataController.instance.PreviousScene = 102;
             PhotonNetwork.LoadLevel(9);
         }
         if (selectedLevel == 3)
         {
-            PlayerDataController.instance.PreviousScene = 101;
+            PlayerDataController.instance.PreviousScene = 103;
             PhotonNetwork.LoadLevel(11);
         }
         if (selectedLevel == 4)
         {
-            PlayerDataController.instance.PreviousScene = 101;
+            PlayerDataController.instance.PreviousScene = 104;
             PhotonNetwork.LoadLevel(12);
         }
         if (selectedLevel == 5)
         {
-            PlayerDataController.instance.PreviousScene = 101;
+            PlayerDataController.instance.PreviousScene = 105;
             PhotonNetwork.LoadLevel(13);
         }
         if (selectedLevel == 6)
         {
-            PlayerDataController.instance.PreviousScene = 101;
+            PlayerDataController.instance.PreviousScene = 106;
             PhotonNetwork.LoadLevel(14);
         }
         if (selectedLevel == 7)
         {
-            PlayerDataController.instance.PreviousScene = 101;
+            PlayerDataController.instance.PreviousScene = 107;
             PhotonNetwork.LoadLevel(15);
         }
         if (selectedLevel == 8)
         {
-            PlayerDataController.instance.PreviousScene = 101;
+            PlayerDataController.instance.PreviousScene = 108;
             PhotonNetwork.LoadLevel(16);
         }
         if (selectedLevel == 9)
         {
-            PlayerDataController.instance.PreviousScene = 101;
+            PlayerDataController.instance.PreviousScene = 109;
             PhotonNetwork.LoadLevel(17);
         }
         if (selectedLevel == 10)
         {
-            PlayerDataController.instance.PreviousScene = 101;
+            PlayerDataController.instance.PreviousScene = 110;
             PhotonNetwork.LoadLevel(18);
         }
     }
