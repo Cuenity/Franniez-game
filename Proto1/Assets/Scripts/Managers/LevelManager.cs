@@ -46,7 +46,8 @@ public class LevelManager : MonoBehaviour
         multiLevel9,
         multiLevel10,
         boom,
-        eend;
+        eend,
+        kroon;
 
 
     #region levelmanagerMethods
@@ -209,7 +210,8 @@ public class LevelManager : MonoBehaviour
         {
             if (!levelIsSpawned)
             {
-                SpawnLevel(level3JumpsEasy);
+                SpawnLevel(kroon);
+               // SpawnLevel(level3JumpsEasy);
             }
         }
 
