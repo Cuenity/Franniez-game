@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Photon.Pun;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -17,7 +18,12 @@ class WorldManager
     public Material[] GetMaterials()
     {
         Material[] materials = new Material[2];
-        if (LEVELNUMBER <= NUMBERSTARTWORLD2)
+        if (PhotonNetwork.InRoom)
+        {
+            materials[0] = Resources.Load("PlatformMaterial/RechthoekText", typeof(Material)) as Material;
+            materials[1] = Resources.Load("PlatformMaterial/RampText", typeof(Material)) as Material;
+        }
+        else if (LEVELNUMBER <= NUMBERSTARTWORLD2)
         {
             materials[0] = Resources.Load("PlatformMaterial/RechthoekText", typeof(Material)) as Material;
             materials[1] = Resources.Load("PlatformMaterial/RampText", typeof(Material)) as Material;
@@ -51,6 +57,12 @@ class WorldManager
         {
             skyBox = Resources.Load("SkyBox/Space", typeof(Material)) as Material;
         }
+
+        if (PhotonNetwork.InRoom)
+        {
+            skyBox = Resources.Load("SkyBox/World1", typeof(Material)) as Material;
+        }
+
         return skyBox;
     }
 
@@ -67,7 +79,11 @@ class WorldManager
     {
         Sprite rampIcon;
 
-        if (LEVELNUMBER <= NUMBERSTARTWORLD2)
+        if (PhotonNetwork.InRoom)
+        {
+            rampIcon = Resources.Load("Icons/RampWorld1Icon", typeof(Sprite)) as Sprite;
+        }
+        else if (LEVELNUMBER <= NUMBERSTARTWORLD2)
         {
             rampIcon = Resources.Load("Icons/RampWorld1Icon", typeof(Sprite)) as Sprite;
         }
@@ -88,7 +104,12 @@ class WorldManager
     {
         Sprite rechthoekIcon;
 
-        if (LEVELNUMBER <= NUMBERSTARTWORLD2)
+        if (PhotonNetwork.InRoom)
+        {
+            rechthoekIcon = Resources.Load("Icons/RechthoekWorld1Icon", typeof(Sprite)) as Sprite;
+        }
+
+        else if (LEVELNUMBER <= NUMBERSTARTWORLD2)
         {
             rechthoekIcon = Resources.Load("Icons/RechthoekWorld1Icon", typeof(Sprite)) as Sprite;
         }

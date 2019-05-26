@@ -1,3 +1,4 @@
+using Photon.Pun;
 using System.Collections;
 using UnityEngine;
 
@@ -53,7 +54,11 @@ public class PlayerCamera : MonoBehaviour
 
     private void Update()
     {
-        if (worldManager.SetSnow())
+        if (PhotonNetwork.InRoom)
+        {
+
+        }
+        else if (worldManager.SetSnow())
         {
             snowFalling.transform.position = this.transform.position - new Vector3(0, -3, -2.5f);
         }

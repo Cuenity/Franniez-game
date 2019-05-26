@@ -3,6 +3,7 @@ using System.Collections;
 using UnityEngine.UI;
 using System;
 using UnityEngine.SceneManagement;
+using Photon.Pun;
 
 public class UIRollingManager : MonoBehaviour
 {
@@ -38,6 +39,10 @@ public class UIRollingManager : MonoBehaviour
         if (LocalizationManager.instance.LanguageChoice == Language.Spanish)
         {
             levelNumberText.text = "NIVEL " + levelIndicator;
+        }
+        if (PhotonNetwork.InRoom)
+        {
+            levelNumberText.text = "Co-op";
         }
         if (GameState.Instance.BuildingPhaseActive)
         {
