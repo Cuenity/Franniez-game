@@ -22,12 +22,42 @@ public class PauseMenuManager : MonoBehaviour
         GameState.Instance.playerCamera.platformDragActive = false;
     }
 
+    //vieze fix()
+    private void Start()
+    {
+        if (PhotonNetwork.InRoom)
+        {
+            Button[] buttons  = GameState.Instance.UIManager.pauseMenuCanvas.GetComponentsInChildren<Button>(true);
+            foreach(Button button in buttons)
+            {
+                if(button.name =="Exit Button")
+                {
+                    button.gameObject.SetActive(false);
+                }
+            }
+
+        }
+        else
+        {
+            Button[] buttons = GameState.Instance.UIManager.pauseMenuCanvas.GetComponentsInChildren<Button>(true);
+            foreach (Button button in buttons)
+            {
+                if (button.name == "Exit Button")
+                {
+                    button.gameObject.SetActive(true);
+                }
+            }
+        }
+        
+    }
+
+
     // Button Action: Go to Level Select
     public void SelectLevel()
     {
         if (PhotonNetwork.InRoom)
         {
-            PhotonNetwork.LoadLevel(29);
+            PhotonNetwork.LoadLevel(10);
         }
         else
         {
@@ -40,7 +70,8 @@ public class PauseMenuManager : MonoBehaviour
     {
         if (PhotonNetwork.InRoom)
         {
-            PhotonNetwork.LoadLevel(29);
+            PhotonNetwork.Disconnect();
+            PhotonNetwork.LoadLevel(3);
             return;
         }
         GAManager.EndGame(GameState.Instance.rollingPhaseManager.countRolling, false);

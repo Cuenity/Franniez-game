@@ -27,7 +27,7 @@ public class PhotonStartMenu : MonoBehaviourPunCallbacks
 
         PhotonNetwork.AutomaticallySyncScene = true;
         DontDestroyOnLoad(this);
-        
+        //PlayerDataController.instance.PreviousScene()
     }
     
 

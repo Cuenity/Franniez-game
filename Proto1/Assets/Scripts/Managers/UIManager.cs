@@ -156,7 +156,7 @@ public class UIManager : MonoBehaviour
         {
             if (button.name == "MenuButton")
             {
-                button.gameObject.SetActive(false);
+                button.gameObject.SetActive(true);
             }
         }
         Image[] flaghitImages = multiplayerCanvas.GetComponentsInChildren<Image>();
