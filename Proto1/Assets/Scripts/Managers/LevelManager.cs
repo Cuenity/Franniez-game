@@ -399,7 +399,7 @@ public class LevelManager : MonoBehaviour
                 //einde vies
                 //naamgeving zo slecht/vies bij playergrids
                 //eerste 2 is het begin eindpunt maar die laatste 2 is gewoon de hoogte 
-                gameState.gridManager.InitPlayerGridsMultiPlayer(0, 24, 0, 4, 125, 149, 0, 4);
+                gameState.gridManager.InitPlayerGridsMultiPlayer(0, 24, 0, 4, 135, 149, 0, 4);
                 gameState.playerManager.MultiPlayerBallInit(1, 125);
                 gameState.UIManager.AddMultiplayerUI();
                 //vieze fix fixen na release candidate

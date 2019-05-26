@@ -9,13 +9,13 @@ using UnityEngine.UI;
 public class PhotonStartMenu : MonoBehaviourPunCallbacks
 {
     [SerializeField]
-    Canvas StartMenu, CustomRoom,  HostWait, ClientWait, JoinRoom, CreateRoom;
+    Canvas StartMenu, CustomRoom,  HostWait, ClientWait, JoinRoom, CreateRoom,DisconnectedCanvas;
     [SerializeField]
     InputField RoomToJoin, RoomToCreate;
     [SerializeField]
-    Button StartGame, CreateJoinButton,ManualConnect;
+    Button StartGame, CreateJoinButton,ManualConnect,DisconnectReturnButton;
     [SerializeField]
-    Text RoomNameHost,RoomNameClient, ConnectedStatus,  WaitingForPlayers, TitleText;
+    Text RoomNameHost,RoomNameClient, ConnectedStatus,  WaitingForPlayers, TitleText,DisconnectedText, DisconnectReturnButtonText;
 
     private int selectedLevel=1;
     private bool isCreator;
@@ -29,16 +29,29 @@ public class PhotonStartMenu : MonoBehaviourPunCallbacks
         DontDestroyOnLoad(this);
         
     }
-
-    void LocalizedTextLoader()
-    {
-
-    }
+    
 
     // Start is called before the first frame update
     void Start()
     {
-        if (!PhotonNetwork.IsConnected)
+        if (PlayerDataController.instance.PreviousScene > 9000)
+        {
+            if(PlayerDataController.instance.PreviousScene == 9998)
+            {
+                DisconnectedCanvas.gameObject.SetActive(true);
+                DisconnectedText.text = LocalizationManager.instance.GetLocalizedValue("multi_disconnected");
+                //DisconnectReturnButtonText.text = LocalizationManager.instance.GetLocalizedValue("multi_backtomenu");
+                DisconnectReturnButton.GetComponent<Text>().text = LocalizationManager.instance.GetLocalizedValue("multi_backtomenu");
+            }
+            else if(PlayerDataController.instance.PreviousScene == 9999)
+            {
+                DisconnectedCanvas.gameObject.SetActive(true);
+                DisconnectedText.text = LocalizationManager.instance.GetLocalizedValue("multi_friendleft");
+                //DisconnectReturnButtonText.text = LocalizationManager.instance.GetLocalizedValue("multi_backtomenu");
+                DisconnectReturnButton.GetComponent<Text>().text = LocalizationManager.instance.GetLocalizedValue("multi_backtomenu");
+            }
+        }
+        else if (!PhotonNetwork.IsConnected)
         {
             StartMenu.gameObject.SetActive(true);
             if (!PhotonNetwork.IsConnectedAndReady)
@@ -75,6 +88,10 @@ public class PhotonStartMenu : MonoBehaviourPunCallbacks
         {
             Destroy(this.gameObject);
         }
+        if (!PhotonNetwork.IsConnected)
+        {
+            connectToPhoton();
+        }
     }
 
     public void connectToPhoton()
@@ -108,6 +125,11 @@ public class PhotonStartMenu : MonoBehaviourPunCallbacks
         StartMenu.gameObject.SetActive(false);
         JoinRoom.gameObject.SetActive(true);
     }
+    public void onClickSwitchToStartMenu()
+    {
+        DisconnectedCanvas.gameObject.SetActive(false);
+        StartMenu.gameObject.SetActive(true);
+    }
     public void onClickConnect()
     {
         connectToPhoton();
@@ -127,6 +149,7 @@ public class PhotonStartMenu : MonoBehaviourPunCallbacks
     {
         PhotonNetwork.Disconnect();
         SceneSwitcher.Instance.AsynchronousLoadStartNoLoadingBar("StartMenu");
+        Destroy(this.gameObject);
     }
 
     //start game
@@ -303,6 +326,7 @@ public class PhotonStartMenu : MonoBehaviourPunCallbacks
         }
         else if (cause != DisconnectCause.DisconnectByClientLogic)
         {
+            PlayerDataController.instance.PreviousScene = 9998;
             PhotonNetwork.LoadLevel(10);
             Destroy(this.gameObject);
         }
@@ -319,8 +343,19 @@ public class PhotonStartMenu : MonoBehaviourPunCallbacks
     public override void OnPlayerLeftRoom(Player otherPlayer)
     {
         base.OnPlayerLeftRoom(otherPlayer);
-        WaitingForPlayers.text = LocalizationManager.instance.GetLocalizedValue("multi_hostwaittext");
-        StartGame.interactable = false;
+        if (PhotonNetwork.IsMasterClient)
+        { 
+
+            WaitingForPlayers.text = LocalizationManager.instance.GetLocalizedValue("multi_hostwaittext");
+            StartGame.interactable = false;
+        }
+        else
+        {
+            //vieze fix
+            PlayerDataController.instance.PreviousScene = 9999;
+            PhotonNetwork.LoadLevel(10);
+            Destroy(this.gameObject);
+        }
     }
     //public override void room //OnRoomListUpdate(List<RoomInfo> roomList)
     //{

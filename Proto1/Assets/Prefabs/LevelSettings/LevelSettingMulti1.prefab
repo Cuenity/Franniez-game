@@ -47,6 +47,16 @@ PrefabInstance:
       propertyPath: playerPlatformsArray.Array.data[4]
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7949340701427491737, guid: a6d4731e59cb1bc45bb9fed126fddb70,
+        type: 3}
+      propertyPath: ballArray.Array.data[1]
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7949340701427491737, guid: a6d4731e59cb1bc45bb9fed126fddb70,
+        type: 3}
+      propertyPath: ballArray.Array.data[2]
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7531156369720210147, guid: a6d4731e59cb1bc45bb9fed126fddb70,
         type: 3}
       propertyPath: m_LocalPosition.x
