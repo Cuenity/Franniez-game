@@ -8,7 +8,7 @@ public class Cannon : Platform
     private void Start()
     {
         gameState = GameState.Instance;
-        transform.GetChild(4).GetComponent<Canvas>().worldCamera = GameState.Instance.playerCamera.GetComponent<Camera>();
+        transform.Find("Canvas").GetComponent<Canvas>().worldCamera = GameState.Instance.playerCamera.GetComponent<Camera>();
     }
 
     private void OnCollisionEnter(Collision collision)

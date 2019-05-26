@@ -324,11 +324,6 @@ MonoBehaviour:
   platformSquare: {fileID: 9127627247367503243, guid: f64b25a01c7ede6419fceb8b4a3f8fe4,
     type: 3}
   ramp: {fileID: 3053333542818622701, guid: 5c1d50512c7b7eb4cb74387fcb1286df, type: 3}
-  trampoline: {fileID: 5560910613633582698, guid: 8d6f88143f60d1a4a90a93381baa5782,
-    type: 3}
-  boostPlatform: {fileID: 5868270851285057774, guid: 516ec392141bbba4ab8fe106760246dc,
-    type: 3}
-  cannon: {fileID: 2407898783473747654, guid: 38de07f2cf2689143a94adbc79eda188, type: 3}
   rotateSprite: {fileID: 6453307519854900062, guid: 4158dc43b49b823418fd10165cf9fa32,
     type: 3}
 --- !u!114 &6367653315144599610
