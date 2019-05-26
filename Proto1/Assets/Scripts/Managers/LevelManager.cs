@@ -29,10 +29,10 @@ public class LevelManager : MonoBehaviour
         Level14,
         Level15,
         Level16,
-        Level17,
+        //Level17,
         Level18,
-        Level19,
-        Level20,
+        //Level19,
+        //Level20,
         smiletTest,
         house,
         multiLevel1,
@@ -174,7 +174,6 @@ public class LevelManager : MonoBehaviour
         //{
         //    SpawnLevel(levelSettings);
         //}
-        //deze if else statement is 400 regels lang JONGE
         if (scenestring == "LevelEditor")
         {
             gameState.gridManager.width = 11;
@@ -215,7 +214,7 @@ public class LevelManager : MonoBehaviour
             }
         }
 
-        // vervang deze met ander jump level
+        // af
         else if (currentLevel == 4)
         {
             {
@@ -326,6 +325,7 @@ public class LevelManager : MonoBehaviour
             }
         }
 
+        // af
         else if (currentLevel == 16)
         {
             if (!levelIsSpawned)
@@ -334,22 +334,25 @@ public class LevelManager : MonoBehaviour
             }
         }
 
+        // af
         else if (currentLevel == 17)
         {
             if (!levelIsSpawned)
             {
-                //SpawnLevel(Level17);
+                SpawnLevel(portalrooms);
             }
         }
 
+        // af
         else if (currentLevel == 18)
         {
             if (!levelIsSpawned)
             {
-                //SpawnLevel(Level18);
+                SpawnLevel(Level18);
             }
         }
 
+        // af
         else if (currentLevel == 19)
         {
             if (!levelIsSpawned)
@@ -367,6 +370,25 @@ public class LevelManager : MonoBehaviour
             }
         }
 
+        else if (currentLevel == 21)
+        {
+            if (!levelIsSpawned)
+            {
+                // VERVANG. IS ALLEEN VOOR RC PRESENTATIE
+                SpawnLevel(eend);
+            }
+        }
+
+        else if (currentLevel == 22)
+        {
+            if (!levelIsSpawned)
+            {
+                // VERVANG. IS ALLEEN VOOR RC PRESENTATIE
+                SpawnLevel(smiletTest);
+            }
+        }
+
+        // af
         else if (currentLevel == 23)
         {
             if (!levelIsSpawned)
@@ -375,6 +397,7 @@ public class LevelManager : MonoBehaviour
             }
         }
 
+        // af
         else if (currentLevel == 24)
         {
             if (!levelIsSpawned)
@@ -383,6 +406,7 @@ public class LevelManager : MonoBehaviour
             }
         }
 
+        // af
         else if (currentLevel == 25)
         {
             if (!levelIsSpawned)
@@ -390,11 +414,44 @@ public class LevelManager : MonoBehaviour
                 SpawnLevel(smiletTest);
             }
         }
+
         else if (currentLevel == 26)
         {
             if (!levelIsSpawned)
             {
-                SpawnLevel(portalrooms);
+               
+            }
+        }
+
+        else if (currentLevel == 27)
+        {
+            if (!levelIsSpawned)
+            {
+
+            }
+        }
+
+        else if (currentLevel == 28)
+        {
+            if (!levelIsSpawned)
+            {
+
+            }
+        }
+
+        else if (currentLevel == 29)
+        {
+            if (!levelIsSpawned)
+            {
+
+            }
+        }
+
+        else if (currentLevel == 30)
+        {
+            if (!levelIsSpawned)
+            {
+
             }
         }
 
