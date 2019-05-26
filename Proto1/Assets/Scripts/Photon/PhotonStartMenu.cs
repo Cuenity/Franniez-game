@@ -128,6 +128,7 @@ public class PhotonStartMenu : MonoBehaviourPunCallbacks
     public void onClickSwitchToStartMenu()
     {
         DisconnectedCanvas.gameObject.SetActive(false);
+        PhotonNetwork.Disconnect();
         StartMenu.gameObject.SetActive(true);
     }
     public void onClickConnect()
@@ -343,19 +344,17 @@ public class PhotonStartMenu : MonoBehaviourPunCallbacks
     public override void OnPlayerLeftRoom(Player otherPlayer)
     {
         base.OnPlayerLeftRoom(otherPlayer);
-        if (PhotonNetwork.IsMasterClient)
-        { 
+        //if (PhotonNetwork.IsMasterClient & SceneManager.GetActiveScene().name !="MultiplayerStart")
+        //{ 
 
-            WaitingForPlayers.text = LocalizationManager.instance.GetLocalizedValue("multi_hostwaittext");
-            StartGame.interactable = false;
-        }
-        else
-        {
+        //    WaitingForPlayers.text = LocalizationManager.instance.GetLocalizedValue("multi_hostwaittext");
+        //    StartGame.interactable = false;
+        //}
+        
             //vieze fix
             PlayerDataController.instance.PreviousScene = 9999;
             PhotonNetwork.LoadLevel(10);
             Destroy(this.gameObject);
-        }
     }
     //public override void room //OnRoomListUpdate(List<RoomInfo> roomList)
     //{

@@ -375,8 +375,8 @@ public class LevelManager : MonoBehaviour
 
                 SpawnLevel(multiLevel1);
                 //vies
-                Destroy(GameObject.Find("player1Ball"));
-                Destroy(GameObject.Find("player2Ball"));
+                PhotonNetwork.Destroy(GameObject.Find("player1Ball"));
+                PhotonNetwork.Destroy(GameObject.Find("player2Ball"));
                 //einde vies
                 gameState.gridManager.InitPlayerGridsMultiPlayer(0, 9, 0, 9, 10, 19, 0, 9);
                 gameState.playerManager.MultiPlayerBallInit(42, 57);
@@ -394,13 +394,13 @@ public class LevelManager : MonoBehaviour
             {
                 SpawnLevel(multiLevel2);
                 //vies
-                Destroy(GameObject.Find("player1Ball"));
-                Destroy(GameObject.Find("player2Ball"));
+                PhotonNetwork.Destroy(GameObject.Find("player1Ball"));
+                PhotonNetwork.Destroy(GameObject.Find("player2Ball"));
                 //einde vies
                 //naamgeving zo slecht/vies bij playergrids
                 //eerste 2 is het begin eindpunt maar die laatste 2 is gewoon de hoogte 
                 gameState.gridManager.InitPlayerGridsMultiPlayer(0, 24, 0, 4, 135, 149, 0, 4);
-                gameState.playerManager.MultiPlayerBallInit(1, 125);
+                gameState.playerManager.MultiPlayerBallInit(1, 136);
                 gameState.UIManager.AddMultiplayerUI();
                 //vieze fix fixen na release candidate
                 
@@ -413,8 +413,8 @@ public class LevelManager : MonoBehaviour
             {
                 SpawnLevel(multiLevel3);
                 //vies
-                Destroy(GameObject.Find("player1Ball"));
-                Destroy(GameObject.Find("player2Ball"));
+                PhotonNetwork.Destroy(GameObject.Find("player1Ball"));
+                PhotonNetwork.Destroy(GameObject.Find("player2Ball"));
                 //einde vies
                 //naamgeving zo slecht/vies bij playergrids
                 //eerste 2 is het begin eindpunt maar die laatste 2 is gewoon de hoogte 
@@ -432,8 +432,8 @@ public class LevelManager : MonoBehaviour
             {
                 SpawnLevel(multiLevel4);
                 //vies
-                Destroy(GameObject.Find("player1Ball"));
-                Destroy(GameObject.Find("player2Ball"));
+                PhotonNetwork.Destroy(GameObject.Find("player1Ball"));
+                PhotonNetwork.Destroy(GameObject.Find("player2Ball"));
                 //einde vies
                 //naamgeving zo slecht/vies bij playergrids
                 //eerste 2 is het begin eindpunt maar die laatste 2 is gewoon de hoogte 
@@ -451,8 +451,8 @@ public class LevelManager : MonoBehaviour
             {
                 SpawnLevel(multiLevel5);
                 //vies
-                Destroy(GameObject.Find("player1Ball"));
-                Destroy(GameObject.Find("player2Ball"));
+                PhotonNetwork.Destroy(GameObject.Find("player1Ball"));
+                PhotonNetwork.Destroy(GameObject.Find("player2Ball"));
                 //einde vies
                 //naamgeving zo slecht/vies bij playergrids
                 //eerste 2 is het begin eindpunt maar die laatste 2 is gewoon de hoogte 
@@ -470,8 +470,8 @@ public class LevelManager : MonoBehaviour
             {
                 SpawnLevel(multiLevel6);
                 //vies
-                Destroy(GameObject.Find("player1Ball"));
-                Destroy(GameObject.Find("player2Ball"));
+                PhotonNetwork.Destroy(GameObject.Find("player1Ball"));
+                PhotonNetwork.Destroy(GameObject.Find("player2Ball"));
                 //einde vies
                 //naamgeving zo slecht/vies bij playergrids
                 //eerste 2 is het begin eindpunt maar die laatste 2 is gewoon de hoogte 
@@ -489,8 +489,8 @@ public class LevelManager : MonoBehaviour
             {
                 SpawnLevel(multiLevel7);
                 //vies
-                Destroy(GameObject.Find("player1Ball"));
-                Destroy(GameObject.Find("player2Ball"));
+                PhotonNetwork.Destroy(GameObject.Find("player1Ball"));
+                PhotonNetwork.Destroy(GameObject.Find("player2Ball"));
                 //einde vies
                 //naamgeving zo slecht/vies bij playergrids
                 //eerste 2 is het begin eindpunt maar die laatste 2 is gewoon de hoogte 
@@ -508,8 +508,8 @@ public class LevelManager : MonoBehaviour
             {
                 SpawnLevel(multiLevel8);
                 //vies
-                Destroy(GameObject.Find("player1Ball"));
-                Destroy(GameObject.Find("player2Ball"));
+                PhotonNetwork.Destroy(GameObject.Find("player1Ball"));
+                PhotonNetwork.Destroy(GameObject.Find("player2Ball"));
                 //einde vies
                 //naamgeving zo slecht/vies bij playergrids
                 //eerste 2 is het begin eindpunt maar die laatste 2 is gewoon de hoogte 
@@ -527,8 +527,8 @@ public class LevelManager : MonoBehaviour
             {
                 SpawnLevel(multiLevel9);
                 //vies
-                Destroy(GameObject.Find("player1Ball"));
-                Destroy(GameObject.Find("player2Ball"));
+                PhotonNetwork.Destroy(GameObject.Find("player1Ball"));
+                PhotonNetwork.Destroy(GameObject.Find("player2Ball"));
                 //einde vies
                 //naamgeving zo slecht/vies bij playergrids
                 //eerste 2 is het begin eindpunt maar die laatste 2 is gewoon de hoogte 
@@ -546,8 +546,8 @@ public class LevelManager : MonoBehaviour
             {
                 SpawnLevel(multiLevel10);
                 //vies
-                Destroy(GameObject.Find("player1Ball"));
-                Destroy(GameObject.Find("player2Ball"));
+                PhotonNetwork.Destroy(GameObject.Find("player1Ball"));
+                PhotonNetwork.Destroy(GameObject.Find("player2Ball"));
                 //einde vies
                 //naamgeving zo slecht/vies bij playergrids
                 //eerste 2 is het begin eindpunt maar die laatste 2 is gewoon de hoogte 
