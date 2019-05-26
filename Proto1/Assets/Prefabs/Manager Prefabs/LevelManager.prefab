@@ -50,8 +50,7 @@ MonoBehaviour:
     type: 3}
   level3JumpsEasy: {fileID: 3233195737499601190, guid: 0a9bfa353ea156b4eaf2613ec4b3e60f,
     type: 3}
-  LevelSettingLevel4TrampolineHard: {fileID: 6857793499659197117, guid: 6c27f9caf2f52614e8b503286cbb4e8c,
-    type: 3}
+  Level4: {fileID: 839846711271119275, guid: 87c7ab2fd73a309438b7f2211126ba91, type: 3}
   Level5: {fileID: 3084506684289652319, guid: 69e97c9c89b87ee43860849a80afe99a, type: 3}
   Level6BlackHoleBallAndJump: {fileID: 7417541486990352450, guid: 693c89e3168199341b9122658567a400,
     type: 3}
