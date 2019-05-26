@@ -25,6 +25,7 @@ public class PlatformManager : MonoBehaviour
     public PlatformSquare levelEditorPlatform;
     public Ramp levelEditorRampReversed;
     public Lift lift;
+    public Lift liftLocal;
 
     GameState gameState;
 
@@ -401,8 +402,9 @@ public class PlatformManager : MonoBehaviour
 
     public void InitLift(int startPosition, int endPosition)
     {
-        Lift liftLocal = Instantiate(lift);
+        liftLocal = Instantiate(lift);
         liftLocal.SetStartAndEndPoints(startPosition, endPosition);
+        lift.SetStartAndEndPoints(startPosition, endPosition);
         liftLocal.transform.position = liftLocal.startPoint;
         gameState.gridManager.AddFilledGridSpots(new List<int> { startPosition, endPosition }, SizeType.twoByOne);
     }

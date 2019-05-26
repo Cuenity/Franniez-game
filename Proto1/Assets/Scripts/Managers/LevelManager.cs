@@ -16,7 +16,7 @@ public class LevelManager : MonoBehaviour
     LevelSettings introLevel,
         level2RampEasy,
         level3JumpsEasy,
-        LevelSettingLevel4TrampolineHard,
+        Level4,
         Level5,
         Level6BlackHoleBallAndJump,
         Level7BoosterEasy,
@@ -210,8 +210,7 @@ public class LevelManager : MonoBehaviour
         {
             if (!levelIsSpawned)
             {
-                SpawnLevel(kroon);
-               // SpawnLevel(level3JumpsEasy);
+                SpawnLevel(level3JumpsEasy);
             }
         }
 
@@ -219,7 +218,7 @@ public class LevelManager : MonoBehaviour
         else if (currentLevel == 4)
         {
             {
-                SpawnLevel(eend);
+                SpawnLevel(Level4);
             }
         }
 
@@ -364,6 +363,30 @@ public class LevelManager : MonoBehaviour
             if (!levelIsSpawned)
             {
                 SpawnLevel(boom);
+            }
+        }
+
+        else if (currentLevel == 23)
+        {
+            if (!levelIsSpawned)
+            {
+                SpawnLevel(kroon);
+            }
+        }
+
+        else if (currentLevel == 24)
+        {
+            if (!levelIsSpawned)
+            {
+                SpawnLevel(eend);
+            }
+        }
+
+        else if (currentLevel == 25)
+        {
+            if (!levelIsSpawned)
+            {
+                SpawnLevel(smiletTest);
             }
         }
 
@@ -659,9 +682,12 @@ public class LevelManager : MonoBehaviour
 
                 }
             }
-            gameState.platformManager.lift.ResetPlatform();
             gameState.BuildingPhaseActive = true;
             gameState.uIRollingManager.ChangeEnviroment();
+            if (gameState.platformManager.liftLocal)
+            {
+                gameState.platformManager.liftLocal.ResetPlatform();
+            }
             gameState.playerBallManager.activePlayer.GetComponent<Rigidbody>().isKinematic = true;
 
         }
