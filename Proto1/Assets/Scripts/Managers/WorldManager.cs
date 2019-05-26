@@ -29,7 +29,7 @@ class WorldManager
             materials[1] = Resources.Load("PlatformMaterial/RampText", typeof(Material)) as Material;
         }
 
-        else if (LEVELNUMBER > NUMBERSTARTWORLD2 && LEVELNUMBER < NUMBERSTARTWORLD3)
+        else if (LEVELNUMBER > NUMBERSTARTWORLD2 && LEVELNUMBER <= NUMBERSTARTWORLD3)
         {
             materials[0] = Resources.Load("PlatformMaterial/RechthoekWinter", typeof(Material)) as Material;
             materials[1] = Resources.Load("PlatformMaterial/RampWinter", typeof(Material)) as Material;
@@ -48,7 +48,7 @@ class WorldManager
     {
         Material skyBox = Resources.Load("SkyBox/World1", typeof(Material)) as Material;
 
-        if (LEVELNUMBER > NUMBERSTARTWORLD2 && LEVELNUMBER < NUMBERSTARTWORLD3)
+        if (LEVELNUMBER > NUMBERSTARTWORLD2 && LEVELNUMBER <= NUMBERSTARTWORLD3)
         {
             skyBox = Resources.Load("SkyBox/Snow", typeof(Material)) as Material;
         }
@@ -68,7 +68,7 @@ class WorldManager
 
     public bool SetSnow()
     {
-        if(LEVELNUMBER > NUMBERSTARTWORLD2 && LEVELNUMBER < NUMBERSTARTWORLD3)
+        if(LEVELNUMBER > NUMBERSTARTWORLD2 && LEVELNUMBER <= NUMBERSTARTWORLD3)
         {
             return true;
         }
@@ -88,7 +88,7 @@ class WorldManager
             rampIcon = Resources.Load("Icons/RampWorld1Icon", typeof(Sprite)) as Sprite;
         }
 
-        else if (LEVELNUMBER > NUMBERSTARTWORLD2 && LEVELNUMBER < NUMBERSTARTWORLD3)
+        else if (LEVELNUMBER > NUMBERSTARTWORLD2 && LEVELNUMBER <= NUMBERSTARTWORLD3)
         {
             rampIcon = Resources.Load("Icons/RampWorld3Icon", typeof(Sprite)) as Sprite;
         }
@@ -114,7 +114,7 @@ class WorldManager
             rechthoekIcon = Resources.Load("Icons/RechthoekWorld1Icon", typeof(Sprite)) as Sprite;
         }
 
-        else if (LEVELNUMBER > NUMBERSTARTWORLD2 && LEVELNUMBER < NUMBERSTARTWORLD3)
+        else if (LEVELNUMBER > NUMBERSTARTWORLD2 && LEVELNUMBER <= NUMBERSTARTWORLD3)
         {
             rechthoekIcon = Resources.Load("Icons/RechthoekWorld3Icon", typeof(Sprite)) as Sprite;
         }
@@ -129,7 +129,7 @@ class WorldManager
     public int SetWorldMusic()
     {
         int level = 1;
-        if(LEVELNUMBER > NUMBERSTARTWORLD2 && LEVELNUMBER < NUMBERSTARTWORLD3)
+        if(LEVELNUMBER > NUMBERSTARTWORLD2 && LEVELNUMBER <= NUMBERSTARTWORLD3)
         {
             level = 2;
         }
