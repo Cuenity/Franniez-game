@@ -99,6 +99,8 @@ MonoBehaviour:
   boom: {fileID: 3249524214490673100, guid: b29b4e25e03b52147ad19084ef0d40a2, type: 3}
   eend: {fileID: 8444939348633585051, guid: 316d2a70c942e6d40886627643c8f34b, type: 3}
   kroon: {fileID: 7535228416744476494, guid: 4f1d70cb39b40a84b988472e858e8d44, type: 3}
+  portalrooms: {fileID: 6950744821931505961, guid: 943aa2c9a31134c4983835aca2039359,
+    type: 3}
   coinList: []
   stickerObject: {fileID: 0}
   finish: {fileID: 0}

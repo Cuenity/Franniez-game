@@ -47,7 +47,8 @@ public class LevelManager : MonoBehaviour
         multiLevel10,
         boom,
         eend,
-        kroon;
+        kroon,
+        portalrooms;
 
 
     #region levelmanagerMethods
@@ -387,6 +388,13 @@ public class LevelManager : MonoBehaviour
             if (!levelIsSpawned)
             {
                 SpawnLevel(smiletTest);
+            }
+        }
+        else if (currentLevel == 26)
+        {
+            if (!levelIsSpawned)
+            {
+                SpawnLevel(portalrooms);
             }
         }
 
