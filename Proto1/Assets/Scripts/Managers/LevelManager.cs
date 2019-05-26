@@ -682,9 +682,12 @@ public class LevelManager : MonoBehaviour
 
                 }
             }
-            gameState.platformManager.lift.ResetPlatform();
             gameState.BuildingPhaseActive = true;
             gameState.uIRollingManager.ChangeEnviroment();
+            if (gameState.platformManager.liftLocal)
+            {
+                gameState.platformManager.liftLocal.ResetPlatform();
+            }
             gameState.playerBallManager.activePlayer.GetComponent<Rigidbody>().isKinematic = true;
 
         }
