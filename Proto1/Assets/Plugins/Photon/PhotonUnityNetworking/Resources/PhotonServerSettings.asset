@@ -36,5 +36,6 @@ MonoBehaviour:
   - FlagHit
   - FlagUnHit
   - WinLevel
+  - BackToLevelSelect
   DisableAutoOpenWizard: 1
   ShowSettings: 1

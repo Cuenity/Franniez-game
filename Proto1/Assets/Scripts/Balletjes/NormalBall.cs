@@ -78,4 +78,13 @@ public class NormalBall : MonoBehaviourPun
             PhotonNetwork.LoadLevel(7);
         }
     }
+    [PunRPC]
+    void BackToLevelSelect()
+    {
+        PhotonStartMenu.Instance.ComesFromLevel = true;
+        if (PhotonNetwork.IsMasterClient)
+        {
+            PhotonNetwork.LoadLevel(10);
+        }
+    }
 }

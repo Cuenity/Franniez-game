@@ -55,9 +55,11 @@ public class PauseMenuManager : MonoBehaviour
     // Button Action: Go to Level Select
     public void SelectLevel()
     {
+        //vieze fix
         if (PhotonNetwork.InRoom)
         {
-            PhotonNetwork.LoadLevel(10);
+            PhotonView view = GameState.Instance.playerBallManager.activePlayer.GetComponent<PhotonView>();
+            view.RPC("BackToLevelSelect", RpcTarget.All);
         }
         else
         {

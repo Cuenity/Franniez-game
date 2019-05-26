@@ -20,13 +20,44 @@ public class PhotonStartMenu : MonoBehaviourPunCallbacks
     private int selectedLevel=1;
     private bool isCreator;
 
+    private static PhotonStartMenu photonStartMenu;
+
+    public bool ComesFromLevel;
+    
+    public static PhotonStartMenu Instance
+    {
+        get { return photonStartMenu; }
+    }
     void Awake()
     {
         // #Critical
         // this makes sure we can use PhotonNetwork.LoadLevel() on the master client and all clients in the same room sync their level automatically
 
         PhotonNetwork.AutomaticallySyncScene = true;
-        DontDestroyOnLoad(this);
+        if (photonStartMenu == null)
+        {
+            photonStartMenu = this;
+            DontDestroyOnLoad(this);
+        }
+        else
+        {
+            Destroy(photonStartMenu.gameObject);
+            photonStartMenu = this;
+            DontDestroyOnLoad(this);
+        }
+        if (ComesFromLevel)
+        {
+            if (PhotonNetwork.IsMasterClient)
+            {
+                DisconnectedCanvas.gameObject.SetActive(false);
+                HostWait.gameObject.SetActive(true);
+            }
+            else
+            {
+                DisconnectedCanvas.gameObject.SetActive(false);
+                ClientWait.gameObject.SetActive(true);
+            }
+        }
         //PlayerDataController.instance.PreviousScene()
     }
     
@@ -87,6 +118,10 @@ public class PhotonStartMenu : MonoBehaviourPunCallbacks
         if (SceneManager.GetActiveScene().name == "StartMenu")
         {
             Destroy(this.gameObject);
+        }
+        else
+        {
+            
         }
         if (!PhotonNetwork.IsConnected)
         {
@@ -149,6 +184,8 @@ public class PhotonStartMenu : MonoBehaviourPunCallbacks
     public void onClickDisconnectAndReturn()
     {
         PhotonNetwork.Disconnect();
+        DisconnectedCanvas.gameObject.SetActive(false);
+        StartMenu.gameObject.SetActive(true);
         SceneSwitcher.Instance.AsynchronousLoadStartNoLoadingBar("StartMenu");
         Destroy(this.gameObject);
     }
