@@ -48,8 +48,8 @@ MonoBehaviour:
   collectables: 1
   spawnPoint: 0
   finishPosition: 0
-  levelPlatformenString: 
-  playerPlatformsArray: 0300000003000000030000000300000003000000
+  levelPlatformenString: BigJump
+  playerPlatformsArray: 0000000000000000020000000000000000000000
   sterArray: 000000000000000000000000
   portalArray: 0000000000000000
   liftArray: 0000000000000000

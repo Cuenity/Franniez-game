@@ -384,7 +384,7 @@ public class LevelManager : MonoBehaviour
         {
             if (!levelIsSpawned)
             {
-                //SpawnLevel(Level22);
+                SpawnLevel(Level22);
             }
         }
 
