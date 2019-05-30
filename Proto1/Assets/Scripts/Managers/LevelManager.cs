@@ -33,6 +33,8 @@ public class LevelManager : MonoBehaviour
         Level18,
         //Level19,
         //Level20,
+        Level21,
+        Level22,
         smiletTest,
         house,
         multiLevel1,
@@ -374,8 +376,7 @@ public class LevelManager : MonoBehaviour
         {
             if (!levelIsSpawned)
             {
-                // VERVANG. IS ALLEEN VOOR RC PRESENTATIE
-                SpawnLevel(eend);
+                SpawnLevel(Level21);
             }
         }
 
@@ -383,8 +384,7 @@ public class LevelManager : MonoBehaviour
         {
             if (!levelIsSpawned)
             {
-                // VERVANG. IS ALLEEN VOOR RC PRESENTATIE
-                SpawnLevel(smiletTest);
+                //SpawnLevel(Level22);
             }
         }
 

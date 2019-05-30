@@ -69,10 +69,9 @@ MonoBehaviour:
   Level14: {fileID: 5007332098306194189, guid: 9741184ced8e2de4faa7e705887ecb92, type: 3}
   Level15: {fileID: 1198601027278409110, guid: c9f6962a1e3080f4b98914728cc4b831, type: 3}
   Level16: {fileID: 7120932647302007747, guid: 283259c5cc240ed43a03f9a2ca6c6b53, type: 3}
-  Level17: {fileID: 0}
   Level18: {fileID: 7955875483299194156, guid: 772d39246426cfe4bbcd08d22a700653, type: 3}
-  Level19: {fileID: 0}
-  Level20: {fileID: 0}
+  Level21: {fileID: 8787918075524053962, guid: 5bcf157da7abdfa4d86d660cbcdf46b8, type: 3}
+  Level22: {fileID: 7190366377751410618, guid: c645896e7b282b640b02fdb52776fede, type: 3}
   smiletTest: {fileID: 6857793499659197117, guid: 6c27f9caf2f52614e8b503286cbb4e8c,
     type: 3}
   house: {fileID: 6330327931917537949, guid: 3f7591ef3a4175d4f9d36e3aade1b938, type: 3}
