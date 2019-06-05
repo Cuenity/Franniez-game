@@ -29,12 +29,14 @@ public class LevelManager : MonoBehaviour
         Level14,
         Level15,
         Level16,
-        //Level17,
         Level18,
-        //Level19,
-        //Level20,
         Level21,
         Level22,
+        Level26,
+        Level27,
+        Level28,
+        Level29,
+        Level30,
         smiletTest,
         house,
         multiLevel1,
@@ -419,7 +421,7 @@ public class LevelManager : MonoBehaviour
         {
             if (!levelIsSpawned)
             {
-               
+                SpawnLevel(Level26);
             }
         }
 
@@ -427,7 +429,7 @@ public class LevelManager : MonoBehaviour
         {
             if (!levelIsSpawned)
             {
-
+                SpawnLevel(Level27);
             }
         }
 
@@ -435,7 +437,7 @@ public class LevelManager : MonoBehaviour
         {
             if (!levelIsSpawned)
             {
-
+                SpawnLevel(Level28);
             }
         }
 
@@ -443,7 +445,7 @@ public class LevelManager : MonoBehaviour
         {
             if (!levelIsSpawned)
             {
-
+                SpawnLevel(Level29);
             }
         }
 
@@ -451,7 +453,7 @@ public class LevelManager : MonoBehaviour
         {
             if (!levelIsSpawned)
             {
-
+                SpawnLevel(Level30);
             }
         }
 
