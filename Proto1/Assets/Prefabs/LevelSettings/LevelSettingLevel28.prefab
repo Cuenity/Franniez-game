@@ -48,8 +48,8 @@ MonoBehaviour:
   collectables: 1
   spawnPoint: 0
   finishPosition: 0
-  levelPlatformenString: 
-  playerPlatformsArray: 0200000002000000020000000200000002000000
+  levelPlatformenString: RredzoneFreefall
+  playerPlatformsArray: 0600000009000000000000000100000000000000
   sterArray: 000000000000000000000000
   portalArray: 0000000000000000
   liftArray: 0000000000000000
