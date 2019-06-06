@@ -13,7 +13,7 @@ public class RedZone : Platform
 
     private void OnTriggerEnter(Collider other)
     {
-        if (!other.isTrigger && !other.name.Contains("BlackHole"))
+        if (!other.isTrigger)
         {
             gameState.levelManager.SetBuildingPhase();
         }
