@@ -48,12 +48,12 @@ MonoBehaviour:
   collectables: 1
   spawnPoint: 0
   finishPosition: 0
-  levelPlatformenString: 
-  playerPlatformsArray: 0200000002000000020000000200000002000000
+  levelPlatformenString: JumpBlackholeBall
+  playerPlatformsArray: 0600000003000000010000000100000000000000
   sterArray: 000000000000000000000000
   portalArray: 0000000000000000
   liftArray: 0000000000000000
-  ballArray: 010101
+  ballArray: 000101
   levelPlatformen:
     width: 0
     heigth: 0
