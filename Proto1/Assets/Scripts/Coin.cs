@@ -23,11 +23,6 @@ public class Coin : MonoBehaviour
         gameState.levelManager.coinList.Add(this);
     }
     
-    void Update()
-    {
-        
-    }
-
     public void go_toBall(Collider other)
     {
         Rigidbody Body = this.GetComponent<Rigidbody>();

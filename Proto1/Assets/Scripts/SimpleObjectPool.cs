@@ -4,6 +4,7 @@ using System.Collections.Generic;
 
 
 /*
+   Niet zelf geschreven:
     https://unity3d.com/learn/tutorials/topics/user-interface-ui/adding-buttons-script
 */
 

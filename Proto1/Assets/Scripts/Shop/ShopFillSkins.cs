@@ -1,20 +1,23 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class ShopFillSkins : MonoBehaviour
 {
+    // Serializefields
     [SerializeField] private ShopCategory[] shopCategories;
     [SerializeField] private Button button;
     [SerializeField] private SimpleObjectPool simpleObjectPool;
     [SerializeField] private Transform soloSkinsContent, categorySkinsContent;
     [SerializeField] private GameObject marginRight;
 
-    private List<ShopSkinButton> skinButtons;
-    private List<ShopSkinButton> categoryButtons;
+    // Private properties
+    private List<ShopSkinButton> skinButtons, categoryButtons;
     private List<SkinObject> skins;
 
+    // Triggers
     public delegate void ClickAction(SkinObject cost, ShopSkinButton button);
     public delegate void ClickActionBundle(ShopCategory category, ShopSkinButton button);
     public event ClickAction SkinButtonClicked;
@@ -59,40 +62,38 @@ public class ShopFillSkins : MonoBehaviour
 
         }
 
-        // Zet een margin aan de rechter kant voor scrollview voor solo skins en bundles
+        // Zet een margin aan de rechterkant voor scrollview voor skins en bundles
         SetRightMarginForButtons(soloSkinsContent);
         SetRightMarginForButtons(categorySkinsContent);
     }
 
     void BuySkin(SkinObject skin, ShopSkinButton button)
     {
-
+        // Send info to ShopButtons
         SkinButtonClicked(skin, button);
+        ChangeCostText();
+    }
 
+    void BuyBundle(ShopCategory category, ShopSkinButton button)
+    {
+        int amountBundlesFromPlayer = PlayerDataController.instance.Player.categoriesByName.Count;
+
+        BundleButtonClicked(category, button);
+
+        // If the player had enough money the previous amount is less then the new count
+        if (amountBundlesFromPlayer < PlayerDataController.instance.Player.categoriesByName.Count)
+        {
+            ChangeCostText();
+        }
+    }
+
+    private void ChangeCostText()
+    {
         int index = 0;
         foreach (ShopSkinButton singleButton in skinButtons)
         {
             singleButton.ChangeSkinCostText(skins[index]);
             index++;
-        }
-
-
-    }
-
-    void BuyBundle(ShopCategory category, ShopSkinButton button)
-    {
-        int aantal = PlayerDataController.instance.Player.categoriesByName.Count;
-
-        BundleButtonClicked(category, button);
-
-        if (aantal < PlayerDataController.instance.Player.categoriesByName.Count)
-        {
-            int index = 0;
-            foreach (ShopSkinButton singleButton in skinButtons)
-            {
-                singleButton.ChangeSkinCostText(skins[index]);
-                index++;
-            }
         }
     }
 
@@ -103,7 +104,7 @@ public class ShopFillSkins : MonoBehaviour
          *      Wanneer deze niet toegevoegd wordt sluit de laatste button direct
          *      tegen de rechterkant van de panel aan. Om een lege ruimte te creeeëren zoals
          *      aan de linkerkant moet er een EmpyObject toegevoegd worden. Dit kan alleen via code
-         *      omdat er er dynamisch buttons worden aangemaakt. 
+         *      omdat er dynamisch buttons worden aangemaakt. 
          */
 
         marginRight = (GameObject)GameObject.Instantiate(marginRight);

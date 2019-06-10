@@ -6,13 +6,15 @@ using System;
 
 public class PlayerDataController : MonoBehaviour
 {
+    // Public static
     public static PlayerDataController instance;
 
+    // Properties
     public PlayerData Player { get; set; }
     public int PreviousScene { get; set; }
     public int PreviousSceneCoinCount { get; set; }
 
-    public Material ballMaterial;
+    public Material ballMaterial { get; set; }
 
     // Localization
     private readonly string fileName = "PlayerData.json";
