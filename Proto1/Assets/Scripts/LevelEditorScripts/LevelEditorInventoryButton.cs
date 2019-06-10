@@ -36,7 +36,5 @@ public class LevelEditorInventoryButton : MonoBehaviour
     {
         inventoryButtonAllowed = true;
     }
-    public void Update()
-    {
-    }
+
 }

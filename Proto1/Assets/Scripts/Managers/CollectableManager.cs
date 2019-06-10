@@ -20,12 +20,6 @@ public class CollectableManager : MonoBehaviour
         gameState = GameState.Instance;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
     public void InitCollectables(List<Vector3> coinPositions, Vector3 finishPosition)
     {
         gameState = GameState.Instance;

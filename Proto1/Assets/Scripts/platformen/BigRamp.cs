@@ -10,12 +10,6 @@ public class BigRamp : Platform
         
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     internal void SpawnRamp(Vector3 spawnPosition)
     {
         BigRamp ramp = Instantiate(this, spawnPosition, new Quaternion(0, 0, 0, 0));

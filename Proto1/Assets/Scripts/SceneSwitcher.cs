@@ -37,12 +37,6 @@ public class SceneSwitcher : MonoBehaviour
         instance = this;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     internal void AsynchronousLoadStart(string scene)
     {
         //coinList.Clear();
