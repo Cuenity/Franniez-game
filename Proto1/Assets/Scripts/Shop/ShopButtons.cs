@@ -8,6 +8,7 @@ using System.Timers;
 
 public class ShopButtons : MonoBehaviour
 {
+    // Serialize fields
     [SerializeField] private GameObject skinsPanel, musicPanel, coinsPanel;
     [SerializeField] public Text amountCoinsPlayer, notEnoughCoins, titleWarningPanel, buyCoinsText;
     [SerializeField] private GameObject warningPanel, notEnoughCoinsObject;
@@ -16,16 +17,18 @@ public class ShopButtons : MonoBehaviour
     private float startTime;
     private float endTime;
 
+    // Private properties
     private int buyAmountCoins = 0;
     private bool buyNewCoins = false;
     private PlayerDataController playerDataController;
 
-    // Verander naar niet static events: Kijk naar Settings sound button voor voorbeeld
+    // Panel Category
     public delegate void ClickAction(string name);
-    public static event ClickAction ChangeImage;
+    public event ClickAction ChangeImage;
 
     public void Awake()
     {
+        // Disable other panels
         musicPanel.SetActive(false);
         coinsPanel.SetActive(false);
 
@@ -49,13 +52,15 @@ public class ShopButtons : MonoBehaviour
         SceneSwitcher.Instance.AsynchronousLoadStart("StartMenu");
     }
 
-    public void ShowSkinsPanel(string buttonName)
+    public void SwitchPanel(string buttonName)
     {
+        // Disable all panels
         skinsPanel.SetActive(false);
         musicPanel.SetActive(false);
         coinsPanel.SetActive(false);
         warningPanel.SetActive(false);
 
+        // Set selected panel on active
         switch (buttonName)
         {
             case "Skins Button":
@@ -70,9 +75,12 @@ public class ShopButtons : MonoBehaviour
             default:
                 break;
         }
+
+        // Change the panel buttons image
         ChangeImage(buttonName);
     }
 
+    // Player wants to buy coins
     public void BuyCoins(int amount)
     {
         buyAmountCoins = amount;
@@ -82,12 +90,15 @@ public class ShopButtons : MonoBehaviour
 
     public void BuySkin(SkinObject skin, ShopSkinButton button)
     {
+        // If the player already bought the skin then it will only select the skin 
         if (playerDataController.Player.materialsByName.Contains(skin.skinName))
         {
             playerDataController.SetActiveMaterial(skin.material);
             button.ChangeSkinCostText(skin);
             GAManager.ShopSelectedSkin(skin.skinName);
         }
+
+        // Buy skin when player has enough coins
         else if (playerDataController.RemoveShopCoins(skin.cost))
         {
             playerDataController.AddMaterial(skin);
@@ -96,6 +107,8 @@ public class ShopButtons : MonoBehaviour
             UpdateCoins();
             GAManager.ShopBoughtSkin(skin.skinName);
         }
+
+        // Player doesn't have enough coins
         else
         {
             SetWarningCoins(skin.cost);
@@ -103,32 +116,37 @@ public class ShopButtons : MonoBehaviour
         }
     }
 
+    // Buy multiple skins, bundles
     public void BuyBundle(ShopCategory category, ShopSkinButton button)
     {
-        if (!playerDataController.Player.categoriesByName.Contains(category.Name))
+        // Do nothing when the player already has the bundle
+        if (playerDataController.Player.categoriesByName.Contains(category.Name)){return;}
+
+        // Check if player has enough coins
+        if (playerDataController.RemoveShopCoins(category.cost))
         {
-            if (playerDataController.RemoveShopCoins(category.cost))
-            {
-                playerDataController.AddBundle(category);
+            playerDataController.AddBundle(category);
 
-                foreach (SkinObject skin in category.skins)
-                {
-                    playerDataController.AddMaterial(skin);
-                    button.ChangeSkinCostText(skin);
-                }
-
-                button.ChangeBundleCostImage(category);
-                UpdateCoins();
-                GAManager.ShopBoughtBundle(category);
-            }
-            else
+            // Add all skins from the bundle
+            foreach (SkinObject skin in category.skins)
             {
-                SetWarningCoins(category.cost);
-                warningPanel.SetActive(true);
+                playerDataController.AddMaterial(skin);
+                button.ChangeSkinCostText(skin);
             }
+
+            button.ChangeBundleCostImage(category);
+            UpdateCoins();
+            GAManager.ShopBoughtBundle(category);
         }
+        else
+        {
+            SetWarningCoins(category.cost);
+            warningPanel.SetActive(true);
+        }
+
     }
 
+    // Update the amount of coins 
     private void UpdateCoins()
     {
         amountCoinsPlayer.text = playerDataController.ReturnCoins().ToString();
@@ -155,10 +173,11 @@ public class ShopButtons : MonoBehaviour
         }
         else
         {
-            ShowSkinsPanel("Coins Button");
+            SwitchPanel("Coins Button");
         }
     }
 
+    // Warning message for not enough coins
     private void SetWarningCoins(int cost)
     {
         buyCoinsText.enabled = false;

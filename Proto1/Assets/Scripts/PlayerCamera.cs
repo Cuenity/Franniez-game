@@ -52,18 +52,6 @@ public class PlayerCamera : MonoBehaviour
         }
     }
 
-    private void Update()
-    {
-        if (PhotonNetwork.InRoom)
-        {
-
-        }
-        else if (worldManager.SetSnow())
-        {
-            snowFalling.transform.position = this.transform.position - new Vector3(0, -3, -2.5f);
-        }
-    }
-
     void FixedUpdate()
     {
         //if rolling phase dan alleen het balletje volgen en je mag zoomen
@@ -179,6 +167,14 @@ public class PlayerCamera : MonoBehaviour
     // lateupdate want anders was er een frame tussen de drag active en het locken van de camera
     private void LateUpdate()
     {
+        if (PhotonNetwork.InRoom)
+        {
+
+        }
+        else if (worldManager.SetSnow())
+        {
+            snowFalling.transform.position = this.transform.position - new Vector3(0, -3, -2.5f);
+        }
         if (gameState.RollingPhaseActive == false && gameState.levelManager.bigLevel)
         {
             if (platformDragActive == false)

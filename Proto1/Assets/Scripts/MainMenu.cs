@@ -12,17 +12,13 @@ public class MainMenu : MonoBehaviour
     private Canvas StartMenuCanvas, SettingsCanvas, LanguageCanvas;
 
     // Private properties
-    private bool Sound;
-    private bool Vibration;
+    private bool sound, vibration;
     private PlayerData player;
-    private int volumeOnOf;
-    private int vibrateOf;
+    private int volumeOnOf, vibrateOf;
 
     // Event triggers for changing the Language and/or Sound in the setting Canvas
     public delegate void ClickAction();
-    public event ClickAction ChangedSound;
-    public event ClickAction ChangeLanguage;
-    public event ClickAction ChangedVibration;
+    public event ClickAction ChangedSound, ChangeLanguage, ChangedVibration;
 
     public void Start()
     {
@@ -34,13 +30,13 @@ public class MainMenu : MonoBehaviour
         if (volumeOnOf <= 1)
         {
             // Set volume on
-            Sound = true;
+            sound = true;
             PlayerPrefs.SetInt("Sound", 1);
         }
         else
         {
             // Set volume off
-            Sound = false;
+            sound = false;
             AudioListener.volume = 0f;
         }
 
@@ -49,29 +45,18 @@ public class MainMenu : MonoBehaviour
         if (volumeOnOf <= 1)
         {
             // Set volume on
-            Vibration = true;
+            vibration = true;
             PlayerPrefs.SetInt("Vibration", 1);
         }
         else
         {
             // Set volume off
-            Vibration = false;
+            vibration = false;
             AudioListener.volume = 0f;
         }
-
-        // Test kut coins
-        string coins = PlayerDataController.instance.Player.ShopCoins.ToString();
-        //Debug.Log(coins);
-        int coins2 = PlayerDataController.instance.ReturnCoins();
-        //Debug.Log(coins2);
-
     }
 
-    // Button Action: Go to Level Select Scene
-    public void Button_StartGame()
-    {
-        SceneSwitcher.Instance.AsynchronousLoadStartNoLoadingBar("LevelSelect");
-    }
+
 
 
     // In Start Method this functions get called for disabling Settings- and Languagecanvas
@@ -183,6 +168,12 @@ public class MainMenu : MonoBehaviour
         // Eventlistner for changing Sound Button Image
         ChangedVibration();
 
+    }
+
+    // Button Action: Go to Level Select Scene
+    public void Button_StartGame()
+    {
+        SceneSwitcher.Instance.AsynchronousLoadStartNoLoadingBar("LevelSelect");
     }
 
     #endregion

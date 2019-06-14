@@ -16,17 +16,7 @@ public class LevelEditorGridManager : MonoBehaviour
 
     public List<Vector3> secretGridSquares = new List<Vector3>();
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
     //voor het laden van levels
     internal void Build_Grid_FromJSON_With_Visuals(int width, int heigth)
     {

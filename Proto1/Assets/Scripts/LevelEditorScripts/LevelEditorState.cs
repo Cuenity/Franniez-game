@@ -47,10 +47,7 @@ public class LevelEditorState : MonoBehaviour
         //ReadLevelsFromText("Level1");
     }
     
-    void Update()
-    {
-        
-    }
+ }
 
     public void SpawnFreshGrid()
     {

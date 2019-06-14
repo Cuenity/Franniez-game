@@ -31,6 +31,8 @@ class GAManager : MonoBehaviour
     {
         int levelNumber = PlayerDataController.instance.PreviousScene;
         string levelNumberToString = levelNumber.ToString();
+
+        // Formatting
         if (levelNumber < 10)
         {
             levelNumberToString = "0" + levelNumberToString;
@@ -47,6 +49,7 @@ class GAManager : MonoBehaviour
         int levelNumber = PlayerDataController.instance.PreviousScene;
         string levelString = "Level_";
 
+        // Formatting
         if (levelNumber < 10)
         {
             levelString += "0" + levelNumber.ToString();
@@ -75,10 +78,7 @@ class GAManager : MonoBehaviour
         {
             GameAnalytics.NewProgressionEvent(GAProgressionStatus.Fail, levelString.ToString());
         }
-
-
     }
-
     #endregion
 
     #region Shop
@@ -107,6 +107,8 @@ class GAManager : MonoBehaviour
     public static void ShopDonation(int amount)
     {
         string bundleName = $"Bundle {amount} coins";
+
+        // Int is the only type that will be allowed in GameAnalystics
         int euro = 1;
 
         if(amount == 210)
@@ -142,35 +144,6 @@ class GAManager : MonoBehaviour
     public static void TwitterAPIError()
     {
         GameAnalytics.NewDesignEvent("SocialMedia:Twitter:API_Error");
-    }
-    #endregion
-
-    #region Multiplayer
-    // -----------------------------     MULTIPLAYER     ----------------------------- \\
-
-    public static void StartMultiplayer()
-    {
-
-    }
-
-    public static void MultiplayerStartLevel()
-    {
-
-    }
-
-    public static void MultiplayerRandomRoom()
-    {
-
-    }
-
-    public static void MultiplayerMakeRoom()
-    {
-
-    }
-
-    public static void MultiplayerJoinRoom()
-    {
-
     }
     #endregion
 }

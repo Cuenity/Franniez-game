@@ -5,16 +5,11 @@ using UnityEngine.UI;
 
 public class SkinsButtonImage : MonoBehaviour
 {
-    public Sprite panel_On, panel_Off;
+    [SerializeField] private Sprite panel_On, panel_Off;
 
     private void OnEnable()
     {
-        ShopButtons.ChangeImage += ChangeImage;
-    }
-
-    private void OnDisable()
-    {
-        ShopButtons.ChangeImage -= ChangeImage;
+        GetComponentInParent<ShopButtons>().ChangeImage += ChangeImage;
     }
 
     void ChangeImage(string name)

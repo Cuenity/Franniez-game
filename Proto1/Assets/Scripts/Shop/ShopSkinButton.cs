@@ -12,8 +12,8 @@ public class ShopSkinButton : MonoBehaviour
 
     private SkinObject skinObject;
     private SkinObject[] listSkins;
-    private string textActive = LocalizationManager.instance.GetLocalizedValue("shop_Active");
-    private string textOwned = LocalizationManager.instance.GetLocalizedValue("shop_Owned");
+    private readonly string textActive = LocalizationManager.instance.GetLocalizedValue("shop_Active");
+    private readonly string textOwned = LocalizationManager.instance.GetLocalizedValue("shop_Owned");
 
     public void Setup(SkinObject skin)
     {

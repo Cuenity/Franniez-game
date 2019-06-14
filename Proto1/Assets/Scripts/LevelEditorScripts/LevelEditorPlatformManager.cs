@@ -30,17 +30,7 @@ public class LevelEditorPlatformManager : MonoBehaviour
     [SerializeField]
     public LevelEditorBall ballClass;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
     public void spawnPlatformOnGrid(Vector3 position, GameObject platformToPlace)
     {
         //als deze methode alleen is voor speler blokjes kunnen we hier die glow doen

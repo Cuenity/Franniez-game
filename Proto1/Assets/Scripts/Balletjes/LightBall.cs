@@ -3,7 +3,6 @@ using UnityEngine;
 
 public class LightBall : MonoBehaviourPun
 {
-    // Start is called before the first frame update
     private GameState gameState;
     public GameObject lightballEffect;
 

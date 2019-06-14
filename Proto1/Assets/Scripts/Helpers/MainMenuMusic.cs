@@ -20,7 +20,7 @@ public class MainMenuMusic : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
+    // Dit moet veranderd worden naar scenemanager
     void Update()
     {
         if(SceneManager.GetActiveScene().name == "1" || SceneManager.GetActiveScene().name == "VictoryScreen")

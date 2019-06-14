@@ -25,10 +25,4 @@ public class WorldMusic : MonoBehaviour
         }
         gameObject.GetComponent<AudioSource>().Play();
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

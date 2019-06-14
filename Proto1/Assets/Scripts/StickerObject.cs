@@ -18,10 +18,6 @@ public class StickerObject : MonoBehaviour
         gameState.levelManager.stickerObject = this;
     }
 
-    void Update()
-    {
-
-    }
 
     private void OnTriggerEnter(Collider other)
     {

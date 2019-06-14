@@ -10,15 +10,14 @@ namespace Assets.Scripts
 {
     class ChangeColorTextLanguage : MonoBehaviour
     {
-        public Text EnglishText;
-        public Text DutchText;
-        public Text SpanishText;
+        [SerializeField]
+        private Text EnglishText, DutchText, SpanishText;
 
-        private Color32 SelectedColor = new Color32(47, 140, 242, 255);
+        private Color32 selectedColor = new Color32(47, 140, 242, 255);
+        private Color32 whiteColor = new Color32(255, 255, 255, 255);
 
         public void Awake()
         {
-
             SetColor();
         }
 
@@ -33,13 +32,13 @@ namespace Assets.Scripts
             switch (PlayerDataController.instance.Player.language)
             {
                 case 0:
-                    DutchText.color = SelectedColor;
+                    DutchText.color = selectedColor;
                     break;
                 case 1:
-                    EnglishText.color = SelectedColor;
+                    EnglishText.color = selectedColor;
                     break;
                 case 2:
-                    SpanishText.color = SelectedColor;
+                    SpanishText.color = selectedColor;
                     break;
                 default:
                     break;
@@ -48,9 +47,9 @@ namespace Assets.Scripts
 
         public void ChangeTextColor()
         {
-            DutchText.color = new Color(255, 255, 255, 255);
-            EnglishText.color = new Color(255, 255, 255, 255);
-            SpanishText.color = new Color(255, 255, 255, 255);
+            DutchText.color = whiteColor;
+            EnglishText.color = whiteColor;
+            SpanishText.color = whiteColor;
             SetColor();
         }
 
