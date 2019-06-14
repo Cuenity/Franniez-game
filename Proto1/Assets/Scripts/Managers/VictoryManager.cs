@@ -29,7 +29,7 @@ public class VictoryManager : MonoBehaviour
 
     private void SetButtonsForPhoton()
     {
-        // Zet buttons uit in MP voor niet host
+        // Zet buttons uit in MP voor niet host voorkomt rare situaties waar de client en host niet dezelfde scene hebben
         if (PhotonNetwork.InRoom)
         {
             if (!PhotonNetwork.IsMasterClient)

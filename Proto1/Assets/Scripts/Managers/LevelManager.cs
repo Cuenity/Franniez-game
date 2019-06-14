@@ -469,10 +469,7 @@ public class LevelManager : MonoBehaviour
                 gameState.gridManager.InitPlayerGridsMultiPlayer(0, 9, 0, 9, 10, 19, 0, 9);
                 gameState.playerManager.MultiPlayerBallInit(42, 57);
                 gameState.UIManager.AddMultiplayerUI();
-                //vieze fix fixen na release candidate
-               
-                ////GameState.Instance.PreviousLevel = 27;
-                ////PlayerDataController.instance.PreviousScene = 27;
+                
             }
         }
 
@@ -490,7 +487,6 @@ public class LevelManager : MonoBehaviour
                 gameState.gridManager.InitPlayerGridsMultiPlayer(0, 24, 0, 4, 135, 149, 0, 4);
                 gameState.playerManager.MultiPlayerBallInit(1, 136);
                 gameState.UIManager.AddMultiplayerUI();
-                //vieze fix fixen na release candidate
                 
 
             }
@@ -509,7 +505,6 @@ public class LevelManager : MonoBehaviour
                 gameState.gridManager.InitPlayerGridsMultiPlayer(0, 6, 0, 6, 8, 14, 0, 6);
                 gameState.playerManager.MultiPlayerBallInit(1, 13);
                 gameState.UIManager.AddMultiplayerUI();
-                //vieze fix fixen na release candidate
                 
 
             }
@@ -528,7 +523,6 @@ public class LevelManager : MonoBehaviour
                 //gameState.gridManager.InitPlayerGridsMultiPlayer(0, 24, 0, 4, 125, 149, 0, 4);
                 gameState.playerManager.MultiPlayerBallInit(0, 1);
                 gameState.UIManager.AddMultiplayerUI();
-                //vieze fix fixen na release candidate
                 
 
             }
@@ -547,7 +541,6 @@ public class LevelManager : MonoBehaviour
                 //gameState.gridManager.InitPlayerGridsMultiPlayer(0, 24, 0, 4, 125, 149, 0, 4);
                 gameState.playerManager.MultiPlayerBallInit(1, 13);
                 gameState.UIManager.AddMultiplayerUI();
-                //vieze fix fixen na release candidate
                 
 
             }
@@ -566,8 +559,6 @@ public class LevelManager : MonoBehaviour
                 gameState.gridManager.InitPlayerGridsMultiPlayer(0, 6, 0, 10, 8, 14, 0, 10);
                 gameState.playerManager.MultiPlayerBallInit(1, 13);
                 gameState.UIManager.AddMultiplayerUI();
-                //vieze fix fixen na release candidate
-                
 
             }
         }
@@ -585,8 +576,6 @@ public class LevelManager : MonoBehaviour
                 gameState.gridManager.InitPlayerGridsMultiPlayer(0, 9, 0, 14, 16, 24, 0, 14);
                 gameState.playerManager.MultiPlayerBallInit(1, 23);
                 gameState.UIManager.AddMultiplayerUI();
-                //vieze fix fixen na release candidate
-                
 
             }
         }
@@ -604,8 +593,6 @@ public class LevelManager : MonoBehaviour
                 gameState.gridManager.InitPlayerGridsMultiPlayer(0, 9, 0, 14, 11, 20, 0, 14);
                 gameState.playerManager.MultiPlayerBallInit(1, 19);
                 gameState.UIManager.AddMultiplayerUI();
-                //vieze fix fixen na release candidate
-                
 
             }
         }
@@ -623,8 +610,6 @@ public class LevelManager : MonoBehaviour
                 gameState.gridManager.InitPlayerGridsMultiPlayer(0, 14, 0, 4, 75, 89, 0, 4);
                 gameState.playerManager.MultiPlayerBallInit(1, 13);
                 gameState.UIManager.AddMultiplayerUI();
-                //vieze fix fixen na release candidate
-                
 
             }
         }
@@ -642,9 +627,6 @@ public class LevelManager : MonoBehaviour
                 gameState.gridManager.InitPlayerGridsMultiPlayer(0, 9, 0, 19, 11, 20, 0, 19);
                 gameState.playerManager.MultiPlayerBallInit(1, 19);
                 gameState.UIManager.AddMultiplayerUI();
-                //vieze fix fixen na release candidate
-                
-
             }
         }
     }
@@ -656,14 +638,10 @@ public class LevelManager : MonoBehaviour
         gameState.BuildingPhaseActive = false;
         gameState.RollingPhaseActive = true;
         gameState.uIRollingManager.ChangeEnviroment();
-
-        //if (sceneName != "1" || !PhotonNetwork.IsConnected)
-        //{
-        //    balknop.gameObject.SetActive(false);
-        //}
+        
         if (currentLevel != 1 || !PhotonNetwork.InRoom)
         {
-            //idk man fucking error bullshit magic spell try catch
+            //zet de ballknop uit in MP en level 1s
             try
             {
                 balknop.gameObject.SetActive(false);
@@ -675,7 +653,6 @@ public class LevelManager : MonoBehaviour
         }
         if (PhotonNetwork.IsConnected)
         {
-            //deze oplossing is zo smerig wil niet eens een comment schrijven
             //de bal van de andere speler wordt altijd als een prefabnaam(Clone) gespawnd en zo kan ik ervoor zorgen dat ie op de client die dit uitvoert niet verplaatst wordt
             //ENIGE manier die tot nu toe werkt
             if (PhotonNetwork.IsMasterClient)
@@ -715,6 +692,7 @@ public class LevelManager : MonoBehaviour
 
         if (PhotonNetwork.InRoom)
         {
+            //zet de flaggen op niet geraakt zodat de speler opnieuw de vlag moet raken
             PhotonView view = gameState.playerBallManager.activePlayer.GetComponent<PhotonView>();
             if (PhotonNetwork.IsMasterClient)
             {
@@ -730,14 +708,9 @@ public class LevelManager : MonoBehaviour
             gameState.RollingPhaseActive = false;
             gameState.playerBallManager.respawnBal();
             gameState.platformManager.RespawnCollectables();
-
-            //if (sceneName != "1"||!PhotonNetwork.IsConnected)
-            //{
-            //    balknop.gameObject.SetActive(true);
-            //}
+            
             if (SceneManager.GetActiveScene().name != "1" || !PhotonNetwork.InRoom)
             {
-                //idk man fucking error bullshit magic spell try catch
                 try
                 {
                     balknop.gameObject.SetActive(true);

@@ -59,7 +59,6 @@ public class PlayerManager : MonoBehaviour
     internal void MultiPlayerBallInit(int spawn1, int spawn2)
     {
         //geeft de mogelijkheid 2 spawnpoints mee te geven 
-        ///eeeh dis ook wel beetje vies als het werkt
         if (PhotonNetwork.IsMasterClient)
         {
             gameState.playerBallManager.SetSpawnpoint(spawn1);

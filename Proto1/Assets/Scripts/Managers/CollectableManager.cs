@@ -59,6 +59,7 @@ public class CollectableManager : MonoBehaviour
     {
         if (PhotonNetwork.InRoom)
         {
+            //zorgt ervoor dat we maar 1 setje sterren spawnen in MP
             if (PhotonNetwork.IsMasterClient)
             {
                 foreach (Vector3 coinPosition in coinPositions)
