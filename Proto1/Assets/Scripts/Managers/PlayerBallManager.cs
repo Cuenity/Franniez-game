@@ -64,15 +64,21 @@ public class PlayerBallManager : MonoBehaviour
             if (PhotonNetwork.IsMasterClient)
             {
                 MultiActivePlayer1 = tempMultiBall;
-                MultiActivePlayer1.name = "player1Ball";
+                //MultiActivePlayer1.name = "player1Ball";
                 activePlayer = tempMultiBall;
+                gameState.playerCamera.Target = activePlayer;
+                PhotonView view = tempMultiBall.GetComponent<PhotonView>();
+                view.RPC("setActivePlayers", RpcTarget.Others, "player1");
                 tempMultiBall = null;
             }
             else
             {
-                MultiActivePlayer2 = tempMultiBall;
-                MultiActivePlayer2.name = "player2Ball";
+                MultiActivePlayer1 = tempMultiBall;
+                //MultiActivePlayer2.name = "player2Ball";
                 activePlayer = tempMultiBall;
+                gameState.playerCamera.Target = activePlayer;
+                PhotonView view = tempMultiBall.GetComponent<PhotonView>();
+                view.RPC("setActivePlayers", RpcTarget.Others, "player2");
                 tempMultiBall = null;
             }
         }

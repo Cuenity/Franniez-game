@@ -138,7 +138,10 @@ public class LevelManager : MonoBehaviour
 
     private void DefaultSceneEndInit()
     {
-        gameState.playerManager.PlayerInit(gameState.playerBallManager.ballList[0]);
+        if (!PhotonNetwork.IsConnected)
+        {
+            gameState.playerManager.PlayerInit(gameState.playerBallManager.ballList[0]);
+        }
         gameState.BuildingPhaseActive = true;
         levelIsSpawned = true;
     }
@@ -456,18 +459,13 @@ public class LevelManager : MonoBehaviour
                 SpawnLevel(Level30);
             }
         }
-
-        ///multiplayer levels moet nog ff via dezelfde manier voor nu 10 scenes
-        else if (SceneManager.GetActiveScene().name == "MultiplayerLevel1")
+        
+        else if (PlayerDataController.instance.PreviousScene == 101)
         {
             if (!levelIsSpawned)
             {
 
                 SpawnLevel(multiLevel1);
-                //vies
-                PhotonNetwork.Destroy(GameObject.Find("player1Ball"));
-                PhotonNetwork.Destroy(GameObject.Find("player2Ball"));
-                //einde vies
                 gameState.gridManager.InitPlayerGridsMultiPlayer(0, 9, 0, 9, 10, 19, 0, 9);
                 gameState.playerManager.MultiPlayerBallInit(42, 57);
                 gameState.UIManager.AddMultiplayerUI();
@@ -475,17 +473,11 @@ public class LevelManager : MonoBehaviour
             }
         }
 
-        else if (SceneManager.GetActiveScene().name == "MultiplayerLevel2")
+        else if (PlayerDataController.instance.PreviousScene == 102)
         {
             if (!levelIsSpawned)
             {
                 SpawnLevel(multiLevel2);
-                //vies
-                PhotonNetwork.Destroy(GameObject.Find("player1Ball"));
-                PhotonNetwork.Destroy(GameObject.Find("player2Ball"));
-                //einde vies
-                //naamgeving zo slecht/vies bij playergrids
-                //eerste 2 is het begin eindpunt maar die laatste 2 is gewoon de hoogte 
                 gameState.gridManager.InitPlayerGridsMultiPlayer(0, 24, 0, 4, 135, 149, 0, 4);
                 gameState.playerManager.MultiPlayerBallInit(1, 136);
                 gameState.UIManager.AddMultiplayerUI();
@@ -493,17 +485,11 @@ public class LevelManager : MonoBehaviour
 
             }
         }
-        else if (SceneManager.GetActiveScene().name == "MultiplayerLevel3")
+        else if (PlayerDataController.instance.PreviousScene == 103)
         {
             if (!levelIsSpawned)
             {
                 SpawnLevel(multiLevel3);
-                //vies
-                PhotonNetwork.Destroy(GameObject.Find("player1Ball"));
-                PhotonNetwork.Destroy(GameObject.Find("player2Ball"));
-                //einde vies
-                //naamgeving zo slecht/vies bij playergrids
-                //eerste 2 is het begin eindpunt maar die laatste 2 is gewoon de hoogte 
                 gameState.gridManager.InitPlayerGridsMultiPlayer(0, 6, 0, 6, 8, 14, 0, 6);
                 gameState.playerManager.MultiPlayerBallInit(1, 13);
                 gameState.UIManager.AddMultiplayerUI();
@@ -511,17 +497,11 @@ public class LevelManager : MonoBehaviour
 
             }
         }
-        else if (SceneManager.GetActiveScene().name == "MultiplayerLevel4")
+        else if (PlayerDataController.instance.PreviousScene == 104)
         {
             if (!levelIsSpawned)
             {
                 SpawnLevel(multiLevel4);
-                //vies
-                PhotonNetwork.Destroy(GameObject.Find("player1Ball"));
-                PhotonNetwork.Destroy(GameObject.Find("player2Ball"));
-                //einde vies
-                //naamgeving zo slecht/vies bij playergrids
-                //eerste 2 is het begin eindpunt maar die laatste 2 is gewoon de hoogte 
                 //gameState.gridManager.InitPlayerGridsMultiPlayer(0, 24, 0, 4, 125, 149, 0, 4);
                 gameState.playerManager.MultiPlayerBallInit(0, 1);
                 gameState.UIManager.AddMultiplayerUI();
@@ -529,17 +509,11 @@ public class LevelManager : MonoBehaviour
 
             }
         }
-        else if (SceneManager.GetActiveScene().name == "MultiplayerLevel5")
+        else if (PlayerDataController.instance.PreviousScene == 105)
         {
             if (!levelIsSpawned)
             {
                 SpawnLevel(multiLevel5);
-                //vies
-                PhotonNetwork.Destroy(GameObject.Find("player1Ball"));
-                PhotonNetwork.Destroy(GameObject.Find("player2Ball"));
-                //einde vies
-                //naamgeving zo slecht/vies bij playergrids
-                //eerste 2 is het begin eindpunt maar die laatste 2 is gewoon de hoogte 
                 //gameState.gridManager.InitPlayerGridsMultiPlayer(0, 24, 0, 4, 125, 149, 0, 4);
                 gameState.playerManager.MultiPlayerBallInit(1, 13);
                 gameState.UIManager.AddMultiplayerUI();
@@ -547,85 +521,55 @@ public class LevelManager : MonoBehaviour
 
             }
         }
-        else if (SceneManager.GetActiveScene().name == "MultiplayerLevel6")
+        else if (PlayerDataController.instance.PreviousScene == 106)
         {
             if (!levelIsSpawned)
             {
                 SpawnLevel(multiLevel6);
-                //vies
-                PhotonNetwork.Destroy(GameObject.Find("player1Ball"));
-                PhotonNetwork.Destroy(GameObject.Find("player2Ball"));
-                //einde vies
-                //naamgeving zo slecht/vies bij playergrids
-                //eerste 2 is het begin eindpunt maar die laatste 2 is gewoon de hoogte 
                 gameState.gridManager.InitPlayerGridsMultiPlayer(0, 6, 0, 10, 8, 14, 0, 10);
                 gameState.playerManager.MultiPlayerBallInit(1, 13);
                 gameState.UIManager.AddMultiplayerUI();
 
             }
         }
-        else if (SceneManager.GetActiveScene().name == "MultiplayerLevel7")
+        else if (PlayerDataController.instance.PreviousScene == 107)
         {
             if (!levelIsSpawned)
             {
                 SpawnLevel(multiLevel7);
-                //vies
-                PhotonNetwork.Destroy(GameObject.Find("player1Ball"));
-                PhotonNetwork.Destroy(GameObject.Find("player2Ball"));
-                //einde vies
-                //naamgeving zo slecht/vies bij playergrids
-                //eerste 2 is het begin eindpunt maar die laatste 2 is gewoon de hoogte 
                 gameState.gridManager.InitPlayerGridsMultiPlayer(0, 9, 0, 14, 16, 24, 0, 14);
                 gameState.playerManager.MultiPlayerBallInit(1, 23);
                 gameState.UIManager.AddMultiplayerUI();
 
             }
         }
-        else if (SceneManager.GetActiveScene().name == "MultiplayerLevel8")
+        else if (PlayerDataController.instance.PreviousScene == 108)
         {
             if (!levelIsSpawned)
             {
                 SpawnLevel(multiLevel8);
-                //vies
-                PhotonNetwork.Destroy(GameObject.Find("player1Ball"));
-                PhotonNetwork.Destroy(GameObject.Find("player2Ball"));
-                //einde vies
-                //naamgeving zo slecht/vies bij playergrids
-                //eerste 2 is het begin eindpunt maar die laatste 2 is gewoon de hoogte 
                 gameState.gridManager.InitPlayerGridsMultiPlayer(0, 9, 0, 14, 11, 20, 0, 14);
                 gameState.playerManager.MultiPlayerBallInit(1, 19);
                 gameState.UIManager.AddMultiplayerUI();
 
             }
         }
-        else if (SceneManager.GetActiveScene().name == "MultiplayerLevel9")
+        else if (PlayerDataController.instance.PreviousScene == 109)
         {
             if (!levelIsSpawned)
             {
                 SpawnLevel(multiLevel9);
-                //vies
-                PhotonNetwork.Destroy(GameObject.Find("player1Ball"));
-                PhotonNetwork.Destroy(GameObject.Find("player2Ball"));
-                //einde vies
-                //naamgeving zo slecht/vies bij playergrids
-                //eerste 2 is het begin eindpunt maar die laatste 2 is gewoon de hoogte 
                 gameState.gridManager.InitPlayerGridsMultiPlayer(0, 14, 0, 4, 75, 89, 0, 4);
                 gameState.playerManager.MultiPlayerBallInit(1, 13);
                 gameState.UIManager.AddMultiplayerUI();
 
             }
         }
-        else if (SceneManager.GetActiveScene().name == "MultiplayerLevel10")
+        else if (PlayerDataController.instance.PreviousScene == 110)
         {
             if (!levelIsSpawned)
             {
                 SpawnLevel(multiLevel10);
-                //vies
-                PhotonNetwork.Destroy(GameObject.Find("player1Ball"));
-                PhotonNetwork.Destroy(GameObject.Find("player2Ball"));
-                //einde vies
-                //naamgeving zo slecht/vies bij playergrids
-                //eerste 2 is het begin eindpunt maar die laatste 2 is gewoon de hoogte 
                 gameState.gridManager.InitPlayerGridsMultiPlayer(0, 9, 0, 19, 11, 20, 0, 19);
                 gameState.playerManager.MultiPlayerBallInit(1, 19);
                 gameState.UIManager.AddMultiplayerUI();
@@ -655,30 +599,8 @@ public class LevelManager : MonoBehaviour
         }
         if (PhotonNetwork.IsConnected)
         {
-            //de bal van de andere speler wordt altijd als een prefabnaam(Clone) gespawnd en zo kan ik ervoor zorgen dat ie op de client die dit uitvoert niet verplaatst wordt
-            //ENIGE manier die tot nu toe werkt
-            if (PhotonNetwork.IsMasterClient)
-            {
-                GameObject.Find("player1Ball").GetComponent<Rigidbody>().isKinematic = false;
-                GameObject.Find("Photon Player Ball(Clone)").GetComponent<Rigidbody>().isKinematic = true;
-
-            }
-            else
-            {
-                GameObject.Find("player2Ball").GetComponent<Rigidbody>().isKinematic = false;
-                GameObject.Find("Photon Player Ball(Clone)").GetComponent<Rigidbody>().isKinematic = true;
-            }
-            //ik wil hetlater toch echt zo doen dit hierboven zo WACK
-            //if (gameState.playerBallManager.activePlayer.GetPhotonView().IsMine)
-            //{
-            //    GameObject mijnBal = gameState.playerBallManager.activePlayer;
-            //    mijnBal.GetComponent<Rigidbody>().isKinematic = false;
-            //}
-            //else if (gameState.playerBallManager.activePlayer.GetPhotonView().IsMine)
-            //{
-            //    GameObject andereBal = gameState.playerBallManager.activePlayer;
-            //    andereBal.GetComponent<Rigidbody>().isKinematic = true;
-            //}
+                gameState.playerBallManager.MultiActivePlayer1.GetComponent<Rigidbody>().isKinematic = false;
+                gameState.playerBallManager.MultiActivePlayer1.GetComponent<Rigidbody>().useGravity = true;
         }
         else
         {

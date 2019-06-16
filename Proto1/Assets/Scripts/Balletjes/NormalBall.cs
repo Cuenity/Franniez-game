@@ -32,7 +32,7 @@ public class NormalBall : MonoBehaviourPun
             gameState.levelManager.SetBuildingPhase();
         }
     }
-
+    #region rpcs(PhotonSyncers)
     [PunRPC]
     void FlagHit(string hitter)
     {
@@ -84,7 +84,15 @@ public class NormalBall : MonoBehaviourPun
         PhotonStartMenu.Instance.ComesFromLevel = true;
         if (PhotonNetwork.IsMasterClient)
         {
-            PhotonNetwork.LoadLevel(10);
+            PhotonNetwork.LoadLevel(9);
         }
     }
+    [PunRPC]
+    void setActivePlayers(string playerMaster)
+    {
+        gameState.playerBallManager.MultiActivePlayer2 = gameState.playerBallManager.activePlayer;
+        Debug.Log("multiactive2set");
+        Debug.Log(gameState.playerBallManager.MultiActivePlayer2);
+    }
+    #endregion
 }

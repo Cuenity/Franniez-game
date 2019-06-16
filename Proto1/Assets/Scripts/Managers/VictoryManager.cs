@@ -90,54 +90,7 @@ public class VictoryManager : MonoBehaviour
         if (PhotonNetwork.InRoom)
         {
             //vieze fix fixen na releasecandidate
-            if(playerDataController.PreviousScene == 101)
-            {
-                PhotonNetwork.LoadLevel(8);
-            }
-            else if (playerDataController.PreviousScene == 102)
-            {
-
-                PhotonNetwork.LoadLevel(9);
-            }
-            else if (playerDataController.PreviousScene == 103)
-            {
-
-                PhotonNetwork.LoadLevel(11);
-            }
-            else if (playerDataController.PreviousScene == 104)
-            {
-
-                PhotonNetwork.LoadLevel(12);
-            }
-            else if (playerDataController.PreviousScene == 105)
-            {
-                PhotonNetwork.LoadLevel(13);
-
-            }
-            else if (playerDataController.PreviousScene == 106)
-            {
-
-                PhotonNetwork.LoadLevel(14);
-            }
-            else if (playerDataController.PreviousScene == 107)
-            {
-
-                PhotonNetwork.LoadLevel(15);
-            }
-            else if (playerDataController.PreviousScene == 108)
-            {
-
-                PhotonNetwork.LoadLevel(16);
-            }
-            else if (playerDataController.PreviousScene == 109)
-            {
-                PhotonNetwork.LoadLevel(17);
-            }
-            else if (playerDataController.PreviousScene == 110)
-            {
-
-                PhotonNetwork.LoadLevel(18);
-            }
+            PhotonNetwork.LoadLevel(8);
             return;
         }
         SceneSwitcher.Instance.AsynchronousLoadStart("1");
@@ -148,55 +101,9 @@ public class VictoryManager : MonoBehaviour
         
         if (PhotonNetwork.InRoom)
         {
-            //vieze fix fixen na releasecandidate
-            if (playerDataController.PreviousScene == 101)
-            {
-
-                PhotonNetwork.LoadLevel(9);
-            }
-            else if (playerDataController.PreviousScene == 102)
-            {
-
-                PhotonNetwork.LoadLevel(11);
-            }
-            else if (playerDataController.PreviousScene == 103)
-            {
-
-                PhotonNetwork.LoadLevel(12);
-            }
-            else if (playerDataController.PreviousScene == 104)
-            {
-
-                PhotonNetwork.LoadLevel(13);
-            }
-            else if (playerDataController.PreviousScene == 105)
-            {
-                PhotonNetwork.LoadLevel(14);
-
-            }
-            else if (playerDataController.PreviousScene == 106)
-            {
-                PhotonNetwork.LoadLevel(15);
-            }
-            else if (playerDataController.PreviousScene == 107)
-            {
-
-                PhotonNetwork.LoadLevel(16);
-            }
-            else if (playerDataController.PreviousScene == 108)
-            {
-
-                PhotonNetwork.LoadLevel(17);
-            }
-            else if (playerDataController.PreviousScene == 109)
-            {
-                PhotonNetwork.LoadLevel(18);
-            }
-            else if (playerDataController.PreviousScene == 110)
-            {
-
-                PhotonNetwork.LoadLevel(18);
-            }
+            playerDataController.PreviousScene++;
+            PhotonNetwork.LoadLevel(8);
+            return;
         }
         playerDataController.PreviousScene++;
         SceneSwitcher.Instance.AsynchronousLoadStart("1");
@@ -206,7 +113,7 @@ public class VictoryManager : MonoBehaviour
     {
         if (PhotonNetwork.InRoom)
         {
-            PhotonNetwork.LoadLevel(10);
+            PhotonNetwork.LoadLevel(9);
             return;
         }
         SceneSwitcher.Instance.AsynchronousLoadStartNoLoadingBar("LevelSelect");

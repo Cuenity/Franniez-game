@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: PhotonServerSettings
   m_EditorClassIdentifier: 
   AppSettings:
-    AppIdRealtime: c26d5f0b-c670-4207-8daf-3e1740c9ad7b
+    AppIdRealtime: d6cda85f-3ffd-4896-aa28-32622ecd0262
     AppIdChat: 
     AppIdVoice: 
     AppVersion: 0.1
@@ -38,5 +38,6 @@ MonoBehaviour:
   - WinLevel
   - BackToLevelSelect
   - StartLevel
+  - setActivePlayers
   DisableAutoOpenWizard: 1
   ShowSettings: 1
