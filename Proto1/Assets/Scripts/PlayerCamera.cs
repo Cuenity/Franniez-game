@@ -31,11 +31,13 @@ public class PlayerCamera : MonoBehaviour
     {
         gameState = GameState.Instance;
         camera = this.GetComponent<Camera>();
+        // voor de sneeuw
         worldManager = new WorldManager();
     }
 
     private void Start()
     {
+        // als groot level  speel de animatie eerst
         if (gameState.levelManager.bigLevel)
         {
             StartCoroutine(PlayAnimation());
@@ -48,7 +50,7 @@ public class PlayerCamera : MonoBehaviour
 
         if (worldManager.SetSnow())
         {
-            snowFalling = Instantiate(snowFalling, this.transform.position- new Vector3(5,5,0), new Quaternion(0, 0, 0, 0));
+            snowFalling = Instantiate(snowFalling, this.transform.position - new Vector3(5, 5, 0), new Quaternion(0, 0, 0, 0));
         }
     }
 
@@ -136,7 +138,7 @@ public class PlayerCamera : MonoBehaviour
             transform.LookAt(Target.transform.position + TargetLookAtOffset);
         }
         this.transform.rotation = new Quaternion(0, 0, 0, 0);
-    }    
+    }
 
     private void computerzoom()
     {
@@ -192,7 +194,7 @@ public class PlayerCamera : MonoBehaviour
         }
     }
 
-    //computer dingen voor het dev team // wat? welk dev team? waar hebben we het over?
+    //computer dingen voor het in de unity editor // 
     private void Transfrom_YZ()
     {
         if (Input.GetMouseButtonDown(0))
@@ -301,39 +303,38 @@ public class PlayerCamera : MonoBehaviour
                 Vector2 newTouchPosition = Input.GetTouch(0).position;
 
                 // berekening van niewe positie, zat ook in dat script
-                Vector3 outsideGrid = transform.position + transform.TransformDirection((Vector3)((oldTouchPositions[0] - newTouchPosition) * GetComponent<Camera>().orthographicSize / GetComponent<Camera>().pixelHeight * 2f));
+                Vector3 move = transform.position + transform.TransformDirection((Vector3)((oldTouchPositions[0] - newTouchPosition) * GetComponent<Camera>().orthographicSize / GetComponent<Camera>().pixelHeight * 2f));
 
                 // checken of de positie buiten het grid is en zo ja dan op het randje plaatsen
-                bool nope = true;
-                if (outsideGrid.y < gameState.gridManager.height * -1)
+                bool insideGrid = true;
+                if (move.y < gameState.gridManager.height * -1)
                 {
-                    transform.position = new Vector3(outsideGrid.x, gameState.gridManager.height * -1 + .1f, outsideGrid.z);
+                    transform.position = new Vector3(move.x, gameState.gridManager.height * -1 + .1f, move.z);
                     this.GetComponent<Rigidbody>().velocity = new Vector3(0, 0, 0);
-                    nope = false;
+                    insideGrid = false;
                 }
-                if (outsideGrid.y > 0)
+                if (move.y > 0)
                 {
-                    transform.position = new Vector3(outsideGrid.x, -.1f, outsideGrid.z);
+                    transform.position = new Vector3(move.x, -.1f, move.z);
                     this.GetComponent<Rigidbody>().velocity = new Vector3(0, 0, 0);
-                    nope = false;
+                    insideGrid = false;
                 }
-                if (outsideGrid.x < 0)
+                if (move.x < 0)
                 {
-                    transform.position = new Vector3(.1f, outsideGrid.y, outsideGrid.z);
+                    transform.position = new Vector3(.1f, move.y, move.z);
                     this.GetComponent<Rigidbody>().velocity = new Vector3(0, 0, 0);
-                    nope = false;
+                    insideGrid = false;
                 }
-                if (outsideGrid.x > gameState.gridManager.width)
+                if (move.x > gameState.gridManager.width)
                 {
-                    transform.position = new Vector3(gameState.gridManager.width - .1f, outsideGrid.y, outsideGrid.z);
+                    transform.position = new Vector3(gameState.gridManager.width - .1f, move.y, move.z);
                     this.GetComponent<Rigidbody>().velocity = new Vector3(0, 0, 0);
-                    nope = false;
+                    insideGrid = false;
                 }
                 //als het niet buiten het grid zit ga naar die positie
-                if (nope)
+                if (insideGrid)
                 {
-                    //if (outsideGrid.x > start positie draggen x + aantal pixels || outsideGrid.y > start positie draggen y + aantal pixels)
-                    transform.position = outsideGrid;
+                    transform.position = move;
                 }
 
                 // geef de camera een stootje

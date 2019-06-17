@@ -35,7 +35,6 @@ public class PlayerBallManager : MonoBehaviour
     {
         //Photon instantiate
         // instantiate de photon manier en geeft het object een andere naam
-        // alle rare assignemt zooi(tempmultiball en multiball) hoeft wss niet meer maar staat er nog 
         if (PhotonNetwork.InRoom)
         {
             switch (type)
@@ -138,7 +137,8 @@ public class PlayerBallManager : MonoBehaviour
         }
 
     }
-    private IEnumerator respawnballinternal()
+    // zet de body vapn da bal stil zodat die niet meer draait om zijn eigen as, en de snelheid en vervolgens zet de camera weer opde start positie en zet de camera stil.
+    private IEnumerator RespawnBallInternal()
     {
         yield return new WaitForEndOfFrame();
         gameState = GameState.Instance;
@@ -164,7 +164,7 @@ public class PlayerBallManager : MonoBehaviour
 
     public void respawnBal()
     {
-        StartCoroutine(respawnballinternal());
+        StartCoroutine(RespawnBallInternal());
     }
 
 }
