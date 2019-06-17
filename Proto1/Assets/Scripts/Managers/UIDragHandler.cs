@@ -98,15 +98,14 @@ public class UIDragHandler : MonoBehaviour, IDragHandler, IBeginDragHandler, IEn
         {
             if (!gameState.UIManager.GarbageBinHit(draggedPlatform))
             {
-                bool platformDraggedToButton = gameState.UIManager.PlatformDraggedToButton();
-                if (platformDraggedToButton)
+                if (gameState.UIManager.PlatformDraggedToButton())
                 {
                     draggedPlatform.GetComponent<Platform>().UpdatePlayerPlatforms();
                 }
                 else
                 {
                     gameState.levelManager.playerPlatforms.placedPlatforms.Add(draggedPlatform);
-                    platformManager.spawnPlatformOnGrid(draggedPlatform.transform.position, draggedPlatform.GetComponent<Platform>());
+                    platformManager.SpawnPlatformOnGrid(draggedPlatform.transform.position, draggedPlatform.GetComponent<Platform>());
                     StartCoroutine(SetDragActiveFalseAfterEndOfFrame());
                 }
             }

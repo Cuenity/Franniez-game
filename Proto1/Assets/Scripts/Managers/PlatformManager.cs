@@ -95,7 +95,7 @@ public class PlatformManager : MonoBehaviour
         gameState.gridManager.AddFilledGridSpots(new List<int> { position }, SizeType.oneByTwo);
     }
 
-    public void spawnPlatformOnGrid(Vector3 position, Platform platformToPlace)
+    public void SpawnPlatformOnGrid(Vector3 position, Platform platformToPlace)
     {
         //als deze methode alleen is voor speler blokjes kunnen we hier die glow doen
         //GameObject gameObjectGeneric = gameObject;

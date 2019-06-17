@@ -69,7 +69,7 @@ public class PlatformDragHandler : MonoBehaviour
                 else
                 {
                     gameState.UIManager.RemoveOldFilledGridSpots(draggedPlatformInScene);
-                    gameState.platformManager.spawnPlatformOnGrid(draggedPlatformInScene.transform.position, draggedPlatformInScene.GetComponent<Platform>());
+                    gameState.platformManager.SpawnPlatformOnGrid(draggedPlatformInScene.transform.position, draggedPlatformInScene.GetComponent<Platform>());
                     gameState.playerCamera.platformDragActive = false;
                 }
             }
