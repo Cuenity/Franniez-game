@@ -36,6 +36,7 @@ public class UIDragHandler : MonoBehaviour, IDragHandler, IBeginDragHandler, IEn
         zAxis = transform.position.z;
     }
 
+    // vertaalt de positie van de muis naar een positie op een plane die op dezelfde positie zit als het grid met alle platformen
     private Vector3 ScreenPointToWorldOnPlane(Vector3 screenPosition, float zPosition)
     {
         Plane plane = new Plane(Vector3.forward, new Vector3(0, 0, zPosition));
@@ -44,13 +45,14 @@ public class UIDragHandler : MonoBehaviour, IDragHandler, IBeginDragHandler, IEn
         return rayCast.GetPoint(enterDist);
     }
 
+    // deze methode wordt aangeroepen nadat de muis of vinger vanaf een van de inventorybuttons gedragged wordt
     public void OnBeginDrag(PointerEventData data)
     {
         draggingAllowed = true;
-        playercamera.platformDragActive = true;
+        playercamera.platformDragActive = true; // zodat de camera niet ook mag draggen als er een platform gedragged wordt
 
         InventoryButton correctButton = gameObject.GetComponent<InventoryButton>();
-        if (correctButton.InventoryButtonAllowed)
+        if (correctButton.InventoryButtonAllowed) 
         {
             if (!PhotonNetwork.IsConnected)
             {
@@ -62,6 +64,7 @@ public class UIDragHandler : MonoBehaviour, IDragHandler, IBeginDragHandler, IEn
                 draggedPlatform = correctButton.SpawnPhotonPlatformFromInventoryButton();
             }
 
+            // outline om alle platformen behalve kanon omdat deze altijd door de speler geplaatst wordt (nooit al staande in een level) en te veel detail heeft voor de outline
             if (!draggedPlatform.GetComponent<Cannon>())
             {
                 var outline = draggedPlatform.AddComponent<Outline>();
@@ -79,14 +82,16 @@ public class UIDragHandler : MonoBehaviour, IDragHandler, IBeginDragHandler, IEn
         }
     }
 
+    // zolang de speler het platform aan het draggen is beweegt deze mee met de positie van de camera
     public void OnDrag(PointerEventData eventData)
     {
         if (draggingAllowed)
         {
-            draggedPlatform.transform.position = ScreenPointToWorldOnPlane(eventData.position, zAxis); //+ clickOffset; 
+            draggedPlatform.transform.position = ScreenPointToWorldOnPlane(eventData.position, zAxis);
         }
     }
 
+    // wanneer het platform losgelaten wordt na draggen wordt deze in het grid vastgezet geplaatst en op de dichtstbijzijnde plek gesnapped
     public void OnEndDrag(PointerEventData eventData)
     {
         if (draggingAllowed)
@@ -109,6 +114,8 @@ public class UIDragHandler : MonoBehaviour, IDragHandler, IBeginDragHandler, IEn
         }
     }
 
+    // zodat de camera weer gedragged kan worden nadat het platform is losgelaten, 
+    // dit moet aan het eind van de frame omdat de camera anders bewogen wordt in dezelfde frame dat het platform los gelaten wordt
     public IEnumerator SetDragActiveFalseAfterEndOfFrame()
     {
         yield return new WaitForEndOfFrame();
