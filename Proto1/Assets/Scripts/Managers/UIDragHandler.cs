@@ -61,6 +61,7 @@ public class UIDragHandler : MonoBehaviour, IDragHandler, IBeginDragHandler, IEn
             }
             else
             {
+                //zorgen dat de andere speler ook het platform kan zien
                 draggedPlatform = correctButton.SpawnPhotonPlatformFromInventoryButton();
             }
 

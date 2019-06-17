@@ -22,11 +22,12 @@ public class PauseMenuManager : MonoBehaviour
         GameState.Instance.playerCamera.platformDragActive = false;
     }
 
-    //vieze fix()
+    
     private void Start()
     {
         if (PhotonNetwork.InRoom)
         {
+            //photon pauze menu is anders
             Button[] buttons  = GameState.Instance.UIManager.pauseMenuCanvas.GetComponentsInChildren<Button>(true);
             foreach(Button button in buttons)
             {
@@ -55,9 +56,9 @@ public class PauseMenuManager : MonoBehaviour
     // Button Action: Go to Level Select
     public void SelectLevel()
     {
-        //vieze fix
         if (PhotonNetwork.InRoom)
         {
+            //met rpc want anders blijft de andere speler achter
             PhotonView view = GameState.Instance.playerBallManager.activePlayer.GetComponent<PhotonView>();
             view.RPC("BackToLevelSelect", RpcTarget.All);
         }
@@ -72,6 +73,7 @@ public class PauseMenuManager : MonoBehaviour
     {
         if (PhotonNetwork.InRoom)
         {
+            //rpc hier niet nodig wordt afgehaneld met callback
             PhotonNetwork.Disconnect();
             PhotonNetwork.LoadLevel(3);
             return;

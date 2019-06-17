@@ -34,7 +34,7 @@ public class PlayerBallManager : MonoBehaviour
     public void InitTypeBall(Bal type)
     {
         //Photon instantiate
-        // instantiate de photon manier en geeft het object een andere naam(zodat deze niet fuckt)
+        // instantiate de photon manier en geeft het object een andere naam
         // alle rare assignemt zooi(tempmultiball en multiball) hoeft wss niet meer maar staat er nog 
         if (PhotonNetwork.InRoom)
         {
@@ -43,39 +43,42 @@ public class PlayerBallManager : MonoBehaviour
                 case Bal.BlackHole:
                     tempMultiBall = PhotonNetwork.Instantiate("Photon BlackHoleBall", gameState.playerBallManager.spawnpoint, new Quaternion(0, 0, 0, 0)).gameObject;
                     tempMultiBall.GetComponent<Renderer>().material = PlayerDataController.instance.ballMaterial;
-                    //gameState.playerCamera.Target = tempMultiBall;
                     break;
                 case Bal.Light:
                     
                     tempMultiBall = PhotonNetwork.Instantiate("Photon LightBall", gameState.playerBallManager.spawnpoint, new Quaternion(0, 0, 0, 0)).gameObject;
                     tempMultiBall.GetComponent<Renderer>().material = PlayerDataController.instance.ballMaterial;
-                    //gameState.playerCamera.Target = tempMultiBall;
                     break;
                 case Bal.Normal:
                     
                     tempMultiBall = PhotonNetwork.Instantiate("Photon Player Ball", gameState.playerBallManager.spawnpoint, new Quaternion(0, 0, 0, 0)).gameObject;
                     tempMultiBall.GetComponent<Renderer>().material = PlayerDataController.instance.ballMaterial;
-                    //gameState.playerCamera.Target = tempMultiBall;
                     break;
                 default:
                     
                     tempMultiBall = PhotonNetwork.Instantiate("Photon Player Ball", gameState.playerBallManager.spawnpoint, new Quaternion(0, 0, 0, 0)).gameObject;
                     tempMultiBall.GetComponent<Renderer>().material = PlayerDataController.instance.ballMaterial;
-                    //gameState.playerCamera.Target = tempMultiBall;
                     break;
             }
+            //geeft de spelers eigen bal een unieke naam(niet met clone erachter)
             if (PhotonNetwork.IsMasterClient)
             {
                 MultiActivePlayer1 = tempMultiBall;
-                MultiActivePlayer1.name = "player1Ball";
+                //MultiActivePlayer1.name = "player1Ball";
                 activePlayer = tempMultiBall;
+                gameState.playerCamera.Target = activePlayer;
+                PhotonView view = tempMultiBall.GetComponent<PhotonView>();
+                view.RPC("setActivePlayers", RpcTarget.Others, "player1");
                 tempMultiBall = null;
             }
             else
             {
-                MultiActivePlayer2 = tempMultiBall;
-                MultiActivePlayer2.name = "player2Ball";
+                MultiActivePlayer1 = tempMultiBall;
+                //MultiActivePlayer2.name = "player2Ball";
                 activePlayer = tempMultiBall;
+                gameState.playerCamera.Target = activePlayer;
+                PhotonView view = tempMultiBall.GetComponent<PhotonView>();
+                view.RPC("setActivePlayers", RpcTarget.Others, "player2");
                 tempMultiBall = null;
             }
         }

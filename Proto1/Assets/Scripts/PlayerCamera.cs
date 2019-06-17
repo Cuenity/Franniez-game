@@ -52,11 +52,6 @@ public class PlayerCamera : MonoBehaviour
         }
     }
 
-    private void Update()
-    {
-        
-    }
-
     void FixedUpdate()
     {
         //if rolling phase dan alleen het balletje volgen en je mag zoomen

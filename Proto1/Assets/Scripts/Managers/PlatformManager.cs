@@ -65,7 +65,7 @@ public class PlatformManager : MonoBehaviour
     {
         if (PhotonNetwork.InRoom)
         {
-            //we willen niet die setactive false doen in photon
+            //we willen niet die setactive false doen in MP
         }
         else
         {

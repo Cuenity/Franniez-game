@@ -25,8 +25,9 @@ public class Finish : MonoBehaviour
         if (!other.isTrigger)
         {
             Finished();
+            //prevent het oneindig finishen van een level (in singleplayer maakt dit niet uit want start dan altijd een andere scene
             if(!PhotonNetwork.InRoom)
-            this.gameObject.SetActive(false);
+                this.gameObject.SetActive(false);
         }
 
     }

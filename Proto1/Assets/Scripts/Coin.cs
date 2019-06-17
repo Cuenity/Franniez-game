@@ -49,6 +49,7 @@ public class Coin : MonoBehaviour
             PickedCoin();
             if (PhotonNetwork.InRoom)
             {
+                //anders blijft de andere speler het zien
                 PhotonNetwork.Destroy(this.gameObject);
             }
             this.gameObject.SetActive(false);

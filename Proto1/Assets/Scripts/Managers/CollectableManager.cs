@@ -20,12 +20,6 @@ public class CollectableManager : MonoBehaviour
         gameState = GameState.Instance;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
     public void InitCollectables(List<Vector3> coinPositions, Vector3 finishPosition)
     {
         gameState = GameState.Instance;
@@ -59,6 +53,7 @@ public class CollectableManager : MonoBehaviour
     {
         if (PhotonNetwork.InRoom)
         {
+            //zorgt ervoor dat we maar 1 setje sterren spawnen in MP
             if (PhotonNetwork.IsMasterClient)
             {
                 foreach (Vector3 coinPosition in coinPositions)

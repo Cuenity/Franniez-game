@@ -10,16 +10,6 @@ public class BuildingPhaseManager : MonoBehaviour
         gameState = GameState.Instance;
     }
 
-    void Start()
-    {
-
-    }
-
-    void Update()
-    {
-
-    }
-
     public void Init()
     {
         //LET OP ELKE KEER ALS DIE SHIT VERANDERT GAAN WE HIERDOORHEEN IS DAT NIET CHILL 

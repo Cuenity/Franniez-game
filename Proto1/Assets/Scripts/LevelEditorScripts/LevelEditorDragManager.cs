@@ -45,11 +45,7 @@ public class LevelEditorDragManager : MonoBehaviour, IDragHandler, IBeginDragHan
 
         zAxis = transform.position.z;
     }
-    //FUCK it helemaal anders it is
-    private void Update()
-    {
-        
-    }
+
     public void klikInventoryButton()
     {
         Debug.Log("ButtonKLICKED");

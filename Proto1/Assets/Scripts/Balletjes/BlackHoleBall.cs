@@ -5,7 +5,6 @@ using UnityEngine;
 
 public class BlackHoleBall : MonoBehaviourPun
 {
-    // Start is called before the first frame update
     GameState gameState = GameState.Instance;
     private Quaternion effectRotation=new Quaternion(0,0,0,0);
     public GameObject BHEffect;

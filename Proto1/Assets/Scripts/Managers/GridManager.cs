@@ -275,10 +275,10 @@ public class GridManager : MonoBehaviour
     }
     
     //multiplayer grid methodes
-
+    //bouwt de grids en assignt deze aan verschillende spelers
     internal void InitPlayerGridsMultiPlayer(int topleftgrid1,int toprightgrid1,int bottomleftgrid1,int bottomrightgrid1,int topleftgrid2,int toprightgrid2,int bottomleftgrid2,int bottomrightgrid2)
     {
-        //deze method is super logisch
+        
         List<int> player1Grid = new List<int>();
         List<int> player2Grid = new List<int>();
         int widthadjustment = 0 ;
@@ -313,7 +313,7 @@ public class GridManager : MonoBehaviour
         }
         showPlayerGrid(player1Grid,player2Grid);
     }
-
+    //laat deze grids zien
     internal void showPlayerGrid(List<int> player1Grid,List<int> player2Grid)
     {
         Vector3 gridadjustment = new Vector3(0.5f, 0, 0);
@@ -327,7 +327,7 @@ public class GridManager : MonoBehaviour
             Instantiate(playerGridGreen, gridSquares[spot] + gridadjustment, new Quaternion(0, 0, 0, 0)).transform.Rotate(new Vector3(-90, 0, 0));
         }
     }
-
+    //zorgt ervoor dat de speler niet kan plaatsen in het grid van de ander
     internal void AddPlayerGridToFilledGridSpots(List<int> playergrid)
     {
         foreach (int spot in playergrid)

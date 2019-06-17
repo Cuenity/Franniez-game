@@ -18,6 +18,7 @@ public class BoosterInventoryButton : InventoryButton
 
     public override GameObject SpawnPhotonPlatformFromInventoryButton()
     {
+        //photon booster is anders dan een normale booster
         GameObject draggedPlatform = PhotonNetwork.Instantiate("Photon Booster", new Vector3(0, 0, 0), new Quaternion(0, 0, 0, 0));
 
         GameState.Instance.levelManager.playerPlatforms.boostPlatformsLeftToPlace--;

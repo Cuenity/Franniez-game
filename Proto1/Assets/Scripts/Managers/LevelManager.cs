@@ -138,7 +138,10 @@ public class LevelManager : MonoBehaviour
 
     private void DefaultSceneEndInit()
     {
-        gameState.playerManager.PlayerInit(gameState.playerBallManager.ballList[0]);
+        if (!PhotonNetwork.IsConnected)
+        {
+            gameState.playerManager.PlayerInit(gameState.playerBallManager.ballList[0]);
+        }
         gameState.BuildingPhaseActive = true;
         levelIsSpawned = true;
     }
@@ -456,197 +459,120 @@ public class LevelManager : MonoBehaviour
                 SpawnLevel(Level30);
             }
         }
-
-        ///multiplayer levels moet nog ff via dezelfde manier voor nu 10 scenes
-        else if (SceneManager.GetActiveScene().name == "MultiplayerLevel1")
+        
+        else if (PlayerDataController.instance.PreviousScene == 101)
         {
             if (!levelIsSpawned)
             {
 
                 SpawnLevel(multiLevel1);
-                //vies
-                PhotonNetwork.Destroy(GameObject.Find("player1Ball"));
-                PhotonNetwork.Destroy(GameObject.Find("player2Ball"));
-                //einde vies
                 gameState.gridManager.InitPlayerGridsMultiPlayer(0, 9, 0, 9, 10, 19, 0, 9);
                 gameState.playerManager.MultiPlayerBallInit(42, 57);
                 gameState.UIManager.AddMultiplayerUI();
-                //vieze fix fixen na release candidate
-               
-                ////GameState.Instance.PreviousLevel = 27;
-                ////PlayerDataController.instance.PreviousScene = 27;
+                
             }
         }
 
-        else if (SceneManager.GetActiveScene().name == "MultiplayerLevel2")
+        else if (PlayerDataController.instance.PreviousScene == 102)
         {
             if (!levelIsSpawned)
             {
                 SpawnLevel(multiLevel2);
-                //vies
-                PhotonNetwork.Destroy(GameObject.Find("player1Ball"));
-                PhotonNetwork.Destroy(GameObject.Find("player2Ball"));
-                //einde vies
-                //naamgeving zo slecht/vies bij playergrids
-                //eerste 2 is het begin eindpunt maar die laatste 2 is gewoon de hoogte 
                 gameState.gridManager.InitPlayerGridsMultiPlayer(0, 24, 0, 4, 135, 149, 0, 4);
                 gameState.playerManager.MultiPlayerBallInit(1, 136);
                 gameState.UIManager.AddMultiplayerUI();
-                //vieze fix fixen na release candidate
                 
 
             }
         }
-        else if (SceneManager.GetActiveScene().name == "MultiplayerLevel3")
+        else if (PlayerDataController.instance.PreviousScene == 103)
         {
             if (!levelIsSpawned)
             {
                 SpawnLevel(multiLevel3);
-                //vies
-                PhotonNetwork.Destroy(GameObject.Find("player1Ball"));
-                PhotonNetwork.Destroy(GameObject.Find("player2Ball"));
-                //einde vies
-                //naamgeving zo slecht/vies bij playergrids
-                //eerste 2 is het begin eindpunt maar die laatste 2 is gewoon de hoogte 
                 gameState.gridManager.InitPlayerGridsMultiPlayer(0, 6, 0, 6, 8, 14, 0, 6);
                 gameState.playerManager.MultiPlayerBallInit(1, 13);
                 gameState.UIManager.AddMultiplayerUI();
-                //vieze fix fixen na release candidate
                 
 
             }
         }
-        else if (SceneManager.GetActiveScene().name == "MultiplayerLevel4")
+        else if (PlayerDataController.instance.PreviousScene == 104)
         {
             if (!levelIsSpawned)
             {
                 SpawnLevel(multiLevel4);
-                //vies
-                PhotonNetwork.Destroy(GameObject.Find("player1Ball"));
-                PhotonNetwork.Destroy(GameObject.Find("player2Ball"));
-                //einde vies
-                //naamgeving zo slecht/vies bij playergrids
-                //eerste 2 is het begin eindpunt maar die laatste 2 is gewoon de hoogte 
                 //gameState.gridManager.InitPlayerGridsMultiPlayer(0, 24, 0, 4, 125, 149, 0, 4);
                 gameState.playerManager.MultiPlayerBallInit(0, 1);
                 gameState.UIManager.AddMultiplayerUI();
-                //vieze fix fixen na release candidate
                 
 
             }
         }
-        else if (SceneManager.GetActiveScene().name == "MultiplayerLevel5")
+        else if (PlayerDataController.instance.PreviousScene == 105)
         {
             if (!levelIsSpawned)
             {
                 SpawnLevel(multiLevel5);
-                //vies
-                PhotonNetwork.Destroy(GameObject.Find("player1Ball"));
-                PhotonNetwork.Destroy(GameObject.Find("player2Ball"));
-                //einde vies
-                //naamgeving zo slecht/vies bij playergrids
-                //eerste 2 is het begin eindpunt maar die laatste 2 is gewoon de hoogte 
                 //gameState.gridManager.InitPlayerGridsMultiPlayer(0, 24, 0, 4, 125, 149, 0, 4);
                 gameState.playerManager.MultiPlayerBallInit(1, 13);
                 gameState.UIManager.AddMultiplayerUI();
-                //vieze fix fixen na release candidate
                 
 
             }
         }
-        else if (SceneManager.GetActiveScene().name == "MultiplayerLevel6")
+        else if (PlayerDataController.instance.PreviousScene == 106)
         {
             if (!levelIsSpawned)
             {
                 SpawnLevel(multiLevel6);
-                //vies
-                PhotonNetwork.Destroy(GameObject.Find("player1Ball"));
-                PhotonNetwork.Destroy(GameObject.Find("player2Ball"));
-                //einde vies
-                //naamgeving zo slecht/vies bij playergrids
-                //eerste 2 is het begin eindpunt maar die laatste 2 is gewoon de hoogte 
                 gameState.gridManager.InitPlayerGridsMultiPlayer(0, 6, 0, 10, 8, 14, 0, 10);
                 gameState.playerManager.MultiPlayerBallInit(1, 13);
                 gameState.UIManager.AddMultiplayerUI();
-                //vieze fix fixen na release candidate
-                
 
             }
         }
-        else if (SceneManager.GetActiveScene().name == "MultiplayerLevel7")
+        else if (PlayerDataController.instance.PreviousScene == 107)
         {
             if (!levelIsSpawned)
             {
                 SpawnLevel(multiLevel7);
-                //vies
-                PhotonNetwork.Destroy(GameObject.Find("player1Ball"));
-                PhotonNetwork.Destroy(GameObject.Find("player2Ball"));
-                //einde vies
-                //naamgeving zo slecht/vies bij playergrids
-                //eerste 2 is het begin eindpunt maar die laatste 2 is gewoon de hoogte 
                 gameState.gridManager.InitPlayerGridsMultiPlayer(0, 9, 0, 14, 16, 24, 0, 14);
                 gameState.playerManager.MultiPlayerBallInit(1, 23);
                 gameState.UIManager.AddMultiplayerUI();
-                //vieze fix fixen na release candidate
-                
 
             }
         }
-        else if (SceneManager.GetActiveScene().name == "MultiplayerLevel8")
+        else if (PlayerDataController.instance.PreviousScene == 108)
         {
             if (!levelIsSpawned)
             {
                 SpawnLevel(multiLevel8);
-                //vies
-                PhotonNetwork.Destroy(GameObject.Find("player1Ball"));
-                PhotonNetwork.Destroy(GameObject.Find("player2Ball"));
-                //einde vies
-                //naamgeving zo slecht/vies bij playergrids
-                //eerste 2 is het begin eindpunt maar die laatste 2 is gewoon de hoogte 
                 gameState.gridManager.InitPlayerGridsMultiPlayer(0, 9, 0, 14, 11, 20, 0, 14);
                 gameState.playerManager.MultiPlayerBallInit(1, 19);
                 gameState.UIManager.AddMultiplayerUI();
-                //vieze fix fixen na release candidate
-                
 
             }
         }
-        else if (SceneManager.GetActiveScene().name == "MultiplayerLevel9")
+        else if (PlayerDataController.instance.PreviousScene == 109)
         {
             if (!levelIsSpawned)
             {
                 SpawnLevel(multiLevel9);
-                //vies
-                PhotonNetwork.Destroy(GameObject.Find("player1Ball"));
-                PhotonNetwork.Destroy(GameObject.Find("player2Ball"));
-                //einde vies
-                //naamgeving zo slecht/vies bij playergrids
-                //eerste 2 is het begin eindpunt maar die laatste 2 is gewoon de hoogte 
                 gameState.gridManager.InitPlayerGridsMultiPlayer(0, 14, 0, 4, 75, 89, 0, 4);
                 gameState.playerManager.MultiPlayerBallInit(1, 13);
                 gameState.UIManager.AddMultiplayerUI();
-                //vieze fix fixen na release candidate
-                
 
             }
         }
-        else if (SceneManager.GetActiveScene().name == "MultiplayerLevel10")
+        else if (PlayerDataController.instance.PreviousScene == 110)
         {
             if (!levelIsSpawned)
             {
                 SpawnLevel(multiLevel10);
-                //vies
-                PhotonNetwork.Destroy(GameObject.Find("player1Ball"));
-                PhotonNetwork.Destroy(GameObject.Find("player2Ball"));
-                //einde vies
-                //naamgeving zo slecht/vies bij playergrids
-                //eerste 2 is het begin eindpunt maar die laatste 2 is gewoon de hoogte 
                 gameState.gridManager.InitPlayerGridsMultiPlayer(0, 9, 0, 19, 11, 20, 0, 19);
                 gameState.playerManager.MultiPlayerBallInit(1, 19);
                 gameState.UIManager.AddMultiplayerUI();
-                //vieze fix fixen na release candidate
-                
-
             }
         }
     }
@@ -658,14 +584,10 @@ public class LevelManager : MonoBehaviour
         gameState.BuildingPhaseActive = false;
         gameState.RollingPhaseActive = true;
         gameState.uIRollingManager.ChangeEnviroment();
-
-        //if (sceneName != "1" || !PhotonNetwork.IsConnected)
-        //{
-        //    balknop.gameObject.SetActive(false);
-        //}
+        
         if (currentLevel != 1 || !PhotonNetwork.InRoom)
         {
-            //idk man fucking error bullshit magic spell try catch
+            //zet de ballknop uit in MP en level 1s
             try
             {
                 balknop.gameObject.SetActive(false);
@@ -677,31 +599,8 @@ public class LevelManager : MonoBehaviour
         }
         if (PhotonNetwork.IsConnected)
         {
-            //deze oplossing is zo smerig wil niet eens een comment schrijven
-            //de bal van de andere speler wordt altijd als een prefabnaam(Clone) gespawnd en zo kan ik ervoor zorgen dat ie op de client die dit uitvoert niet verplaatst wordt
-            //ENIGE manier die tot nu toe werkt
-            if (PhotonNetwork.IsMasterClient)
-            {
-                GameObject.Find("player1Ball").GetComponent<Rigidbody>().isKinematic = false;
-                GameObject.Find("Photon Player Ball(Clone)").GetComponent<Rigidbody>().isKinematic = true;
-
-            }
-            else
-            {
-                GameObject.Find("player2Ball").GetComponent<Rigidbody>().isKinematic = false;
-                GameObject.Find("Photon Player Ball(Clone)").GetComponent<Rigidbody>().isKinematic = true;
-            }
-            //ik wil hetlater toch echt zo doen dit hierboven zo WACK
-            //if (gameState.playerBallManager.activePlayer.GetPhotonView().IsMine)
-            //{
-            //    GameObject mijnBal = gameState.playerBallManager.activePlayer;
-            //    mijnBal.GetComponent<Rigidbody>().isKinematic = false;
-            //}
-            //else if (gameState.playerBallManager.activePlayer.GetPhotonView().IsMine)
-            //{
-            //    GameObject andereBal = gameState.playerBallManager.activePlayer;
-            //    andereBal.GetComponent<Rigidbody>().isKinematic = true;
-            //}
+                gameState.playerBallManager.MultiActivePlayer1.GetComponent<Rigidbody>().isKinematic = false;
+                gameState.playerBallManager.MultiActivePlayer1.GetComponent<Rigidbody>().useGravity = true;
         }
         else
         {
@@ -717,6 +616,7 @@ public class LevelManager : MonoBehaviour
 
         if (PhotonNetwork.InRoom)
         {
+            //zet de flaggen op niet geraakt zodat de speler opnieuw de vlag moet raken
             PhotonView view = gameState.playerBallManager.activePlayer.GetComponent<PhotonView>();
             if (PhotonNetwork.IsMasterClient)
             {
@@ -732,14 +632,9 @@ public class LevelManager : MonoBehaviour
             gameState.RollingPhaseActive = false;
             gameState.playerBallManager.respawnBal();
             gameState.platformManager.RespawnCollectables();
-
-            //if (sceneName != "1"||!PhotonNetwork.IsConnected)
-            //{
-            //    balknop.gameObject.SetActive(true);
-            //}
+            
             if (SceneManager.GetActiveScene().name != "1" || !PhotonNetwork.InRoom)
             {
-                //idk man fucking error bullshit magic spell try catch
                 try
                 {
                     balknop.gameObject.SetActive(true);

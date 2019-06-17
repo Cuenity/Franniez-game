@@ -90,7 +90,7 @@ public class RollingPhaseManager : MonoBehaviour
     {
         if (PhotonNetwork.InRoom)
         {
-            //RPC gebruiken hier voor de code assesment
+            //zet de juiste waarde wie de flag heeft geraakt
             PhotonView view = gameState.playerBallManager.activePlayer.GetComponent<PhotonView>();
             if (PhotonNetwork.IsMasterClient)
                 view.RPC("FlagHit", RpcTarget.All, "masterhit");

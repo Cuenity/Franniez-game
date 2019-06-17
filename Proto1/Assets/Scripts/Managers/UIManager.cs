@@ -165,11 +165,11 @@ public class UIManager : MonoBehaviour
     }
     public void ChangeFlagHitTrue(Image flagtoChange)
     {
-        flagtoChange.sprite = flagIsHit;
+        //flagtoChange.sprite = flagIsHit;
     }
     public void ChangeFlagHitFalse(Image flagtoChange)
     {
-        flagtoChange.sprite = flagIsNotHit;
+        //flagtoChange.sprite = flagIsNotHit;
     }
 
     public bool GarbageBinHit(GameObject draggedPlatformInScene)

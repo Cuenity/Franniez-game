@@ -8,6 +8,7 @@ using UnityEngine.UI;
 
 public class PhotonStartMenu : MonoBehaviourPunCallbacks
 {
+    #region CanvasOnderdelen
     [SerializeField]
     Canvas StartMenu, CustomRoom,  HostWait, ClientWait, JoinRoom, CreateRoom,DisconnectedCanvas;
     [SerializeField]
@@ -16,6 +17,7 @@ public class PhotonStartMenu : MonoBehaviourPunCallbacks
     Button StartGame, CreateJoinButton,ManualConnect,DisconnectReturnButton;
     [SerializeField]
     Text RoomNameHost,RoomNameClient, ConnectedStatus,  WaitingForPlayers, TitleText,DisconnectedText, DisconnectReturnButtonText;
+    #endregion
     [SerializeField]
     GameObject photonMenuView;
 
@@ -32,10 +34,16 @@ public class PhotonStartMenu : MonoBehaviourPunCallbacks
     }
     void Awake()
     {
-        // #Critical
         // this makes sure we can use PhotonNetwork.LoadLevel() on the master client and all clients in the same room sync their level automatically
 
         PhotonNetwork.AutomaticallySyncScene = true;
+        MultiAwakeRoutine();   
+    }
+
+    void MultiAwakeRoutine()
+    {
+
+        //zorgt ervoor dat photon startmenu maar 1 keer bestaat(singeleton)
         if (photonStartMenu == null)
         {
             photonStartMenu = this;
@@ -47,6 +55,7 @@ public class PhotonStartMenu : MonoBehaviourPunCallbacks
             photonStartMenu = this;
             DontDestroyOnLoad(this);
         }
+        //laat het juiste menu zien als we van een level komen
         if (ComesFromLevel)
         {
             if (PhotonNetwork.IsMasterClient)
@@ -60,31 +69,14 @@ public class PhotonStartMenu : MonoBehaviourPunCallbacks
                 ClientWait.gameObject.SetActive(true);
             }
         }
-        //PlayerDataController.instance.PreviousScene()
     }
-    
 
-    // Start is called before the first frame update
     void Start()
     {
-        if (PlayerDataController.instance.PreviousScene > 9000)
-        {
-            if(PlayerDataController.instance.PreviousScene == 9998)
-            {
-                DisconnectedCanvas.gameObject.SetActive(true);
-                DisconnectedText.text = LocalizationManager.instance.GetLocalizedValue("multi_disconnected");
-                //DisconnectReturnButtonText.text = LocalizationManager.instance.GetLocalizedValue("multi_backtomenu");
-                DisconnectReturnButton.GetComponent<Text>().text = LocalizationManager.instance.GetLocalizedValue("multi_backtomenu");
-            }
-            else if(PlayerDataController.instance.PreviousScene == 9999)
-            {
-                DisconnectedCanvas.gameObject.SetActive(true);
-                DisconnectedText.text = LocalizationManager.instance.GetLocalizedValue("multi_friendleft");
-                //DisconnectReturnButtonText.text = LocalizationManager.instance.GetLocalizedValue("multi_backtomenu");
-                DisconnectReturnButton.GetComponent<Text>().text = LocalizationManager.instance.GetLocalizedValue("multi_backtomenu");
-            }
-        }
-        else if (!PhotonNetwork.IsConnected)
+        //checkt of de speler of vriend zijn verbinding is kwijtgeraakt
+        CheckForDisconnect(); 
+        //nog niet connected connect dan
+        if (!PhotonNetwork.IsConnected)
         {
             StartMenu.gameObject.SetActive(true);
             if (!PhotonNetwork.IsConnectedAndReady)
@@ -98,43 +90,88 @@ public class PhotonStartMenu : MonoBehaviourPunCallbacks
         }
         else
         {
-            if (PhotonNetwork.IsMasterClient)
+            //mochten we uit iets anders komen dan zorgen dat we weer in start game wacht menu komen
+            //gebruikt als via het pauze menu terug naar levelselect wordt gegaan
+            ComesFromLevelSelect();
+        }
+    }
+
+    void CheckForDisconnect()
+    {
+        //als er disconnect wordt door de speler zelf of de vriend(in game) waar mee gespeeld wordt zet de juiste tekst en canvas
+        //kan dit niet in de callback zelf?(nee want moet ook een nieuwe scene komen voor in game
+        if (PlayerDataController.instance.PreviousScene > 9000)
+        {
+            //player left
+            if (PlayerDataController.instance.PreviousScene == 9998)
             {
-                HostWait.gameObject.SetActive(true);
-                StartGame.interactable = true;
-                ConnectedStatus.text = LocalizationManager.instance.GetLocalizedValue("multi_status_disconnected");
-                ConnectedStatus.color = Color.green;
+                DisconnectedCanvas.gameObject.SetActive(true);
+                DisconnectedText.text = LocalizationManager.instance.GetLocalizedValue("multi_disconnected");
+                DisconnectReturnButton.GetComponent<Text>().text = LocalizationManager.instance.GetLocalizedValue("multi_backtomenu");
             }
-            else
+            //friend left
+            else if (PlayerDataController.instance.PreviousScene == 9999)
             {
-                ClientWait.gameObject.SetActive(true);
-                ConnectedStatus.text = LocalizationManager.instance.GetLocalizedValue("multi_status_connected");
-                ConnectedStatus.color = Color.green;
+                DisconnectedCanvas.gameObject.SetActive(true);
+                DisconnectedText.text = LocalizationManager.instance.GetLocalizedValue("multi_friendleft");
+                DisconnectReturnButton.GetComponent<Text>().text = LocalizationManager.instance.GetLocalizedValue("multi_backtomenu");
             }
+        }
+    }
+    void ComesFromLevelSelect()
+    {
+        if (PhotonNetwork.IsMasterClient)
+        {
+            HostWait.gameObject.SetActive(true);
+            StartGame.interactable = true;
+            ConnectedStatus.text = LocalizationManager.instance.GetLocalizedValue("multi_status_connected");
+            ConnectedStatus.color = Color.green;
+        }
+        else
+        {
+            ClientWait.gameObject.SetActive(true);
+            ConnectedStatus.text = LocalizationManager.instance.GetLocalizedValue("multi_status_connected");
+            ConnectedStatus.color = Color.green;
         }
     }
 
     // Update is called once per frame
     void Update()
     {
+        //zeker maken dat we niet een SP level kunnen starten met een connection
         if (SceneManager.GetActiveScene().name == "StartMenu")
         {
             Destroy(this.gameObject);
         }
-        else
-        {
-            
-        }
+        //zorgen dat we reconnecten automatisch bij een disconnect
         if (!PhotonNetwork.IsConnected)
         {
             connectToPhoton();
         }
     }
 
+    //aparte methode voor connecten zodat in de toekomst eventueel met serverselection gewerkt kan worden
     public void connectToPhoton()
     {
         PhotonNetwork.ConnectUsingSettings();
     }
+    
+
+    public void CreateOrJoinRandomRoom()
+    {
+        if (PhotonNetwork.CountOfRooms > 0)
+        {
+            PhotonNetwork.JoinRandomRoom();
+        }
+        else
+        {
+            PhotonNetwork.CreateRoom(PhotonNetwork.CountOfRooms.ToString(), new RoomOptions() { MaxPlayers = 2 }, null);
+        }
+        
+    }
+    //deze methodes zouden in hun eigen codefile kunnen staan
+    #region panel switch methodes
+
     //switch panel methodes
     public void onClickSwitchToCustomRoomJoin()
     {
@@ -162,26 +199,26 @@ public class PhotonStartMenu : MonoBehaviourPunCallbacks
         StartMenu.gameObject.SetActive(false);
         JoinRoom.gameObject.SetActive(true);
     }
+    //disconnect nodig want anders kan je niet een nieuwe kamer joinen
     public void onClickSwitchToStartMenu()
     {
         DisconnectedCanvas.gameObject.SetActive(false);
         PhotonNetwork.Disconnect();
         StartMenu.gameObject.SetActive(true);
     }
+    #endregion
+    #region click methods
+    //click actions methodes
+    //gebruikt om een level te selecteren(eventuele level gekozen indicatie hier doen met een rpc)
+    //
     public void onClickConnect()
     {
         connectToPhoton();
     }
-    
-
-    //click actions methodes
-
-    //click andere shizzle
     public void onClickSelectLevel(int levelnumber)
     {
         selectedLevel = levelnumber;
     }
-
     //disconnect en ga terug naar mainmenu
     public void onClickDisconnectAndReturn()
     {
@@ -193,6 +230,8 @@ public class PhotonStartMenu : MonoBehaviourPunCallbacks
     }
 
     //start game
+    //functioneel zelfde als de start game in levelmanager
+    //gaat daar ook naartoe door het laden van een specifieke scene via de gebruikelijke route(gamestate->levelmanager->initscene)
     public void onClickStartGame()
     {
         PhotonView view = photonMenuView.GetComponent<PhotonView>();
@@ -202,59 +241,59 @@ public class PhotonStartMenu : MonoBehaviourPunCallbacks
             PlayerDataController.instance.PreviousScene = 101;
             PhotonNetwork.LoadLevel(8);
         }
-        if (selectedLevel == 2)
+        else if (selectedLevel == 2)
         {
             view.RPC("StartLevel", RpcTarget.All, 102);
             PlayerDataController.instance.PreviousScene = 102;
-            PhotonNetwork.LoadLevel(9);
+            PhotonNetwork.LoadLevel(8);
         }
-        if (selectedLevel == 3)
+        else if (selectedLevel == 3)
         {
             view.RPC("StartLevel", RpcTarget.All, 103);
             PlayerDataController.instance.PreviousScene = 103;
-            PhotonNetwork.LoadLevel(11);
+            PhotonNetwork.LoadLevel(8);
         }
-        if (selectedLevel == 4)
+        else if (selectedLevel == 4)
         {
             view.RPC("StartLevel", RpcTarget.All, 104);
             PlayerDataController.instance.PreviousScene = 104;
-            PhotonNetwork.LoadLevel(12);
+            PhotonNetwork.LoadLevel(8);
         }
-        if (selectedLevel == 5)
+        else if (selectedLevel == 5)
         {
             view.RPC("StartLevel", RpcTarget.All, 105);
             PlayerDataController.instance.PreviousScene = 105;
-            PhotonNetwork.LoadLevel(13);
+            PhotonNetwork.LoadLevel(8);
         }
-        if (selectedLevel == 6)
+        else if (selectedLevel == 6)
         {
             view.RPC("StartLevel", RpcTarget.All, 106);
             PlayerDataController.instance.PreviousScene = 106;
-            PhotonNetwork.LoadLevel(14);
+            PhotonNetwork.LoadLevel(8);
         }
-        if (selectedLevel == 7)
+        else if (selectedLevel == 7)
         {
             view.RPC("StartLevel", RpcTarget.All, 107);
             PlayerDataController.instance.PreviousScene = 107;
-            PhotonNetwork.LoadLevel(15);
+            PhotonNetwork.LoadLevel(8);
         }
-        if (selectedLevel == 8)
+        else if (selectedLevel == 8)
         {
             view.RPC("StartLevel", RpcTarget.All, 108);
             PlayerDataController.instance.PreviousScene = 108;
-            PhotonNetwork.LoadLevel(16);
+            PhotonNetwork.LoadLevel(8);
         }
-        if (selectedLevel == 9)
+        else if (selectedLevel == 9)
         {
             view.RPC("StartLevel", RpcTarget.All, 109);
             PlayerDataController.instance.PreviousScene = 109;
-            PhotonNetwork.LoadLevel(17);
+            PhotonNetwork.LoadLevel(8);
         }
-        if (selectedLevel == 10)
+        else if (selectedLevel == 10)
         {
             view.RPC("StartLevel", RpcTarget.All, 110);
             PlayerDataController.instance.PreviousScene = 110;
-            PhotonNetwork.LoadLevel(18);
+            PhotonNetwork.LoadLevel(8);
         }
     }
 
@@ -279,15 +318,12 @@ public class PhotonStartMenu : MonoBehaviourPunCallbacks
             //TODO maak iets als room al bestaat
             PhotonNetwork.CreateRoom(RoomToCreate.text, new RoomOptions() { MaxPlayers = 2 }, null);
 
-            //switch naar juiste view
-            //CustomRoom.gameObject.SetActive(false);
-            //HostWait.gameObject.SetActive(true);
         }
         else
         {
             if (RoomToCreate.text == "")
             {
-                RoomToCreate.placeholder.GetComponent<Text>().text = LocalizationManager.instance.GetLocalizedValue("multi_roomjoinfailednoinput"); 
+                RoomToCreate.placeholder.GetComponent<Text>().text = LocalizationManager.instance.GetLocalizedValue("multi_roomjoinfailednoinput");
             }
             else
             {
@@ -295,36 +331,24 @@ public class PhotonStartMenu : MonoBehaviourPunCallbacks
             }
         }
     }
-    
 
-    public void CreateOrJoinRandomRoom()
-    {
-        if (PhotonNetwork.CountOfRooms > 0)
-        {
-            PhotonNetwork.JoinRandomRoom();
-        }
-        else
-        {
-            PhotonNetwork.CreateRoom(PhotonNetwork.CountOfRooms.ToString(), new RoomOptions() { MaxPlayers = 2 }, null);
-        }
-        
-    }
-
-    //callbacks
+    #endregion
+    #region callbacks
     public override void OnJoinRoomFailed(short returnCode, string message)
     {
         base.OnJoinRoomFailed(returnCode, message);
-        //zou placeholder.text moeten zijns
         RoomToCreate.text = "";
         RoomToCreate.placeholder.GetComponent<Text>().text = LocalizationManager.instance.GetLocalizedValue("multi_roomjoinfailed");
-
     }
 
     override public void OnJoinedRoom()
     {
+        //laat juiste menu zien
         RoomNameHost.text = PhotonNetwork.CurrentRoom.Name;
         RoomNameClient.text = PhotonNetwork.CurrentRoom.Name;
         TitleText.text = "Room Name:"+PhotonNetwork.CurrentRoom.Name;
+        //menu specifiek voor hosts en clients
+        //Zou hetzelfde kunnen zijn als je werkt met RPC en dan kunnen clients ook starten
         if (PhotonNetwork.IsMasterClient)
         {
             StartMenu.gameObject.SetActive(false);
@@ -343,9 +367,11 @@ public class PhotonStartMenu : MonoBehaviourPunCallbacks
 
     override public void OnConnectedToMaster()
     {
+        //zorgt ervoor dat knoppen aangaan als je connected bent
         base.OnConnectedToMaster();
         ConnectedStatus.text = "Connected";
         ConnectedStatus.color = Color.green;
+        //behalve de manual connect natuurlijk
         Button[] startButtons =  StartMenu.GetComponentsInChildren<Button>();
         foreach (Button button in startButtons)
         {
@@ -360,6 +386,7 @@ public class PhotonStartMenu : MonoBehaviourPunCallbacks
     public override void OnDisconnected(DisconnectCause cause)
     {
         base.OnDisconnected(cause);
+        //voor als we disconnecten in het menu
         if (SceneManager.GetActiveScene().name == "MultiplayerStart")
         {
             ConnectedStatus.text = "Disconnected";
@@ -375,10 +402,11 @@ public class PhotonStartMenu : MonoBehaviourPunCallbacks
                 }
             }
         }
+        //dit is als de speler zijn internet verbinding wegvalt tijdens de game(laad start menu)
         else if (cause != DisconnectCause.DisconnectByClientLogic)
         {
             PlayerDataController.instance.PreviousScene = 9998;
-            PhotonNetwork.LoadLevel(10);
+            PhotonNetwork.LoadLevel(9);
             Destroy(this.gameObject);
         }
     }
@@ -393,25 +421,14 @@ public class PhotonStartMenu : MonoBehaviourPunCallbacks
     }
     public override void OnPlayerLeftRoom(Player otherPlayer)
     {
+        //niet de meest zuivere oplossing maar voorkomt dat spelers vast blijven staan in speel menu als ze alleen zijn
+        // voorkomt multiplayer in je eentje
         base.OnPlayerLeftRoom(otherPlayer);
-        //if (PhotonNetwork.IsMasterClient & SceneManager.GetActiveScene().name !="MultiplayerStart")
-        //{ 
-
-        //    WaitingForPlayers.text = LocalizationManager.instance.GetLocalizedValue("multi_hostwaittext");
-        //    StartGame.interactable = false;
-        //}
         
-            //vieze fix
-            PlayerDataController.instance.PreviousScene = 9999;
-            PhotonNetwork.LoadLevel(10);
-            Destroy(this.gameObject);
+        PlayerDataController.instance.PreviousScene = 9999;
+        PhotonNetwork.LoadLevel(9);
+        Destroy(this.gameObject);
     }
-    //public override void room //OnRoomListUpdate(List<RoomInfo> roomList)
-    //{
-    //    //base.OnRoomListUpdate(roomList);
-    //    //foreach (RoomInfo room in roomList)
-    //    //{
-    //    //    RoomList.text += room.Name + "/n";
-    //    //}
-    //
+    #endregion
 }
+

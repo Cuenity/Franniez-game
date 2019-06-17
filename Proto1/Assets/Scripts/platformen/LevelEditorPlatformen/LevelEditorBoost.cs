@@ -10,11 +10,6 @@ public class LevelEditorBoost : MonoBehaviour
         
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
     private void OnCollisionEnter(Collision collision)
     {
         Debug.Log("Boost Collided");
