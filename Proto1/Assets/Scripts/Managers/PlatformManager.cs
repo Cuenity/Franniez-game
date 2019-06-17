@@ -212,7 +212,8 @@ public class PlatformManager : MonoBehaviour
         int row = 0;
         int minimumValueIndexRow = 0;
         int minimumValueIndexColumn = 0;
-        // deze for loop bepaalt welke row het platform op is los gelaten en welke plek in de column om elke mogelijke out of bounds error te vermijden.
+
+        // deze for loop bepaalt welke row en column het platform op is los gelaten om hierna potentiele out of bounds error te vermijden.
         for (int filledGridSpotsIndex = 0; filledGridSpotsIndex < gameState.gridManager.filledGridSpots.Length; filledGridSpotsIndex++)
         {
             if (column == gameState.gridManager.width)
@@ -220,6 +221,8 @@ public class PlatformManager : MonoBehaviour
                 column = 0;
                 row++;
             }
+
+            // als de index waar het platform los is gelaten gelijk is aan de index in de loop weten we op welke row en column het platform geplaatst "wilt" worden
             if (minimumValueIndex == filledGridSpotsIndex)
             {
                 minimumValueIndexRow = row;

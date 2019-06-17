@@ -81,15 +81,12 @@ public class ButtonManager : MonoBehaviour
 
     public void RemoveAllPlayerPlatformsFromScene()
     {
-        //int placedPlatformsAmount = gameState.levelManager.playerPlatforms.placedPlatforms.Count;
-
+        // the UpdatePlayerPlatforms method removes that platform from the placedPlatforms list
         while (gameState.levelManager.playerPlatforms.placedPlatforms.Count > 0)
         {
             RemoveFilledGridSpots(gameState.levelManager.playerPlatforms.placedPlatforms[0]);
-            //UpdatePlayerPlatforms(gameState.levelManager.playerPlatforms.placedPlatforms[0]);
             gameState.levelManager.playerPlatforms.placedPlatforms[0].GetComponent<Platform>().UpdatePlayerPlatforms();
-            //placedPlatformsAmount--;
-        } // clear hele lijst of echt zorgen dat hij er uitgehaald wordt
+        }
     }
 
     //private InventoryButton FindCorrectInventoryButton(InventoryButtonName inventoryButtonName)
