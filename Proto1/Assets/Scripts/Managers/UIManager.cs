@@ -42,13 +42,14 @@ public class UIManager : MonoBehaviour
     [SerializeField]
     Sprite flagIsHit, flagIsNotHit;
 
+    // in this method all the platform buttons get instantiated, if a player gets 1 or more platforms of a certain type, a button is instantiated for that platform
     public void InitInventoryButtons(PlayerPlatforms playerPlatforms)
     {
         pauseMenu = Instantiate(pauseMenuCanvas);
         pauseMenu.enabled = false;
         InstantiateInventoryButtonsCheck(playerPlatforms.InventoryButtonAmmount);
 
-        if (instantiatedInventoryButtons[0] == null)
+        if (instantiatedInventoryButtons[0] == null) // make sure we only instantiate the buttons once
         {
             int buttonDistance = Screen.width / (playerPlatforms.InventoryButtonAmmount + 1);
             int buttonHeight = Screen.height / 8;
@@ -114,20 +115,22 @@ public class UIManager : MonoBehaviour
         }
     }
 
+    // make the InventoryButton array exactly as long as nessesary
     private void InstantiateInventoryButtonsCheck(int inventoryButtonAmmount)
     {
-        bool check = instantiatedInventoryButtons.Length > 0;
-        if (instantiatedInventoryButtons == null || !check)
+        bool arrayLenghtIsZero = instantiatedInventoryButtons.Length > 0;
+        if (instantiatedInventoryButtons == null || !arrayLenghtIsZero)
         {
             instantiatedInventoryButtons = new InventoryButton[inventoryButtonAmmount];
         }
-        if (newLevelInventoryisRequired == true)
+        if (newLevelInventoryisRequired)
         {
             instantiatedInventoryButtons = new InventoryButton[inventoryButtonAmmount];
             newLevelInventoryisRequired = false;
         }
     }
 
+    // used when rollingphase is active, the buttons shouldnt be interactable or shown
     public void DeactivateInventoryButtons()
     {
         if (instantiatedInventoryButtons != null)
@@ -172,6 +175,7 @@ public class UIManager : MonoBehaviour
         //flagtoChange.sprite = flagIsNotHit;
     }
 
+    // every time a platform is dragged we check if that platform hit the GarbageBin button, if it does it needs to be removed.
     public bool GarbageBinHit(GameObject draggedPlatformInScene)
     {
         EventSystem eventSystem = GetComponent<EventSystem>();

@@ -11,9 +11,6 @@ public class UIDragHandler : MonoBehaviour, IDragHandler, IBeginDragHandler, IEn
     private GameObject platformSquare;
     [SerializeField]
     private GameObject ramp;
-    //public GameObject trampoline;
-    //public GameObject boostPlatform;
-    //public GameObject cannon;
 
     public RotateSprite rotateSprite;
 
