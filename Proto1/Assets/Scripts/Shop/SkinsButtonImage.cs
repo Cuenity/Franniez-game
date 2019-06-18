@@ -5,7 +5,9 @@ using UnityEngine.UI;
 
 public class SkinsButtonImage : MonoBehaviour
 {
-    [SerializeField] private Sprite panel_On, panel_Off;
+    // Side buttons for Shop
+
+    [SerializeField] private Sprite panel_OnSprite, panel_OffSprite;
 
     private void OnEnable()
     {
@@ -16,11 +18,11 @@ public class SkinsButtonImage : MonoBehaviour
     {
         if(gameObject.name == name)
         {
-            gameObject.GetComponent<Image>().sprite = panel_On;
+            gameObject.GetComponent<Image>().sprite = panel_OnSprite;
         }
         else
         {
-            gameObject.GetComponent<Image>().sprite = panel_Off;
+            gameObject.GetComponent<Image>().sprite = panel_OffSprite;
         }
     }
 }

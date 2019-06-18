@@ -42,7 +42,7 @@ public class ShopFillSkins : MonoBehaviour
                 buttonCat.transform.SetParent(categorySkinsContent);
 
                 ShopSkinButton catbutton = buttonCat.GetComponent<ShopSkinButton>();
-                catbutton.SetupCat(shopCategory);
+                catbutton.SetupCategory(shopCategory);
                 catbutton.skinButton.onClick.AddListener(delegate { BuyBundle(shopCategory, catbutton); });
                 categoryButtons.Add(catbutton);
             }

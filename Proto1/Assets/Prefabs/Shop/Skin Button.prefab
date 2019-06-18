@@ -298,13 +298,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   skinButton: {fileID: 631825950528133633}
-  title: {fileID: 631825950160254351}
-  cost: {fileID: 631825950835292806}
+  titleText: {fileID: 631825950160254351}
+  costText: {fileID: 631825950835292806}
   skinImage: {fileID: 631825949668393750}
   coinImage: {fileID: 631825951311926238}
-  owned: {fileID: 21300000, guid: cee3b3fbaa0be4e4cb49fe3a4e131fa1, type: 3}
-  active: {fileID: 21300000, guid: e8920014d35d2fd41a3da71a51488ca8, type: 3}
-  buyWithCoins: {fileID: 21300000, guid: f8f20b64eacb82340b59c2edcfeadabf, type: 3}
+  ownedSprite: {fileID: 21300000, guid: cee3b3fbaa0be4e4cb49fe3a4e131fa1, type: 3}
+  activeSprite: {fileID: 21300000, guid: e8920014d35d2fd41a3da71a51488ca8, type: 3}
+  buyWithCoinsSprite: {fileID: 21300000, guid: f8f20b64eacb82340b59c2edcfeadabf, type: 3}
 --- !u!1 &631825950835292800
 GameObject:
   m_ObjectHideFlags: 0
