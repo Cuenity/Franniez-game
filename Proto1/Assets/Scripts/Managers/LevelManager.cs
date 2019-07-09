@@ -459,7 +459,7 @@ public class LevelManager : MonoBehaviour
                 SpawnLevel(Level30);
             }
         }
-        
+
         else if (PlayerDataController.instance.PreviousScene == 101)
         {
             if (!levelIsSpawned)
@@ -469,7 +469,7 @@ public class LevelManager : MonoBehaviour
                 gameState.gridManager.InitPlayerGridsMultiPlayer(0, 9, 0, 9, 10, 19, 0, 9);
                 gameState.playerManager.MultiPlayerBallInit(42, 57);
                 gameState.UIManager.AddMultiplayerUI();
-                
+
             }
         }
 
@@ -481,7 +481,7 @@ public class LevelManager : MonoBehaviour
                 gameState.gridManager.InitPlayerGridsMultiPlayer(0, 24, 0, 4, 135, 149, 0, 4);
                 gameState.playerManager.MultiPlayerBallInit(1, 136);
                 gameState.UIManager.AddMultiplayerUI();
-                
+
 
             }
         }
@@ -493,7 +493,7 @@ public class LevelManager : MonoBehaviour
                 gameState.gridManager.InitPlayerGridsMultiPlayer(0, 6, 0, 6, 8, 14, 0, 6);
                 gameState.playerManager.MultiPlayerBallInit(1, 13);
                 gameState.UIManager.AddMultiplayerUI();
-                
+
 
             }
         }
@@ -505,7 +505,7 @@ public class LevelManager : MonoBehaviour
                 //gameState.gridManager.InitPlayerGridsMultiPlayer(0, 24, 0, 4, 125, 149, 0, 4);
                 gameState.playerManager.MultiPlayerBallInit(0, 1);
                 gameState.UIManager.AddMultiplayerUI();
-                
+
 
             }
         }
@@ -517,7 +517,7 @@ public class LevelManager : MonoBehaviour
                 //gameState.gridManager.InitPlayerGridsMultiPlayer(0, 24, 0, 4, 125, 149, 0, 4);
                 gameState.playerManager.MultiPlayerBallInit(1, 13);
                 gameState.UIManager.AddMultiplayerUI();
-                
+
 
             }
         }
@@ -584,7 +584,7 @@ public class LevelManager : MonoBehaviour
         gameState.BuildingPhaseActive = false;
         gameState.RollingPhaseActive = true;
         gameState.uIRollingManager.ChangeEnviroment();
-        
+
         if (currentLevel != 1 || !PhotonNetwork.InRoom)
         {
             //zet de ballknop uit in MP en level 1s
@@ -599,8 +599,8 @@ public class LevelManager : MonoBehaviour
         }
         if (PhotonNetwork.IsConnected)
         {
-                gameState.playerBallManager.MultiActivePlayer1.GetComponent<Rigidbody>().isKinematic = false;
-                gameState.playerBallManager.MultiActivePlayer1.GetComponent<Rigidbody>().useGravity = true;
+            gameState.playerBallManager.MultiActivePlayer1.GetComponent<Rigidbody>().isKinematic = false;
+            gameState.playerBallManager.MultiActivePlayer1.GetComponent<Rigidbody>().useGravity = true;
         }
         else
         {
@@ -632,7 +632,7 @@ public class LevelManager : MonoBehaviour
             gameState.RollingPhaseActive = false;
             gameState.playerBallManager.respawnBal();
             gameState.platformManager.RespawnCollectables();
-            
+
             if (SceneManager.GetActiveScene().name != "1" || !PhotonNetwork.InRoom)
             {
                 try

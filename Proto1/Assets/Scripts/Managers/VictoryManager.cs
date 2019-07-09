@@ -25,6 +25,11 @@ public class VictoryManager : MonoBehaviour
         SetLanguage();
         GetDataFromLevel();
         SetButtonsForPhoton();
+
+        if (playerDataController.PreviousScene == 10 || playerDataController.PreviousScene == 20)
+        {
+            VictoryCanvas.transform.Find("Buttons").Find("NextLevel").GetComponent<Button>().interactable = false;
+        }
     }
 
     private void SetButtonsForPhoton()
@@ -81,7 +86,7 @@ public class VictoryManager : MonoBehaviour
         }
 
         // Add collected stars to shop coins
-        playerDataController.AddShopCoins(playerDataController.PreviousSceneCoinCount);
+        playerDataController.AddShopCoins(playerDataController.PreviousSceneCoinCount * 10);
         amountCoins.text = playerDataController.Player.ShopCoins.ToString();
     }
 

@@ -28,7 +28,7 @@ public class PauseMenuManager : MonoBehaviour
         if (PhotonNetwork.InRoom)
         {
             //photon pauze menu is anders
-            Button[] buttons  = GameState.Instance.UIManager.pauseMenuCanvas.GetComponentsInChildren<Button>(true);
+            Button[] buttons  = GameState.Instance.UIManager.pauseMenu.GetComponentsInChildren<Button>(true);
             foreach(Button button in buttons)
             {
                 if(button.name =="Exit Button")
@@ -40,7 +40,7 @@ public class PauseMenuManager : MonoBehaviour
         }
         else
         {
-            Button[] buttons = GameState.Instance.UIManager.pauseMenuCanvas.GetComponentsInChildren<Button>(true);
+            Button[] buttons = GameState.Instance.UIManager.pauseMenu.GetComponentsInChildren<Button>(true);
             foreach (Button button in buttons)
             {
                 if (button.name == "Exit Button")
