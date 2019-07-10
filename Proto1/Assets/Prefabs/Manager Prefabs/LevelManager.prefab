@@ -54,16 +54,16 @@ MonoBehaviour:
   Level5: {fileID: 3084506684289652319, guid: 69e97c9c89b87ee43860849a80afe99a, type: 3}
   Level6BlackHoleBallAndJump: {fileID: 7417541486990352450, guid: 693c89e3168199341b9122658567a400,
     type: 3}
-  Level7BoosterEasy: {fileID: 3290023160388524013, guid: 2e10e1c1db302c9478cdb058b28a4736,
+  Level7BoosterEasy: {fileID: 8870540772868085361, guid: 2e10e1c1db302c9478cdb058b28a4736,
     type: 3}
-  Level8BoosterHard: {fileID: 4746136531930767534, guid: ebf365cc98c37404f8359e595f60a93e,
+  Level8BoosterHard: {fileID: 8996535151235205344, guid: ebf365cc98c37404f8359e595f60a93e,
     type: 3}
   Level9PortalEasy: {fileID: 477021361644002954, guid: 23ba00cef035c964f8749ff841fa7a0b,
     type: 3}
   Level10TrampolineAdvanced: {fileID: 2598065613682468424, guid: 39b4a6668f6ab7d4c89dab194bba4ddb,
     type: 3}
   Level11: {fileID: 8310911898771917436, guid: 4f7b6051b2297124c8ca6d4fb7634ab6, type: 3}
-  LevelSettingLevel12LiftMoeilijk: {fileID: 4691286432663417472, guid: 6792bb8dc3c6b384a84cae2d08ea5d41,
+  LevelSettingLevel12LiftMoeilijk: {fileID: 4107509287461062408, guid: 0ed07491c87c9b64d931a49c10904606,
     type: 3}
   Level13: {fileID: 889642148942438597, guid: eac6db38ee66d2541aaff93d9087dda8, type: 3}
   Level14: {fileID: 5007332098306194189, guid: 9741184ced8e2de4faa7e705887ecb92, type: 3}
@@ -77,9 +77,9 @@ MonoBehaviour:
   Level28: {fileID: 6454804448561707918, guid: d1d0106a5247eab428e26d645cb61540, type: 3}
   Level29: {fileID: 5638905299894618634, guid: ad6c5ee91bff93748b9aca13b8ae2bc0, type: 3}
   Level30: {fileID: 5151111360003713267, guid: f1626bdae706a5c488f94e445632c7c8, type: 3}
-  smiletTest: {fileID: 6857793499659197117, guid: 6c27f9caf2f52614e8b503286cbb4e8c,
+  smiletTest: {fileID: 8670683381335217396, guid: 7758e71ab277cd64f96efc7af47e295c,
     type: 3}
-  house: {fileID: 6330327931917537949, guid: 3f7591ef3a4175d4f9d36e3aade1b938, type: 3}
+  house: {fileID: 3565564443308756381, guid: c366abbf4be7d7141bdbca332e03090e, type: 3}
   multiLevel1: {fileID: 6765369781238558511, guid: 7487e89d2cc140345ae0707bbfa41cb0,
     type: 3}
   multiLevel2: {fileID: 7330152785019320456, guid: d6f95b7bb5a5c554ca56e876c0c2fdc7,
@@ -100,7 +100,7 @@ MonoBehaviour:
     type: 3}
   multiLevel10: {fileID: 5971147215384403517, guid: b6088bedfdae4ba44ada8fdd980851ca,
     type: 3}
-  boom: {fileID: 3249524214490673100, guid: b29b4e25e03b52147ad19084ef0d40a2, type: 3}
+  boom: {fileID: 8591089080441853807, guid: a1074858a440cd54e8971d3b1f9b5fdc, type: 3}
   eend: {fileID: 8444939348633585051, guid: 316d2a70c942e6d40886627643c8f34b, type: 3}
   kroon: {fileID: 7535228416744476494, guid: 4f1d70cb39b40a84b988472e858e8d44, type: 3}
   portalrooms: {fileID: 6950744821931505961, guid: 943aa2c9a31134c4983835aca2039359,

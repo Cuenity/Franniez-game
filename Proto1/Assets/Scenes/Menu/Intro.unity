@@ -1912,7 +1912,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ea40de148d73ba4baaed44dcace93e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ballMaterial: {fileID: 0}
 --- !u!4 &2049457241
 Transform:
   m_ObjectHideFlags: 0
