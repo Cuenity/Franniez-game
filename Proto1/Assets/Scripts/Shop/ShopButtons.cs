@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using GameAnalyticsSDK;
+//using GameAnalyticsSDK;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using System.Timers;
@@ -70,7 +70,7 @@ public class ShopButtons : MonoBehaviour
                 musicPanel.SetActive(true);
                 break;
             case "Coins Button":
-                coinsPanel.SetActive(true);
+                //coinsPanel.SetActive(true);
                 break;
             default:
                 break;
@@ -83,9 +83,9 @@ public class ShopButtons : MonoBehaviour
     // Player wants to buy coins
     public void BuyCoins(int amount)
     {
-        buyAmountCoins = amount;
-        SetConfirmMessage(amount);
-        warningPanel.SetActive(true);
+        //buyAmountCoins = amount;
+        //SetConfirmMessage(amount);
+        //warningPanel.SetActive(true);
     }
 
     public void BuySkin(SkinObject skin, ShopSkinButton button)
@@ -120,7 +120,7 @@ public class ShopButtons : MonoBehaviour
     public void BuyBundle(ShopCategory category, ShopSkinButton button)
     {
         // Do nothing when the player already has the bundle
-        if (playerDataController.Player.categoriesByName.Contains(category.Name)){return;}
+        if (playerDataController.Player.categoriesByName.Contains(category.Name)) { return; }
 
         // Check if player has enough coins
         if (playerDataController.RemoveShopCoins(category.cost))
@@ -159,22 +159,22 @@ public class ShopButtons : MonoBehaviour
 
     public void Button_BuyCoins()
     {
-        /*  
-            Wanneer de panel actief werd door middel van munten kopen wordt de volgende
-            methode uitgevoerd. Als dit niet het geval is kwam de panel tevoorschijn omdat er geen
-            genoeg munten waren om een skin te kopen en wordt de gebruiker naar de Coins panel gestuurd.
-        */
-        if (buyNewCoins)
-        {
-            playerDataController.AddShopCoins(buyAmountCoins);
-            UpdateCoins();
-            warningPanel.SetActive(false);
-            GAManager.ShopDonation(buyAmountCoins);
-        }
-        else
-        {
-            SwitchPanel("Coins Button");
-        }
+        ///*  
+        //    Wanneer de panel actief werd door middel van munten kopen wordt de volgende
+        //    methode uitgevoerd. Als dit niet het geval is kwam de panel tevoorschijn omdat er geen
+        //    genoeg munten waren om een skin te kopen en wordt de gebruiker naar de Coins panel gestuurd.
+        //*/
+        //if (buyNewCoins)
+        //{
+        //    playerDataController.AddShopCoins(buyAmountCoins);
+        //    UpdateCoins();
+        //    warningPanel.SetActive(false);
+        //    GAManager.ShopDonation(buyAmountCoins);
+        //}
+        //else
+        //{
+        //    SwitchPanel("Coins Button");
+        //}
     }
 
     // Warning message for not enough coins
@@ -187,34 +187,34 @@ public class ShopButtons : MonoBehaviour
         buyNewCoins = false;
     }
 
-    private void SetConfirmMessage(int coins)
-    {
-        // Set buyNewCoins on true, so the button knows which statement to start in the method Button_BuyCoins
-        buyNewCoins = true;
-        float money = 0.00f;
+    //private void SetConfirmMessage(int coins)
+    //{
+    //    // Set buyNewCoins on true, so the button knows which statement to start in the method Button_BuyCoins
+    //    buyNewCoins = true;
+    //    float money = 0.00f;
 
-        switch (coins)
-        {
-            case 30:
-                money = 0.99f;
-                break;
-            case 210:
-                money = 4.99f;
-                break;
-            case 510:
-                money = 9.99f;
-                break;
-            default:
-                break;
-        }
+    //    switch (coins)
+    //    {
+    //        case 30:
+    //            money = 0.99f;
+    //            break;
+    //        case 210:
+    //            money = 4.99f;
+    //            break;
+    //        case 510:
+    //            money = 9.99f;
+    //            break;
+    //        default:
+    //            break;
+    //    }
 
-        buyCoinsText.enabled = true;
+    //    buyCoinsText.enabled = true;
 
-        // Set text from LocalizationManager in text
-        string coinsLocalText = LocalizationManager.instance.GetLocalizedValue("shop_Coins");
-        string forLocalText = LocalizationManager.instance.GetLocalizedValue("lang_for");
-        buyCoinsText.text = $"€{money} {forLocalText} {coins} {coinsLocalText}?";
-        titleWarningPanel.text = LocalizationManager.instance.GetLocalizedValue("shop_DonationMessage");
-        notEnoughCoinsObject.SetActive(false);
-    }
+    //    // Set text from LocalizationManager in text
+    //    string coinsLocalText = LocalizationManager.instance.GetLocalizedValue("shop_Coins");
+    //    string forLocalText = LocalizationManager.instance.GetLocalizedValue("lang_for");
+    //    buyCoinsText.text = $"€{money} {forLocalText} {coins} {coinsLocalText}?";
+    //    titleWarningPanel.text = LocalizationManager.instance.GetLocalizedValue("shop_DonationMessage");
+    //    notEnoughCoinsObject.SetActive(false);
+    //}
 }

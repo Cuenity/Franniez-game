@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Video;
 using UnityEngine.SceneManagement;
-using GameAnalyticsSDK;
+//using GameAnalyticsSDK;
 
 [RequireComponent (typeof(AudioSource))]
 public class IntroVideo : MonoBehaviour
@@ -20,7 +20,7 @@ public class IntroVideo : MonoBehaviour
     void Start()
     {
         StartCoroutine(PlayVideo());
-        GameAnalytics.Initialize();
+        //GameAnalytics.Initialize();
     }
 
     IEnumerator PlayVideo()

@@ -1,4 +1,4 @@
-﻿using GameAnalyticsSDK;
+﻿//using GameAnalyticsSDK;
 using Photon.Pun;
 using System;
 using System.Collections.Generic;
@@ -60,7 +60,7 @@ public class ButtonManager : MonoBehaviour
 
         string language = LocalizationManager.instance.LanguageChoice.ToString();
         language = "Language:" + language;
-        GameAnalytics.NewDesignEvent(language);
+        //GameAnalytics.NewDesignEvent(language);
 
 
         SceneManager.LoadScene("StartMenu");

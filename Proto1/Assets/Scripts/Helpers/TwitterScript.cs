@@ -4,7 +4,7 @@ using UnityEngine;
 using Facebook.Unity;
 using TwitterKit.Unity;
 using System;
-using GameAnalyticsSDK;
+//using GameAnalyticsSDK;
 
 public class TwitterScript : MonoBehaviour
 {
@@ -35,7 +35,7 @@ public class TwitterScript : MonoBehaviour
 
     public void ComposeMessage()
     {
-        GameAnalytics.NewDesignEvent("Twitter:ButtonPressed");
+        //GameAnalytics.NewDesignEvent("Twitter:ButtonPressed");
 
         Twitter.Compose(Twitter.Session, imageURL, LocalizedText(), hashtags,
                 (string tweetId) => { GAManager.TwitterSucceededTweet(); }, // Tweet verstuurtd, stuur naar GA
